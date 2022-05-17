@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -44,6 +45,14 @@ public class GameManager : MonoBehaviour
     public GameObject doorInteractText;
     [HideInInspector]
     public GameObject intelInteractText;
+    [HideInInspector]
+    public TextMeshProUGUI flashBangCount;
+    [HideInInspector]
+    public GameObject flashBangIcon;
+    [HideInInspector]
+    public GameObject ammoIcon;
+    [HideInInspector]
+    public TextMeshProUGUI ammoText;
 
     private static GameManager instance;
 
@@ -102,6 +111,13 @@ public class GameManager : MonoBehaviour
 
         intelInteractText = GameObject.FindGameObjectWithTag("IntelInteractText");
         intelInteractText.SetActive(false);
+
+
+        flashBangIcon = GameObject.FindGameObjectWithTag("FlashbangIcon");
+        flashBangCount = GameObject.FindGameObjectWithTag("FlashbangCount").GetComponent<TextMeshProUGUI>();
+
+        ammoIcon = GameObject.FindGameObjectWithTag("AmmoIcon");
+        ammoText = GameObject.FindGameObjectWithTag("AmmoCount").GetComponent<TextMeshProUGUI>();
 
         if (player == null)
         {

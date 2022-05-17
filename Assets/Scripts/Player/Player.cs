@@ -97,10 +97,10 @@ public class Player : ISpawnable
     ShieldBar shieldBar;
 
     /*Flash bang Count ui */
-    public TextMeshProUGUI flashbangUi;
+     TextMeshProUGUI flashbangUi;
 
     /* Flash Bang sprite*/
-    public GameObject flashBangSprite;
+     GameObject flashBangSprite;
 
     bool bPlayerWantsToAttack = false;
 
@@ -113,6 +113,9 @@ public class Player : ISpawnable
         shieldBar = GameManager.Instance.shieldBarScript;
 
         m_CurrentWeapons = new BaseWeapon[startWeaponIDs.Length];
+
+        flashbangUi = GameManager.Instance.flashBangCount;
+        flashBangSprite = GameManager.Instance.flashBangIcon;
 
         Spawn();
 

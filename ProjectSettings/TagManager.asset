@@ -21,6 +21,10 @@ TagManager:
   - DoorInteractText
   - IntelInteractText
   - Intel
+  - FlashbangIcon
+  - FlashBangIcon
+  - AmmoIcon
+  - AmmoCount
   layers:
   - Default
   - TransparentFX

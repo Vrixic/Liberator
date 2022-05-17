@@ -150,6 +150,7 @@ public class PlayerInteract : MonoBehaviour
 
             //add code to win the level
             hostageSecureScreen.SetActive(true);
+            currentInteractPrompt.SetActive(false);
 
             //break player out of causing cancel/perform events when they aren't interacting with the hostage
             securingHostage = false;

@@ -137,8 +137,8 @@ public class PlayerMotor : MonoBehaviour
         }
         #endregion
 
-        //if (slowWalking != shiftPressed)
-        //   CheckSlowWalk();
+        if (slowWalking != shiftPressed)
+           CheckSlowWalk();
     }
 
     //receives the inputs from our InputManager.cs and applies them to the character controller component
