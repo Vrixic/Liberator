@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ammoText;
     [HideInInspector]
     public GameObject hostageProgressBar;
+    public int currentCash;
+    public int CurrentCash { get { return currentCash; } set { currentCash = value; } }
+    public int startingCash;
 
 
     private static GameManager instance;
@@ -131,6 +134,10 @@ public class GameManager : MonoBehaviour
 
             playerMoveScript = player.GetComponent<PlayerMotor>();
         }
+
+        startingCash = 1000;
+
+        currentCash = startingCash;
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         if (mainCamera == null)
