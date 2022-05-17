@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5078116065419846579}
   - component: {fileID: 5070878952658815383}
   - component: {fileID: 5048142965612713547}
-  - component: {fileID: 1553297375232823485}
+  - component: {fileID: 9048694509167994963}
   m_Layer: 0
   m_Name: LargeAmmoBox
   m_TagString: Untagged
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoType: 2
   ammoAmount: 30
---- !u!65 &1553297375232823485
-BoxCollider:
+--- !u!135 &9048694509167994963
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -110,5 +110,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0551353, y: 0.43353096, z: 0.62653434}
-  m_Center: {x: 0.0010621548, y: 0.21676542, z: -0.0019042939}
+  m_Radius: 0.56313545
+  m_Center: {x: 0, y: 0.063135445, z: 0}
