@@ -22,7 +22,7 @@ public class PlayerInteract : MonoBehaviour
     {
         hostageSecureScreen = GameManager.Instance.hostageSecured;
         secureHostagePrompt = GameManager.Instance.secureHostageText;
-        doorInteractPrompt = GameManager.Instance.doorInteractText;
+        doorInteractPrompt = GameManager.Instance.openDoorInteractText;
         intelInteractPrompt = GameManager.Instance.intelInteractText;
         hostageProgressBarImage = GameManager.Instance.hostageProgressBar.GetComponent<Image>();
         hostageProgressBarImage.fillAmount = 0;

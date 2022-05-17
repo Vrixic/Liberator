@@ -18,7 +18,6 @@ TagManager:
   - ShieldBar
   - UI
   - SecureHostageText
-  - DoorInteractText
   - IntelInteractText
   - Intel
   - FlashbangIcon
@@ -26,6 +25,9 @@ TagManager:
   - AmmoIcon
   - AmmoCount
   - HostageProgressBar
+  - ShopCanvas
+  - CloseDoorInteractText
+  - OpenDoorInteractText
   layers:
   - Default
   - TransparentFX
