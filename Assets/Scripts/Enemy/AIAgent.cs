@@ -18,6 +18,7 @@ public class AIAgent : MonoBehaviour
     [HideInInspector]public Transform playerTransform;
     [HideInInspector] public AiSensor sensor;
     [HideInInspector] public Animator animator;
+    private Coroutine lookCouroutine;
 
     public bool isFlashed = false;
 
@@ -49,5 +50,34 @@ public class AIAgent : MonoBehaviour
         stateMachine.Update();
 
         animator.SetFloat("Speed", navMeshAgent.speed);
+    }
+
+    public void Rotating()
+    {
+        if(lookCouroutine != null)
+        {
+            StopCoroutine(lookCouroutine);
+        }
+
+        lookCouroutine = StartCoroutine(LookAt());
+    }
+
+    public IEnumerator LookAt()
+    {
+        Vector3 lookRotation = GameManager.Instance.playerTransform.position - transform.position;
+        lookRotation.y = transform.position.y;
+        Quaternion rot = Quaternion.LookRotation(lookRotation);
+
+        float time = 0;
+
+        while(time < 1)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, time);
+
+            time += Time.deltaTime * config.speed;
+
+            yield return null;
+        }
+
     }
 }

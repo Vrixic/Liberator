@@ -15,7 +15,7 @@ public class AIAttackPlayerState : AIState
     }
     public void Update(AIAgent agent)
     {
-
+        agent.Rotating();
         bool inSight = agent.sensor.IsInsight();
         if (!inSight)
         {
