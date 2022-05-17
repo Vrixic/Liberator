@@ -693,7 +693,7 @@ public class Player : ISpawnable
 
     public void UpdateFlashbangCount()
     {
-        flashbangUi.text = flashbang.GetCurrentAmountOfFlashbangs().ToString();
+        GameManager.Instance.flashBangCount.text = flashbang.GetCurrentAmountOfFlashbangs().ToString();
     }
 
     public void HideFlashbangGUI()
