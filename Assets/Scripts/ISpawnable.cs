@@ -26,4 +26,14 @@ public class ISpawnable : MonoBehaviour
         transform.position = m_InitialPosition;
         transform.rotation = m_InitialRotation;
     }
+
+    public Vector3 GetInitialPosition()
+    {
+        return m_InitialPosition;
+    }
+
+    public Quaternion GetInitialRotation()
+    {
+        return m_InitialRotation;
+    }
 }

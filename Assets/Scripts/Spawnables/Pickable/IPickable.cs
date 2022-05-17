@@ -10,6 +10,8 @@ public class IPickable : ISpawnable
     public virtual void Start()
     {
         GetComponent<SphereCollider>().isTrigger = true;
+
+        Spawn();
     }
 
     public virtual void OnPickup(GameObject picker) 

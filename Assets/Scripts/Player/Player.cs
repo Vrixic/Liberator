@@ -127,6 +127,7 @@ public class Player : ISpawnable
         //}
 
         flashbang.OnPickup(weaponsParent);
+        DeactivateFlashbang();
     }
 
     public override void Spawn()
