@@ -34,7 +34,6 @@ public class AIDeathState : AIState
 
     public void Update(AIAgent agent)
     {
-        agent.mesh.material.SetColor("_Color", Color.black * 0);
         agent.navMeshAgent.isStopped = true;
 
         if (Time.time > diasbleTimer)

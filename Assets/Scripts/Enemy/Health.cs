@@ -57,6 +57,5 @@ public class Health : MonoBehaviour
         blinkTimer -= Time.deltaTime;
         float blendFactor = Mathf.Clamp01(blinkTimer / blinkDuration);
         float intensity = (blendFactor * blinkIntensity) + 1.0f;
-        skinnedMeshRenderer.material.color = Color.white * intensity;
     }
 }

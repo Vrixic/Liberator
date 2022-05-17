@@ -11,10 +11,10 @@ public class AIAttackPlayerState : AIState
     {
         gun = agent.GetComponentInChildren<EnemyGun>();
         agent.navMeshAgent.isStopped = true;
+        agent.animator.SetTrigger("Attack");
     }
     public void Update(AIAgent agent)
     {
-        agent.mesh.material.color = Color.blue;
 
         bool inSight = agent.sensor.IsInsight();
         if (!inSight)

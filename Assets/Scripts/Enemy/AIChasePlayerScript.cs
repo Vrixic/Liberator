@@ -15,11 +15,11 @@ public class AIChasePlayerScript : AIState
     {
         gun = agent.GetComponentInChildren<EnemyGun>();
         agent.currentState = AIStateID.ChasePlayer;
+        agent.animator.SetTrigger("Chase");
     }
 
     public void Update(AIAgent agent)
     {
-        agent.mesh.material.color = Color.white;
 
         //stops a lot of cost for the enemy.
         // gets the squared dist from player to enemy

@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(AIStateMachine))]
+[RequireComponent(typeof(Transform))]
+[RequireComponent(typeof(AIAgentConfig))]
+[RequireComponent(typeof(AiSensor))]
+[RequireComponent(typeof(Animator))]
 public class AIAgent : MonoBehaviour
 {
     public AIStateMachine stateMachine;
     public AIStateID initialState;
     public AIStateID currentState;
     [HideInInspector]public NavMeshAgent navMeshAgent;
-    [HideInInspector]public AIAgentConfig config;
+    public AIAgentConfig config;
     [HideInInspector]public Transform playerTransform;
-    [HideInInspector]public Renderer mesh;
-    [HideInInspector]public Ragdoll ragdoll;
     [HideInInspector] public AiSensor sensor;
+    [HideInInspector] public Animator animator;
 
     public bool isFlashed = false;
 
@@ -21,6 +25,7 @@ public class AIAgent : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         //creates a new state machine for this agent type. 
         stateMachine = new AIStateMachine(this);
         currentState = initialState;
@@ -42,5 +47,7 @@ public class AIAgent : MonoBehaviour
         playerTransform = GameManager.Instance.player.transform;
         //constantly updates the machine
         stateMachine.Update();
+
+        animator.SetFloat("Speed", navMeshAgent.speed);
     }
 }

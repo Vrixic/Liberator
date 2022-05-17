@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyLocomotion : MonoBehaviour
 {
     NavMeshAgent agent;
-   
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()

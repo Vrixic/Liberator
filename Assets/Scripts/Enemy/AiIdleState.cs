@@ -12,13 +12,12 @@ public class AIIdleState : AIState
     public void Enter(AIAgent agent)
     {
         agent.currentState = AIStateID.Idle;
-
+        agent.animator.SetTrigger("Idle");
         agent.navMeshAgent.isStopped = true;
     }
 
     public void Update(AIAgent agent)
     {
-        agent.mesh.material.color = Color.red;
 
         //finds the player direction and checks to see if its magnitude is outside
         //the range of the agent sight.
