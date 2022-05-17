@@ -462,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3522521767111046796, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 2.0313654
+      value: 1.7785978
       objectReference: {fileID: 0}
     - target: {fileID: 3522521767111046797, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,6 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRange: 3
+  updateInteractPromptTime: 0.2
 --- !u!114 &6262431863178281136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,8 +586,6 @@ MonoBehaviour:
   footStepRunAudio: {fileID: 8300000, guid: ca9ec1475cab63a4ab6142559dc4a89e, type: 3}
   footStepWalkAudioPlayDelay: 0.75
   footStepRunAudioPlayDelay: 0.4
-  flashbangUi: {fileID: 0}
-  flashBangSprite: {fileID: 0}
 --- !u!1 &1532439383507601325 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3522521767111046795, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
@@ -689,6 +688,10 @@ PrefabInstance:
     - target: {fileID: 1766957826402700, guid: 4cd213372853d1940b8b7a8b0a901ed2, type: 3}
       propertyPath: m_Name
       value: Flashbang
+      objectReference: {fileID: 0}
+    - target: {fileID: 1766957826402700, guid: 4cd213372853d1940b8b7a8b0a901ed2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4278347062721522, guid: 4cd213372853d1940b8b7a8b0a901ed2, type: 3}
       propertyPath: m_RootOrder

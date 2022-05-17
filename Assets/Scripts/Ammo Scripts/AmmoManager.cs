@@ -15,11 +15,6 @@ public class AmmoManager : MonoBehaviour
 
     [Header("Visuals")]
 
-    /* UI Text to update when ammo has changed */
-    TextMeshProUGUI ammoGUI;
-
-    /* Ammo Icon*/
-    GameObject ammoSprite;
     
     /* Instance of this object, singleton pattern */
     private static AmmoManager m_AmmoManager;
@@ -57,12 +52,7 @@ public class AmmoManager : MonoBehaviour
             m_StoredAmmo.Add(_ammo.ammoType, _ammo.ammoSlot);
         }
     }
-    private void Start()
-    {
-        ammoGUI = GameManager.Instance.ammoText;
-        ammoSprite = GameManager.Instance.ammoIcon;
 
-    }
     /*
      * Increases ammo 
      * @param 'ammoType': the ammotype to be increased 
@@ -90,7 +80,7 @@ public class AmmoManager : MonoBehaviour
      */
     public void UpdateAmmoGUI(AmmoType ammoType, int currentBullets)
     {
-        ammoGUI.text = currentBullets.ToString() + "/" + GetAmmoAmount(ammoType);
+        GameManager.Instance.ammoText.text = currentBullets.ToString() + "/" + GetAmmoAmount(ammoType);
     }
 
     /*
@@ -98,8 +88,8 @@ public class AmmoManager : MonoBehaviour
     */
     public void HideAmmoGUI()
     {
-        ammoGUI.enabled = false;
-        ammoSprite.gameObject.SetActive(false);
+        GameManager.Instance.ammoText.enabled = false;
+        GameManager.Instance.ammoIcon.gameObject.SetActive(false);
     }
 
     /*
@@ -107,8 +97,8 @@ public class AmmoManager : MonoBehaviour
     */
     public void ShowAmmoGUI()
     {
-        ammoGUI.enabled = true;
-        ammoSprite.gameObject.SetActive(true);
+        GameManager.Instance.ammoText.enabled = true;
+        GameManager.Instance.ammoIcon.gameObject.SetActive(true);
     }
 
     /*

@@ -61,7 +61,7 @@ public class WeaponSpawnManager : MonoBehaviour
         weapon.Spawn();
         weapon.OnPickup(weaponParent.gameObject);
 
-        //Debug.Log("Created: " + weapon.name);
+        Debug.Log("Created: " + weapon.name);
 
         return weapon;
     }
