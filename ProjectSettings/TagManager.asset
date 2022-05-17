@@ -25,6 +25,7 @@ TagManager:
   - FlashBangIcon
   - AmmoIcon
   - AmmoCount
+  - HostageProgressBar
   layers:
   - Default
   - TransparentFX
