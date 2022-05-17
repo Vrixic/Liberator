@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 6107594687439498}
   m_Layer: 5
   m_Name: AmmoCount
-  m_TagString: Untagged
+  m_TagString: AmmoCount
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 4635778723352537839}
   m_Layer: 5
   m_Name: AmmoIcon
-  m_TagString: Untagged
+  m_TagString: AmmoIcon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,7 +334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1803533844765196440
 RectTransform:
   m_ObjectHideFlags: 0
@@ -467,11 +467,11 @@ GameObject:
   - component: {fileID: 7666949590877120020}
   m_Layer: 5
   m_Name: FlashBangIcon
-  m_TagString: Untagged
+  m_TagString: FlashbangIcon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3794206893626674537
 RectTransform:
   m_ObjectHideFlags: 0

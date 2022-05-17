@@ -19,7 +19,7 @@ public class AmmoManager : MonoBehaviour
     TextMeshProUGUI ammoGUI;
 
     /* Ammo Icon*/
-    public GameObject ammoSprite;
+    GameObject ammoSprite;
     
     /* Instance of this object, singleton pattern */
     private static AmmoManager m_AmmoManager;
@@ -51,14 +51,18 @@ public class AmmoManager : MonoBehaviour
 
         Instance = this;
 
-        ammoGUI = GetComponentInChildren<TextMeshProUGUI>();
 
         foreach (Ammo _ammo in ammo)
         {
             m_StoredAmmo.Add(_ammo.ammoType, _ammo.ammoSlot);
         }
     }
+    private void Start()
+    {
+        ammoGUI = GameManager.Instance.ammoText;
+        ammoSprite = GameManager.Instance.ammoIcon;
 
+    }
     /*
      * Increases ammo 
      * @param 'ammoType': the ammotype to be increased 

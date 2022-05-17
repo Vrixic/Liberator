@@ -42,21 +42,21 @@ public class FlashbangHand : BaseWeapon
     * Hides the ammo GUI
     * Shows the flashbangCount GUI
     */
-    public override void OnWeaponEquip()
-    {
-        AmmoManager.Instance.HideAmmoGUI();
-        GameManager.Instance.playerScript.ShowFlashbangGUI();
-    }
+    //public override void OnWeaponEquip()
+    //{
+    //    AmmoManager.Instance.HideAmmoGUI();
+    //    GameManager.Instance.playerScript.ShowFlashbangGUI();
+    //}
 
     /*
     * Shows the ammo GUI
     * Hides the flashbangCount GUI
     */
-    public override void OnWeaponUnequip()
-    {
-        AmmoManager.Instance.ShowAmmoGUI();
-        GameManager.Instance.playerScript.HideFlashbangGUI();
-    }
+    //public override void OnWeaponUnequip()
+    //{
+    //    AmmoManager.Instance.ShowAmmoGUI();
+    //    GameManager.Instance.playerScript.HideFlashbangGUI();
+    //}
 
     /*
     * Called when the player wants to throw the flashbang
