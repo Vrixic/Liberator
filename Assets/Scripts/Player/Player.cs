@@ -450,11 +450,11 @@ public class Player : ISpawnable
     /*
      * Increases players health, if health goes > max ealth then just sets current health to max health
      */
-    void IncreasePlayerHealth(int amount)
+    public void IncreasePlayerHealth(int amount)
     {
         m_CurrentPlayerHealth += amount;
 
-        if (amount > GetPlayersMaxHealth())
+        if (m_CurrentPlayerHealth > GetPlayersMaxHealth())
             m_CurrentPlayerHealth = GetPlayersMaxHealth();
     }
 
@@ -482,7 +482,7 @@ public class Player : ISpawnable
     {
         m_CurrentPlayerShield += amount;
 
-        if (amount > GetPlayersMaxShield())
+        if (m_CurrentPlayerShield > GetPlayersMaxShield())
             m_CurrentPlayerShield = GetPlayersMaxShield();
     }
 

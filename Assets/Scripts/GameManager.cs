@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,6 +54,9 @@ public class GameManager : MonoBehaviour
     public GameObject ammoIcon;
     [HideInInspector]
     public TextMeshProUGUI ammoText;
+    [HideInInspector]
+    public GameObject hostageProgressBar;
+
 
     private static GameManager instance;
 
@@ -118,6 +122,8 @@ public class GameManager : MonoBehaviour
 
         ammoIcon = GameObject.FindGameObjectWithTag("AmmoIcon");
         ammoText = GameObject.FindGameObjectWithTag("AmmoCount").GetComponent<TextMeshProUGUI>();
+
+        hostageProgressBar = GameObject.FindGameObjectWithTag("HostageProgressBar");
 
         if (player == null)
         {

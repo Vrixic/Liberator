@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerInteract : MonoBehaviour
     private GameObject doorInteractPrompt;
     private GameObject intelInteractPrompt;
     private GameObject currentInteractPrompt;
+    private Image hostageProgressBarImage;
 
     private void Start()
     {
@@ -22,6 +24,10 @@ public class PlayerInteract : MonoBehaviour
         secureHostagePrompt = GameManager.Instance.secureHostageText;
         doorInteractPrompt = GameManager.Instance.doorInteractText;
         intelInteractPrompt = GameManager.Instance.intelInteractText;
+        hostageProgressBarImage = GameManager.Instance.hostageProgressBar.GetComponent<Image>();
+        hostageProgressBarImage.fillAmount = 0;
+        GameManager.Instance.hostageProgressBar.SetActive(false);
+
 
         //intitializing the interact prompt to a value so I don't need a null check condition
         currentInteractPrompt = doorInteractPrompt;
@@ -66,6 +72,10 @@ public class PlayerInteract : MonoBehaviour
             else
                 currentInteractPrompt.SetActive(false);
         }
+        if (securingHostage)
+        {
+            FillHostageProgressbar();
+        }
     }
 
     public void ProcessInteraction(bool pressOrHoldBehavior)
@@ -109,6 +119,8 @@ public class PlayerInteract : MonoBehaviour
                 {
                     //if the player pressed E on the hostage, disable their movement until they hold for enough time
                     //to secure the hostage or if they "cancel" the action (done in methods below)
+                    hostageProgressBarImage.fillAmount = 0;
+                    GameManager.Instance.hostageProgressBar.SetActive(true);
                     PlayerMotor.MovementEnabled = false;
                     securingHostage = true;
                 }
@@ -126,6 +138,7 @@ public class PlayerInteract : MonoBehaviour
             PlayerMotor.MovementEnabled = true;
 
             //anything we want to do when the player cancels securing the hostage goes here
+            GameManager.Instance.hostageProgressBar.SetActive(false);
 
 
             //break player out of causing cancel/perform events when they aren't interacting with the hostage
@@ -145,6 +158,8 @@ public class PlayerInteract : MonoBehaviour
             Cursor.visible = true;
             Time.timeScale = 0f;
 
+            GameManager.Instance.hostageProgressBar.SetActive(false);
+
             // Disables virtual camera so player can not look around in the pause menu
             GameManager.Instance.virtualCam.SetActive(false);
 
@@ -156,4 +171,13 @@ public class PlayerInteract : MonoBehaviour
             securingHostage = false;
         }
     }
+    void FillHostageProgressbar()
+    {
+        if (hostageProgressBarImage.fillAmount < 1)
+        {
+            hostageProgressBarImage.fillAmount += Time.deltaTime / 3;
+        }
+
+    }
+
 }

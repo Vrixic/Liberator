@@ -1,20 +1,40 @@
 using UnityEngine;
 
-public class AmmoPickup : MonoBehaviour
+public class AmmoPickup : IPickable
 {
     /* The type of ammo being picked up */
     [SerializeField] AmmoType ammoType;
 
     /* Amount of ammo given upon pickup */
     [SerializeField] int ammoAmount;
-
-    private void OnTriggerEnter(Collider other)
+    public override void OnDrop()
     {
-        Debug.Log(other.tag);
-        if (other.tag == "Player")
+
+    }
+
+    public override void OnPickup(GameObject picker)
+    {
+        base.OnPickup(picker);
+        if (picker.tag == "Player")
         {
             AmmoManager.Instance.IncreaseAmmo(ammoType, ammoAmount);
-            Destroy(gameObject);
         }
+    }
+
+    public override void Spawn()
+    {
+        base.Spawn();
+        bJustDropped = false;
+    }
+
+    public override void Despawn()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public override void Respawn()
+    {
+        gameObject.SetActive(true);
+        base.Spawn();
     }
 }

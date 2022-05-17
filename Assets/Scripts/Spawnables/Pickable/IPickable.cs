@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class IPickable : ISpawnable
 {
-    bool bJustDropped = false;
+    protected bool bJustDropped = false;
 
     public virtual void Start()
     {
