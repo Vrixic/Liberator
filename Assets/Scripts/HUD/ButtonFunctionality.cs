@@ -97,7 +97,7 @@ public class ButtonFunctionality : MonoBehaviour
     public void CloseShop()
     {
         reticle.SetActive(true);
-        
+
         // Set Cursor state back to locked and turn visibility off
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -113,11 +113,14 @@ public class ButtonFunctionality : MonoBehaviour
     {
         if (GameManager.Instance.CurrentCash >= 100)
         {
-            GameManager.Instance.CurrentCash -= 100;
-            UpdateCashCountShopUi();
-            GameManager.Instance.playerScript.IncreasePlayerHealth(GameManager.Instance.playerScript.GetPlayersMaxHealth());
-            // Updates Healthbar UI
-            GameManager.Instance.healthBarScript.UpdateHealthBar();
+            if (GameManager.Instance.playerScript.GetCurrentPlayerHealth() != GameManager.Instance.playerScript.GetPlayersMaxHealth())
+            {
+                GameManager.Instance.CurrentCash -= 100;
+                UpdateCashCountShopUi();
+                GameManager.Instance.playerScript.IncreasePlayerHealth(GameManager.Instance.playerScript.GetPlayersMaxHealth());
+                // Updates Healthbar UI
+                GameManager.Instance.healthBarScript.UpdateHealthBar();
+            }
         }
 
     }
@@ -128,12 +131,14 @@ public class ButtonFunctionality : MonoBehaviour
 
         if (GameManager.Instance.CurrentCash >= 200)
         {
-            GameManager.Instance.CurrentCash -= 200;
-            UpdateCashCountShopUi();
-           
-            GameManager.Instance.playerScript.IncreasePlayerShield(GameManager.Instance.playerScript.GetPlayersMaxShield());
-            // Updates Shieldbar UI
-            GameManager.Instance.shieldBarScript.UpdateShieldBar();
+            if (GameManager.Instance.playerScript.GetCurrentPlayerShield() != GameManager.Instance.playerScript.GetPlayersMaxShield())
+            {
+                GameManager.Instance.CurrentCash -= 200;
+                UpdateCashCountShopUi();
+                GameManager.Instance.playerScript.IncreasePlayerShield(GameManager.Instance.playerScript.GetPlayersMaxShield());
+                // Updates Shieldbar UI
+                GameManager.Instance.shieldBarScript.UpdateShieldBar();
+            }
         }
     }
 
