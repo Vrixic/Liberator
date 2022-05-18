@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentCash;
     public int CurrentCash { get { return currentCash; } set { currentCash = value; } }
     [SerializeField] private int startingCash = 1000;
+    [HideInInspector]
+    public GameObject shopCanvas;
 
 
     private static GameManager instance;
@@ -133,6 +135,9 @@ public class GameManager : MonoBehaviour
         ammoText = GameObject.FindGameObjectWithTag("AmmoCount").GetComponent<TextMeshProUGUI>();
 
         hostageProgressBar = GameObject.FindGameObjectWithTag("HostageProgressBar");
+
+        shopCanvas = GameObject.FindGameObjectWithTag("ShopCanvas");
+        shopCanvas.SetActive(false);
 
         if (player == null)
         {

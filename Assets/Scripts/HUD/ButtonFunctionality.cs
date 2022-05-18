@@ -14,23 +14,23 @@ public class ButtonFunctionality : MonoBehaviour
 
     void Start()
     {
-        // Get instances of pause menu and Virtual cam
+        // Get instances of pause menu, reticle and Virtual cam
         pause = GameManager.Instance.pause;
         virtualCam = GameManager.Instance.virtualCam;
         reticle = GameManager.Instance.reticle;
+
     }
 
 
+    #region PauseMenu
     public void PauseGame()
     {
-        Debug.Log("Escape Pressed");
         if (gameIsPaused == false)
         {
             // Turn off Reticle
             reticle.SetActive(false);
             // Turns on Pause menu image
             pause.SetActive(true);
-            Debug.Log("Pause Menu Active in Hierarchy: " + pause.activeInHierarchy);
             // Unlock cursor
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -38,13 +38,11 @@ public class ButtonFunctionality : MonoBehaviour
             Time.timeScale = 0f;
             // Disables virtual camera so player can not look around in the pause menu
             virtualCam.SetActive(false);
-            Debug.Log("Game Paused");
             gameIsPaused = true;
         }
         else
         {
             Resume();
-            Debug.Log("Resume entered through pause game");
         }
     }
     public void Resume()
@@ -69,7 +67,6 @@ public class ButtonFunctionality : MonoBehaviour
         virtualCam.SetActive(true);
         pause.SetActive(false);
         gameIsPaused = false;
-        Debug.Log("Resuming Level");
     }
 
     public void Restart()
@@ -86,7 +83,6 @@ public class ButtonFunctionality : MonoBehaviour
         // Find active scene and reload it
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
-        Debug.Log("Restarting Level");
     }
 
     public void Quit()
@@ -94,4 +90,72 @@ public class ButtonFunctionality : MonoBehaviour
         Application.Quit();
         Debug.Log("Application is Exiting");
     }
+    #endregion
+
+    #region ShopMenu
+
+    // Refill Health
+    public void BuyHealth()
+    {
+        if (GameManager.Instance.CurrentCash >= 100)
+        {
+            GameManager.Instance.CurrentCash -= 100;
+        }
+    }
+
+    // Refill Shield
+    public void BuyShield()
+    {
+
+        if (GameManager.Instance.CurrentCash >= 200)
+        {
+            GameManager.Instance.CurrentCash -= 200;
+
+        }
+    }
+
+    // Refill Ammo
+    public void BuyAmmo()
+    {
+
+        if (GameManager.Instance.CurrentCash >= 100)
+        {
+            GameManager.Instance.CurrentCash -= 100;
+        }
+    }
+
+    // Refill FlashBang
+    public void BuyFlashBang()
+    {
+
+        if (GameManager.Instance.CurrentCash >= 100)
+        {
+            GameManager.Instance.CurrentCash -= 100;
+        }
+    }
+
+    // Refill All Equipment
+    public void BuyAllEquipment()
+    {
+
+        if (GameManager.Instance.CurrentCash >= 200)
+        {
+            GameManager.Instance.CurrentCash -= 200;
+        }
+    }
+
+    // To Do: Implement a sensor grenade buy once sensor grenade is implemented
+    public void BuySensorGrenade()
+    {
+
+        if (GameManager.Instance.CurrentCash >= 100)
+        {
+            GameManager.Instance.CurrentCash -= 100;
+        }
+    } 
+    #endregion
+
+
+
+
 }

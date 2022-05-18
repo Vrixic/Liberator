@@ -224,10 +224,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2144743468, guid: 70a3515ae83a79440b842a194371f102, type: 3}
-      propertyPath: m_Name
-      value: OpenDoorInteractText
-      objectReference: {fileID: 0}
     - target: {fileID: 2433496881653387053, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -283,10 +279,6 @@ PrefabInstance:
     - target: {fileID: 5994487195960309199, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6012681459403492738, guid: 70a3515ae83a79440b842a194371f102, type: 3}
-      propertyPath: m_text
-      value: Press "E" to close door
       objectReference: {fileID: 0}
     - target: {fileID: 6545341102507089887, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.x
@@ -604,7 +596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1589114256021935641, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.6606913
+      value: -776
       objectReference: {fileID: 0}
     - target: {fileID: 1589114256021935641, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
       propertyPath: m_LocalPosition.y
@@ -641,6 +633,18 @@ PrefabInstance:
     - target: {fileID: 1589114256021935641, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912713498262206179, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3436e830c30e9f7418b3a2d2d8921fd6, type: 3}
+    - target: {fileID: 8551711615334817182, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -741
+      objectReference: {fileID: 0}
+    - target: {fileID: 8551711615334817182, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -493
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
