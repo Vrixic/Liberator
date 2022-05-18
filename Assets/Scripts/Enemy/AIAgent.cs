@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(AIStateMachine))]
+//[RequireComponent(typeof(AIStateMachine))]
 [RequireComponent(typeof(Transform))]
-[RequireComponent(typeof(AIAgentConfig))]
+//[RequireComponent(typeof(AIAgentConfig))]
 [RequireComponent(typeof(AiSensor))]
 [RequireComponent(typeof(Animator))]
 public class AIAgent : MonoBehaviour
@@ -22,6 +22,8 @@ public class AIAgent : MonoBehaviour
 
     public bool isFlashed = false;
 
+    private EnemyGun gun;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,9 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIIdleState());
         stateMachine.RegisterState(new AIFlashState());
         stateMachine.RegisterState(new AIAttackPlayerState());
+
+        gun = GetComponent<EnemyGun>();
+
         //sets state to initial state.
         stateMachine.ChangeState(initialState);
     }
@@ -49,7 +54,8 @@ public class AIAgent : MonoBehaviour
         //constantly updates the machine
         stateMachine.Update();
 
-        animator.SetFloat("Speed", navMeshAgent.speed);
+        //animator.SetFloat("Speed", navMeshAgent.speed);
+        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
     }
 
     public void Rotating()
@@ -79,5 +85,10 @@ public class AIAgent : MonoBehaviour
             yield return null;
         }
 
+    }
+
+    public EnemyGun GetGun()
+    {
+        return gun;
     }
 }

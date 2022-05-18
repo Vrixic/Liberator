@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AIChasePlayerScript : AIState
 {
-    EnemyGun gun;
-
     public AIStateID GetId()
     {
         return AIStateID.ChasePlayer;
@@ -13,9 +11,9 @@ public class AIChasePlayerScript : AIState
 
     public void Enter(AIAgent agent)
     {
-        gun = agent.GetComponentInChildren<EnemyGun>();
+        //gun = agent.GetComponentInChildren<EnemyGun>();
         agent.currentState = AIStateID.ChasePlayer;
-        agent.animator.SetTrigger("Chase");
+        //agent.animator.SetTrigger("Chase");
     }
 
     public void Update(AIAgent agent)
@@ -26,29 +24,49 @@ public class AIChasePlayerScript : AIState
         float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
         //tracks look rotation of the enemy.
         agent.Rotating();
-        bool inSight = agent.sensor.IsInsight();
 
-        // checks if player is insight and the distance between them is < the maxdistance the player can see before having to move
-        if (inSight && sqrDistance < (agent.config.maxDistance * agent.config.maxDistance))
+        // if the player has left the range of the enemy, make the enemy idle
+        if (sqrDistance > agent.config.maxChaseDistance) // if player goes out of sight just go back to idle
         {
-            //Debug.Log("Attack");
+            //Debug.Log("Idle");
+            agent.stateMachine.ChangeState(AIStateID.Idle);
+        }
+
+
+        bool inSight = agent.sensor.IsInsight();
+        if (inSight) // players is in sight of the enemy
+        {
             agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
         }
         else
         {
             //Debug.Log("Chase");
             //constantly sets move target for enemy to the player
-            agent.navMeshAgent.destination = GameManager.Instance.playerTransform.position;
-
-            // if the player has left the range of the enemy, make the enemy idle
-            if (sqrDistance > (agent.config.maxSightDistance * agent.config.maxSightDistance))
-            {
-                //Debug.Log("Idle");
-                agent.stateMachine.ChangeState(AIStateID.Idle);
-            }
+            // only chase if player is in within the chase range and not in sight
+            agent.navMeshAgent.destination = GameManager.Instance.playerTransform.position; // player within range    
         }
 
+        //bool inSight = agent.sensor.IsInsight();
 
+        //// checks if player is insight and the distance between them is < the maxdistance the player can see before having to move
+        //if (inSight && sqrDistance < (agent.config.maxDistance * agent.config.maxDistance))
+        //{
+        //    //Debug.Log("Attack");
+        //    agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
+        //}
+        //else
+        //{
+        //    //Debug.Log("Chase");
+        //    //constantly sets move target for enemy to the player
+        //    agent.navMeshAgent.destination = GameManager.Instance.playerTransform.position;
+
+        //    // if the player has left the range of the enemy, make the enemy idle
+        //    if (sqrDistance > (agent.config.maxSightDistance * agent.config.maxSightDistance))
+        //    {
+        //        //Debug.Log("Idle");
+        //        agent.stateMachine.ChangeState(AIStateID.Idle);
+        //    }
+        //}
     }
 
     public void Exit(AIAgent agent)
