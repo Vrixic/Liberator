@@ -9,7 +9,7 @@ public class ISpawnable : MonoBehaviour
     public virtual void Spawn()
     {
         //Debug.Log(name + ", has been spawned!");
-
+        
         m_InitialPosition = transform.position;
         m_InitialRotation = transform.rotation;
     }
