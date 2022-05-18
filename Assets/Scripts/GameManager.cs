@@ -43,7 +43,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject secureHostageText;
     [HideInInspector]
-    public GameObject doorInteractText;
+    public GameObject openDoorInteractText;
+    [HideInInspector]
+    public GameObject closeDoorInteractText;
     [HideInInspector]
     public GameObject intelInteractText;
     [HideInInspector]
@@ -113,8 +115,11 @@ public class GameManager : MonoBehaviour
         secureHostageText = GameObject.FindGameObjectWithTag("SecureHostageText");
         secureHostageText.SetActive(false);
 
-        doorInteractText = GameObject.FindGameObjectWithTag("DoorInteractText");
-        doorInteractText.SetActive(false);
+        openDoorInteractText = GameObject.FindGameObjectWithTag("OpenDoorInteractText");
+        openDoorInteractText.SetActive(false);
+
+        closeDoorInteractText = GameObject.FindGameObjectWithTag("CloseDoorInteractText");
+        closeDoorInteractText.SetActive(false);
 
         intelInteractText = GameObject.FindGameObjectWithTag("IntelInteractText");
         intelInteractText.SetActive(false);
