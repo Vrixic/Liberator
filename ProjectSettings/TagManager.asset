@@ -28,6 +28,8 @@ TagManager:
   - ShopCanvas
   - CloseDoorInteractText
   - OpenDoorInteractText
+  - DoorInteractText
+  - Shop
   layers:
   - Default
   - TransparentFX

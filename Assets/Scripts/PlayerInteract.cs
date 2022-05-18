@@ -96,7 +96,6 @@ public class PlayerInteract : MonoBehaviour
                 }
                 else //if not an interactable object
                     currentInteractPrompt.SetActive(false);
-
             }
             else //if no game object is within interact range
                 currentInteractPrompt.SetActive(false);
@@ -148,6 +147,19 @@ public class PlayerInteract : MonoBehaviour
                     GameObject intelInstance = hit.collider.gameObject;
                     intelInstance.SetActive(false);
                 }
+                //player interacts with an item tagged "shop"
+                else if (hit.collider.CompareTag("Shop"))
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+
+                    Time.timeScale = 0f;
+
+                    // Disables virtual camera so player can not look around in game
+                    GameManager.Instance.virtualCam.SetActive(false);
+
+                    GameManager.Instance.shopCanvas.SetActive(true);
+                }
             }
             else //hold interactions go here VVVVVVVVVVVVVVVVVVVVVVVV
             {
@@ -177,7 +189,6 @@ public class PlayerInteract : MonoBehaviour
 
             //anything we want to do when the player cancels securing the hostage goes here
             GameManager.Instance.hostageProgressBar.SetActive(false);
-
 
             //break player out of causing cancel/perform events when they aren't interacting with the hostage
             securingHostage = false;
@@ -215,6 +226,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (hostageProgressBarImage.fillAmount < 1)
         {
+            //divided by 3 because it takes 3 seconds to secure the hostage
             hostageProgressBarImage.fillAmount += Time.deltaTime / 3;
         }
 
