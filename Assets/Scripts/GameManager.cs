@@ -58,9 +58,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ammoText;
     [HideInInspector]
     public GameObject hostageProgressBar;
-    public int currentCash;
+    [Header("Current cash for viewing, starting cash for testing")]
+    [SerializeField] private int currentCash;
     public int CurrentCash { get { return currentCash; } set { currentCash = value; } }
-    public int startingCash;
+    [SerializeField] private int startingCash = 1000;
 
 
     private static GameManager instance;
@@ -139,8 +140,6 @@ public class GameManager : MonoBehaviour
 
             playerMoveScript = player.GetComponent<PlayerMotor>();
         }
-
-        startingCash = 1000;
 
         currentCash = startingCash;
 
