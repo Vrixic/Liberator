@@ -40,6 +40,8 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIFlashState());
         stateMachine.RegisterState(new AIAttackPlayerState());
 
+        config.maxChaseDistance *= config.maxChaseDistance;
+
         gun = GetComponent<EnemyGun>();
 
         //sets state to initial state.
