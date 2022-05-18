@@ -50,7 +50,13 @@ public class PlayerInteract : MonoBehaviour
                 //player is looking at a door within interact range
                 if (hit.collider.CompareTag("Door"))
                 {
-                    currentInteractPrompt = doorInteractPrompt;
+                    bool doorIsOpen = hit.collider.gameObject.GetComponent<DoorController>().DoorOpen;
+
+                    if (doorIsOpen == false)
+                        currentInteractPrompt = doorInteractPrompt;
+                    else
+                        currentInteractPrompt = doorInteractPrompt;
+
                     currentInteractPrompt.SetActive(true);
                 }
                 //player is looking at intel within interact range
@@ -107,6 +113,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     //add currency to the player and maybe play a sound or something
                     //TO DO----------------------------------------------------
+                    GameManager.Instance.CurrentCash += 200;
 
                     //get that instance so we can disable it
                     GameObject intelInstance = hit.collider.gameObject;
@@ -151,6 +158,8 @@ public class PlayerInteract : MonoBehaviour
         //this runs if the player successfully completed the hold interaction (should win the floor)
         if (securingHostage)
         {
+            GameManager.Instance.CurrentCash += 250;
+
             //reenable player's movement
             PlayerMotor.MovementEnabled = true;
 

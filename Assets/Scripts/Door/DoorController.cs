@@ -7,6 +7,8 @@ public class DoorController : MonoBehaviour
     private Animator doorAnimator;
 
     private bool doorOpen = false;
+    public bool DoorOpen { get { return doorOpen; } }
+
     private bool isPlaying;
 
     private void Start()
