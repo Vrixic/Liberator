@@ -159,6 +159,7 @@ public class PlayerInteract : MonoBehaviour
                     GameManager.Instance.virtualCam.SetActive(false);
 
                     GameManager.Instance.shopCanvas.SetActive(true);
+                    GameManager.Instance.buttonFuncScript.UpdateCashCountShopUi();
                 }
             }
             else //hold interactions go here VVVVVVVVVVVVVVVVVVVVVVVV

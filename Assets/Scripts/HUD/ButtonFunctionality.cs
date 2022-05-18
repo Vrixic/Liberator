@@ -18,6 +18,7 @@ public class ButtonFunctionality : MonoBehaviour
         pause = GameManager.Instance.pause;
         virtualCam = GameManager.Instance.virtualCam;
         reticle = GameManager.Instance.reticle;
+
     }
 
 
@@ -113,7 +114,12 @@ public class ButtonFunctionality : MonoBehaviour
         if (GameManager.Instance.CurrentCash >= 100)
         {
             GameManager.Instance.CurrentCash -= 100;
+            UpdateCashCountShopUi();
+            GameManager.Instance.playerScript.IncreasePlayerHealth(GameManager.Instance.playerScript.GetPlayersMaxHealth());
+            // Updates Healthbar UI
+            GameManager.Instance.healthBarScript.UpdateHealthBar();
         }
+
     }
 
     // Refill Shield
@@ -123,7 +129,11 @@ public class ButtonFunctionality : MonoBehaviour
         if (GameManager.Instance.CurrentCash >= 200)
         {
             GameManager.Instance.CurrentCash -= 200;
-
+            UpdateCashCountShopUi();
+           
+            GameManager.Instance.playerScript.IncreasePlayerShield(GameManager.Instance.playerScript.GetPlayersMaxShield());
+            // Updates Shieldbar UI
+            GameManager.Instance.shieldBarScript.UpdateShieldBar();
         }
     }
 
@@ -134,6 +144,12 @@ public class ButtonFunctionality : MonoBehaviour
         if (GameManager.Instance.CurrentCash >= 100)
         {
             GameManager.Instance.CurrentCash -= 100;
+            UpdateCashCountShopUi();
+            // TODO: Insert code to reset ammo count
+
+            // TODO: add code that Updates Ui count
+
+
         }
     }
 
@@ -144,6 +160,10 @@ public class ButtonFunctionality : MonoBehaviour
         if (GameManager.Instance.CurrentCash >= 100)
         {
             GameManager.Instance.CurrentCash -= 100;
+            UpdateCashCountShopUi();
+            // TODO: Insert code to reset ammo count
+
+            // TODO: add code that Updates Ui count
         }
     }
 
@@ -154,6 +174,11 @@ public class ButtonFunctionality : MonoBehaviour
         if (GameManager.Instance.CurrentCash >= 200)
         {
             GameManager.Instance.CurrentCash -= 200;
+            UpdateCashCountShopUi();
+
+            // TODO: Insert code to refill all equipment count
+
+            // TODO: add code that Updates Ui count
         }
     }
 
@@ -164,10 +189,18 @@ public class ButtonFunctionality : MonoBehaviour
         if (GameManager.Instance.CurrentCash >= 100)
         {
             GameManager.Instance.CurrentCash -= 100;
+            UpdateCashCountShopUi();
+
+            // TODO: Insert code to refills Sensor grenade count
+
+            // TODO: add code that Updates Ui count
         }
     }
+    public void UpdateCashCountShopUi()
+    {
+        GameManager.Instance.cashCountText.text = "Cash: " + GameManager.Instance.CurrentCash;
+    }
     #endregion
-
 
 
 

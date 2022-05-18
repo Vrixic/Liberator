@@ -30,6 +30,7 @@ TagManager:
   - OpenDoorInteractText
   - DoorInteractText
   - Shop
+  - CashCountText
   layers:
   - Default
   - TransparentFX

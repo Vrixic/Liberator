@@ -478,7 +478,7 @@ public class Player : ISpawnable
     /*
     * Increases players shield, if shield goes > max shield then just sets current shield to max shield
     */
-    void IncreasePlayerShield(int amount)
+    public void IncreasePlayerShield(int amount)
     {
         m_CurrentPlayerShield += amount;
 

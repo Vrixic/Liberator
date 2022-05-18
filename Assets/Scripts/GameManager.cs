@@ -64,7 +64,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int startingCash = 1000;
     [HideInInspector]
     public GameObject shopCanvas;
-
+    [HideInInspector]
+    public TextMeshProUGUI cashCountText;
 
     private static GameManager instance;
 
@@ -137,7 +138,9 @@ public class GameManager : MonoBehaviour
         hostageProgressBar = GameObject.FindGameObjectWithTag("HostageProgressBar");
 
         shopCanvas = GameObject.FindGameObjectWithTag("ShopCanvas");
+        cashCountText = GameObject.FindGameObjectWithTag("CashCountText").GetComponent<TextMeshProUGUI>();
         shopCanvas.SetActive(false);
+
 
         if (player == null)
         {
