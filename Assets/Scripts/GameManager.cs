@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public TextMeshProUGUI cashCountText;
 
+    private SpawnPoint[] spawnPoints;
+
     private static GameManager instance;
 
     public static GameManager Instance
@@ -156,6 +158,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("MainCamera not found in scene");
         }
+
+        spawnPoints = FindObjectsOfType<SpawnPoint>();
     }
 
     private void Update()
@@ -168,5 +172,13 @@ public class GameManager : MonoBehaviour
 
         //implemented to use for footstep audio so it doesn't play if the player is in the air, can be used or anything
         playerIsGrounded = playerCharacterController.isGrounded;
+    }
+
+    public void ResetGame()
+    {
+        foreach (SpawnPoint spawnPoint in spawnPoints)
+        {
+            spawnPoint.Respawn();
+        }
     }
 }

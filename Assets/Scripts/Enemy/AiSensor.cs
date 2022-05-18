@@ -12,6 +12,9 @@ public class AiSensor : MonoBehaviour
     public int scanFrequency = 30;
     public LayerMask layers;
     public LayerMask occlusionLayers;
+
+    [SerializeField] Transform raycastOrigin;
+
     public List<GameObject> Objects
     {
         get
@@ -69,10 +72,10 @@ public class AiSensor : MonoBehaviour
     public bool IsInsight()
     {
         //get the agents position in the world
-        Vector3 origin = transform.position;
+        Vector3 origin = raycastOrigin.position;
 
         //look from the enemies midsection
-        origin.y *= 0.5f;
+        //origin.y *= 0.5f;
 
         //get player's position in the world from the gamemanager
         Vector3 dest = GameManager.Instance.playerTransform.position;
@@ -97,8 +100,8 @@ public class AiSensor : MonoBehaviour
         }
 
         //send the raycast from just in front of the enemy so they don't hit their own hitbox
-        origin += Vector3.ClampMagnitude(transform.forward, 0.5f);
-        dest.y = origin.y;
+        //origin += Vector3.ClampMagnitude(transform.forward, 0.5f);
+        //dest.y = origin.y;
 
         //fire a raycast from the enemy to the player to see if anything obstructs the enemies view
         if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))

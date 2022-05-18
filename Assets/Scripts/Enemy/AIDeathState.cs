@@ -42,7 +42,7 @@ public class AIDeathState : AIState
 
     void DisableEnemy(AIAgent agent)
     {
-        agent.gameObject.SetActive(false);
+        agent.Despawn();
     }
 
     public void Exit(AIAgent agent)

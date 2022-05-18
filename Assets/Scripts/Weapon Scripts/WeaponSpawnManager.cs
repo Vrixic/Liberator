@@ -61,14 +61,14 @@ public class WeaponSpawnManager : MonoBehaviour
         weapon.Spawn();
         weapon.OnPickup(weaponParent.gameObject);
 
-        Debug.Log("Created: " + weapon.name);
+        //Debug.Log("Created: " + weapon.name);
 
         return weapon;
     }
 
     public IPickable GetWeaponAlias(uint weaponID)
     {
-        Debug.Log("Getting Weapon alias, id: " + weaponID);
+        //Debug.Log("Getting Weapon alias, id: " + weaponID);
         if (!m_WeaponPerfabs.ContainsKey(weaponID)) return null;
 
         if (m_WeaponAliases.ContainsKey(weaponID))

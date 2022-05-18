@@ -8,23 +8,27 @@ public class ISpawnable : MonoBehaviour
 
     public virtual void Spawn()
     {
-        //Debug.Log(name + ", has been spawned!");
-        
         m_InitialPosition = transform.position;
         m_InitialRotation = transform.rotation;
     }
 
-    public virtual void Despawn() 
-    { 
-        //Debug.Log(name + ", has been de-spawned!"); 
-    }
+    public virtual void Despawn()
+    {    }
 
     public virtual void Respawn()
     {
-        //Debug.Log(name + ", has been re-spawned!");9*
-
         transform.position = m_InitialPosition;
         transform.rotation = m_InitialRotation;
+    }
+
+    public void SetInitialPosition(Vector3 pos)
+    {
+        m_InitialPosition = pos;
+    }
+
+    public void SetInitialRotation(Quaternion quat)
+    {
+        m_InitialRotation = quat;
     }
 
     public Vector3 GetInitialPosition()

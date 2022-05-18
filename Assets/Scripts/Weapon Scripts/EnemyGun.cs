@@ -18,7 +18,7 @@ public class EnemyGun : MonoBehaviour
 
     [SerializeField] public float bulletRange = 100f;
 
-    [SerializeField] float reloadTime = 100f;
+    [SerializeField] float reloadTime = 2.0f;
 
     /* current number of bullets */
     int m_CurrentNumOfBullets;

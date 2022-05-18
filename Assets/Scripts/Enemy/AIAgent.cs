@@ -8,7 +8,7 @@ using UnityEngine.AI;
 //[RequireComponent(typeof(AIAgentConfig))]
 [RequireComponent(typeof(AiSensor))]
 [RequireComponent(typeof(Animator))]
-public class AIAgent : MonoBehaviour
+public class AIAgent : ISpawnable
 {
     public AIStateMachine stateMachine;
     public AIStateID initialState;
@@ -18,11 +18,14 @@ public class AIAgent : MonoBehaviour
     [HideInInspector]public Transform playerTransform;
     [HideInInspector] public AiSensor sensor;
     [HideInInspector] public Animator animator;
+
     private Coroutine lookCouroutine;
 
     public bool isFlashed = false;
 
-    private EnemyGun gun;
+    private Health enemyHealth;
+
+    private EnemyGun enemyGun;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,7 @@ public class AIAgent : MonoBehaviour
         animator = GetComponent<Animator>();
         //creates a new state machine for this agent type. 
         stateMachine = new AIStateMachine(this);
-        currentState = initialState;
+        
         sensor = GetComponent<AiSensor>();
         //adds the chase player to the enum for AIState
         stateMachine.RegisterState(new AIChasePlayerScript());
@@ -40,12 +43,10 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIFlashState());
         stateMachine.RegisterState(new AIAttackPlayerState());
 
-        config.maxChaseDistance *= config.maxChaseDistance;
+        enemyGun = GetComponent<EnemyGun>();
+        enemyHealth = GetComponent<Health>();
 
-        gun = GetComponent<EnemyGun>();
-
-        //sets state to initial state.
-        stateMachine.ChangeState(initialState);
+        Spawn();
     }
 
     // Update is called once per frame
@@ -58,6 +59,32 @@ public class AIAgent : MonoBehaviour
 
         //animator.SetFloat("Speed", navMeshAgent.speed);
         animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+    }
+
+    public override void Spawn()
+    {
+        base.Spawn();
+
+        gameObject.SetActive(true);
+
+        currentState = initialState;
+        //sets state to initial state.
+        stateMachine.ChangeState(initialState);
+        enemyHealth.currentHealth = enemyHealth.maxHealth;        
+    }
+
+    public override void Despawn()
+    {
+        base.Despawn();
+
+        gameObject.SetActive(false);
+    }
+
+    public override void Respawn()
+    {
+        base.Respawn();
+
+        Spawn();
     }
 
     public void Rotating()
@@ -91,6 +118,6 @@ public class AIAgent : MonoBehaviour
 
     public EnemyGun GetGun()
     {
-        return gun;
+        return enemyGun;
     }
 }

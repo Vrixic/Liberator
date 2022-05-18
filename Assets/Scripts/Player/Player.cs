@@ -310,7 +310,7 @@ public class Player : ISpawnable
     {
         if (!GameRunningCheck()) return;
 
-        Debug.Log("Swicthing to next weapon..");
+        //Debug.Log("Swicthing to next weapon..");
         EquipNextWeapon();
     }
 
@@ -345,7 +345,7 @@ public class Player : ISpawnable
      */
     void EquipWeapon(int index)
     {
-        Debug.Log("Equiping weapon: " + index);
+        //Debug.Log("Equiping weapon: " + index);
         if (index == m_CurrentWeaponIndex || !m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
 
         if (flashbang.isActiveAndEnabled)
@@ -491,8 +491,10 @@ public class Player : ISpawnable
      */
     void PlayerDied()
     {
-        Debug.Log("Player hassss died!!!");
+        Debug.Log("Player died");
         Despawn();
+
+        GameManager.Instance.ResetGame();
     }
 
     /*
