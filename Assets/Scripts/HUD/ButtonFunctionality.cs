@@ -7,7 +7,7 @@ public class ButtonFunctionality : MonoBehaviour
 {
 
 
-    public GameObject pause;
+    GameObject pause;
     GameObject virtualCam;
     GameObject reticle;
     public static bool gameIsPaused = false;
@@ -18,7 +18,6 @@ public class ButtonFunctionality : MonoBehaviour
         pause = GameManager.Instance.pause;
         virtualCam = GameManager.Instance.virtualCam;
         reticle = GameManager.Instance.reticle;
-
     }
 
 
@@ -93,6 +92,20 @@ public class ButtonFunctionality : MonoBehaviour
     #endregion
 
     #region ShopMenu
+    // Close Shop menu
+    public void CloseShop()
+    {
+        reticle.SetActive(true);
+        
+        // Set Cursor state back to locked and turn visibility off
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        // Resumes time
+        Time.timeScale = 1f;
+        // Re Enables players ability to look around and disables the Pause menu UI image
+        virtualCam.SetActive(true);
+        GameManager.Instance.shopCanvas.SetActive(false);
+    }
 
     // Refill Health
     public void BuyHealth()
@@ -152,7 +165,7 @@ public class ButtonFunctionality : MonoBehaviour
         {
             GameManager.Instance.CurrentCash -= 100;
         }
-    } 
+    }
     #endregion
 
 
