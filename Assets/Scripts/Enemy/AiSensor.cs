@@ -12,7 +12,6 @@ public class AiSensor : MonoBehaviour
     public int scanFrequency = 30;
     public LayerMask layers;
     public LayerMask occlusionLayers;
-
     [SerializeField] Transform raycastOrigin;
 
     public List<GameObject> Objects
