@@ -45,7 +45,6 @@ public class AIAgent : ISpawnable
         stateMachine.RegisterState(new AIReturnState());
         enemyGun = GetComponent<EnemyGun>();
         enemyHealth = GetComponent<Health>();
-
         Spawn();
     }
 
@@ -83,7 +82,7 @@ public class AIAgent : ISpawnable
     public override void Respawn()
     {
         base.Respawn();
-
+        animator.SetBool("isDead", false);
         Spawn();
     }
 
