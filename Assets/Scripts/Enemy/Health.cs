@@ -31,7 +31,10 @@ public class Health : MonoBehaviour
    public void TakeDamage(float _amount, Vector3 direction)
    {
         currentHealth -= _amount;
-        
+
+        int hitReact = Random.Range(0, 10);
+        if (hitReact < 2)
+            agent.animator.SetTrigger("ReactToHit");
 
         if (currentHealth < 1f)
         {
