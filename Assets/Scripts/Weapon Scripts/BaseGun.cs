@@ -198,7 +198,9 @@ public class BaseGun : BaseWeapon
 
         //}
         //PlayerLook.pendingXRecoil = 50f; //horizontalRecoil[m_CurrentRecoilIndex];
-        if(m_CurrentRecoilIndex == verticalRecoil.Count)
+       
+
+        if ((m_CurrentRecoilIndex + 1) == verticalRecoil.Count)
         {
             m_CurrentRecoilIndex = 0;
         }
