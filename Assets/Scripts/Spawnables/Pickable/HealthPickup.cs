@@ -12,7 +12,9 @@ public class HealthPickup : IPickable
     public override void OnPickup(GameObject picker)
     {
         base.OnPickup(picker);
-        if (picker.tag == "Player")
+
+        Debug.Log(picker.tag + " picked up");
+        if (picker.CompareTag("Player"))
         {
             GameManager.Instance.playerScript.IncreasePlayerHealth(restoreAmount);
         }

@@ -97,10 +97,10 @@ public class Player : ISpawnable
     ShieldBar shieldBar;
 
     /*Flash bang Count ui */
-     TextMeshProUGUI flashbangUi;
+    TextMeshProUGUI flashbangUi;
 
     /* Flash Bang sprite*/
-     GameObject flashBangSprite;
+    GameObject flashBangSprite;
 
     bool bPlayerWantsToAttack = false;
 
@@ -145,7 +145,7 @@ public class Player : ISpawnable
         m_CurrentEquippedWeapon = m_CurrentWeapons[m_CurrentWeaponIndex];
 
         m_CurrentEquippedWeapon.gameObject.SetActive(true);
-        UpdateFlashbangCount();        
+        UpdateFlashbangCount();
 
         healthBar.SetMaxHealth();
         shieldBar.SetMaxShield();
@@ -162,8 +162,8 @@ public class Player : ISpawnable
     public override void Respawn()
     {
         base.Respawn();
-        
-        for(int i = 0; i < m_CurrentWeapons.Length; i++)
+
+        for (int i = 0; i < m_CurrentWeapons.Length; i++)
         {
             //m_CurrentWeapons[i] = m_InitialWeapons[i];
             m_CurrentWeapons[i].Respawn();
@@ -310,7 +310,7 @@ public class Player : ISpawnable
     {
         if (!GameRunningCheck()) return;
 
-       // Debug.Log("Switching to next weapon.., " + i);
+        // Debug.Log("Switching to next weapon.., " + i);
         if (scrollY > 0.0f)
             EquipNextWeapon();
         else
@@ -349,7 +349,7 @@ public class Player : ISpawnable
     void EquipWeapon(int index)
     {
         if (index == m_CurrentWeaponIndex || !m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
-        
+
 
         if (flashbang.isActiveAndEnabled)
             DeactivateFlashbang();
@@ -361,7 +361,7 @@ public class Player : ISpawnable
             index = m_CurrentWeapons.Length - 1;
 
         ActivateWeapon(index);
-        DeactivateWeapon(m_CurrentWeaponIndex); 
+        DeactivateWeapon(m_CurrentWeaponIndex);
 
         m_CurrentWeaponIndex = index;
     }
@@ -459,6 +459,8 @@ public class Player : ISpawnable
 
         if (m_CurrentPlayerHealth > GetPlayersMaxHealth())
             m_CurrentPlayerHealth = GetPlayersMaxHealth();
+
+        healthBar.UpdateHealthBar();
     }
 
     /*
@@ -487,6 +489,8 @@ public class Player : ISpawnable
 
         if (m_CurrentPlayerShield > GetPlayersMaxShield())
             m_CurrentPlayerShield = GetPlayersMaxShield();
+
+        shieldBar.UpdateShieldBar();
     }
 
     /*
@@ -745,5 +749,24 @@ public class Player : ISpawnable
     public int GetCurrentRecoilIndex()
     {
         return m_CurrentEquippedWeapon.GetRecoilPatternIndex();
+    }
+
+    public void IncreaseSensorGrenade(int amount)
+    {
+
+    }
+    public int GetCurrentSensorGrenadeCount()
+    {
+        return 0;
+    }
+
+    public int GetMaxSensorGrenadeCount()
+    {
+        return 0;
+    }
+
+    public void UpdateSensorGrenadeUi()
+    {
+
     }
 }

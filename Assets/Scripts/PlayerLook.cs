@@ -72,7 +72,7 @@ public class PlayerLook : MonoBehaviour
 
         totalYRecoil += pendingYRecoil;
 
-        if(totalYRecoil <= Mathf.Epsilon)
+        if(totalYRecoil <= 0.1f)
         {
             //if no recoil, do nothing
             GameManager.Instance.playerScript.SetCurrentRecoilIndex(0);
