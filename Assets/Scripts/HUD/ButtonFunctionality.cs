@@ -148,12 +148,17 @@ public class ButtonFunctionality : MonoBehaviour
 
         if (GameManager.Instance.CurrentCash >= 100)
         {
-            GameManager.Instance.CurrentCash -= 100;
-            UpdateCashCountShopUi();
-            // TODO: Insert code to reset ammo count
+            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small))
+            {
 
-            // TODO: add code that Updates Ui count
+                GameManager.Instance.CurrentCash -= 100;
+                UpdateCashCountShopUi();
+                // TODO: Insert code to reset ammo count
+                AmmoManager.Instance.RefillAmmo(AmmoType.Small);
+                // TODO: add code that Updates Ui count
+                AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
 
+            }
 
         }
     }
@@ -164,11 +169,17 @@ public class ButtonFunctionality : MonoBehaviour
 
         if (GameManager.Instance.CurrentCash >= 100)
         {
-            GameManager.Instance.CurrentCash -= 100;
-            UpdateCashCountShopUi();
-            // TODO: Insert code to reset ammo count
+            if (GameManager.Instance.playerScript.GetCurrentFlashbangsAmount() != GameManager.Instance.playerScript.GetMaxFlashBangs())
+            {
 
-            // TODO: add code that Updates Ui count
+                GameManager.Instance.CurrentCash -= 100;
+                UpdateCashCountShopUi();
+                // TODO: Insert code to reset ammo count
+                GameManager.Instance.playerScript.IncreaseFlashbang(GameManager.Instance.playerScript.GetMaxFlashBangs());
+                // TODO: add code that Updates Ui count
+                GameManager.Instance.playerScript.UpdateFlashbangCount();
+
+            }
         }
     }
 
