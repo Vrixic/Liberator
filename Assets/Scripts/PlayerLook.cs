@@ -17,7 +17,7 @@ public class PlayerLook : MonoBehaviour
     public static float pendingYRecoil = 0;
 
     private static float totalYRecoil = 0;
-    private static float recoilRecovery = 50f;
+    private static float recoilRecovery = 550f;
     private static float currentRecovery = 0f;
 
     public void ProcessLook(Vector2 input)
