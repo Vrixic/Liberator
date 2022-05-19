@@ -46,7 +46,7 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     protected Animator m_Animator;
 
-    uint m_WeaponID;
+    WeaponID m_WeaponID;
 
     public virtual void Start()
     {
@@ -282,12 +282,12 @@ public class BaseWeapon : ISpawnable //, IWeapon
         m_Animator.SetFloat(name, num);
     }
 
-    public void SetWeaponID(uint id)
+    public void SetWeaponID(WeaponID id)
     {
         m_WeaponID = id;
     }
 
-    public uint GetWeaponID()
+    public WeaponID GetWeaponID()
     {
         return m_WeaponID;
     }

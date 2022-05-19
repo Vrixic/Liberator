@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickable_Weapon : IPickable
 {
-    [SerializeField] uint weaponID;
+    [SerializeField] WeaponID weaponID;
 
     public override void OnDrop()
     {

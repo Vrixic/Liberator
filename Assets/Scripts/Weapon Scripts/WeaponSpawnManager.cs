@@ -6,9 +6,9 @@ public class WeaponSpawnManager : MonoBehaviour
 {
     [SerializeField] private List<WeaponSlot> m_WeaponSlots;
 
-    private Dictionary<uint, Weapon> m_WeaponPerfabs = new Dictionary<uint, Weapon>();
-    private Dictionary<uint, BaseWeapon> m_Weapons = new Dictionary<uint, BaseWeapon>();
-    private Dictionary<uint, IPickable> m_WeaponAliases = new Dictionary<uint, IPickable>();
+    private Dictionary<WeaponID, Weapon> m_WeaponPerfabs = new Dictionary<WeaponID, Weapon>();
+    private Dictionary<WeaponID, BaseWeapon> m_Weapons = new Dictionary<WeaponID, BaseWeapon>();
+    private Dictionary<WeaponID, IPickable> m_WeaponAliases = new Dictionary<WeaponID, IPickable>();
 
     /* Instance of this object, singleton pattern */
     private static WeaponSpawnManager m_WeaponSpawnManager;
@@ -43,7 +43,7 @@ public class WeaponSpawnManager : MonoBehaviour
         }
     }
 
-    public BaseWeapon GetWeapon(uint weaponID, Transform weaponParent)
+    public BaseWeapon GetWeapon(WeaponID weaponID, Transform weaponParent)
     {
         //Debug.Log("Gettign Weapon, id: " + weaponID);
         if (!m_WeaponPerfabs.ContainsKey(weaponID)) return null;
@@ -66,7 +66,7 @@ public class WeaponSpawnManager : MonoBehaviour
         return weapon;
     }
 
-    public IPickable GetWeaponAlias(uint weaponID)
+    public IPickable GetWeaponAlias(WeaponID weaponID)
     {
         //Debug.Log("Getting Weapon alias, id: " + weaponID);
         if (!m_WeaponPerfabs.ContainsKey(weaponID)) return null;
@@ -90,7 +90,7 @@ public class WeaponSpawnManager : MonoBehaviour
     [System.Serializable]
     private class WeaponSlot
     {
-        public uint weaponID;
+        public WeaponID weaponID;
         public Weapon weapon;
     }
 
