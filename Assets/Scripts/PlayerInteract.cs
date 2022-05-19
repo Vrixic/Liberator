@@ -43,8 +43,10 @@ public class PlayerInteract : MonoBehaviour
             //reset the timer for interaction prompt updates
             updateInteractPromptTimer = updateInteractPromptTime;
 
+            Vector3 launchPosition = transform.position;
+            launchPosition.y = GameManager.Instance.mainCamera.transform.position.y;
             //raycast where the player is aiming to see if they are looking at an interactable item
-            if (Physics.Raycast(transform.position, GameManager.Instance.playerAimVector, out RaycastHit hit, interactRange))
+            if (Physics.Raycast(launchPosition, GameManager.Instance.playerAimVector, out RaycastHit hit, interactRange))
             {
                 //enters this scope if the raycast hit a collider within the interact range
 
@@ -110,12 +112,10 @@ public class PlayerInteract : MonoBehaviour
 
     public void ProcessInteraction(bool pressOrHoldBehavior)
     {
-        //get where the player is looking from the game manager
-        Vector3 forward = GameManager.Instance.playerAimVector;
 
         //send raycast and store whatever it collides with to check and see if it is something the player can 
         //interact with by comparing the gameObject's tag
-        if (Physics.Raycast(transform.position, forward, out RaycastHit hit, interactRange))
+        if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.playerAimVector, out RaycastHit hit, interactRange))
         {
             if (pressOrHoldBehavior) //press interactions go here VVVVVVVVVVVVVVVVVV
             {
@@ -156,7 +156,8 @@ public class PlayerInteract : MonoBehaviour
                     Time.timeScale = 0f;
 
                     // Disables virtual camera so player can not look around in game
-                    GameManager.Instance.virtualCam.SetActive(false);
+                    if(GameManager.Instance.virtualCam != null)
+                        GameManager.Instance.virtualCam.SetActive(false);
 
                     GameManager.Instance.shopCanvas.SetActive(true);
                     GameManager.Instance.buttonFuncScript.UpdateCashCountShopUi();

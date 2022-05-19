@@ -16,6 +16,10 @@ public class PlayerLook : MonoBehaviour
     public static float pendingXRecoil = 0;
     public static float pendingYRecoil = 0;
 
+    private static float totalYRecoil = 0;
+    private static float recoilRecovery = 550f;
+    private static float currentRecovery = 0f;
+
     public void ProcessLook(Vector2 input)
     {
         //recieve mouse input from the user
@@ -25,8 +29,21 @@ public class PlayerLook : MonoBehaviour
         //add on any pending horizontal recoil
         recoilInputVector.x = currentInputVector.x + pendingXRecoil;
 
+        totalYRecoil += pendingYRecoil;
+
         //add on any pending vertical recoil
         recoilInputVector.y = currentInputVector.y + pendingYRecoil;
+
+        if (totalYRecoil >= recoilRecovery * Time.deltaTime)
+        {
+            recoilInputVector.y -= recoilRecovery * Time.deltaTime;
+            totalYRecoil -= recoilRecovery * Time.deltaTime;
+        }
+        else if (totalYRecoil > 0)
+        {
+            recoilInputVector.y -= totalYRecoil;
+            totalYRecoil = 0;
+        }
 
         //smoothly rotate to match the target recoil vector
         currentInputVector = Vector2.SmoothDamp(currentInputVector, recoilInputVector, ref smoothInputWithRecoil, 0.1f);
