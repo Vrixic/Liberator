@@ -176,9 +176,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        //foreach (SpawnPoint spawnPoint in spawnPoints)
-        //{
-        //    spawnPoint.Respawn();
-        //}
+        foreach (SpawnPoint spawnPoint in spawnPoints)
+        {
+            spawnPoint.Respawn();
+        }
     }
 }
