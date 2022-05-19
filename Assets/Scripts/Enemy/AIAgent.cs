@@ -42,7 +42,7 @@ public class AIAgent : ISpawnable
         stateMachine.RegisterState(new AIIdleState());
         stateMachine.RegisterState(new AIFlashState());
         stateMachine.RegisterState(new AIAttackPlayerState());
-
+        stateMachine.RegisterState(new AIReturnState());
         enemyGun = GetComponent<EnemyGun>();
         enemyHealth = GetComponent<Health>();
 

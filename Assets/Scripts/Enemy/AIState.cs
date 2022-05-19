@@ -9,7 +9,8 @@ public enum AIStateID
     AttackPlayer,
     Death,
     Idle,
-    Flashed
+    Flashed,
+    Returning
 }
 
 public interface AIState
