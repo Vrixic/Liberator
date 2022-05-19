@@ -17,8 +17,11 @@ public class PlayerLook : MonoBehaviour
     public static float pendingYRecoil = 0;
 
     private static float totalYRecoil = 0;
-    private static float recoilRecovery = 550f;
-    private static float currentRecovery = 0f;
+    private static float totalXRecoil = 0;
+    private static float yRecoilRecovery = 600f;
+    private static float xRecoilRecovery = 200f;
+    private static float currentXRecovery = 0f;
+    private static float currentYRecovery = 0f;
 
     public void ProcessLook(Vector2 input)
     {
@@ -26,23 +29,65 @@ public class PlayerLook : MonoBehaviour
         currentInputVector.x = input.x * xSensitivity * Time.deltaTime;
         currentInputVector.y = input.y * ySensitivity * Time.deltaTime;
 
+        currentXRecovery = xRecoilRecovery * Time.deltaTime;
+        currentYRecovery = yRecoilRecovery * Time.deltaTime;
+
         //add on any pending horizontal recoil
         recoilInputVector.x = currentInputVector.x + pendingXRecoil;
 
-        totalYRecoil += pendingYRecoil;
+        //track the total applied recoil
+        totalXRecoil += pendingXRecoil;
 
+        if( totalXRecoil <= Mathf.Epsilon)
+        {
+            //if there is no horizontal recoil then skip
+        }
+        //horizontal recoil to the right that needs to be stabilized
+        else if (totalXRecoil >= currentXRecovery)
+        {
+            recoilInputVector.x -= currentXRecovery;
+            totalXRecoil -= currentXRecovery;
+        }
+        //horizontal recoil to the left that needs to be stabilized
+        else if (totalXRecoil <= -currentXRecovery)
+        {
+            recoilInputVector.x += currentXRecovery;
+            totalXRecoil += currentXRecovery;
+        }
+        //little bit of right horizontal recoil to restore
+        else if (totalXRecoil > 0)
+        {
+            recoilInputVector.x -= totalXRecoil * Time.deltaTime;
+            totalXRecoil += -(totalXRecoil * Time.deltaTime);
+        }
+        //little bit of left horizontal recoil to restore
+        else if (totalXRecoil < 0)
+        {
+            recoilInputVector.x += totalXRecoil * Time.deltaTime;
+            totalXRecoil += -(totalXRecoil * Time.deltaTime);
+        }
+        
         //add on any pending vertical recoil
         recoilInputVector.y = currentInputVector.y + pendingYRecoil;
 
-        if (totalYRecoil >= recoilRecovery * Time.deltaTime)
+        totalYRecoil += pendingYRecoil;
+
+        if(totalYRecoil <= Mathf.Epsilon)
         {
-            recoilInputVector.y -= recoilRecovery * Time.deltaTime;
-            totalYRecoil -= recoilRecovery * Time.deltaTime;
+            //if no recoil, do nothing
+            GameManager.Instance.playerScript.SetCurrentRecoilIndex(0);
         }
+        //significant amount of vertical recoil to restore overtime
+        else if (totalYRecoil >= currentYRecovery)
+        {
+            recoilInputVector.y -= currentYRecovery;
+            totalYRecoil -= currentYRecovery;
+        }
+        //small amount of vertical recoil to restore
         else if (totalYRecoil > 0)
         {
-            recoilInputVector.y -= totalYRecoil;
-            totalYRecoil = 0;
+            recoilInputVector.y -= totalYRecoil * Time.deltaTime;
+            totalYRecoil -= totalYRecoil * Time.deltaTime;
         }
 
         //smoothly rotate to match the target recoil vector
@@ -59,7 +104,7 @@ public class PlayerLook : MonoBehaviour
         xRotation -= currentInputVector.y;
 
         //keep the player from breaking their neck trying to look too far up or down
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        xRotation = Mathf.Clamp(xRotation, -60f, 80f);
 
         GameManager.Instance.mainCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 

@@ -157,7 +157,28 @@ MonoBehaviour:
   ammoType: 0
   maxNumOfBullets: 30
   bulletDropAudioClip: {fileID: 8300000, guid: f09a736935df5e6479f550837fba1f68, type: 3}
-  bulletDropAudioInterval: 0.5
+  verticalRecoil:
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  horizontalRecoil:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 50
+  - -50
+  - -50
+  - 50
+  - 50
+  - -50
 --- !u!1 &1040388300409106
 GameObject:
   m_ObjectHideFlags: 0
