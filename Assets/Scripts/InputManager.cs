@@ -21,6 +21,8 @@ public class InputManager : MonoBehaviour
     // Player class
     private Player player;
 
+    private float mouseScrollY;
+
     // button Functionality class
      ButtonFunctionality buttonFunc;
 
@@ -66,8 +68,9 @@ public class InputManager : MonoBehaviour
 
         onFoot.ReloadPressed.performed += ctx => player.OnReloadPressed();
 
-        onFoot.EquipNextWeaponPressed.performed += ctx => player.OnEquipNextPressed();
-        onFoot.EquipPreviousWeaponPressed.performed += ctx => player.OnEquipPreviousPressed();
+        onFoot.EquipWeaponOnScroll.performed += ctx => mouseScrollY = ctx.ReadValue<float>();
+        onFoot.EquipWeaponOnScroll.performed += ctx => player.OnEquipWeaponOnScroll(mouseScrollY);
+        //onFoot.EquipPreviousWeaponPressed.performed += ctx => player.OnEquipPreviousPressed();
 
         onFoot.EquipWeaponOnePressed.performed += ctx => player.EquipWeaponOnePressed();
         onFoot.EquipWeaponTwoPressed.performed += ctx => player.EquipWeaponTwoPressed();

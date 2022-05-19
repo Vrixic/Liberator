@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowPlayerToHoldAttackTrigger: 0
-  allowPlayerToHoldAimTrigger: 0
+  allowPlayerToHoldAimTrigger: 1
   attackRate: 5
   raycastOrigin: {fileID: 7732116829421517663}
   damage: 25
@@ -407,8 +407,28 @@ MonoBehaviour:
   ammoType: 0
   maxNumOfBullets: 30
   bulletDropAudioClip: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
-  verticalRecoil: []
-  horizontalRecoil: []
+  verticalRecoil:
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  horizontalRecoil:
+  - 0
+  - 0
+  - 0
+  - 50
+  - 50
+  - -50
+  - -50
+  - 50
+  - 50
+  - 50
 --- !u!1 &1179772960972010
 GameObject:
   m_ObjectHideFlags: 0
