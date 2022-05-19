@@ -4,31 +4,50 @@ using UnityEngine;
 using Cinemachine;
 public class PlayerLook : MonoBehaviour
 {
-    [SerializeField] private Transform cam;
-    [SerializeField] private CinemachineVirtualCamera FPcam;
-    //private float xRotation = 0f;
-    [Header("For ySens, go to the FPVirtualCam and find the aim drop down")]
+    public static float xRotation = 0f;
+
     [SerializeField] private float xSensitivity = 30f;
-    
+    [SerializeField] private float ySensitivity = 30f;
+
+    private Vector2 currentInputVector;
+    private Vector2 recoilInputVector;
+    private Vector2 smoothInputWithRecoil;
+
+    public static float pendingXRecoil = 0;
+    public static float pendingYRecoil = 0;
 
     public void ProcessLook(Vector2 input)
     {
-        float mouseX = input.x * xSensitivity * Time.deltaTime;
+        //recieve mouse input from the user
+        currentInputVector.x = input.x * xSensitivity * Time.deltaTime;
+        currentInputVector.y = input.y * ySensitivity * Time.deltaTime;
+
+        //add on any pending horizontal recoil
+        recoilInputVector.x = currentInputVector.x + pendingXRecoil;
+
+        //add on any pending vertical recoil
+        recoilInputVector.y = currentInputVector.y + pendingYRecoil;
+
+        //smoothly rotate to match the target recoil vector
+        currentInputVector = Vector2.SmoothDamp(currentInputVector, recoilInputVector, ref smoothInputWithRecoil, 0.1f);
+
+        //reset pending recoil since it has already been added to the recoilInputVector
+        pendingXRecoil = 0;
+        pendingYRecoil = 0;
 
         //rotate the player to look left and right
-        transform.Rotate(mouseX  * Vector3.up);
+        transform.Rotate(currentInputVector.x * Vector3.up);
 
-        //CINEMACHINE VIRTUAL CAM CURRENTLY HANDLES UP AND DOWN ROTATION
         //calculate camera rotation for looking up and down
-        //xRotation -= mouseY * Time.deltaTime;
+        xRotation -= currentInputVector.y;
 
         //keep the player from breaking their neck trying to look too far up or down
-        //xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
-        //cam.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        
+        GameManager.Instance.mainCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
         //cam.transform.Rotate(Vector3.left, yRotation * Time.deltaTime);
-        
+
     }
 
     public void LowerXSensitivity()
