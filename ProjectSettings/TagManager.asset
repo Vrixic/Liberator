@@ -31,6 +31,12 @@ TagManager:
   - DoorInteractText
   - Shop
   - CashCountText
+  - AmmoBox
+  - HealthKit
+  - BasicEnemy
+  - Assassin
+  - MeleeUnit
+  - Juggernaut
   layers:
   - Default
   - TransparentFX
