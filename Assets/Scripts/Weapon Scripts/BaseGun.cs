@@ -73,7 +73,7 @@ public class BaseGun : BaseWeapon
     {
         base.Start();
 
-       m_BulletPool = ObjectPoolManager.CreateObjectPool(bulletPrefab, maxNumOfBullets);
+        m_BulletPool = ObjectPoolManager.CreateObjectPool(bulletPrefab, maxNumOfBullets);
     }
 
     public override void Spawn()
@@ -97,7 +97,7 @@ public class BaseGun : BaseWeapon
 
     public override void OnWeaponUnequip()
     {
-        
+
     }
 
     /*
@@ -124,7 +124,7 @@ public class BaseGun : BaseWeapon
 
         if (TakeAction(m_LastAttackTime, attackRate)) // can shoot this weapon now
         {
-            if(bIsStabilized)
+            if (bIsStabilized)
             {
                 StartShooting();
             }
@@ -198,7 +198,9 @@ public class BaseGun : BaseWeapon
 
         //}
         //PlayerLook.pendingXRecoil = 50f; //horizontalRecoil[m_CurrentRecoilIndex];
-        if(m_CurrentRecoilIndex == verticalRecoil.Count)
+
+
+        if ((m_CurrentRecoilIndex + 1) == verticalRecoil.Count)
         {
             m_CurrentRecoilIndex = 0;
         }
@@ -207,12 +209,12 @@ public class BaseGun : BaseWeapon
             m_CurrentRecoilIndex++;
         }
 
-        if(verticalRecoil.Count > 0)
+        if (verticalRecoil.Count > 0)
         {
             PlayerLook.pendingYRecoil = verticalRecoil[m_CurrentRecoilIndex]; //verticalRecoil[m_CurrentRecoilIndex];
             PlayerLook.pendingXRecoil = horizontalRecoil[m_CurrentRecoilIndex];
         }
-        
+
 
         StartShooting();
     }
@@ -224,7 +226,7 @@ public class BaseGun : BaseWeapon
     {
         Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
 
-       bullet.Spawn(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, bulletRange, GetDamage());
+        bullet.Spawn(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, bulletRange, GetDamage());
     }
 
     public override void StopAttacking()
@@ -396,5 +398,15 @@ public class BaseGun : BaseWeapon
     public override void UpdateAmmoGUI()
     {
         AmmoManager.Instance.UpdateAmmoGUI(ammoType, m_CurrentNumOfBullets);
+    }
+
+    public override void SetRecoilPatternIndex(int i)
+    {
+        m_CurrentRecoilIndex = i;
+    }
+
+    public override int GetRecoilPatternIndex()
+    {
+        return m_CurrentRecoilIndex;
     }
 }

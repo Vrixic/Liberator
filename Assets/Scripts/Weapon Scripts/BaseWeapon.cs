@@ -292,6 +292,16 @@ public class BaseWeapon : ISpawnable //, IWeapon
         return m_WeaponID;
     }
 
+    public virtual void SetRecoilPatternIndex(int i)
+    {
+       
+    }
+
+    public virtual int GetRecoilPatternIndex()
+    {
+        return 0;
+    }
+
     //public float GetAttackAnimSpeed()
     //{
     //    return attackAnimSpeed;

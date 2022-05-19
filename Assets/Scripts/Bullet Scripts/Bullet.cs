@@ -109,7 +109,7 @@ public class Bullet : PoolableObject
             }
         }
 
-        Debug.Log("Tag: " + hit.collider.tag);
+        //Debug.Log("Tag: " + hit.collider.tag);
         BulletImpactManager.Instance.SpawnBulletImpact(hit.point, hit.normal, hit.collider.tag);
 
         // Audio
