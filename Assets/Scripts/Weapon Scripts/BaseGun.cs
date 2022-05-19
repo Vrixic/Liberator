@@ -1,4 +1,5 @@
 using Cinemachine;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -40,14 +41,22 @@ public class BaseGun : BaseWeapon
     int m_CurrentNumOfBullets;
     #endregion
 
+    [Header("Recoil")]
+    [SerializeField] List<float> verticalRecoil;
+    [SerializeField] List<float> horizontalRecoil;
+
+    int m_CurrentRecoilIndex = 0;
+
     /* bool to keep in track if weapon is being reloaded */
-    protected bool bIsReloading;
+    protected bool bIsReloading = false;
 
     /* bool to keep in track if weapon is aimed or not */
-    protected bool bIsAiming;
+    protected bool bIsAiming = false;
+
+    protected bool bIsStabilized = false;
 
     /* time when muzzle flash was shown plus the timer */
-    float m_MuzzleFlashTime;
+    float m_MuzzleFlashTime = 0f;
 
     /* a objectpool that will keep track of spawned bullets automatically */
     string m_BulletPool;
@@ -64,7 +73,7 @@ public class BaseGun : BaseWeapon
     {
         base.Start();
 
-        m_BulletPool = ObjectPoolManager.CreateObjectPool(bulletPrefab, maxNumOfBullets);
+       m_BulletPool = ObjectPoolManager.CreateObjectPool(bulletPrefab, maxNumOfBullets);
     }
 
     public override void Spawn()
@@ -113,13 +122,16 @@ public class BaseGun : BaseWeapon
         if (bIsReloading) return; // dont do anything when gun is being reloaded
         if (!HasMoreAmmo()) return; // need to reload gun, gun doesn't have enough ammo
 
-        if (TakeAction(m_LastAttackTime, attackRate))
+        if (TakeAction(m_LastAttackTime, attackRate)) // can shoot this weapon now
         {
-            StartShooting();
-        }
-        else
-        {
-            ShootWithRecoil();
+            if(bIsStabilized)
+            {
+                StartShooting();
+            }
+            else
+            {
+                ShootWithRecoil();
+            }
         }
     }
 
@@ -136,6 +148,13 @@ public class BaseGun : BaseWeapon
         m_LastAttackTime = Time.time;
         m_CurrentNumOfBullets--;
 
+        PlayAttackAudio();
+
+        muzzleFlash.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
+        muzzleFlash.SetActive(true);
+
+        m_MuzzleFlashTime = Time.time + muzzleFlashTime;
+
         if (bIsAiming)
             GetAnimator().Play("Aim_Attack1");
         else
@@ -143,25 +162,28 @@ public class BaseGun : BaseWeapon
 
         ShootBullet();
 
+        PlayBulletDropAudio();
+        UpdateAmmoGUI();
+
         //Invoke("HideMuzzleFlash", 0.02f);
         //Invoke("PlayBulletDropAudio", bulletDropAudioInterval);
     }
 
-    public override void OnAnimationEvent_AttackStart()
-    {
-        PlayAttackAudio();
+    //public override void OnAnimationEvent_AttackStart()
+    //{
+    //    //PlayAttackAudio();
 
-        muzzleFlash.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
-        muzzleFlash.SetActive(true);
+    //    //muzzleFlash.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
+    //    //muzzleFlash.SetActive(true);
 
-        m_MuzzleFlashTime = Time.time + muzzleFlashTime;
-    }
+    //    //m_MuzzleFlashTime = Time.time + muzzleFlashTime;
+    //}
 
-    public override void OnAnimationEvent_AttackEnd()
-    {
-        PlayBulletDropAudio();
-        UpdateAmmoGUI();
-    }
+    //public override void OnAnimationEvent_AttackEnd()
+    //{
+    //    PlayBulletDropAudio();
+    //    UpdateAmmoGUI();
+    //}
 
     /*
      * adds recoil than shoots the bullet
@@ -169,6 +191,16 @@ public class BaseGun : BaseWeapon
     public virtual void ShootWithRecoil()
     {
         Debug.Log("BaseGun 'ShoowWithRecoil()' : doesn't need an implementation, for child classes");
+
+        // @TODO: Recoil
+        //if(m_CurrentRecoilIndex < verticalRecoil.Count)
+        //{
+
+        //}
+        //PlayerLook.pendingXRecoil = 50f; //horizontalRecoil[m_CurrentRecoilIndex];
+        PlayerLook.pendingYRecoil = 100f; //verticalRecoil[m_CurrentRecoilIndex];
+
+        StartShooting();
     }
 
     /*
@@ -178,7 +210,7 @@ public class BaseGun : BaseWeapon
     {
         Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
 
-        bullet.Spawn(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, bulletRange, GetDamage());
+       bullet.Spawn(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, bulletRange, GetDamage());
     }
 
     public override void StopAttacking()
@@ -213,7 +245,7 @@ public class BaseGun : BaseWeapon
         m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
         PlayRelaodAudio();
 
-        Debug.Log(name + ": Reloading started");
+        //Debug.Log(name + ": Reloading started");
     }
 
     public override void OnAnimationEvent_ReloadEnd()

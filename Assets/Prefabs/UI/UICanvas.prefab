@@ -502,8 +502,18 @@ MonoBehaviour:
   shieldBarScript: {fileID: 0}
   buttonFuncScript: {fileID: 0}
   secureHostageText: {fileID: 0}
-  doorInteractText: {fileID: 0}
+  openDoorInteractText: {fileID: 0}
+  closeDoorInteractText: {fileID: 0}
   intelInteractText: {fileID: 0}
+  flashBangCount: {fileID: 0}
+  flashBangIcon: {fileID: 0}
+  ammoIcon: {fileID: 0}
+  ammoText: {fileID: 0}
+  hostageProgressBar: {fileID: 0}
+  currentCash: 0
+  startingCash: 1000
+  shopCanvas: {fileID: 0}
+  cashCountText: {fileID: 0}
 --- !u!1 &7987560301393037636
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f30c312a360964cbdaed790c51cd36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pause: {fileID: 7987560301579283101}
 --- !u!1001 &792716979875093027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -835,7 +844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f30c312a360964cbdaed790c51cd36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pause: {fileID: 7987560301579283101}
 --- !u!224 &7987560301579283102 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7339117118635716797, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
@@ -905,6 +913,18 @@ PrefabInstance:
       value: -1031.2183
       objectReference: {fileID: 0}
     - target: {fileID: 8727314296025894985, guid: 86d123607f6d7e140b5c0452a67fd778, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.68179995
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727314296025894985, guid: 86d123607f6d7e140b5c0452a67fd778, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5383417
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727314296025894985, guid: 86d123607f6d7e140b5c0452a67fd778, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.68179995
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727314296025894985, guid: 86d123607f6d7e140b5c0452a67fd778, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -934,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8727314296025894985, guid: 86d123607f6d7e140b5c0452a67fd778, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -749.0341
+      value: -749.0342
       objectReference: {fileID: 0}
     - target: {fileID: 8727314296025894985, guid: 86d123607f6d7e140b5c0452a67fd778, type: 3}
       propertyPath: m_AnchoredPosition.y

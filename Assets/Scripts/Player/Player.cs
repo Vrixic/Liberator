@@ -495,6 +495,7 @@ public class Player : ISpawnable
         Despawn();
 
         GameManager.Instance.ResetGame();
+        AmmoManager.Instance.ResetAmmoManager();
     }
 
     /*
@@ -726,5 +727,10 @@ public class Player : ISpawnable
     public bool CanPickupWeapon()
     {
         return m_CurrentEquippedWeapon.CanSwitchWeapon();
+    }
+
+    public void IncreaseFlashbang(int amount)
+    {
+        flashbang.IncreaseFlashbang(amount);
     }
 }

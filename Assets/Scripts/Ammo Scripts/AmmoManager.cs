@@ -49,6 +49,7 @@ public class AmmoManager : MonoBehaviour
 
         foreach (Ammo _ammo in ammo)
         {
+            _ammo.ammoSlot.SetInitialAmmoAmount();
             m_StoredAmmo.Add(_ammo.ammoType, _ammo.ammoSlot);
         }
     }
@@ -75,6 +76,14 @@ public class AmmoManager : MonoBehaviour
         GameManager.Instance.playerScript.UpdateAmmoGUI();
     }
 
+
+    public void RefillAmmo(AmmoType ammoType)
+    {
+        m_StoredAmmo[ammoType].RefillAmmo();
+        GameManager.Instance.playerScript.UpdateAmmoGUI();
+    }
+
+
     /*
      * updates the ammo text
      */
@@ -99,6 +108,14 @@ public class AmmoManager : MonoBehaviour
     {
         GameManager.Instance.ammoText.enabled = true;
         GameManager.Instance.ammoIcon.gameObject.SetActive(true);
+    }
+
+    public void ResetAmmoManager()
+    {
+        foreach(KeyValuePair<AmmoType, AmmoSlot> ammo in m_StoredAmmo)
+        {
+            ammo.Value.ResetAmmo();
+        }
     }
 
     /*
@@ -161,6 +178,23 @@ public class AmmoManager : MonoBehaviour
 
         /* max ammo capacity  */
         public int ammoCapacity;
+
+        private int m_InitialAmmoAmount;
+
+        public void SetInitialAmmoAmount()
+        {
+            m_InitialAmmoAmount = ammoAmount;
+        }
+
+        public void ResetAmmo()
+        {
+            ammoAmount = m_InitialAmmoAmount;
+        }
+
+        public void RefillAmmo()
+        {
+            ammoAmount = ammoCapacity;
+        }
     }
 
 }

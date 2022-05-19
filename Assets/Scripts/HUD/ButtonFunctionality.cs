@@ -37,7 +37,10 @@ public class ButtonFunctionality : MonoBehaviour
             // Freezes time
             Time.timeScale = 0f;
             // Disables virtual camera so player can not look around in the pause menu
-            virtualCam.SetActive(false);
+            if (virtualCam != null)
+            {
+                virtualCam.SetActive(false);
+            }
             gameIsPaused = true;
         }
         else
@@ -64,7 +67,11 @@ public class ButtonFunctionality : MonoBehaviour
         {
             Debug.Log("Virtual Cam is Null");
         }
-        virtualCam.SetActive(true);
+        if (virtualCam != null)
+        {
+
+            virtualCam.SetActive(true);
+        }
         pause.SetActive(false);
         gameIsPaused = false;
     }
@@ -76,8 +83,12 @@ public class ButtonFunctionality : MonoBehaviour
         // Get instance of Pause menu and turn it off
         pause = GameManager.Instance.pause;
         pause.SetActive(false);
-        // Get instance of virtual camera
-        virtualCam = GameManager.Instance.virtualCam;
+        if (virtualCam != null)
+        {
+            // Get instance of virtual camera
+            virtualCam = GameManager.Instance.virtualCam;
+
+        }
         // find Instance of Reticle
         reticle = GameManager.Instance.reticle;
         // Find active scene and reload it
@@ -104,7 +115,11 @@ public class ButtonFunctionality : MonoBehaviour
         // Resumes time
         Time.timeScale = 1f;
         // Re Enables players ability to look around and disables the Pause menu UI image
-        virtualCam.SetActive(true);
+        if (virtualCam != null)
+        {
+            virtualCam.SetActive(true);
+
+        }
         GameManager.Instance.shopCanvas.SetActive(false);
     }
 
@@ -148,12 +163,17 @@ public class ButtonFunctionality : MonoBehaviour
 
         if (GameManager.Instance.CurrentCash >= 100)
         {
-            GameManager.Instance.CurrentCash -= 100;
-            UpdateCashCountShopUi();
-            // TODO: Insert code to reset ammo count
+            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small))
+            {
 
-            // TODO: add code that Updates Ui count
+                GameManager.Instance.CurrentCash -= 100;
+                UpdateCashCountShopUi();
+                // TODO: Insert code to reset ammo count
+                AmmoManager.Instance.RefillAmmo(AmmoType.Small);
+                // TODO: add code that Updates Ui count
+                AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
 
+            }
 
         }
     }
@@ -164,11 +184,17 @@ public class ButtonFunctionality : MonoBehaviour
 
         if (GameManager.Instance.CurrentCash >= 100)
         {
-            GameManager.Instance.CurrentCash -= 100;
-            UpdateCashCountShopUi();
-            // TODO: Insert code to reset ammo count
+            if (GameManager.Instance.playerScript.GetCurrentFlashbangsAmount() != GameManager.Instance.playerScript.GetMaxFlashBangs())
+            {
 
-            // TODO: add code that Updates Ui count
+                GameManager.Instance.CurrentCash -= 100;
+                UpdateCashCountShopUi();
+                // TODO: Insert code to reset ammo count
+                GameManager.Instance.playerScript.IncreaseFlashbang(GameManager.Instance.playerScript.GetMaxFlashBangs());
+                // TODO: add code that Updates Ui count
+                GameManager.Instance.playerScript.UpdateFlashbangCount();
+
+            }
         }
     }
 

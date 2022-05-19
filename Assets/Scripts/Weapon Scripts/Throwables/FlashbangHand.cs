@@ -101,6 +101,14 @@ public class FlashbangHand : BaseWeapon
         flashbang.OnThrowThrowable(direction, throwForceMultiplier);
     }
 
+    public void IncreaseFlashbang(int amount)
+    {
+        m_CurrentFlashbangAmount = amount;
+
+        if (m_CurrentFlashbangAmount > maxFlashbangAmount)
+            m_CurrentFlashbangAmount = maxFlashbangAmount;
+    }
+
     /*
     * returns if player can switch from the flashbang to another weapon
     */
