@@ -399,7 +399,7 @@ MonoBehaviour:
   damage: 25
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.683, z: -0.06}
   attackAudioClip: {fileID: 8300000, guid: 96434fb9d0ba9d14292e6d36365b6105, type: 3}
-  reloadAudioClip: {fileID: 8300000, guid: cc988050393583047ad560d1ce931d72, type: 3}
+  reloadAudioClip: {fileID: 8300000, guid: 526b78049a014dc44aa04587f0e6ea40, type: 3}
   muzzleFlash: {fileID: 4726334861373270663}
   muzzleFlashTime: 0.01
   bulletPrefab: {fileID: -7061582049979965478, guid: cb821671db89c704ea873bec606a6513, type: 3}
@@ -407,7 +407,8 @@ MonoBehaviour:
   ammoType: 0
   maxNumOfBullets: 30
   bulletDropAudioClip: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
-  bulletDropAudioInterval: 0.5
+  verticalRecoil: []
+  horizontalRecoil: []
 --- !u!1 &1179772960972010
 GameObject:
   m_ObjectHideFlags: 0

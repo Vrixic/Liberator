@@ -21,6 +21,8 @@ public class AIDeathState : AIState
         agent.currentState = AIStateID.Death;
         diasbleTimer = Time.time + 1.5f;
 
+        agent.animator.SetBool("isDead", true);
+
         //var rigidBodies = agent.GetComponentsInChildren<Rigidbody>();
         //foreach (var rigidbody in rigidBodies)
         //{

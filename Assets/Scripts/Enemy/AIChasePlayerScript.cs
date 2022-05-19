@@ -28,7 +28,7 @@ public class AIChasePlayerScript : AIState
         // if the player has left the range of the enemy, make the enemy idle
         if (sqrDistance > agent.config.maxChaseDistance) // if player goes out of sight just go back to idle
         {
-            //Debug.Log("Idle");
+            
             agent.stateMachine.ChangeState(AIStateID.Idle);
         }
 
