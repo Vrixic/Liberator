@@ -108,11 +108,11 @@ public class Bullet : PoolableObject
             }
         }
 
+        Debug.Log("Tag: " + hit.collider.tag);
         BulletImpactManager.Instance.SpawnBulletImpact(hit.point, hit.normal, hit.collider.tag);
 
         // Audio
-        m_AudioSource.clip = BulletImpactManager.Instance.GetAudioClipForImpactFromTag(hit.collider.tag);
-        m_AudioSource.Play();
+        m_AudioSource.PlayOneShot(BulletImpactManager.Instance.GetAudioClipForImpactFromTag(hit.collider.tag));
 
         if (destroyTimeAfterCollision == -2)
         {
@@ -179,6 +179,7 @@ public class Bullet : PoolableObject
      */
     private void ReturnBulletToPool()
     {
+        //m_AudioSource.Stop();
         Pool();
     }
 }

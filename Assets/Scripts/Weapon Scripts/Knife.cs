@@ -4,6 +4,7 @@ public class Knife : BaseMelee
 {
     [SerializeField] float knifeHitRange = 0.5f;
 
+
     /*
     * triggers first attack 
     */

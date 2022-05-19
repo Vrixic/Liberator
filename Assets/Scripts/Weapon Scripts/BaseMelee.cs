@@ -11,7 +11,7 @@ public class BaseMelee : BaseWeapon
 
     public override void OnWeaponEquip()
     {
-      //  AmmoManager.Instance.HideAmmoGUI();
+        UpdateAmmoGUI();
     }
 
     public override void OnWeaponUnequip()
@@ -76,6 +76,10 @@ public class BaseMelee : BaseWeapon
     protected void PlayAttack2Audio()
     {
         PlayAudioOneShot(attack2Audio);
+    }
+    public override void UpdateAmmoGUI()
+    {
+        GameManager.Instance.ammoText.text = "1/inf";
     }
 
     public override bool CanSwitchWeapon()

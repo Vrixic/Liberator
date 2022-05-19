@@ -495,6 +495,7 @@ public class Player : ISpawnable
         Despawn();
 
         GameManager.Instance.ResetGame();
+        AmmoManager.Instance.ResetAmmoManager();
     }
 
     /*

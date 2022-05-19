@@ -48,7 +48,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.103
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPoolTime: 5
-  destroyTimeAfterCollision: -2
+  destroyTimeAfterCollision: 2
   moveSpeed: 25
   isEnemy: 1
 --- !u!96 &3802597141050631336
