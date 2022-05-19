@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class AIReturnState : AIState
 {
+
+    Vector3 spawnPosition;
     // Start is called before the first frame update
     public void Enter(AIAgent agent)
     {
-        
+        spawnPosition = agent.GetInitialPosition();
+        agent.navMeshAgent.destination = spawnPosition;
     }
 
     public void Exit(AIAgent agent)
@@ -22,6 +25,6 @@ public class AIReturnState : AIState
 
     public void Update(AIAgent agent)
     {
-        agent.navMeshAgent.destination = agent.GetInitialPosition();
+        
     }
 }
