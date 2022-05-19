@@ -74,9 +74,9 @@ public class EnemyGun : MonoBehaviour
             Reload();
         }
     }
-    public void ShootAtTarget(Vector3 target, Vector2 radius)
+    public bool ShootAtTarget(Vector3 target, Vector2 radius)
     {
-        if (IsGunEmpty()) return;
+        if (IsGunEmpty()) return false;
 
         Vector3 newTarget = Vector3.zero;
         newTarget.x = Random.Range(target.x - radius.x, target.x + radius.x);
@@ -84,6 +84,8 @@ public class EnemyGun : MonoBehaviour
         newTarget.z = Random.Range(target.z - radius.x, target.z + radius.x);
 
         ShootAtTarget(newTarget);
+
+        return true;
     }
 
     public void ShootAtTarget(Vector3 target)

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7496993974224529265}
   - component: {fileID: 7702605259739285264}
+  - component: {fileID: 8246851771123649004}
   m_Layer: 0
   m_Name: SpawnPoint_Intel
   m_TagString: Intel
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Object: {fileID: 7498300430384533996}
+--- !u!65 &8246851771123649004
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7496993974224529264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5011187, y: 0.029422281, z: 0.7047481}
+  m_Center: {x: -0.006334573, y: 0.0324822, z: -0.07997313}
 --- !u!1001 &7496993973000973600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121,19 +135,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1685343955664076, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
   m_PrefabInstance: {fileID: 7496993973000973600}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &7019930283256321173
-BoxCollider:
+--- !u!114 &1758469446283717619
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7498300430384533996}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9380982, y: 0.059999995, z: 1.3297181}
-  m_Center: {x: 0.034049094, y: 0.05, z: 0.16550934}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1dad6bafa0dd64d92a89e2c19fcc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7501771063332203818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4795266759639050, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}

@@ -345,8 +345,8 @@ public class Player : ISpawnable
      */
     void EquipWeapon(int index)
     {
-        //Debug.Log("Equiping weapon: " + index);
         if (index == m_CurrentWeaponIndex || !m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
+        
 
         if (flashbang.isActiveAndEnabled)
             DeactivateFlashbang();
