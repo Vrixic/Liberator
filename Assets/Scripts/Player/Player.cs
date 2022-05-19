@@ -733,4 +733,14 @@ public class Player : ISpawnable
     {
         flashbang.IncreaseFlashbang(amount);
     }
+
+    public void SetCurrentRecoilIndex(int index)
+    {
+        m_CurrentEquippedWeapon.SetRecoilPatternIndex(index);
+    }
+
+    public int GetCurrentRecoilIndex()
+    {
+        return m_CurrentEquippedWeapon.GetRecoilPatternIndex();
+    }
 }

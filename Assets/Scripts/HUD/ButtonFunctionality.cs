@@ -32,7 +32,7 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.intelInteractText.SetActive(false);
                 GameManager.Instance.closeDoorInteractText.SetActive(false);
                 GameManager.Instance.openDoorInteractText.SetActive(false);
-                GameManager.Instance.sec.SetActive(false);
+                GameManager.Instance.secureHostageText.SetActive(false);
             }
             // Turn off Reticle
             reticle.SetActive(false);
