@@ -7,7 +7,7 @@ public class Player : ISpawnable
     [Header("Weapon Settings")]
 
     /* array of weapons */
-    [SerializeField] uint[] startWeaponIDs;
+    [SerializeField] WeaponID[] startWeaponIDs;
     BaseWeapon[] m_CurrentWeapons;
 
     [SerializeField] GameObject weaponsParent;
@@ -234,7 +234,7 @@ public class Player : ISpawnable
     /*
     * Equips a weapon with teh incoming wepaon ID, drops current weapon at the drop location 
     */
-    public void Equip(uint weaponID, Transform dropLocation)
+    public void Equip(WeaponID weaponID, Transform dropLocation)
     {
         // Drops current weapon at the drop location
         //Debug.Log("Dropping weapon: " + m_CurrentEquippedWeapon.name);
