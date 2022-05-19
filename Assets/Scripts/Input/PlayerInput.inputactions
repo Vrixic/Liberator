@@ -114,19 +114,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EquipNextWeaponPressed",
-                    "type": "Button",
+                    "name": "EquipWeaponOnScroll",
+                    "type": "PassThrough",
                     "id": "ea5c139c-45f5-4cf4-8e9a-866694aae197",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "EquipPreviousWeaponPressed",
-                    "type": "Button",
-                    "id": "61d91a68-208c-466f-b427-6d9b57be7aa0",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -438,23 +429,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1a24f915-bf3e-4b8a-94d0-a5fed56a611e",
-                    "path": "<Keyboard>/capsLock",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "EquipPreviousWeaponPressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "82a96703-cc72-470f-9d84-86dfa908ad9d",
-                    "path": "<Keyboard>/tab",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "EquipNextWeaponPressed",
+                    "action": "EquipWeaponOnScroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

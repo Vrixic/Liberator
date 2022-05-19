@@ -306,12 +306,15 @@ public class Player : ISpawnable
     /*
      * called when player presses the button to equip next weapon
      */
-    public void OnEquipNextPressed()
+    public void OnEquipWeaponOnScroll(float scrollY)
     {
         if (!GameRunningCheck()) return;
 
-        //Debug.Log("Swicthing to next weapon..");
-        EquipNextWeapon();
+       // Debug.Log("Switching to next weapon.., " + i);
+        if (scrollY > 0.0f)
+            EquipNextWeapon();
+        else
+            EquipPreviousWeapon();
     }
 
     /*

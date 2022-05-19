@@ -136,19 +136,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EquipNextWeaponPressed"",
-                    ""type"": ""Button"",
+                    ""name"": ""EquipWeaponOnScroll"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""ea5c139c-45f5-4cf4-8e9a-866694aae197"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""EquipPreviousWeaponPressed"",
-                    ""type"": ""Button"",
-                    ""id"": ""61d91a68-208c-466f-b427-6d9b57be7aa0"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -460,23 +451,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1a24f915-bf3e-4b8a-94d0-a5fed56a611e"",
-                    ""path"": ""<Keyboard>/capsLock"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""EquipPreviousWeaponPressed"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""82a96703-cc72-470f-9d84-86dfa908ad9d"",
-                    ""path"": ""<Keyboard>/tab"",
+                    ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EquipNextWeaponPressed"",
+                    ""action"": ""EquipWeaponOnScroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -631,8 +611,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_ADSPressed = m_OnFoot.FindAction("ADSPressed", throwIfNotFound: true);
         m_OnFoot_ADSReleased = m_OnFoot.FindAction("ADSReleased", throwIfNotFound: true);
         m_OnFoot_ReloadPressed = m_OnFoot.FindAction("ReloadPressed", throwIfNotFound: true);
-        m_OnFoot_EquipNextWeaponPressed = m_OnFoot.FindAction("EquipNextWeaponPressed", throwIfNotFound: true);
-        m_OnFoot_EquipPreviousWeaponPressed = m_OnFoot.FindAction("EquipPreviousWeaponPressed", throwIfNotFound: true);
+        m_OnFoot_EquipWeaponOnScroll = m_OnFoot.FindAction("EquipWeaponOnScroll", throwIfNotFound: true);
         m_OnFoot_EquipWeaponOnePressed = m_OnFoot.FindAction("EquipWeaponOnePressed", throwIfNotFound: true);
         m_OnFoot_EquipWeaponTwoPressed = m_OnFoot.FindAction("EquipWeaponTwoPressed", throwIfNotFound: true);
         m_OnFoot_EquipFlashbangPressed = m_OnFoot.FindAction("EquipFlashbangPressed", throwIfNotFound: true);
@@ -712,8 +691,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_ADSPressed;
     private readonly InputAction m_OnFoot_ADSReleased;
     private readonly InputAction m_OnFoot_ReloadPressed;
-    private readonly InputAction m_OnFoot_EquipNextWeaponPressed;
-    private readonly InputAction m_OnFoot_EquipPreviousWeaponPressed;
+    private readonly InputAction m_OnFoot_EquipWeaponOnScroll;
     private readonly InputAction m_OnFoot_EquipWeaponOnePressed;
     private readonly InputAction m_OnFoot_EquipWeaponTwoPressed;
     private readonly InputAction m_OnFoot_EquipFlashbangPressed;
@@ -738,8 +716,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @ADSPressed => m_Wrapper.m_OnFoot_ADSPressed;
         public InputAction @ADSReleased => m_Wrapper.m_OnFoot_ADSReleased;
         public InputAction @ReloadPressed => m_Wrapper.m_OnFoot_ReloadPressed;
-        public InputAction @EquipNextWeaponPressed => m_Wrapper.m_OnFoot_EquipNextWeaponPressed;
-        public InputAction @EquipPreviousWeaponPressed => m_Wrapper.m_OnFoot_EquipPreviousWeaponPressed;
+        public InputAction @EquipWeaponOnScroll => m_Wrapper.m_OnFoot_EquipWeaponOnScroll;
         public InputAction @EquipWeaponOnePressed => m_Wrapper.m_OnFoot_EquipWeaponOnePressed;
         public InputAction @EquipWeaponTwoPressed => m_Wrapper.m_OnFoot_EquipWeaponTwoPressed;
         public InputAction @EquipFlashbangPressed => m_Wrapper.m_OnFoot_EquipFlashbangPressed;
@@ -793,12 +770,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ReloadPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnReloadPressed;
                 @ReloadPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnReloadPressed;
                 @ReloadPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnReloadPressed;
-                @EquipNextWeaponPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipNextWeaponPressed;
-                @EquipNextWeaponPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipNextWeaponPressed;
-                @EquipNextWeaponPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipNextWeaponPressed;
-                @EquipPreviousWeaponPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipPreviousWeaponPressed;
-                @EquipPreviousWeaponPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipPreviousWeaponPressed;
-                @EquipPreviousWeaponPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipPreviousWeaponPressed;
+                @EquipWeaponOnScroll.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponOnScroll;
+                @EquipWeaponOnScroll.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponOnScroll;
+                @EquipWeaponOnScroll.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponOnScroll;
                 @EquipWeaponOnePressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponOnePressed;
                 @EquipWeaponOnePressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponOnePressed;
                 @EquipWeaponOnePressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponOnePressed;
@@ -863,12 +837,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ReloadPressed.started += instance.OnReloadPressed;
                 @ReloadPressed.performed += instance.OnReloadPressed;
                 @ReloadPressed.canceled += instance.OnReloadPressed;
-                @EquipNextWeaponPressed.started += instance.OnEquipNextWeaponPressed;
-                @EquipNextWeaponPressed.performed += instance.OnEquipNextWeaponPressed;
-                @EquipNextWeaponPressed.canceled += instance.OnEquipNextWeaponPressed;
-                @EquipPreviousWeaponPressed.started += instance.OnEquipPreviousWeaponPressed;
-                @EquipPreviousWeaponPressed.performed += instance.OnEquipPreviousWeaponPressed;
-                @EquipPreviousWeaponPressed.canceled += instance.OnEquipPreviousWeaponPressed;
+                @EquipWeaponOnScroll.started += instance.OnEquipWeaponOnScroll;
+                @EquipWeaponOnScroll.performed += instance.OnEquipWeaponOnScroll;
+                @EquipWeaponOnScroll.canceled += instance.OnEquipWeaponOnScroll;
                 @EquipWeaponOnePressed.started += instance.OnEquipWeaponOnePressed;
                 @EquipWeaponOnePressed.performed += instance.OnEquipWeaponOnePressed;
                 @EquipWeaponOnePressed.canceled += instance.OnEquipWeaponOnePressed;
@@ -911,8 +882,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnADSPressed(InputAction.CallbackContext context);
         void OnADSReleased(InputAction.CallbackContext context);
         void OnReloadPressed(InputAction.CallbackContext context);
-        void OnEquipNextWeaponPressed(InputAction.CallbackContext context);
-        void OnEquipPreviousWeaponPressed(InputAction.CallbackContext context);
+        void OnEquipWeaponOnScroll(InputAction.CallbackContext context);
         void OnEquipWeaponOnePressed(InputAction.CallbackContext context);
         void OnEquipWeaponTwoPressed(InputAction.CallbackContext context);
         void OnEquipFlashbangPressed(InputAction.CallbackContext context);
