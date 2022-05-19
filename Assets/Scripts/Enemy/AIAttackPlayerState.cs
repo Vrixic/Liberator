@@ -22,7 +22,10 @@ public class AIAttackPlayerState : AIState
         }
 
         //Debug.Log("Shooting at player");
-        agent.GetGun().ShootAtTarget(agent.playerTransform.position, agent.config.shootSprayRadius);
+        if(agent.GetGun().ShootAtTarget(agent.playerTransform.position, agent.config.shootSprayRadius))
+        {
+            agent.animator.Play("Attack");
+        }
     }
     public void Exit(AIAgent agent)
     {
