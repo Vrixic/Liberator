@@ -728,4 +728,9 @@ public class Player : ISpawnable
     {
         return m_CurrentEquippedWeapon.CanSwitchWeapon();
     }
+
+    public void IncreaseFlashbang(int amount)
+    {
+        flashbang.IncreaseFlashbang(amount);
+    }
 }
