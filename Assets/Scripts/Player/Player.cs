@@ -459,6 +459,8 @@ public class Player : ISpawnable
 
         if (m_CurrentPlayerHealth > GetPlayersMaxHealth())
             m_CurrentPlayerHealth = GetPlayersMaxHealth();
+
+        healthBar.UpdateHealthBar();
     }
 
     /*
@@ -487,6 +489,8 @@ public class Player : ISpawnable
 
         if (m_CurrentPlayerShield > GetPlayersMaxShield())
             m_CurrentPlayerShield = GetPlayersMaxShield();
+
+        shieldBar.UpdateShieldBar();
     }
 
     /*
