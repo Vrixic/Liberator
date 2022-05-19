@@ -27,6 +27,13 @@ public class ButtonFunctionality : MonoBehaviour
     {
         if (gameIsPaused == false)
         {
+            if (GameManager.Instance.intelInteractText != null || GameManager.Instance.closeDoorInteractText != null || GameManager.Instance.openDoorInteractText != null || GameManager.Instance.secureHostageText != null)
+            {
+                GameManager.Instance.intelInteractText.SetActive(false);
+                GameManager.Instance.closeDoorInteractText.SetActive(false);
+                GameManager.Instance.openDoorInteractText.SetActive(false);
+                GameManager.Instance.sec.SetActive(false);
+            }
             // Turn off Reticle
             reticle.SetActive(false);
             // Turns on Pause menu image
@@ -78,22 +85,25 @@ public class ButtonFunctionality : MonoBehaviour
 
     public void Restart()
     {
-        // Resume time
-        Time.timeScale = 1f;
-        // Get instance of Pause menu and turn it off
-        pause = GameManager.Instance.pause;
-        pause.SetActive(false);
-        if (virtualCam != null)
-        {
-            // Get instance of virtual camera
-            virtualCam = GameManager.Instance.virtualCam;
+        #region Old Restart code (Commented Out)
+        //// Resume time
+        //Time.timeScale = 1f;
+        //// Get instance of Pause menu and turn it off
+        //pause = GameManager.Instance.pause;
+        //pause.SetActive(false);
+        //if (virtualCam != null)
+        //{
+        //    // Get instance of virtual camera
+        //    virtualCam = GameManager.Instance.virtualCam;
 
-        }
-        // find Instance of Reticle
-        reticle = GameManager.Instance.reticle;
-        // Find active scene and reload it
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        //}
+        //// find Instance of Reticle
+        //reticle = GameManager.Instance.reticle;
+        //// Find active scene and reload it
+        //Scene scene = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(scene.name); 
+        #endregion
+        GameManager.Instance.ResetGame();
     }
 
     public void Quit()
