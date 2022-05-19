@@ -86,6 +86,7 @@ public class ButtonFunctionality : MonoBehaviour
     public void Restart()
     {
         #region Old Restart code (Commented Out)
+        // This code Reloads the scene
         //// Resume time
         //Time.timeScale = 1f;
         //// Get instance of Pause menu and turn it off

@@ -101,6 +101,7 @@ public class Bullet : PoolableObject
         }
         else
         {
+            Debug.Log(hit.collider.tag);
             if (hit.collider.tag == "Hitbox")
             {
                 //Debug.LogWarning("enemys cannot be hurt as of right now, updated bullet script");
