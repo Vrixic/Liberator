@@ -206,8 +206,13 @@ public class BaseGun : BaseWeapon
         {
             m_CurrentRecoilIndex++;
         }
-        PlayerLook.pendingYRecoil = verticalRecoil[m_CurrentRecoilIndex]; //verticalRecoil[m_CurrentRecoilIndex];
-        PlayerLook.pendingXRecoil = horizontalRecoil[m_CurrentRecoilIndex];
+
+        if(verticalRecoil.Count > 0)
+        {
+            PlayerLook.pendingYRecoil = verticalRecoil[m_CurrentRecoilIndex]; //verticalRecoil[m_CurrentRecoilIndex];
+            PlayerLook.pendingXRecoil = horizontalRecoil[m_CurrentRecoilIndex];
+        }
+        
 
         StartShooting();
     }

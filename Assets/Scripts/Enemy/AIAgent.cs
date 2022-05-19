@@ -82,7 +82,9 @@ public class AIAgent : ISpawnable
     public override void Respawn()
     {
         base.Respawn();
+
         animator.SetBool("isDead", false);
+        enemyGun.ResetGun();
         Spawn();
     }
 

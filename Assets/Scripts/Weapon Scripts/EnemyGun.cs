@@ -118,4 +118,10 @@ public class EnemyGun : MonoBehaviour
     {
         return m_CurrentNumOfBullets < 1;
     }
+
+    public void ResetGun()
+    {
+        m_CurrentNumOfBullets = maxNumOfBullets;
+        m_NextTimeToFire = 0;
+    }
 }
