@@ -215,7 +215,7 @@ public class BaseGun : BaseWeapon
      */
     void OnRayCastHit(Bullet bullet, RaycastHit hit)
     {
-        //Debug.Log(hit.collider.tag);
+        //mDebug.Log(hit.collider.tag);
         if (hit.collider.CompareTag("Hitbox"))
         {
             //Debug.LogWarning("enemys cannot be hurt as of right now, updated bullet script");

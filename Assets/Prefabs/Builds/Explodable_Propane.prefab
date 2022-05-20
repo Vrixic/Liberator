@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0af8d49c2ad6a84197921bbc94bb08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fire: {fileID: 1634767862067424, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
-  explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  fire: {fileID: -8677530205395176735, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
+  explosion: {fileID: -366089495347445295, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
 --- !u!23 &6465461980544386458
 MeshRenderer:
   m_ObjectHideFlags: 0

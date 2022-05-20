@@ -56,7 +56,7 @@ public class Bullet : PoolableObject
         if(hit.collider.tag == "Explodable")
         {
             Explodable e = hit.collider.GetComponent<Explodable>();
-            e.Explode(hit.normal);
+            e.Explode(hit.point, hit.normal);
         }
 
         BulletImpactManager.Instance.SpawnBulletImpact(hit.point, hit.normal, hit.collider.tag);
