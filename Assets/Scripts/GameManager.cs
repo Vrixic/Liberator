@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject intelInteractText;
     [HideInInspector]
+    public Image flashbangImage;
+    [HideInInspector]
     public TextMeshProUGUI flashBangCount;
     [HideInInspector]
     public GameObject flashBangIcon;

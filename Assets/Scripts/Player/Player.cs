@@ -22,7 +22,7 @@ public class Player : ISpawnable
     /*
     * images used to simulate a flashbang effect
     */
-    [SerializeField] Image flashbangImage;
+    //[SerializeField] Image flashbangImage;
 
     /*
    * used to slow down or speed up how long flashbang lasts
@@ -178,7 +178,7 @@ public class Player : ISpawnable
         if (flashbangImageColor.a > 0f)
         {
             flashbangImageColor.a -= Time.deltaTime * flashbangTimeDamp;
-            flashbangImage.color = flashbangImageColor;
+            GameManager.Instance.flashbangImage.color = flashbangImageColor;
         }
 
         if (GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
