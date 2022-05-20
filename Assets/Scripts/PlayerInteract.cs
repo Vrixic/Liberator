@@ -214,7 +214,8 @@ public class PlayerInteract : MonoBehaviour
             GameManager.Instance.hostageProgressBar.SetActive(false);
 
             // Disables virtual camera so player can not look around in the pause menu
-            GameManager.Instance.virtualCam.SetActive(false);
+            if (GameManager.Instance.virtualCam != null)
+                GameManager.Instance.virtualCam.SetActive(false);
 
             //add code to win the level
             GameManager.Instance.hostageSecured.SetActive(true);
