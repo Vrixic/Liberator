@@ -20,6 +20,8 @@ public class AIAgent : ISpawnable
     [HideInInspector] public Animator animator;
     [SerializeField] bool isMelee = false;
 
+    [SerializeField] [Tooltip("How long should it wait to clean up the enemy's body after death")]float disableEnemyInterval = 2f;
+
     private Coroutine lookCouroutine;
 
     public bool isFlashed = false;
@@ -159,5 +161,10 @@ public class AIAgent : ISpawnable
     public bool IsMelee()
     {
         return isMelee;
+    }
+
+    public float GetDisableEnemyInterval()
+    {
+        return disableEnemyInterval;
     }
 }

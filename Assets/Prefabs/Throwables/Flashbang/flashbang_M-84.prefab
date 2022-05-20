@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 8961876022133857613}
   - component: {fileID: 3964923212669709342}
   - component: {fileID: -6948991309844511447}
+  - component: {fileID: 6926533898521878406}
   m_Layer: 0
   m_Name: flashbang_M-84
   m_TagString: Untagged
@@ -502,3 +503,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 12288
   flashSphereRadius: 5
+--- !u!135 &6926533898521878406
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749434159630178972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0.05, z: 0}
