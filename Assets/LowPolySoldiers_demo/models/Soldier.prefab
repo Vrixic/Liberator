@@ -945,6 +945,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   sensor: {fileID: 0}
   animator: {fileID: 0}
+  isMelee: 0
   isFlashed: 0
 --- !u!114 &7732467788609504263
 MonoBehaviour:
@@ -975,7 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6215d5fffe529a40990ff77121b26b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.25
+  fireRate: 2
   damage: 12
   bulletPrefab: {fileID: -7061582049979965478, guid: 0bacc6736d7e36244b8f36b20e092033, type: 3}
   bulletSpawnLocation: {fileID: 1481779291460578343}

@@ -1,6 +1,5 @@
 using UnityEngine;
 
-//[RequireComponent(typeof(AudioSource))]
 public class BaseWeapon : ISpawnable //, IWeapon
 {
     [Header("BaseWeapon")]
@@ -31,10 +30,6 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     /* audio clip played when player attacks */
     [SerializeField] AudioClip attackAudioClip;
-
-   // [Header("Animation Speed")]
-
-    //[SerializeField] float attackAnimSpeed = 1.0f;
 
     protected bool bIsAttacking;
 
@@ -211,14 +206,6 @@ public class BaseWeapon : ISpawnable //, IWeapon
         gameObject.SetActive(isActive);
     }
 
-    ///*
-    //* returns is any audio is playing
-    //*/
-    //protected bool IsAudioPlaying()
-    //{
-    //    return m_AudioSource.isPlaying;
-    //}
-
     /*
     * plays the audio 
     */
@@ -228,14 +215,6 @@ public class BaseWeapon : ISpawnable //, IWeapon
         GameManager.Instance.playerScript.PlayOneShotAudio(attackAudioClip);
     }
 
-    ///*
-    //* plays the audio 
-    //*/
-    //protected void PlayAudio()
-    //{
-    //    m_AudioSource.Play();
-    //}
-
     /*
     * plays the audio 
     */
@@ -244,23 +223,6 @@ public class BaseWeapon : ISpawnable //, IWeapon
         //m_AudioSource.PlayOneShot(clip);
         GameManager.Instance.playerScript.PlayOneShotAudio(clip);
     }
-
-    ///*
-    //* sets the audio clip to be played next time play audio is called
-    //*/
-    //protected void SetAudioSourceClip(AudioClip clip)
-    //{
-    //    m_AudioSource.clip = clip;
-    //    m_AudioSource.time = 0;
-    //}
-
-    /*
-    //* stops the payer audio
-    //*/
-    //public void StopAudio()
-    //{
-    //    m_AudioSource.Stop();
-    //}
 
     public void SetAnimator(Animator animator)
     {
@@ -301,9 +263,4 @@ public class BaseWeapon : ISpawnable //, IWeapon
     {
         return 0;
     }
-
-    //public float GetAttackAnimSpeed()
-    //{
-    //    return attackAnimSpeed;
-    //}
 }
