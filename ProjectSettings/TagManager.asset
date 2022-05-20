@@ -37,6 +37,7 @@ TagManager:
   - Assassin
   - MeleeUnit
   - Juggernaut
+  - Explodable
   layers:
   - Default
   - TransparentFX

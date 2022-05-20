@@ -99,6 +99,11 @@ public class Bullet : PoolableObject
                 hit.collider.GetComponent<Player>().TakeDamage(damage);
             }
         }
+        else if(hit.collider.tag == "Explodable")
+        {
+            Explodable e = hit.collider.GetComponent<Explodable>();
+            e.Explode(hit.normal);
+        }
         else
         {
             Debug.Log(hit.collider.tag);
