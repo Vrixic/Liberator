@@ -168,7 +168,7 @@ public class BaseGun : BaseWeapon
      */
     public virtual void ShootWithRecoil()
     {
-        Debug.Log("BaseGun 'ShoowWithRecoil()' : doesn't need an implementation, for child classes");
+        //Debug.Log("BaseGun 'ShoowWithRecoil()' : doesn't need an implementation, for child classes");
 
         if ((m_CurrentRecoilIndex + 1) == verticalRecoil.Count)
         {
@@ -197,7 +197,7 @@ public class BaseGun : BaseWeapon
         Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
 
         RaycastHit hitInfo;
-        if (Physics.Raycast(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, bulletRange))
+        if (Physics.Raycast(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, bulletRange, raycastLayers))
         {
             OnRayCastHit(bullet, hitInfo);
         }

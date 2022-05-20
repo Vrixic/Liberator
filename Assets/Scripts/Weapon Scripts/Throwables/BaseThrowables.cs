@@ -15,6 +15,8 @@ public class BaseThrowables : PoolableObject
     /* the time in seconds it should wait before pooling this throwable back to the object pool */
     [SerializeField] [Tooltip("the time in seconds it should wait before pooling this throwable back to the object pool")] float poolTimeAfterExplosion = 1.0f;
 
+    [SerializeField] [Tooltip("On explosion, only these layers will be queried")] LayerMask queryLayers;
+
     /* the audio source used to play audio for this throwable */
     AudioSource m_AudioSource;
 
@@ -94,5 +96,15 @@ public class BaseThrowables : PoolableObject
     protected Rigidbody GetRigidbody()
     {
         return m_RigidBody;
+    }
+
+    public void SetLayerMask(LayerMask mask)
+    {
+        queryLayers = mask;
+    }
+
+    protected LayerMask GetLayerMask()
+    {
+        return queryLayers;
     }
 }

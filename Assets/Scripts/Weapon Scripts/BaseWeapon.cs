@@ -26,6 +26,8 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     [SerializeField] Vector3 weaponSpawnLocalPositionOffset;
 
+    [SerializeField] [Tooltip("Raycast will only query these layers")] protected LayerMask raycastLayers;
+
     [Header("Audio Settings")]
 
     /* audio clip played when player attacks */

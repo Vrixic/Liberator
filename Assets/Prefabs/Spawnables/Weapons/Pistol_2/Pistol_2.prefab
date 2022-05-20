@@ -398,6 +398,9 @@ MonoBehaviour:
   raycastOrigin: {fileID: 7732116829421517663}
   damage: 25
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.683, z: -0.06}
+  raycastLayers:
+    serializedVersion: 2
+    m_Bits: 8385
   attackAudioClip: {fileID: 8300000, guid: 96434fb9d0ba9d14292e6d36365b6105, type: 3}
   reloadAudioClip: {fileID: 8300000, guid: 526b78049a014dc44aa04587f0e6ea40, type: 3}
   muzzleFlash: {fileID: 4726334861373270663}

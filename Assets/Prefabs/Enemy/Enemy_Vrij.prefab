@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier
       objectReference: {fileID: 0}
+    - target: {fileID: 6463805212560364267, guid: 770c9d5041ee12645991179483550776, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6463805212560526987, guid: 770c9d5041ee12645991179483550776, type: 3}
       propertyPath: m_RootOrder
       value: 0

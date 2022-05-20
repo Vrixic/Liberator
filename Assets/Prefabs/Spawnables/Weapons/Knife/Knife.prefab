@@ -841,7 +841,8 @@ Transform:
   m_LocalPosition: {x: 0.29164878, y: 1.5272058, z: 0.66565216}
   m_LocalScale: {x: 1.0000026, y: 0.99999267, z: 1.0000038}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1271278699885218752}
   m_Father: {fileID: 4835665370903084}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -42.486443, y: -94.85224, z: 11.795325}
@@ -1818,7 +1819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4835665370903084
 Transform:
   m_ObjectHideFlags: 0
@@ -1877,9 +1878,43 @@ MonoBehaviour:
   allowPlayerToHoldAttackTrigger: 0
   allowPlayerToHoldAimTrigger: 0
   attackRate: 2
-  raycastOrigin: {fileID: 0}
+  raycastOrigin: {fileID: 1271278699885218752}
   damage: 75
   weaponSpawnLocalPositionOffset: {x: 0.02, y: -1.7, z: -0.42}
+  raycastLayers:
+    serializedVersion: 2
+    m_Bits: 8385
   attackAudioClip: {fileID: 8300000, guid: 4e98ba36f61354f4caf1cdeb71e1ad56, type: 3}
   attack2Audio: {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
-  knifeHitRange: 0.5
+  knifeHitRange: 1
+--- !u!1 &7890389062910755632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1271278699885218752}
+  m_Layer: 0
+  m_Name: RaycastOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1271278699885218752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890389062910755632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.324, y: -0.012, z: 0.308}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4987177655636718}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
