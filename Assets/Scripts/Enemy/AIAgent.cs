@@ -20,6 +20,8 @@ public class AIAgent : ISpawnable
     [HideInInspector] public Animator animator;
     [SerializeField] bool isMelee = false;
 
+    [HideInInspector] public Vector3 aimDirection;
+
     [SerializeField] [Tooltip("How long should it wait to clean up the enemy's body after death")]float disableEnemyInterval = 2f;
 
     private Coroutine lookCouroutine;
@@ -29,7 +31,7 @@ public class AIAgent : ISpawnable
     private Health enemyHealth;
 
     private EnemyGun enemyGun;
-    private EnemyMelee enemyMelee;
+    private EnemyMelee enemyMelee;    
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +99,12 @@ public class AIAgent : ISpawnable
         if (!isMelee)
             enemyGun.ResetGun();
         Spawn();
+    }
+
+    public void CS_ReturnToPost(Vector3 aimPosition)
+    {
+        aimDirection = aimPosition;
+        stateMachine.ChangeState(AIStateID.Returning);
     }
 
     public void Rotating()

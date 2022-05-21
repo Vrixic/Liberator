@@ -5,7 +5,8 @@ using UnityEngine;
 public class AIReturnState : AIState
 {
 
-    Vector3 spawnPosition;
+    Vector3 spawnPosition;    
+
     // Start is called before the first frame update
     public void Enter(AIAgent agent)
     {
@@ -25,6 +26,7 @@ public class AIReturnState : AIState
 
     public void Update(AIAgent agent)
     {
+        agent.transform.LookAt(agent.aimDirection);
 
         bool inSight = agent.sensor.IsInsight();
         if (inSight) // players is in sight of the enemy
