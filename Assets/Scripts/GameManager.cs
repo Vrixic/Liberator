@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
 
         flashBangIcon = GameObject.FindGameObjectWithTag("FlashbangIcon");
         flashBangCount = GameObject.FindGameObjectWithTag("FlashbangCount").GetComponent<TextMeshProUGUI>();
+        flashbangImage = GameObject.FindGameObjectWithTag("FlashbangImage").GetComponent<Image>();
 
         ammoIcon = GameObject.FindGameObjectWithTag("AmmoIcon");
         ammoText = GameObject.FindGameObjectWithTag("AmmoCount").GetComponent<TextMeshProUGUI>();

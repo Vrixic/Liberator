@@ -38,6 +38,7 @@ TagManager:
   - MeleeUnit
   - Juggernaut
   - Explodable
+  - FlashbangImage
   layers:
   - Default
   - TransparentFX

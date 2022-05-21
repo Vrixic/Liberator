@@ -57,10 +57,6 @@ public class ButtonFunctionality : MonoBehaviour
     }
     public void Resume()
     {
-        if (virtualCam == null)
-        {
-            Debug.Log("Reticle is Null");
-        }
         // Turn Reticle back on
         reticle.SetActive(true);
 
@@ -70,10 +66,7 @@ public class ButtonFunctionality : MonoBehaviour
         // Resumes time
         Time.timeScale = 1f;
         // Re Enables players ability to look around and disables the Pause menu UI image
-        if (reticle == null)
-        {
-            Debug.Log("Virtual Cam is Null");
-        }
+
         if (virtualCam != null)
         {
 
