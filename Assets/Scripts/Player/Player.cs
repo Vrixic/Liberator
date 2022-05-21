@@ -215,7 +215,7 @@ public class Player : ISpawnable
             SetCurrentAnimSpeed(m_PlayerMotor.currentActiveSpeed2D);
         }
 
-        if (flashbang.isActiveAndEnabled && !flashbang.HasMoreFlashbangs())
+        if (flashbang.isActiveAndEnabled && !flashbang.HasMoreThrowables())
             EquipPreviousWeapon();
     }
 
@@ -271,7 +271,7 @@ public class Player : ISpawnable
         if (!GameRunningCheck()) return;
         if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
 
-        if (flashbang.HasMoreFlashbangs())
+        if (flashbang.HasMoreThrowables())
         {
             DeactivateWeapon(m_CurrentWeaponIndex);
             ActivateFlashbang();
@@ -689,12 +689,12 @@ public class Player : ISpawnable
 
     public int GetCurrentFlashbangsAmount()
     {
-        return flashbang.GetCurrentAmountOfFlashbangs();
+        return flashbang.GetCurrentAmountOfThrowables();
     }
 
     public int GetMaxFlashBangs()
     {
-        return flashbang.GetMaxAmountOfFlashbangs();
+        return flashbang.GetMaxAmountOfThrowables();
     }
 
     bool GameRunningCheck()
@@ -704,7 +704,7 @@ public class Player : ISpawnable
 
     public void UpdateFlashbangCount()
     {
-        GameManager.Instance.flashBangCount.text = flashbang.GetCurrentAmountOfFlashbangs().ToString();
+        GameManager.Instance.flashBangCount.text = flashbang.GetCurrentAmountOfThrowables().ToString();
     }
 
     public void HideFlashbangGUI()
@@ -752,7 +752,7 @@ public class Player : ISpawnable
 
     public void IncreaseFlashbang(int amount)
     {
-        flashbang.IncreaseFlashbang(amount);
+        flashbang.IncreaseThrowable(amount);
     }
 
     public void SetCurrentRecoilIndex(int index)
