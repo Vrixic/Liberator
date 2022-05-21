@@ -48,7 +48,7 @@ MonoBehaviour:
   meleeImpacts:
   - objectTag: Untagged
     collisionParticleSystem: {fileID: -7308709378478881761, guid: c2505f646b94d494bbdd5f853db29b10, type: 3}
-    impactAudio: {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
+    impactAudio: {fileID: 8300000, guid: 1abae4fff3921bd4992da1802dccd947, type: 3}
   - objectTag: Hitbox
     collisionParticleSystem: {fileID: 3348676198658618746, guid: c35cab76504166941aaec775941770e7, type: 3}
-    impactAudio: {fileID: 8300000, guid: 019b1cad8d20c6748abcaeabd40d6746, type: 3}
+    impactAudio: {fileID: 8300000, guid: 6431c1753b2c58c458113debd619d31e, type: 3}

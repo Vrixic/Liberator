@@ -497,8 +497,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoPoolTime: -1
   throwableExplodeTimer: 1
-  explodeParticleSystem: {fileID: 2810583383781567452, guid: 699a53451911d334baa749c25d7b1690, type: 3}
-  poolTimeAfterExplosion: 1
+  explodeParticleSystem: {fileID: -7308709378478881761, guid: 229f17fc42a5360459f7114f32a4d689, type: 3}
+  poolTimeAfterExplosion: 3
   queryLayers:
     serializedVersion: 2
     m_Bits: 12288

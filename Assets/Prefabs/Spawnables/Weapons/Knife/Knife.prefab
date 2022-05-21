@@ -1884,8 +1884,8 @@ MonoBehaviour:
   raycastLayers:
     serializedVersion: 2
     m_Bits: 8385
-  attackAudioClip: {fileID: 8300000, guid: 4e98ba36f61354f4caf1cdeb71e1ad56, type: 3}
-  attack2Audio: {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
+  attackAudioClip: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
+  attack2Audio: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
   knifeHitRange: 1
 --- !u!1 &7890389062910755632
 GameObject:

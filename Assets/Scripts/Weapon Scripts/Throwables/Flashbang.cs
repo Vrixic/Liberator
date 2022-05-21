@@ -39,11 +39,6 @@ public class Flashbang : BaseThrowables
                 {
                     colliders[i].GetComponentInParent<AIAgent>().stateMachine.ChangeState(AIStateID.Flashed);
                 }
-
-                //if (colliders[i].tag == "Hitbox")
-                //{
-                //    colliders[i].GetComponentInParent<AIAgent>().stateMachine.ChangeState(AIStateID.Flashed);
-                //}
             }
         }
 
