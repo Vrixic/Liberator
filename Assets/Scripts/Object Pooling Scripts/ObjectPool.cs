@@ -81,4 +81,13 @@ public class ObjectPool
         m_ObjectPool.Add(poolObject);
         m_CurrentActiveObjects--;
     }
+
+    public void DisableObjInPool()
+    {
+        for (int i = 0; i < m_Size; i++)
+        {
+            m_Parent.transform.GetChild(i).gameObject.SetActive(false);
+            m_CurrentActiveObjects--;
+        }
+    }
 }

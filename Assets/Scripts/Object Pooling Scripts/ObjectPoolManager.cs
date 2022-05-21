@@ -21,4 +21,9 @@ public class ObjectPoolManager
     {
        return m_ObjectPools[poolName].SpawnObject();
     }
+
+    public static void DisableAllInPool(string poolName)
+    {
+        m_ObjectPools[poolName].DisableObjInPool();
+    }
 }
