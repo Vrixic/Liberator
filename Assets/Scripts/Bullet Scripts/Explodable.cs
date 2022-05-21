@@ -18,15 +18,15 @@ public class Explodable : ISpawnable
     int hits = 0;
     int counter = 0;
     [SerializeField] float radius;
-    int damage;
+    float damage;
 
     bool isExploded = false;
     bool firstHit = false;
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawWireSphere(transform.position, radius);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
 
     private void Start()
     {
@@ -65,15 +65,14 @@ public class Explodable : ISpawnable
         {
             if (colliders[i].tag == "Player"){
                 float dist = Vector3.Distance(colliders[i].transform.position, transform.position);
-                damage = 200 / (1 + (int)dist);
-                GameManager.Instance.playerScript.TakeDamage(damage);
+                damage = 300 / (dist + 0.1f);
+                GameManager.Instance.playerScript.TakeDamage((int)damage);
             }
             else if (colliders[i].tag == "Hitbox"){
                 float dist = Vector3.Distance(colliders[i].transform.position, transform.position);
-                damage = 200 / (1 + (int)dist);
-                colliders[i].GetComponent<Health>().TakeDamage(damage, transform.position);
+                damage = 300 / (dist + 0.1f);
+                colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
             }
-                
         }
     }
 
