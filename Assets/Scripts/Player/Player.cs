@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -175,11 +176,11 @@ public class Player : ISpawnable
 
     private void Update()
     {
-        if (flashbangImageColor.a > 0f)
-        {
-            flashbangImageColor.a -= Time.deltaTime * flashbangTimeDamp;
-            GameManager.Instance.flashbangImage.color = flashbangImageColor;
-        }
+        //if (flashbangImageColor.a > 0f)
+        //{
+        //    flashbangImageColor.a -= Time.deltaTime * flashbangTimeDamp;
+        //    GameManager.Instance.flashbangImage.color = flashbangImageColor;
+        //}
 
         if (GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
         {
@@ -722,7 +723,20 @@ public class Player : ISpawnable
 
     public void FlashPlayer()
     {
-        flashbangImageColor.a = 1;
+        //flashbangImageColor.a = 1;
+        StartCoroutine(FadeOutFlashbangImage());
+    }
+    IEnumerator FadeOutFlashbangImage()
+    {
+        Color color = Color.white;
+
+        for (float a = 1f; a > 0; a -= Time.deltaTime * flashbangTimeDamp)
+        {
+            color.a = a;
+            GameManager.Instance.flashbangImage.color = color;
+
+            yield return null;
+        }
     }
 
     public void PlayOneShotAudio(AudioClip clip)

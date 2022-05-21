@@ -398,10 +398,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reticle Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 7286437496504845026, guid: b013c8df18d4aa3498a3702d906ddc65, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7286437496504845053, guid: b013c8df18d4aa3498a3702d906ddc65, type: 3}
       propertyPath: m_Pivot.x
       value: 0

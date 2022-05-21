@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseWeapon : ISpawnable //, IWeapon
 {
@@ -28,6 +30,8 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     [SerializeField] [Tooltip("Raycast will only query these layers")] protected LayerMask raycastLayers;
 
+    [SerializeField] Sprite gunIcon;
+
     [Header("Audio Settings")]
 
     /* audio clip played when player attacks */
@@ -37,6 +41,8 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     /* if player has picked up this weapon and its in his inventory */
     protected bool bIsPickedUp;
+
+    protected bool bIsEquipped = false;
 
     /* time when weapon was last fired */
     protected float m_LastAttackTime;
@@ -88,9 +94,17 @@ public class BaseWeapon : ISpawnable //, IWeapon
         transform.position = dropLocation.position;
     }
 
-    public virtual void OnWeaponEquip() { }
+    public virtual void OnWeaponEquip() 
+    {
+        bIsEquipped = true;
+        GameManager.Instance.SetGunIcon(gunIcon);
+    }
 
-    public virtual void OnWeaponUnequip() { }
+    public virtual void OnWeaponUnequip() 
+    {
+        bIsEquipped = false;
+    }
+
 
     /*
     * for override purposes

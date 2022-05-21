@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -58,6 +59,8 @@ public class GameManager : MonoBehaviour
     public GameObject ammoIcon;
     [HideInInspector]
     public TextMeshProUGUI ammoText;
+    [HideInInspector]
+    public Image gunIcon;
     [HideInInspector]
     public GameObject hostageProgressBar;
     [Header("Current cash for viewing, starting cash for testing")]
@@ -146,6 +149,7 @@ public class GameManager : MonoBehaviour
         cashCountText = GameObject.FindGameObjectWithTag("CashCountText").GetComponent<TextMeshProUGUI>();
         shopCanvas.SetActive(false);
 
+        gunIcon = GameObject.FindGameObjectWithTag("GunIcon").GetComponent<Image>();
 
         if (player == null)
         {
@@ -182,6 +186,36 @@ public class GameManager : MonoBehaviour
         foreach (SpawnPoint spawnPoint in spawnPoints)
         {
             spawnPoint.Respawn();
+        }
+    }
+
+    public void SetGunIcon(Sprite icon)
+    {
+        float iconWidth = icon.rect.width * 0.5f;
+        float iconHeight = icon.rect.height * 0.5f;
+
+        gunIcon.rectTransform.sizeDelta = new Vector2(iconWidth, iconHeight);
+        gunIcon.rectTransform.anchoredPosition = new Vector2(iconWidth * -0.5f - 10f, gunIcon.rectTransform.anchoredPosition.y);
+        gunIcon.sprite = icon;
+
+        Color color = Color.white;
+        color.a = .4f;
+        gunIcon.color = color;
+
+        StartCoroutine(FadeOutGunIcon());
+    }
+
+    IEnumerator FadeOutGunIcon()
+    {
+        Color c = gunIcon.color;
+        for (float alpha = c.a; alpha >= 0; alpha = gunIcon.color.a)
+        {
+            alpha -= Time.deltaTime * 0.1f;
+
+            c.a = alpha;
+            gunIcon.color = c;
+
+            yield return null;
         }
     }
 }

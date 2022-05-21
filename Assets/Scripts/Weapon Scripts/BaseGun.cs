@@ -88,13 +88,15 @@ public class BaseGun : BaseWeapon
 
     public override void OnWeaponEquip()
     {
+        base.OnWeaponEquip();
+
         AmmoManager.Instance.ShowAmmoGUI();
         UpdateAmmoGUI();
     }
 
     public override void OnWeaponUnequip()
     {
-
+        base.OnWeaponUnequip();
     }
 
     /*
