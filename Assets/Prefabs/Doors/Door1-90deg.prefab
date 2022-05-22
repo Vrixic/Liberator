@@ -134,7 +134,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.6576405, y: 3.6830273, z: 1.14}
+  m_Size: {x: 2.6576405, y: 3.6830273, z: 0.72}
   m_Center: {x: -1.2358825, y: 1.8415136, z: -0.088409916}
 --- !u!208 &4018209427504873910
 NavMeshObstacle:
@@ -277,7 +277,7 @@ BoxCollider:
   m_GameObject: {fileID: 4018209427583353959}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.40335724, y: 0.40335733, z: 0.194216}
   m_Center: {x: 0, y: -0.000000037252903, z: 0}
@@ -374,7 +374,7 @@ BoxCollider:
   m_GameObject: {fileID: 4018209427952569190}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.40335724, y: 0.40335733, z: 0.194216}
   m_Center: {x: 0, y: -0.000000037252903, z: 0}
