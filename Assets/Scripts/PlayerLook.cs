@@ -38,7 +38,7 @@ public class PlayerLook : MonoBehaviour
         //track the total applied recoil
         totalXRecoil += pendingXRecoil;
 
-        if( totalXRecoil <= Mathf.Epsilon)
+        if (totalXRecoil == 0)
         {
             //if there is no horizontal recoil then skip
         }
@@ -55,16 +55,16 @@ public class PlayerLook : MonoBehaviour
             totalXRecoil += currentXRecovery;
         }
         //little bit of right horizontal recoil to restore
-        else if (totalXRecoil > 0)
+        else if (currentXRecovery > totalXRecoil && totalXRecoil > 0)
         {
-            recoilInputVector.x -= totalXRecoil * Time.deltaTime;
-            totalXRecoil += -(totalXRecoil * Time.deltaTime);
+            recoilInputVector.x -= totalXRecoil;
+            totalXRecoil = 0;
         }
         //little bit of left horizontal recoil to restore
-        else if (totalXRecoil < 0)
+        else if (currentXRecovery > -totalXRecoil && totalXRecoil < 0)
         {
-            recoilInputVector.x += totalXRecoil * Time.deltaTime;
-            totalXRecoil += -(totalXRecoil * Time.deltaTime);
+            recoilInputVector.x += totalXRecoil;
+            totalXRecoil = 0;
         }
         
         //add on any pending vertical recoil
@@ -84,10 +84,10 @@ public class PlayerLook : MonoBehaviour
             totalYRecoil -= currentYRecovery;
         }
         //small amount of vertical recoil to restore
-        else if (totalYRecoil > 0)
+        else if (currentYRecovery > totalYRecoil)
         {
-            recoilInputVector.y -= totalYRecoil * Time.deltaTime;
-            totalYRecoil -= totalYRecoil * Time.deltaTime;
+            recoilInputVector.y -= totalYRecoil;
+            totalYRecoil = 0;
         }
 
         //smoothly rotate to match the target recoil vector
