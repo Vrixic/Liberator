@@ -26,6 +26,8 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     [SerializeField] protected int damage = 25;
 
+    [SerializeField] int headShotDamage = 40;
+
     [SerializeField] Vector3 weaponSpawnLocalPositionOffset;
 
     [SerializeField] [Tooltip("Raycast will only query these layers")] protected LayerMask raycastLayers;
@@ -54,7 +56,7 @@ public class BaseWeapon : ISpawnable //, IWeapon
     public virtual void Start()
     {
         attackRate = 1 / attackRate;
-       
+
         m_Animator = GetComponent<Animator>();
 
         Spawn();
@@ -77,12 +79,12 @@ public class BaseWeapon : ISpawnable //, IWeapon
         OnWeaponUnequip();
     }
 
-    public virtual void OnPickup(GameObject parent) 
+    public virtual void OnPickup(GameObject parent)
     {
         bIsPickedUp = true;
 
         transform.parent = parent.transform;
-        transform.localPosition = weaponSpawnLocalPositionOffset; 
+        transform.localPosition = weaponSpawnLocalPositionOffset;
     }
 
     public virtual void OnDrop(Transform dropLocation)
@@ -93,13 +95,13 @@ public class BaseWeapon : ISpawnable //, IWeapon
         transform.position = dropLocation.position;
     }
 
-    public virtual void OnWeaponEquip() 
+    public virtual void OnWeaponEquip()
     {
         bIsEquipped = true;
         GameManager.Instance.SetGunIcon(gunIcon);
     }
 
-    public virtual void OnWeaponUnequip() 
+    public virtual void OnWeaponUnequip()
     {
         bIsEquipped = false;
     }
@@ -156,7 +158,7 @@ public class BaseWeapon : ISpawnable //, IWeapon
     {
         m_LastAttackTime = Time.time;
     }
-    
+
     /*
     * returns if the weapon is reloading
     */
@@ -195,6 +197,11 @@ public class BaseWeapon : ISpawnable //, IWeapon
     public int GetDamage()
     {
         return damage;
+    }
+
+    public int GetHeadShotDamage()
+    {
+        return headShotDamage;
     }
 
     /*
@@ -271,7 +278,7 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     public virtual void SetRecoilPatternIndex(int i)
     {
-       
+
     }
 
     public virtual int GetRecoilPatternIndex()

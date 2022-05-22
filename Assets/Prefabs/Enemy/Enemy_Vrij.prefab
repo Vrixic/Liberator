@@ -43,25 +43,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier
       objectReference: {fileID: 0}
-    - target: {fileID: 6463805212560364267, guid: 770c9d5041ee12645991179483550776, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
     - target: {fileID: 6463805212560526987, guid: 770c9d5041ee12645991179483550776, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6463805212560526987, guid: 770c9d5041ee12645991179483550776, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.725
-      objectReference: {fileID: 0}
-    - target: {fileID: 6463805212560526987, guid: 770c9d5041ee12645991179483550776, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.725
-      objectReference: {fileID: 0}
-    - target: {fileID: 6463805212560526987, guid: 770c9d5041ee12645991179483550776, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.725
       objectReference: {fileID: 0}
     - target: {fileID: 6463805212560526987, guid: 770c9d5041ee12645991179483550776, type: 3}
       propertyPath: m_LocalPosition.x
@@ -102,14 +86,6 @@ PrefabInstance:
     - target: {fileID: 6463805212560526987, guid: 770c9d5041ee12645991179483550776, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6463805212560526987, guid: 770c9d5041ee12645991179483550776, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9048644437165528338, guid: 770c9d5041ee12645991179483550776, type: 3}
-      propertyPath: reloadTime
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770c9d5041ee12645991179483550776, type: 3}

@@ -62,6 +62,51 @@ Transform:
   m_Father: {fileID: 6463805212560527007}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5183910713598018418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6506159343562075166}
+  - component: {fileID: 5426523948486279343}
+  m_Layer: 13
+  m_Name: HeadShotHitBox
+  m_TagString: HitboxHeadshot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6506159343562075166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183910713598018418}
+  m_LocalRotation: {x: 0.50000006, y: -0.49999928, z: -0.5, w: -0.50000066}
+  m_LocalPosition: {x: 2.2390354, y: -0.023809679, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6463805212560527027}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5426523948486279343
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183910713598018418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.19
+  m_Center: {x: 0, y: 2.375, z: 0.02}
 --- !u!1 &6463805212560364161
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +423,7 @@ Transform:
   m_Children:
   - {fileID: 6463805212560527025}
   - {fileID: 3063320384235717363}
+  - {fileID: 6506159343562075166}
   m_Father: {fileID: 6463805212560527017}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -821,7 +867,7 @@ GameObject:
   - component: {fileID: 4360709112517062547}
   - component: {fileID: 7732467788609504263}
   - component: {fileID: 9048644437165528338}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Soldier
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
@@ -837,8 +883,8 @@ Transform:
   m_GameObject: {fileID: 6463805212560364267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.725, y: 0.725, z: 0.725}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6463805212560527031}
   - {fileID: 6463805212560526985}
@@ -876,9 +922,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.53
+  m_Height: 2.2
   m_Direction: 1
-  m_Center: {x: 0, y: 1.29, z: 0}
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!195 &414729318689261771
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -946,6 +992,8 @@ MonoBehaviour:
   sensor: {fileID: 0}
   animator: {fileID: 0}
   isMelee: 0
+  aimDirection: {x: 0, y: 0, z: 0}
+  disableEnemyInterval: 2
   isFlashed: 0
 --- !u!114 &7732467788609504263
 MonoBehaviour:
@@ -982,7 +1030,7 @@ MonoBehaviour:
   bulletSpawnLocation: {fileID: 1481779291460578343}
   maxNumOfBullets: 30
   bulletRange: 100
-  reloadTime: 100
+  reloadTime: 2
 --- !u!1 &6463805212560364269
 GameObject:
   m_ObjectHideFlags: 0

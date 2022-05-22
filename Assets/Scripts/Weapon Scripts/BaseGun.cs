@@ -217,11 +217,15 @@ public class BaseGun : BaseWeapon
      */
     void OnRayCastHit(Bullet bullet, RaycastHit hit)
     {
-        //mDebug.Log(hit.collider.tag);
+        //Debug.Log(hit.collider.tag);
         if (hit.collider.CompareTag("Hitbox"))
         {
             //Debug.LogWarning("enemys cannot be hurt as of right now, updated bullet script");
             hit.collider.GetComponent<Health>().TakeDamage(GetDamage(), transform.forward);
+        }
+        else if(hit.collider.CompareTag("HitboxHeadshot"))
+        {
+            hit.collider.GetComponentInParent<Health>().TakeDamage(GetHeadShotDamage(), transform.forward);
         }
 
         bullet.Spawn(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, hit, 0.5f);
