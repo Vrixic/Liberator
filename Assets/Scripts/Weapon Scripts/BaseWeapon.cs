@@ -79,7 +79,6 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     public virtual void OnPickup(GameObject parent) 
     {
-        //Debug.Log(parent.name + " just picked up " + name);
         bIsPickedUp = true;
 
         transform.parent = parent.transform;

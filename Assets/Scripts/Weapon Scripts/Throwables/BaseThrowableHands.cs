@@ -16,9 +16,6 @@ public class BaseThrowableHands : BaseWeapon
     /* max amount of Throwables the player can hold at a given time */
     [SerializeField] [Tooltip("max amount of Throwables the player can hold at a given time")] int maxThrowableAmount = 2;
 
-    /* the spawn location of the Throwable, gets sets before it gets thrown */
-    //[SerializeField] [Tooltip("the spawn location of the Throwable, gets sets before it gets thrown")] Transform throwableSpawnLocation;
-
     /* current amount of Throwables */
     int m_CurrentThrowableAmount;
 

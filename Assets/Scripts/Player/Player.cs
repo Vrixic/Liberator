@@ -13,17 +13,10 @@ public class Player : ISpawnable
 
     [SerializeField] GameObject weaponsParent;
 
-    BaseWeapon[] m_InitialWeapons;
-
     /* base throwable of type flashbang */
     [SerializeField] FlashbangHand flashbang;
 
     [Header("Flashbang Settings")]
-
-    /*
-    * images used to simulate a flashbang effect
-    */
-    //[SerializeField] Image flashbangImage;
 
     /*
    * used to slow down or speed up how long flashbang lasts
@@ -97,12 +90,6 @@ public class Player : ISpawnable
     /* Shield bar connected to player, in inspector must select Shield bar from ui to work*/
     ShieldBar shieldBar;
 
-    /*Flash bang Count ui */
-    TextMeshProUGUI flashbangUi;
-
-    /* Flash Bang sprite*/
-    GameObject flashBangSprite;
-
     bool bPlayerWantsToAttack = false;
 
     private void Start()
@@ -115,18 +102,7 @@ public class Player : ISpawnable
 
         m_CurrentWeapons = new BaseWeapon[startWeaponIDs.Length];
 
-        flashbangUi = GameManager.Instance.flashBangCount;
-        flashBangSprite = GameManager.Instance.flashBangIcon;
-
         Spawn();
-
-        //m_InitialWeapons = new BaseWeapon[m_CurrentWeapons.Length];
-        //for(int i = 0; i < m_CurrentWeapons.Length; i++)
-        //{
-        //    m_InitialWeapons[i] = m_CurrentWeapons[i];
-        //    m_CurrentWeapons[i].OnPickup(weaponsParent);
-        //}
-
         flashbang.OnPickup(weaponsParent);
         DeactivateFlashbang();
     }
@@ -140,16 +116,19 @@ public class Player : ISpawnable
         }
 
         m_CurrentWeaponIndex = 0;
+        ActivateWeapon(0);
+
+        //m_CurrentEquippedWeapon = m_CurrentWeapons[m_CurrentWeaponIndex];
+        //m_CurrentEquippedWeapon.gameObject.SetActive(true);
+
+        UpdateFlashbangCount();
 
         m_CurrentPlayerHealth = maxPlayerHealth;
         m_CurrentPlayerShield = maxPlayerShield;
-        m_CurrentEquippedWeapon = m_CurrentWeapons[m_CurrentWeaponIndex];
-
-        m_CurrentEquippedWeapon.gameObject.SetActive(true);
-        UpdateFlashbangCount();
 
         healthBar.SetMaxHealth();
         shieldBar.SetMaxShield();
+
     }
 
     public override void Despawn()
@@ -166,7 +145,6 @@ public class Player : ISpawnable
 
         for (int i = 0; i < m_CurrentWeapons.Length; i++)
         {
-            //m_CurrentWeapons[i] = m_InitialWeapons[i];
             m_CurrentWeapons[i].Respawn();
             m_CurrentWeapons[i].OnPickup(weaponsParent);
         }
@@ -176,12 +154,6 @@ public class Player : ISpawnable
 
     private void Update()
     {
-        //if (flashbangImageColor.a > 0f)
-        //{
-        //    flashbangImageColor.a -= Time.deltaTime * flashbangTimeDamp;
-        //    GameManager.Instance.flashbangImage.color = flashbangImageColor;
-        //}
-
         if (GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
         {
             if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
@@ -224,8 +196,6 @@ public class Player : ISpawnable
      */
     public void Equip(BaseWeapon weapon)
     {
-        Debug.Log(name + " wants to equip " + weapon);
-
         DeactivateWeapon(m_CurrentWeaponIndex);
         weapon.OnPickup(weaponsParent);
         m_CurrentWeapons[m_CurrentWeaponIndex] = weapon;
@@ -237,8 +207,6 @@ public class Player : ISpawnable
     */
     public void Equip(WeaponID weaponID, Transform dropLocation)
     {
-        // Drops current weapon at the drop location
-        //Debug.Log("Dropping weapon: " + m_CurrentEquippedWeapon.name);
         IPickable dropWeapon = WeaponSpawnManager.Instance.GetWeaponAlias(m_CurrentEquippedWeapon.GetWeaponID());
         dropWeapon.transform.position = dropLocation.position;
 
@@ -246,20 +214,10 @@ public class Player : ISpawnable
         DeactivateWeapon(m_CurrentWeaponIndex);
         m_CurrentWeapons[m_CurrentWeaponIndex] = WeaponSpawnManager.Instance.GetWeapon(weaponID, weaponsParent.transform);
         ActivateWeapon(m_CurrentWeaponIndex);
-
-        //Debug.Log(name + " picked up and equipped " + m_CurrentEquippedWeapon.name);
     }
 
     /*
-     * Unequips current weapon
-     */
-    void UnEquip(BaseWeapon weapon)
-    {
-
-    }
-
-    /*
-     * DEBUG_-----------------------------------------------------------------------------
+     * DEBUG_-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      */
     public void TakeDamageTen()
     {
@@ -311,7 +269,6 @@ public class Player : ISpawnable
     {
         if (!GameRunningCheck()) return;
 
-        // Debug.Log("Switching to next weapon.., " + i);
         if (scrollY > 0.0f)
             EquipNextWeapon();
         else
@@ -350,7 +307,6 @@ public class Player : ISpawnable
     void EquipWeapon(int index)
     {
         if (index == m_CurrentWeaponIndex || !m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
-
 
         if (flashbang.isActiveAndEnabled)
             DeactivateFlashbang();
@@ -433,9 +389,6 @@ public class Player : ISpawnable
         DecreasePlayerHealth(damage - shieldDamageFallOff);
         healthBar.UpdateHealthBar();
         shieldBar.UpdateShieldBar();
-        //Debug.Log("Damage Taken: " + damage);
-        //Debug.Log("Current Health: " + m_CurrentPlayerHealth);
-        //Debug.Log("Current Shield: " + m_CurrentPlayerShield);
     }
 
     /*
@@ -707,25 +660,11 @@ public class Player : ISpawnable
         GameManager.Instance.flashBangCount.text = flashbang.GetCurrentAmountOfThrowables().ToString();
     }
 
-    public void HideFlashbangGUI()
-    {
-        flashbangUi.gameObject.SetActive(false);
-        flashBangSprite.gameObject.SetActive(false);
-    }
-
-    public void ShowFlashbangGUI()
-    {
-        UpdateFlashbangCount();
-        flashbangUi.gameObject.SetActive(true);
-        flashBangSprite.gameObject.SetActive(true);
-
-    }
-
     public void FlashPlayer()
     {
-        //flashbangImageColor.a = 1;
         StartCoroutine(FadeOutFlashbangImage());
     }
+
     IEnumerator FadeOutFlashbangImage()
     {
         Color color = Color.white;
@@ -741,7 +680,6 @@ public class Player : ISpawnable
 
     public void PlayOneShotAudio(AudioClip clip)
     {
-        //Debug.Log("Playing weapon audio: " + clip);
         weaponAudioSrc.PlayOneShot(clip);
     }
 

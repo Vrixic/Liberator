@@ -937,10 +937,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPoint_BasicEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1947243586203803496, guid: 0f95516d8f3f69e4f878f2966f8a6bb4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2309234392733832829, guid: 0f95516d8f3f69e4f878f2966f8a6bb4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7838,14 +7834,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_R_MiniMap
       objectReference: {fileID: 0}
-    - target: {fileID: 4456586985129732010, guid: 7b76d327cd44fc64d9c1ca8254045960, type: 3}
-      propertyPath: startWeaponIDs.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456586985129732010, guid: 7b76d327cd44fc64d9c1ca8254045960, type: 3}
-      propertyPath: startWeaponIDs.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4968363540779527741, guid: 7b76d327cd44fc64d9c1ca8254045960, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -7888,10 +7876,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4968363540779527741, guid: 7b76d327cd44fc64d9c1ca8254045960, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183498419115949129, guid: 7b76d327cd44fc64d9c1ca8254045960, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
