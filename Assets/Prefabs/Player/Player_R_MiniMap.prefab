@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beca255193a31f444851cba8beaf9e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWeaponIDs: 02000000
+  startWeaponIDs: 0200000001000000
   weaponsParent: {fileID: 192656541339044874}
   flashbang: {fileID: 3205990751018125254}
   flashbangTimeDamp: 0.2
