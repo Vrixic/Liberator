@@ -86,7 +86,6 @@ GameObject:
   - component: {fileID: 1578347272}
   - component: {fileID: 1578347275}
   - component: {fileID: 1578347274}
-  - component: {fileID: 1578347273}
   m_Layer: 8
   m_Name: MiniMapLocator
   m_TagString: Untagged
@@ -159,19 +158,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1578347273
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578347271}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1154808598260199807
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +257,10 @@ PrefabInstance:
       propertyPath: raycastOrigin
       value: 
       objectReference: {fileID: 2862660933631374357}
+    - target: {fileID: 4553074786857461883, guid: 5ec2862a64fd55043a4ff9da4cf2a1a8, type: 3}
+      propertyPath: throwablePrefab
+      value: 
+      objectReference: {fileID: -4452542067352801776, guid: c59029c7f26d8f549bdfcc93d15052b4, type: 3}
     - target: {fileID: 7586161980158107391, guid: 5ec2862a64fd55043a4ff9da4cf2a1a8, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 247
@@ -338,10 +328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beca255193a31f444851cba8beaf9e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWeaponIDs: 
+  startWeaponIDs: 02000000
   weaponsParent: {fileID: 192656541339044874}
   flashbang: {fileID: 3205990751018125254}
-  flashbangImage: {fileID: 0}
   flashbangTimeDamp: 0.2
   flashbangImageColor: {r: 0, g: 0, b: 0, a: 0}
   maxPlayerHealth: 100
