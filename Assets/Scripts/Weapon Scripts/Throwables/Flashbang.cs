@@ -25,24 +25,20 @@ public class Flashbang : BaseThrowables
         Vector3 origin = transform.position;
         origin.y += 1f;
         int collidersCount = Physics.OverlapSphereNonAlloc(origin, flashSphereRadius, colliders, GetLayerMask());
-        Debug.Log("Flash colliders: " + collidersCount);
-        if (collidersCount > 0)
+        
+        for (int i = 0; i < collidersCount; i++)
         {
-            for (int i = 0; i < collidersCount; i++)
+            Debug.Log("Flash: " + colliders[i].tag);
+            if (colliders[i].CompareTag("Player"))
             {
-                Debug.Log("Flash: " + colliders[i].tag);
-                if (colliders[i].tag == "Player")
-                {
-                    GameManager.Instance.playerScript.FlashPlayer();
-                }
-                else
-                {
-                    colliders[i].GetComponentInParent<AIAgent>().stateMachine.ChangeState(AIStateID.Flashed);
-                }
+                GameManager.Instance.playerScript.FlashPlayer();
+            }
+            else
+            {
+                colliders[i].GetComponentInParent<AIAgent>().stateMachine.ChangeState(AIStateID.Flashed);
             }
         }
 
-        //Debug.Log(name + " just exploded!");
         Invoke("Pool", GetPoolTimeAfterExplosion());
     }
 
@@ -51,7 +47,6 @@ public class Flashbang : BaseThrowables
     */
     public override void OnThrowThrowable(Vector3 forceDirection, float forceMultiplier = 1f)
     {
-        Debug.Log("Throw" + name);
         GetRigidbody().AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
         StartCoroutine(OnThrowableExplode());
     }

@@ -26,34 +26,35 @@ public class ScanGrenade : BaseThrowables
         Vector3 origin = transform.position;
         origin.y += 1f;
         int collidersCount = Physics.OverlapSphereNonAlloc(origin, scanSphereRadius, colliders, GetLayerMask());
-        Debug.Log("scan colliders: " + collidersCount);
-        if (collidersCount > 0)
+        //Debug.Log("scan colliders: " + collidersCount);
+
+        float raycastDistance = scanSphereRadius * 2f;
+
+        for (int i = 0; i < collidersCount; i++)
         {
-            for (int i = 0; i < collidersCount; i++)
+            Debug.Log("Scanned: " + colliders[i].tag);
+
+            if (scanThroughWalls == false)
             {
-                Debug.Log("Scanned: " + colliders[i].tag);
-                if (colliders[i].tag == "Hitbox")
+                Vector3 target = colliders[i].transform.position;
+                target.y += 0.5f; // so it doesn't target the ground
+
+                //Debug.DrawLine(origin, origin + (target - origin).normalized * raycastDistance, Color.green, 2f);
+                RaycastHit hitInfo;
+                if (Physics.Raycast(origin, (target - origin).normalized, out hitInfo, raycastDistance))
                 {
-                    if (scanThroughWalls == false){
-                        RaycastHit hitInfo;
-                        if (Physics.Raycast(origin, (colliders[i].transform.position - origin).normalized, 
-                            out hitInfo))
-                        {
-                            if (hitInfo.collider.CompareTag("Hitbox"))
-                            {
-                                colliders[i].GetComponent<MiniMapScanable>().Show();
-                            }
-                        }
-                    }
-                    else
+                    if(hitInfo.collider.CompareTag("Hitbox"))
                     {
                         colliders[i].GetComponent<MiniMapScanable>().Show();
-                    }
+                    }                        
                 }
+            }
+            else
+            {
+                colliders[i].GetComponent<MiniMapScanable>().Show();
             }
         }
 
-        //Debug.Log(name + " just exploded!");
         Invoke("Pool", GetPoolTimeAfterExplosion());
     }
 
@@ -62,7 +63,6 @@ public class ScanGrenade : BaseThrowables
     */
     public override void OnThrowThrowable(Vector3 forceDirection, float forceMultiplier = 1f)
     {
-        Debug.Log("Throw" + name);
         GetRigidbody().AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
         StartCoroutine(OnThrowableExplode());
     }
