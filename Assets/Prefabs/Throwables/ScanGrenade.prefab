@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPoolTime: 5
-  throwableExplodeTimer: 1
+  throwableExplodeTimer: 2
   explodeParticleSystem: {fileID: -7308709378478881761, guid: 229f17fc42a5360459f7114f32a4d689, type: 3}
   poolTimeAfterExplosion: 1
   queryLayers:
@@ -517,4 +517,3 @@ MonoBehaviour:
     m_Bits: 8192
   scanSphereRadius: 10
   scanThroughWalls: 0
-  scanEffect: {fileID: 0}
