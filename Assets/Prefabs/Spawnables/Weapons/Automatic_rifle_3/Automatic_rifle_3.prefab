@@ -144,9 +144,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowPlayerToHoldAttackTrigger: 1
   allowPlayerToHoldAimTrigger: 1
-  attackRate: 10
+  attackRate: 7.5
   raycastOrigin: {fileID: 2455876078647488555}
   damage: 25
+  headShotDamage: 40
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.66, z: -0.1}
   raycastLayers:
     serializedVersion: 2

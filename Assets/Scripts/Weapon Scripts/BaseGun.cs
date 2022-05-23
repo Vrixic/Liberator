@@ -183,10 +183,9 @@ public class BaseGun : BaseWeapon
 
         if (verticalRecoil.Count > 0)
         {
-            PlayerLook.pendingYRecoil = verticalRecoil[m_CurrentRecoilIndex]; 
+            PlayerLook.pendingYRecoil = verticalRecoil[m_CurrentRecoilIndex];
             PlayerLook.pendingXRecoil = horizontalRecoil[m_CurrentRecoilIndex];
         }
-
 
         StartShooting();
     }
@@ -199,7 +198,7 @@ public class BaseGun : BaseWeapon
         Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
 
         RaycastHit hitInfo;
-        if (Physics.Raycast(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, bulletRange, raycastLayers))
+        if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, bulletRange, raycastLayers))
         {
             OnRayCastHit(bullet, hitInfo);
         }
@@ -207,7 +206,6 @@ public class BaseGun : BaseWeapon
         {
             bullet.Spawn(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, bulletRange);
         }
-
     }
 
     /*
@@ -227,8 +225,8 @@ public class BaseGun : BaseWeapon
         {
             hit.collider.GetComponentInParent<Health>().TakeDamage(GetHeadShotDamage(), transform.forward);
         }
-
-        bullet.Spawn(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, hit, 0.5f);
+        
+        bullet.Spawn(raycastOrigin.position, (hit.point - raycastOrigin.position).normalized, hit, 0.5f);
     }
 
     public override void StopAttacking()
