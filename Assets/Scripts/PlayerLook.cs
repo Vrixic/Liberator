@@ -6,8 +6,8 @@ public class PlayerLook : MonoBehaviour
 {
     public static float xRotation = 0f;
 
-    [SerializeField] private float xSensitivity = 30f;
-    [SerializeField] private float ySensitivity = 30f;
+    [SerializeField] private float xSensitivity = .5f;
+    [SerializeField] private float ySensitivity = .5f;
 
     private Vector2 currentInputVector;
     private Vector2 recoilInputVector;
@@ -116,11 +116,13 @@ public class PlayerLook : MonoBehaviour
 
     public void LowerXSensitivity()
     {
-        xSensitivity -= .25f;
+        xSensitivity -= .75f;
+        ySensitivity -= .75f;
     }
 
     public void RaiseXSensitivity()
     {
-        xSensitivity += .25f;
+        xSensitivity += .75f;
+        ySensitivity += .75f;
     }
 }

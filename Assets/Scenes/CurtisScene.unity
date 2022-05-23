@@ -1313,6 +1313,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player5/22
       objectReference: {fileID: 0}
+    - target: {fileID: 4054988336552434399, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: xSensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054988336552434399, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: ySensitivity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6571831580933479381, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: m_RootOrder
       value: 14
