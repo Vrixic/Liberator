@@ -517,3 +517,4 @@ MonoBehaviour:
     m_Bits: 8192
   scanSphereRadius: 10
   scanThroughWalls: 0
+  scanEffect: {fileID: 0}
