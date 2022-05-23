@@ -35,9 +35,9 @@ public class MiniMapScanable : MonoBehaviour
         while (time >= 0)
         {
             if (fadingOut)
-                color.a -= 4f;
+                color.a -= 3f;
             else
-                color.a += 5f;
+                color.a += 2f;
 
             if (color.a < 0)
                 fadingOut = false;
