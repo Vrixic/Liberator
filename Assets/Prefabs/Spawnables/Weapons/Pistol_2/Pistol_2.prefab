@@ -397,6 +397,7 @@ MonoBehaviour:
   attackRate: 5
   raycastOrigin: {fileID: 7732116829421517663}
   damage: 25
+  headShotDamage: 40
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.683, z: -0.06}
   raycastLayers:
     serializedVersion: 2
@@ -412,27 +413,27 @@ MonoBehaviour:
   maxNumOfBullets: 30
   bulletDropAudioClip: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
   verticalRecoil:
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
   horizontalRecoil:
   - 0
   - 0
   - 0
-  - 1
-  - 1
-  - 1
-  - -1
-  - -1
-  - -1
-  - -1
+  - 0.3
+  - 0.3
+  - 0.3
+  - -0.3
+  - -0.3
+  - -0.3
+  - -0.3
 --- !u!1 &1179772960972010
 GameObject:
   m_ObjectHideFlags: 0

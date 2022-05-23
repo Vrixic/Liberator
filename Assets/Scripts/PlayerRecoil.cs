@@ -41,7 +41,7 @@ public class PlayerRecoil : MonoBehaviour
             GenerateRecoil();
         }
         //if there's no incoming recoil and previous recoil is not still being applied as rotation to PlayerHeadPos(recoilTimer == 0)
-        else if(recoilTimer + 0.05f <= Mathf.Epsilon) //added 0.05f because it would vertically stablize in between assault rifle shots
+        else if(recoilTimer + 0.1f <= Mathf.Epsilon) //added 0.05f because it would vertically stablize in between assault rifle shots
         {
             Stabilize();
         }

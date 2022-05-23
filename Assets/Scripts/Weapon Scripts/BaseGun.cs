@@ -183,8 +183,8 @@ public class BaseGun : BaseWeapon
 
         if (verticalRecoil.Count > 0)
         {
-            PlayerLook.pendingYRecoil = verticalRecoil[m_CurrentRecoilIndex];
-            PlayerLook.pendingXRecoil = horizontalRecoil[m_CurrentRecoilIndex];
+            PlayerRecoil.incomingVerticalRecoil = verticalRecoil[m_CurrentRecoilIndex];
+            PlayerRecoil.incomingHorizontalRecoil = horizontalRecoil[m_CurrentRecoilIndex];
         }
 
         StartShooting();
