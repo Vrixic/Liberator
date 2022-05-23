@@ -9,7 +9,6 @@ public class AIAttackPlayerState : AIState
     public void Enter(AIAgent agent)
     {
         agent.navMeshAgent.isStopped = true;
-        //agent.animator.SetTrigger("Attack");
     }
     public void Update(AIAgent agent)
     {
@@ -17,14 +16,18 @@ public class AIAttackPlayerState : AIState
         bool inSight = agent.sensor.IsInsight();
         if (!inSight)
         {
-            // Debug.Log("Exit the shoot method");
             agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
         }
 
-        //Debug.Log("Shooting at player");
-        if(agent.GetGun().ShootAtTarget(agent.playerTransform.position, agent.config.shootSprayRadius))
+        if (agent.IsMelee()) // if the weapon enemy is holding is melee type
         {
-            agent.animator.Play("Attack");
+            if (agent.GetMeleeWeapon().Attack()) // check to see if enemy is capable of attacking right now
+                agent.animator.Play("Attack");
+        }
+        else
+        {
+            if (agent.GetGun().ShootAtTarget(agent.playerTransform.position, agent.config.shootSprayRadius))
+                agent.animator.Play("Attack");
         }
     }
     public void Exit(AIAgent agent)

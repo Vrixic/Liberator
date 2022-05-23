@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class BulletImpactManager : MonoBehaviour
 {
     /* size of the each particle systems object pool */
@@ -13,6 +14,8 @@ public class BulletImpactManager : MonoBehaviour
     public Dictionary<string, string> bulletImpactDictionary = new Dictionary<string, string>();
 
     public Dictionary<string, AudioClip> bulletImpactAudioClipDictionary = new Dictionary<string, AudioClip>();
+
+    AudioSource m_AudioSource;
 
     /* instance of this object, singleton pattern */
     private static BulletImpactManager m_Instance;
@@ -48,6 +51,8 @@ public class BulletImpactManager : MonoBehaviour
             bulletImpactDictionary.Add(impact.objectTag, ObjectPoolManager.CreateObjectPool(impact.collisionParticleSystem, particleSystemBuffer));
             bulletImpactAudioClipDictionary.Add(impact.objectTag, impact.impactAudio);
         }
+
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     /*
@@ -63,6 +68,19 @@ public class BulletImpactManager : MonoBehaviour
         {
             UpdateSpawnBulletImpact(position, forward, ObjectPoolManager.SpawnObject(bulletImpactDictionary[bulletImpacts[0].objectTag]));
         }
+    }
+
+    public void PlayAudioAtLocation(Vector3 location, string objectTag, float volume = 1f)
+    {
+        SetAudioVolume(volume);
+
+        m_AudioSource.transform.position = location;
+        m_AudioSource.PlayOneShot(GetAudioClipForImpactFromTag(objectTag));
+    }
+
+    public void SetAudioVolume(float val)
+    {
+        m_AudioSource.volume = val;
     }
 
     public AudioClip GetAudioClipForImpactFromTag(string objectTag)

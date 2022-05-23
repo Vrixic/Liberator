@@ -770,7 +770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4180446612439516
 Transform:
   m_ObjectHideFlags: 0
@@ -1974,10 +1974,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowPlayerToHoldAttackTrigger: 1
   allowPlayerToHoldAimTrigger: 1
-  attackRate: 7.5
+  attackRate: 4.5
   raycastOrigin: {fileID: 4913780900570080257}
-  damage: 25
+  damage: 40
+  headShotDamage: 60
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.643, z: -0.15}
+  raycastLayers:
+    serializedVersion: 2
+    m_Bits: 8385
+  gunIcon: {fileID: 21300002, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
   attackAudioClip: {fileID: 8300000, guid: 31dd766815c5f184e8c5d75aee7ec18b, type: 3}
   reloadAudioClip: {fileID: 8300000, guid: 586d58f81555a854996339b8111bd791, type: 3}
   muzzleFlash: {fileID: 1303662085375674780}
@@ -1987,7 +1992,8 @@ MonoBehaviour:
   ammoType: 0
   maxNumOfBullets: 30
   bulletDropAudioClip: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
-  bulletDropAudioInterval: 0.5
+  verticalRecoil: []
+  horizontalRecoil: []
 --- !u!1 &1706708879700924
 GameObject:
   m_ObjectHideFlags: 0

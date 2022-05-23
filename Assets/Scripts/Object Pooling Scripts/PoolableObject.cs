@@ -25,6 +25,8 @@ public class PoolableObject : MonoBehaviour
     {
         m_IsAlreadyPooled = false;
 
+        CancelInvoke("Pool");
+
         if (autoPoolTime > 0)
             Invoke("Pool", autoPoolTime);
     }
@@ -48,6 +50,7 @@ public class PoolableObject : MonoBehaviour
             m_IsAlreadyPooled = true;
         }
     }
+
     public void SetParent(ObjectPool parent)
     {
         m_Parent = parent;

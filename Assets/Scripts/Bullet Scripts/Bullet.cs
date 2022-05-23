@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(TrailRenderer))]
 public class Bullet : PoolableObject
 {
@@ -10,53 +9,28 @@ public class Bullet : PoolableObject
     /* speed of bullet */
     public float moveSpeed = 25f;
 
-    public bool isEnemy = false;
-
-    /* name of the method that is invoked after collision to pool object */
-    private const string DISABLE_METHOD_NAME = "ReturnBulletToPool";
-
-    /* bullet collided bool */
-    bool bHitSomething = false;
-
     /* spawned position of bullet */
     Vector3 m_StartPosition;
 
-    /* current position of bullet */
-    Vector3 m_CurrentPosition;
-
-    /* next position of bullet */
-    Vector3 m_NextPosition;
-
-    /* range the bullet can go to before it gets pooled */
+    /* range the bullet can go to before it gets pooled, squared range */
     float m_BulletRange = 0f;
 
-    AudioSource m_AudioSource;
-
     TrailRenderer m_TrailRenderer;
-
-    int damage = 0;
-
-    BaseGun parentGun;
 
     public override void OnStart()
     {
         base.OnStart();
 
-        m_AudioSource = GetComponent<AudioSource>();
         m_TrailRenderer = GetComponent<TrailRenderer>();
     }
 
-    /*
-     * Overriden to set @Member Field 'bHitSomething' when bullet is active again
-     */
+
     public override void OnEnable()
     {
         m_IsAlreadyPooled = false;
 
         if (autoPoolTime > 0)
             Invoke("Pool", autoPoolTime);
-
-        bHitSomething = false;
     }
 
     /*
@@ -66,22 +40,9 @@ public class Bullet : PoolableObject
     private void FixedUpdate()
     {
         float nextPositionMultiplier = moveSpeed * Time.deltaTime;
-        m_CurrentPosition = transform.position;
-        m_NextPosition = transform.position + (transform.forward * nextPositionMultiplier);
+        transform.position = transform.position + (transform.forward * nextPositionMultiplier);
 
-        if (!bHitSomething)
-        {
-            RaycastHit hitInfo;
-            if (Physics.Raycast(m_CurrentPosition, transform.forward, out hitInfo, nextPositionMultiplier))
-            {
-                bHitSomething = true;
-                OnRayCastHit(hitInfo);
-            }
-        }
-
-        transform.position = m_NextPosition;
-
-        if ((m_StartPosition - transform.position).magnitude >= m_BulletRange)
+        if ((m_StartPosition - transform.position).sqrMagnitude >= m_BulletRange)
             ReturnBulletToPool();
     }
 
@@ -92,45 +53,16 @@ public class Bullet : PoolableObject
      */
     void OnRayCastHit(RaycastHit hit)
     {
-        if(isEnemy)
+        if(hit.collider.tag == "Explodable")
         {
-            if (hit.collider.tag == "Player")
-            {
-                hit.collider.GetComponent<Player>().TakeDamage(damage);
-            }
-        }
-        else
-        {
-            Debug.Log(hit.collider.tag);
-            if (hit.collider.tag == "Hitbox")
-            {
-                //Debug.LogWarning("enemys cannot be hurt as of right now, updated bullet script");
-                hit.collider.GetComponent<Health>().TakeDamage(damage, transform.forward);
-            }
+            Explodable e = hit.collider.GetComponent<Explodable>();
+            e.ExplodableIsHit(hit.point, hit.normal);
         }
 
-        //Debug.Log("Tag: " + hit.collider.tag);
         BulletImpactManager.Instance.SpawnBulletImpact(hit.point, hit.normal, hit.collider.tag);
-
-        // Audio
-        m_AudioSource.PlayOneShot(BulletImpactManager.Instance.GetAudioClipForImpactFromTag(hit.collider.tag));
-
-        if (destroyTimeAfterCollision == -2)
-        {
-            ReturnBulletToPool();
-        }
-        else
-        {
-            CancelInvoke(DISABLE_METHOD_NAME);
-            Invoke(DISABLE_METHOD_NAME, destroyTimeAfterCollision);
-        }
-       
     }
 
-    /*
-     * Updates member fields when bullet is spawned
-     */
-    public void Spawn(Vector3 position, Vector3 forward, float bulletRange, BaseGun parent)
+    public void Spawn(Vector3 position, Vector3 forward, float bulletRange)
     {
         m_StartPosition = position;
         transform.position = position;
@@ -138,12 +70,10 @@ public class Bullet : PoolableObject
 
         m_TrailRenderer.SetPosition(0, position);
 
-        parentGun = parent;
-
         m_BulletRange = bulletRange;
     }
 
-    public void Spawn(Vector3 position, Vector3 forward, float bulletRange, int d)
+    public void Spawn(Vector3 position, Vector3 forward, RaycastHit hit, float audioVolume = 1f)
     {
         m_StartPosition = position;
         transform.position = position;
@@ -151,36 +81,18 @@ public class Bullet : PoolableObject
 
         m_TrailRenderer.SetPosition(0, position);
 
-        damage = d;
+        m_BulletRange = (hit.point - position).sqrMagnitude;
 
-        m_BulletRange = bulletRange;
+        OnRayCastHit(hit);
+
+        BulletImpactManager.Instance.PlayAudioAtLocation(hit.point, hit.collider.tag, audioVolume);
     }
-
-    #region CollisionDetection
-    /*private void OnCollisionEnter(Collision collision) // Not beings used for this projectile as it moves faster than the collision checks in one frame
-    {
-        ContactPoint contact = collision.GetContact(0);
-
-        if (collision.gameObject.TryGetComponent<Renderer>(out Renderer renderer))
-        {
-            BulletImpactManager.Instance.SpawnBulletImpact(contact.point, contact.normal, renderer.sharedMaterial);
-        }
-        else
-        {
-            BulletImpactManager.Instance.SpawnBulletImpact(contact.point, contact.normal, null);
-        }
-
-        CancelInvoke(DISABLE_METHOD_NAME);
-        Invoke(DISABLE_METHOD_NAME, DestroyTimeAfterCollision);
-    }*/
-    #endregion // Not in use
 
     /*
      * Returns bullet to it pool
      */
     private void ReturnBulletToPool()
     {
-        //m_AudioSource.Stop();
         Pool();
     }
 }

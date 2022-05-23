@@ -4,7 +4,6 @@ public class Knife : BaseMelee
 {
     [SerializeField] float knifeHitRange = 0.5f;
 
-
     /*
     * triggers first attack 
     */
@@ -47,12 +46,19 @@ public class Knife : BaseMelee
     public override void OnAnimationEvent_AttackHit()
     {
         RaycastHit hitInfo;
-        //Debug.DrawLine(fpCamera.transform.position, fpCamera.transform.position + fpCamera.transform.forward * knifeHitRange, Color.red, 2f);
-        if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, knifeHitRange))
+        //Debug.DrawLine(raycastOrigin.position, raycastOrigin.position + GameManager.Instance.mainCamera.transform.forward * knifeHitRange, Color.red, 2f);
+        if (Physics.Raycast(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, knifeHitRange, raycastLayers))
         {
+            //Debug.Log(hitInfo.collider.tag);
 
-            if (hitInfo.collider.tag == "Hitbox")
-                hitInfo.collider.GetComponent<Hitbox>().OnRaycastHit(this, transform.forward);
+            if (hitInfo.collider.CompareTag("Hitbox"))
+            {
+                hitInfo.collider.GetComponent<Health>().TakeDamage(GetDamage(), transform.forward);
+            }
+            else if (hitInfo.collider.CompareTag("HitboxHeadshot"))
+            {
+                hitInfo.collider.GetComponentInParent<Health>().TakeDamage(GetHeadShotDamage(), transform.forward);
+            }
 
             MeleeImpactManager.Instance.SpawnMeleeImpact(hitInfo.point, hitInfo.normal, hitInfo.collider.tag);
 

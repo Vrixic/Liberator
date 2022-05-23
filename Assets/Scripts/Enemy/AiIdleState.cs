@@ -12,7 +12,6 @@ public class AIIdleState : AIState
     public void Enter(AIAgent agent)
     {
         agent.currentState = AIStateID.Idle;
-        //agent.animator.SetTrigger("Idle");
         agent.navMeshAgent.isStopped = true;
     }
 
@@ -34,11 +33,11 @@ public class AIIdleState : AIState
 
         //find the square distance between the player and enemy without completing the distance formula
         //with a square root since that is an expensive operation
-        float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
+        //float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
 
         //if the player is within the enemies detection range
-        if (sqrDistance <= agent.config.maxChaseDistance)
-        {
+        //if (sqrDistance <= agent.config.maxChaseDistance)
+        //{
             // Debug.Log("Player is within enemy detection range");
             //check if the player is in the enemies FOV
             if (agent.sensor.IsInsight())
@@ -46,7 +45,7 @@ public class AIIdleState : AIState
                 //Debug.Log("Switching form idle to chase...");
                 agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
             }
-        }
+        //}
         //float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
 
         ////if the player is within the enemies detection range

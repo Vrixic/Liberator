@@ -37,6 +37,10 @@ TagManager:
   - Assassin
   - MeleeUnit
   - Juggernaut
+  - Explodable
+  - FlashbangImage
+  - GunIcon
+  - HitboxHeadshot
   layers:
   - Default
   - TransparentFX
@@ -50,8 +54,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 

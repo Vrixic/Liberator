@@ -144,10 +144,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowPlayerToHoldAttackTrigger: 1
   allowPlayerToHoldAimTrigger: 1
-  attackRate: 10
+  attackRate: 7.5
   raycastOrigin: {fileID: 2455876078647488555}
   damage: 25
+  headShotDamage: 40
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.66, z: -0.1}
+  raycastLayers:
+    serializedVersion: 2
+    m_Bits: 8385
+  gunIcon: {fileID: 21300044, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
   attackAudioClip: {fileID: 8300000, guid: d78fd3e92516b334895d70ba82564232, type: 3}
   reloadAudioClip: {fileID: 8300000, guid: 586d58f81555a854996339b8111bd791, type: 3}
   muzzleFlash: {fileID: 5282520037095229993}
@@ -158,27 +163,67 @@ MonoBehaviour:
   maxNumOfBullets: 30
   bulletDropAudioClip: {fileID: 8300000, guid: f09a736935df5e6479f550837fba1f68, type: 3}
   verticalRecoil:
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   horizontalRecoil:
   - 0
   - 0
   - 0
-  - 0
-  - 50
-  - -50
-  - -50
-  - 50
-  - 50
-  - -50
+  - 0.25
+  - 0.25
+  - 0.25
+  - -0.25
+  - -0.25
+  - -0.25
+  - -0.25
+  - -0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  - -0.25
+  - -0.25
+  - -0.5
+  - -0.5
+  - -0.25
+  - 0.25
+  - 0.25
+  - 0.5
+  - -0.5
+  - -0.25
+  - -0.25
+  - -0.25
+  - -0.25
 --- !u!1 &1040388300409106
 GameObject:
   m_ObjectHideFlags: 0

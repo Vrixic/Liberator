@@ -18,6 +18,11 @@ public class AIAgent : ISpawnable
     [HideInInspector]public Transform playerTransform;
     [HideInInspector] public AiSensor sensor;
     [HideInInspector] public Animator animator;
+    [SerializeField] bool isMelee = false;
+
+    [HideInInspector] public Vector3 aimDirection;
+
+    [SerializeField] [Tooltip("How long should it wait to clean up the enemy's body after death")]float disableEnemyInterval = 2f;
 
     private Coroutine lookCouroutine;
 
@@ -26,6 +31,7 @@ public class AIAgent : ISpawnable
     private Health enemyHealth;
 
     private EnemyGun enemyGun;
+    private EnemyMelee enemyMelee;    
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +49,14 @@ public class AIAgent : ISpawnable
         stateMachine.RegisterState(new AIFlashState());
         stateMachine.RegisterState(new AIAttackPlayerState());
         stateMachine.RegisterState(new AIReturnState());
-        enemyGun = GetComponent<EnemyGun>();
+        if (isMelee)
+        {
+            enemyMelee = GetComponent<EnemyMelee>();
+        }
+        else
+        {
+            enemyGun = GetComponent<EnemyGun>();
+        }
         enemyHealth = GetComponent<Health>();
         Spawn();
     }
@@ -56,7 +69,6 @@ public class AIAgent : ISpawnable
         //constantly updates the machine
         stateMachine.Update();
 
-        //animator.SetFloat("Speed", navMeshAgent.speed);
         animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
     }
 
@@ -84,8 +96,15 @@ public class AIAgent : ISpawnable
         base.Respawn();
 
         animator.SetBool("isDead", false);
-        enemyGun.ResetGun();
+        if (!isMelee)
+            enemyGun.ResetGun();
         Spawn();
+    }
+
+    public void CS_ReturnToPost(Vector3 aimPosition)
+    {
+        aimDirection = aimPosition;
+        stateMachine.ChangeState(AIStateID.Returning);
     }
 
     public void Rotating()
@@ -98,19 +117,39 @@ public class AIAgent : ISpawnable
         lookCouroutine = StartCoroutine(LookAt());
     }
 
+    //public IEnumerator LookAt()
+    //{
+    //    Vector3 lookRotation = GameManager.Instance.playerTransform.position - transform.position;
+    //    lookRotation.y = transform.position.y;
+    //    Quaternion rot = Quaternion.LookRotation(lookRotation);
+
+    //    float time = 0;
+
+    //    while(time < 1)
+    //    {
+    //        transform.rotation = Quaternion.Slerp(transform.rotation, rot, time);
+
+    //        time += Time.deltaTime * config.speed;
+
+    //        yield return null;
+    //    }
+
+    //}
+
     public IEnumerator LookAt()
     {
-        Vector3 lookRotation = GameManager.Instance.playerTransform.position - transform.position;
-        lookRotation.y = transform.position.y;
+        Vector3 lookRotation = (GameManager.Instance.playerTransform.position - transform.position).normalized; // the direction vector, means it has to be normalized
+        lookRotation.y = 0f; // we don't want enemy to look up or down
+        //Debug.DrawLine(transform.position, transform.position + lookRotation * 10f, Color.red, 0.5f);
         Quaternion rot = Quaternion.LookRotation(lookRotation);
 
-        float time = 0;
+        float time = 1; // start time 
 
-        while(time < 1)
+        while (time > 0) // end time
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, time);
 
-            time += Time.deltaTime * config.speed;
+            time -= Time.deltaTime * config.speed; // increases the rotation per frame depending on the speed
 
             yield return null;
         }
@@ -120,5 +159,20 @@ public class AIAgent : ISpawnable
     public EnemyGun GetGun()
     {
         return enemyGun;
+    }
+
+    public EnemyMelee GetMeleeWeapon()
+    {
+        return enemyMelee;
+    }
+
+    public bool IsMelee()
+    {
+        return isMelee;
+    }
+
+    public float GetDisableEnemyInterval()
+    {
+        return disableEnemyInterval;
     }
 }

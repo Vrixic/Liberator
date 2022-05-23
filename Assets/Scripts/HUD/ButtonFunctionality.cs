@@ -57,10 +57,6 @@ public class ButtonFunctionality : MonoBehaviour
     }
     public void Resume()
     {
-        if (virtualCam == null)
-        {
-            Debug.Log("Reticle is Null");
-        }
         // Turn Reticle back on
         reticle.SetActive(true);
 
@@ -70,10 +66,7 @@ public class ButtonFunctionality : MonoBehaviour
         // Resumes time
         Time.timeScale = 1f;
         // Re Enables players ability to look around and disables the Pause menu UI image
-        if (reticle == null)
-        {
-            Debug.Log("Virtual Cam is Null");
-        }
+
         if (virtualCam != null)
         {
 
@@ -141,11 +134,11 @@ public class ButtonFunctionality : MonoBehaviour
         {
             if (GameManager.Instance.playerScript.GetCurrentPlayerHealth() != GameManager.Instance.playerScript.GetPlayersMaxHealth())
             {
+                // Subtract Cost of items and update Cash Count
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
+                // Refill players Health to max
                 GameManager.Instance.playerScript.IncreasePlayerHealth(GameManager.Instance.playerScript.GetPlayersMaxHealth());
-                // Updates Healthbar UI
-                GameManager.Instance.healthBarScript.UpdateHealthBar();
             }
         }
 
@@ -159,11 +152,11 @@ public class ButtonFunctionality : MonoBehaviour
         {
             if (GameManager.Instance.playerScript.GetCurrentPlayerShield() != GameManager.Instance.playerScript.GetPlayersMaxShield())
             {
+                // Subtract Cost of items and update Cash Count
                 GameManager.Instance.CurrentCash -= 200;
                 UpdateCashCountShopUi();
+                // Refill Players Shield to max
                 GameManager.Instance.playerScript.IncreasePlayerShield(GameManager.Instance.playerScript.GetPlayersMaxShield());
-                // Updates Shieldbar UI
-                GameManager.Instance.shieldBarScript.UpdateShieldBar();
             }
         }
     }
@@ -176,12 +169,12 @@ public class ButtonFunctionality : MonoBehaviour
         {
             if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small))
             {
-
+                // Subtract Cost of items and update Cash Count
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
-                // TODO: Insert code to reset ammo count
+                // Refill Players Ammo to max
                 AmmoManager.Instance.RefillAmmo(AmmoType.Small);
-                // TODO: add code that Updates Ui count
+                // Update Ammo Ui
                 AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
 
             }
@@ -197,12 +190,12 @@ public class ButtonFunctionality : MonoBehaviour
         {
             if (GameManager.Instance.playerScript.GetCurrentFlashbangsAmount() != GameManager.Instance.playerScript.GetMaxFlashBangs())
             {
-
+                // Subtract Cost of items and update Cash Count
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
-                // TODO: Insert code to reset ammo count
+                // Refill players flashbang Count to max
                 GameManager.Instance.playerScript.IncreaseFlashbang(GameManager.Instance.playerScript.GetMaxFlashBangs());
-                // TODO: add code that Updates Ui count
+                // Update Flashbang UI
                 GameManager.Instance.playerScript.UpdateFlashbangCount();
 
             }
@@ -215,27 +208,41 @@ public class ButtonFunctionality : MonoBehaviour
 
         if (GameManager.Instance.CurrentCash >= 200)
         {
-            GameManager.Instance.CurrentCash -= 200;
-            UpdateCashCountShopUi();
+            if (GameManager.Instance.playerScript.GetCurrentFlashbangsAmount() != GameManager.Instance.playerScript.GetMaxFlashBangs())
+            {
+                if (GameManager.Instance.playerScript.GetCurrentSensorGrenadeCount() != GameManager.Instance.playerScript.GetMaxSensorGrenadeCount())
+                {
+                    // Subtract Cost of items and update Cash Count
+                    GameManager.Instance.CurrentCash -= 200;
+                    UpdateCashCountShopUi();
+                    // Refill Flashbangs and Sensor Grenades to max
+                    GameManager.Instance.playerScript.IncreaseFlashbang(GameManager.Instance.playerScript.GetMaxFlashBangs());
+                    GameManager.Instance.playerScript.IncreaseSensorGrenade(GameManager.Instance.playerScript.GetMaxSensorGrenadeCount());
 
-            // TODO: Insert code to refill all equipment count
-
-            // TODO: add code that Updates Ui count
+                    // Update Ui
+                    GameManager.Instance.playerScript.UpdateFlashbangCount();
+                    GameManager.Instance.playerScript.UpdateSensorGrenadeUi();
+                }
+            }
         }
     }
 
-    // To Do: Implement a sensor grenade buy once sensor grenade is implemented
     public void BuySensorGrenade()
     {
 
         if (GameManager.Instance.CurrentCash >= 100)
         {
-            GameManager.Instance.CurrentCash -= 100;
-            UpdateCashCountShopUi();
+            if (GameManager.Instance.playerScript.GetCurrentSensorGrenadeCount() != GameManager.Instance.playerScript.GetMaxSensorGrenadeCount())
+            {
+                // Subtract Cost of items and update Cash Count
+                GameManager.Instance.CurrentCash -= 100;
+                UpdateCashCountShopUi();
+                // Refill Sensor Grenades to max
+                GameManager.Instance.playerScript.IncreaseSensorGrenade(GameManager.Instance.playerScript.GetMaxSensorGrenadeCount());
+                // Update Sensor Grenade UI
+                GameManager.Instance.playerScript.UpdateSensorGrenadeUi();
+            }
 
-            // TODO: Insert code to refills Sensor grenade count
-
-            // TODO: add code that Updates Ui count
         }
     }
     public void UpdateCashCountShopUi()

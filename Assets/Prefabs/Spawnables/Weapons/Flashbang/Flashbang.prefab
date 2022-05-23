@@ -1343,7 +1343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4278347062721522
 Transform:
   m_ObjectHideFlags: 0
@@ -1404,15 +1404,19 @@ MonoBehaviour:
   allowPlayerToHoldAttackTrigger: 0
   allowPlayerToHoldAimTrigger: 0
   attackRate: 2
-  raycastOrigin: {fileID: 0}
+  raycastOrigin: {fileID: 6940906444939813328}
   damage: 25
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.743, z: -0.429}
-  attackAudioClip: {fileID: 8300000, guid: dba1a0ef5c381024cb013330709a1064, type: 3}
+  raycastLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  gunIcon: {fileID: 0}
+  attackAudioClip: {fileID: 8300000, guid: f1e8627fd9609c743b4a49b59cf4dcbd, type: 3}
   throwForceMultiplier: 10
   distanceFromPlayerMultiplier: 15
-  flashbangPrefab: {fileID: -6948991309844511447, guid: 9e8b88ab444926f4a838bb271ebb580b, type: 3}
-  maxFlashbangAmount: 2
-  flashbangSpawnLocation: {fileID: 6940906444939813328}
+  throwablePrefab: {fileID: -6948991309844511447, guid: 9e8b88ab444926f4a838bb271ebb580b, type: 3}
+  maxThrowableAmount: 2
+  throwableSpawnLocation: {fileID: 0}
 --- !u!1 &1776315364890802
 GameObject:
   m_ObjectHideFlags: 0

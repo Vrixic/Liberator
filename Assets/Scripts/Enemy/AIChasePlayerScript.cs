@@ -21,16 +21,16 @@ public class AIChasePlayerScript : AIState
 
         //stops a lot of cost for the enemy.
         // gets the squared dist from player to enemy
-        float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
+        //float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
         //tracks look rotation of the enemy.
         agent.Rotating();
 
         // if the player has left the range of the enemy, make the enemy idle
-        if (sqrDistance > agent.config.maxChaseDistance) // if player goes out of sight just go back to idle
-        {
+        //if (sqrDistance > agent.config.maxChaseDistance) // if player goes out of sight just go back to idle
+        //{
             
-            agent.stateMachine.ChangeState(AIStateID.Idle);
-        }
+           // agent.stateMachine.ChangeState(AIStateID.Idle);
+        //}
 
 
         bool inSight = agent.sensor.IsInsight();

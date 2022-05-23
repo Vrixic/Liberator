@@ -24,7 +24,7 @@ public class BaseGun : BaseWeapon
     [SerializeField] Bullet bulletPrefab;
 
     /* the max range a bullet can travel before getting destroyed */
-    [SerializeField] float bulletRange = 100f;
+    [SerializeField] [Tooltip("Squared range")] float bulletRange = 10000f;
 
     /* type of ammo this gun uses */
     [SerializeField] AmmoType ammoType;
@@ -33,9 +33,6 @@ public class BaseGun : BaseWeapon
     [SerializeField] int maxNumOfBullets = 30;
 
     [SerializeField] AudioClip bulletDropAudioClip;
-
-    /* amount of seconds to wait to play bullet drop audio after shooting */
-    //[SerializeField] float bulletDropAudioInterval = 0.5f;
 
     /* current number of bullets */
     int m_CurrentNumOfBullets;
@@ -91,13 +88,15 @@ public class BaseGun : BaseWeapon
 
     public override void OnWeaponEquip()
     {
+        base.OnWeaponEquip();
+
         AmmoManager.Instance.ShowAmmoGUI();
         UpdateAmmoGUI();
     }
 
     public override void OnWeaponUnequip()
     {
-
+        base.OnWeaponUnequip();
     }
 
     /*
@@ -164,41 +163,14 @@ public class BaseGun : BaseWeapon
 
         PlayBulletDropAudio();
         UpdateAmmoGUI();
-
-        //Invoke("HideMuzzleFlash", 0.02f);
-        //Invoke("PlayBulletDropAudio", bulletDropAudioInterval);
     }
-
-    //public override void OnAnimationEvent_AttackStart()
-    //{
-    //    //PlayAttackAudio();
-
-    //    //muzzleFlash.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
-    //    //muzzleFlash.SetActive(true);
-
-    //    //m_MuzzleFlashTime = Time.time + muzzleFlashTime;
-    //}
-
-    //public override void OnAnimationEvent_AttackEnd()
-    //{
-    //    PlayBulletDropAudio();
-    //    UpdateAmmoGUI();
-    //}
 
     /*
      * adds recoil than shoots the bullet
      */
     public virtual void ShootWithRecoil()
     {
-        Debug.Log("BaseGun 'ShoowWithRecoil()' : doesn't need an implementation, for child classes");
-
-        // @TODO: Recoil
-        //if(m_CurrentRecoilIndex < verticalRecoil.Count)
-        //{
-
-        //}
-        //PlayerLook.pendingXRecoil = 50f; //horizontalRecoil[m_CurrentRecoilIndex];
-
+        //Debug.Log("BaseGun 'ShoowWithRecoil()' : doesn't need an implementation, for child classes");
 
         if ((m_CurrentRecoilIndex + 1) == verticalRecoil.Count)
         {
@@ -211,10 +183,9 @@ public class BaseGun : BaseWeapon
 
         if (verticalRecoil.Count > 0)
         {
-            PlayerLook.pendingYRecoil = verticalRecoil[m_CurrentRecoilIndex]; //verticalRecoil[m_CurrentRecoilIndex];
-            PlayerLook.pendingXRecoil = horizontalRecoil[m_CurrentRecoilIndex];
+            PlayerRecoil.incomingVerticalRecoil = verticalRecoil[m_CurrentRecoilIndex];
+            PlayerRecoil.incomingHorizontalRecoil = horizontalRecoil[m_CurrentRecoilIndex];
         }
-
 
         StartShooting();
     }
@@ -226,7 +197,36 @@ public class BaseGun : BaseWeapon
     {
         Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
 
-        bullet.Spawn(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, bulletRange, GetDamage());
+        RaycastHit hitInfo;
+        if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, bulletRange, raycastLayers))
+        {
+            OnRayCastHit(bullet, hitInfo);
+        }
+        else
+        {
+            bullet.Spawn(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, bulletRange);
+        }
+    }
+
+    /*
+     * Bullet collided with an object
+     * Spawns a impact particle based on what was hit
+     * Invokes disable method for bullet to get pooled
+     */
+    void OnRayCastHit(Bullet bullet, RaycastHit hit)
+    {
+        //Debug.Log(hit.collider.tag);
+        if (hit.collider.CompareTag("Hitbox"))
+        {
+            //Debug.LogWarning("enemys cannot be hurt as of right now, updated bullet script");
+            hit.collider.GetComponent<Health>().TakeDamage(GetDamage(), transform.forward);
+        }
+        else if(hit.collider.CompareTag("HitboxHeadshot"))
+        {
+            hit.collider.GetComponentInParent<Health>().TakeDamage(GetHeadShotDamage(), transform.forward);
+        }
+        
+        bullet.Spawn(raycastOrigin.position, (hit.point - raycastOrigin.position).normalized, hit, 0.5f);
     }
 
     public override void StopAttacking()

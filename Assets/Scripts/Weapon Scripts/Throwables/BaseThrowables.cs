@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(AudioSource))]
 public class BaseThrowables : PoolableObject
@@ -10,16 +9,20 @@ public class BaseThrowables : PoolableObject
     [SerializeField] [Tooltip("time it takes before the throwable expodes")] float throwableExplodeTimer = 1.0f;
 
     /* particle system to be played when the throwable explodes */
-    [SerializeField] [Tooltip("particle system to be played when the throwable explodes")] ParticleSystem explodeParticleSystem;
+    [SerializeField] [Tooltip("particle system to be played when the throwable explodes")] PoolableObject explodeParticleSystem;
 
     /* the time in seconds it should wait before pooling this throwable back to the object pool */
     [SerializeField] [Tooltip("the time in seconds it should wait before pooling this throwable back to the object pool")] float poolTimeAfterExplosion = 1.0f;
+
+    [SerializeField] [Tooltip("On explosion, only these layers will be queried")] LayerMask queryLayers;
 
     /* the audio source used to play audio for this throwable */
     AudioSource m_AudioSource;
 
     /* rigidbody for this throwable */
     Rigidbody m_RigidBody;
+
+    string m_ExplosionSFXPool;
 
     public BaseThrowables() { }
 
@@ -30,6 +33,8 @@ public class BaseThrowables : PoolableObject
     {
         m_AudioSource = GetComponent<AudioSource>();
         m_RigidBody = GetComponent<Rigidbody>();
+
+        m_ExplosionSFXPool = ObjectPoolManager.CreateObjectPool(explodeParticleSystem, 1);
     }
 
     /*
@@ -69,7 +74,9 @@ public class BaseThrowables : PoolableObject
     */
     protected void PlayExplodeSFX()
     {
-        explodeParticleSystem.Play();
+        PoolableObject poolObject = ObjectPoolManager.SpawnObject(m_ExplosionSFXPool);
+        poolObject.transform.position = transform.position;
+        poolObject.transform.rotation = transform.rotation;
     }
 
     /*
@@ -94,5 +101,15 @@ public class BaseThrowables : PoolableObject
     protected Rigidbody GetRigidbody()
     {
         return m_RigidBody;
+    }
+
+    public void SetLayerMask(LayerMask mask)
+    {
+        queryLayers = mask;
+    }
+
+    protected LayerMask GetLayerMask()
+    {
+        return queryLayers;
     }
 }

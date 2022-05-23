@@ -29,73 +29,75 @@ public class PlayerLook : MonoBehaviour
         currentInputVector.x = input.x * xSensitivity * Time.deltaTime;
         currentInputVector.y = input.y * ySensitivity * Time.deltaTime;
 
-        currentXRecovery = xRecoilRecovery * Time.deltaTime;
-        currentYRecovery = yRecoilRecovery * Time.deltaTime;
+        #region old recoil system
+        //currentXRecovery = xRecoilRecovery * Time.deltaTime;
+        //currentYRecovery = yRecoilRecovery * Time.deltaTime;
 
-        //add on any pending horizontal recoil
-        recoilInputVector.x = currentInputVector.x + pendingXRecoil;
+        ////add on any pending horizontal recoil
+        //recoilInputVector.x = currentInputVector.x + pendingXRecoil;
 
-        //track the total applied recoil
-        totalXRecoil += pendingXRecoil;
+        ////track the total applied recoil
+        //totalXRecoil += pendingXRecoil;
 
-        if( totalXRecoil <= Mathf.Epsilon)
-        {
-            //if there is no horizontal recoil then skip
-        }
-        //horizontal recoil to the right that needs to be stabilized
-        else if (totalXRecoil >= currentXRecovery)
-        {
-            recoilInputVector.x -= currentXRecovery;
-            totalXRecoil -= currentXRecovery;
-        }
-        //horizontal recoil to the left that needs to be stabilized
-        else if (totalXRecoil <= -currentXRecovery)
-        {
-            recoilInputVector.x += currentXRecovery;
-            totalXRecoil += currentXRecovery;
-        }
-        //little bit of right horizontal recoil to restore
-        else if (totalXRecoil > 0)
-        {
-            recoilInputVector.x -= totalXRecoil * Time.deltaTime;
-            totalXRecoil += -(totalXRecoil * Time.deltaTime);
-        }
-        //little bit of left horizontal recoil to restore
-        else if (totalXRecoil < 0)
-        {
-            recoilInputVector.x += totalXRecoil * Time.deltaTime;
-            totalXRecoil += -(totalXRecoil * Time.deltaTime);
-        }
-        
-        //add on any pending vertical recoil
-        recoilInputVector.y = currentInputVector.y + pendingYRecoil;
+        //if (totalXRecoil == 0)
+        //{
+        //    //if there is no horizontal recoil then skip
+        //}
+        ////horizontal recoil to the right that needs to be stabilized
+        //else if (totalXRecoil >= currentXRecovery)
+        //{
+        //    recoilInputVector.x -= currentXRecovery;
+        //    totalXRecoil -= currentXRecovery;
+        //}
+        ////horizontal recoil to the left that needs to be stabilized
+        //else if (totalXRecoil <= -currentXRecovery)
+        //{
+        //    recoilInputVector.x += currentXRecovery;
+        //    totalXRecoil += currentXRecovery;
+        //}
+        ////little bit of right horizontal recoil to restore
+        //else if (currentXRecovery > totalXRecoil && totalXRecoil > 0)
+        //{
+        //    recoilInputVector.x -= totalXRecoil;
+        //    totalXRecoil = 0;
+        //}
+        ////little bit of left horizontal recoil to restore
+        //else if (currentXRecovery > -totalXRecoil && totalXRecoil < 0)
+        //{
+        //    recoilInputVector.x += totalXRecoil;
+        //    totalXRecoil = 0;
+        //}
 
-        totalYRecoil += pendingYRecoil;
+        ////add on any pending vertical recoil
+        //recoilInputVector.y = currentInputVector.y + pendingYRecoil;
 
-        if(totalYRecoil <= 0.1f)
-        {
-            //if no recoil, do nothing
-            GameManager.Instance.playerScript.SetCurrentRecoilIndex(0);
-        }
-        //significant amount of vertical recoil to restore overtime
-        else if (totalYRecoil >= currentYRecovery)
-        {
-            recoilInputVector.y -= currentYRecovery;
-            totalYRecoil -= currentYRecovery;
-        }
-        //small amount of vertical recoil to restore
-        else if (totalYRecoil > 0)
-        {
-            recoilInputVector.y -= totalYRecoil * Time.deltaTime;
-            totalYRecoil -= totalYRecoil * Time.deltaTime;
-        }
+        //totalYRecoil += pendingYRecoil;
 
-        //smoothly rotate to match the target recoil vector
-        currentInputVector = Vector2.SmoothDamp(currentInputVector, recoilInputVector, ref smoothInputWithRecoil, 0.1f);
+        //if(totalYRecoil <= 0.1f)
+        //{
+        //    //if no recoil, do nothing
+        //    GameManager.Instance.playerScript.SetCurrentRecoilIndex(0);
+        //}
+        ////significant amount of vertical recoil to restore overtime
+        //else if (totalYRecoil >= currentYRecovery)
+        //{
+        //    recoilInputVector.y -= currentYRecovery;
+        //    totalYRecoil -= currentYRecovery;
+        //}
+        ////small amount of vertical recoil to restore
+        //else if (currentYRecovery > totalYRecoil)
+        //{
+        //    recoilInputVector.y -= totalYRecoil;
+        //    totalYRecoil = 0;
+        //}
 
-        //reset pending recoil since it has already been added to the recoilInputVector
-        pendingXRecoil = 0;
-        pendingYRecoil = 0;
+        ////smoothly rotate to match the target recoil vector
+        //currentInputVector = Vector2.SmoothDamp(currentInputVector, recoilInputVector, ref smoothInputWithRecoil, 0.1f);
+
+        ////reset pending recoil since it has already been added to the recoilInputVector
+        //pendingXRecoil = 0;
+        //pendingYRecoil = 0;
+        #endregion
 
         //rotate the player to look left and right
         transform.Rotate(currentInputVector.x * Vector3.up);

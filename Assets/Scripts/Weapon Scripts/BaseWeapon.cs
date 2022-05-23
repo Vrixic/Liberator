@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
-//[RequireComponent(typeof(AudioSource))]
 public class BaseWeapon : ISpawnable //, IWeapon
 {
     [Header("BaseWeapon")]
@@ -25,21 +26,25 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     [SerializeField] protected int damage = 25;
 
+    [SerializeField] int headShotDamage = 40;
+
     [SerializeField] Vector3 weaponSpawnLocalPositionOffset;
+
+    [SerializeField] [Tooltip("Raycast will only query these layers")] protected LayerMask raycastLayers;
+
+    [SerializeField] Sprite gunIcon;
 
     [Header("Audio Settings")]
 
     /* audio clip played when player attacks */
     [SerializeField] AudioClip attackAudioClip;
 
-   // [Header("Animation Speed")]
-
-    //[SerializeField] float attackAnimSpeed = 1.0f;
-
     protected bool bIsAttacking;
 
     /* if player has picked up this weapon and its in his inventory */
     protected bool bIsPickedUp;
+
+    protected bool bIsEquipped = false;
 
     /* time when weapon was last fired */
     protected float m_LastAttackTime;
@@ -51,7 +56,7 @@ public class BaseWeapon : ISpawnable //, IWeapon
     public virtual void Start()
     {
         attackRate = 1 / attackRate;
-       
+
         m_Animator = GetComponent<Animator>();
 
         Spawn();
@@ -74,13 +79,12 @@ public class BaseWeapon : ISpawnable //, IWeapon
         OnWeaponUnequip();
     }
 
-    public virtual void OnPickup(GameObject parent) 
+    public virtual void OnPickup(GameObject parent)
     {
-        //Debug.Log(parent.name + " just picked up " + name);
         bIsPickedUp = true;
 
         transform.parent = parent.transform;
-        transform.localPosition = weaponSpawnLocalPositionOffset; 
+        transform.localPosition = weaponSpawnLocalPositionOffset;
     }
 
     public virtual void OnDrop(Transform dropLocation)
@@ -91,9 +95,17 @@ public class BaseWeapon : ISpawnable //, IWeapon
         transform.position = dropLocation.position;
     }
 
-    public virtual void OnWeaponEquip() { }
+    public virtual void OnWeaponEquip()
+    {
+        bIsEquipped = true;
+        GameManager.Instance.SetGunIcon(gunIcon);
+    }
 
-    public virtual void OnWeaponUnequip() { }
+    public virtual void OnWeaponUnequip()
+    {
+        bIsEquipped = false;
+    }
+
 
     /*
     * for override purposes
@@ -146,7 +158,7 @@ public class BaseWeapon : ISpawnable //, IWeapon
     {
         m_LastAttackTime = Time.time;
     }
-    
+
     /*
     * returns if the weapon is reloading
     */
@@ -187,6 +199,11 @@ public class BaseWeapon : ISpawnable //, IWeapon
         return damage;
     }
 
+    public int GetHeadShotDamage()
+    {
+        return headShotDamage;
+    }
+
     /*
     * returns last attack time
     */
@@ -211,14 +228,6 @@ public class BaseWeapon : ISpawnable //, IWeapon
         gameObject.SetActive(isActive);
     }
 
-    ///*
-    //* returns is any audio is playing
-    //*/
-    //protected bool IsAudioPlaying()
-    //{
-    //    return m_AudioSource.isPlaying;
-    //}
-
     /*
     * plays the audio 
     */
@@ -228,14 +237,6 @@ public class BaseWeapon : ISpawnable //, IWeapon
         GameManager.Instance.playerScript.PlayOneShotAudio(attackAudioClip);
     }
 
-    ///*
-    //* plays the audio 
-    //*/
-    //protected void PlayAudio()
-    //{
-    //    m_AudioSource.Play();
-    //}
-
     /*
     * plays the audio 
     */
@@ -244,23 +245,6 @@ public class BaseWeapon : ISpawnable //, IWeapon
         //m_AudioSource.PlayOneShot(clip);
         GameManager.Instance.playerScript.PlayOneShotAudio(clip);
     }
-
-    ///*
-    //* sets the audio clip to be played next time play audio is called
-    //*/
-    //protected void SetAudioSourceClip(AudioClip clip)
-    //{
-    //    m_AudioSource.clip = clip;
-    //    m_AudioSource.time = 0;
-    //}
-
-    /*
-    //* stops the payer audio
-    //*/
-    //public void StopAudio()
-    //{
-    //    m_AudioSource.Stop();
-    //}
 
     public void SetAnimator(Animator animator)
     {
@@ -294,16 +278,11 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     public virtual void SetRecoilPatternIndex(int i)
     {
-       
+
     }
 
     public virtual int GetRecoilPatternIndex()
     {
         return 0;
     }
-
-    //public float GetAttackAnimSpeed()
-    //{
-    //    return attackAnimSpeed;
-    //}
 }
