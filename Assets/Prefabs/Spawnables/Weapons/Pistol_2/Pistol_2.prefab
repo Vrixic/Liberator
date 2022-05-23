@@ -412,27 +412,27 @@ MonoBehaviour:
   maxNumOfBullets: 30
   bulletDropAudioClip: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
   verticalRecoil:
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
   horizontalRecoil:
   - 0
   - 0
   - 0
-  - 50
-  - 50
-  - -50
-  - -50
-  - 50
-  - 50
-  - 50
+  - 1
+  - 1
+  - 1
+  - -1
+  - -1
+  - -1
+  - -1
 --- !u!1 &1179772960972010
 GameObject:
   m_ObjectHideFlags: 0
