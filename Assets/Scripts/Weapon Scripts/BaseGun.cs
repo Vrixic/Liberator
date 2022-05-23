@@ -26,6 +26,10 @@ public class BaseGun : BaseWeapon
     /* the max range a bullet can travel before getting destroyed */
     [SerializeField] [Tooltip("Squared range")] float bulletRange = 10000f;
 
+    [SerializeField] [Tooltip("Damage fall off percentage per meter traveled")] [Range(0f, 1f)] float damageFallOffPercentage = 0.15f;
+
+    [SerializeField] [Tooltip("Any damage fall off percentage lower than this will be discarded")] [Range(0f, 0.5f)] float minDamageFallOff = 0.5f;
+
     /* type of ammo this gun uses */
     [SerializeField] AmmoType ammoType;
 
@@ -71,6 +75,7 @@ public class BaseGun : BaseWeapon
         base.Start();
 
         m_BulletPool = ObjectPoolManager.CreateObjectPool(bulletPrefab, maxNumOfBullets);
+        damageFallOffPercentage = 1 - damageFallOffPercentage;
     }
 
     public override void Spawn()
@@ -193,7 +198,7 @@ public class BaseGun : BaseWeapon
     /*
      * Spawns bullet
      */
-    private void ShootBullet()
+    public virtual void ShootBullet()
     {
         Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
 
@@ -213,20 +218,37 @@ public class BaseGun : BaseWeapon
      * Spawns a impact particle based on what was hit
      * Invokes disable method for bullet to get pooled
      */
-    void OnRayCastHit(Bullet bullet, RaycastHit hit)
+    protected void OnRayCastHit(Bullet bullet, RaycastHit hit)
     {
+        Vector3 deltaPosition = hit.point - raycastOrigin.position;
+
+        float damageFallOff = GetDamageFallOff(deltaPosition);
+        Debug.Log(damageFallOff);
+
         //Debug.Log(hit.collider.tag);
         if (hit.collider.CompareTag("Hitbox"))
         {
-            //Debug.LogWarning("enemys cannot be hurt as of right now, updated bullet script");
-            hit.collider.GetComponent<Health>().TakeDamage(GetDamage(), transform.forward);
+            hit.collider.GetComponent<Health>().TakeDamage(GetDamage() * damageFallOff, transform.forward);
         }
         else if(hit.collider.CompareTag("HitboxHeadshot"))
         {
-            hit.collider.GetComponentInParent<Health>().TakeDamage(GetHeadShotDamage(), transform.forward);
+            hit.collider.GetComponentInParent<Health>().TakeDamage(GetHeadShotDamage() * damageFallOff, transform.forward);
         }
-        
-        bullet.Spawn(raycastOrigin.position, (hit.point - raycastOrigin.position).normalized, hit, 0.5f);
+
+        bullet.Spawn(raycastOrigin.position, deltaPosition.normalized, hit, 0.5f);
+    }
+
+    protected float GetDamageFallOff(Vector3 hitPosition)
+    {
+        float distance = hitPosition.sqrMagnitude;
+        float damageFallOff = ((bulletRange / distance) * damageFallOffPercentage);
+
+        if (damageFallOff < minDamageFallOff)
+            damageFallOff = minDamageFallOff;
+        else if (damageFallOff > 1f)
+            damageFallOff = 1f;
+
+        return damageFallOff;
     }
 
     public override void StopAttacking()
@@ -408,5 +430,15 @@ public class BaseGun : BaseWeapon
     public override int GetRecoilPatternIndex()
     {
         return m_CurrentRecoilIndex;
+    }
+
+    protected string GetBulletPool()
+    {
+        return m_BulletPool;
+    }
+
+    protected float GetBulletRange()
+    {
+        return bulletRange;
     }
 }

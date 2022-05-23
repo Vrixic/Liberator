@@ -6,5 +6,6 @@ public enum WeaponID
     Knife,
     Pistol2,
     Automatic_Rifle,
-    Automatic_Rifle3
+    Automatic_Rifle3,
+    Shotgun
 }

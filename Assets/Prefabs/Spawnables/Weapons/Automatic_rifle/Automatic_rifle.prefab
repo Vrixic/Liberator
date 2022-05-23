@@ -1974,7 +1974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowPlayerToHoldAttackTrigger: 1
   allowPlayerToHoldAimTrigger: 1
-  attackRate: 4.5
+  attackRate: 5.5
   raycastOrigin: {fileID: 4913780900570080257}
   damage: 40
   headShotDamage: 60

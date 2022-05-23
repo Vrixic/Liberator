@@ -634,6 +634,22 @@ PrefabInstance:
       propertyPath: throwablePrefab
       value: 
       objectReference: {fileID: -4452542067352801776, guid: c59029c7f26d8f549bdfcc93d15052b4, type: 3}
+    - target: {fileID: 4456586985129732010, guid: 7b76d327cd44fc64d9c1ca8254045960, type: 3}
+      propertyPath: startWeaponIDs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456586985129732010, guid: 7b76d327cd44fc64d9c1ca8254045960, type: 3}
+      propertyPath: startWeaponIDs.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456586985129732010, guid: 7b76d327cd44fc64d9c1ca8254045960, type: 3}
+      propertyPath: startWeaponIDs.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456586985129732010, guid: 7b76d327cd44fc64d9c1ca8254045960, type: 3}
+      propertyPath: startWeaponIDs.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4968363540779527741, guid: 7b76d327cd44fc64d9c1ca8254045960, type: 3}
       propertyPath: m_RootOrder
       value: 15
