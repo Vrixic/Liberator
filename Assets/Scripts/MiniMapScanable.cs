@@ -29,25 +29,28 @@ public class MiniMapScanable : MonoBehaviour
 
     IEnumerator FlashLocator(float time)
     {
-        bool fadingOut = true;
-        Color color = locatorMaterial.color;
-        color.a = 50;
+        Color color = Color.red;
         while (time >= 0)
         {
-            if (fadingOut)
-                color.a -= 3f;
-            else
-                color.a += 2f;
+            for (float a = 1f; a > -0.1f; a -= Time.deltaTime * 0.75f)
+            {
+                locatorMaterial.SetColor("_EmissionColor", color * a);
 
-            if (color.a < 0)
-                fadingOut = false;
-            if (color.a > 50)
-                fadingOut = true;
+                yield return null;
+            }
 
-            locatorMaterial.color = color;
-            time -= 0.05f;
+            time -= 1f;
 
-            yield return new WaitForSeconds(0.05f);
+            for (float a = -0.1f; a < 1f; a += Time.deltaTime * 0.75f)
+            {
+                locatorMaterial.SetColor("_EmissionColor", color * a);
+
+                yield return null;
+            }
+
+            time -= 1f;
+
+            yield return null;
         }
         Disable();
     }
