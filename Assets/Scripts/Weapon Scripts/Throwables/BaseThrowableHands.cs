@@ -16,6 +16,8 @@ public class BaseThrowableHands : BaseWeapon
     /* max amount of Throwables the player can hold at a given time */
     [SerializeField] [Tooltip("max amount of Throwables the player can hold at a given time")] int maxThrowableAmount = 2;
 
+    [SerializeField] GameObject throwableMesh;
+
     /* current amount of Throwables */
     int m_CurrentThrowableAmount;
 
@@ -38,6 +40,11 @@ public class BaseThrowableHands : BaseWeapon
     public override void OnWeaponEquip() { }
     
     public override void OnWeaponUnequip() { }
+
+    public void OnAnimationEvent_ThrowStart()
+    {
+        throwableMesh.SetActive(false);
+    }
 
     /*
     * Called when the player wants to throw the Throwable
@@ -62,6 +69,11 @@ public class BaseThrowableHands : BaseWeapon
         }
     }
 
+    public void OnAnimationEvent_ThrowEnd()
+    {
+        throwableMesh.SetActive(true);
+    }
+
     /*
     * Called when the throwing animation is at where the Throwable should be throw'd
     *   - spawns a Throwable from the Throwable pool
@@ -77,7 +89,7 @@ public class BaseThrowableHands : BaseWeapon
         Vector3 targetPoint = GameManager.Instance.mainCamera.transform.position + GameManager.Instance.mainCamera.transform.forward * distanceFromPlayerMultiplier;
         Vector3 direction = (targetPoint - raycastOrigin.position).normalized;
 
-        Debug.DrawLine(raycastOrigin.position, targetPoint, Color.red, 2f);
+        //Debug.DrawLine(raycastOrigin.position, targetPoint, Color.red, 2f);
 
         throwable.OnThrowThrowable(direction, throwForceMultiplier);
     }
