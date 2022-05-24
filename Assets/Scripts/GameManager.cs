@@ -71,6 +71,15 @@ public class GameManager : MonoBehaviour
     public GameObject shopCanvas;
     [HideInInspector]
     public TextMeshProUGUI cashCountText;
+    [HideInInspector]
+    public TextMeshProUGUI weaponUpgradeText;
+    [HideInInspector]
+    public TextMeshProUGUI weaponMaxUpgradeText;
+    [HideInInspector]
+    public TextMeshProUGUI sensorGrenadeCount;
+    [HideInInspector]
+    public GameObject sensorGrenadeIcon;
+
 
     private SpawnPoint[] spawnPoints;
 
@@ -150,6 +159,13 @@ public class GameManager : MonoBehaviour
         shopCanvas.SetActive(false);
 
         gunIcon = GameObject.FindGameObjectWithTag("GunIcon").GetComponent<Image>();
+
+        weaponUpgradeText = GameObject.FindGameObjectWithTag("UpgradeWeaponText").GetComponent<TextMeshProUGUI>();
+        weaponMaxUpgradeText = GameObject.FindGameObjectWithTag("MaxWeaponUpgradeText").GetComponent<TextMeshProUGUI>();
+        weaponMaxUpgradeText.enabled = false;
+
+        sensorGrenadeCount = GameObject.FindGameObjectWithTag("SensorGrenadeCount").GetComponent<TextMeshProUGUI>();
+        sensorGrenadeIcon = GameObject.FindGameObjectWithTag("SensorGrenadeIcon");
 
         if (player == null)
         {
