@@ -17,7 +17,9 @@ public class AmmoPickup : IPickable
         base.OnPickup(picker);
         if (picker.tag == "Player")
         {
-            AmmoManager.Instance.IncreaseAmmo(ammoType, ammoAmount);
+            //AmmoManager.Instance.IncreaseAmmo(ammoType, ammoAmount
+            AmmoManager.Instance.RefillAmmo(AmmoType.Small);
+            AmmoManager.Instance.RefillAmmo(AmmoType.Shells);
         }
     }
 
