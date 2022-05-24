@@ -1417,6 +1417,7 @@ MonoBehaviour:
   distanceFromPlayerMultiplier: 15
   throwablePrefab: {fileID: 1558572406008150980, guid: d51ded7d99d25264697fab55add32940, type: 3}
   maxThrowableAmount: 2
+  throwableMesh: {fileID: 8965819650039083925}
 --- !u!1 &1776315364890802
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,7 +2069,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326226584606306886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0162, y: -0.0597, z: 0.0308}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2132,6 +2133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c126a6fd654daf4e94732ca8db7a1a9, type: 3}
+--- !u!1 &8965819650039083925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5241569771630568664, guid: 1c126a6fd654daf4e94732ca8db7a1a9, type: 3}
+  m_PrefabInstance: {fileID: 3805883185221130061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8965819650039291897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5241569771630348468, guid: 1c126a6fd654daf4e94732ca8db7a1a9, type: 3}

@@ -1406,6 +1406,7 @@ MonoBehaviour:
   attackRate: 2
   raycastOrigin: {fileID: 6940906444939813328}
   damage: 25
+  headShotDamage: 40
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.743, z: -0.429}
   raycastLayers:
     serializedVersion: 2
@@ -1416,7 +1417,7 @@ MonoBehaviour:
   distanceFromPlayerMultiplier: 15
   throwablePrefab: {fileID: -6948991309844511447, guid: 9e8b88ab444926f4a838bb271ebb580b, type: 3}
   maxThrowableAmount: 2
-  throwableSpawnLocation: {fileID: 0}
+  throwableMesh: {fileID: 5808923839028364945}
 --- !u!1 &1776315364890802
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,5 +2152,10 @@ PrefabInstance:
 --- !u!4 &5803315571392579903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4612193367756968, guid: 9de02a6a10a4a6944b22698c16058563, type: 3}
+  m_PrefabInstance: {fileID: 5807926082733283735}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5808923839028364945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1292425513312006, guid: 9de02a6a10a4a6944b22698c16058563, type: 3}
   m_PrefabInstance: {fileID: 5807926082733283735}
   m_PrefabAsset: {fileID: 0}

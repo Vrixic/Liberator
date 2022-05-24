@@ -626,14 +626,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player5_22
       objectReference: {fileID: 0}
-    - target: {fileID: 3109904136557413142, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
-      propertyPath: startWeaponIDs.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109904136557413142, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
-      propertyPath: startWeaponIDs.Array.data[1]
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6571831580933479381, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: m_RootOrder
       value: 18
