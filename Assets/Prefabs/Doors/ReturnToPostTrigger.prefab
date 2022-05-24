@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4693544805119859724}
   - component: {fileID: 8550239908175977365}
   - component: {fileID: 2856424368482867933}
+  - component: {fileID: 8429977710777886720}
   m_Layer: 0
   m_Name: ReturnToPostTrigger
   m_TagString: Untagged
@@ -58,3 +59,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9842704b00c0e7848a9bbac27d06c54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &8429977710777886720
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4343934285207978780}
+  serializedVersion: 2
+  m_Mass: 0.1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
