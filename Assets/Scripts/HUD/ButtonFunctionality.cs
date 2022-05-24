@@ -252,7 +252,6 @@ public class ButtonFunctionality : MonoBehaviour
         if (GameManager.Instance.CurrentCash >= 1000)
         {
 
-
         }
     }
 

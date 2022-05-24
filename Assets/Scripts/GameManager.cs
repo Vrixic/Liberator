@@ -156,13 +156,13 @@ public class GameManager : MonoBehaviour
 
         shopCanvas = GameObject.FindGameObjectWithTag("ShopCanvas");
         cashCountText = GameObject.FindGameObjectWithTag("CashCountText").GetComponent<TextMeshProUGUI>();
+        weaponUpgradeText = GameObject.FindGameObjectWithTag("UpgradeWeaponText").GetComponent<TextMeshProUGUI>();
+        weaponMaxUpgradeText = GameObject.FindGameObjectWithTag("MaxWeaponUpgradeText").GetComponent<TextMeshProUGUI>();
+        weaponMaxUpgradeText.enabled = false;
         shopCanvas.SetActive(false);
 
         gunIcon = GameObject.FindGameObjectWithTag("GunIcon").GetComponent<Image>();
 
-        weaponUpgradeText = GameObject.FindGameObjectWithTag("UpgradeWeaponText").GetComponent<TextMeshProUGUI>();
-        weaponMaxUpgradeText = GameObject.FindGameObjectWithTag("MaxWeaponUpgradeText").GetComponent<TextMeshProUGUI>();
-        weaponMaxUpgradeText.enabled = false;
 
         sensorGrenadeCount = GameObject.FindGameObjectWithTag("SensorGrenadeCount").GetComponent<TextMeshProUGUI>();
         sensorGrenadeIcon = GameObject.FindGameObjectWithTag("SensorGrenadeIcon");
