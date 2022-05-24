@@ -218,7 +218,7 @@ public class PlayerInteract : MonoBehaviour
                 GameManager.Instance.virtualCam.SetActive(false);
 
             //add code to win the level
-            GameManager.Instance.hostageSecured.SetActive(true);
+            GameManager.Instance.shopCanvas.SetActive(true);
             currentInteractPrompt.SetActive(false);
 
             //break player out of causing cancel/perform events when they aren't interacting with the hostage

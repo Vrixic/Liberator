@@ -57,10 +57,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6055047410308691871}
     m_Modifications:
-    - target: {fileID: 6107594554713041, guid: 8d84d544b50a6694ab5eff53ccbd2c3b, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6107594554713052, guid: 8d84d544b50a6694ab5eff53ccbd2c3b, type: 3}
       propertyPath: m_Name
       value: Ammo Canvas
@@ -148,10 +144,6 @@ PrefabInstance:
     - target: {fileID: 6107594554713055, guid: 8d84d544b50a6694ab5eff53ccbd2c3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9215069362162430508, guid: 8d84d544b50a6694ab5eff53ccbd2c3b, type: 3}
-      propertyPath: m_TagString
-      value: FlashBangIcon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d84d544b50a6694ab5eff53ccbd2c3b, type: 3}

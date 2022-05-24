@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 4434901847024413526}
   - component: {fileID: 6849371469964468005}
   - component: {fileID: 900173565027196447}
+  - component: {fileID: 3597817965597007189}
   m_Layer: 0
   m_Name: DoorOpenCloseTrigger
   m_TagString: Untagged
@@ -437,6 +438,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorScript: {fileID: 4018209427504873911}
+--- !u!54 &3597817965597007189
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285488430857209072}
+  serializedVersion: 2
+  m_Mass: 0.1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &7895522177437774407
 PrefabInstance:
   m_ObjectHideFlags: 0

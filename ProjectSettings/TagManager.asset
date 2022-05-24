@@ -20,7 +20,6 @@ TagManager:
   - SecureHostageText
   - IntelInteractText
   - Intel
-  - FlashbangIcon
   - FlashBangIcon
   - AmmoIcon
   - AmmoCount
@@ -41,6 +40,10 @@ TagManager:
   - FlashbangImage
   - GunIcon
   - HitboxHeadshot
+  - MaxWeaponUpgradeText
+  - UpgradeWeaponText
+  - SensorGrenadeIcon
+  - SensorGrenadeCount
   layers:
   - Default
   - TransparentFX

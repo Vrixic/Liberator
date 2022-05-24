@@ -245,10 +245,24 @@ public class ButtonFunctionality : MonoBehaviour
 
         }
     }
+
+    // TODO: IMPLEMENT UPGRADE WEAPON METHOD
+    public void UpgradeCurrentWeapon()
+    {
+        if (GameManager.Instance.CurrentCash >= 1000)
+        {
+
+
+        }
+    }
+
+
     public void UpdateCashCountShopUi()
     {
         GameManager.Instance.cashCountText.text = "Cash: " + GameManager.Instance.CurrentCash;
     }
+
+
     #endregion
 
 
