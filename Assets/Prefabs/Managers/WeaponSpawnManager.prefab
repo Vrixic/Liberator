@@ -61,3 +61,7 @@ MonoBehaviour:
     weapon:
       weaponPrefab: {fileID: 1618597011196432241, guid: 90515aa6952b55648bcd002b7ba74683, type: 3}
       weaponAliasPrefab: {fileID: 8092555426111453982, guid: e287b1bece0d58b4dafaac10cd11c895, type: 3}
+  - weaponID: 4
+    weapon:
+      weaponPrefab: {fileID: 4517463678201417947, guid: c44dd45c804874c418379b5d3585666a, type: 3}
+      weaponAliasPrefab: {fileID: 8092555426111453982, guid: e287b1bece0d58b4dafaac10cd11c895, type: 3}

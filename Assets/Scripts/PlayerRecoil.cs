@@ -41,7 +41,7 @@ public class PlayerRecoil : MonoBehaviour
             GenerateRecoil();
         }
         //if there's no incoming recoil and previous recoil is not still being applied as rotation to PlayerHeadPos(recoilTimer == 0)
-        else if(recoilTimer + 0.1f <= Mathf.Epsilon) //added 0.05f because it would vertically stablize in between assault rifle shots
+        else if(recoilTimer + 0.2f <= Mathf.Epsilon) //added 0.05f because it would vertically stablize in between assault rifle shots
         {
             Stabilize();
         }
@@ -74,6 +74,7 @@ public class PlayerRecoil : MonoBehaviour
         //set vertical recoil stabilization
         if (-currentVector.x > verticalRecoilRestoration * timePassed)
         {
+            Debug.Log("chunk restored vertically");
             //restore a chunk of vertical recoil
             recoilVector.x += verticalRecoilRestoration * timePassed;
         }
@@ -101,6 +102,8 @@ public class PlayerRecoil : MonoBehaviour
         {
             //restore the rest of the horizontal recoil
             recoilVector.y = 0f;
+
+            GameManager.Instance.playerScript.SetCurrentRecoilIndex(0);
         }
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6974498834068896386
 Transform:
   m_ObjectHideFlags: 0
@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: raycastOrigin
       value: 
       objectReference: {fileID: 253185771246936234}
+    - target: {fileID: 9052906685861515315, guid: 5ec2862a64fd55043a4ff9da4cf2a1a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4535156049269076253, guid: 5ec2862a64fd55043a4ff9da4cf2a1a8, type: 3}
     - {fileID: 7911833990652345450, guid: 5ec2862a64fd55043a4ff9da4cf2a1a8, type: 3}
@@ -153,10 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beca255193a31f444851cba8beaf9e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWeaponIDs: 
+  startWeaponIDs: 0200000001000000
   weaponsParent: {fileID: 2780196476809926837}
   flashbang: {fileID: 595810472045351801}
-  flashbangImage: {fileID: 0}
   flashbangTimeDamp: 0.2
   flashbangImageColor: {r: 0, g: 0, b: 0, a: 0}
   maxPlayerHealth: 100
