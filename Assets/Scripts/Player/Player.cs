@@ -127,6 +127,7 @@ public class Player : ISpawnable
         //m_CurrentEquippedWeapon.gameObject.SetActive(true);
 
         UpdateFlashbangCount();
+        UpdateSensorGrenadeUi();
 
         m_CurrentPlayerHealth = maxPlayerHealth;
         m_CurrentPlayerShield = maxPlayerShield;
@@ -564,6 +565,7 @@ public class Player : ISpawnable
     {
         m_CurrentEquippedWeapon.StartAttacking();
         UpdateFlashbangCount();
+        UpdateSensorGrenadeUi();
     }
 
     /*
@@ -754,7 +756,7 @@ public class Player : ISpawnable
 
     public void UpdateSensorGrenadeUi()
     {
-
+        GameManager.Instance.sensorGrenadeCount.text = sensor.GetCurrentAmountOfThrowables().ToString();
     }
 
     public BaseWeapon GetCurrentEquippedWeapon()

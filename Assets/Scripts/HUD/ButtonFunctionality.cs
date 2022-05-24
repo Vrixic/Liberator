@@ -249,9 +249,20 @@ public class ButtonFunctionality : MonoBehaviour
     // TODO: IMPLEMENT UPGRADE WEAPON METHOD
     public void UpgradeCurrentWeapon()
     {
-        if (GameManager.Instance.CurrentCash >= 1000)
+        if (GameManager.Instance.CurrentCash >= 500)
         {
+            if (!GameManager.Instance.isCurrentWeaponUpgraded)
+            {
+                Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage before Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
+                GameManager.Instance.CurrentCash -= 500;
+                UpdateCashCountShopUi();
+                GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 25);
+                GameManager.Instance.isCurrentWeaponUpgraded = true;
+                GameManager.Instance.weaponMaxUpgradeText.enabled = true;
+                GameManager.Instance.weaponUpgradeText.enabled = false;
+                Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage after Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
 
+            }
         }
     }
 

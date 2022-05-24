@@ -79,7 +79,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI sensorGrenadeCount;
     [HideInInspector]
     public GameObject sensorGrenadeIcon;
-
+    [HideInInspector]
+    public bool isCurrentWeaponUpgraded;
 
     private SpawnPoint[] spawnPoints;
 
@@ -159,6 +160,7 @@ public class GameManager : MonoBehaviour
         weaponUpgradeText = GameObject.FindGameObjectWithTag("UpgradeWeaponText").GetComponent<TextMeshProUGUI>();
         weaponMaxUpgradeText = GameObject.FindGameObjectWithTag("MaxWeaponUpgradeText").GetComponent<TextMeshProUGUI>();
         weaponMaxUpgradeText.enabled = false;
+        isCurrentWeaponUpgraded = false;
         shopCanvas.SetActive(false);
 
         gunIcon = GameObject.FindGameObjectWithTag("GunIcon").GetComponent<Image>();
