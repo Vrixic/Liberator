@@ -12,13 +12,14 @@ public class BaseMelee : BaseWeapon
     public override void OnWeaponEquip()
     {
         base.OnWeaponEquip();
-        UpdateAmmoGUI();
+        AmmoManager.Instance.HideAmmoGUI();
+        //UpdateAmmoGUI();
     }
 
     public override void OnWeaponUnequip()
     {
         base.OnWeaponUnequip();
-       // AmmoManager.Instance.ShowAmmoGUI();
+        AmmoManager.Instance.ShowAmmoGUI();
     }
 
     /*

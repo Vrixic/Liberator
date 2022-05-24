@@ -114,6 +114,10 @@ public class Player : ISpawnable
 
     public override void Spawn()
     {
+        base.Spawn();
+
+        //Debug.Log(GetInitialPosition());
+
         for (int i = 0; i < startWeaponIDs.Length; i++)
         {
             m_CurrentWeapons[i] = WeaponSpawnManager.Instance.GetWeapon(startWeaponIDs[i], weaponsParent.transform);
@@ -142,12 +146,18 @@ public class Player : ISpawnable
         DeactivateFlashbang();
         DeactivateWeapon(m_CurrentWeaponIndex);
 
-        Respawn();
+        //Respawn();
+        GameManager.Instance.ResetGame();
     }
 
     public override void Respawn()
     {
+        //Debug.Log("before respawn: " + GetInitialPosition());
         base.Respawn();
+        //Debug.Log("After respawn: " + GetInitialPosition());
+
+        //transform.position = transform.localPosition =  Vector3.zero;
+        //transform.rotation = GetInitialRotation();
 
         for (int i = 0; i < m_CurrentWeapons.Length; i++)
         {
@@ -156,6 +166,8 @@ public class Player : ISpawnable
         }
 
         Spawn();
+
+        //Debug.Log("After respawn and After spawn: " + GetInitialPosition());
     }
 
     private void Update()
@@ -500,8 +512,7 @@ public class Player : ISpawnable
     {
         Debug.Log("Player died");
         Despawn();
-
-        GameManager.Instance.ResetGame();
+        
         AmmoManager.Instance.ResetAmmoManager();
     }
 
@@ -593,6 +604,9 @@ public class Player : ISpawnable
     void StartAiming()
     {
         m_CurrentEquippedWeapon.StartAiming();
+
+        if (m_CurrentEquippedWeapon.GetWeaponID() == WeaponID.Knife) return;
+
         m_PlayerMotor.SlowWalk(true);
         m_PlayerMotor.CheckSlowWalk();
     }

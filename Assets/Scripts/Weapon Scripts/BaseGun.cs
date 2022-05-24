@@ -228,16 +228,22 @@ public class BaseGun : BaseWeapon
         Vector3 deltaPosition = hit.point - raycastOrigin.position;
 
         float damageFallOff = GetDamageFallOff(deltaPosition);
-        Debug.Log(damageFallOff);
+        //Debug.Log(damageFallOff);
 
         //Debug.Log(hit.collider.tag);
         if (hit.collider.CompareTag("Hitbox"))
         {
-            hit.collider.GetComponent<Health>().TakeDamage(GetDamage() * damageFallOff, transform.forward);
-        }
-        else if(hit.collider.CompareTag("HitboxHeadshot"))
-        {
-            hit.collider.GetComponentInParent<Health>().TakeDamage(GetHeadShotDamage() * damageFallOff, transform.forward);
+            if(hit.collider.GetComponent<CapsuleCollider>() != null)
+            {
+                //Debug.Log("Body Shot");
+                hit.collider.GetComponent<Health>().TakeDamage(GetDamage() * damageFallOff, transform.forward);
+            }
+            else
+            {
+                //Debug.Log("Head Shot");
+                hit.collider.GetComponentInParent<Health>().TakeDamage(100.0f, transform.forward);
+            }
+            
         }
 
         bullet.Spawn(raycastOrigin.position, deltaPosition.normalized, hit, 0.5f);

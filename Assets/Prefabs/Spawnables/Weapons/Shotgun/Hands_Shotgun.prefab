@@ -1185,7 +1185,7 @@ MonoBehaviour:
   raycastLayers:
     serializedVersion: 2
     m_Bits: 8385
-  gunIcon: {fileID: 21300040, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
+  gunIcon: {fileID: 21300012, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
   attackAudioClip: {fileID: 8300000, guid: 44f33c4fdb97c414cb54a165c14f6b33, type: 3}
   reloadAudioClip: {fileID: 8300000, guid: 0b72857b6f611e74392c5df3e114d22e, type: 3}
   muzzleFlash: {fileID: 6187178887764678327}

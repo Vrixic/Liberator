@@ -225,6 +225,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7235169188948493039, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
+      propertyPath: m_TagString
+      value: Hitbox
+      objectReference: {fileID: 0}
     - target: {fileID: 8786300367967601321, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
       propertyPath: m_Name
       value: Assassin

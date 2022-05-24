@@ -26,7 +26,7 @@ public class BaseWeapon : ISpawnable //, IWeapon
 
     [SerializeField] protected int damage = 25;
 
-    [SerializeField] int headShotDamage = 40;
+    //[SerializeField] float headShotDamageMultiplier = 100f;
 
     [SerializeField] Vector3 weaponSpawnLocalPositionOffset;
 
@@ -204,10 +204,15 @@ public class BaseWeapon : ISpawnable //, IWeapon
         return damage;
     }
 
-    public int GetHeadShotDamage()
-    {
-        return headShotDamage;
-    }
+    //public void SetHeadShotDamageMultiplier(float multiplier)
+    //{
+    //    headShotDamageMultiplier = multiplier;
+    //}
+
+    //public float GetHeadShotDamageMultiplier()
+    //{
+    //    return headShotDamageMultiplier;
+    //}
 
     /*
     * returns last attack time

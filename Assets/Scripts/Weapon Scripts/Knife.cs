@@ -51,13 +51,15 @@ public class Knife : BaseMelee
         {
             //Debug.Log(hitInfo.collider.tag);
 
-            if (hitInfo.collider.CompareTag("Hitbox"))
+            if (hitInfo.collider.GetComponent<CapsuleCollider>() != null)
             {
+                //Debug.Log("Body Shot");
                 hitInfo.collider.GetComponent<Health>().TakeDamage(GetDamage(), transform.forward);
             }
-            else if (hitInfo.collider.CompareTag("HitboxHeadshot"))
+            else
             {
-                hitInfo.collider.GetComponentInParent<Health>().TakeDamage(GetHeadShotDamage(), transform.forward);
+                //Debug.Log("Head Shot");
+                hitInfo.collider.GetComponentInParent<Health>().TakeDamage(100.0f, transform.forward);
             }
 
             MeleeImpactManager.Instance.SpawnMeleeImpact(hitInfo.point, hitInfo.normal, hitInfo.collider.tag);
