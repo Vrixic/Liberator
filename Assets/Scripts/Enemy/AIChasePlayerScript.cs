@@ -40,7 +40,7 @@ public class AIChasePlayerScript : AIState
         }
         else
         {
-            //Debug.Log("Chase");
+            Debug.Log("Chase");
             //constantly sets move target for enemy to the player
             // only chase if player is in within the chase range and not in sight
             agent.navMeshAgent.destination = GameManager.Instance.playerTransform.position; // player within range    

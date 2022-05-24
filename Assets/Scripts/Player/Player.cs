@@ -760,4 +760,17 @@ public class Player : ISpawnable
     {
         return m_CurrentEquippedWeapon;
     }
+
+    public BaseWeapon GetCurrentEquippedGun()
+    {
+        for(int i = 0; i < m_CurrentWeapons.Length; i++)
+        {
+            if (m_CurrentWeapons[i].GetWeaponID() != WeaponID.Knife)
+            {
+                return m_CurrentWeapons[i];
+            }
+        }
+
+        return null;
+    }
 }

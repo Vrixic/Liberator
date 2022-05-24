@@ -136,9 +136,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939970669460307165}
     m_Modifications:
+    - target: {fileID: 194561364194938756, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: raycastDistance
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040348554044067879, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4406333510484423332, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy_V
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976265396055958085, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976265396055958085, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976265396055958085, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219868724901251929, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: attackRate
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6072270437285368068, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_RootOrder

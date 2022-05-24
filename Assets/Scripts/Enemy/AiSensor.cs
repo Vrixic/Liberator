@@ -85,9 +85,7 @@ public class AiSensor : MonoBehaviour
 
         Vector3 direction = (dest - origin).normalized;
         //Debug.Log(direction);
-        //checks if an object is within the height of the sensor
-
-        //Debug.Log("Angle passed");
+        //checks if an object is within the height of the sensor        
 
         ////checks if an object is within the horizontal of the sensor
         //direction.y = 0;
@@ -99,6 +97,8 @@ public class AiSensor : MonoBehaviour
             return false;
         }
 
+        //Debug.Log("Angle passed");
+
         //send the raycast from just in front of the enemy so they don't hit their own hitbox
         //origin += Vector3.ClampMagnitude(transform.forward, 0.5f);
         //dest.y = origin.y;
@@ -109,6 +109,43 @@ public class AiSensor : MonoBehaviour
             //Debug.Log("Entered raycast line, " + hit.collider.tag);
             //Debug.DrawLine(origin, dest, Color.green, 1f);
 
+            //if the player is in range and inside the FOV, with no objects obstructing the enemies view
+            if (hit.collider.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+   
+    public bool IsInsightWithAngleDistance()
+    {
+        //get the agents position in the world
+        Vector3 origin = raycastOrigin.position;
+
+        //get player's position in the world from the gamemanager
+        Vector3 dest = GameManager.Instance.playerTransform.position;
+
+        //look for the player's midsection
+        dest.y *= 0.5f;
+
+        Vector3 direction = (dest - origin).normalized;
+        //checks if an object is within the height of the sensor
+
+        ////checks if an object is within the horizontal of the sensor
+        float deltaAngle = Vector3.Angle(direction, transform.forward);
+
+        //if the player is outside of the enemy FOV
+        if (deltaAngle > angle)
+        {
+            return false;
+        }
+
+        //send the raycast from just in front of the enemy so they don't hit their own hitbox
+        //fire a raycast from the enemy to the player to see if anything obstructs the enemies view
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
+        {
             //if the player is in range and inside the FOV, with no objects obstructing the enemies view
             if (hit.collider.CompareTag("Player"))
             {

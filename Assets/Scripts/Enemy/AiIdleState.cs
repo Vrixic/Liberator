@@ -38,26 +38,25 @@ public class AIIdleState : AIState
         //if the player is within the enemies detection range
         //if (sqrDistance <= agent.config.maxChaseDistance)
         //{
-            // Debug.Log("Player is within enemy detection range");
+        // Debug.Log("Player is within enemy detection range");
+        //check if the player is in the enemies FOV
+        //if (agent.sensor.IsInsightWithAngleDistance())
+        //{
+        //    //Debug.Log("Switching form idle to chase...");
+        //    agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
+        //}
+        //}
+        float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
+
+        //if the player is within the enemies detection range
+        if (sqrDistance <= agent.config.maxDistance)
+        {
             //check if the player is in the enemies FOV
-            if (agent.sensor.IsInsight())
+            if (agent.sensor.IsInsightWithAngleDistance())
             {
-                //Debug.Log("Switching form idle to chase...");
                 agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
             }
-        //}
-        //float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
-
-        ////if the player is within the enemies detection range
-        //if (sqrDistance <= agent.config.maxDistance * agent.config.maxDistance)
-        //{
-        //    //check if the player is in the enemies FOV
-        //    if (agent.sensor.IsInsight())
-        //    {
-        //        agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
-        //    }
-        //}
-        //}
+        }
     }
 
     public void Exit(AIAgent agent)
