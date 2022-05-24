@@ -23,6 +23,7 @@ public class AIDeathState : AIState
 
         agent.animator.SetBool("isDead", true);
         agent.animator.Play("Death");
+        GameManager.Instance.CurrentCash += 50;
 
         //var rigidBodies = agent.GetComponentsInChildren<Rigidbody>();
         //foreach (var rigidbody in rigidBodies)
