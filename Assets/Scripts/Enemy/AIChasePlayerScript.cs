@@ -13,7 +13,7 @@ public class AIChasePlayerScript : AIState
     {
         //gun = agent.GetComponentInChildren<EnemyGun>();
         agent.currentState = AIStateID.ChasePlayer;
-        //agent.animator.SetTrigger("Chase");
+        agent.animator.SetBool("Chase", true);
     }
 
     public void Update(AIAgent agent)
@@ -39,7 +39,6 @@ public class AIChasePlayerScript : AIState
         }
         else
         {
-            Debug.Log("Chase");
             //constantly sets move target for enemy to the player
             // only chase if player is in within the chase range and not in sight
             agent.navMeshAgent.destination = GameManager.Instance.playerTransform.position; // player within range    
@@ -70,7 +69,7 @@ public class AIChasePlayerScript : AIState
 
     public void Exit(AIAgent agent)
     {
-
+        agent.animator.SetBool("Chase", false);
     }
 
 }
