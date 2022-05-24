@@ -647,6 +647,10 @@ PrefabInstance:
       propertyPath: startWeaponIDs.Array.data[1]
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7586161980158107391, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}
+      propertyPath: field of view
+      value: 65
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}
 --- !u!4 &3023301750189076927 stripped

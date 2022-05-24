@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xSensitivity: 10
-  ySensitivity: 30
+  ySensitivity: 10
 --- !u!114 &4181151091504780862
 MonoBehaviour:
   m_ObjectHideFlags: 0
