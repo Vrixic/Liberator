@@ -7,5 +7,6 @@ public enum AmmoType
 {
    Small = 0,
    Medium,
-   Large
+   Large,
+   Shells
 };

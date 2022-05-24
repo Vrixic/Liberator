@@ -50,6 +50,10 @@ MonoBehaviour:
     ammoSlot:
       ammoAmount: 15
       ammoCapacity: 60
+  - ammoType: 3
+    ammoSlot:
+      ammoAmount: 5
+      ammoCapacity: 10
 --- !u!1001 &6055047408676840790
 PrefabInstance:
   m_ObjectHideFlags: 0

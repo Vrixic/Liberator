@@ -1115,7 +1115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4639391799817334
 Transform:
   m_ObjectHideFlags: 0
@@ -1194,12 +1194,13 @@ MonoBehaviour:
   bulletRange: 32
   damageFallOffPercentage: 0.8
   minDamageFallOff: 0.1
-  ammoType: 0
-  maxNumOfBullets: 30
+  ammoType: 3
+  maxNumOfBullets: 5
   bulletDropAudioClip: {fileID: 8300000, guid: f09a736935df5e6479f550837fba1f68, type: 3}
   verticalRecoil: []
   horizontalRecoil: []
-  bulletConeRadius: {x: 1, y: 1}
+  bulletConeRadius: {x: 2.5, y: 2.5}
+  pellets: 8
 --- !u!1 &1416144876138884
 GameObject:
   m_ObjectHideFlags: 0

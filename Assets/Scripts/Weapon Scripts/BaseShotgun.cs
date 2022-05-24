@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseShotgun : BaseGun
 {
     [SerializeField] Vector2 bulletConeRadius;
+    [SerializeField] int pellets = 8;
 
     public override void ShootBullet()
     {
@@ -17,7 +18,7 @@ public class BaseShotgun : BaseGun
         float minY = centerPoint.y - bulletConeRadius.y;
         float maxY = centerPoint.y + bulletConeRadius.y;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < pellets; i++)
         {
             Bullet bullet = ObjectPoolManager.SpawnObject(GetBulletPool()) as Bullet;
 

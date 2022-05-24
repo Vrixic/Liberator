@@ -32,7 +32,6 @@ public class AIChasePlayerScript : AIState
            // agent.stateMachine.ChangeState(AIStateID.Idle);
         //}
 
-
         bool inSight = agent.sensor.IsInsight();
         if (inSight) // players is in sight of the enemy
         {

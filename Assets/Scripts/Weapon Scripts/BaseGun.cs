@@ -39,7 +39,7 @@ public class BaseGun : BaseWeapon
     [SerializeField] AudioClip bulletDropAudioClip;
 
     /* current number of bullets */
-    int m_CurrentNumOfBullets;
+    protected int m_CurrentNumOfBullets;
     #endregion
 
     [Header("Recoil")]
@@ -150,7 +150,7 @@ public class BaseGun : BaseWeapon
         bIsAttacking = true;
 
         m_LastAttackTime = Time.time;
-        m_CurrentNumOfBullets--;
+        UseAmmo();
 
         PlayAttackAudio();
 
@@ -168,6 +168,11 @@ public class BaseGun : BaseWeapon
 
         PlayBulletDropAudio();
         UpdateAmmoGUI();
+    }
+
+    protected virtual void UseAmmo()
+    {
+        m_CurrentNumOfBullets--;
     }
 
     /*

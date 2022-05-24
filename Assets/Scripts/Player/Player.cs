@@ -520,6 +520,7 @@ public class Player : ISpawnable
     public void OnAttackReleased()
     {
         bPlayerWantsToAttack = false;
+        //m_CurrentEquippedWeapon.StopAttacking();
     }
 
     /*
