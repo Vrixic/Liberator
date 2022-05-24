@@ -11,8 +11,6 @@ public class ButtonFunctionality : MonoBehaviour
     GameObject pause;
     GameObject virtualCam;
     GameObject reticle;
-    TextMeshProUGUI itemTabCashCount;
-    TextMeshProUGUI buyWeaponTabCashCount;
     public static bool gameIsPaused = false;
 
     void Start()
@@ -170,13 +168,23 @@ public class ButtonFunctionality : MonoBehaviour
 
         if (GameManager.Instance.CurrentCash >= 100)
         {
-            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small))
+            // Checks if player is at max ammo for ammo type small and ammo type shells
+            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells) || AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small))
             {
                 // Subtract Cost of items and update Cash Count
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
-                // Refill Players Ammo to max
-                AmmoManager.Instance.RefillAmmo(AmmoType.Small);
+                // Checks if player has shotgun equipped then refills Players Ammo to max depending on ammo type
+                if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() == WeaponID.Shotgun)
+                {
+                    AmmoManager.Instance.RefillAmmo(AmmoType.Shells);
+                }
+                else
+                {
+                    AmmoManager.Instance.RefillAmmo(AmmoType.Small);
+
+                }
+
                 // Update Ammo Ui
                 AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
 
