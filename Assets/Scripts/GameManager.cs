@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         intelInteractText.SetActive(false);
 
 
-        flashBangIcon = GameObject.FindGameObjectWithTag("FlashbangIcon");
+        flashBangIcon = GameObject.FindGameObjectWithTag("FlashBangIcon");
         flashBangCount = GameObject.FindGameObjectWithTag("FlashbangCount").GetComponent<TextMeshProUGUI>();
         flashbangImage = GameObject.FindGameObjectWithTag("FlashbangImage").GetComponent<Image>();
 
