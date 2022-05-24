@@ -961,7 +961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 10
   raycastDistance: 10
-  angle: 30
+  angle: 85
   height: 1
   heightOffsetFromOrigin: 1
   meshColor: {r: 1, g: 0, b: 0, a: 1}
