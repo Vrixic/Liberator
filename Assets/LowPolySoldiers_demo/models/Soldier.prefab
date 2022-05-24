@@ -960,6 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 10
+  raycastDistance: 10
   angle: 30
   height: 1
   heightOffsetFromOrigin: 1

@@ -195,6 +195,9 @@ public class Player : ISpawnable
 
         if (flashbang.isActiveAndEnabled && !flashbang.HasMoreThrowables())
             EquipPreviousWeapon();
+
+        if (sensor.isActiveAndEnabled && !sensor.HasMoreThrowables())
+            EquipPreviousWeapon();
     }
 
     /*
@@ -250,6 +253,14 @@ public class Player : ISpawnable
                 DeactivateSensor();
                 DeactivateWeapon(m_CurrentWeaponIndex);
                 ActivateFlashbang();
+            }
+            else
+            {
+                if (sensor.HasMoreThrowables())
+                {
+                    DeactivateWeapon(m_CurrentWeaponIndex);
+                    ActivateSensor();
+                }
             }
         }               
     }
