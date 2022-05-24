@@ -13,7 +13,9 @@ public class ISpawnable : MonoBehaviour
     }
 
     public virtual void Despawn()
-    {    }
+    { 
+
+    }
 
     public virtual void Respawn()
     {

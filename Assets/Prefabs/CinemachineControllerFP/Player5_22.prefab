@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4096617023938946199, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 17.86
       objectReference: {fileID: 0}
     - target: {fileID: 4096617023938946199, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}
       propertyPath: m_LocalPosition.y
@@ -605,7 +605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4096617023938946199, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -21.94
       objectReference: {fileID: 0}
     - target: {fileID: 4096617023938946199, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}
       propertyPath: m_LocalRotation.w
@@ -640,11 +640,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5949036525270202500}
     - target: {fileID: 4181151091504780862, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}
+      propertyPath: startWeaponIDs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181151091504780862, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}
       propertyPath: startWeaponIDs.Array.data[0]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4181151091504780862, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}
       propertyPath: startWeaponIDs.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181151091504780862, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}
+      propertyPath: startWeaponIDs.Array.data[2]
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7586161980158107391, guid: 20df193f0f6602243bae06a9ee0d1f01, type: 3}

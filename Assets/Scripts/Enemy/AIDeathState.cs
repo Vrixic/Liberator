@@ -25,6 +25,10 @@ public class AIDeathState : AIState
         agent.animator.Play("Death");
         GameManager.Instance.CurrentCash += 50;
 
+        agent.navMeshAgent.isStopped = true;
+
+        agent.Despawn();
+
         //var rigidBodies = agent.GetComponentsInChildren<Rigidbody>();
         //foreach (var rigidbody in rigidBodies)
         //{
@@ -38,10 +42,10 @@ public class AIDeathState : AIState
 
     public void Update(AIAgent agent)
     {
-        agent.navMeshAgent.isStopped = true;
+        //agent.navMeshAgent.isStopped = true;
 
-        if (Time.time > diasbleTimer)
-            DisableEnemy(agent);
+        //if (Time.time > diasbleTimer)
+        //    DisableEnemy(agent);
     }
 
     void DisableEnemy(AIAgent agent)

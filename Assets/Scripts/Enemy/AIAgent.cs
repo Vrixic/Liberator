@@ -31,7 +31,12 @@ public class AIAgent : ISpawnable
     private Health enemyHealth;
 
     private EnemyGun enemyGun;
-    private EnemyMelee enemyMelee;    
+    private EnemyMelee enemyMelee;
+
+    // Colliders 
+    SphereCollider meleeSphereCollider;
+    SphereCollider headShotCollider;
+    CapsuleCollider bodyCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -52,12 +57,17 @@ public class AIAgent : ISpawnable
         if (isMelee)
         {
             enemyMelee = GetComponent<EnemyMelee>();
+            meleeSphereCollider = GetComponent<SphereCollider>();
         }
         else
         {
             enemyGun = GetComponent<EnemyGun>();
         }
         enemyHealth = GetComponent<Health>();
+
+        headShotCollider = GetComponentInChildren<SphereCollider>();
+        bodyCollider = GetComponent<CapsuleCollider>();
+
         Spawn();
     }
 
@@ -76,19 +86,21 @@ public class AIAgent : ISpawnable
     {
         base.Spawn();
 
+        EnableColliders();
         gameObject.SetActive(true);
 
         currentState = initialState;
         //sets state to initial state.
         stateMachine.ChangeState(initialState);
-        enemyHealth.currentHealth = enemyHealth.maxHealth;        
+        enemyHealth.currentHealth = enemyHealth.maxHealth;
     }
 
     public override void Despawn()
     {
         base.Despawn();
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        DisableColliders();
     }
 
     public override void Respawn()
@@ -115,6 +127,24 @@ public class AIAgent : ISpawnable
         }
 
         lookCouroutine = StartCoroutine(LookAt());
+    }
+
+    void EnableColliders()
+    {
+        if (isMelee)
+            meleeSphereCollider.enabled = true;
+
+        bodyCollider.enabled = true; 
+        headShotCollider.enabled = true;
+    }
+
+    void DisableColliders()
+    {
+        if (isMelee)
+            meleeSphereCollider.enabled = false;
+
+        bodyCollider.enabled = false; ;
+        headShotCollider.enabled = false;
     }
 
     //public IEnumerator LookAt()
