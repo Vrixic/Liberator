@@ -191,6 +191,11 @@ public class BaseWeapon : ISpawnable //, IWeapon
         return allowPlayerToHoldAimTrigger;
     }
 
+    public void SetDamage(int d)
+    {
+        damage = d;
+    }
+
     /*
     * returns the amount of damage the weapon will do
     */

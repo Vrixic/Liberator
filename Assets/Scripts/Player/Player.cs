@@ -15,6 +15,7 @@ public class Player : ISpawnable
 
     /* base throwable of type flashbang */
     [SerializeField] FlashbangHand flashbang;
+    [SerializeField] BaseThrowableHands sensor;
 
     [Header("Flashbang Settings")]
 
@@ -103,8 +104,12 @@ public class Player : ISpawnable
         m_CurrentWeapons = new BaseWeapon[startWeaponIDs.Length];
 
         Spawn();
+
         flashbang.OnPickup(weaponsParent);
+        sensor.OnPickup(weaponsParent);
+
         DeactivateFlashbang();
+        DeactivateSensor();
     }
 
     public override void Spawn()
@@ -229,11 +234,23 @@ public class Player : ISpawnable
         if (!GameRunningCheck()) return;
         if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
 
-        if (flashbang.HasMoreThrowables())
+        if(flashbang.isActiveAndEnabled)
         {
-            DeactivateWeapon(m_CurrentWeaponIndex);
-            ActivateFlashbang();
+            if(sensor.HasMoreThrowables())
+            {
+                DeactivateFlashbang();
+                ActivateSensor();
+            }
         }
+        else
+        {
+            if (flashbang.HasMoreThrowables())
+            {
+                DeactivateSensor();
+                DeactivateWeapon(m_CurrentWeaponIndex);
+                ActivateFlashbang();
+            }
+        }               
     }
 
     /*
@@ -256,7 +273,7 @@ public class Player : ISpawnable
     {
         if (!GameRunningCheck()) return;
 
-        if (flashbang.isActiveAndEnabled)
+        if (flashbang.isActiveAndEnabled || sensor.isActiveAndEnabled)
             ForceEquipWeapon(1);
         else
             EquipWeapon(1);
@@ -311,6 +328,9 @@ public class Player : ISpawnable
         if (flashbang.isActiveAndEnabled)
             DeactivateFlashbang();
 
+        if (sensor.isActiveAndEnabled)
+            DeactivateSensor();
+
         if (index == m_CurrentWeapons.Length)
             index = 0;
 
@@ -332,6 +352,9 @@ public class Player : ISpawnable
 
         if (flashbang.isActiveAndEnabled)
             DeactivateFlashbang();
+
+        if (sensor.isActiveAndEnabled)
+            DeactivateSensor();
 
         ActivateWeapon(index);
         DeactivateWeapon(m_CurrentWeaponIndex);
@@ -357,6 +380,12 @@ public class Player : ISpawnable
         m_CurrentEquippedWeapon = flashbang;
     }
 
+    private void ActivateSensor()
+    {
+        sensor.SetActive(true);
+        m_CurrentEquippedWeapon = sensor;
+    }
+
     /*
     * disables the weapon at @Param: 'index'
     */
@@ -371,6 +400,11 @@ public class Player : ISpawnable
     private void DeactivateFlashbang()
     {
         flashbang.SetActive(false);
+    }
+
+    private void DeactivateSensor()
+    {
+        sensor.SetActive(false);
     }
 
     /*
@@ -705,20 +739,25 @@ public class Player : ISpawnable
 
     public void IncreaseSensorGrenade(int amount)
     {
-
+        sensor.IncreaseThrowable(amount);
     }
     public int GetCurrentSensorGrenadeCount()
     {
-        return 0;
+        return sensor.GetCurrentAmountOfThrowables();
     }
 
     public int GetMaxSensorGrenadeCount()
     {
-        return 0;
+        return sensor.GetMaxAmountOfThrowables();
     }
 
     public void UpdateSensorGrenadeUi()
     {
 
+    }
+
+    public BaseWeapon GetCurrentEquippedWeapon()
+    {
+        return m_CurrentEquippedWeapon;
     }
 }

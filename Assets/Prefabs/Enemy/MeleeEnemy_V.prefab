@@ -226,7 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2cfb2fceba99243ab4da73ab54ede3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 1.5
+  distance: 5
+  raycastDistance: 1.4
   angle: 90
   height: 1
   heightOffsetFromOrigin: 1

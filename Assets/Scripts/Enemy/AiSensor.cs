@@ -5,6 +5,7 @@ using UnityEngine;
 public class AiSensor : MonoBehaviour
 {
     public float distance = 10;
+    public float raycastDistance = 1f;
     public float angle = 30;
     public float height = 1.0f;
     public float heightOffsetFromOrigin = 1.0f;
@@ -103,7 +104,7 @@ public class AiSensor : MonoBehaviour
         //dest.y = origin.y;
 
         //fire a raycast from the enemy to the player to see if anything obstructs the enemies view
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, raycastDistance))
         {
             //Debug.Log("Entered raycast line, " + hit.collider.tag);
             //Debug.DrawLine(origin, dest, Color.green, 1f);
