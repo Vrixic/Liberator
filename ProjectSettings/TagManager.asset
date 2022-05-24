@@ -44,6 +44,7 @@ TagManager:
   - UpgradeWeaponText
   - SensorGrenadeIcon
   - SensorGrenadeCount
+  - BuyWeaponsCanvas
   layers:
   - Default
   - TransparentFX

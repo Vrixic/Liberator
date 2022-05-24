@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ public class ButtonFunctionality : MonoBehaviour
     GameObject pause;
     GameObject virtualCam;
     GameObject reticle;
+    TextMeshProUGUI itemTabCashCount;
+    TextMeshProUGUI buyWeaponTabCashCount;
     public static bool gameIsPaused = false;
 
     void Start()
@@ -18,7 +21,6 @@ public class ButtonFunctionality : MonoBehaviour
         pause = GameManager.Instance.pause;
         virtualCam = GameManager.Instance.virtualCam;
         reticle = GameManager.Instance.reticle;
-
     }
 
 
@@ -125,6 +127,7 @@ public class ButtonFunctionality : MonoBehaviour
 
         }
         GameManager.Instance.shopCanvas.SetActive(false);
+        GameManager.Instance.buyWeaponsCanvas.SetActive(false);
     }
 
     // Refill Health
@@ -246,7 +249,6 @@ public class ButtonFunctionality : MonoBehaviour
         }
     }
 
-    // TODO: IMPLEMENT UPGRADE WEAPON METHOD
     public void UpgradeCurrentWeapon()
     {
         if (GameManager.Instance.CurrentCash >= 500)
@@ -269,9 +271,31 @@ public class ButtonFunctionality : MonoBehaviour
 
     public void UpdateCashCountShopUi()
     {
-        GameManager.Instance.cashCountText.text = "Cash: " + GameManager.Instance.CurrentCash;
+        GameManager.Instance.itemTabCashCountText.text = "Cash: " + GameManager.Instance.CurrentCash;
+        GameManager.Instance.buyWeaponTabCashCountText.text = "Cash: " + GameManager.Instance.CurrentCash;
+
     }
 
+    public void ShowItemsTab()
+    {
+        if (!GameManager.Instance.shopCanvas.activeInHierarchy)
+        {
+            GameManager.Instance.buyWeaponsCanvas.SetActive(false);
+            GameManager.Instance.shopCanvas.SetActive(true);
+
+            UpdateCashCountShopUi();
+        }
+    }
+
+    public void ShowBuyGunsTab()
+    {
+        if (!GameManager.Instance.buyWeaponsCanvas.activeInHierarchy)
+        {
+            GameManager.Instance.shopCanvas.SetActive(false);
+            GameManager.Instance.buyWeaponsCanvas.SetActive(true);
+            UpdateCashCountShopUi();
+        }
+    }
 
     #endregion
 

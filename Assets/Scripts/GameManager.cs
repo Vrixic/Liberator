@@ -70,7 +70,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject shopCanvas;
     [HideInInspector]
-    public TextMeshProUGUI cashCountText;
+    public TextMeshProUGUI itemTabCashCountText;
+    [HideInInspector]
+    public TextMeshProUGUI buyWeaponTabCashCountText;
     [HideInInspector]
     public TextMeshProUGUI weaponUpgradeText;
     [HideInInspector]
@@ -81,6 +83,8 @@ public class GameManager : MonoBehaviour
     public GameObject sensorGrenadeIcon;
     [HideInInspector]
     public bool isCurrentWeaponUpgraded;
+    [HideInInspector]
+    public GameObject buyWeaponsCanvas;
 
     private SpawnPoint[] spawnPoints;
 
@@ -156,12 +160,15 @@ public class GameManager : MonoBehaviour
         hostageProgressBar = GameObject.FindGameObjectWithTag("HostageProgressBar");
 
         shopCanvas = GameObject.FindGameObjectWithTag("ShopCanvas");
-        cashCountText = GameObject.FindGameObjectWithTag("CashCountText").GetComponent<TextMeshProUGUI>();
+        itemTabCashCountText = GameObject.FindGameObjectWithTag("CashCountText").GetComponent<TextMeshProUGUI>();
         weaponUpgradeText = GameObject.FindGameObjectWithTag("UpgradeWeaponText").GetComponent<TextMeshProUGUI>();
         weaponMaxUpgradeText = GameObject.FindGameObjectWithTag("MaxWeaponUpgradeText").GetComponent<TextMeshProUGUI>();
         weaponMaxUpgradeText.enabled = false;
         isCurrentWeaponUpgraded = false;
         shopCanvas.SetActive(false);
+        buyWeaponsCanvas = GameObject.FindGameObjectWithTag("BuyWeaponsCanvas");
+        buyWeaponTabCashCountText = GameObject.FindGameObjectWithTag("CashCountText").GetComponent<TextMeshProUGUI>();
+        buyWeaponsCanvas.SetActive(false);
 
         gunIcon = GameObject.FindGameObjectWithTag("GunIcon").GetComponent<Image>();
 
