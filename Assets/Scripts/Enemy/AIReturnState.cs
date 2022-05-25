@@ -32,7 +32,7 @@ public class AIReturnState : AIState
         bool inSight = agent.sensor.IsInsight();
         if (inSight) // players is in sight of the enemy
         {
-            agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
+            agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
         }
         if (agent.transform.position  == spawnPosition)
         {
