@@ -53,6 +53,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9009821154032570323}
     m_Modifications:
+    - target: {fileID: 5484042200815279178, guid: dd1b3af363e087c4c8644107e9b2f192, type: 3}
+      propertyPath: m_Range
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484042200815279178, guid: dd1b3af363e087c4c8644107e9b2f192, type: 3}
+      propertyPath: m_Intensity
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6933126418471985687, guid: dd1b3af363e087c4c8644107e9b2f192, type: 3}
       propertyPath: m_Name
       value: SmallAmmoBox 1

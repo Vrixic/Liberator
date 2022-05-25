@@ -55,6 +55,7 @@ public class ButtonFunctionality : MonoBehaviour
             Resume();
         }
     }
+
     public void Resume()
     {
         // Turn Reticle back on
@@ -126,6 +127,8 @@ public class ButtonFunctionality : MonoBehaviour
         }
         GameManager.Instance.shopCanvas.SetActive(false);
         GameManager.Instance.buyWeaponsCanvas.SetActive(false);
+        GameManager.Instance.minimapCanvas.SetActive(true);
+
     }
 
     // Refill Health
@@ -290,6 +293,17 @@ public class ButtonFunctionality : MonoBehaviour
         {
             GameManager.Instance.buyWeaponsCanvas.SetActive(false);
             GameManager.Instance.shopCanvas.SetActive(true);
+            // Dynamically change Weapon Upgrade Text depending on whether the weapon has been upgraded or not
+            if (GameManager.Instance.isCurrentWeaponUpgraded == true)
+            {
+                GameManager.Instance.weaponMaxUpgradeText.enabled = true;
+                GameManager.Instance.weaponUpgradeText.enabled = false;
+            }
+            else
+            {
+                GameManager.Instance.weaponMaxUpgradeText.enabled = false;
+                GameManager.Instance.weaponUpgradeText.enabled = true;
+            }
 
             UpdateCashCountShopUi();
         }
@@ -302,8 +316,121 @@ public class ButtonFunctionality : MonoBehaviour
             GameManager.Instance.shopCanvas.SetActive(false);
             GameManager.Instance.buyWeaponsCanvas.SetActive(true);
             UpdateCashCountShopUi();
+            
         }
     }
+
+    #region Buy Weapons Methods
+
+    public void BuyPistol()
+    {
+        Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
+        // Check if player can afford Purchase
+        if (GameManager.Instance.CurrentCash >= 500)
+        {
+            // Check if player already has weapon equipped
+            if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() != WeaponID.Pistol2)
+            {
+                GameManager.Instance.CurrentCash -= 500;
+                UpdateCashCountShopUi();
+
+                // Force the player to equip Knife, this is to prevent a bug with the previous weapon model staying equipped
+                GameManager.Instance.playerScript.ForceEquipWeapon(0);
+                // Switches player's current weapon to a pistol
+                GameManager.Instance.playerScript.GetCurrentWeapons()[1] = WeaponSpawnManager.Instance.GetWeapon(WeaponID.Pistol2, GameManager.Instance.playerScript.GetWeaponParent().transform);
+                // Force player to equip newly purchase weapon
+                GameManager.Instance.playerScript.ForceEquipWeapon(1);
+                // Reset Weapon is upgraded Boolean 
+                GameManager.Instance.isCurrentWeaponUpgraded = false;
+
+                Debug.Log("Weapon after Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
+
+            }
+        }
+
+    }
+
+    public void BuyAssaultRifle()
+    {
+        Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
+        // Check if player can afford Purchase
+        if (GameManager.Instance.CurrentCash >= 500)
+        {
+            if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() != WeaponID.Automatic_Rifle3)
+            {
+                GameManager.Instance.CurrentCash -= 500;
+                UpdateCashCountShopUi();
+
+                // Force the player to equip Knife, this is to prevent a bug with the previous weapon model staying equipped
+                GameManager.Instance.playerScript.ForceEquipWeapon(0);
+                // Switches player's current weapon to an assualt rife
+                GameManager.Instance.playerScript.GetCurrentWeapons()[1] = WeaponSpawnManager.Instance.GetWeapon(WeaponID.Automatic_Rifle3, GameManager.Instance.playerScript.GetWeaponParent().transform);
+                // Force player to equip newly purchase weapon
+                GameManager.Instance.playerScript.ForceEquipWeapon(1);
+                // Reset Weapon is upgraded Boolean 
+                GameManager.Instance.isCurrentWeaponUpgraded = false;
+
+                Debug.Log("Weapon after Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
+
+            }
+        }
+
+    }
+
+    public void BuyScar()
+    {
+        Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
+        // Check if player can afford Purchase
+        if (GameManager.Instance.CurrentCash >= 500)
+        {
+            if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() != WeaponID.Automatic_Rifle)
+            {
+                GameManager.Instance.CurrentCash -= 500;
+                UpdateCashCountShopUi();
+
+                // Force the player to equip Knife, this is to prevent a bug with the previous weapon model staying equipped
+                GameManager.Instance.playerScript.ForceEquipWeapon(0);
+                // Switches player's current weapon to a Scar
+                GameManager.Instance.playerScript.GetCurrentWeapons()[1] = WeaponSpawnManager.Instance.GetWeapon(WeaponID.Automatic_Rifle, GameManager.Instance.playerScript.GetWeaponParent().transform);
+                // Force player to equip newly purchase weapon
+                GameManager.Instance.playerScript.ForceEquipWeapon(1);
+                // Reset Weapon is upgraded Boolean 
+                GameManager.Instance.isCurrentWeaponUpgraded = false;
+
+                Debug.Log("Weapon after Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
+
+            }
+        }
+
+    }
+    public void BuyShotgun()
+    {
+        Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
+        // Check if player can afford Purchase
+        if (GameManager.Instance.CurrentCash >= 500)
+        {
+            if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() != WeaponID.Shotgun)
+            {
+                GameManager.Instance.CurrentCash -= 500;
+                UpdateCashCountShopUi();
+
+                // Force the player to equip Knife, this is to prevent a bug with the previous weapon model staying equipped
+                GameManager.Instance.playerScript.ForceEquipWeapon(0);
+                // Switches player's current weapon to a Shotgun
+                GameManager.Instance.playerScript.GetCurrentWeapons()[1] = WeaponSpawnManager.Instance.GetWeapon(WeaponID.Shotgun, GameManager.Instance.playerScript.GetWeaponParent().transform);
+                // Force player to equip newly purchase weapon
+                GameManager.Instance.playerScript.ForceEquipWeapon(1);
+                // Reset Weapon is upgraded Boolean 
+                GameManager.Instance.isCurrentWeaponUpgraded = false;
+
+                Debug.Log("Weapon after Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
+
+            }
+        }
+
+    }
+
+    #endregion
 
     #endregion
 

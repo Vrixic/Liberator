@@ -14,7 +14,7 @@ public class AIFlashState : AIState
     {
         agent.currentState = AIStateID.Flashed;
         agent.navMeshAgent.isStopped = true;
-
+        agent.animator.SetTrigger("Flashbang");
         agent.isFlashed = true;
 
     }

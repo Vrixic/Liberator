@@ -370,7 +370,7 @@ public class Player : ISpawnable
     /*
      * equips a weapon based on the index passed in, but its assumed to be a correct index, forces player to switch to the index
      */
-    void ForceEquipWeapon(int index)
+    public void ForceEquipWeapon(int index)
     {
         if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
 
@@ -800,5 +800,15 @@ public class Player : ISpawnable
         }
 
         return null;
+    }
+
+    public BaseWeapon[] GetCurrentWeapons()
+    {
+        return m_CurrentWeapons;
+    }
+
+    public GameObject GetWeaponParent()
+    {
+        return weaponsParent;
     }
 }
