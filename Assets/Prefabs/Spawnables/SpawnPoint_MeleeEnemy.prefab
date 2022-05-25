@@ -137,6 +137,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 8939970669460307165}
     m_Modifications:
     - target: {fileID: 194561364194938756, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: distance
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 194561364194938756, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: raycastDistance
       value: 1.3
       objectReference: {fileID: 0}

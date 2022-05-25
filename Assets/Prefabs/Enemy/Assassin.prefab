@@ -39,6 +39,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5853604252493979014}
     m_Modifications:
+    - target: {fileID: 2758021844854130010, guid: 770c9d5041ee12645991179483550776, type: 3}
+      propertyPath: distance
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758021844854130010, guid: 770c9d5041ee12645991179483550776, type: 3}
+      propertyPath: raycastDistance
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 6463805212560364267, guid: 770c9d5041ee12645991179483550776, type: 3}
       propertyPath: m_Name
       value: Soldier
