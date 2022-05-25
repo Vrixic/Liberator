@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
+    //drag and drop assassin enemies in here
+    [SerializeField] private List<AIAgent> ChasePlayerOnOpen = new List<AIAgent>();
+
+    //once a door has been opened once, I don't want to keep trying to swap assassins to chase player anymore
+    private bool chaseTriggeredOnce = false; 
+
     private Animator doorAnimator;
 
     private bool doorOpen = false;
@@ -29,6 +35,26 @@ public class DoorController : MonoBehaviour
             {
                 doorAnimator.Play("DoorOpenNew", 0, 0.0f);
                 doorOpen = true;
+
+                //tell subscribed assassins to start chasing player(if any are attached)
+                if (!chaseTriggeredOnce && ChasePlayerOnOpen.Count > 0)
+                {
+                    //loop through subscribed enemies(AiAgents in the list)
+                    for (int i = 0; i < ChasePlayerOnOpen.Count; i++)
+                    {
+                        AIStateID agentState = ChasePlayerOnOpen[i].currentState;
+
+                        //make sure this agent isn't dead or flashed or already chasing the player
+                        if(agentState != AIStateID.Death && agentState != AIStateID.Flashed && agentState != AIStateID.ChasePlayer)
+                        {
+                            //manually swap the assassin over to the ChasePlayer state
+                            ChasePlayerOnOpen[i].stateMachine.ChangeState(AIStateID.ChasePlayer);
+                        }
+                    }
+
+                    //save the fact that this door has been opened once by the player
+                    chaseTriggeredOnce = true;
+                }
             }
             else if (doorOpen == true)
             {
