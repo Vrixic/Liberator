@@ -37,6 +37,7 @@ public class AIAgent : ISpawnable
     SphereCollider meleeSphereCollider;
     SphereCollider headShotCollider;
     CapsuleCollider bodyCollider;
+    BoxCollider boxCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,7 @@ public class AIAgent : ISpawnable
 
         headShotCollider = GetComponentInChildren<SphereCollider>();
         bodyCollider = GetComponent<CapsuleCollider>();
+        boxCollider = GetComponentInChildren<BoxCollider>();
 
         Spawn();
     }
@@ -136,6 +138,7 @@ public class AIAgent : ISpawnable
 
         bodyCollider.enabled = true; 
         headShotCollider.enabled = true;
+        boxCollider.enabled = true;
     }
 
     void DisableColliders()
@@ -143,8 +146,9 @@ public class AIAgent : ISpawnable
         if (isMelee)
             meleeSphereCollider.enabled = false;
 
-        bodyCollider.enabled = false; ;
+        bodyCollider.enabled = false;
         headShotCollider.enabled = false;
+        boxCollider.enabled = false;
     }
 
     //public IEnumerator LookAt()

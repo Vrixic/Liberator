@@ -12,11 +12,13 @@ public class Explodable : ISpawnable
     [SerializeField] AudioClip fireSound;
     [SerializeField] AudioClip exploSound;
 
+    [SerializeField] LayerMask layers;
+
     string m_ExplosionPool;
     string m_FirePool;
 
     int hits = 0;
-    int counter = 0;
+
     [SerializeField] float radius;
     float damage;
 
@@ -52,6 +54,8 @@ public class Explodable : ISpawnable
             fire.transform.forward = (Vector3.up + forward).normalized;
 
             hits++;
+            if (hits >= 3)
+                Explode();
         }
     }
 
@@ -59,16 +63,20 @@ public class Explodable : ISpawnable
     // to distance away from explosion
     public void ExplodeDamage()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        Collider[] colliders = new Collider[10];
+        Vector3 origin = transform.position;
+        int collidersCount = Physics.OverlapSphereNonAlloc(origin, radius, colliders, layers);
+        //Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
-        for (int i = 0; i < colliders.Length; i++)
+        for (int i = 0; i < collidersCount; i++)
         {
+            Debug.Log(colliders[i].name);
             if (colliders[i].tag == "Player"){
                 float dist = Vector3.Distance(colliders[i].transform.position, transform.position);
                 damage = 300 / (dist + 0.1f);
                 GameManager.Instance.playerScript.TakeDamage((int)damage);
             }
-            else if (colliders[i].tag == "Hitbox"){
+            else if (colliders[i].tag == "Hitbox" && colliders[i].GetComponent<CapsuleCollider>() != null){
                 float dist = Vector3.Distance(colliders[i].transform.position, transform.position);
                 damage = 300 / (dist + 0.1f);
                 colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
@@ -76,13 +84,13 @@ public class Explodable : ISpawnable
         }
     }
 
-    // checking for when to cause the explosion, 3 sec after being hit, or after 3 hits
-    private void Update()
+    public void Explode()
     {
-        if ((counter == 3 || hits == 3) && !isExploded)
+        if (!isExploded)
         {
-            ObjectPoolManager.DisableAllInPool(m_FirePool);
             isExploded = true;
+
+            ObjectPoolManager.DisableAllInPool(m_FirePool);
             explosion = ObjectPoolManager.SpawnObject(m_ExplosionPool);
             explosion.transform.position = transform.position;
 
@@ -92,11 +100,6 @@ public class Explodable : ISpawnable
             audioSource.Play();
 
             ExplodeDamage();
-        }
-        if (isExploded && counter > 3)
-        {
-            StopCoroutine(TimeTillExplode());
-            Despawn();
         }
     }
 
@@ -114,16 +117,19 @@ public class Explodable : ISpawnable
         base.Respawn();
 
         hits = 0;
-        counter = 0;
     }
 
     //counter for when to explode the tank
     IEnumerator TimeTillExplode()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
-            counter++;
-        }
+        yield return new WaitForSeconds(3);
+        Explode();
+        StartCoroutine(DespawnCourotine());
+    }
+
+    IEnumerator DespawnCourotine()
+    {
+        yield return new WaitForSeconds(1);
+        Despawn();
     }
 }
