@@ -158,7 +158,7 @@ public class PlayerInteract : MonoBehaviour
                     // Disables virtual camera so player can not look around in game
                     if(GameManager.Instance.virtualCam != null)
                         GameManager.Instance.virtualCam.SetActive(false);
-
+                    GameManager.Instance.minimapCanvas.SetActive(false);
                     GameManager.Instance.shopCanvas.SetActive(true);
                     GameManager.Instance.buttonFuncScript.UpdateCashCountShopUi();
                 }
@@ -219,6 +219,7 @@ public class PlayerInteract : MonoBehaviour
 
             //add code to win the level
             GameManager.Instance.shopCanvas.SetActive(true);
+            GameManager.Instance.minimapCanvas.SetActive(false);
             currentInteractPrompt.SetActive(false);
 
             //break player out of causing cancel/perform events when they aren't interacting with the hostage

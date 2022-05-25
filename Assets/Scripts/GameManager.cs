@@ -85,7 +85,8 @@ public class GameManager : MonoBehaviour
     public bool isCurrentWeaponUpgraded;
     [HideInInspector]
     public GameObject buyWeaponsCanvas;
-
+    [HideInInspector]
+    public GameObject minimapCanvas;
     private SpawnPoint[] spawnPoints;
 
     private static GameManager instance;
@@ -169,6 +170,9 @@ public class GameManager : MonoBehaviour
         buyWeaponsCanvas = GameObject.FindGameObjectWithTag("BuyWeaponsCanvas");
         buyWeaponTabCashCountText = GameObject.FindGameObjectWithTag("CashCountText").GetComponent<TextMeshProUGUI>();
         buyWeaponsCanvas.SetActive(false);
+
+        minimapCanvas = GameObject.FindGameObjectWithTag("MinimapCanvas");
+
 
         gunIcon = GameObject.FindGameObjectWithTag("GunIcon").GetComponent<Image>();
 
