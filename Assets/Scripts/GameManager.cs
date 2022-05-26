@@ -87,6 +87,9 @@ public class GameManager : MonoBehaviour
     public GameObject buyWeaponsCanvas;
     [HideInInspector]
     public GameObject minimapCanvas;
+    [HideInInspector]
+    public bool isPauseMenuOpen;
+
     private SpawnPoint[] spawnPoints;
 
     private static GameManager instance;

@@ -11,10 +11,8 @@ public class ButtonFunctionality : MonoBehaviour
     GameObject pause;
     GameObject virtualCam;
     GameObject reticle;
-    public static bool gameIsPaused = false;
     int shotgunAmmoCapacity;
     int SmallAmmoCapacity;
-    GameObject weaponDump;
     void Start()
     {
         // Get instances of pause menu, reticle and Virtual cam
@@ -23,14 +21,13 @@ public class ButtonFunctionality : MonoBehaviour
         reticle = GameManager.Instance.reticle;
         shotgunAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells);
         SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
-        weaponDump.transform.position = new Vector3(0, 0, 0);
     }
 
 
     #region PauseMenu
     public void PauseGame()
     {
-        if (gameIsPaused == false)
+        if (GameManager.Instance.isPauseMenuOpen == false)
         {
             if (GameManager.Instance.intelInteractText != null || GameManager.Instance.closeDoorInteractText != null || GameManager.Instance.openDoorInteractText != null || GameManager.Instance.secureHostageText != null)
             {
@@ -53,7 +50,7 @@ public class ButtonFunctionality : MonoBehaviour
             {
                 virtualCam.SetActive(false);
             }
-            gameIsPaused = true;
+            GameManager.Instance.isPauseMenuOpen = true;
         }
         else
         {
@@ -79,7 +76,7 @@ public class ButtonFunctionality : MonoBehaviour
             virtualCam.SetActive(true);
         }
         pause.SetActive(false);
-        gameIsPaused = false;
+        GameManager.Instance.isPauseMenuOpen = false;
     }
 
     public void Restart()

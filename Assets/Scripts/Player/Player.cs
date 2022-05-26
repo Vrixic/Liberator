@@ -836,13 +836,4 @@ public class Player : ISpawnable
         return null;
     }
 
-    public BaseWeapon[] GetCurrentWeapons()
-    {
-        return m_CurrentWeapons;
-    }
-
-    public GameObject GetWeaponParent()
-    {
-        return weaponsParent;
-    }
 }
