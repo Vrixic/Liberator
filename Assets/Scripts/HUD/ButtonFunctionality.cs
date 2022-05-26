@@ -12,13 +12,16 @@ public class ButtonFunctionality : MonoBehaviour
     GameObject virtualCam;
     GameObject reticle;
     public static bool gameIsPaused = false;
-
+    int shotgunAmmoCapacity;
+    int SmallAmmoCapacity;
     void Start()
     {
         // Get instances of pause menu, reticle and Virtual cam
         pause = GameManager.Instance.pause;
         virtualCam = GameManager.Instance.virtualCam;
         reticle = GameManager.Instance.reticle;
+        shotgunAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells);
+        SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
     }
 
 
@@ -172,7 +175,13 @@ public class ButtonFunctionality : MonoBehaviour
         if (GameManager.Instance.CurrentCash >= 100)
         {
             // Checks if player is at max ammo for ammo type small and ammo type shells
-            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells) || AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small))
+            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) == shotgunAmmoCapacity || AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) == SmallAmmoCapacity)
+            {
+                Debug.Log("ammo at capacity.");
+                return;
+            }
+
+            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells) || AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small))
             {
                 // Subtract Cost of items and update Cash Count
                 GameManager.Instance.CurrentCash -= 100;
@@ -190,7 +199,6 @@ public class ButtonFunctionality : MonoBehaviour
 
                 // Update Ammo Ui
                 AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
-
             }
 
         }
