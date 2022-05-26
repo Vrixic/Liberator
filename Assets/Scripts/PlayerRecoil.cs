@@ -59,8 +59,8 @@ public class PlayerRecoil : MonoBehaviour
         recoilTimer = recoilSmoothDampTime;
 
         //build recoil vector
-        recoilVector.x += -incomingVerticalRecoil * 2;
-        recoilVector.y += incomingHorizontalRecoil * 2;
+        recoilVector.x += -incomingVerticalRecoil;
+        recoilVector.y += incomingHorizontalRecoil;
 
         //empty out incoming recoil variables since we have stored the values
         incomingVerticalRecoil = 0f;
