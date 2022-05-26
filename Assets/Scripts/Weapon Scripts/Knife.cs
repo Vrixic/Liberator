@@ -50,16 +50,18 @@ public class Knife : BaseMelee
         if (Physics.Raycast(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, knifeHitRange, raycastLayers))
         {
             //Debug.Log(hitInfo.collider.tag);
-
-            if (hitInfo.collider.GetComponent<CapsuleCollider>() != null)
+            if (hitInfo.collider.CompareTag("Hitbox"))
             {
-                //Debug.Log("Body Shot");
-                hitInfo.collider.GetComponent<Health>().TakeDamage(GetDamage(), transform.forward);
-            }
-            else
-            {
-                //Debug.Log("Head Shot");
-                hitInfo.collider.GetComponentInParent<Health>().TakeDamage(100.0f, transform.forward);
+                if (hitInfo.collider.GetComponent<CapsuleCollider>() != null)
+                {
+                    //Debug.Log("Body Shot");
+                    hitInfo.collider.GetComponent<Health>().TakeDamage(GetDamage(), transform.forward);
+                }
+                else
+                {
+                    //Debug.Log("Head Shot");
+                    hitInfo.collider.GetComponentInParent<Health>().TakeDamage(100.0f, transform.forward);
+                }
             }
 
             MeleeImpactManager.Instance.SpawnMeleeImpact(hitInfo.point, hitInfo.normal, hitInfo.collider.tag);

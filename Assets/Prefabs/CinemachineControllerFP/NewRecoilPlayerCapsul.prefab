@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 2983848051424858103}
   - component: {fileID: 4181151091504780862}
   - component: {fileID: -5314800495212611394}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: NewRecoilPlayerCapsul
   m_TagString: Player
   m_Icon: {fileID: 0}

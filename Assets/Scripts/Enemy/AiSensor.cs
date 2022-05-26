@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AiSensor : MonoBehaviour
 {
-    public float distance = 10;
-    public float raycastDistance = 1f;
+    public float distance = 23;
+    public float raycastDistance = 23f;
     public float angle = 30;
     public float height = 1.0f;
     public float heightOffsetFromOrigin = 1.0f;

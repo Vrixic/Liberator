@@ -193,6 +193,14 @@ PrefabInstance:
       propertyPath: raycastDistance
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 656284162171274094, guid: 4a4849c21e1be0741a0d3406447c560e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 656284162171274094, guid: 4a4849c21e1be0741a0d3406447c560e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.295
+      objectReference: {fileID: 0}
     - target: {fileID: 5853604252493979014, guid: 4a4849c21e1be0741a0d3406447c560e, type: 3}
       propertyPath: m_RootOrder
       value: 0
