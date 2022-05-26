@@ -19,6 +19,7 @@ public class AIDeathState : AIState
     {
 
         agent.currentState = AIStateID.Death;
+        agent.SetIsDead(true);
         diasbleTimer = Time.time + agent.GetDisableEnemyInterval();
 
         agent.animator.SetBool("isDead", true);

@@ -38,7 +38,7 @@ public class AIStateMachine {
     //exits the current state and sets the current one to the new state passed in.
     public void ChangeState(AIStateID newState)
     {
-        if (agent.IsDead() && newState != AIStateID.Death) return;
+        if (agent.IsDead()) return;
 
         GetState(currentState)?.Exit(agent);
         currentState = newState;
