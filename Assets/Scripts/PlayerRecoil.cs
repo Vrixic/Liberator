@@ -74,7 +74,6 @@ public class PlayerRecoil : MonoBehaviour
         //set vertical recoil stabilization
         if (-currentVector.x > verticalRecoilRestoration * timePassed)
         {
-            Debug.Log("chunk restored vertically");
             //restore a chunk of vertical recoil
             recoilVector.x += verticalRecoilRestoration * timePassed;
         }
