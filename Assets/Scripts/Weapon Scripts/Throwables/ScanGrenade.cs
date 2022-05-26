@@ -64,6 +64,7 @@ public class ScanGrenade : BaseThrowables
     */
     public override void OnThrowThrowable(Vector3 forceDirection, float forceMultiplier = 1f)
     {
+        transform.Translate(.6f, 0, 0); 
         GetRigidbody().AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
         StartCoroutine(OnThrowableExplode());
     }
