@@ -34,7 +34,7 @@ public class AIReturnState : AIState
         {
             agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
         }
-        if (agent.transform.position  == spawnPosition)
+        if ((agent.transform.position - spawnPosition).sqrMagnitude <= 1)
         {
             agent.stateMachine.ChangeState(AIStateID.Idle);
         }
