@@ -14,6 +14,9 @@ public class Explodable : ISpawnable
 
     [SerializeField] LayerMask layers;
 
+
+    Transform m_Mesh;
+
     string m_ExplosionPool;
     string m_FirePool;
 
@@ -34,6 +37,8 @@ public class Explodable : ISpawnable
     {
         m_ExplosionPool = ObjectPoolManager.CreateObjectPool(explosion, 1);
         m_FirePool = ObjectPoolManager.CreateObjectPool(fire, 3);
+
+        m_Mesh = transform.GetChild(0);
     }
 
     // Called when a bullet hits an explodable, starts spewing fire from location of hit
@@ -115,7 +120,7 @@ public class Explodable : ISpawnable
     {
         base.Despawn();
 
-        if (gameObject.activeInHierarchy == false)
+        if (gameObject.activeInHierarchy == true)
             gameObject.SetActive(false);
     }
 
@@ -127,6 +132,7 @@ public class Explodable : ISpawnable
         hits = 0;
         isExploded = false;
         gameObject.SetActive(true);
+        m_Mesh.gameObject.SetActive(true);
     }
 
     //counter for when to explode the tank
@@ -134,6 +140,7 @@ public class Explodable : ISpawnable
     {
         yield return new WaitForSeconds(3);
         Explode();
+        m_Mesh.gameObject.SetActive(false);
         Invoke("Despawn", 1f);
     }
 }
