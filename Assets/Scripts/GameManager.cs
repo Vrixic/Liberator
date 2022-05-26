@@ -90,8 +90,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool isPauseMenuOpen;
     [HideInInspector]
-    public GameObject mainMenuCanvas;
-    [HideInInspector]
     public GameObject ammoCanvas;
 
     private SpawnPoint[] spawnPoints;
@@ -124,7 +122,6 @@ public class GameManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        mainMenuCanvas = GameObject.FindGameObjectWithTag("MainMenuCanvas");
 
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;

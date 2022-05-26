@@ -46,7 +46,6 @@ TagManager:
   - SensorGrenadeCount
   - BuyWeaponsCanvas
   - MinimapCanvas
-  - MainMenuCanvas
   - AmmoCanvas
   layers:
   - Default

@@ -22,20 +22,6 @@ public class ButtonFunctionality : MonoBehaviour
         shotgunAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells);
         SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
     }
-    #region MainMenu
-    public void OpenMainMenu()
-    {
-        if (GameManager.Instance.ui.activeInHierarchy || GameManager.Instance.ammoCanvas || GameManager.Instance.shopCanvas)
-        {
-            GameManager.Instance.ui.SetActive(false);
-            GameManager.Instance.ammoCanvas.SetActive(false);
-            GameManager.Instance.shopCanvas.SetActive(false);
-        }
-
-        GameManager.Instance.mainMenuCanvas.SetActive(true);
-
-    }
-    #endregion
 
     #region PauseMenu
     public void PauseGame()
@@ -289,7 +275,9 @@ public class ButtonFunctionality : MonoBehaviour
                 Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage before Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
                 GameManager.Instance.CurrentCash -= 500;
                 UpdateCashCountShopUi();
+                // Gets current weapon equipped and increases the damage of the gun by 25
                 GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 25);
+                // Sets a bool that stores whether a weapon has been upgraded or not then turns on the text to represent the current weapon has been upgraded
                 GameManager.Instance.isCurrentWeaponUpgraded = true;
                 GameManager.Instance.weaponMaxUpgradeText.enabled = true;
                 GameManager.Instance.weaponUpgradeText.enabled = false;
@@ -353,6 +341,7 @@ public class ButtonFunctionality : MonoBehaviour
             {
                 GameManager.Instance.CurrentCash -= 500;
                 UpdateCashCountShopUi();
+                // Checks if player has knife equipped and if they do switches to their current gun equipped
                 if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
                 {
                     GameManager.Instance.playerScript.EquipNextWeapon();
@@ -381,6 +370,7 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.CurrentCash -= 500;
                 UpdateCashCountShopUi();
 
+                // Checks if player has knife equipped and if they do switches to their current gun equipped
                 if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
                 {
                     GameManager.Instance.playerScript.EquipNextWeapon();
@@ -409,6 +399,8 @@ public class ButtonFunctionality : MonoBehaviour
             {
                 GameManager.Instance.CurrentCash -= 500;
                 UpdateCashCountShopUi();
+
+                // Checks if player has knife equipped and if they do switches to their current gun equipped
                 if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
                 {
                     GameManager.Instance.playerScript.EquipNextWeapon();
@@ -438,6 +430,7 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.CurrentCash -= 500;
                 UpdateCashCountShopUi();
 
+                // Checks if player has knife equipped and if they do switches to their current gun equipped
                 if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
                 {
                     GameManager.Instance.playerScript.EquipNextWeapon();
@@ -460,6 +453,9 @@ public class ButtonFunctionality : MonoBehaviour
 
     #endregion
 
-
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 
 }
