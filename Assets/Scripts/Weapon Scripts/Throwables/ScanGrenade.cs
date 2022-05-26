@@ -43,11 +43,11 @@ public class ScanGrenade : BaseThrowables
                 RaycastHit hitInfo;
                 if (Physics.Raycast(origin, (target - origin).normalized, out hitInfo, raycastDistance))
                 {
-                    //if(hitInfo.collider.tag == "Hitbox")
-                    //{
-                    Debug.Log("scannin: " + colliders[i].tag);
-                    hitInfo.collider.GetComponent<MiniMapScanable>().Show();
-                    //}                        
+                    if(hitInfo.collider.tag == "Hitbox")
+                    {
+                        Debug.Log("scannin: " + colliders[i].tag);
+                        hitInfo.collider.GetComponent<MiniMapScanable>().Show();
+                    }                        
                 }
             }
             else

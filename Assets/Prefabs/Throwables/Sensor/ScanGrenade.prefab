@@ -230,6 +230,6 @@ MonoBehaviour:
   poolTimeAfterExplosion: 1
   queryLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   scanSphereRadius: 5
   scanThroughWalls: 0
