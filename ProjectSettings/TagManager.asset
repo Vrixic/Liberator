@@ -46,6 +46,7 @@ TagManager:
   - SensorGrenadeCount
   - BuyWeaponsCanvas
   - MinimapCanvas
+  - AmmoCanvas
   layers:
   - Default
   - TransparentFX

@@ -398,6 +398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reticle Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7286437496504845026, guid: b013c8df18d4aa3498a3702d906ddc65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7286437496504845053, guid: b013c8df18d4aa3498a3702d906ddc65, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -508,6 +512,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5994487195960309196}
     m_Modifications:
+    - target: {fileID: 5084828004718404094, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -43.136963
+      objectReference: {fileID: 0}
     - target: {fileID: 6326081732116033494, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -556,6 +564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopCanvases
       objectReference: {fileID: 0}
+    - target: {fileID: 7655680587316836310, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
 --- !u!4 &5883316308512061367 stripped
@@ -578,9 +590,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7987560300604670240, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987560300604670302, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_Name
+      value: QuitToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987560302118354936, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_text
+      value: Main Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 7987560302406004792, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: m_Name
       value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987560302406004792, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7987560302406004796, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: m_Pivot.x

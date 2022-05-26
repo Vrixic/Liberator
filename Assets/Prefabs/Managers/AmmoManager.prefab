@@ -65,6 +65,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ammo Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6107594554713052, guid: 8d84d544b50a6694ab5eff53ccbd2c3b, type: 3}
+      propertyPath: m_TagString
+      value: AmmoCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 6107594554713055, guid: 8d84d544b50a6694ab5eff53ccbd2c3b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -149,6 +153,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6107594687439498, guid: 8d84d544b50a6694ab5eff53ccbd2c3b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - target: {fileID: 2341287432287598760, guid: 8d84d544b50a6694ab5eff53ccbd2c3b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d84d544b50a6694ab5eff53ccbd2c3b, type: 3}
 --- !u!224 &6058022486002927241 stripped

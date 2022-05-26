@@ -87,6 +87,11 @@ public class GameManager : MonoBehaviour
     public GameObject buyWeaponsCanvas;
     [HideInInspector]
     public GameObject minimapCanvas;
+    [HideInInspector]
+    public bool isPauseMenuOpen;
+    [HideInInspector]
+    public GameObject ammoCanvas;
+
     private SpawnPoint[] spawnPoints;
 
     private static GameManager instance;
@@ -179,6 +184,8 @@ public class GameManager : MonoBehaviour
 
         sensorGrenadeCount = GameObject.FindGameObjectWithTag("SensorGrenadeCount").GetComponent<TextMeshProUGUI>();
         sensorGrenadeIcon = GameObject.FindGameObjectWithTag("SensorGrenadeIcon");
+
+        ammoCanvas = GameObject.FindGameObjectWithTag("AmmoCanvas");
 
         if (player == null)
         {

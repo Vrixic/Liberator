@@ -94,26 +94,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6058022486137882588, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058022486137882588, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058022486137882588, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058022486137882588, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
-    - target: {fileID: 6058022486137882588, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 6962673431953401919, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -741
@@ -121,26 +101,6 @@ PrefabInstance:
     - target: {fileID: 6962673431953401919, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -493
-      objectReference: {fileID: 0}
-    - target: {fileID: 8393079174012837374, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8393079174012837374, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8393079174012837374, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8393079174012837374, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
-    - target: {fileID: 8393079174012837374, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5898f92f7bf02845ada32f2abe3056a, type: 3}
