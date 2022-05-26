@@ -794,15 +794,25 @@ MonoBehaviour:
   openDoorInteractText: {fileID: 0}
   closeDoorInteractText: {fileID: 0}
   intelInteractText: {fileID: 0}
+  flashbangImage: {fileID: 0}
   flashBangCount: {fileID: 0}
   flashBangIcon: {fileID: 0}
   ammoIcon: {fileID: 0}
   ammoText: {fileID: 0}
+  gunIcon: {fileID: 0}
   hostageProgressBar: {fileID: 0}
   currentCash: 0
   startingCash: 1000
   shopCanvas: {fileID: 0}
-  cashCountText: {fileID: 0}
+  itemTabCashCountText: {fileID: 0}
+  buyWeaponTabCashCountText: {fileID: 0}
+  weaponUpgradeText: {fileID: 0}
+  weaponMaxUpgradeText: {fileID: 0}
+  sensorGrenadeCount: {fileID: 0}
+  sensorGrenadeIcon: {fileID: 0}
+  isCurrentWeaponUpgraded: 0
+  buyWeaponsCanvas: {fileID: 0}
+  minimapCanvas: {fileID: 0}
 --- !u!1 &7987560301393037636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,7 +1140,7 @@ PrefabInstance:
     - target: {fileID: 7339117118689116250, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7339117118689116250, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_fontColor.b
       value: 1
@@ -1150,7 +1160,7 @@ PrefabInstance:
     - target: {fileID: 7339117118689116250, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7339117118689116250, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
@@ -1337,7 +1347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7339117119298286728, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4
+      value: -5.9
       objectReference: {fileID: 0}
     - target: {fileID: 7339117119298286728, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1346,6 +1356,10 @@ PrefabInstance:
     - target: {fileID: 7339117119298286735, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_fontSize
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339117119298286735, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
+      propertyPath: m_margin.z
+      value: -64.28285
       objectReference: {fileID: 0}
     - target: {fileID: 7339117119298286735, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_colorMode
@@ -1358,7 +1372,7 @@ PrefabInstance:
     - target: {fileID: 7339117119298286735, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: f2dcf029949142e28b974630369c8b4e, type: 2}
+      objectReference: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
     - target: {fileID: 7339117119298286735, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_enableVertexGradient
       value: 1
@@ -1422,7 +1436,7 @@ PrefabInstance:
     - target: {fileID: 7339117119386052671, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7339117119386052671, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_fontColor.b
       value: 1
@@ -1442,7 +1456,7 @@ PrefabInstance:
     - target: {fileID: 7339117119386052671, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7339117119386052671, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
@@ -1522,7 +1536,7 @@ PrefabInstance:
     - target: {fileID: 7339117120244327899, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7339117120244327899, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_fontColor.b
       value: 1
@@ -1542,7 +1556,7 @@ PrefabInstance:
     - target: {fileID: 7339117120244327899, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7339117120244327899, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
