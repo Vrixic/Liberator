@@ -345,7 +345,7 @@ public class ButtonFunctionality : MonoBehaviour
                 UpdateCashCountShopUi();
                 if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
                 {
-                    GameManager.Instance.playerScript.OnEquipPreviousPressed();
+                    GameManager.Instance.playerScript.EquipNextWeapon();
                 }
 
                 // Switches player's current weapon to a pistol
@@ -373,7 +373,7 @@ public class ButtonFunctionality : MonoBehaviour
 
                 if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
                 {
-                    GameManager.Instance.playerScript.OnEquipPreviousPressed();
+                    GameManager.Instance.playerScript.EquipNextWeapon();
                 }
 
                 // Switches player's current weapon to an assualt rife
@@ -401,7 +401,7 @@ public class ButtonFunctionality : MonoBehaviour
                 UpdateCashCountShopUi();
                 if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
                 {
-                    GameManager.Instance.playerScript.OnEquipPreviousPressed();
+                    GameManager.Instance.playerScript.EquipNextWeapon();
                 }
 
                 // Switches player's current weapon to a Scar
@@ -430,7 +430,7 @@ public class ButtonFunctionality : MonoBehaviour
 
                 if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
                 {
-                    GameManager.Instance.playerScript.OnEquipPreviousPressed();
+                    GameManager.Instance.playerScript.EquipNextWeapon();
                 }
                 // Switches player's current weapon to a Shotgun
                 GameManager.Instance.playerScript.Equip(WeaponSpawnManager.Instance.GetWeapon(WeaponID.Shotgun, GameManager.Instance.playerScript.GetCurrentEquippedGun().transform.parent));

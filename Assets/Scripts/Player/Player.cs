@@ -142,12 +142,17 @@ public class Player : ISpawnable
         UpdateFlashbangCount();
         UpdateSensorGrenadeUi();
 
+        ResetHealth();
+
+    }
+
+    void ResetHealth()
+    {
         m_CurrentPlayerHealth = maxPlayerHealth;
         m_CurrentPlayerShield = maxPlayerShield;
 
         healthBar.SetMaxHealth();
         shieldBar.SetMaxShield();
-
     }
 
     public override void Despawn()
@@ -155,8 +160,14 @@ public class Player : ISpawnable
         DeactivateFlashbang();
         DeactivateWeapon(m_CurrentWeaponIndex);
 
-        GameManager.Instance.ResetGame();
+        ResetGame();
+        Invoke("ResetGame", 1f);
         //Respawn();
+    }
+
+    void ResetGame()
+    {
+        GameManager.Instance.ResetGame();
     }
 
     public override void Respawn()
@@ -336,7 +347,7 @@ public class Player : ISpawnable
     /*
      * Equips next weapon
      */
-    void EquipNextWeapon()
+    public void EquipNextWeapon()
     {
         EquipWeapon(m_CurrentWeaponIndex + 1);
     }
