@@ -14,6 +14,7 @@ public class ButtonFunctionality : MonoBehaviour
     public static bool gameIsPaused = false;
     int shotgunAmmoCapacity;
     int SmallAmmoCapacity;
+    GameObject weaponDump;
     void Start()
     {
         // Get instances of pause menu, reticle and Virtual cam
@@ -22,6 +23,7 @@ public class ButtonFunctionality : MonoBehaviour
         reticle = GameManager.Instance.reticle;
         shotgunAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells);
         SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
+        weaponDump.transform.position = new Vector3(0, 0, 0);
     }
 
 
@@ -190,11 +192,11 @@ public class ButtonFunctionality : MonoBehaviour
                 if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() == WeaponID.Shotgun)
                 {
                     AmmoManager.Instance.RefillAmmo(AmmoType.Shells);
+
                 }
                 else
                 {
                     AmmoManager.Instance.RefillAmmo(AmmoType.Small);
-
                 }
 
                 // Update Ammo Ui
@@ -324,7 +326,7 @@ public class ButtonFunctionality : MonoBehaviour
             GameManager.Instance.shopCanvas.SetActive(false);
             GameManager.Instance.buyWeaponsCanvas.SetActive(true);
             UpdateCashCountShopUi();
-            
+
         }
     }
 
@@ -341,13 +343,13 @@ public class ButtonFunctionality : MonoBehaviour
             {
                 GameManager.Instance.CurrentCash -= 500;
                 UpdateCashCountShopUi();
+                if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
+                {
+                    GameManager.Instance.playerScript.OnEquipPreviousPressed();
+                }
 
-                // Force the player to equip Knife, this is to prevent a bug with the previous weapon model staying equipped
-                GameManager.Instance.playerScript.ForceEquipWeapon(0);
                 // Switches player's current weapon to a pistol
-                GameManager.Instance.playerScript.GetCurrentWeapons()[1] = WeaponSpawnManager.Instance.GetWeapon(WeaponID.Pistol2, GameManager.Instance.playerScript.GetWeaponParent().transform);
-                // Force player to equip newly purchase weapon
-                GameManager.Instance.playerScript.ForceEquipWeapon(1);
+                GameManager.Instance.playerScript.Equip(WeaponSpawnManager.Instance.GetWeapon(WeaponID.Pistol2, GameManager.Instance.playerScript.GetCurrentEquippedGun().transform.parent));
                 // Reset Weapon is upgraded Boolean 
                 GameManager.Instance.isCurrentWeaponUpgraded = false;
 
@@ -369,12 +371,14 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.CurrentCash -= 500;
                 UpdateCashCountShopUi();
 
-                // Force the player to equip Knife, this is to prevent a bug with the previous weapon model staying equipped
-                GameManager.Instance.playerScript.ForceEquipWeapon(0);
+                if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
+                {
+                    GameManager.Instance.playerScript.OnEquipPreviousPressed();
+                }
+
                 // Switches player's current weapon to an assualt rife
-                GameManager.Instance.playerScript.GetCurrentWeapons()[1] = WeaponSpawnManager.Instance.GetWeapon(WeaponID.Automatic_Rifle3, GameManager.Instance.playerScript.GetWeaponParent().transform);
+                GameManager.Instance.playerScript.Equip(WeaponSpawnManager.Instance.GetWeapon(WeaponID.Automatic_Rifle3, GameManager.Instance.playerScript.GetCurrentEquippedGun().transform.parent));
                 // Force player to equip newly purchase weapon
-                GameManager.Instance.playerScript.ForceEquipWeapon(1);
                 // Reset Weapon is upgraded Boolean 
                 GameManager.Instance.isCurrentWeaponUpgraded = false;
 
@@ -395,11 +399,13 @@ public class ButtonFunctionality : MonoBehaviour
             {
                 GameManager.Instance.CurrentCash -= 500;
                 UpdateCashCountShopUi();
+                if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
+                {
+                    GameManager.Instance.playerScript.OnEquipPreviousPressed();
+                }
 
-                // Force the player to equip Knife, this is to prevent a bug with the previous weapon model staying equipped
-                GameManager.Instance.playerScript.ForceEquipWeapon(0);
                 // Switches player's current weapon to a Scar
-                GameManager.Instance.playerScript.GetCurrentWeapons()[1] = WeaponSpawnManager.Instance.GetWeapon(WeaponID.Automatic_Rifle, GameManager.Instance.playerScript.GetWeaponParent().transform);
+                GameManager.Instance.playerScript.Equip(WeaponSpawnManager.Instance.GetWeapon(WeaponID.Automatic_Rifle, GameManager.Instance.playerScript.GetCurrentEquippedGun().transform.parent));
                 // Force player to equip newly purchase weapon
                 GameManager.Instance.playerScript.ForceEquipWeapon(1);
                 // Reset Weapon is upgraded Boolean 
@@ -422,10 +428,12 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.CurrentCash -= 500;
                 UpdateCashCountShopUi();
 
-                // Force the player to equip Knife, this is to prevent a bug with the previous weapon model staying equipped
-                GameManager.Instance.playerScript.ForceEquipWeapon(0);
+                if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
+                {
+                    GameManager.Instance.playerScript.OnEquipPreviousPressed();
+                }
                 // Switches player's current weapon to a Shotgun
-                GameManager.Instance.playerScript.GetCurrentWeapons()[1] = WeaponSpawnManager.Instance.GetWeapon(WeaponID.Shotgun, GameManager.Instance.playerScript.GetWeaponParent().transform);
+                GameManager.Instance.playerScript.Equip(WeaponSpawnManager.Instance.GetWeapon(WeaponID.Shotgun, GameManager.Instance.playerScript.GetCurrentEquippedGun().transform.parent));
                 // Force player to equip newly purchase weapon
                 GameManager.Instance.playerScript.ForceEquipWeapon(1);
                 // Reset Weapon is upgraded Boolean 
