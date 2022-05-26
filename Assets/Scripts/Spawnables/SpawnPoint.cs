@@ -7,19 +7,31 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] GameObject m_Object;
     private ISpawnable spawnable;
 
+    [SerializeField] bool isPlayer;
+
     private void Start()
     {
         spawnable = m_Object.GetComponentInChildren<ISpawnable>();
 
-        spawnable.SetInitialPosition(transform.position);
-        spawnable.SetInitialRotation(transform.rotation);
+        if (!isPlayer)
+        {
+            spawnable.SetInitialPosition(transform.position);
+            spawnable.SetInitialRotation(transform.rotation);
+        }
     }
 
     public virtual void Respawn()
     {
-        gameObject.transform.position = Vector3.zero;
-        gameObject.transform.rotation = Quaternion.identity;
+        //if (isPlayer) return;
+
+        m_Object.transform.localPosition = Vector3.zero;
+        m_Object.transform.rotation = Quaternion.identity;
 
         spawnable.Respawn();
+    }
+
+    public bool IsPlayerSpawn()
+    {
+        return isPlayer;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : ISpawnable
@@ -93,17 +94,25 @@ public class Player : ISpawnable
 
     bool bPlayerWantsToAttack = false;
 
+    bool bPlayerDead = false;
+
+    CharacterController characterController;
+
     private void Start()
     {
         m_PlayerMotor = GetComponent<PlayerMotor>();
         m_FootstepAudioSrc = GetComponentInChildren<AudioSource>();
+        characterController = GetComponent<CharacterController>();
 
         healthBar = GameManager.Instance.healthBarScript;
         shieldBar = GameManager.Instance.shieldBarScript;
 
         m_CurrentWeapons = new BaseWeapon[startWeaponIDs.Length];
 
+
         Spawn();
+        //SetInitialPosition(transform.position);
+        //SetInitialRotation(transform.rotation);
 
         flashbang.OnPickup(weaponsParent);
         sensor.OnPickup(weaponsParent);
@@ -146,8 +155,8 @@ public class Player : ISpawnable
         DeactivateFlashbang();
         DeactivateWeapon(m_CurrentWeaponIndex);
 
-        //Respawn();
         GameManager.Instance.ResetGame();
+        //Respawn();
     }
 
     public override void Respawn()
@@ -156,8 +165,9 @@ public class Player : ISpawnable
         //base.Respawn();
         //Debug.Log("After respawn: " + GetInitialPosition());
 
-        transform.position = GetInitialPosition();
-        transform.rotation = GetInitialRotation();
+        transform.localPosition = Vector3.zero;// GetInitialPosition();
+        //transform.localPosition = Vector3.zero;
+        //transform.rotation = GetInitialRotation();
 
         for (int i = 0; i < m_CurrentWeapons.Length; i++)
         {
@@ -167,11 +177,16 @@ public class Player : ISpawnable
 
         Spawn();
 
+        bPlayerDead = false;
+        characterController.enabled = true;
+
         //Debug.Log("After respawn and After spawn: " + GetInitialPosition());
     }
 
     private void Update()
     {
+        if (bPlayerDead) return;
+
         if (GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
         {
             if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
@@ -194,6 +209,8 @@ public class Player : ISpawnable
 
     private void FixedUpdate()
     {
+        if (bPlayerDead) return;
+
         if (m_CurrentEquippedWeapon.GetAnimator() == null) return;
 
         if (m_PlayerMotor.IsPlayerStrafing() || m_PlayerMotor.IsPlayerWalkingBackwards())
@@ -439,6 +456,8 @@ public class Player : ISpawnable
      */
     public void TakeDamage(int damage)
     {
+        if (bPlayerDead) return;
+
         int shieldDamageFallOff = 0;
         if (!IsPlayerShieldEmpty())
             shieldDamageFallOff = GetShieldDamage(damage);
@@ -511,9 +530,13 @@ public class Player : ISpawnable
     void PlayerDied()
     {
         Debug.Log("Player died");
+
+        characterController.enabled = false;
+        bPlayerDead = true;
         Despawn();
-        
         AmmoManager.Instance.ResetAmmoManager();
+
+        //SceneManager.LoadScene(0);
     }
 
     /*
