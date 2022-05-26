@@ -187,7 +187,6 @@ public class AIAgent : ISpawnable
 
             yield return null;
         }
-
     }
 
     public EnemyGun GetGun()
@@ -203,6 +202,11 @@ public class AIAgent : ISpawnable
     public bool IsMelee()
     {
         return isMelee;
+    }
+
+    public bool IsDead()
+    {
+        return enemyHealth.IsDead();
     }
 
     public float GetDisableEnemyInterval()
