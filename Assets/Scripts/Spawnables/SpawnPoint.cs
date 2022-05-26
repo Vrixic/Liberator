@@ -24,8 +24,8 @@ public class SpawnPoint : MonoBehaviour
     {
         //if (isPlayer) return;
 
-        m_Object.transform.localPosition = Vector3.zero;
-        m_Object.transform.rotation = Quaternion.identity;
+        m_Object.transform.localPosition = spawnable.GetInitialPosition();
+        m_Object.transform.rotation = spawnable.GetInitialRotation();
 
         spawnable.Respawn();
     }

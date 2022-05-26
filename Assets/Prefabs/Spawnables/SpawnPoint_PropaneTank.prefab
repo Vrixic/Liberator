@@ -55,7 +55,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6010329630479222992, guid: f0609afca790a9444aed2fc95d34aefc, type: 3}
       propertyPath: m_Name
-      value: Explodable_Propane (3)
+      value: Explodable_Propane
       objectReference: {fileID: 0}
     - target: {fileID: 6350966461078983274, guid: f0609afca790a9444aed2fc95d34aefc, type: 3}
       propertyPath: m_RootOrder

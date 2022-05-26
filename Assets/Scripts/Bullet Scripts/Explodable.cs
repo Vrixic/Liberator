@@ -74,6 +74,7 @@ public class Explodable : ISpawnable
             if (colliders[i].tag == "Player"){
                 float dist = Vector3.Distance(colliders[i].transform.position, transform.position);
                 damage = 300 / (dist + 0.1f);
+                if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth()) Despawn();
                 GameManager.Instance.playerScript.TakeDamage((int)damage);
             }
             else if (colliders[i].tag == "Hitbox" && colliders[i].GetComponent<CapsuleCollider>() != null){
@@ -94,13 +95,19 @@ public class Explodable : ISpawnable
             explosion = ObjectPoolManager.SpawnObject(m_ExplosionPool);
             explosion.transform.position = transform.position;
 
-            transform.GetChild(0).gameObject.SetActive(false);
-
             audioSource.clip = exploSound;
             audioSource.Play();
 
             ExplodeDamage();
+
+            Invoke("Despawn", 2f);
         }
+    }
+
+    public override void Spawn()
+    {
+        base.Spawn();
+        gameObject.SetActive(true);
     }
 
     // despawns the explodable after explosion
@@ -108,7 +115,8 @@ public class Explodable : ISpawnable
     {
         base.Despawn();
 
-        gameObject.SetActive(false);
+        if (gameObject.activeInHierarchy == false)
+            gameObject.SetActive(false);
     }
 
     //respawns explodable on restart
@@ -117,6 +125,8 @@ public class Explodable : ISpawnable
         base.Respawn();
 
         hits = 0;
+        isExploded = false;
+        gameObject.SetActive(true);
     }
 
     //counter for when to explode the tank
@@ -124,12 +134,6 @@ public class Explodable : ISpawnable
     {
         yield return new WaitForSeconds(3);
         Explode();
-        StartCoroutine(DespawnCourotine());
-    }
-
-    IEnumerator DespawnCourotine()
-    {
-        yield return new WaitForSeconds(1);
-        Despawn();
+        Invoke("Despawn", 1f);
     }
 }
