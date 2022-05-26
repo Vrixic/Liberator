@@ -22,7 +22,20 @@ public class ButtonFunctionality : MonoBehaviour
         shotgunAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells);
         SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
     }
+    #region MainMenu
+    public void OpenMainMenu()
+    {
+        if (GameManager.Instance.ui.activeInHierarchy || GameManager.Instance.ammoCanvas || GameManager.Instance.shopCanvas)
+        {
+            GameManager.Instance.ui.SetActive(false);
+            GameManager.Instance.ammoCanvas.SetActive(false);
+            GameManager.Instance.shopCanvas.SetActive(false);
+        }
 
+        GameManager.Instance.mainMenuCanvas.SetActive(true);
+
+    }
+    #endregion
 
     #region PauseMenu
     public void PauseGame()

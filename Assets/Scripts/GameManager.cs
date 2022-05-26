@@ -89,6 +89,10 @@ public class GameManager : MonoBehaviour
     public GameObject minimapCanvas;
     [HideInInspector]
     public bool isPauseMenuOpen;
+    [HideInInspector]
+    public GameObject mainMenuCanvas;
+    [HideInInspector]
+    public GameObject ammoCanvas;
 
     private SpawnPoint[] spawnPoints;
 
@@ -120,6 +124,7 @@ public class GameManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        mainMenuCanvas = GameObject.FindGameObjectWithTag("MainMenuCanvas");
 
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
@@ -182,6 +187,8 @@ public class GameManager : MonoBehaviour
 
         sensorGrenadeCount = GameObject.FindGameObjectWithTag("SensorGrenadeCount").GetComponent<TextMeshProUGUI>();
         sensorGrenadeIcon = GameObject.FindGameObjectWithTag("SensorGrenadeIcon");
+
+        ammoCanvas = GameObject.FindGameObjectWithTag("AmmoCanvas");
 
         if (player == null)
         {
