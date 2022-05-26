@@ -61,4 +61,9 @@ public class Health : MonoBehaviour
         float blendFactor = Mathf.Clamp01(blinkTimer / blinkDuration);
         float intensity = (blendFactor * blinkIntensity) + 1.0f;
     }
+
+    public bool IsDead()
+    {
+        return currentHealth <= 0f;
+    }
 }
