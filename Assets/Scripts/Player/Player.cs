@@ -381,7 +381,7 @@ public class Player : ISpawnable
             DeactivateSensor();
 
         ActivateWeapon(index);
-        DeactivateWeapon(m_CurrentWeaponIndex);
+        //DeactivateWeapon(m_CurrentWeaponIndex);
 
         m_CurrentWeaponIndex = index;
     }
