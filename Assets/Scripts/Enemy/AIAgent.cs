@@ -39,6 +39,8 @@ public class AIAgent : ISpawnable
     CapsuleCollider bodyCollider;
     BoxCollider boxCollider;
 
+    bool isDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,6 +90,7 @@ public class AIAgent : ISpawnable
     {
         base.Spawn();
 
+        isDead = false;
         EnableColliders();
         gameObject.SetActive(true);
 
@@ -206,7 +209,12 @@ public class AIAgent : ISpawnable
 
     public bool IsDead()
     {
-        return enemyHealth.IsDead();
+        return isDead;
+    }
+
+    public void SetIsDead(bool dead)
+    {
+        isDead = dead;
     }
 
     public float GetDisableEnemyInterval()
