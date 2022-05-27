@@ -13,6 +13,8 @@ public class ButtonFunctionality : MonoBehaviour
     GameObject reticle;
     int shotgunAmmoCapacity;
     int SmallAmmoCapacity;
+    Vector3 nextLevelPosition;
+    bool nextLevelPressedOnce = false;
     void Start()
     {
         // Get instances of pause menu, reticle and Virtual cam
@@ -113,7 +115,6 @@ public class ButtonFunctionality : MonoBehaviour
     // Close Shop menu
     public void CloseShop()
     {
-        reticle.SetActive(true);
 
         // Set Cursor state back to locked and turn visibility off
         Cursor.lockState = CursorLockMode.Locked;
@@ -126,10 +127,30 @@ public class ButtonFunctionality : MonoBehaviour
             virtualCam.SetActive(true);
 
         }
+        GameManager.Instance.reticle.SetActive(true);
         GameManager.Instance.shopCanvas.SetActive(false);
         GameManager.Instance.buyWeaponsCanvas.SetActive(false);
         GameManager.Instance.minimapCanvas.SetActive(true);
 
+    }
+
+    public void LoadNextLevel()
+    {
+        // Check if player has pressed next level once before, If they haven't it sets the player's position to the beginning of the next level
+        Debug.Log(GameManager.Instance.playerTransform.position);
+        if (!nextLevelPressedOnce)
+        {
+            nextLevelPosition = new Vector3(-143, 2.461f, 97.97f);
+            GameManager.Instance.playerMoveScript.SetPlayerPosition(nextLevelPosition);
+            nextLevelPressedOnce = true;
+            CloseShop();
+            Debug.Log(GameManager.Instance.playerTransform.position);
+        }
+        else
+        {
+            // Returns player to main menu if they have already played the last level
+            ReturnToMainMenu();
+        }
     }
 
     // Refill Health

@@ -33,10 +33,10 @@ public class Player : ISpawnable
     [Header("Player Settings")]
 
     /* max health player can have */
-    [SerializeField] int maxPlayerHealth = 100;
+    [SerializeField] int maxPlayerHealth = 200;
 
     /* max health player can have */
-    [SerializeField] int maxPlayerShield = 100;
+    [SerializeField] int maxPlayerShield = 150;
 
     /* amount of percentage of damage the shield can intake when player has been damaged */
     [SerializeField] float playerShieldFallOffScale = 0.8f;
