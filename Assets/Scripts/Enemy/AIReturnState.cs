@@ -10,7 +10,7 @@ public class AIReturnState : AIState
     // Start is called before the first frame update
     public void Enter(AIAgent agent)
     {
-        spawnPosition = agent.GetInitialPosition();
+        //spawnPosition = agent.GetInitialPosition();
         agent.navMeshAgent.destination = spawnPosition;
         agent.animator.SetBool("Returning", true);
     }

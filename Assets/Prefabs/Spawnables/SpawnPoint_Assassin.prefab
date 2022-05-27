@@ -92,7 +92,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3462410555020355291}
-  - component: {fileID: 3462410555020355288}
   m_Layer: 0
   m_Name: SpawnPoint_Assassin
   m_TagString: Untagged
@@ -116,19 +115,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3462410555020355288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3462410555020355289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65982f7c3bf0414e87faf57a8d4accf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Object: {fileID: 5324312130099179667}
 --- !u!1 &6080777843338328958
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,11 +233,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
---- !u!1 &5324312130099179667 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8786300367967601321, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
-  m_PrefabInstance: {fileID: 3462410555603202618}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5341400865192960332 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8803556263221842806, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}

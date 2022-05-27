@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectPool
 {
     /* Parent of all the objects in the pool, to keep the hierarchy nice and clean */
-    public GameObject m_Parent;
+    //public GameObject m_ObjectsParent;
 
     /* list of all objects */
     private List<PoolableObject> m_ObjectPool;
@@ -24,7 +24,7 @@ public class ObjectPool
         m_CurrentActiveObjects = size;
         m_ObjectPool = new List<PoolableObject>(size);
         m_ObjectPrefab = objectPrefab;
-        m_Parent = new GameObject(objectPrefab.name + " Pool");
+        //m_ObjectsParent = new GameObject(objectPrefab.name + " Pool");
         CreateObjects(size);
     }
 
@@ -44,7 +44,7 @@ public class ObjectPool
      */
     private void CreateObject()
     {
-        PoolableObject poolObject = GameObject.Instantiate(m_ObjectPrefab, Vector3.zero, Quaternion.identity, m_Parent.transform);
+        PoolableObject poolObject = GameObject.Instantiate(m_ObjectPrefab, Vector3.zero, Quaternion.identity);
         poolObject.OnStart();
         poolObject.SetParent(this);
         poolObject.gameObject.SetActive(false);
@@ -82,12 +82,12 @@ public class ObjectPool
         m_CurrentActiveObjects--;
     }
 
-    public void DisableObjInPool()
-    {
-        for (int i = 0; i < m_Size; i++)
-        {
-            m_Parent.transform.GetChild(i).gameObject.SetActive(false);
-            m_CurrentActiveObjects--;
-        }
-    }
+    //public void DisableObjInPool()
+    //{
+    //    //for (int i = 0; i < m_Size; i++)
+    //    //{
+    //    //    m_ObjectsParent.transform.GetChild(i).gameObject.SetActive(false);
+    //    //    m_CurrentActiveObjects--;
+    //    //}
+    //}
 }

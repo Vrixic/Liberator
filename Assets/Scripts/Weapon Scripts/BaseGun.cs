@@ -62,11 +62,6 @@ public class BaseGun : BaseWeapon
     /* a objectpool that will keep track of spawned bullets automatically */
     string m_BulletPool;
 
-    public BaseGun()
-    {
-
-    }
-
     /*
     * Creates the bullet pool 
     */
@@ -74,21 +69,11 @@ public class BaseGun : BaseWeapon
     {
         base.Start();
 
-        m_BulletPool = ObjectPoolManager.CreateObjectPool(bulletPrefab, maxNumOfBullets);
+        m_BulletPool = ObjectPoolManager.Instance.CreateObjectPool(bulletPrefab, maxNumOfBullets);
         damageFallOffPercentage = 1 - damageFallOffPercentage;
-    }
-
-    public override void Spawn()
-    {
-        base.Spawn();
 
         m_CurrentNumOfBullets = maxNumOfBullets;
         UpdateAmmoGUI();
-    }
-
-    public override void Respawn()
-    {
-        Spawn();
     }
 
     public override void OnWeaponEquip()
@@ -205,7 +190,7 @@ public class BaseGun : BaseWeapon
      */
     public virtual void ShootBullet()
     {
-        Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
+        Bullet bullet = ObjectPoolManager.Instance.SpawnObject(m_BulletPool) as Bullet;
 
         RaycastHit hitInfo;
         if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, bulletRange, raycastLayers))

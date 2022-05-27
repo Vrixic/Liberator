@@ -1,39 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class IPickable : ISpawnable
+public class IPickable : MonoBehaviour
 {
-    protected bool bJustDropped = false;
-
     public virtual void Start()
     {
         GetComponent<SphereCollider>().isTrigger = true;
-
-        Spawn();
     }
 
-    public virtual void OnPickup(GameObject picker) 
-    { 
-        //Debug.Log(name + " was picked up...");
-        Despawn();
-    }
-
-    public virtual void OnDrop()
-    {
-        //Debug.Log("Just droped " + name);
-        bJustDropped = true;
-    }
+    public virtual void OnPickup(GameObject picker) { }
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(name + " has collided with " + other.name);
-        if (other.tag == "Player" && !bJustDropped)
+        if (other.tag == "Player")
             OnPickup(other.gameObject);
-    }
-    public void OnTriggerExit(Collider other)
-    {
-        bJustDropped = false;
     }
 }

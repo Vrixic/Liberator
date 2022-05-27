@@ -46,7 +46,7 @@ public class MeleeImpactManager : MonoBehaviour
 
         foreach (Impact impact in meleeImpacts)
         {
-            meleeImpactDictionary.Add(impact.objectTag, ObjectPoolManager.CreateObjectPool(impact.collisionParticleSystem, particleSystemBuffer));
+            meleeImpactDictionary.Add(impact.objectTag, ObjectPoolManager.Instance.CreateObjectPool(impact.collisionParticleSystem, particleSystemBuffer));
             meleeImpactAudioClipDictionary.Add(impact.objectTag, impact.impactAudio);
         }
     }
@@ -58,11 +58,11 @@ public class MeleeImpactManager : MonoBehaviour
     {
         if (meleeImpactDictionary.ContainsKey(objectTag))
         {
-            UpdateSpawnMeleeImpact(position, forward, ObjectPoolManager.SpawnObject(meleeImpactDictionary[objectTag]));
+            UpdateSpawnMeleeImpact(position, forward, ObjectPoolManager.Instance.SpawnObject(meleeImpactDictionary[objectTag]));
         }
         else
         {
-            UpdateSpawnMeleeImpact(position, forward, ObjectPoolManager.SpawnObject(meleeImpactDictionary[meleeImpacts[0].objectTag]));
+            UpdateSpawnMeleeImpact(position, forward, ObjectPoolManager.Instance.SpawnObject(meleeImpactDictionary[meleeImpacts[0].objectTag]));
         }
     }
 

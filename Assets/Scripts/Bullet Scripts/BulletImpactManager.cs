@@ -48,7 +48,7 @@ public class BulletImpactManager : MonoBehaviour
 
         foreach (Impact impact in bulletImpacts)
         {
-            bulletImpactDictionary.Add(impact.objectTag, ObjectPoolManager.CreateObjectPool(impact.collisionParticleSystem, particleSystemBuffer));
+            bulletImpactDictionary.Add(impact.objectTag, ObjectPoolManager.Instance.CreateObjectPool(impact.collisionParticleSystem, particleSystemBuffer));
             bulletImpactAudioClipDictionary.Add(impact.objectTag, impact.impactAudio);
         }
 
@@ -62,11 +62,11 @@ public class BulletImpactManager : MonoBehaviour
     {
         if (bulletImpactDictionary.ContainsKey(objectTag))
         {
-            UpdateSpawnBulletImpact(position, forward, ObjectPoolManager.SpawnObject(bulletImpactDictionary[objectTag]));
+            UpdateSpawnBulletImpact(position, forward, ObjectPoolManager.Instance.SpawnObject(bulletImpactDictionary[objectTag]));
         }
         else
         {
-            UpdateSpawnBulletImpact(position, forward, ObjectPoolManager.SpawnObject(bulletImpactDictionary[bulletImpacts[0].objectTag]));
+            UpdateSpawnBulletImpact(position, forward, ObjectPoolManager.Instance.SpawnObject(bulletImpactDictionary[bulletImpacts[0].objectTag]));
         }
     }
 

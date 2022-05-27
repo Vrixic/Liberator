@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -91,8 +92,6 @@ public class GameManager : MonoBehaviour
     public bool isPauseMenuOpen;
     [HideInInspector]
     public GameObject ammoCanvas;
-
-    private SpawnPoint[] spawnPoints;
 
     private static GameManager instance;
 
@@ -202,8 +201,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("MainCamera not found in scene");
         }
-
-        spawnPoints = FindObjectsOfType<SpawnPoint>();
     }
 
     private void Update()
@@ -220,10 +217,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        foreach (SpawnPoint spawnPoint in spawnPoints)
-        {
-            spawnPoint.Respawn();
-        }
+        SceneManager.LoadScene(0);
     }
 
     public void SetGunIcon(Sprite icon)

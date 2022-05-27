@@ -8,7 +8,7 @@ using UnityEngine.AI;
 //[RequireComponent(typeof(AIAgentConfig))]
 [RequireComponent(typeof(AiSensor))]
 [RequireComponent(typeof(Animator))]
-public class AIAgent : ISpawnable
+public class AIAgent : MonoBehaviour
 {
     public AIStateMachine stateMachine;
     public AIStateID initialState;
@@ -72,7 +72,14 @@ public class AIAgent : ISpawnable
         bodyCollider = GetComponent<CapsuleCollider>();
         boxCollider = GetComponentInChildren<BoxCollider>();
 
-        Spawn();
+        isDead = false;
+        enemyHealth.currentHealth = enemyHealth.maxHealth;
+
+        EnableColliders();
+
+        currentState = initialState;
+        //sets state to initial state.
+        stateMachine.ChangeState(initialState);
     }
 
     // Update is called once per frame
@@ -84,38 +91,6 @@ public class AIAgent : ISpawnable
         stateMachine.Update();
 
         animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
-    }
-
-    public override void Spawn()
-    {
-        base.Spawn();
-
-        isDead = false;
-        EnableColliders();
-        gameObject.SetActive(true);
-
-        currentState = initialState;
-        //sets state to initial state.
-        stateMachine.ChangeState(initialState);
-        enemyHealth.currentHealth = enemyHealth.maxHealth;
-    }
-
-    public override void Despawn()
-    {
-        base.Despawn();
-
-        //gameObject.SetActive(false);
-        DisableColliders();
-    }
-
-    public override void Respawn()
-    {
-        base.Respawn();
-
-        animator.SetBool("isDead", false);
-        if (!isMelee)
-            enemyGun.ResetGun();
-        Spawn();
     }
 
     public void CS_ReturnToPost(Vector3 aimPosition)
@@ -144,7 +119,7 @@ public class AIAgent : ISpawnable
         boxCollider.enabled = true;
     }
 
-    void DisableColliders()
+    public void DisableColliders()
     {
         if (isMelee)
             meleeSphereCollider.enabled = false;

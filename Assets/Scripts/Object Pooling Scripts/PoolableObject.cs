@@ -13,12 +13,17 @@ public class PoolableObject : MonoBehaviour
     /* Safe keep boolean check to eliminate multiple pools of this object */
     protected bool m_IsAlreadyPooled = false;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     /*
      * called once when the object is created
      */
     public virtual void OnStart()
     {
-
+        
     }
 
     public virtual void OnEnable()
@@ -42,7 +47,7 @@ public class PoolableObject : MonoBehaviour
     /*
      * Calls the OnDisable() function, which returns object to their object pools
      */
-    protected void Pool()
+    public void Pool()
     {
         if (!m_IsAlreadyPooled)
         {

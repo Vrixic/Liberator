@@ -1,11 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPoolManager
+public class ObjectPoolManager : MonoBehaviour
 {
     private static Dictionary<string, ObjectPool> m_ObjectPools =  new Dictionary<string, ObjectPool>();
 
-    public static string CreateObjectPool(PoolableObject objectPrefab, int size)
+    private static ObjectPoolManager m_ObjectPoolManager;
+    public static ObjectPoolManager Instance
+    {
+        get { return m_ObjectPoolManager; }
+        private set { m_ObjectPoolManager = value; }
+    }
+
+    private void Awake()
+    {
+        m_ObjectPoolManager = this;
+
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public string CreateObjectPool(PoolableObject objectPrefab, int size)
     {
         if (!m_ObjectPools.ContainsKey(objectPrefab.name + " Pool"))
         {
@@ -17,13 +31,13 @@ public class ObjectPoolManager
         return objectPrefab.name + " Pool";
     }
 
-    public static PoolableObject SpawnObject(string poolName)
+    public PoolableObject SpawnObject(string poolName)
     {
        return m_ObjectPools[poolName].SpawnObject();
     }
 
-    public static void DisableAllInPool(string poolName)
-    {
-        m_ObjectPools[poolName].DisableObjInPool();
-    }
+    //public void DisableAllInPool(string poolName)
+    //{
+    //    m_ObjectPools[poolName].DisableObjInPool();
+    //}
 }

@@ -33,7 +33,7 @@ public class BaseThrowableHands : BaseWeapon
     {
         base.Start();
 
-        m_ThrowablePool = ObjectPoolManager.CreateObjectPool(throwablePrefab, maxThrowableAmount);
+        m_ThrowablePool = ObjectPoolManager.Instance.CreateObjectPool(throwablePrefab, maxThrowableAmount);
         m_CurrentThrowableAmount = maxThrowableAmount;
     }
    
@@ -82,7 +82,7 @@ public class BaseThrowableHands : BaseWeapon
     */
     public void OnAnimationEvent_Throw()
     {
-        BaseThrowables throwable = ObjectPoolManager.SpawnObject(m_ThrowablePool) as BaseThrowables;
+        BaseThrowables throwable = ObjectPoolManager.Instance.SpawnObject(m_ThrowablePool) as BaseThrowables;
         throwable.transform.position = raycastOrigin.position;
         throwable.transform.forward = raycastOrigin.forward;
 

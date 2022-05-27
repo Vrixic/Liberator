@@ -8,7 +8,7 @@ public class WeaponSpawnManager : MonoBehaviour
 
     private Dictionary<WeaponID, Weapon> m_WeaponPerfabs = new Dictionary<WeaponID, Weapon>();
     private Dictionary<WeaponID, BaseWeapon> m_Weapons = new Dictionary<WeaponID, BaseWeapon>();
-    private Dictionary<WeaponID, IPickable> m_WeaponAliases = new Dictionary<WeaponID, IPickable>();
+    //private Dictionary<WeaponID, IPickable> m_WeaponAliases = new Dictionary<WeaponID, IPickable>();
 
     /* Instance of this object, singleton pattern */
     private static WeaponSpawnManager m_WeaponSpawnManager;
@@ -58,33 +58,10 @@ public class WeaponSpawnManager : MonoBehaviour
         weapon.SetWeaponID(weaponID);
         m_Weapons.Add(weaponID, weapon);
 
-        weapon.Spawn();
+        //weapon.Spawn();
         weapon.OnPickup(weaponParent.gameObject);
 
-        //Debug.Log("Created: " + weapon.name);
-
         return weapon;
-    }
-
-    public IPickable GetWeaponAlias(WeaponID weaponID)
-    {
-        //Debug.Log("Getting Weapon alias, id: " + weaponID);
-        if (!m_WeaponPerfabs.ContainsKey(weaponID)) return null;
-
-        if (m_WeaponAliases.ContainsKey(weaponID))
-        {
-            m_WeaponAliases[weaponID].OnDrop();
-
-            return m_WeaponAliases[weaponID];
-        }
-
-        IPickable obj = Instantiate(m_WeaponPerfabs[weaponID].weaponAliasPrefab);
-        m_WeaponAliases.Add(weaponID, obj);
-
-        obj.Spawn();
-        obj.OnDrop();
-
-        return obj;
     }
 
     [System.Serializable]

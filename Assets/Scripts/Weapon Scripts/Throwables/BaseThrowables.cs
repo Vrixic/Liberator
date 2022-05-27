@@ -34,7 +34,7 @@ public class BaseThrowables : PoolableObject
         m_AudioSource = GetComponent<AudioSource>();
         m_RigidBody = GetComponent<Rigidbody>();
 
-        m_ExplosionSFXPool = ObjectPoolManager.CreateObjectPool(explodeParticleSystem, 1);
+        m_ExplosionSFXPool = ObjectPoolManager.Instance.CreateObjectPool(explodeParticleSystem, 1);
     }
 
     /*
@@ -74,7 +74,7 @@ public class BaseThrowables : PoolableObject
     */
     protected void PlayExplodeSFX()
     {
-        PoolableObject poolObject = ObjectPoolManager.SpawnObject(m_ExplosionSFXPool);
+        PoolableObject poolObject = ObjectPoolManager.Instance.SpawnObject(m_ExplosionSFXPool);
         poolObject.transform.position = transform.position;
         poolObject.transform.rotation = transform.rotation;
     }

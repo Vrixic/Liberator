@@ -37,7 +37,7 @@ public class EnemyGun : MonoBehaviour
         fireRate = 1 / fireRate;
         m_CurrentNumOfBullets = maxNumOfBullets;
 
-        m_BulletPool = ObjectPoolManager.CreateObjectPool(bulletPrefab, maxNumOfBullets);
+        m_BulletPool = ObjectPoolManager.Instance.CreateObjectPool(bulletPrefab, maxNumOfBullets);
     }
 
     public void Shoot()
@@ -109,7 +109,7 @@ public class EnemyGun : MonoBehaviour
 
     public void ShootBullet(Vector3 direction)
     {
-        Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
+        Bullet bullet = ObjectPoolManager.Instance.SpawnObject(m_BulletPool) as Bullet;
 
         RaycastHit hitInfo;
         if (Physics.Raycast(bulletSpawnLocation.position, direction, out hitInfo, bulletRange))

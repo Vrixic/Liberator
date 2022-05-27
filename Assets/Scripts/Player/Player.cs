@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Player : ISpawnable
+public class Player : MonoBehaviour
 {
     [Header("Weapon Settings")]
 
@@ -110,23 +110,6 @@ public class Player : ISpawnable
         m_CurrentWeapons = new BaseWeapon[startWeaponIDs.Length];
 
 
-        Spawn();
-        //SetInitialPosition(transform.position);
-        //SetInitialRotation(transform.rotation);
-
-        flashbang.OnPickup(weaponsParent);
-        sensor.OnPickup(weaponsParent);
-
-        DeactivateFlashbang();
-        DeactivateSensor();
-    }
-
-    public override void Spawn()
-    {
-        base.Spawn();
-
-        //Debug.Log(GetInitialPosition());
-
         for (int i = 0; i < startWeaponIDs.Length; i++)
         {
             m_CurrentWeapons[i] = WeaponSpawnManager.Instance.GetWeapon(startWeaponIDs[i], weaponsParent.transform);
@@ -136,14 +119,16 @@ public class Player : ISpawnable
         m_CurrentWeaponIndex = 0;
         ActivateWeapon(0);
 
-        //m_CurrentEquippedWeapon = m_CurrentWeapons[m_CurrentWeaponIndex];
-        //m_CurrentEquippedWeapon.gameObject.SetActive(true);
-
         UpdateFlashbangCount();
         UpdateSensorGrenadeUi();
 
         ResetHealth();
 
+        flashbang.OnPickup(weaponsParent);
+        sensor.OnPickup(weaponsParent);
+
+        DeactivateFlashbang();
+        DeactivateSensor();
     }
 
     void ResetHealth()
@@ -153,45 +138,6 @@ public class Player : ISpawnable
 
         healthBar.SetMaxHealth();
         shieldBar.SetMaxShield();
-    }
-
-    public override void Despawn()
-    {
-        DeactivateFlashbang();
-        DeactivateWeapon(m_CurrentWeaponIndex);
-
-        ResetGame();
-        Invoke("ResetGame", 1f);
-        //Respawn();
-    }
-
-    void ResetGame()
-    {
-        GameManager.Instance.ResetGame();
-    }
-
-    public override void Respawn()
-    {
-        //Debug.Log("before respawn: " + GetInitialPosition());
-        //base.Respawn();
-        //Debug.Log("After respawn: " + GetInitialPosition());
-
-        transform.localPosition = Vector3.zero;// GetInitialPosition();
-        //transform.localPosition = Vector3.zero;
-        //transform.rotation = GetInitialRotation();
-
-        for (int i = 0; i < m_CurrentWeapons.Length; i++)
-        {
-            m_CurrentWeapons[i].Respawn();
-            m_CurrentWeapons[i].OnPickup(weaponsParent);
-        }
-
-        Spawn();
-
-        bPlayerDead = false;
-        characterController.enabled = true;
-
-        //Debug.Log("After respawn and After spawn: " + GetInitialPosition());
     }
 
     private void Update()
@@ -254,13 +200,14 @@ public class Player : ISpawnable
     /*
     * Equips a weapon with teh incoming wepaon ID, drops current weapon at the drop location 
     */
-    public void Equip(WeaponID weaponID, Transform dropLocation)
+    public void Equip(WeaponID weaponID)
     {
-        IPickable dropWeapon = WeaponSpawnManager.Instance.GetWeaponAlias(m_CurrentEquippedWeapon.GetWeaponID());
-        dropWeapon.transform.position = dropLocation.position;
-
+        DeactivateSensor();
         DeactivateFlashbang();
         DeactivateWeapon(m_CurrentWeaponIndex);
+
+        m_CurrentWeaponIndex = 1;
+
         m_CurrentWeapons[m_CurrentWeaponIndex] = WeaponSpawnManager.Instance.GetWeapon(weaponID, weaponsParent.transform);
         ActivateWeapon(m_CurrentWeaponIndex);
     }
@@ -544,7 +491,9 @@ public class Player : ISpawnable
 
         characterController.enabled = false;
         bPlayerDead = true;
-        Despawn();
+
+        GameManager.Instance.ResetGame();
+
         AmmoManager.Instance.ResetAmmoManager();
 
         //SceneManager.LoadScene(0);

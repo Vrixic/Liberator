@@ -5,10 +5,6 @@ public class BaseMelee : BaseWeapon
     /* seconds attack audio clip */
     [SerializeField] protected AudioClip attack2Audio;
 
-    public override void Spawn() { }
-
-    public override void Respawn() { }
-
     public override void OnWeaponEquip()
     {
         base.OnWeaponEquip();

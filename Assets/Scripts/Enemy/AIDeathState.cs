@@ -8,8 +8,6 @@ public class AIDeathState : AIState
     //TO DO: Implement combat, health, and ragdoll death animation. ONce done, Death state
     //can be completed afterwards. Animators not initialized as this is just AI testing.
 
-    float diasbleTimer = 0;
-
     public AIStateID GetId()
     {
         return AIStateID.Death;
@@ -20,7 +18,7 @@ public class AIDeathState : AIState
 
         agent.currentState = AIStateID.Death;
         agent.SetIsDead(true);
-        diasbleTimer = Time.time + agent.GetDisableEnemyInterval();
+        //diasbleTimer = Time.time + agent.GetDisableEnemyInterval();
 
         agent.animator.SetBool("isDead", true);
         agent.animator.Play("Death");
@@ -28,31 +26,13 @@ public class AIDeathState : AIState
 
         agent.navMeshAgent.isStopped = true;
 
-        agent.Despawn();
-
-        //var rigidBodies = agent.GetComponentsInChildren<Rigidbody>();
-        //foreach (var rigidbody in rigidBodies)
-        //{
-        //    rigidbody.isKinematic = true;
-        //    rigidbody.freezeRotation = false;
-        //}
-
-        //agent.ragdoll.ActivateRagdoll();
-        //agent.ragdoll.ApplyForce(direction * agent.config.dieForce);
+        agent.DisableColliders();
     }
 
     public void Update(AIAgent agent)
     {
-        //agent.navMeshAgent.isStopped = true;
-
-        //if (Time.time > diasbleTimer)
-        //    DisableEnemy(agent);
     }
 
-    void DisableEnemy(AIAgent agent)
-    {
-        agent.Despawn();
-    }
 
     public void Exit(AIAgent agent)
     {

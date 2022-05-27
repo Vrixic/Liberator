@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Explodable : ISpawnable
+public class Explodable : MonoBehaviour
 {
     [Header("Particle Effects")]
     [SerializeField] PoolableObject fire;
@@ -14,6 +14,7 @@ public class Explodable : ISpawnable
 
     [SerializeField] LayerMask layers;
 
+    PoolableObject[] m_FirePooled;
 
     Transform m_Mesh;
 
@@ -35,8 +36,10 @@ public class Explodable : ISpawnable
 
     private void Start()
     {
-        m_ExplosionPool = ObjectPoolManager.CreateObjectPool(explosion, 1);
-        m_FirePool = ObjectPoolManager.CreateObjectPool(fire, 3);
+        m_ExplosionPool = ObjectPoolManager.Instance.CreateObjectPool(explosion, 1);
+        m_FirePool = ObjectPoolManager.Instance.CreateObjectPool(fire, 3);
+
+        m_FirePooled = new PoolableObject[3];
 
         m_Mesh = transform.GetChild(0);
     }
@@ -54,9 +57,10 @@ public class Explodable : ISpawnable
                 firstHit = true;
             }
 
-            fire = ObjectPoolManager.SpawnObject(m_FirePool);
+            fire = ObjectPoolManager.Instance.SpawnObject(m_FirePool);
             fire.transform.position = pos;
             fire.transform.forward = (Vector3.up + forward).normalized;
+            m_FirePooled[hits] = fire;
 
             hits++;
             if (hits >= 3)
@@ -75,12 +79,16 @@ public class Explodable : ISpawnable
 
         for (int i = 0; i < collidersCount; i++)
         {
-            Debug.Log(colliders[i].name);
+           // Debug.Log(colliders[i].name);
             if (colliders[i].tag == "Player"){
                 float dist = Vector3.Distance(colliders[i].transform.position, transform.position);
                 damage = 300 / (dist + 0.1f);
-                if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth()) Despawn();
-                GameManager.Instance.playerScript.TakeDamage((int)damage);
+                if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
+                {
+                    if (gameObject.activeInHierarchy == true)
+                        gameObject.SetActive(false);
+                }
+                    GameManager.Instance.playerScript.TakeDamage((int)damage);
             }
             else if (colliders[i].tag == "Hitbox" && colliders[i].GetComponent<CapsuleCollider>() != null){
                 float dist = Vector3.Distance(colliders[i].transform.position, transform.position);
@@ -96,8 +104,10 @@ public class Explodable : ISpawnable
         {
             isExploded = true;
 
-            ObjectPoolManager.DisableAllInPool(m_FirePool);
-            explosion = ObjectPoolManager.SpawnObject(m_ExplosionPool);
+            //ObjectPoolManager.Instance.DisableAllInPool(m_FirePool);
+            for (int i = 0; i < m_FirePooled.Length; i++)
+                m_FirePooled[i].Pool();
+            explosion = ObjectPoolManager.Instance.SpawnObject(m_ExplosionPool);
             explosion.transform.position = transform.position;
 
             audioSource.clip = exploSound;
@@ -105,34 +115,9 @@ public class Explodable : ISpawnable
 
             ExplodeDamage();
 
-            Invoke("Despawn", 2f);
+            if (gameObject.activeInHierarchy == true)
+                gameObject.SetActive(false);
         }
-    }
-
-    public override void Spawn()
-    {
-        base.Spawn();
-        gameObject.SetActive(true);
-    }
-
-    // despawns the explodable after explosion
-    public override void Despawn()
-    {
-        base.Despawn();
-
-        if (gameObject.activeInHierarchy == true)
-            gameObject.SetActive(false);
-    }
-
-    //respawns explodable on restart
-    public override void Respawn()
-    {
-        base.Respawn();
-
-        hits = 0;
-        isExploded = false;
-        gameObject.SetActive(true);
-        m_Mesh.gameObject.SetActive(true);
     }
 
     //counter for when to explode the tank
@@ -141,6 +126,8 @@ public class Explodable : ISpawnable
         yield return new WaitForSeconds(3);
         Explode();
         m_Mesh.gameObject.SetActive(false);
-        Invoke("Despawn", 1f);
+
+        if (gameObject.activeInHierarchy == true)
+            gameObject.SetActive(false);
     }
 }

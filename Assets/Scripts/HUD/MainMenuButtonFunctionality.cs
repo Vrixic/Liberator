@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonFunctionality : MonoBehaviour
 {
+    private void Awake()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     #region MainMenu
 
     // REFERENCES FOR SCENE INDICES

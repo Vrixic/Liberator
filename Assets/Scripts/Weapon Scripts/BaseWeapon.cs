@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BaseWeapon : ISpawnable //, IWeapon
+public class BaseWeapon :MonoBehaviour//, IWeapon
 {
     [Header("BaseWeapon")]
 
@@ -58,13 +58,6 @@ public class BaseWeapon : ISpawnable //, IWeapon
         attackRate = 1 / attackRate;
 
         m_Animator = GetComponent<Animator>();
-
-        Spawn();
-    }
-
-    public override void Spawn()
-    {
-        base.Spawn();
 
         m_LastAttackTime = attackRate * -1;
     }

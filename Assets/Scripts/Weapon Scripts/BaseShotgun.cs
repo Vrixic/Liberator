@@ -20,7 +20,7 @@ public class BaseShotgun : BaseGun
 
         for (int i = 0; i < pellets; i++)
         {
-            Bullet bullet = ObjectPoolManager.SpawnObject(GetBulletPool()) as Bullet;
+            Bullet bullet = ObjectPoolManager.Instance.SpawnObject(GetBulletPool()) as Bullet;
 
             targetPoints = centerPoint;
 
