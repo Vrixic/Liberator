@@ -191,8 +191,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Player class cannot be found, does not exist");
 
-            playerMoveScript = player.GetComponent<PlayerMotor>();
+            
         }
+        playerMoveScript = player.GetComponent<PlayerMotor>();
 
         currentCash = startingCash;
 

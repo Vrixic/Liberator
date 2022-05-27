@@ -233,6 +233,12 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
+    //position = -143, 2.461, 97.97
+    public void SetPlayerPosition(Vector3 position)
+    {
+        transform.position = position;
+    }
+
     public void Crouch()
     {
         //if they start crouching in the air, let the movement function know that it should run the given function(crouch)
