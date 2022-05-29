@@ -20,9 +20,15 @@ public class MainMenuButtonFunctionality : MonoBehaviour
 
         // Loads the game Scene
         SceneManager.LoadScene(1);
+        // Sets cursor state to locked and turns off the visibility
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        // Resumes time
+        Time.timeScale = 1f;
 
     }
 
+    // TO DO: IMPLEMENT OPTIONS MENU
     public void OpenOptionsMenu()
     {
 
