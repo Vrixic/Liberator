@@ -105,7 +105,8 @@ public class Explodable : MonoBehaviour
             isExploded = true;
 
             //ObjectPoolManager.Instance.DisableAllInPool(m_FirePool);
-            for (int i = 0; i < m_FirePooled.Length; i++)
+            
+            for (int i = 0; i < hits; i++)
                 m_FirePooled[i].Pool();
             explosion = ObjectPoolManager.Instance.SpawnObject(m_ExplosionPool);
             explosion.transform.position = transform.position;
