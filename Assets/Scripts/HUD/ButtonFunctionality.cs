@@ -138,9 +138,12 @@ public class ButtonFunctionality : MonoBehaviour
         Debug.Log(GameManager.Instance.playerTransform.position);
         if (!nextLevelPressedOnce)
         {
-            nextLevelPosition = new Vector3(-143, 2.461f, 97.97f);
-            GameManager.Instance.playerMoveScript.SetPlayerPosition(nextLevelPosition);
+            // ** COMMENTED CODE TO TELEPORT PLAYER TO LOCATION FOR NEXT LEVEL ** 
+            //nextLevelPosition = new Vector3(-143, 2.461f, 97.97f);
+            //GameManager.Instance.playerMoveScript.SetPlayerPosition(nextLevelPosition);
+
             nextLevelPressedOnce = true;
+            SceneManager.LoadScene(2);
             CloseShop();
             Debug.Log(GameManager.Instance.playerTransform.position);
         }
