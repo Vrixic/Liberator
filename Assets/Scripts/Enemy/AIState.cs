@@ -10,7 +10,8 @@ public enum AIStateID
     Death,
     Idle,
     Flashed,
-    Returning
+    Returning,
+    Stunned
 }
 
 public interface AIState

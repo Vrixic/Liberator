@@ -30,7 +30,6 @@ public class AIFlashState : AIState
     {
         agent.navMeshAgent.isStopped = false;
         currentFlashTimer = flashTimer;
-
         agent.isFlashed = false;
     }
 }
