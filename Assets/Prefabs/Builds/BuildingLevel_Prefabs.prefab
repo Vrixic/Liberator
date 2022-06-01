@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 8156911008342082144}
   m_Layer: 0
   m_Name: Cube (29)
-  m_TagString: Untagged
+  m_TagString: Concrete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6309
+  m_VersionIndex: 6318
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 8156911008538188884}
   m_Layer: 0
   m_Name: Floor (1)
-  m_TagString: Untagged
+  m_TagString: Concrete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -530,7 +530,7 @@ MonoBehaviour:
       m_FlipV: 0
       m_SwapUV: 0
       m_Fill: 1
-      m_Scale: {x: 0.125, y: 0.125}
+      m_Scale: {x: 0.0625, y: 0.0625}
       m_Offset: {x: 0, y: 0}
       m_Rotation: 0
       m_Anchor: 9
@@ -608,10 +608,10 @@ MonoBehaviour:
   - {x: -52.507324, y: -0.4308741}
   - {x: 22.492676, y: 0.06912589}
   - {x: -52.507324, y: 0.06912589}
-  - {x: -2.5510545, y: 6.5634155}
-  - {x: 5.5739455, y: 6.5634155}
-  - {x: -2.5510545, y: -2.8115845}
-  - {x: 5.5739455, y: -2.8115845}
+  - {x: -1.2755272, y: 3.2817078}
+  - {x: 2.7869728, y: 3.2817078}
+  - {x: -1.2755272, y: -1.4057922}
+  - {x: 2.7869728, y: -1.4057922}
   - {x: 20.408436, y: -22.492676}
   - {x: -44.591564, y: -22.492676}
   - {x: 20.408436, y: 52.507324}
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2192
+  m_VersionIndex: 2220
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
