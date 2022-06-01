@@ -60,7 +60,7 @@ public class InputManager : MonoBehaviour
 
         // Player input
         onFoot.AttackPressed.performed += ctx => player.OnAttackPressed();
-        onFoot.AttackHold.performed += ctx => player.OnAttackHold();
+        //onFoot.AttackHold.performed += ctx => player.OnAttackHold();
         onFoot.AttackReleased.performed += ctx => player.OnAttackReleased();
 
         onFoot.ADSPressed.performed += ctx => player.OnADSPressed();

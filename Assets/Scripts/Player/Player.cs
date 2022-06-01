@@ -517,10 +517,10 @@ public class Player : MonoBehaviour
      */
     public void OnAttackHold()
     {
-        if (!GameRunningCheck()) return;
+        //if (!GameRunningCheck()) return;
 
-        if (m_CurrentEquippedWeapon.CanPlayerHoldAttackTrigger())
-            StartAttacking();
+        //if (m_CurrentEquippedWeapon.CanPlayerHoldAttackTrigger())
+        //    StartAttacking();
     }
 
     public void OnAttackReleased()
