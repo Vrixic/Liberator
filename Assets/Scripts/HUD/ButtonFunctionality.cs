@@ -26,7 +26,7 @@ public class ButtonFunctionality : MonoBehaviour
     #region PauseMenu
     public void PauseGame()
     {
-        if (GameManager.Instance.isPauseMenuOpen == false)
+        if (GameManager.Instance.isPauseMenuOpen == false && GameManager.Instance.isShopMenuOpen == false)
         {
             if (GameManager.Instance.intelInteractText != null || GameManager.Instance.closeDoorInteractText != null || GameManager.Instance.openDoorInteractText != null || GameManager.Instance.secureHostageText != null)
             {
@@ -50,6 +50,10 @@ public class ButtonFunctionality : MonoBehaviour
                 virtualCam.SetActive(false);
             }
             GameManager.Instance.isPauseMenuOpen = true;
+        }
+        else if (GameManager.Instance.isShopMenuOpen)
+        {
+            CloseShop();
         }
         else
         {
@@ -129,6 +133,7 @@ public class ButtonFunctionality : MonoBehaviour
         GameManager.Instance.shopCanvas.SetActive(false);
         GameManager.Instance.buyWeaponsCanvas.SetActive(false);
         GameManager.Instance.minimapCanvas.SetActive(true);
+        GameManager.Instance.isShopMenuOpen = false;
 
     }
 
