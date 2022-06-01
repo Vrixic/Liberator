@@ -59,6 +59,9 @@ MonoBehaviour:
   - objectTag: HitboxHeadshot
     collisionParticleSystem: {fileID: 3348676198658618746, guid: c35cab76504166941aaec775941770e7, type: 3}
     impactAudio: {fileID: 8300000, guid: 3277b0a2754c77649a8725423b9720ea, type: 3}
+  - objectTag: Concrete
+    collisionParticleSystem: {fileID: -1440295298548469623, guid: 4d609e0be1cd4e447a82203115542eed, type: 3}
+    impactAudio: {fileID: 8300000, guid: 3277b0a2754c77649a8725423b9720ea, type: 3}
 --- !u!82 &29958634990660311
 AudioSource:
   m_ObjectHideFlags: 0
