@@ -146,6 +146,8 @@ public class PlayerInteract : MonoBehaviour
                     //get that instance so we can disable it
                     GameObject intelInstance = hit.collider.gameObject;
                     intelInstance.SetActive(false);
+
+                    GameManager.Instance.IntelCollected++;
                 }
                 //player interacts with an item tagged "shop"
                 else if (hit.collider.CompareTag("Shop"))

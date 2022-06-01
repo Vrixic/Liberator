@@ -803,6 +803,15 @@ MonoBehaviour:
   hostageProgressBar: {fileID: 0}
   currentCash: 0
   startingCash: 1000
+  enemyKillXPReward:
+  - enemyName: BasicEnemy
+    rewardAmount: 5
+  - enemyName: MeleeUnit
+    rewardAmount: 5
+  - enemyName: Assassin
+    rewardAmount: 10
+  - enemyName: Juggernaut
+    rewardAmount: 50
   shopCanvas: {fileID: 0}
   itemTabCashCountText: {fileID: 0}
   buyWeaponTabCashCountText: {fileID: 0}
@@ -813,6 +822,11 @@ MonoBehaviour:
   isCurrentWeaponUpgraded: 0
   buyWeaponsCanvas: {fileID: 0}
   minimapCanvas: {fileID: 0}
+  isPauseMenuOpen: 0
+  ammoCanvas: {fileID: 0}
+  masterVolume: 1
+  playerSensitivity: 1
+  isShopMenuOpen: 0
 --- !u!1 &7987560301393037636
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,17 @@ public class AIDeathState : AIState
         agent.animator.Play("Death");
         GameManager.Instance.CurrentCash += 50;
 
+        string tag = agent.GetComponentInChildren<BoxCollider>().tag;
+        if (GameManager.Instance.enemiesKilled.ContainsKey(tag))
+        {
+            GameManager.Instance.enemiesKilled[tag]++;
+
+        }
+        else
+        {
+            GameManager.Instance.enemiesKilled.Add(tag, 1);
+        }
+
         agent.navMeshAgent.isStopped = true;
 
         agent.DisableColliders();
