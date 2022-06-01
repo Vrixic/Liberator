@@ -927,5 +927,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5352958576908949436, guid: 77b4ffffaa01ea646a4ff72d58d8b9d3, type: 3}
+      propertyPath: m_Name
+      value: JuggernautColliderTag
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352958576908949436, guid: 77b4ffffaa01ea646a4ff72d58d8b9d3, type: 3}
+      propertyPath: m_TagString
+      value: Juggernaut
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77b4ffffaa01ea646a4ff72d58d8b9d3, type: 3}
