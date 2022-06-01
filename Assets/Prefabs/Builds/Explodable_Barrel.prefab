@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fire: {fileID: -8677530205395176735, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
   explosion: {fileID: -366089495347445295, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 2137097736405322353}
   fireSound: {fileID: 8300000, guid: 0f390c5b5be5ebb4db9c625a62fe71e3, type: 3}
   exploSound: {fileID: 8300000, guid: 309b24d48ccc87f42b2aac3d63139fdc, type: 3}
   layers:

@@ -11,7 +11,8 @@ public enum AIStateID
     Idle,
     Flashed,
     Returning,
-    Stunned
+    Stunned,
+    Alerted
 }
 
 public interface AIState
