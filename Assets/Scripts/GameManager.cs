@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -91,9 +92,15 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool isPauseMenuOpen;
     [HideInInspector]
-    public bool isShopMenuOpen;
-    [HideInInspector]
     public GameObject ammoCanvas;
+    [HideInInspector]
+    public float masterVolume = 1f;
+    [HideInInspector]
+    public float playerSensitivity = 1f;
+    [HideInInspector]
+    public bool isShopMenuOpen;
+
+    public Action OnOptionsUpdateAction;
 
     private static GameManager instance;
 
@@ -192,7 +199,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Player class cannot be found, does not exist");
 
-            
+
         }
         playerMoveScript = player.GetComponent<PlayerMotor>();
 
@@ -203,6 +210,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("MainCamera not found in scene");
         }
+
+        OnOptionsUpdateAction += playerScript.OnOptionsUpdate;
+        OnOptionsUpdateAction += player.GetComponent<PlayerLook>().OnOptionsUpdate;
+
+        LoadGame();
     }
 
     private void Update()
@@ -235,6 +247,8 @@ public class GameManager : MonoBehaviour
         color.a = .4f;
         gunIcon.color = color;
 
+        gunIcon.gameObject.SetActive(true);
+
         StartCoroutine(FadeOutGunIcon());
     }
 
@@ -250,5 +264,37 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
+
+        gunIcon.gameObject.SetActive(false);
+    }
+
+    public void LoadGame()
+    {
+        if (PlayerPrefs.HasKey("Master Volume"))
+        {
+            masterVolume = PlayerPrefs.GetFloat("Master Volume", 1f);
+        }
+        else
+        {
+            masterVolume = 1f;
+            PlayerPrefs.SetFloat("Master Volume", masterVolume);
+        }
+    }
+
+    public void SaveGame()
+    {
+        SaveMasterVolume();
+        SavePlayerSensitivity();
+
+        OnOptionsUpdateAction?.Invoke();
+    }
+    private void SaveMasterVolume()
+    {
+        PlayerPrefs.SetFloat("Master Volume", masterVolume);
+
+    }
+    private void SavePlayerSensitivity()
+    {
+        PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
     }
 }

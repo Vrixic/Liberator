@@ -156,7 +156,7 @@ public class PlayerInteract : MonoBehaviour
                     Time.timeScale = 0f;
 
                     // Disables virtual camera so player can not look around in game
-                    if(GameManager.Instance.virtualCam != null)
+                    if (GameManager.Instance.virtualCam != null)
                         GameManager.Instance.virtualCam.SetActive(false);
                     GameManager.Instance.minimapCanvas.SetActive(false);
                     GameManager.Instance.shopCanvas.SetActive(true);

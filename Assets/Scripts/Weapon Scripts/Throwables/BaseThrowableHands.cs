@@ -37,9 +37,15 @@ public class BaseThrowableHands : BaseWeapon
         m_CurrentThrowableAmount = maxThrowableAmount;
     }
    
-    public override void OnWeaponEquip() { }
+    public override void OnWeaponEquip() 
+    {
+        //base.OnWeaponEquip();
+        if(AmmoManager.Instance != null)
+            AmmoManager.Instance.HideAmmoGUI();
+    }
     
-    public override void OnWeaponUnequip() { }
+    public override void OnWeaponUnequip() 
+    {  }
 
     public void OnAnimationEvent_ThrowStart()
     {

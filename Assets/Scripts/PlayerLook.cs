@@ -43,4 +43,10 @@ public class PlayerLook : MonoBehaviour
         xSensitivity += .75f;
         ySensitivity += .75f;
     }
+
+    public void OnOptionsUpdate()
+    {
+        xSensitivity *= GameManager.Instance.playerSensitivity;
+        ySensitivity *= GameManager.Instance.playerSensitivity;
+    }
 }

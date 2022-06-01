@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [Header("Weapon Settings")]
 
     /* array of weapons */
-    [SerializeField] WeaponID[] startWeaponIDs;
+    [SerializeField] WeaponID[] startWeaponIDs = new WeaponID[2];
     BaseWeapon[] m_CurrentWeapons;
 
     [SerializeField] GameObject weaponsParent;
@@ -77,6 +77,8 @@ public class Player : MonoBehaviour
     /* audio source used for footsteps */
     AudioSource m_FootstepAudioSrc;
 
+    float m_DefaultVolume = 1f;
+
     /* last time a sound effect was played for footsteps */
     float m_LastStepSoundTime = 0f;
 
@@ -104,20 +106,22 @@ public class Player : MonoBehaviour
         m_FootstepAudioSrc = GetComponentInChildren<AudioSource>();
         characterController = GetComponent<CharacterController>();
 
+        m_DefaultVolume = m_FootstepAudioSrc.volume;
+
         healthBar = GameManager.Instance.healthBarScript;
         shieldBar = GameManager.Instance.shieldBarScript;
 
         m_CurrentWeapons = new BaseWeapon[startWeaponIDs.Length];
-
+        m_CurrentWeaponIndex = 0;
 
         for (int i = 0; i < startWeaponIDs.Length; i++)
         {
             m_CurrentWeapons[i] = WeaponSpawnManager.Instance.GetWeapon(startWeaponIDs[i], weaponsParent.transform);
-            m_CurrentWeapons[i].OnPickup(weaponsParent);
-        }
-
-        m_CurrentWeaponIndex = 0;
+            //m_CurrentWeapons[i].OnPickup(weaponsParent);
+        }   
+        
         ActivateWeapon(0);
+        DeactivateWeapon(1);
 
         UpdateFlashbangCount();
         UpdateSensorGrenadeUi();
@@ -129,6 +133,9 @@ public class Player : MonoBehaviour
 
         DeactivateFlashbang();
         DeactivateSensor();
+
+        OnOptionsUpdate();
+
     }
 
     void ResetHealth()
@@ -225,9 +232,9 @@ public class Player : MonoBehaviour
         if (!GameRunningCheck()) return;
         if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
 
-        if(flashbang.isActiveAndEnabled)
+        if (flashbang.isActiveAndEnabled)
         {
-            if(sensor.HasMoreThrowables())
+            if (sensor.HasMoreThrowables())
             {
                 DeactivateFlashbang();
                 ActivateSensor();
@@ -249,7 +256,7 @@ public class Player : MonoBehaviour
                     ActivateSensor();
                 }
             }
-        }               
+        }
     }
 
     /*
@@ -257,6 +264,7 @@ public class Player : MonoBehaviour
      */
     public void EquipWeaponOnePressed()
     {
+        GameManager.Instance.SaveGame();
         if (!GameRunningCheck()) return;
 
         if (flashbang.isActiveAndEnabled)
@@ -774,7 +782,7 @@ public class Player : MonoBehaviour
 
     public BaseWeapon GetCurrentEquippedGun()
     {
-        for(int i = 0; i < m_CurrentWeapons.Length; i++)
+        for (int i = 0; i < m_CurrentWeapons.Length; i++)
         {
             if (m_CurrentWeapons[i].GetWeaponID() != WeaponID.Knife)
             {
@@ -785,4 +793,60 @@ public class Player : MonoBehaviour
         return null;
     }
 
+    //public void ResetSave()
+    //{
+    //    PlayerPrefs.SetInt("SecondaryGun", (int)startWeaponIDs[1]);
+    //    PlayerPrefs.SetInt("Health", GetCurrentPlayerHealth());
+    //    PlayerPrefs.SetInt("Shield", GetCurrentPlayerShield());
+    //}
+
+    //public void SaveGame()
+    //{
+    //    PlayerPrefs.SetInt("SecondaryGun", (int)m_CurrentWeapons[1].GetWeaponID());
+    //    PlayerPrefs.SetInt("Health", GetPlayersMaxHealth());
+    //    PlayerPrefs.SetInt("Shield", GetPlayersMaxShield());
+    //}
+
+    //public void LoadGame()
+    //{
+    //    if(PlayerPrefs.HasKey("SecondaryGun"))
+    //    {
+    //        m_CurrentWeapons[1] = WeaponSpawnManager.Instance.GetWeapon((WeaponID)PlayerPrefs.GetInt("SecondaryGun"), weaponsParent.transform);
+    //    }
+    //    else
+    //    {
+    //        PlayerPrefs.SetInt("SecondaryGun", (int)m_CurrentWeapons[1].GetWeaponID());
+    //    }
+
+    //    if (PlayerPrefs.HasKey("Health"))
+    //    {
+    //        m_CurrentPlayerHealth = PlayerPrefs.GetInt("Health");
+    //    }
+    //    else
+    //    {
+    //        PlayerPrefs.SetInt("Health", GetPlayersMaxHealth());
+    //    }
+
+
+    //    if (PlayerPrefs.HasKey("Shield"))
+    //    {
+    //        m_CurrentPlayerHealth = PlayerPrefs.GetInt("Shield");
+    //    }
+    //    else
+    //    {
+    //        PlayerPrefs.SetInt("Health", GetPlayersMaxHealth());
+    //    }
+    //}
+
+    /* When user saves the game, updates variables to the recent saves */
+    public void OnOptionsUpdate()
+    {
+        m_FootstepAudioSrc.volume = m_DefaultVolume * GameManager.Instance.masterVolume;
+        weaponAudioSrc.volume = m_DefaultVolume * GameManager.Instance.masterVolume;
+    }
+
+    //private void OnApplicationQuit()
+    //{
+    //    ResetSave();
+    //}
 }

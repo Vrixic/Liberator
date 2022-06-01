@@ -15,7 +15,7 @@ public class AmmoManager : MonoBehaviour
 
     [Header("Visuals")]
 
-    
+
     /* Instance of this object, singleton pattern */
     private static AmmoManager m_AmmoManager;
 
@@ -112,7 +112,7 @@ public class AmmoManager : MonoBehaviour
 
     public void ResetAmmoManager()
     {
-        foreach(KeyValuePair<AmmoType, AmmoSlot> ammo in m_StoredAmmo)
+        foreach (KeyValuePair<AmmoType, AmmoSlot> ammo in m_StoredAmmo)
         {
             ammo.Value.ResetAmmo();
         }
