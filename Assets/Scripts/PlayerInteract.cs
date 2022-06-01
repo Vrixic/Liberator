@@ -161,6 +161,7 @@ public class PlayerInteract : MonoBehaviour
                     GameManager.Instance.minimapCanvas.SetActive(false);
                     GameManager.Instance.shopCanvas.SetActive(true);
                     GameManager.Instance.buttonFuncScript.UpdateCashCountShopUi();
+                    GameManager.Instance.isShopMenuOpen = true;
                 }
             }
             else //hold interactions go here VVVVVVVVVVVVVVVVVVVVVVVV

@@ -91,6 +91,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool isPauseMenuOpen;
     [HideInInspector]
+    public bool isShopMenuOpen;
+    [HideInInspector]
     public GameObject ammoCanvas;
 
     private static GameManager instance;

@@ -39,6 +39,21 @@ public class MainMenuButtonFunctionality : MonoBehaviour
         Application.Quit();
         Debug.Log("Application is Exiting");
     }
+
+    public void OpenCredits()
+    {
+
+    }
+
+    public void OpenMetaShop()
+    {
+
+    }
+    public void ReturnToMainMenu()
+    {
+
+    }
+
     #endregion
 
 }
