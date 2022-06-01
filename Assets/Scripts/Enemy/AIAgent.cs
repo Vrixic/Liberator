@@ -68,7 +68,14 @@ public class AIAgent : MonoBehaviour
         }
         enemyHealth = GetComponent<Health>();
 
-        headShotCollider = GetComponentInChildren<SphereCollider>();
+        currentState = initialState;
+        //sets state to initial state.
+        stateMachine.ChangeState(initialState);
+
+        if (!(transform.parent.tag == "Juggernaut"))
+        {
+            headShotCollider = GetComponentInChildren<SphereCollider>();
+        }
         bodyCollider = GetComponent<CapsuleCollider>();
         boxCollider = GetComponentInChildren<BoxCollider>();
 
@@ -77,9 +84,7 @@ public class AIAgent : MonoBehaviour
 
         EnableColliders();
 
-        currentState = initialState;
-        //sets state to initial state.
-        stateMachine.ChangeState(initialState);
+        
     }
 
     // Update is called once per frame
@@ -114,8 +119,11 @@ public class AIAgent : MonoBehaviour
         if (isMelee)
             meleeSphereCollider.enabled = true;
 
-        bodyCollider.enabled = true; 
-        headShotCollider.enabled = true;
+        bodyCollider.enabled = true;
+        if (!(transform.parent.tag == "Juggernaut"))
+        {
+            headShotCollider.enabled = true;
+        }
         boxCollider.enabled = true;
     }
 
@@ -125,7 +133,10 @@ public class AIAgent : MonoBehaviour
             meleeSphereCollider.enabled = false;
 
         bodyCollider.enabled = false;
-        headShotCollider.enabled = false;
+        if (!(transform.parent.tag == "Juggernaut"))
+        {
+            headShotCollider.enabled = false;
+        }
         boxCollider.enabled = false;
     }
 
