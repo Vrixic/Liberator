@@ -10,7 +10,7 @@ public class ReturnToPostTrigger : MonoBehaviour
     //if set up correctly and you still get the error, use another variation of TryGetComponent, likely InChildreon would work best
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BasicEnemy") || other.CompareTag("MeleeUnit"))
+        if (other.CompareTag("BasicEnemy") || other.CompareTag("Juggernaut"))
         {
             //grab the AiAgent script from the gameObject, MAY NEED TO USE GetComponentInChildren DEPENDING ON ENEMY PREFAB STRUCTURE
             AIAgent agent;

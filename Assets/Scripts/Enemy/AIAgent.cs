@@ -11,6 +11,8 @@ using UnityEngine.AI;
 public class AIAgent : MonoBehaviour
 {
     public AIStateMachine stateMachine;
+    public Vector3 initialPosition;
+    public Vector3 initialRotation;
     public AIStateID initialState;
     public AIStateID currentState;
     [HideInInspector]public NavMeshAgent navMeshAgent;
@@ -86,7 +88,8 @@ public class AIAgent : MonoBehaviour
 
         EnableColliders();
 
-        
+        //store where the enemy is located initially in the scene
+        initialPosition = transform.position;
     }
 
     // Update is called once per frame

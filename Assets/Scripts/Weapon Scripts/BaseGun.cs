@@ -121,6 +121,8 @@ public class BaseGun : BaseWeapon
             {
                 ShootWithRecoil();
             }
+
+            GameManager.Instance.AlertEnemiesInSphere(transform.position, 14);
         }
     }
 

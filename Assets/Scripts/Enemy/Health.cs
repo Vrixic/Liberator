@@ -45,7 +45,8 @@ public class Health : MonoBehaviour
             agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
         }
         blinkTimer = blinkDuration;
-        
+
+        GameManager.Instance.AlertEnemiesInSphere(transform.position, 10f);
     }
 
     private void Die(Vector3 direction)

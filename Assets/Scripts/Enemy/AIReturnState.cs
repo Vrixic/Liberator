@@ -5,18 +5,19 @@ using UnityEngine;
 public class AIReturnState : AIState
 {
 
-    Vector3 spawnPosition;
-
     // Start is called before the first frame update
     public void Enter(AIAgent agent)
     {
         //spawnPosition = agent.GetInitialPosition();
-        agent.navMeshAgent.destination = spawnPosition;
+        agent.currentState = AIStateID.Returning;
+        agent.navMeshAgent.destination = agent.initialPosition;
         agent.animator.SetBool("Returning", true);
+        agent.navMeshAgent.stoppingDistance = 1f;
     }
 
     public void Exit(AIAgent agent)
     {
+        agent.navMeshAgent.stoppingDistance = 3f;
         agent.animator.SetBool("Returning", false);
     }
 
@@ -34,9 +35,9 @@ public class AIReturnState : AIState
         {
             agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
         }
-        if ((agent.transform.position - spawnPosition).sqrMagnitude <= 1)
+        if ((agent.transform.position - agent.initialPosition).sqrMagnitude <= 3)
         {
-            agent.stateMachine.ChangeState(AIStateID.Idle);
+            agent.stateMachine.ChangeState(AIStateID.Alerted);
         }
     }
 }

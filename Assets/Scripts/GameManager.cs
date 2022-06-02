@@ -111,6 +111,10 @@ public class GameManager : MonoBehaviour
     public bool isShopMenuOpen;
     public bool IsXPScreenShowing { get; set; } = false;
 
+    //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
+    private Collider[] enemyColliders = new Collider[18]; 
+    private LayerMask enemyLayerMask;
+
     public bool GameWon { get; set; } = false;
 
     public Action OnOptionsUpdateAction;
@@ -233,6 +237,8 @@ public class GameManager : MonoBehaviour
         {
             enemiesKillXPReward.Add(enemyKillXPReward[i].enemyName, enemyKillXPReward[i].rewardAmount);
         }
+
+        enemyLayerMask = LayerMask.GetMask("Enemy");
 
         // Loads all player perferences from last save
         LoadGame();
@@ -379,5 +385,27 @@ public class GameManager : MonoBehaviour
 
         // The amount of reward player gets for killing this enemy
         public int rewardAmount;
+    }
+
+    //place an overlap sphere at a specified position and collects all enemy colliders within a given radius to alert them(if idle) based on a given player action(firing, opening door, grenade etc.)
+    public void AlertEnemiesInSphere(Vector3 sphereCastPosition, float sphereRadius)
+    {
+        //collect all colliders on the enemy layer within the alert radius
+        int numberOfColliders = Physics.OverlapSphereNonAlloc(sphereCastPosition, sphereRadius, enemyColliders, enemyLayerMask);
+        
+        //initialize AIAgent variable that will be assigned when we try to get the component from each collider
+        AIAgent agent;
+
+        //loop through all enemy colliders in the array
+        for (int i = 0; i < numberOfColliders; i++)
+        {
+            //enemy heads and bodies are different colliders, but only the body has the AIAgent component, so TryGetComponent will end up passing on each agent's body
+            if(enemyColliders[i].TryGetComponent<AIAgent>(out agent))
+            {
+                //if it found the AIAgent for a given enemy collider, alert that enemy if they are currently idle(not dead, chasing, or attacking)
+                if(agent.currentState == AIStateID.Idle)
+                    agent.stateMachine.ChangeState(AIStateID.Alerted);
+            }
+        }
     }
 }

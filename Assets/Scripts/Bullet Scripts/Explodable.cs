@@ -118,6 +118,8 @@ public class Explodable : MonoBehaviour
 
             if (gameObject.activeInHierarchy == true)
                 gameObject.SetActive(false);
+
+            GameManager.Instance.AlertEnemiesInSphere(transform.position, 10f);
         }
     }
 

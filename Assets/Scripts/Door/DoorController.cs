@@ -69,6 +69,9 @@ public class DoorController : MonoBehaviour
                 doorOpen = false;
                 closeDoorAudioSource.PlayOneShot(closeDoorAudio);
             }
+
+            //alert any enemies within a certain range of the door interaction
+            GameManager.Instance.AlertEnemiesInSphere(transform.position, 10);
         }
     }
 
