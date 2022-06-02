@@ -152,18 +152,7 @@ public class PlayerInteract : MonoBehaviour
                 //player interacts with an item tagged "shop"
                 else if (hit.collider.CompareTag("Shop"))
                 {
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
-
-                    Time.timeScale = 0f;
-
-                    // Disables virtual camera so player can not look around in game
-                    if (GameManager.Instance.virtualCam != null)
-                        GameManager.Instance.virtualCam.SetActive(false);
-                    GameManager.Instance.minimapCanvas.SetActive(false);
-                    GameManager.Instance.shopCanvas.SetActive(true);
-                    GameManager.Instance.buttonFuncScript.UpdateCashCountShopUi();
-                    GameManager.Instance.isShopMenuOpen = true;
+                    GameManager.Instance.buttonFuncScript.OpenShopMenu();
                 }
             }
             else //hold interactions go here VVVVVVVVVVVVVVVVVVVVVVVV

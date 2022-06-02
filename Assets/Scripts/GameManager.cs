@@ -155,8 +155,6 @@ public class GameManager : MonoBehaviour
         pause = GameObject.FindGameObjectWithTag("PauseMenu");
         pause.SetActive(false);
 
-        hostageSecured = GameObject.FindGameObjectWithTag("HostageSecuredScreen");
-        hostageSecured.SetActive(false);
 
         virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
         reticle = GameObject.FindGameObjectWithTag("Reticle");

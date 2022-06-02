@@ -11,7 +11,6 @@ public class ButtonFunctionality : MonoBehaviour
     GameObject reticle;
     int shotgunAmmoCapacity;
     int SmallAmmoCapacity;
-    Vector3 nextLevelPosition;
     bool nextLevelPressedOnce = false;
     void Start()
     {
@@ -114,6 +113,25 @@ public class ButtonFunctionality : MonoBehaviour
     #endregion
 
     #region ShopMenu
+
+    // Open Shop Menu
+    public void OpenShopMenu()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        Time.timeScale = 0f;
+
+        // Disables virtual camera so player can not look around in game
+        if (GameManager.Instance.virtualCam != null)
+            GameManager.Instance.virtualCam.SetActive(false);
+        GameManager.Instance.minimapCanvas.SetActive(false);
+        GameManager.Instance.shopCanvas.SetActive(true);
+        GameManager.Instance.buttonFuncScript.UpdateCashCountShopUi();
+        GameManager.Instance.isShopMenuOpen = true;
+
+    }
+
     // Close Shop menu
     public void CloseShop()
     {
