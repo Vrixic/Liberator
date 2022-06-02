@@ -212,7 +212,7 @@ public class PlayerInteract : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
 
             GameManager.Instance.hostageProgressBar.SetActive(false);
 
@@ -221,7 +221,10 @@ public class PlayerInteract : MonoBehaviour
                 GameManager.Instance.virtualCam.SetActive(false);
 
             //add code to win the level
-            GameManager.Instance.shopCanvas.SetActive(true);
+            GameManager.Instance.GameWon = true;
+            ScreenManager.Instance.ShowScreen("XP_Screen");
+
+            //GameManager.Instance.shopCanvas.SetActive(true);
             GameManager.Instance.minimapCanvas.SetActive(false);
             currentInteractPrompt.SetActive(false);
 

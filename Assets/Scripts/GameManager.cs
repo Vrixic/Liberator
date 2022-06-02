@@ -224,14 +224,17 @@ public class GameManager : MonoBehaviour
             Debug.LogError("MainCamera not found in scene");
         }
 
+        // Adds listeners to options update event
         OnOptionsUpdateAction += playerScript.OnOptionsUpdate;
         OnOptionsUpdateAction += player.GetComponent<PlayerLook>().OnOptionsUpdate;
 
+        // Takes the info from enemyKillXpReward and populates it into a dictionary, so that accessing information can be constant time later on.
         for(int i = 0; i < enemyKillXPReward.Count; i++)
         {
             enemiesKillXPReward.Add(enemyKillXPReward[i].enemyName, enemyKillXPReward[i].rewardAmount);
         }
 
+        // Loads all player perferences from last save
         LoadGame();
     }
 
@@ -249,32 +252,45 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        // set the previous xp to current xp
         PreviousXP = currentXP;
 
+        // Show the xp screen
         ScreenManager.Instance.ShowScreen("XP_Screen");
 
         Debug.LogWarning("Restart your game bud, you suck!");
         //SceneManager.LoadScene(0);
     }
 
+    /* 
+     * Sets the gun icon and fades it out
+     */
     public void SetGunIcon(Sprite icon)
     {
+        // Calculates icons width and heights 
         float iconWidth = icon.rect.width * 0.5f;
         float iconHeight = icon.rect.height * 0.5f;
 
+        // resize the gunIcon rect transform to fit the incoming icon and set the sprite to the incoming icon
         gunIcon.rectTransform.sizeDelta = new Vector2(iconWidth, iconHeight);
         gunIcon.rectTransform.anchoredPosition = new Vector2(iconWidth * -0.5f - 10f, gunIcon.rectTransform.anchoredPosition.y);
         gunIcon.sprite = icon;
 
+        // Make icon visible 
         Color color = Color.white;
         color.a = .4f;
         gunIcon.color = color;
 
+        // enables the gunIcon
         gunIcon.gameObject.SetActive(true);
 
+        // Starts fading the icon out
         StartCoroutine(FadeOutGunIcon());
     }
 
+    /* 
+     * Fades out the currently showing gun icon
+     */
     IEnumerator FadeOutGunIcon()
     {
         Color c = gunIcon.color;
@@ -291,6 +307,9 @@ public class GameManager : MonoBehaviour
         gunIcon.gameObject.SetActive(false);
     }
 
+    /* 
+    * Loads player perferences
+    */
     public void LoadGame()
     {
         if (PlayerPrefs.HasKey("Master Volume"))
@@ -314,33 +333,51 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /* 
+    * Saves player perferences
+    */
     public void SaveGame()
     {
         SaveMasterVolume();
         SavePlayerSensitivity();
-
+         
+        // Fires an event to all listening clients that player perferences has been updated
         OnOptionsUpdateAction?.Invoke();
     }
+
+    /* 
+    * Saves master volume
+    */
     private void SaveMasterVolume()
     {
         PlayerPrefs.SetFloat("Master Volume", masterVolume);
 
     }
+
+    /* 
+    * Saves player sensitivity
+    */
     private void SavePlayerSensitivity()
     {
         PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
     }
 
+    /* 
+    * Calculates the xp earned by incoming enemyTag
+    */
     public int CalculateXPForEnemy(string enemyTag)
     {
-        Debug.Log(enemyTag + " x" + enemiesKilled[enemyTag]);
+        //Debug.Log(enemyTag + " x" + enemiesKilled[enemyTag]);
         return enemiesKilled[enemyTag] * enemiesKillXPReward[enemyTag];
     }
 
     [System.Serializable]
     private class EnemyKillReward
     {
+        // Name of enemy type
         public string enemyName;
+
+        // The amount of reward player gets for killing this enemy
         public int rewardAmount;
     }
 }

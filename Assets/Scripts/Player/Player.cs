@@ -439,6 +439,7 @@ public class Player : MonoBehaviour
      */
     void DecreasePlayerHealth(int amount)
     {
+        if (!GameRunningCheck()) return;
         m_CurrentPlayerHealth -= amount;
 
         if (m_CurrentPlayerHealth <= 0) // Player died
