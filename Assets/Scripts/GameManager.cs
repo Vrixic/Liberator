@@ -73,7 +73,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int CurrentXP { get { return currentXP; } set { currentXP = value; } }
     private int currentXP = 0;
-    private int previousXP = 0;
+    public int PreviousXP { get; set;  }
+    [SerializeField] public int maxXPAmount = 100;
     public Dictionary<string, int> enemiesKilled = new Dictionary<string, int>();
     [SerializeField] List<EnemyKillReward> enemyKillXPReward = new List<EnemyKillReward>();
     private Dictionary<string, int> enemiesKillXPReward = new Dictionary<string, int>();
@@ -108,6 +109,9 @@ public class GameManager : MonoBehaviour
     public float playerSensitivity = 1f;
     [HideInInspector]
     public bool isShopMenuOpen;
+    public bool IsXPScreenShowing { get; set; } = false;
+
+    public bool GameWon { get; set; } = false;
 
     public Action OnOptionsUpdateAction;
 
@@ -245,15 +249,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        previousXP = currentXP;
+        PreviousXP = currentXP;
 
-        foreach(KeyValuePair<string, int> pair in enemiesKilled)
-        {
-            int xp = CalculateXPForEnemy(pair.Key);
-            currentXP += xp;
-
-            Debug.Log("Current XP: " + currentXP);
-        }
+        ScreenManager.Instance.ShowScreen("XP_Screen");
 
         Debug.LogWarning("Restart your game bud, you suck!");
         //SceneManager.LoadScene(0);
@@ -333,7 +331,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
     }
 
-    int CalculateXPForEnemy(string enemyTag)
+    public int CalculateXPForEnemy(string enemyTag)
     {
         Debug.Log(enemyTag + " x" + enemiesKilled[enemyTag]);
         return enemiesKilled[enemyTag] * enemiesKillXPReward[enemyTag];

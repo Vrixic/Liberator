@@ -500,6 +500,8 @@ public class Player : MonoBehaviour
         characterController.enabled = false;
         bPlayerDead = true;
 
+        GameManager.Instance.GameWon = false;
+
         GameManager.Instance.ResetGame();
 
         AmmoManager.Instance.ResetAmmoManager();
@@ -705,7 +707,7 @@ public class Player : MonoBehaviour
 
     bool GameRunningCheck()
     {
-        return Time.timeScale > 0f;
+        return Time.timeScale > 0f && !GameManager.Instance.IsXPScreenShowing;
     }
 
     public void UpdateFlashbangCount()

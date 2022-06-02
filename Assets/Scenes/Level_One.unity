@@ -15616,6 +15616,42 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2998263539901140769, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: enemyKillXPReward.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998263539901140769, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: enemyKillXPReward.Array.data[0].enemyName
+      value: BasicEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998263539901140769, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: enemyKillXPReward.Array.data[1].enemyName
+      value: MeleeUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998263539901140769, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: enemyKillXPReward.Array.data[2].enemyName
+      value: Assassin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998263539901140769, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: enemyKillXPReward.Array.data[3].enemyName
+      value: Juggernaut
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998263539901140769, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: enemyKillXPReward.Array.data[0].rewardAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998263539901140769, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: enemyKillXPReward.Array.data[1].rewardAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998263539901140769, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: enemyKillXPReward.Array.data[2].rewardAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998263539901140769, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: enemyKillXPReward.Array.data[3].rewardAmount
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5478136301378161486, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_fontAsset
       value: 
