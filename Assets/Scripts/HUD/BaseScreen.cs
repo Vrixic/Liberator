@@ -1,11 +1,11 @@
 using UnityEngine;
 
 [System.Serializable]
-public class BaseScreen : MonoBehaviour
+public class BaseScreen : MonoBehaviour 
 {
     public string screenName;
 
-    private void Start() // Add This Screen to HUBManagers list of screens
+    public virtual void Start() // Add This Screen to HUBManagers list of screens
     {
         ScreenManager.Instance.AddScreen(this);
     }
@@ -14,6 +14,8 @@ public class BaseScreen : MonoBehaviour
     {
         ScreenManager.Instance.RemoveScreen(this);
     }
+
+    public virtual void Update() {  } 
 
     /*
      * Shows the current screen by setting it active true

@@ -15612,6 +15612,18 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+    - target: {fileID: 882458616484777798, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: smoothTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 882458616484777798, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: animationSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 882458616484777798, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: timeBetweenUIBlocks
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1259816206456108068, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

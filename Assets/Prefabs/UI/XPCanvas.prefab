@@ -780,6 +780,7 @@ MonoBehaviour:
   totalXPText: {fileID: 5975772581710663990}
   enemyUIPrefab: {fileID: 1260784532508400620, guid: def88bf78ce4c3e4a916808dee2d531e, type: 3}
   contentHolder: {fileID: 2444861689567042615}
+  timeBetweenUIBlocks: 1.5
 --- !u!1 &6548140001866630821
 GameObject:
   m_ObjectHideFlags: 0
