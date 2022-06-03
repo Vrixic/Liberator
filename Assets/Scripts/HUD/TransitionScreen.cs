@@ -18,32 +18,34 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
     {
         base.Show();
 
-        GameManager.Instance.SceneOperation.completed += OnSceneLoaded;
-        m_LoadEndTimeMin = Time.realtimeSinceStartup + loadTimeMin;        
+        PlayerPrefManager.Instance.SceneOperation.completed += OnSceneLoaded;
+        m_LoadEndTimeMin = Time.realtimeSinceStartup + loadTimeMin;
+
+        bSceneLoading = false;
     }
 
     public override void Update()
     {
         if(Time.realtimeSinceStartup < m_LoadEndTimeMin)
         {
-            barSlider.value = GameManager.Instance.SceneOperation.progress - (m_LoadEndTimeMin - Time.realtimeSinceStartup) / loadTimeMin;
+            barSlider.value = PlayerPrefManager.Instance.SceneOperation.progress - (m_LoadEndTimeMin - Time.realtimeSinceStartup) / loadTimeMin;
         }
         else 
         {
-            GameManager.Instance.SceneOperation.allowSceneActivation = true;
+            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = true;
         }
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(GameManager.Instance.SceneOperation.progress > 0.89 && !bSceneLoading)
+        if(PlayerPrefManager.Instance.SceneOperation.progress > 0.89 && !bSceneLoading)
         {
             bSceneLoading = true;
-            GameManager.Instance.SceneOperation.allowSceneActivation = true;
+            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = true;
         }
     }
 
     void OnSceneLoaded(AsyncOperation operation)
-    {       
+    {
         ScreenManager.Instance.HideScreen(screenName);
     }
 }

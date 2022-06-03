@@ -22,7 +22,12 @@ public class MainMenuButtonFunctionality : MonoBehaviour
         // Loads the game Scene
         Debug.Log("Starting Game From Main Menu");
         PlayerPrefManager.Instance.LoadGame();
-        SceneManager.LoadScene(1);
+
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+        ScreenManager.Instance.ShowScreen("Transition_Screen");
+
+        //SceneManager.LoadScene(1);
         // Sets cursor state to locked and turns off the visibility
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

@@ -23,6 +23,8 @@ public class PlayerPrefManager : MonoBehaviour
     [HideInInspector]
     public int startingCash;
 
+    public AsyncOperation SceneOperation { get; set; }
+
     public Action OnOptionsUpdateAction;
 
     private static PlayerPrefManager instance;

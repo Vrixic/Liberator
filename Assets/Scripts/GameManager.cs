@@ -111,8 +111,6 @@ public class GameManager : MonoBehaviour
     public int RewardID { get; set; } = 0;
     public bool RewardCollected { get; set; } = true;
 
-    public AsyncOperation SceneOperation { get; set; }
-
     //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
     private Collider[] enemyColliders = new Collider[18];
     private LayerMask enemyLayerMask;
