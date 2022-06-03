@@ -58,12 +58,12 @@ public class AudioManager : MonoBehaviour
         m_AudioSource = audioSource;
     }
 
-    public void PlayAudioAtLocation(Vector3 location, string objectTag, float volume = 1f)
+    public void PlayAudioAtLocation(AudioSource audioSource, string objectTag, float volume = 1f)
     {
-        SetAudioVolume(volume);
+        audioSource.volume = GameManager.Instance.masterVolume;
 
-        m_AudioSource.transform.position = location;
-        m_AudioSource.PlayOneShot(GetAudioClip(objectTag));
+        //SetAudioSource(audioSource);
+        audioSource.PlayOneShot(GetAudioClip(objectTag));
     }
 
     public void SetAudioVolume(float val)
@@ -89,7 +89,6 @@ public class AudioManager : MonoBehaviour
     [System.Serializable]
     public class Sound
     {
-        public AudioPurpose audioPurpose;
         public string objectTag;
         public AudioClip audio;
     }

@@ -13,7 +13,7 @@ public class IPickable : MonoBehaviour
 
     public void PlayPickupAudio(string tag)
     {
-        AudioManager.Instance.PlayAudioAtLocation(transform.position, tag);
+        //AudioManager.Instance.PlayAudioAtLocation(transform.position, tag);
     }
 
     public virtual void OnTriggerEnter(Collider other)

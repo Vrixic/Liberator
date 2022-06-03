@@ -11,6 +11,7 @@ public class AIIdleState : AIState
 
     public void Enter(AIAgent agent)
     {
+        agent.animator.SetTrigger("Idle");
         agent.currentState = AIStateID.Idle;
         agent.navMeshAgent.isStopped = true;
     }

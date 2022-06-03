@@ -35,6 +35,8 @@ public class AIAgent : MonoBehaviour
     private EnemyGun enemyGun;
     private EnemyMelee enemyMelee;
 
+    [HideInInspector] public AudioSource enemyAudioSource;
+
     // Colliders 
     SphereCollider meleeSphereCollider;
     SphereCollider headShotCollider;
@@ -48,6 +50,7 @@ public class AIAgent : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        enemyAudioSource = GetComponent<AudioSource>();
         //creates a new state machine for this agent type. 
         stateMachine = new AIStateMachine(this);
         

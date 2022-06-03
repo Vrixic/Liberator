@@ -35,6 +35,7 @@ public class AIChasePlayerScript : AIState
         bool inSight = agent.sensor.IsInsight();
         if (inSight) // players is in sight of the enemy
         {
+            agent.StartCoroutine(WaitForShotsCoroutine());
             agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
         }
         else
@@ -72,4 +73,8 @@ public class AIChasePlayerScript : AIState
         agent.animator.SetBool("Chase", false);
     }
 
+    IEnumerator WaitForShotsCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+    }
 }

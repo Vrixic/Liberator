@@ -331,11 +331,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6215d5fffe529a40990ff77121b26b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
-  damage: 12
+  fireRate: 4
+  damage: 3
   bulletPrefab: {fileID: -7061582049979965478, guid: 0bacc6736d7e36244b8f36b20e092033, type: 3}
   bulletSpawnLocation: {fileID: 621706907}
-  maxNumOfBullets: 30
+  maxNumOfBullets: 60
   bulletRange: 10000
   reloadTime: 2
 --- !u!114 &5352958576046171731
