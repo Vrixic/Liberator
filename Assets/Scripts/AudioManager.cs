@@ -4,14 +4,13 @@ using UnityEngine;
 //[RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
+    public PoolableObject pAudioSource;
     /* list of sounds */
-    public List<Sound> gameSounds = new List<Sound>();
+    public List<sfxSound> sfxSounds = new List<sfxSound>();
 
-    public List<Sound> uiSounds = new List<Sound>();
+    public Dictionary<string, string> audioSoundDictionary = new Dictionary<string, string>();
 
-    public Dictionary<string, AudioClip> audioSoundsAudioClipDictionary = new Dictionary<string, AudioClip>();
-
-    AudioSource m_AudioSource;
+    public Dictionary<string, Sound> audioSoundsAudioClipDictionary = new Dictionary<string, Sound>();
 
     /* instance of this object, singleton pattern */
     private static AudioManager m_Instance;
@@ -42,44 +41,46 @@ public class AudioManager : MonoBehaviour
 
         Instance = this;
 
-        foreach (Sound sound in gameSounds)
+        foreach (sfxSound sound in sfxSounds)
         {
-            audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.audio);
+            audioSoundDictionary.Add(sound.objectTag, ObjectPoolManager.Instance.CreateObjectPool(pAudioSource, 1));
+            audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.sound);
         }
 
-        foreach (Sound sound in uiSounds)
+        //foreach (Sound sound in uiSounds)
+        //{
+        //    audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.audio);
+        //}
+    }
+
+    public void PlayAudioAtLocation(Vector3 location, string objectTag)
+    {
+        PoolableObject obj;
+        if (audioSoundsAudioClipDictionary.ContainsKey(objectTag))
         {
-            audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.audio);
+            obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary[objectTag]);
         }
-    }
-
-    public void SetAudioSource(AudioSource audioSource)
-    {
-        m_AudioSource = audioSource;
-    }
-
-    public void PlayAudioAtLocation(AudioSource audioSource, string objectTag, float volume = 1f)
-    {
-        audioSource.volume = GameManager.Instance.masterVolume;
+        else
+        {
+            obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary["Untagged"]);
+        }
 
         //SetAudioSource(audioSource);
-        audioSource.PlayOneShot(GetAudioClip(objectTag));
-    }
-
-    public void SetAudioVolume(float val)
-    {
-        m_AudioSource.volume = val;
+        obj.transform.position = location;
+        AudioSource ad = obj.GetComponent<AudioSource>();
+        ad.volume = PlayerPrefManager.Instance.masterVolume * audioSoundsAudioClipDictionary[objectTag].volMultiplier;
+        ad.PlayOneShot(GetAudioClip(objectTag));
     }
 
     public AudioClip GetAudioClip(string objectTag)
     {
         if (audioSoundsAudioClipDictionary.ContainsKey(objectTag))
         {
-            return audioSoundsAudioClipDictionary[objectTag];
+            return audioSoundsAudioClipDictionary[objectTag].audio;
         }
         else
         {
-            return audioSoundsAudioClipDictionary["Untagged"];
+            return audioSoundsAudioClipDictionary[sfxSounds[0].objectTag].audio;
         }
     }
 
@@ -87,22 +88,16 @@ public class AudioManager : MonoBehaviour
      * Stores the tag and the particle system associated with the tag
      */
     [System.Serializable]
-    public class Sound
+    public class sfxSound
     {
+        public Sound sound;
         public string objectTag;
-        public AudioClip audio;
     }
 
-    public enum AudioPurpose
+    [System.Serializable]
+    public class Sound
     {
-        Untagged,
-        FootStep,
-        LandingFromJump,
-        Pickup,
-        Hostage,
-        XpGain,
-        ButtonHover,
-        ButtonClick,
-        MenuMusic,
+        public AudioClip audio;
+        public float volMultiplier = 1f;
     }
 }

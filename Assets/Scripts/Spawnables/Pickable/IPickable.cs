@@ -9,11 +9,9 @@ public class IPickable : MonoBehaviour
         GetComponent<SphereCollider>().isTrigger = true;
     }
 
-    public virtual void OnPickup(GameObject picker) { }
+    public virtual void OnPickup(GameObject picker) {
 
-    public void PlayPickupAudio(string tag)
-    {
-        //AudioManager.Instance.PlayAudioAtLocation(transform.position, tag);
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, "Pickup");
     }
 
     public virtual void OnTriggerEnter(Collider other)

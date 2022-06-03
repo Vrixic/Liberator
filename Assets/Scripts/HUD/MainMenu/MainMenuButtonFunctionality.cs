@@ -47,12 +47,6 @@ public class MainMenuButtonFunctionality : MonoBehaviour
 
    
 
-    #region MetaShop Methods
-    // TODO: IMPLEMENT METASHOP UPGRADES
-
-
-    #endregion
-
 
 }
 

@@ -57,7 +57,7 @@ public class ScreenManager : MonoBehaviour
         BaseScreen screen;
         if(m_Screens.TryGetValue(screenName, out screen))
         {
-            Debug.Log("Showing screen - > " + screen.screenName);
+            //Debug.Log("Showing screen - > " + screen.screenName);
             screen.Show();
         }
     }

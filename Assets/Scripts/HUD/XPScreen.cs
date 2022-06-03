@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class XPScreen : BaseScreen, IPointerClickHandler
+public class XPScreen : BaseScreen
 {
     /* XP bar slider */
     [SerializeField] private Slider barSlider;
@@ -25,7 +25,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
     [SerializeField] [Tooltip("Time it takes to fill the bar up from previous to current total")] private float timeBetweenUIBlocks = 1f;
 
     /* tracks all the enemy text holders created */
-    private List<GameObject> m_EnemyTextHolders = new List<GameObject>();
+    private List<EnemyTextBlock> m_EnemyTextHolders = new List<EnemyTextBlock>();
 
     /* Bar fill and Ui Block animation speed */
     private float m_UIBlocknAnimationSpeed = 0f;
@@ -33,21 +33,22 @@ public class XPScreen : BaseScreen, IPointerClickHandler
     private float m_BarAnimationSpeed = 0f;
 
     /* Previous amount of xp */
-    private float m_PreviousXP = 0;
+    private float m_PreviousXP = 0f;
 
-    /* total xp earned this run */
-    private int m_TotalXPEarned = 0;
-
-    private int m_CompletedUIBlocks = 0;
+    private float m_CurrentXP = 0f;
 
     private bool m_AnimationFinished = false;
-    private bool m_XPCalculationFinished = false;
+
+    private bool bRewardScreenShowing = false;
+    private bool bStopAddingBlocks = false;
 
     public override void Start()
     {
         base.Start();
 
         m_UIBlocknAnimationSpeed = 15 / timeBetweenUIBlocks;
+
+        GameManager.Instance.OnRewardCollected += OnRewardCollected;
     }
 
     public override void Show()
@@ -57,8 +58,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         // Disables minimap canvas
         GameManager.Instance.minimapCanvas.SetActive(false);
 
-        m_PreviousXP = 0;
-        m_TotalXPEarned = 0;
+        m_CurrentXP = PlayerPrefManager.Instance.CurrentXP;
+        m_PreviousXP = PlayerPrefManager.Instance.CurrentXP;
 
         GameManager.Instance.IsUIOverlayVisible = true;
 
@@ -77,24 +78,24 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
 
         // set the bars value to the previous xp earned from last run
-        barSlider.value = GameManager.Instance.PreviousXP / GameManager.Instance.maxXPAmount;
+        barSlider.value = m_PreviousXP / GameManager.Instance.maxXPAmount;
 
         m_AnimationFinished = false;
-        m_XPCalculationFinished = false;
 
-        m_CompletedUIBlocks = 0;
+        bRewardScreenShowing = false;
+        bStopAddingBlocks = false;
 
         StartCoroutine(ShowCollectedXP());
     }
 
     public override void Update()
     {
-        if (m_AnimationFinished) return;
+        if (m_AnimationFinished || bRewardScreenShowing) return;
 
         // Moves all of the UI Blocks down 
         for (int i = 0; i < m_EnemyTextHolders.Count; i++)
         {
-            RectTransform trans = m_EnemyTextHolders[i].GetComponent<RectTransform>();
+            RectTransform trans = m_EnemyTextHolders[i].holder.GetComponent<RectTransform>();
 
             Vector2 targetPos = trans.anchoredPosition;
             int multiplier = m_EnemyTextHolders.Count - i;
@@ -103,8 +104,24 @@ public class XPScreen : BaseScreen, IPointerClickHandler
             trans.anchoredPosition = Vector2.Lerp(trans.anchoredPosition, targetPos, m_UIBlocknAnimationSpeed * Time.unscaledDeltaTime);
         }
 
-        m_PreviousXP = Mathf.Lerp(m_PreviousXP, GameManager.Instance.CurrentXP + m_TotalXPEarned, m_BarAnimationSpeed * Time.unscaledDeltaTime);
-        barSlider.value = m_PreviousXP / GameManager.Instance.maxXPAmount;
+        //Debug.Log("Animating....");
+        m_CurrentXP = Mathf.Lerp(m_CurrentXP, PlayerPrefManager.Instance.CurrentXP, m_BarAnimationSpeed * Time.unscaledDeltaTime);
+        barSlider.value = m_CurrentXP / GameManager.Instance.maxXPAmount;
+
+        if (PlayerPrefManager.Instance.CurrentXP >= 100f)
+        {
+            bStopAddingBlocks = true;
+
+            if (m_CurrentXP >= 99f)
+            {
+                bRewardScreenShowing = true;
+                ShowRewardScreen();
+            }
+        }
+        else
+        {
+            bStopAddingBlocks = false;
+        }
     }
 
     public override void Hide()
@@ -132,63 +149,6 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         GameManager.Instance.shopCanvas.SetActive(true);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (m_XPCalculationFinished || m_AnimationFinished) return;
-
-        m_XPCalculationFinished = true;
-        m_AnimationFinished = true;
-
-        StopAllCoroutines();
-
-        int i = 0;
-
-        if (m_CompletedUIBlocks < GameManager.Instance.enemiesKilled.Count)
-        {
-            foreach (KeyValuePair<string, int> pair in GameManager.Instance.enemiesKilled)
-            {
-                if (i > (m_CompletedUIBlocks - 1))
-                {
-                    m_TotalXPEarned += GameManager.Instance.CalculateXPForEnemy(pair.Key);
-
-                    // Adds a new textholder to the scroll view, ands sets its appopriate names and kill amounts
-                    EnemyTextHolder enemyTextHolder = AddEnemyTextHolder();
-                    enemyTextHolder.enemyNameText.text = pair.Key;
-                    enemyTextHolder.enemyKillText.text = "x" + pair.Value;
-                }
-                i++;
-            }
-        }
-
-        if (GameManager.Instance.IntelCollected > 0)
-        {
-            m_TotalXPEarned += GameManager.Instance.IntelCollected * 20;
-
-            EnemyTextHolder enemyTextHolder = AddEnemyTextHolder();
-            enemyTextHolder.enemyNameText.text = "Intels";
-            enemyTextHolder.enemyKillText.text = "x" + GameManager.Instance.IntelCollected;
-
-            // resets player intel collected count
-            GameManager.Instance.IntelCollected = 0;
-        }
-
-        for (i = 0; i < m_EnemyTextHolders.Count; i++)
-        {
-            RectTransform trans = m_EnemyTextHolders[i].GetComponent<RectTransform>();
-
-            Vector2 targetPos = trans.anchoredPosition;
-            int multiplier = m_EnemyTextHolders.Count - i;
-            targetPos.y = trans.rect.height * multiplier * -1 + 30f - (multiplier * 10f);
-
-            trans.anchoredPosition = targetPos;
-        }
-
-        // Updates total xp earned text
-        totalXPText.text = "Total XP: " + m_TotalXPEarned;
-        GameManager.Instance.CurrentXP += m_TotalXPEarned;
-        barSlider.value = (float)GameManager.Instance.CurrentXP / GameManager.Instance.maxXPAmount;
-    }
-
     /* 
      * Shows all the xp collected from every thing
      */
@@ -196,57 +156,112 @@ public class XPScreen : BaseScreen, IPointerClickHandler
     {
         foreach (KeyValuePair<string, int> pair in GameManager.Instance.enemiesKilled)
         {
-            m_PreviousXP = GameManager.Instance.PreviousXP + m_TotalXPEarned;
+            while (bStopAddingBlocks)
+            {
+                yield return null;
+            }
 
-            m_TotalXPEarned += GameManager.Instance.CalculateXPForEnemy(pair.Key);
+            PlayerPrefManager.Instance.CurrentXP += GameManager.Instance.CalculateXPForEnemy(pair.Key);
 
-            // Adds a new textholder to the scroll view, ands sets its appopriate names and kill amounts
-            EnemyTextHolder enemyTextHolder = AddEnemyTextHolder();
-            enemyTextHolder.enemyNameText.text = pair.Key;
-            enemyTextHolder.enemyKillText.text = "x" + pair.Value;
+            EnemyTextBlock block = new EnemyTextBlock();
+            // Adds a new textholder to the scroll view, ands sets its appopriate names and kill amounts            
+            block.holder = AddEnemyTextHolder();
+            block.holder.enemyNameText.text = pair.Key;
+            block.holder.enemyKillText.text = "x" + pair.Value;
 
-            // Updates total xp earned text
-            totalXPText.text = "Total XP: " + m_TotalXPEarned;
+            block.transform = block.holder.GetComponent<RectTransform>();
 
-            m_BarAnimationSpeed = (m_TotalXPEarned - m_PreviousXP) / timeBetweenUIBlocks;
+            m_EnemyTextHolders.Add(block);
 
-            m_CompletedUIBlocks++;
+            UpdateTotalXPText();
+
+            CalculateBarSpeed();
 
             yield return new WaitForSecondsRealtime(timeBetweenUIBlocks);
         }
 
         if (GameManager.Instance.IntelCollected > 0)
         {
-            m_PreviousXP = GameManager.Instance.PreviousXP + m_TotalXPEarned;
+            while (bStopAddingBlocks)
+            {
+                yield return null;
 
-            m_TotalXPEarned += GameManager.Instance.IntelCollected * 20;
+            }
+
+            PlayerPrefManager.Instance.CurrentXP += GameManager.Instance.IntelCollected * 20;
 
             //barSlider.value = (float)GameManager.Instance.CurrentXP / GameManager.Instance.maxXPAmount;
 
-            EnemyTextHolder enemyTextHolder = AddEnemyTextHolder();
-            enemyTextHolder.enemyNameText.text = "Intels";
-            enemyTextHolder.enemyKillText.text = "x" + GameManager.Instance.IntelCollected;
+            EnemyTextBlock block = new EnemyTextBlock();
+            // Adds a new textholder to the scroll view, ands sets its appopriate names and kill amounts            
+            block.holder = AddEnemyTextHolder();
+            block.holder.enemyNameText.text = "Intels";
+            block.holder.enemyKillText.text = "x" + GameManager.Instance.IntelCollected;
+
+            block.transform = block.holder.GetComponent<RectTransform>();
+
+            m_EnemyTextHolders.Add(block);
 
             // resets player intel collected count
             GameManager.Instance.IntelCollected = 0;
 
-            // Updates total xp earned text
-            totalXPText.text = "Total XP: " + m_TotalXPEarned;
+            UpdateTotalXPText();
+
+            CalculateBarSpeed();
 
             yield return new WaitForSecondsRealtime(timeBetweenUIBlocks);
-        }   
+        }       
 
-        GameManager.Instance.CurrentXP += m_TotalXPEarned;
+        while (PlayerPrefManager.Instance.CurrentXP >= 100f)
+        {
+            ShowRewardScreen();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+
+        yield return new WaitForSecondsRealtime(timeBetweenUIBlocks);
 
         m_AnimationFinished = true;
-        m_XPCalculationFinished = true;
+    }
+
+    private void UpdateTotalXPText()
+    {
+        // Updates total xp earned text
+        totalXPText.text = "Total XP: " + PlayerPrefManager.Instance.CurrentXP;
+    }
+
+    void ShowRewardScreen()
+    {
+        GameManager.Instance.RewardID = 0;
+        GameManager.Instance.RewardAmount = 100;
+        ScreenManager.Instance.ShowScreen("XP_Reward_Screen");
+
+        PlayerPrefManager.Instance.CurrentXP -= 100;
+        m_PreviousXP = 0;
+        m_CurrentXP = 0;
+
+        CalculateBarSpeed();
+        UpdateTotalXPText();
+    }
+
+    void OnRewardCollected()
+    {
+        bRewardScreenShowing = false;
+    }
+
+    private void CalculateBarSpeed()
+    {
+        m_BarAnimationSpeed = (Mathf.Clamp(PlayerPrefManager.Instance.CurrentXP, 0, 100) - m_PreviousXP) / timeBetweenUIBlocks * 0.5f;
     }
 
     EnemyTextHolder AddEnemyTextHolder()
     {
         GameObject enemytextHolder = Instantiate(enemyUIPrefab, contentHolder.transform);
-        m_EnemyTextHolders.Add(enemytextHolder);
-
         return enemytextHolder.GetComponent<EnemyTextHolder>();
+    }
+
+    private class EnemyTextBlock
+    {
+        public EnemyTextHolder holder;
+        public RectTransform transform;
     }
 }

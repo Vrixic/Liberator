@@ -118,6 +118,10 @@ public class EnemyGun : MonoBehaviour
             if (hitInfo.collider.CompareTag("Player"))
             {
                 GameManager.Instance.playerScript.TakeDamage(damage);
+
+                //create damage indicator UI
+                DISystem.createIndicator(transform);
+
                 volume = 0.125f;
             }
             

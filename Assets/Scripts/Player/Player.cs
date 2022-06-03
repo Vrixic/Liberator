@@ -158,12 +158,12 @@ public class Player : MonoBehaviour
         {            
             if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
             {
-                AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc, GetGroundsTag());
+                AudioManager.Instance.PlayAudioAtLocation(transform.position, GetGroundsTag());
                 m_LastStepSoundTime = Time.time;
             }
             else if (Time.time - m_LastStepSoundTime > footStepRunAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D > 0.3f)
             {
-                AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc, GetGroundsTag());
+                AudioManager.Instance.PlayAudioAtLocation(transform.position, GetGroundsTag());
                 m_LastStepSoundTime = Time.time;
             }
         }
@@ -265,7 +265,7 @@ public class Player : MonoBehaviour
      */
     public void EquipWeaponOnePressed()
     {
-        GameManager.Instance.SaveGame();
+        PlayerPrefManager.Instance.SaveGame();
         if (!GameRunningCheck()) return;
 
         if (flashbang.isActiveAndEnabled)
@@ -695,11 +695,11 @@ public class Player : MonoBehaviour
 
     /*
     * plays a footstep audio
-    */
-    void PlayFootStepAudio(string tag)
-    {
-        AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc, tag, m_PlayerAudioSrc.volume);
-    }
+    //*/
+    //void PlayFootStepAudio(string tag)
+    //{
+    //    AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc, tag, m_PlayerAudioSrc.volume);
+    //}
 
     /* sends a raycast to check the grounds tag, used for footsteps */
     string GetGroundsTag()
@@ -862,8 +862,8 @@ public class Player : MonoBehaviour
     /* When user saves the game, updates variables to the recent saves */
     public void OnOptionsUpdate()
     {
-        m_PlayerAudioSrc.volume = m_DefaultVolume * GameManager.Instance.masterVolume;
-        weaponAudioSrc.volume = m_DefaultVolume * GameManager.Instance.masterVolume;
+        m_PlayerAudioSrc.volume = m_DefaultVolume * PlayerPrefManager.Instance.masterVolume;
+        weaponAudioSrc.volume = m_DefaultVolume * PlayerPrefManager.Instance.masterVolume;
     }
 
     //private void OnApplicationQuit()
