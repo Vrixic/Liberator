@@ -144,7 +144,7 @@ public class PlayerInteract : MonoBehaviour
                     IntelPickup intelInstance = hit.collider.gameObject.GetComponent<IntelPickup>();
 
                     //play audio
-                    AudioManager.Instance.PlayAudioAtLocation(transform.position, "Intel");
+                    //AudioManager.Instance.PlayAudioAtLocation(transform.position, "Intel");
 
                     intelInstance.OnPickup(GameManager.Instance.player);
 
@@ -167,7 +167,7 @@ public class PlayerInteract : MonoBehaviour
                     securingHostage = true;
 
                     //play audio
-                    AudioManager.Instance.PlayAudioAtLocation(transform.position, "Hostage");
+                    //AudioManager.Instance.PlayAudioAtLocation(transform.position, "Hostage");
 
                     //reset the progress bar when they press E on the hostage again
                     hostageProgressBarImage.fillAmount = 0;

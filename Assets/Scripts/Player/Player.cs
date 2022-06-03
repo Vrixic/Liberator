@@ -107,7 +107,6 @@ public class Player : MonoBehaviour
     {
         m_PlayerMotor = GetComponent<PlayerMotor>();
         m_PlayerAudioSrc = GetComponentInChildren<AudioSource>();
-        AudioManager.Instance.SetAudioSource(m_PlayerAudioSrc);
         characterController = GetComponent<CharacterController>();
 
         m_DefaultVolume = m_PlayerAudioSrc.volume;
@@ -159,12 +158,12 @@ public class Player : MonoBehaviour
         {            
             if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
             {
-                PlayFootStepAudio(GetGroundsTag());
+                AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc, GetGroundsTag());
                 m_LastStepSoundTime = Time.time;
             }
             else if (Time.time - m_LastStepSoundTime > footStepRunAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D > 0.3f)
             {
-                PlayFootStepAudio(GetGroundsTag());
+                AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc, GetGroundsTag());
                 m_LastStepSoundTime = Time.time;
             }
         }
@@ -699,7 +698,7 @@ public class Player : MonoBehaviour
     */
     void PlayFootStepAudio(string tag)
     {
-        AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc.transform.position, tag, m_PlayerAudioSrc.volume);
+        AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc, tag, m_PlayerAudioSrc.volume);
     }
 
     /* sends a raycast to check the grounds tag, used for footsteps */
