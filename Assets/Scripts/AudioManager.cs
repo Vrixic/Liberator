@@ -92,9 +92,8 @@ public class AudioManager : MonoBehaviour
         Untagged,
         FootStep,
         LandingFromJump,
-        AmmoPickup,
-        HealthPickup,
-        IntelPickup,
-        XpGain
+        Pickup,
+        XpGain,
+        Hostage
     }
 }

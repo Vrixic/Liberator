@@ -138,13 +138,14 @@ public class PlayerInteract : MonoBehaviour
                 //player interacts with a piece of intel
                 else if (hit.collider.CompareTag("Intel"))
                 {
-                    //play a sound
-                    //TO DO----------------------------------------------------
-
                     GameManager.Instance.CurrentCash += intelCashReward;
 
                     //get that instance so we can disable it
                     GameObject intelInstance = hit.collider.gameObject;
+
+                    //play audio
+                    AudioManager.Instance.PlayAudioAtLocation(transform.position, "Intel");
+
                     intelInstance.SetActive(false);
 
                     GameManager.Instance.IntelCollected++;
@@ -164,6 +165,9 @@ public class PlayerInteract : MonoBehaviour
                     GameManager.Instance.hostageProgressBar.SetActive(true);
                     PlayerMotor.MovementEnabled = false;
                     securingHostage = true;
+
+                    //play audio
+                    AudioManager.Instance.PlayAudioAtLocation(transform.position, "Hostage");
 
                     //reset the progress bar when they press E on the hostage again
                     hostageProgressBarImage.fillAmount = 0;

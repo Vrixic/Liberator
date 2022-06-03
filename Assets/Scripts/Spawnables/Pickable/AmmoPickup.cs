@@ -12,6 +12,8 @@ public class AmmoPickup : IPickable
     {
         base.OnPickup(picker);
 
+        PlayPickupAudio("AmmoBox");
+
         gameObject.SetActive(false);
 
         AmmoManager.Instance.RefillAmmo(AmmoType.Small);

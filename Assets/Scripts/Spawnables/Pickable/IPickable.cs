@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
+
 public class IPickable : MonoBehaviour
 {
     public virtual void Start()
@@ -9,6 +10,11 @@ public class IPickable : MonoBehaviour
     }
 
     public virtual void OnPickup(GameObject picker) { }
+
+    public void PlayPickupAudio(string tag)
+    {
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, tag);
+    }
 
     public virtual void OnTriggerEnter(Collider other)
     {

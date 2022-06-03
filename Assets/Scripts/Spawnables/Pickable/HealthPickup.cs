@@ -10,6 +10,8 @@ public class HealthPickup : IPickable
     {
         base.OnPickup(picker);
 
+        PlayPickupAudio("HealthKit");
+
         gameObject.SetActive(false);
         GameManager.Instance.playerScript.IncreasePlayerHealth(restoreAmount);
     }
