@@ -62,6 +62,9 @@ public class Player : MonoBehaviour
     /* delay on the foot step run audio to keep it in control */
     [SerializeField] float footStepRunAudioPlayDelay = 0.75f;
 
+    /* the ground under the players tag */
+    string groundTag = "Untagged";
+
     /* current equipped weapon */
     int m_CurrentWeaponIndex;
 
@@ -153,19 +156,15 @@ public class Player : MonoBehaviour
         if (bPlayerDead) return;
 
         if (GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
-        {
-            RaycastHit groundTag;
-            Ray checkGroundTag = new Ray(transform.position, Vector3.down);
-            Physics.Raycast(checkGroundTag, out groundTag);
-            Debug.Log(groundTag.collider.tag);
+        {            
             if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
             {
-                PlayFootStepAudio(groundTag.collider.tag);
+                PlayFootStepAudio(GetGroundsTag());
                 m_LastStepSoundTime = Time.time;
             }
             else if (Time.time - m_LastStepSoundTime > footStepRunAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D > 0.3f)
             {
-                PlayFootStepAudio(groundTag.collider.tag);
+                PlayFootStepAudio(GetGroundsTag());
                 m_LastStepSoundTime = Time.time;
             }
         }
@@ -701,6 +700,19 @@ public class Player : MonoBehaviour
     void PlayFootStepAudio(string tag)
     {
         AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc.transform.position, tag, m_PlayerAudioSrc.volume);
+    }
+
+    /* sends a raycast to check the grounds tag, used for footsteps */
+    string GetGroundsTag()
+    {
+        RaycastHit tag;
+        Ray checkGroundTag = new Ray(transform.position, Vector3.down);
+        if (Physics.Raycast(checkGroundTag, out tag, 2f))
+        {
+            groundTag = tag.collider.tag;
+            Debug.Log(tag.collider.tag);
+        }
+        return groundTag;
     }
 
     public int GetCurrentFlashbangsAmount()
