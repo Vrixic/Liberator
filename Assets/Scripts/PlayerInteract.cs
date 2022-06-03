@@ -141,12 +141,12 @@ public class PlayerInteract : MonoBehaviour
                     GameManager.Instance.CurrentCash += intelCashReward;
 
                     //get that instance so we can disable it
-                    GameObject intelInstance = hit.collider.gameObject;
+                    IntelPickup intelInstance = hit.collider.gameObject.GetComponent<IntelPickup>();
 
                     //play audio
                     AudioManager.Instance.PlayAudioAtLocation(transform.position, "Intel");
 
-                    intelInstance.SetActive(false);
+                    intelInstance.OnPickup(GameManager.Instance.player);
 
                     GameManager.Instance.IntelCollected++;
                 }
