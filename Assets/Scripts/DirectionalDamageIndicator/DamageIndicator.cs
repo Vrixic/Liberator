@@ -34,6 +34,7 @@ public class DamageIndicator : MonoBehaviour
         player = _player;
         unregister = _unregister;
 
+        StartTimer();
         StartCoroutine(RotateIndicatorToTarget());
 
     }
