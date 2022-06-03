@@ -4,10 +4,13 @@ using UnityEngine;
 //[RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
+    public PoolableObject pAudioSource;
     /* list of sounds */
     public List<Sound> gameSounds = new List<Sound>();
 
     public List<Sound> uiSounds = new List<Sound>();
+
+    public Dictionary<string, string> audioSoundDictionary = new Dictionary<string, string>();
 
     public Dictionary<string, AudioClip> audioSoundsAudioClipDictionary = new Dictionary<string, AudioClip>();
 
@@ -44,13 +47,14 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound sound in gameSounds)
         {
+            audioSoundDictionary.Add(sound.objectTag, ObjectPoolManager.Instance.CreateObjectPool(pAudioSource, 1));
             audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.audio);
         }
 
-        foreach (Sound sound in uiSounds)
-        {
-            audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.audio);
-        }
+        //foreach (Sound sound in uiSounds)
+        //{
+        //    audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.audio);
+        //}
     }
 
     public void SetAudioSource(AudioSource audioSource)
@@ -58,12 +62,23 @@ public class AudioManager : MonoBehaviour
         m_AudioSource = audioSource;
     }
 
-    public void PlayAudioAtLocation(AudioSource audioSource, string objectTag, float volume = 1f)
+    public void PlayAudioAtLocation(Vector3 location, string objectTag, float volume = 1f)
     {
-        audioSource.volume = PlayerPrefManager.Instance.masterVolume;
+        PoolableObject obj;
+        if (audioSoundsAudioClipDictionary.ContainsKey(objectTag))
+        {
+            obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary[objectTag]);
+        }
+        else
+        {
+            obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary["Untagged"]);
+        }
 
         //SetAudioSource(audioSource);
-        audioSource.PlayOneShot(GetAudioClip(objectTag));
+        obj.transform.position = location;
+        AudioSource ad = obj.GetComponent<AudioSource>();
+        ad.volume = PlayerPrefManager.Instance.masterVolume;
+        ad.PlayOneShot(GetAudioClip(objectTag));
     }
 
     public void SetAudioVolume(float val)
@@ -79,7 +94,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            return audioSoundsAudioClipDictionary["Untagged"];
+            return audioSoundsAudioClipDictionary[gameSounds[0].objectTag];
         }
     }
 
