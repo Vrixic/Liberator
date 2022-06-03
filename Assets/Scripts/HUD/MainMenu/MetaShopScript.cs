@@ -42,6 +42,17 @@ public class MetaShopScript : MonoBehaviour
 
     public void UpgradeStartingCash()
     {
+        
+    }
+
+    public void UpgradeFlashbangCapacity()
+    {
 
     }
+
+    public void UpgradeSensorGrenadeCapacity()
+    {
+
+    }
+
 }

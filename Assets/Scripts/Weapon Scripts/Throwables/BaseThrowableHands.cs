@@ -132,6 +132,11 @@ public class BaseThrowableHands : BaseWeapon
         return maxThrowableAmount;
     }
 
+    public void SetMaxAmountOfThrowables(int newThrowableCapacity)
+    {
+        maxThrowableAmount = newThrowableCapacity;
+    }
+
     /*
     * returns the current amount of Throwables left 
     */
