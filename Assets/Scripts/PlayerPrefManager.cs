@@ -64,6 +64,7 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Master Volume"))
         {
             masterVolume = PlayerPrefs.GetFloat("Master Volume", 100f);
+            Debug.Log("Loading Master Volume Setting, Current: " + masterVolume);
         }
         else
         {
@@ -75,6 +76,8 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Music Volume"))
         {
             musicVolume = PlayerPrefs.GetFloat("Music Volume", 100f);
+            Debug.Log("Loading music Volume Setting, Current: " + musicVolume);
+
         }
         else
         {
@@ -85,7 +88,9 @@ public class PlayerPrefManager : MonoBehaviour
         // SFX volume
         if (PlayerPrefs.HasKey("SFX Volume"))
         {
+
             sfxVolume = PlayerPrefs.GetFloat("SFX Volume", 100f);
+            Debug.Log("Loading SFX Volume Setting, Current : " + sfxVolume);
         }
         else
         {
@@ -97,6 +102,8 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Player Sensitivity"))
         {
             playerSensitivity = PlayerPrefs.GetFloat("Player Sensitivity", 100f);
+            Debug.Log("Loading Sensitivity, current: " + playerSensitivity);
+
         }
         else
         {
@@ -107,7 +114,9 @@ public class PlayerPrefManager : MonoBehaviour
         // Brightness
         if (PlayerPrefs.HasKey("Brightness"))
         {
+
             brightness = PlayerPrefs.GetFloat("Brightness", 100f);
+            Debug.Log("Loading Brightness Setting, Current: " + brightness);
         }
         else
         {
@@ -119,7 +128,9 @@ public class PlayerPrefManager : MonoBehaviour
         // Skill Points
         if (PlayerPrefs.HasKey("Skill Points"))
         {
+
             currentSkillPoints = PlayerPrefs.GetInt("Skill Points", 100);
+            Debug.Log("Loading Skill Points, Current: " + currentSkillPoints);
         }
         else
         {
@@ -130,12 +141,14 @@ public class PlayerPrefManager : MonoBehaviour
         // Starting Cash 
         if (PlayerPrefs.HasKey("Upgraded Starting Cash"))
         {
-            startingCash = PlayerPrefs.GetInt("Skill Points", 1000);
+
+            startingCash = PlayerPrefs.GetInt("Upgraded Starting Cash", 1000);
+            Debug.Log("Loading Starting Cash, Current : " + startingCash);
         }
         else
         {
             startingCash = 0;
-            PlayerPrefs.SetInt("Skill Points", startingCash);
+            PlayerPrefs.SetInt("Upgraded Starting Cash, Current; ", startingCash);
         }
 
     }
@@ -150,11 +163,15 @@ public class PlayerPrefManager : MonoBehaviour
         SaveSFXVolume();
         SaveBrightness();
         SavePlayerSensitivity();
+        SaveStartingCash();
+        SaveSkillPoints();
 
         // Fires an event to all listening clients that player perferences has been updated
         OnOptionsUpdateAction?.Invoke();
+        Debug.Log("Game Saved");
     }
 
+    #region Save Settings
     /* 
     * Saves master volume
     */
@@ -197,4 +214,22 @@ public class PlayerPrefManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
     }
+    #endregion
+
+    #region Save Player Info
+    /* 
+    * Saves Skill Points
+    */
+    private void SaveSkillPoints()
+    {
+        PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
+
+    }
+
+    private void SaveStartingCash()
+    {
+        PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
+
+    }
+    #endregion
 }

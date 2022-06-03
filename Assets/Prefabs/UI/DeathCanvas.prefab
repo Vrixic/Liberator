@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenName: Death_Screen
+  deathImage: {fileID: 6741390446837874802}
 --- !u!1 &7917483676291020188
 GameObject:
   m_ObjectHideFlags: 0

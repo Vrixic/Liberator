@@ -111,6 +111,8 @@ public class GameManager : MonoBehaviour
     public int RewardID { get; set; } = 0;
     public bool RewardCollected { get; set; } = true;
 
+    public AsyncOperation SceneOperation { get; set; }
+
     //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
     private Collider[] enemyColliders = new Collider[18];
     private LayerMask enemyLayerMask;
@@ -227,8 +229,8 @@ public class GameManager : MonoBehaviour
         }
 
         // Adds listeners to options update event
-        //PlayerPrefManager.Instance.OnOptionsUpdateAction += playerScript.OnOptionsUpdate;
-        // PlayerPrefManager.Instance.OnOptionsUpdateAction += player.GetComponent<PlayerLook>().OnOptionsUpdate;
+        PlayerPrefManager.Instance.OnOptionsUpdateAction += playerScript.OnOptionsUpdate;
+        PlayerPrefManager.Instance.OnOptionsUpdateAction += player.GetComponent<PlayerLook>().OnOptionsUpdate;
 
         // Takes the info from enemyKillXpReward and populates it into a dictionary, so that accessing information can be constant time later on.
         for (int i = 0; i < enemyKillXPReward.Count; i++)

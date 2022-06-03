@@ -265,7 +265,6 @@ public class Player : MonoBehaviour
      */
     public void EquipWeaponOnePressed()
     {
-        PlayerPrefManager.Instance.SaveGame();
         if (!GameRunningCheck()) return;
 
         if (flashbang.isActiveAndEnabled)
