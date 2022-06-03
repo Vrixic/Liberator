@@ -70,9 +70,9 @@ public class BulletImpactManager : MonoBehaviour
         }
     }
 
-    public void PlayAudioAtLocation(Vector3 location, string objectTag, float volume = 1f)
+    public void PlayAudioAtLocation(Vector3 location, string objectTag)
     {
-        SetAudioVolume(volume);
+        SetAudioVolume(PlayerPrefManager.Instance.sfxVolume/100);
 
         m_AudioSource.transform.position = location;
         m_AudioSource.PlayOneShot(GetAudioClipForImpactFromTag(objectTag));

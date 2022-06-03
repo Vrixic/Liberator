@@ -10,7 +10,7 @@ public class PlayerPrefManager : MonoBehaviour
     [HideInInspector]
     public float musicVolume = 0f;
     [HideInInspector]
-    public float sfxVolume = 0f;
+    public float sfxVolume = 100;
     [HideInInspector]
     public float brightness = 0f;
     [HideInInspector]

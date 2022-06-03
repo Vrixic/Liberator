@@ -69,16 +69,16 @@ public class AudioManager : MonoBehaviour
             sE = audioSoundsAudioClipDictionary[sfxSounds[0].objectTag];
         }
 
-        //SetAudioSource(audioSource);
         obj.transform.position = location;
         ad = obj.GetComponent<AudioSource>();
         
         if (sE.audioType == AudioType.sfx) {
-            ad.volume = PlayerPrefManager.Instance.sfxVolume * sE.volMultiplier; }
+            ad.volume = (PlayerPrefManager.Instance.sfxVolume/100) * sE.volMultiplier; }
         else if (sE.audioType == AudioType.music) {
-            ad.volume = PlayerPrefManager.Instance.musicVolume * sE.volMultiplier; }
+            ad.volume = (PlayerPrefManager.Instance.musicVolume/100) * sE.volMultiplier; }
         else if (sE.audioType == AudioType.other){
-            ad.volume = PlayerPrefManager.Instance.masterVolume * sE.volMultiplier; }
+            ad.volume = (PlayerPrefManager.Instance.masterVolume/100) * sE.volMultiplier; }
+        else { ad.volume = (PlayerPrefManager.Instance.masterVolume/100); }
 
         ad.PlayOneShot(GetAudioClip(objectTag));
     }

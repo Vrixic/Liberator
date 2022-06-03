@@ -755,6 +755,7 @@ public class Player : MonoBehaviour
 
     public void PlayOneShotAudio(AudioClip clip)
     {
+        weaponAudioSrc.volume = PlayerPrefManager.Instance.sfxVolume/100;
         weaponAudioSrc.PlayOneShot(clip);
     }
 

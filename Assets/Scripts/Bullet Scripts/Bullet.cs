@@ -90,7 +90,7 @@ public class Bullet : PoolableObject
 
         OnRayCastHit(hit);
 
-        BulletImpactManager.Instance.PlayAudioAtLocation(hit.point, hit.collider.tag, audioVolume);
+        BulletImpactManager.Instance.PlayAudioAtLocation(hit.point, hit.collider.tag);
     }
 
     /*
