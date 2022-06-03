@@ -26,7 +26,13 @@ public class XPRewardScreen : BaseScreen
     {
         base.Show();
 
-        rewardImage.sprite = m_RewardSprites[GameManager.Instance.RewardID];
+        Sprite sprite = m_RewardSprites[GameManager.Instance.RewardID];
+
+        rewardImage.sprite = sprite;
+        RectTransform transform = rewardImage.GetComponent<RectTransform>();
+        //Debug.Log(sprite.rect.height);
+        transform.sizeDelta =  new Vector2(sprite.rect.width, sprite.rect.height);
+        //Debug.Log(transform.rect.height);
         rewardAmountText.text = "x" + GameManager.Instance.RewardAmount;
 
         GameManager.Instance.RewardCollected = false;
