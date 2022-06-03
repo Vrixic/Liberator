@@ -9,9 +9,11 @@ public class DamageIndicator : MonoBehaviour
     private float currentIndicatorDecayTimer = maxIndicatorDecayTime;
 
     private CanvasGroup indicator = null;
+    public CanvasGroup Indicator { get { indicator = GetComponent<CanvasGroup>(); return indicator; } }
 
     //component used to rotate a given indicator locally around the screen to face the damage source
     private RectTransform indicatorTransform = null;
+    public RectTransform IndicatorTransform { get { indicatorTransform = GetComponent<RectTransform>(); return indicatorTransform; } }
 
     //transform of the gameObject that damaged the player(enemy, explodable, etc.)
     public Transform damageSource = null;
@@ -54,9 +56,9 @@ public class DamageIndicator : MonoBehaviour
     private IEnumerator Countdown()
     {
         //Make the indicator visible by raising the opacity
-        while (indicator.alpha < 1.0f)
+        while (Indicator.alpha < 1.0f)
         {
-            indicator.alpha += 4 * Time.deltaTime;
+            Indicator.alpha += 8 * Time.deltaTime;
             yield return null;
         }
         //wait until it is time to decay the indicator
@@ -66,9 +68,9 @@ public class DamageIndicator : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         //make the indicator invisible(decay) from the screen
-        while(indicator.alpha > 0.0f)
+        while(Indicator.alpha > 0.0f)
         {
-            indicator.alpha -= 2 * Time.deltaTime;
+            Indicator.alpha -= 2 * Time.deltaTime;
             yield return null;
         }
 
@@ -103,7 +105,7 @@ public class DamageIndicator : MonoBehaviour
             Vector3 up = new Vector3(0, 0, player.eulerAngles.y);
 
             //rotate this indicator to indicate the location of the damage source on the screen
-            indicatorTransform.localRotation = damageSourceRotation * Quaternion.Euler(up);
+            IndicatorTransform.localRotation = damageSourceRotation * Quaternion.Euler(up);
 
             yield return null;
         }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DIManager : MonoBehaviour
+public class DISystem : MonoBehaviour
 {
     //prefab to instantiate when creating a new indicator
     [SerializeField] private DamageIndicator indicatorPrefab = null;
