@@ -15858,13 +15858,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: pAudioSource
-      value: 
-      objectReference: {fileID: 3649557836288084548, guid: ffb0905561a00d447b99b10f88034966, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: gameSounds.Array.data[2].audio
+      propertyPath: sfxSounds.Array.data[5].objectTag
+      value: EnemyDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: sfxSounds.Array.data[5].sound.audio
       value: 
-      objectReference: {fileID: 8300000, guid: 2389f804f3d523c49b59b0abc9d47fbb, type: 3}
+      objectReference: {fileID: 8300000, guid: ed5dbd8279befda47bafa570d862880c, type: 3}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: sfxSounds.Array.data[5].sound.volMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1589114256021935640, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
       propertyPath: m_Name
       value: Managers
