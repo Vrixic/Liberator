@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DeathScreen : BaseScreen, IPointerClickHandler
+public class DeathScreen : BaseScreen
 {
     public override void Show()
     {
@@ -22,10 +22,7 @@ public class DeathScreen : BaseScreen, IPointerClickHandler
         Cursor.visible = true;
 
         GameManager.Instance.IsUIOverlayVisible = true;
-    }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
         ScreenManager.Instance.ShowScreen("XP_Screen");
     }
 }

@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int CurrentXP { get { return currentXP; } set { currentXP = value; } }
     private int currentXP = 0;
-    public int PreviousXP { get; set;  }
+    //public int PreviousXP { get; set;  }
     [SerializeField] public int maxXPAmount = 100;
     public Dictionary<string, int> enemiesKilled = new Dictionary<string, int>();
     [SerializeField] List<EnemyKillReward> enemyKillXPReward = new List<EnemyKillReward>();
@@ -114,6 +114,8 @@ public class GameManager : MonoBehaviour
     public int RewardAmount { get; set; } = 0;
     public int RewardID { get; set; } = 0;
     public bool RewardCollected { get; set; } = true;
+
+    public Action OnRewardCollected;
 
     //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
     private Collider[] enemyColliders = new Collider[18]; 
@@ -260,9 +262,6 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        // set the previous xp to current xp
-        PreviousXP = currentXP;
-
         Time.timeScale = 0f;
 
         // Show the xp screen
