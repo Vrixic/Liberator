@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class XPScreen : BaseScreen
@@ -12,6 +12,9 @@ public class XPScreen : BaseScreen
 
     /* Display text for if player won or loss the game */
     [SerializeField] private TextMeshProUGUI headerText;
+
+    /*  */
+    [SerializeField] private TextMeshProUGUI buttonText;
 
     /* Displays the total xp earned from this run */
     [SerializeField] private TextMeshProUGUI totalXPText;
@@ -71,9 +74,11 @@ public class XPScreen : BaseScreen
         if (GameManager.Instance.GameWon)
         {
             headerText.text = "Success";
+            buttonText.text = "Next";
         }
         else
         {
+            buttonText.text = "Main Menu";
             headerText.text = "";
         }
 
@@ -145,8 +150,17 @@ public class XPScreen : BaseScreen
         ScreenManager.Instance.HideScreen(screenName);
         ScreenManager.Instance.HideScreen("Death_Screen");
 
-        // shows shop
-        GameManager.Instance.shopCanvas.SetActive(true);
+        if (GameManager.Instance.GameWon)
+        {
+            // shows shop
+            GameManager.Instance.buttonFuncScript.OpenShopMenu();
+        }
+        else
+        {
+            GameManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+            GameManager.Instance.SceneOperation.allowSceneActivation = false;
+            ScreenManager.Instance.ShowScreen("Transition_Screen");
+        }
     }
 
     /* 
@@ -210,7 +224,7 @@ public class XPScreen : BaseScreen
             CalculateBarSpeed();
 
             yield return new WaitForSecondsRealtime(timeBetweenUIBlocks);
-        }       
+        }
 
         while (PlayerPrefManager.Instance.CurrentXP >= 100f)
         {

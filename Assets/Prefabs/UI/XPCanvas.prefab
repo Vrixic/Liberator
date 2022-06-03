@@ -777,6 +777,7 @@ MonoBehaviour:
   screenName: XP_Screen
   barSlider: {fileID: 6512896939804400361}
   headerText: {fileID: 3315771055619605348}
+  buttonText: {fileID: 8548225255833602781}
   totalXPText: {fileID: 5975772581710663990}
   enemyUIPrefab: {fileID: 1260784532508400620, guid: def88bf78ce4c3e4a916808dee2d531e, type: 3}
   contentHolder: {fileID: 2444861689567042615}

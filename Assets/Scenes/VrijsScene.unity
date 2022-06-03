@@ -664,6 +664,10 @@ PrefabInstance:
       propertyPath: timeBetweenUIBlocks
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1254890159204214094, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1259816206456108068, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -671,6 +675,14 @@ PrefabInstance:
     - target: {fileID: 1259816206456108068, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879328992562176543, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050890482314679570, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: loadTimeMin
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2433496881653387053, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.x
@@ -728,11 +740,19 @@ PrefabInstance:
       propertyPath: enemyKillXPReward.Array.data[3].rewardAmount
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 3073732053914884418, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3141395545866782849, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3141395545866782849, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385005377540518843, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

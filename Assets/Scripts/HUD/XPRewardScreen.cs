@@ -50,6 +50,7 @@ public class XPRewardScreen : BaseScreen
             case 0:
                 GameManager.Instance.CurrentCash += GameManager.Instance.RewardAmount;
                 break;
+
         }
     }
 

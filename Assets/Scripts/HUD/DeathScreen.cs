@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DeathScreen : BaseScreen
 {
+    [SerializeField] RawImage deathImage;
+
     public override void Show()
     {
         base.Show();
@@ -24,5 +27,21 @@ public class DeathScreen : BaseScreen
         GameManager.Instance.IsUIOverlayVisible = true;
 
         ScreenManager.Instance.ShowScreen("XP_Screen");
+
+        StartCoroutine(FadeOutDeathImage());
+    }
+
+    IEnumerator FadeOutDeathImage()
+    {
+        Color c = deathImage.color;
+        for (float alpha = 0; alpha < 0.24f; alpha = deathImage.color.a)
+        {
+            alpha += Time.unscaledDeltaTime * 0.1f;
+
+            c.a = alpha;
+            deathImage.color = c;
+
+            yield return null;
+        }
     }
 }
