@@ -380,6 +380,7 @@ MonoBehaviour:
   aimDirection: {x: 0, y: 0, z: 0}
   disableEnemyInterval: 2
   isFlashed: 0
+  enemyAudioSource: {fileID: 0}
 --- !u!114 &5352958576046171733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,3 +429,17 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1449718064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812428721721932882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3326872f55a12674d9352eb68b101ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniMapLocator: {fileID: 176942370}
+  locationExposedTimer: 5
