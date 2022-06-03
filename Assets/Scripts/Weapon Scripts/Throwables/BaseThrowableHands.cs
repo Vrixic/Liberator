@@ -5,10 +5,10 @@ using UnityEngine;
 public class BaseThrowableHands : BaseWeapon
 {
     /* scales the force being applied to the flash bang */
-    [SerializeField] [Tooltip("scales the force being applied to the flash bang")] float throwForceMultiplier = 5.0f;
+    [SerializeField] [Tooltip("scales the force being applied to the flash bang")] float throwForceMultiplier = 10.0f;
 
     /* the amount of distance the Throwable should go to before exploding */
-    [SerializeField] [Tooltip("the amount of distance the Throwable should go to before exploding")] float distanceFromPlayerMultiplier = 5.0f;
+    [SerializeField] [Tooltip("the amount of distance the Throwable should go to before exploding")] float distanceFromPlayerMultiplier = 10.0f;
 
     /* The flash bang prefab used to create the object pool of Throwables */
     [SerializeField] [Tooltip("The flash bang prefab used to create the object pool of Throwables")] BaseThrowables throwablePrefab;

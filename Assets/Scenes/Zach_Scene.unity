@@ -15849,58 +15849,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[4].audio
-      value: 
-      objectReference: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[5].audio
-      value: 
-      objectReference: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[6].audio
-      value: 
-      objectReference: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[7].audio
-      value: 
-      objectReference: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[4].objectTag
-      value: Intel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[5].objectTag
-      value: AmmoBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[6].objectTag
-      value: HealthKit
-      objectReference: {fileID: 0}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[7].objectTag
-      value: Hostage
-      objectReference: {fileID: 0}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[4].audioPurpose
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[5].audioPurpose
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[6].audioPurpose
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
-      propertyPath: audioSounds.Array.data[7].audioPurpose
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1589114256021935640, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
       propertyPath: m_Name
       value: Managers

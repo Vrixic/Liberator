@@ -393,9 +393,45 @@ PrefabInstance:
     m_TransformParent: {fileID: 1589114256021935641}
     m_Modifications:
     - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
       propertyPath: audioSounds.Array.size
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[0].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[1].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: e256d61aa224ea24f83007433b99291f, type: 3}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[2].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 39512b537a14f114daa448f4317a0fe4, type: 3}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[3].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[4].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[5].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[6].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[7].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
     - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
       propertyPath: audioSounds.Array.data[0].audio
       value: 
@@ -429,6 +465,38 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
     - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[0].objectTag
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[1].objectTag
+      value: EnvironmentMetal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[2].objectTag
+      value: EnvironmentConcrete
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[3].objectTag
+      value: EnvironmentWood
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[4].objectTag
+      value: AmmoBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[5].objectTag
+      value: HealthKit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[6].objectTag
+      value: Intel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[7].objectTag
+      value: Hostage
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
       propertyPath: audioSounds.Array.data[0].objectTag
       value: Untagged
       objectReference: {fileID: 0}
@@ -459,6 +527,34 @@ PrefabInstance:
     - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
       propertyPath: audioSounds.Array.data[7].objectTag
       value: Hostage
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[1].audioPurpose
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[2].audioPurpose
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[3].audioPurpose
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[4].audioPurpose
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[5].audioPurpose
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[6].audioPurpose
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: gameSounds.Array.data[7].audioPurpose
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
       propertyPath: audioSounds.Array.data[1].audioPurpose

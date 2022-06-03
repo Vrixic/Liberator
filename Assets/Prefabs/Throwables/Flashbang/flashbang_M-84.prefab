@@ -498,7 +498,7 @@ MonoBehaviour:
   autoPoolTime: -1
   throwableExplodeTimer: 1
   explodeParticleSystem: {fileID: -7308709378478881761, guid: 229f17fc42a5360459f7114f32a4d689, type: 3}
-  poolTimeAfterExplosion: 3
+  poolTimeAfterExplosion: 1
   queryLayers:
     serializedVersion: 2
     m_Bits: 12288
@@ -510,7 +510,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2749434159630178972}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 18fa4dc9bfcbf7448b54789241d9bab4, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

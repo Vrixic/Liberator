@@ -5,7 +5,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     /* list of sounds */
-    public List<Sound> audioSounds = new List<Sound>();
+    public List<Sound> gameSounds = new List<Sound>();
+
+    public List<Sound> uiSounds = new List<Sound>();
 
     public Dictionary<string, AudioClip> audioSoundsAudioClipDictionary = new Dictionary<string, AudioClip>();
 
@@ -40,7 +42,12 @@ public class AudioManager : MonoBehaviour
 
         Instance = this;
 
-        foreach (Sound sound in audioSounds)
+        foreach (Sound sound in gameSounds)
+        {
+            audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.audio);
+        }
+
+        foreach (Sound sound in uiSounds)
         {
             audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.audio);
         }
@@ -56,7 +63,7 @@ public class AudioManager : MonoBehaviour
         SetAudioVolume(volume);
 
         m_AudioSource.transform.position = location;
-        m_AudioSource.PlayOneShot(GetAudioClipFromTag(objectTag));
+        m_AudioSource.PlayOneShot(GetAudioClip(objectTag));
     }
 
     public void SetAudioVolume(float val)
@@ -64,7 +71,7 @@ public class AudioManager : MonoBehaviour
         m_AudioSource.volume = val;
     }
 
-    public AudioClip GetAudioClipFromTag(string objectTag)
+    public AudioClip GetAudioClip(string objectTag)
     {
         if (audioSoundsAudioClipDictionary.ContainsKey(objectTag))
         {
@@ -72,7 +79,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            return audioSoundsAudioClipDictionary[audioSounds[0].objectTag];
+            return audioSoundsAudioClipDictionary["Untagged"];
         }
     }
 
@@ -93,7 +100,10 @@ public class AudioManager : MonoBehaviour
         FootStep,
         LandingFromJump,
         Pickup,
+        Hostage,
         XpGain,
-        Hostage
+        ButtonHover,
+        ButtonClick,
+        MenuMusic,
     }
 }
