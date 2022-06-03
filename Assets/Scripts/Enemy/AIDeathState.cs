@@ -23,7 +23,7 @@ public class AIDeathState : AIState
         agent.animator.SetBool("isDead", true);
         agent.animator.Play("Death");
 
-        AudioManager.Instance.PlayAudioAtLocation(agent.enemyAudioSource, "EnemyDeath");
+        AudioManager.Instance.PlayAudioAtLocation(agent.transform.position, "EnemyDeath");
 
         GameManager.Instance.CurrentCash += 50;
 
