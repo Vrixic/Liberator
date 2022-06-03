@@ -70,10 +70,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentCash;
     public int CurrentCash { get { return currentCash; } set { currentCash = value; } }
     [SerializeField] private int startingCash = 1000;
-    [HideInInspector]
-    public int CurrentXP { get { return currentXP; } set { currentXP = value; } }
-    private int currentXP = 0;
-    public int PreviousXP { get; set; }
+   // public int PreviousXP { get; set; }
     [SerializeField] public int maxXPAmount = 100;
     public Dictionary<string, int> enemiesKilled = new Dictionary<string, int>();
     [SerializeField] List<EnemyKillReward> enemyKillXPReward = new List<EnemyKillReward>();
@@ -118,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     public bool GameWon { get; set; } = false;
 
-
+    public Action OnRewardCollected;
 
     private static GameManager instance;
 
@@ -257,8 +254,6 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        // set the previous xp to current xp
-        PreviousXP = currentXP;
 
         Time.timeScale = 0f;
 
