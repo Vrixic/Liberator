@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
     public float playerSensitivity = 1f;
     [HideInInspector]
     public bool isShopMenuOpen;
-    public bool IsXPScreenShowing { get; set; } = false;
+    public bool IsUIOverlayVisible { get; set; } = false;
 
     //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
     private Collider[] enemyColliders = new Collider[18]; 
@@ -259,8 +259,13 @@ public class GameManager : MonoBehaviour
         // set the previous xp to current xp
         PreviousXP = currentXP;
 
+        Time.timeScale = 0f;
+
         // Show the xp screen
-        ScreenManager.Instance.ShowScreen("XP_Screen");
+        if (GameWon)
+            ScreenManager.Instance.ShowScreen("XP_Screen");
+        else
+            ScreenManager.Instance.ShowScreen("Death_Screen");
 
         Debug.LogWarning("Restart your game bud, you suck!");
         //SceneManager.LoadScene(0);

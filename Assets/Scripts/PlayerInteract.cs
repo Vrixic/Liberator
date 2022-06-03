@@ -201,7 +201,7 @@ public class PlayerInteract : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            //Time.timeScale = 0f;
+            Time.timeScale = 0f;
 
             GameManager.Instance.hostageProgressBar.SetActive(false);
 

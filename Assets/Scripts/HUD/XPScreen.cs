@@ -60,7 +60,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         m_PreviousXP = 0;
         m_TotalXPEarned = 0;
 
-        GameManager.Instance.IsXPScreenShowing = true;
+        GameManager.Instance.IsUIOverlayVisible = true;
 
         // unlock mouse 
         Cursor.lockState = CursorLockMode.None;
@@ -73,7 +73,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
         else
         {
-            headerText.text = "You Died";
+            headerText.text = "";
         }
 
         // set the bars value to the previous xp earned from last run
@@ -89,8 +89,6 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
     public override void Update()
     {
-        base.Update();
-
         if (m_AnimationFinished) return;
 
         // Moves all of the UI Blocks down 
@@ -100,12 +98,12 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
             Vector2 targetPos = trans.anchoredPosition;
             int multiplier = m_EnemyTextHolders.Count - i;
-            targetPos.y = trans.rect.height * multiplier * -1 + 30f - (multiplier * 10f);
+            targetPos.y = trans.rect.height * multiplier * -1 + 45f - (multiplier * 10f);
 
-            trans.anchoredPosition = Vector2.Lerp(trans.anchoredPosition, targetPos, m_UIBlocknAnimationSpeed * Time.deltaTime);
+            trans.anchoredPosition = Vector2.Lerp(trans.anchoredPosition, targetPos, m_UIBlocknAnimationSpeed * Time.unscaledDeltaTime);
         }
 
-        m_PreviousXP = Mathf.Lerp(m_PreviousXP, GameManager.Instance.CurrentXP + m_TotalXPEarned, m_BarAnimationSpeed * Time.deltaTime);
+        m_PreviousXP = Mathf.Lerp(m_PreviousXP, GameManager.Instance.CurrentXP + m_TotalXPEarned, m_BarAnimationSpeed * Time.unscaledDeltaTime);
         barSlider.value = m_PreviousXP / GameManager.Instance.maxXPAmount;
     }
 
@@ -128,6 +126,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
     {
         // hides this screen
         ScreenManager.Instance.HideScreen(screenName);
+        ScreenManager.Instance.HideScreen("Death_Screen");
 
         // shows shop
         GameManager.Instance.shopCanvas.SetActive(true);
@@ -135,7 +134,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (m_XPCalculationFinished) return;
+        if (m_XPCalculationFinished || m_AnimationFinished) return;
 
         m_XPCalculationFinished = true;
         m_AnimationFinished = true;
@@ -213,7 +212,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
             m_CompletedUIBlocks++;
 
-            yield return new WaitForSeconds(timeBetweenUIBlocks);
+            yield return new WaitForSecondsRealtime(timeBetweenUIBlocks);
         }
 
         if (GameManager.Instance.IntelCollected > 0)
@@ -234,8 +233,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
             // Updates total xp earned text
             totalXPText.text = "Total XP: " + m_TotalXPEarned;
 
-            yield return new WaitForSeconds(timeBetweenUIBlocks);
-        }
+            yield return new WaitForSecondsRealtime(timeBetweenUIBlocks);
+        }   
 
         GameManager.Instance.CurrentXP += m_TotalXPEarned;
 

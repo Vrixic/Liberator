@@ -503,6 +503,10 @@ public class Player : MonoBehaviour
 
         GameManager.Instance.GameWon = false;
 
+        DeactivateWeapon(m_CurrentWeaponIndex);
+        DeactivateSensor();
+        DeactivateFlashbang();
+
         GameManager.Instance.ResetGame();
 
         AmmoManager.Instance.ResetAmmoManager();
@@ -708,7 +712,7 @@ public class Player : MonoBehaviour
 
     bool GameRunningCheck()
     {
-        return Time.timeScale > 0f && !GameManager.Instance.IsXPScreenShowing;
+        return Time.timeScale > 0f && !GameManager.Instance.IsUIOverlayVisible;
     }
 
     public void UpdateFlashbangCount()
