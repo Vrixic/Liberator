@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public PoolableObject pAudioSource;
     /* list of sounds */
-    public List<sfxSound> sfxSounds = new List<sfxSound>();
+    public List<SoundEffect> sfxSounds = new List<SoundEffect>();
 
     public Dictionary<string, string> audioSoundDictionary = new Dictionary<string, string>();
 
@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
 
         Instance = this;
 
-        foreach (sfxSound sound in sfxSounds)
+        foreach (SoundEffect sound in sfxSounds)
         {
             audioSoundDictionary.Add(sound.objectTag, ObjectPoolManager.Instance.CreateObjectPool(pAudioSource, 1));
             audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.sound);
@@ -56,19 +56,30 @@ public class AudioManager : MonoBehaviour
     public void PlayAudioAtLocation(Vector3 location, string objectTag)
     {
         PoolableObject obj;
+        AudioSource ad;
+        Sound sE;
         if (audioSoundsAudioClipDictionary.ContainsKey(objectTag))
         {
             obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary[objectTag]);
+            sE = audioSoundsAudioClipDictionary[objectTag];
         }
         else
         {
-            obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary["Untagged"]);
+            obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary[sfxSounds[0].objectTag]);
+            sE = audioSoundsAudioClipDictionary[sfxSounds[0].objectTag];
         }
 
         //SetAudioSource(audioSource);
         obj.transform.position = location;
-        AudioSource ad = obj.GetComponent<AudioSource>();
-        ad.volume = PlayerPrefManager.Instance.masterVolume * audioSoundsAudioClipDictionary[objectTag].volMultiplier;
+        ad = obj.GetComponent<AudioSource>();
+        
+        if (sE.audioType == AudioType.sfx) {
+            ad.volume = PlayerPrefManager.Instance.sfxVolume * sE.volMultiplier; }
+        else if (sE.audioType == AudioType.music) {
+            ad.volume = PlayerPrefManager.Instance.musicVolume * sE.volMultiplier; }
+        else if (sE.audioType == AudioType.other){
+            ad.volume = PlayerPrefManager.Instance.masterVolume * sE.volMultiplier; }
+
         ad.PlayOneShot(GetAudioClip(objectTag));
     }
 
@@ -88,7 +99,7 @@ public class AudioManager : MonoBehaviour
      * Stores the tag and the particle system associated with the tag
      */
     [System.Serializable]
-    public class sfxSound
+    public class SoundEffect
     {
         public Sound sound;
         public string objectTag;
@@ -97,7 +108,15 @@ public class AudioManager : MonoBehaviour
     [System.Serializable]
     public class Sound
     {
+        public AudioType audioType;
         public AudioClip audio;
         public float volMultiplier = 1f;
+    }
+
+    public enum AudioType
+    {
+        sfx,
+        music, 
+        other
     }
 }
