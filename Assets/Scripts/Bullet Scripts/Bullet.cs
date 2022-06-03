@@ -58,6 +58,11 @@ public class Bullet : PoolableObject
             Explodable e = hit.collider.GetComponent<Explodable>();
             e.ExplodableIsHit(hit.point, hit.normal);
         }
+        if (hit.collider.tag == "Sprinkler")
+        {
+            Sprinkler s = hit.collider.GetComponent<Sprinkler>();
+            s.Sprinkle();
+        }
 
         BulletImpactManager.Instance.SpawnBulletImpact(hit.point, hit.normal, hit.collider.tag);
     }
