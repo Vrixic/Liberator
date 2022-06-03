@@ -47,7 +47,10 @@ TagManager:
   - BuyWeaponsCanvas
   - MinimapCanvas
   - AmmoCanvas
-  - Concrete
+  - MainMenuCanvas
+  - EnvironmentConcrete
+  - EnvironmentWood
+  - EnvironmentMetal
   layers:
   - Default
   - TransparentFX

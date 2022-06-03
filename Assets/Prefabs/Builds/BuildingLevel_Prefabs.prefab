@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 8156911008342082144}
   m_Layer: 0
   m_Name: Cube (29)
-  m_TagString: Concrete
+  m_TagString: EnvironmentConcrete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6318
+  m_VersionIndex: 6342
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 8156911008538188884}
   m_Layer: 0
   m_Name: Floor (1)
-  m_TagString: Concrete
+  m_TagString: EnvironmentConcrete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2220
+  m_VersionIndex: 2244
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

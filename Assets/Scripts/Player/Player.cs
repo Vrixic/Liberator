@@ -51,10 +51,10 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource weaponAudioSrc;
 
     /* footstep audio when player walks */
-    [SerializeField] AudioClip footStepWalkAudio;
+    //[SerializeField] AudioClip footStepWalkAudio;
 
     /* footstep audio when player runs */
-    [SerializeField] AudioClip footStepRunAudio;
+    //[SerializeField] AudioClip footStepRunAudio;
 
     /* delay on the foot step walk audio to keep it in control */
     [SerializeField] float footStepWalkAudioPlayDelay = 0.75f;
@@ -74,8 +74,8 @@ public class Player : MonoBehaviour
     /* Last Animation speed */
     float m_LastAnimSpeed = 0f;
 
-    /* audio source used for footsteps */
-    AudioSource m_FootstepAudioSrc;
+    /* audio source used for audio on player */
+    AudioSource m_PlayerAudioSrc;
 
     float m_DefaultVolume = 1f;
 
@@ -103,10 +103,11 @@ public class Player : MonoBehaviour
     private void Start()
     {
         m_PlayerMotor = GetComponent<PlayerMotor>();
-        m_FootstepAudioSrc = GetComponentInChildren<AudioSource>();
+        m_PlayerAudioSrc = GetComponentInChildren<AudioSource>();
+        AudioManager.Instance.SetAudioSource(m_PlayerAudioSrc);
         characterController = GetComponent<CharacterController>();
 
-        m_DefaultVolume = m_FootstepAudioSrc.volume;
+        m_DefaultVolume = m_PlayerAudioSrc.volume;
 
         healthBar = GameManager.Instance.healthBarScript;
         shieldBar = GameManager.Instance.shieldBarScript;
@@ -153,16 +154,18 @@ public class Player : MonoBehaviour
 
         if (GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
         {
+            RaycastHit groundTag;
+            Ray checkGroundTag = new Ray(transform.position, Vector3.down);
+            Physics.Raycast(checkGroundTag, out groundTag);
+            Debug.Log(groundTag.collider.tag);
             if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
             {
-                SetFootstepAudio(footStepWalkAudio);
-                PlayFootStepAudio();
+                PlayFootStepAudio(groundTag.collider.tag);
                 m_LastStepSoundTime = Time.time;
             }
             else if (Time.time - m_LastStepSoundTime > footStepRunAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D > 0.3f)
             {
-                SetFootstepAudio(footStepRunAudio);
-                PlayFootStepAudio();
+                PlayFootStepAudio(groundTag.collider.tag);
                 m_LastStepSoundTime = Time.time;
             }
         }
@@ -687,17 +690,17 @@ public class Player : MonoBehaviour
     /*
     * set the footstep audio sources clip to the @Param: 'clip'
     */
-    void SetFootstepAudio(AudioClip clip)
-    {
-        m_FootstepAudioSrc.clip = clip;
-    }
+    //void SetFootstepAudio(AudioClip clip)
+    //{
+    //    m_FootstepAudioSrc.clip = clip;
+    //}
 
     /*
     * plays a footstep audio
     */
-    void PlayFootStepAudio()
+    void PlayFootStepAudio(string tag)
     {
-        m_FootstepAudioSrc.Play();
+        AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc.transform.position, tag, m_PlayerAudioSrc.volume);
     }
 
     public int GetCurrentFlashbangsAmount()
@@ -848,7 +851,7 @@ public class Player : MonoBehaviour
     /* When user saves the game, updates variables to the recent saves */
     public void OnOptionsUpdate()
     {
-        m_FootstepAudioSrc.volume = m_DefaultVolume * GameManager.Instance.masterVolume;
+        m_PlayerAudioSrc.volume = m_DefaultVolume * GameManager.Instance.masterVolume;
         weaponAudioSrc.volume = m_DefaultVolume * GameManager.Instance.masterVolume;
     }
 
