@@ -265,7 +265,7 @@ public class Player : MonoBehaviour
      */
     public void EquipWeaponOnePressed()
     {
-        GameManager.Instance.SaveGame();
+        PlayerPrefManager.Instance.SaveGame();
         if (!GameRunningCheck()) return;
 
         if (flashbang.isActiveAndEnabled)
@@ -862,8 +862,8 @@ public class Player : MonoBehaviour
     /* When user saves the game, updates variables to the recent saves */
     public void OnOptionsUpdate()
     {
-        m_PlayerAudioSrc.volume = m_DefaultVolume * GameManager.Instance.masterVolume;
-        weaponAudioSrc.volume = m_DefaultVolume * GameManager.Instance.masterVolume;
+        m_PlayerAudioSrc.volume = m_DefaultVolume * PlayerPrefManager.Instance.masterVolume;
+        weaponAudioSrc.volume = m_DefaultVolume * PlayerPrefManager.Instance.masterVolume;
     }
 
     //private void OnApplicationQuit()

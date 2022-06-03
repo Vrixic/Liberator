@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayAudioAtLocation(AudioSource audioSource, string objectTag, float volume = 1f)
     {
-        audioSource.volume = GameManager.Instance.masterVolume;
+        audioSource.volume = PlayerPrefManager.Instance.masterVolume;
 
         //SetAudioSource(audioSource);
         audioSource.PlayOneShot(GetAudioClip(objectTag));
