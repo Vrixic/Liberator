@@ -30,6 +30,7 @@ public class Sprinkler : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
         sprinkle.enabled = false;
         stunTrigger.enabled = false;
+        gameObject.GetComponentInChildren<Light>().enabled = false;
     }
 
 }
