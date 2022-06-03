@@ -215,6 +215,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowCaseLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f41b0bd-2a5c-49e4-9028-02a238a6371b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -591,6 +600,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""AttackReleased"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e76cb149-0dc0-4311-852e-8ee5b9f61528"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowCaseLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -620,6 +640,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_HoldInteract = m_OnFoot.FindAction("HoldInteract", throwIfNotFound: true);
         m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
         m_OnFoot_AttackReleased = m_OnFoot.FindAction("AttackReleased", throwIfNotFound: true);
+        m_OnFoot_ShowCaseLevel = m_OnFoot.FindAction("ShowCaseLevel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -700,6 +721,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_HoldInteract;
     private readonly InputAction m_OnFoot_PauseGame;
     private readonly InputAction m_OnFoot_AttackReleased;
+    private readonly InputAction m_OnFoot_ShowCaseLevel;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -725,6 +747,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @HoldInteract => m_Wrapper.m_OnFoot_HoldInteract;
         public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
         public InputAction @AttackReleased => m_Wrapper.m_OnFoot_AttackReleased;
+        public InputAction @ShowCaseLevel => m_Wrapper.m_OnFoot_ShowCaseLevel;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -797,6 +820,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @AttackReleased.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
                 @AttackReleased.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
                 @AttackReleased.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
+                @ShowCaseLevel.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowCaseLevel;
+                @ShowCaseLevel.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowCaseLevel;
+                @ShowCaseLevel.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowCaseLevel;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -864,6 +890,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @AttackReleased.started += instance.OnAttackReleased;
                 @AttackReleased.performed += instance.OnAttackReleased;
                 @AttackReleased.canceled += instance.OnAttackReleased;
+                @ShowCaseLevel.started += instance.OnShowCaseLevel;
+                @ShowCaseLevel.performed += instance.OnShowCaseLevel;
+                @ShowCaseLevel.canceled += instance.OnShowCaseLevel;
             }
         }
     }
@@ -891,5 +920,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnHoldInteract(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
         void OnAttackReleased(InputAction.CallbackContext context);
+        void OnShowCaseLevel(InputAction.CallbackContext context);
     }
 }

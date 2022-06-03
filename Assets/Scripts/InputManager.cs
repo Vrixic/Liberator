@@ -81,6 +81,8 @@ public class InputManager : MonoBehaviour
 
         // DEBUG-----------------------------------------------------------------------------------
         onFoot.Test_PlayerDamage.performed += ctx => player.TakeDamageTen();
+
+        onFoot.ShowCaseLevel.performed += ctx => buttonFunc.LoadShowcaseLevel();
     }
 
     private void Start()
