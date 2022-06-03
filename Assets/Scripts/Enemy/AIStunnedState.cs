@@ -8,6 +8,7 @@ public class AIStunnedState : AIState
     float currentStunTime = 3f;
     void AIState.Enter(AIAgent agent)
     {
+        agent.animator.SetTrigger("Flashbang");
         if(agent.transform.parent.tag == "Juggernaut")
         {
             currentStunTime = 6f;

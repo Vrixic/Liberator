@@ -10,6 +10,7 @@ public class AIAttackPlayerState : AIState
     {
         //Debug.Log("Attack");
         agent.navMeshAgent.isStopped = true;
+        agent.animator.SetTrigger("Attack");
     }
     public void Update(AIAgent agent)
     {
