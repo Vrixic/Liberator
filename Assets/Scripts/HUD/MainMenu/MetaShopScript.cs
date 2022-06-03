@@ -8,7 +8,7 @@ public class MetaShopScript : MonoBehaviour
 {
     public TMP_Text skillPointCount;
     int currentSkillPoints = 0;
-    int upgradedStartingCash;
+    int startingCash;
     private void OnEnable()
     {
         if (PlayerPrefs.HasKey("Skill Points"))
@@ -18,6 +18,17 @@ public class MetaShopScript : MonoBehaviour
         else
         {
             Debug.Log("Skill Point player pref not found");
+        }
+
+        // Starting Cash 
+        if (PlayerPrefs.HasKey("Upgraded Starting Cash"))
+        {
+            startingCash = PlayerPrefs.GetInt("Upgraded Starting Cash", 1000);
+        }
+        else
+        {
+            startingCash = 0;
+            PlayerPrefs.SetInt("Upgraded Starting Cashs", startingCash);
         }
     }
 

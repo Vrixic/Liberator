@@ -82,6 +82,7 @@ public class SettingsMenu : MonoBehaviour
         InitSliders();
     }
 
+
     // Initialize Sliders and text boxes to current player prefs
     public void InitSliders()
     {
@@ -101,7 +102,6 @@ public class SettingsMenu : MonoBehaviour
         brightnessSlider.value = brightness;
     }
 
-   
     #region Update Sliders and Text Fields Methods
     public void UpdateMasterVolumeInputValue()
     {

@@ -225,8 +225,8 @@ public class GameManager : MonoBehaviour
         }
 
         // Adds listeners to options update event
-        //PlayerPrefManager.Instance.OnOptionsUpdateAction += playerScript.OnOptionsUpdate;
-        // PlayerPrefManager.Instance.OnOptionsUpdateAction += player.GetComponent<PlayerLook>().OnOptionsUpdate;
+        PlayerPrefManager.Instance.OnOptionsUpdateAction += playerScript.OnOptionsUpdate;
+        PlayerPrefManager.Instance.OnOptionsUpdateAction += player.GetComponent<PlayerLook>().OnOptionsUpdate;
 
         // Takes the info from enemyKillXpReward and populates it into a dictionary, so that accessing information can be constant time later on.
         for (int i = 0; i < enemyKillXPReward.Count; i++)
