@@ -62,6 +62,27 @@ public class DISystem : MonoBehaviour
         }
     }
 
+    public void FindAndDestroyIndicator(Transform _damageSource)
+    {
+        if(indicators.ContainsKey(_damageSource))
+        {
+            indicators[_damageSource].DestroyIndicator();
+            indicators.Remove(_damageSource);
+        }
+    }
+
+    public void ClearAllIndicators()
+    {
+        //destroy each of the indicators in the dictionary
+        foreach (KeyValuePair<Transform, DamageIndicator> damageSource in indicators)
+        {
+            damageSource.Value.DestroyIndicator();
+        }
+
+        //clear the dictionary
+        indicators.Clear();
+    }
+
     bool InSight(Transform damageSource)
     {
         Vector3 screenPoint = camera.WorldToViewportPoint(damageSource.position);

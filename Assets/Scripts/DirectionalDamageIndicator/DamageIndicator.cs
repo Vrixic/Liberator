@@ -81,6 +81,13 @@ public class DamageIndicator : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void DestroyIndicator()
+    {
+        if (IE_Countdown != null) { StopCoroutine(IE_Countdown); }
+
+        Destroy(gameObject);
+    }
+
     IEnumerator RotateIndicatorToTarget()
     {
         while(enabled)

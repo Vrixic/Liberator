@@ -499,6 +499,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Player died");
 
+        GameManager.Instance.damageIndicatorSystem.ClearAllIndicators();
+
         characterController.enabled = false;
         bPlayerDead = true;
 

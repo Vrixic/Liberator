@@ -58,6 +58,7 @@ public class EnemyMelee : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
+                DISystem.createIndicator(transform);
                 GameManager.Instance.playerScript.TakeDamage(damage);
                 bHasAttacked = true;
             }

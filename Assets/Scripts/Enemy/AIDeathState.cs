@@ -20,6 +20,9 @@ public class AIDeathState : AIState
         agent.SetIsDead(true);
         //diasbleTimer = Time.time + agent.GetDisableEnemyInterval();
 
+        //if there is a damage indicator for this enemy then this will destroy it from the screen
+        GameManager.Instance.damageIndicatorSystem.FindAndDestroyIndicator(agent.transform);
+
         agent.animator.SetBool("isDead", true);
         agent.animator.Play("Death");
 

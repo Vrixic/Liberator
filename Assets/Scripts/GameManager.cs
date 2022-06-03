@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public Image gunIcon;
     [HideInInspector]
+    public DISystem damageIndicatorSystem;
+    [HideInInspector]
     public GameObject hostageProgressBar;
     [Header("Current cash for viewing, starting cash for testing")]
     [SerializeField] private int currentCash;
@@ -153,11 +155,11 @@ public class GameManager : MonoBehaviour
         pause = GameObject.FindGameObjectWithTag("PauseMenu");
         pause.SetActive(false);
 
-
         virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
         reticle = GameObject.FindGameObjectWithTag("Reticle");
         ui = GameObject.FindGameObjectWithTag("UI");
         buttonFuncScript = ui.GetComponent<ButtonFunctionality>();
+        damageIndicatorSystem = ui.GetComponent<DISystem>();
 
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthBarScript = healthBar.GetComponent<HealthBar>();
