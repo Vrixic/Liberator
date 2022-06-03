@@ -131,7 +131,7 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Skill Points"))
         {
 
-            currentSkillPoints = PlayerPrefs.GetInt("Skill Points", 100);
+            currentSkillPoints = PlayerPrefs.GetInt("Skill Points", 0);
             Debug.Log("Loading Skill Points, Current: " + currentSkillPoints);
         }
         else
@@ -153,6 +153,19 @@ public class PlayerPrefManager : MonoBehaviour
             PlayerPrefs.SetInt("Upgraded Starting Cash, Current; ", startingCash);
         }
 
+        // Player XP
+        if (PlayerPrefs.HasKey("Current XP"))
+        {
+
+            currentXP = PlayerPrefs.GetInt("Current XP", 1000);
+            Debug.Log("Loading Player XP, Current : " + currentXP);
+        }
+        else
+        {
+            currentXP = 0;
+            PlayerPrefs.SetInt("Current XP", currentXP);
+        }
+
     }
 
     /* 
@@ -167,6 +180,7 @@ public class PlayerPrefManager : MonoBehaviour
         SavePlayerSensitivity();
         SaveStartingCash();
         SaveSkillPoints();
+        SavePlayerXP();
 
         // Fires an event to all listening clients that player perferences has been updated
         OnOptionsUpdateAction?.Invoke();
@@ -232,6 +246,11 @@ public class PlayerPrefManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
 
+    }
+
+    private void SavePlayerXP()
+    {
+        PlayerPrefs.SetInt("Current XP", currentXP);
     }
     #endregion
 }

@@ -19,6 +19,8 @@ public class XPScreen : BaseScreen
     /* Displays the total xp earned from this run */
     [SerializeField] private TextMeshProUGUI totalXPText;
 
+    [SerializeField] private TextMeshProUGUI totalSkillPointsText;
+
     /* prefab of enemy text holder */
     [SerializeField] private GameObject enemyUIPrefab;
 
@@ -42,7 +44,7 @@ public class XPScreen : BaseScreen
 
     private bool m_AnimationFinished = false;
 
-    private bool bRewardScreenShowing = false;
+    //private bool bRewardScreenShowing = false;
     private bool bStopAddingBlocks = false;
 
     public override void Start()
@@ -51,7 +53,7 @@ public class XPScreen : BaseScreen
 
         m_UIBlocknAnimationSpeed = 15 / timeBetweenUIBlocks;
 
-        GameManager.Instance.OnRewardCollected += OnRewardCollected;
+        //GameManager.Instance.OnRewardCollected += OnRewardCollected;
     }
 
     public override void Show()
@@ -87,15 +89,17 @@ public class XPScreen : BaseScreen
 
         m_AnimationFinished = false;
 
-        bRewardScreenShowing = false;
+        //bRewardScreenShowing = false;
         bStopAddingBlocks = false;
+
+        totalSkillPointsText.text = "Skill Points: " + PlayerPrefManager.Instance.currentSkillPoints;
 
         StartCoroutine(ShowCollectedXP());
     }
 
     public override void Update()
     {
-        if (m_AnimationFinished || bRewardScreenShowing) return;
+        if (m_AnimationFinished) return; //|| bRewardScreenShowing) return;
 
         // Moves all of the UI Blocks down 
         for (int i = 0; i < m_EnemyTextHolders.Count; i++)
@@ -113,14 +117,16 @@ public class XPScreen : BaseScreen
         m_CurrentXP = Mathf.Lerp(m_CurrentXP, PlayerPrefManager.Instance.CurrentXP, m_BarAnimationSpeed * Time.unscaledDeltaTime);
         barSlider.value = m_CurrentXP / GameManager.Instance.maxXPAmount;
 
+        totalXPText.text = "XP: " + ((int)m_CurrentXP).ToString() + "/" + GameManager.Instance.maxXPAmount.ToString();
+
         if (PlayerPrefManager.Instance.CurrentXP >= 100f)
         {
             bStopAddingBlocks = true;
 
             if (m_CurrentXP >= 99f)
             {
-                bRewardScreenShowing = true;
-                ShowRewardScreen();
+                //bRewardScreenShowing = true;
+                GiveSkillPoint();
             }
         }
         else
@@ -146,9 +152,12 @@ public class XPScreen : BaseScreen
 
     public void OnNextButtonClick()
     {
+        if (!m_AnimationFinished) return;
         // hides this screen
         ScreenManager.Instance.HideScreen(screenName);
         ScreenManager.Instance.HideScreen("Death_Screen");
+
+        PlayerPrefManager.Instance.SaveGame();
 
         if (GameManager.Instance.GameWon)
         {
@@ -228,7 +237,7 @@ public class XPScreen : BaseScreen
 
         while (PlayerPrefManager.Instance.CurrentXP >= 100f)
         {
-            ShowRewardScreen();
+            GiveSkillPoint();
             yield return new WaitForSecondsRealtime(0.1f);
         }
 
@@ -243,24 +252,38 @@ public class XPScreen : BaseScreen
         totalXPText.text = "Total XP: " + PlayerPrefManager.Instance.CurrentXP;
     }
 
-    void ShowRewardScreen()
+    void GiveSkillPoint()
     {
-        GameManager.Instance.RewardID = 0;
-        GameManager.Instance.RewardAmount = 100;
-        ScreenManager.Instance.ShowScreen("XP_Reward_Screen");
-
+        PlayerPrefManager.Instance.currentSkillPoints++;
         PlayerPrefManager.Instance.CurrentXP -= 100;
         m_PreviousXP = 0;
         m_CurrentXP = 0;
 
         CalculateBarSpeed();
         UpdateTotalXPText();
+
+        totalSkillPointsText.text = "Skill Points: " + PlayerPrefManager.Instance.currentSkillPoints;
     }
 
-    void OnRewardCollected()
-    {
-        bRewardScreenShowing = false;
-    }
+    //void ShowRewardScreen()
+    //{
+    //    //GameManager.Instance.RewardID = 0;
+    //    //GameManager.Instance.RewardAmount = 100;
+    //    //ScreenManager.Instance.ShowScreen("XP_Reward_Screen");
+
+    //    PlayerPrefManager.Instance.currentSkillPoints++;
+    //    PlayerPrefManager.Instance.CurrentXP -= 100;
+    //    m_PreviousXP = 0;
+    //    m_CurrentXP = 0;
+
+    //    CalculateBarSpeed();
+    //    UpdateTotalXPText();
+    //}
+
+    //void OnRewardCollected()
+    //{
+    //    bRewardScreenShowing = false;
+    //}
 
     private void CalculateBarSpeed()
     {
