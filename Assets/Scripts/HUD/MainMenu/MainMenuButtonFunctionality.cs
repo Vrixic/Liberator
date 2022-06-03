@@ -20,6 +20,8 @@ public class MainMenuButtonFunctionality : MonoBehaviour
     {
 
         // Loads the game Scene
+        Debug.Log("Starting Game From Main Menu");
+        PlayerPrefManager.Instance.LoadGame();
         SceneManager.LoadScene(1);
         // Sets cursor state to locked and turns off the visibility
         Cursor.lockState = CursorLockMode.Locked;
@@ -32,8 +34,9 @@ public class MainMenuButtonFunctionality : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
         Debug.Log("Application is Exiting");
+        PlayerPrefManager.Instance.SaveGame();
+        Application.Quit();
     }
 
 
