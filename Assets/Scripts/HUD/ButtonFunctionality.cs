@@ -481,4 +481,10 @@ public class ButtonFunctionality : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    //temporary for alpha sprint
+    public void LoadShowcaseLevel()
+    {
+        SceneManager.LoadScene(3);
+    }
+
 }

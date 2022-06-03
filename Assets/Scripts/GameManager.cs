@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int CurrentXP { get { return currentXP; } set { currentXP = value; } }
     private int currentXP = 0;
-    public int PreviousXP { get; set;  }
+    public int PreviousXP { get; set; }
     [SerializeField] public int maxXPAmount = 100;
     public Dictionary<string, int> enemiesKilled = new Dictionary<string, int>();
     [SerializeField] List<EnemyKillReward> enemyKillXPReward = new List<EnemyKillReward>();
@@ -103,21 +103,22 @@ public class GameManager : MonoBehaviour
     public bool isPauseMenuOpen;
     [HideInInspector]
     public GameObject ammoCanvas;
-    [HideInInspector]
-    public float masterVolume = 1f;
-    [HideInInspector]
-    public float playerSensitivity = 1f;
+
     [HideInInspector]
     public bool isShopMenuOpen;
     public bool IsUIOverlayVisible { get; set; } = false;
 
+    public int RewardAmount { get; set; } = 0;
+    public int RewardID { get; set; } = 0;
+    public bool RewardCollected { get; set; } = true;
+
     //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
-    private Collider[] enemyColliders = new Collider[18]; 
+    private Collider[] enemyColliders = new Collider[18];
     private LayerMask enemyLayerMask;
 
     public bool GameWon { get; set; } = false;
 
-    public Action OnOptionsUpdateAction;
+
 
     private static GameManager instance;
 
@@ -227,11 +228,11 @@ public class GameManager : MonoBehaviour
         }
 
         // Adds listeners to options update event
-        OnOptionsUpdateAction += playerScript.OnOptionsUpdate;
-        OnOptionsUpdateAction += player.GetComponent<PlayerLook>().OnOptionsUpdate;
+        //PlayerPrefManager.Instance.OnOptionsUpdateAction += playerScript.OnOptionsUpdate;
+        // PlayerPrefManager.Instance.OnOptionsUpdateAction += player.GetComponent<PlayerLook>().OnOptionsUpdate;
 
         // Takes the info from enemyKillXpReward and populates it into a dictionary, so that accessing information can be constant time later on.
-        for(int i = 0; i < enemyKillXPReward.Count; i++)
+        for (int i = 0; i < enemyKillXPReward.Count; i++)
         {
             enemiesKillXPReward.Add(enemyKillXPReward[i].enemyName, enemyKillXPReward[i].rewardAmount);
         }
@@ -239,7 +240,7 @@ public class GameManager : MonoBehaviour
         enemyLayerMask = LayerMask.GetMask("Enemy");
 
         // Loads all player perferences from last save
-        LoadGame();
+        //PlayerPrefManager.Instance.LoadGame();
     }
 
     private void Update()
@@ -316,60 +317,7 @@ public class GameManager : MonoBehaviour
         gunIcon.gameObject.SetActive(false);
     }
 
-    /* 
-    * Loads player perferences
-    */
-    public void LoadGame()
-    {
-        if (PlayerPrefs.HasKey("Master Volume"))
-        {
-            masterVolume = PlayerPrefs.GetFloat("Master Volume", 1f);
-        }
-        else
-        {
-            masterVolume = 1f;
-            PlayerPrefs.SetFloat("Master Volume", masterVolume);
-        }
 
-        if (PlayerPrefs.HasKey("Player Sensitivity"))
-        {
-            playerSensitivity = PlayerPrefs.GetFloat("Player Sensitivity", 1f);
-        }
-        else
-        {
-            playerSensitivity = 1f;
-            PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
-        }
-    }
-
-    /* 
-    * Saves player perferences
-    */
-    public void SaveGame()
-    {
-        SaveMasterVolume();
-        SavePlayerSensitivity();
-         
-        // Fires an event to all listening clients that player perferences has been updated
-        OnOptionsUpdateAction?.Invoke();
-    }
-
-    /* 
-    * Saves master volume
-    */
-    private void SaveMasterVolume()
-    {
-        PlayerPrefs.SetFloat("Master Volume", masterVolume);
-
-    }
-
-    /* 
-    * Saves player sensitivity
-    */
-    private void SavePlayerSensitivity()
-    {
-        PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
-    }
 
     /* 
     * Calculates the xp earned by incoming enemyTag
@@ -395,7 +343,7 @@ public class GameManager : MonoBehaviour
     {
         //collect all colliders on the enemy layer within the alert radius
         int numberOfColliders = Physics.OverlapSphereNonAlloc(sphereCastPosition, sphereRadius, enemyColliders, enemyLayerMask);
-        
+
         //initialize AIAgent variable that will be assigned when we try to get the component from each collider
         AIAgent agent;
 
@@ -403,10 +351,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < numberOfColliders; i++)
         {
             //enemy heads and bodies are different colliders, but only the body has the AIAgent component, so TryGetComponent will end up passing on each agent's body
-            if(enemyColliders[i].TryGetComponent<AIAgent>(out agent))
+            if (enemyColliders[i].TryGetComponent<AIAgent>(out agent))
             {
                 //if it found the AIAgent for a given enemy collider, alert that enemy if they are currently idle(not dead, chasing, or attacking)
-                if(agent.currentState == AIStateID.Idle)
+                if (agent.currentState == AIStateID.Idle)
                     agent.stateMachine.ChangeState(AIStateID.Alerted);
             }
         }

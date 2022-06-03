@@ -11069,6 +11069,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878391488}
     m_Modifications:
+    - target: {fileID: 1853635905, guid: 0f95516d8f3f69e4f878f2966f8a6bb4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853635905, guid: 0f95516d8f3f69e4f878f2966f8a6bb4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1947243586203803496, guid: 0f95516d8f3f69e4f878f2966f8a6bb4, type: 3}
       propertyPath: m_Name
       value: SpawnPoint_BasicEnemy (5)
@@ -15849,6 +15857,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: uiSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: gameSounds.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: uiSounds.Array.data[0].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e249dfa519a6ae42bb9fcd44d3b08e1, type: 3}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: uiSounds.Array.data[1].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: b6d3fc0e1345f7944a4ef075972be0df, type: 3}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: uiSounds.Array.data[2].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: f1e8627fd9609c743b4a49b59cf4dcbd, type: 3}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: gameSounds.Array.data[8].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: ed5dbd8279befda47bafa570d862880c, type: 3}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: gameSounds.Array.data[9].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: ed5dbd8279befda47bafa570d862880c, type: 3}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: uiSounds.Array.data[0].objectTag
+      value: ButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: uiSounds.Array.data[1].objectTag
+      value: ButtonHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: uiSounds.Array.data[2].objectTag
+      value: MenuMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: gameSounds.Array.data[8].objectTag
+      value: EnemyDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: gameSounds.Array.data[9].objectTag
+      value: PlayerDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135544432, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
+      propertyPath: gameSounds.Array.data[8].audioPurpose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1589114256021935640, guid: 9c5f3a6138a8b7d43af802d377966d78, type: 3}
       propertyPath: m_Name
       value: Managers
@@ -39364,7 +39424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &878391488
 Transform:
   m_ObjectHideFlags: 0
@@ -55168,7 +55228,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh997566
+  m_Name: pb_Mesh93138
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
