@@ -111,6 +111,10 @@ public class GameManager : MonoBehaviour
     public bool isShopMenuOpen;
     public bool IsUIOverlayVisible { get; set; } = false;
 
+    public int RewardAmount { get; set; } = 0;
+    public int RewardID { get; set; } = 0;
+    public bool RewardCollected { get; set; } = true;
+
     //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
     private Collider[] enemyColliders = new Collider[18]; 
     private LayerMask enemyLayerMask;
