@@ -8,11 +8,11 @@ public class PlayerPrefManager : MonoBehaviour
     [HideInInspector]
     public float masterVolume = 100;
     [HideInInspector]
-    float musicVolume = 0f;
+    public float musicVolume = 0f;
     [HideInInspector]
-    float sfxVolume = 0f;
+    public float sfxVolume = 0f;
     [HideInInspector]
-    float brightness = 0f;
+    public float brightness = 0f;
     [HideInInspector]
     public float playerSensitivity = 100;
     [HideInInspector]
@@ -24,7 +24,7 @@ public class PlayerPrefManager : MonoBehaviour
     public int startingCash;
 
     public Action OnOptionsUpdateAction;
-    
+
     private static PlayerPrefManager instance;
 
 
@@ -113,7 +113,7 @@ public class PlayerPrefManager : MonoBehaviour
         {
             brightness = 100f;
             PlayerPrefs.SetFloat("Brightness", brightness);
-        } 
+        }
         #endregion
 
         // Skill Points
@@ -150,7 +150,7 @@ public class PlayerPrefManager : MonoBehaviour
         SaveSFXVolume();
         SaveBrightness();
         SavePlayerSensitivity();
-        
+
         // Fires an event to all listening clients that player perferences has been updated
         OnOptionsUpdateAction?.Invoke();
     }
