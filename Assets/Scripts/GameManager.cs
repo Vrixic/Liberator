@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentCash;
     public int CurrentCash { get { return currentCash; } set { currentCash = value; } }
     [SerializeField] private int startingCash = 1000;
-   // public int PreviousXP { get; set; }
+    // public int PreviousXP { get; set; }
     [SerializeField] public int maxXPAmount = 100;
     public Dictionary<string, int> enemiesKilled = new Dictionary<string, int>();
     [SerializeField] List<EnemyKillReward> enemyKillXPReward = new List<EnemyKillReward>();

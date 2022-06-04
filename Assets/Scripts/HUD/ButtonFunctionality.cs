@@ -259,7 +259,7 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
                 // Refill players flashbang Count to max
-                GameManager.Instance.playerScript.IncreaseFlashbang(GameManager.Instance.playerScript.GetMaxFlashBangs());
+                GameManager.Instance.playerScript.IncreaseFlashbangAmount(GameManager.Instance.playerScript.GetMaxFlashBangs());
                 // Update Flashbang UI
                 GameManager.Instance.playerScript.UpdateFlashbangCount();
 
@@ -281,8 +281,8 @@ public class ButtonFunctionality : MonoBehaviour
                     GameManager.Instance.CurrentCash -= 200;
                     UpdateCashCountShopUi();
                     // Refill Flashbangs and Sensor Grenades to max
-                    GameManager.Instance.playerScript.IncreaseFlashbang(GameManager.Instance.playerScript.GetMaxFlashBangs());
-                    GameManager.Instance.playerScript.IncreaseSensorGrenade(GameManager.Instance.playerScript.GetMaxSensorGrenadeCount());
+                    GameManager.Instance.playerScript.IncreaseFlashbangAmount(GameManager.Instance.playerScript.GetMaxFlashBangs());
+                    GameManager.Instance.playerScript.IncreaseSensorGrenadeAmount(GameManager.Instance.playerScript.GetMaxSensorGrenadeCount());
 
                     // Update Ui
                     GameManager.Instance.playerScript.UpdateFlashbangCount();
@@ -303,7 +303,7 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
                 // Refill Sensor Grenades to max
-                GameManager.Instance.playerScript.IncreaseSensorGrenade(GameManager.Instance.playerScript.GetMaxSensorGrenadeCount());
+                GameManager.Instance.playerScript.IncreaseSensorGrenadeAmount(GameManager.Instance.playerScript.GetMaxSensorGrenadeCount());
                 // Update Sensor Grenade UI
                 GameManager.Instance.playerScript.UpdateSensorGrenadeUi();
             }

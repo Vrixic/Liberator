@@ -22,7 +22,10 @@ public class PlayerPrefManager : MonoBehaviour
     public int currentSkillPoints;
     [HideInInspector]
     public int startingCash;
-
+    [HideInInspector]
+    public int flashBangCapacity;
+    [HideInInspector]
+    public int sensorGrenadeCapacity;
     public AsyncOperation SceneOperation { get; set; }
 
     public Action OnOptionsUpdateAction;
@@ -127,6 +130,8 @@ public class PlayerPrefManager : MonoBehaviour
         }
         #endregion
 
+        #region Player Upgrades and Xp preferences
+
         // Skill Points
         if (PlayerPrefs.HasKey("Skill Points"))
         {
@@ -138,19 +143,6 @@ public class PlayerPrefManager : MonoBehaviour
         {
             currentSkillPoints = 0;
             PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
-        }
-
-        // Starting Cash 
-        if (PlayerPrefs.HasKey("Upgraded Starting Cash"))
-        {
-
-            startingCash = PlayerPrefs.GetInt("Upgraded Starting Cash", 1000);
-            Debug.Log("Loading Starting Cash, Current : " + startingCash);
-        }
-        else
-        {
-            startingCash = 1000;
-            PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
         }
 
         // Player XP
@@ -166,6 +158,48 @@ public class PlayerPrefManager : MonoBehaviour
             PlayerPrefs.SetInt("Current XP", currentXP);
         }
 
+        // Starting Cash 
+        if (PlayerPrefs.HasKey("Upgraded Starting Cash"))
+        {
+
+            startingCash = PlayerPrefs.GetInt("Upgraded Starting Cash", 1000);
+            Debug.Log("Loading Starting Cash, Current : " + startingCash);
+        }
+        else
+        {
+            startingCash = 1000;
+            PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
+        }
+
+        // Flashbang Capacity 
+        if (PlayerPrefs.HasKey("Flashbang Capacity"))
+        {
+
+            flashBangCapacity = PlayerPrefs.GetInt("Flashbang Capacity", 2);
+            Debug.Log("Loading Flashbang Capacity, Current : " + flashBangCapacity);
+        }
+        else
+        {
+            flashBangCapacity = 2;
+            PlayerPrefs.SetInt("Flashbang Capacity", flashBangCapacity);
+        }
+
+        // Sensor Grenade Capacity 
+        if (PlayerPrefs.HasKey("Sensor Grenade Capacity"))
+        {
+
+            sensorGrenadeCapacity = PlayerPrefs.GetInt("Sensor Grenade Capacity", 2);
+            Debug.Log("Loading Sensor Grenade Capacity, Current : " + sensorGrenadeCapacity);
+        }
+        else
+        {
+            sensorGrenadeCapacity = 2;
+            PlayerPrefs.SetInt("Sensor Grenade Capacity", sensorGrenadeCapacity);
+        }
+
+        #endregion
+
+
     }
 
     /* 
@@ -173,88 +207,28 @@ public class PlayerPrefManager : MonoBehaviour
     */
     public void SaveGame()
     {
-        SaveMasterVolume();
-        SaveMusicVolume();
-        SaveSFXVolume();
-        SaveBrightness();
-        SavePlayerSensitivity();
-        SaveStartingCash();
-        SaveSkillPoints();
-        SavePlayerXP();
+        // Save Player Settings
+        PlayerPrefs.SetFloat("Master Volume", masterVolume);
+        PlayerPrefs.SetFloat("Music Volume", musicVolume);
+        PlayerPrefs.SetFloat("SFX Volume", sfxVolume);
+        PlayerPrefs.SetFloat("Brightness", brightness);
+        PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
+
+        // Save Player Upgrades and Xp Info
+        PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
+        PlayerPrefs.SetInt("Current XP", currentXP);
+        PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
+        PlayerPrefs.SetInt("Flashbang Capacity", flashBangCapacity);
+        PlayerPrefs.SetInt("Sensor Grenade Capacity", sensorGrenadeCapacity);
 
         // Fires an event to all listening clients that player perferences has been updated
         OnOptionsUpdateAction?.Invoke();
         Debug.Log("Game Saved");
     }
 
-    #region Save Settings
-    /* 
-    * Saves master volume
-    */
-    private void SaveMasterVolume()
-    {
-        PlayerPrefs.SetFloat("Master Volume", masterVolume);
 
-    }
 
-    /* 
-   * Saves music volume
-   */
-    private void SaveMusicVolume()
-    {
-        PlayerPrefs.SetFloat("Music Volume", musicVolume);
-
-    }
-
-    /* 
-   * Saves sfx volume
-   */
-    private void SaveSFXVolume()
-    {
-        PlayerPrefs.SetFloat("SFX Volume", sfxVolume);
-
-    }
-    /* 
-   * Saves brightness
-   */
-    private void SaveBrightness()
-    {
-        PlayerPrefs.SetFloat("Brightness", brightness);
-
-    }
-
-    /* 
-    * Saves player sensitivity
-    */
-    private void SavePlayerSensitivity()
-    {
-        PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
-    }
-    #endregion
-
-    #region Save Player Info
-    /* 
-    * Saves Skill Points
-    */
-    private void SaveSkillPoints()
-    {
-        PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
-
-    }
-
-    private void SaveStartingCash()
-    {
-        PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
-
-    }
-
-    private void SavePlayerXP()
-    {
-        PlayerPrefs.SetInt("Current XP", currentXP);
-    }
-    #endregion
-
-    public void ResetPlayerPrefs()
+    public void ResetAllPlayerPrefs()
     {
         // Resetting Stats to default
         PlayerPrefs.SetFloat("Master Volume", 100);
@@ -268,6 +242,8 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("Skill Points", 0);
         PlayerPrefs.SetInt("Current XP", 0);
         PlayerPrefs.SetInt("Upgraded Starting Cash", 1000);
+        PlayerPrefs.SetInt("Flashbang Capacity", 2);
+        PlayerPrefs.SetInt("Sensor Grenade Capacity", 2);
 
     }
 }
