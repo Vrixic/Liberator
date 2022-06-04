@@ -127,7 +127,7 @@ public class ButtonFunctionality : MonoBehaviour
             GameManager.Instance.virtualCam.SetActive(false);
         GameManager.Instance.minimapCanvas.SetActive(false);
         GameManager.Instance.shopCanvas.SetActive(true);
-        GameManager.Instance.buttonFuncScript.UpdateCashCountShopUi();
+        UpdateCashCountShopUi();
         GameManager.Instance.isShopMenuOpen = true;
 
     }

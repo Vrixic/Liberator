@@ -149,8 +149,8 @@ public class PlayerPrefManager : MonoBehaviour
         }
         else
         {
-            startingCash = 0;
-            PlayerPrefs.SetInt("Upgraded Starting Cash, Current; ", startingCash);
+            startingCash = 1000;
+            PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
         }
 
         // Player XP
@@ -253,4 +253,21 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("Current XP", currentXP);
     }
     #endregion
+
+    public void ResetPlayerPrefs()
+    {
+        // Resetting Stats to default
+        PlayerPrefs.SetFloat("Master Volume", 100);
+        PlayerPrefs.SetFloat("Music Volume", 100);
+        PlayerPrefs.SetFloat("SFX Volume", 100);
+        PlayerPrefs.SetFloat("Player Sensitivity", 100);
+        PlayerPrefs.SetFloat("Brightness", 100);
+
+
+        // Resetting player upgrades and xp back to defaults
+        PlayerPrefs.SetInt("Skill Points", 0);
+        PlayerPrefs.SetInt("Current XP", 0);
+        PlayerPrefs.SetInt("Upgraded Starting Cash", 1000);
+
+    }
 }

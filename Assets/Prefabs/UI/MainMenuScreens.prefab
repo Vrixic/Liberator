@@ -315,7 +315,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -40.039}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -808,7 +808,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1291,7 +1291,6 @@ GameObject:
   - component: {fileID: 1027590545234150879}
   - component: {fileID: 1027590545234150876}
   - component: {fileID: 1027590545234150877}
-  - component: {fileID: 1027590545234150878}
   m_Layer: 5
   m_Name: UpgradeStartingCashButton
   m_TagString: Untagged
@@ -1401,7 +1400,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1027590545234150878}
+      - m_Target: {fileID: 1027590545798494424}
         m_TargetAssemblyTypeName: MetaShopScript, Assembly-CSharp
         m_MethodName: UpgradeStartingCash
         m_Mode: 1
@@ -1413,19 +1412,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1027590545234150878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027590545234150872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547543ae0553dc648900abd86aab9c77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillPointCount: {fileID: 0}
 --- !u!1 &1027590545242966051
 GameObject:
   m_ObjectHideFlags: 0
@@ -2989,7 +2975,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3528,7 +3514,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4020,7 +4006,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Increase Starting Cash:
+  m_text: 'Increase Starting Cash By $250:
 
     2 Points'
   m_isRightToLeft: 0
@@ -4085,7 +4071,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -588.5131, w: 0}
+  m_margin: {x: 0, y: 0, z: -644.82367, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4101,7 +4087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027590545778404344}
   - component: {fileID: 1027590545778404347}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4347,7 +4333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027590545798494425}
   - component: {fileID: 1027590545798494424}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MetaShopMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4694,7 +4680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027590545909706402}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AssetsCreditsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4907,7 +4893,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5196,7 +5182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027590546017214977}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SettingsSliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5404,7 +5390,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -40.039}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5480,7 +5466,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -40.039}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5769,7 +5755,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027590546093228665}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SettingsLabelsTexts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5805,7 +5791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027590546095572680}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5864,7 +5850,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -40.039}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6021,7 +6007,6 @@ GameObject:
   - component: {fileID: 1027590546128660667}
   - component: {fileID: 1027590546128660664}
   - component: {fileID: 1027590546128660665}
-  - component: {fileID: 1027590546128660666}
   m_Layer: 5
   m_Name: UpgradeSensorCapacityButton
   m_TagString: Untagged
@@ -6131,7 +6116,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1027590546128660666}
+      - m_Target: {fileID: 1027590545798494424}
         m_TargetAssemblyTypeName: MetaShopScript, Assembly-CSharp
         m_MethodName: UpgradeSensorGrenadeCapacity
         m_Mode: 1
@@ -6143,19 +6128,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1027590546128660666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027590546128660660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547543ae0553dc648900abd86aab9c77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillPointCount: {fileID: 0}
 --- !u!1 &1027590546133080602
 GameObject:
   m_ObjectHideFlags: 0
@@ -6625,7 +6597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027590546149133656}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MainMenuButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6752,7 +6724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027590546222873031}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TeamCreditsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7233,7 +7205,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -40.039}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7435,7 +7407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027590546413538990}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SettingTextInputs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7496,7 +7468,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7573,7 +7545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 23, y: -104}
+  m_AnchoredPosition: {x: 23, y: -95}
   m_SizeDelta: {x: 416.1089, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1027590546586590420
@@ -7604,7 +7576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Increase Starting Sensor Grenade Capacity:
+  m_text: 'Increase Starting Sensor Grenade Capacity By 1:
 
     2 Points'
   m_isRightToLeft: 0
@@ -7669,7 +7641,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -737.3577, w: 0}
+  m_margin: {x: 0, y: 0, z: -769.1207, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8145,8 +8117,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027590546766427601}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.084049456}
-  m_LocalScale: {x: 0.37450233, y: 0.37450233, z: 0.37450233}
+  m_LocalPosition: {x: 0, y: 0, z: -8.090363}
+  m_LocalScale: {x: 0.7790285, y: 0.7790285, z: 0.7790285}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1027590546968441690}
@@ -8154,7 +8126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 212, y: 213.30872}
+  m_AnchoredPosition: {x: 190, y: 198}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1027590546766427602
@@ -8212,8 +8184,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 112
-  m_fontSizeBase: 112
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8248,7 +8220,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -526.0993, w: -52.678047}
+  m_margin: {x: 0, y: 0, z: -526.0993, w: -8.85289}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9107,7 +9079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027590546887622813}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MetaShopButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9145,7 +9117,6 @@ GameObject:
   - component: {fileID: 1027590546932611166}
   - component: {fileID: 1027590546932611167}
   - component: {fileID: 1027590546932611164}
-  - component: {fileID: 1027590546932611137}
   m_Layer: 5
   m_Name: UpgadeFlashbangCapacityButton
   m_TagString: Untagged
@@ -9255,7 +9226,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1027590546932611137}
+      - m_Target: {fileID: 1027590545798494424}
         m_TargetAssemblyTypeName: MetaShopScript, Assembly-CSharp
         m_MethodName: UpgradeFlashbangCapacity
         m_Mode: 1
@@ -9267,19 +9238,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1027590546932611137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027590546932611163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547543ae0553dc648900abd86aab9c77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillPointCount: {fileID: 0}
 --- !u!1 &1027590546968441691
 GameObject:
   m_ObjectHideFlags: 0
@@ -9289,7 +9247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027590546968441690}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MetaShopTexts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9755,7 +9713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Increase Flashbang Capacity:
+  m_text: 'Increase Flashbang Capacity By 1:
 
     2 Points'
   m_isRightToLeft: 0
@@ -9820,7 +9778,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -588.5131, w: 0}
+  m_margin: {x: 0, y: 0, z: -697.7456, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11633,7 +11591,7 @@ RectTransform:
   m_GameObject: {fileID: 8114635431892450424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0088, y: 1.0088, z: 1.0088}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3949548807162763762}
@@ -12145,6 +12103,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6140327504545173018, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7199283652477665866, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}
       propertyPath: loadTimeMin
       value: 3
@@ -12152,6 +12114,10 @@ PrefabInstance:
     - target: {fileID: 7467547676109737284, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}
       propertyPath: m_Name
       value: LoadScreenCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467547676109737284, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}

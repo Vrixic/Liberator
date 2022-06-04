@@ -365,10 +365,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 596789792353026511, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 871968070632663862, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -376,10 +372,6 @@ PrefabInstance:
     - target: {fileID: 1027590545571951328, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_Name
       value: MainMenuScreens
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027590545571951328, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1027590545571951331, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_RootOrder

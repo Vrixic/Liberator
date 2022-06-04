@@ -218,6 +218,8 @@ public class GameManager : MonoBehaviour
         }
         playerMoveScript = player.GetComponent<PlayerMotor>();
 
+        // Sets starting cash to player pref for starting cash
+        startingCash = PlayerPrefManager.Instance.startingCash;
         currentCash = startingCash;
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");

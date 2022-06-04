@@ -17,66 +17,61 @@ public class SettingsMenu : MonoBehaviour
     public TMP_InputField brightnessInput;
     public TMP_InputField sensitivityInput;
 
-    float masterVolume = 0f;
-    float musicVolume = 0f;
-    float sfxVolume = 0f;
-    float playerSensitivity = 0f;
-    float brightness = 0f;
     private void OnEnable()
     {
         // Master Volume
         if (PlayerPrefs.HasKey("Master Volume"))
         {
-            masterVolume = PlayerPrefs.GetFloat("Master Volume", 100f);
+            PlayerPrefManager.Instance.masterVolume = PlayerPrefs.GetFloat("Master Volume", 100f);
         }
         else
         {
-            masterVolume = 100f;
-            PlayerPrefs.SetFloat("Master Volume", masterVolume);
+            PlayerPrefManager.Instance.masterVolume = 100f;
+            PlayerPrefs.SetFloat("Master Volume", PlayerPrefManager.Instance.masterVolume);
         }
 
         // Music Volume
         if (PlayerPrefs.HasKey("Music Volume"))
         {
-            musicVolume = PlayerPrefs.GetFloat("Music Volume", 100f);
+            PlayerPrefManager.Instance.musicVolume = PlayerPrefs.GetFloat("Music Volume", 100f);
         }
         else
         {
-            musicVolume = 100f;
-            PlayerPrefs.SetFloat("Music Volume", musicVolume);
+            PlayerPrefManager.Instance.musicVolume = 100f;
+            PlayerPrefs.SetFloat("Music Volume", PlayerPrefManager.Instance.musicVolume);
         }
 
         // SFX volume
         if (PlayerPrefs.HasKey("SFX Volume"))
         {
-            sfxVolume = PlayerPrefs.GetFloat("SFX Volume", 100f);
+            PlayerPrefManager.Instance.sfxVolume = PlayerPrefs.GetFloat("SFX Volume", 100f);
         }
         else
         {
-            sfxVolume = 100f;
-            PlayerPrefs.SetFloat("SFX Volume", sfxVolume);
+            PlayerPrefManager.Instance.sfxVolume = 100f;
+            PlayerPrefs.SetFloat("SFX Volume", PlayerPrefManager.Instance.sfxVolume);
         }
 
         // Player Sensitivity
         if (PlayerPrefs.HasKey("Player Sensitivity"))
         {
-            playerSensitivity = PlayerPrefs.GetFloat("Player Sensitivity", 100f);
+            PlayerPrefManager.Instance.playerSensitivity = PlayerPrefs.GetFloat("Player Sensitivity", 100f);
         }
         else
         {
-            playerSensitivity = 100f;
-            PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
+            PlayerPrefManager.Instance.playerSensitivity = 100f;
+            PlayerPrefs.SetFloat("Player Sensitivity", PlayerPrefManager.Instance.playerSensitivity);
         }
 
         // Brightness
         if (PlayerPrefs.HasKey("Brightness"))
         {
-            brightness = PlayerPrefs.GetFloat("Brightness", 100f);
+            PlayerPrefManager.Instance.brightness = PlayerPrefs.GetFloat("Brightness", 100f);
         }
         else
         {
-            brightness = 100f;
-            PlayerPrefs.SetFloat("Brightness", brightness);
+            PlayerPrefManager.Instance.brightness = 100f;
+            PlayerPrefs.SetFloat("Brightness", PlayerPrefManager.Instance.brightness);
         }
 
         InitSliders();
@@ -86,20 +81,20 @@ public class SettingsMenu : MonoBehaviour
     // Initialize Sliders and text boxes to current player prefs
     public void InitSliders()
     {
-        masterVolumeInput.text = masterVolume.ToString();
-        masterVolumeSlider.value = masterVolume;
+        masterVolumeInput.text = PlayerPrefManager.Instance.masterVolume.ToString();
+        masterVolumeSlider.value = PlayerPrefManager.Instance.masterVolume;
 
-        musicVolumeInput.text = musicVolume.ToString();
-        musicVolumeSlider.value = musicVolume;
+        musicVolumeInput.text = PlayerPrefManager.Instance.musicVolume.ToString();
+        musicVolumeSlider.value = PlayerPrefManager.Instance.musicVolume;
 
-        sfxVolumeInput.text = sfxVolume.ToString();
-        sfxVolumeSlider.value = sfxVolume;
+        sfxVolumeInput.text = PlayerPrefManager.Instance.sfxVolume.ToString();
+        sfxVolumeSlider.value = PlayerPrefManager.Instance.sfxVolume;
 
-        sensitivityInput.text = playerSensitivity.ToString();
-        sensitivitySlider.value = playerSensitivity;
+        sensitivityInput.text = PlayerPrefManager.Instance.playerSensitivity.ToString();
+        sensitivitySlider.value = PlayerPrefManager.Instance.playerSensitivity;
 
-        brightnessInput.text = brightness.ToString();
-        brightnessSlider.value = brightness;
+        brightnessInput.text = PlayerPrefManager.Instance.brightness.ToString();
+        brightnessSlider.value = PlayerPrefManager.Instance.brightness;
     }
 
     #region Update Sliders and Text Fields Methods
@@ -110,12 +105,17 @@ public class SettingsMenu : MonoBehaviour
         {
             masterVolumeInput.text = "0";
         }
-        // Updates Player preference to value inputted into text box
+        // Updates all volume preferences to represent what master volume is set to in text box
+
 
         PlayerPrefs.SetFloat("Master Volume", int.Parse(masterVolumeInput.text));
-        
+        PlayerPrefs.SetFloat("Music Volume", int.Parse(masterVolumeInput.text));
+        PlayerPrefs.SetFloat("SFX Volume", int.Parse(masterVolumeInput.text));
+
         // Updates Slider to represent value inputted into text box
         masterVolumeSlider.value = int.Parse(masterVolumeInput.text);
+        musicVolumeSlider.value = int.Parse(masterVolumeInput.text);
+        sfxVolumeSlider.value = int.Parse(masterVolumeInput.text);
     }
 
     public void UpdateMusicVolumeInputValue()
@@ -178,12 +178,16 @@ public class SettingsMenu : MonoBehaviour
 
     public void UpdateMasterVolumeSliderValue()
     {
-        // Updates Player preference to value set by slider
+        // Updates all volume preferences to represent what master volume is set to
 
         PlayerPrefs.SetFloat("Master Volume", masterVolumeSlider.value);
+        PlayerPrefs.SetFloat("Music Volume", masterVolumeSlider.value);
+        PlayerPrefs.SetFloat("SFX Volume", masterVolumeSlider.value);
 
         // Updates text box to represent number input by slider
         masterVolumeInput.text = masterVolumeSlider.value.ToString();
+        musicVolumeInput.text = masterVolumeSlider.value.ToString();
+        sfxVolumeInput.text = masterVolumeSlider.value.ToString();
 
     }
 
