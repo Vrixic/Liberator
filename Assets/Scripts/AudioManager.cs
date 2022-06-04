@@ -74,11 +74,9 @@ public class AudioManager : MonoBehaviour
         
         if (sE.audioType == AudioType.sfx) {
             ad.volume = (PlayerPrefManager.Instance.sfxVolume/100) * sE.volMultiplier; }
-        else if (sE.audioType == AudioType.music) {
+        else if (sE.audioType == AudioType.ui) {
             ad.volume = (PlayerPrefManager.Instance.musicVolume/100) * sE.volMultiplier; }
-        else if (sE.audioType == AudioType.other){
-            ad.volume = (PlayerPrefManager.Instance.masterVolume/100) * sE.volMultiplier; }
-        else { ad.volume = (PlayerPrefManager.Instance.masterVolume/100); }
+        else { ad.volume = 1f; }
 
         ad.PlayOneShot(GetAudioClip(objectTag));
     }
@@ -116,7 +114,6 @@ public class AudioManager : MonoBehaviour
     public enum AudioType
     {
         sfx,
-        music, 
-        other
+        ui,
     }
 }

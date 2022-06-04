@@ -7,6 +7,9 @@ public class Sprinkler : MonoBehaviour
     public float stunTime = 5.0f;
     BoxCollider stunTrigger;
     Sprinkler sprinkle;
+
+    [SerializeField] ParticleSystem spray;
+
     bool isUsed;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +24,9 @@ public class Sprinkler : MonoBehaviour
     {
        Debug.Log("Sprinkler Shot");
        stunTrigger.enabled = true;
+       if (isUsed == false) { Instantiate(spray, transform.position, Quaternion.identity); }
        isUsed = true;
+       
        StartCoroutine(DeactivateSprinkler());
     }
 
