@@ -8,7 +8,7 @@ public class PlayerPrefManager : MonoBehaviour
     [HideInInspector]
     public float masterVolume = 100;
     [HideInInspector]
-    public float musicVolume = 0f;
+    public float musicVolume = 100;
     [HideInInspector]
     public float sfxVolume = 100;
     [HideInInspector]

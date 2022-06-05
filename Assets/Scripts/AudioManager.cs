@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     /* list of sounds */
     public List<SoundEffect> sfxSounds = new List<SoundEffect>();
 
-    public Dictionary<string, string> audioSoundDictionary = new Dictionary<string, string>();
+    public Dictionary<string, string> audioSourceDictionary = new Dictionary<string, string>();
 
     public Dictionary<string, Sound> audioSoundsAudioClipDictionary = new Dictionary<string, Sound>();
 
@@ -40,45 +40,43 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
-
+        DontDestroyOnLoad(this.gameObject);
         foreach (SoundEffect sound in sfxSounds)
         {
-            audioSoundDictionary.Add(sound.objectTag, ObjectPoolManager.Instance.CreateObjectPool(pAudioSource, 1));
+            audioSourceDictionary.Add(sound.objectTag, ObjectPoolManager.Instance.CreateObjectPool(pAudioSource, 1));
             audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.sound);
         }
-
-        //foreach (Sound sound in uiSounds)
-        //{
-        //    audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.audio);
-        //}
     }
-
+    private void Start()
+    {
+        
+    }
     public void PlayAudioAtLocation(Vector3 location, string objectTag)
     {
-        PoolableObject obj;
-        AudioSource ad;
-        Sound sE;
+        PoolableObject poolable;
+        AudioSource audioSource;
+        Sound sound;
         if (audioSoundsAudioClipDictionary.ContainsKey(objectTag))
         {
-            obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary[objectTag]);
-            sE = audioSoundsAudioClipDictionary[objectTag];
+            poolable = ObjectPoolManager.Instance.SpawnObject(audioSourceDictionary[objectTag]);
+            sound = audioSoundsAudioClipDictionary[objectTag];
         }
         else
         {
-            obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary[sfxSounds[0].objectTag]);
-            sE = audioSoundsAudioClipDictionary[sfxSounds[0].objectTag];
+            poolable = ObjectPoolManager.Instance.SpawnObject(audioSourceDictionary[sfxSounds[0].objectTag]);
+            sound = audioSoundsAudioClipDictionary[sfxSounds[0].objectTag];
         }
 
-        obj.transform.position = location;
-        ad = obj.GetComponent<AudioSource>();
+        poolable.transform.position = location;
+        audioSource = poolable.GetComponent<AudioSource>();
         
-        if (sE.audioType == AudioType.sfx) {
-            ad.volume = (PlayerPrefManager.Instance.sfxVolume/100) * sE.volMultiplier; }
-        else if (sE.audioType == AudioType.ui) {
-            ad.volume = (PlayerPrefManager.Instance.musicVolume/100) * sE.volMultiplier; }
-        else { ad.volume = 1f; }
+        if (sound.audioType == AudioType.sfx) {
+            audioSource.volume = (PlayerPrefManager.Instance.sfxVolume/100) * sound.volMultiplier; }
+        else if (sound.audioType == AudioType.ui) {
+            audioSource.volume = (PlayerPrefManager.Instance.musicVolume/100) * sound.volMultiplier; }
+        else { audioSource.volume = 1f; }
 
-        ad.PlayOneShot(GetAudioClip(objectTag));
+        audioSource.PlayOneShot(GetAudioClip(objectTag));
     }
 
     public AudioClip GetAudioClip(string objectTag)
@@ -114,6 +112,6 @@ public class AudioManager : MonoBehaviour
     public enum AudioType
     {
         sfx,
-        ui,
+        ui
     }
 }

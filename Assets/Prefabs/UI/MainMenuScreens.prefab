@@ -8645,6 +8645,7 @@ GameObject:
   - component: {fileID: 1027590546836243320}
   - component: {fileID: 1027590546836243321}
   - component: {fileID: 1027590546836243318}
+  - component: {fileID: 1250593686}
   m_Layer: 5
   m_Name: ReturnToMainMenuButton
   m_TagString: Untagged
@@ -8779,6 +8780,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1250593686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027590546836243317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c3cd8bf72d70a49a0e7b3a55546f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1027590546854032720
 GameObject:
   m_ObjectHideFlags: 0
@@ -10826,6 +10839,7 @@ GameObject:
   - component: {fileID: 6339476074380651148}
   - component: {fileID: 6866597296078686034}
   - component: {fileID: 8672613831734843546}
+  - component: {fileID: 1332378749}
   m_Layer: 5
   m_Name: CreditsMenuButton
   m_TagString: Untagged
@@ -10960,6 +10974,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1332378749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995492409006284673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c3cd8bf72d70a49a0e7b3a55546f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6005246748175254906
 GameObject:
   m_ObjectHideFlags: 0
@@ -11652,6 +11678,7 @@ GameObject:
   - component: {fileID: 4085078836147385224}
   - component: {fileID: 7472313088609744710}
   - component: {fileID: 7245789381496131940}
+  - component: {fileID: 1618688972}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -11786,6 +11813,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1618688972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183212062460495485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c3cd8bf72d70a49a0e7b3a55546f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8728478865958896066
 GameObject:
   m_ObjectHideFlags: 0
@@ -11798,6 +11837,7 @@ GameObject:
   - component: {fileID: 9214982838484667645}
   - component: {fileID: 4788920949972358318}
   - component: {fileID: 859460337010936120}
+  - component: {fileID: 1256599823}
   m_Layer: 5
   m_Name: MetaShopButton
   m_TagString: Untagged
@@ -11932,6 +11972,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1256599823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8728478865958896066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c3cd8bf72d70a49a0e7b3a55546f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9188110241984544710
 GameObject:
   m_ObjectHideFlags: 0

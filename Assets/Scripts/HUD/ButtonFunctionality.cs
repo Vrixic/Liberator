@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ButtonFunctionality : MonoBehaviour
@@ -20,8 +21,14 @@ public class ButtonFunctionality : MonoBehaviour
         reticle = GameManager.Instance.reticle;
         shotgunAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells);
         SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
+        Button btn = GetComponentInChildren<Button>();
+        btn?.onClick.AddListener(PlayOnClick);
     }
-
+    void PlayOnClick()
+    {
+        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonPress");
+    }
+    
     #region PauseMenu
     public void PauseGame()
     {

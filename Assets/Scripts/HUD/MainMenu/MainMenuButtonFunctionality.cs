@@ -11,6 +11,15 @@ public class MainMenuButtonFunctionality : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+    private void Start()
+    {
+        Button btn = GetComponentInChildren<Button>();
+        btn?.onClick.AddListener(PlayOnClick);
+    }
+    void PlayOnClick()
+    {
+        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonPress");
+    }
 
     #region MainMenu
 

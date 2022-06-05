@@ -834,6 +834,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7987560300835406213, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987560300835406213, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987560300835406213, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987560300835406213, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ButtonFunctionality, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7987560302406004792, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -1140,6 +1156,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 930611167563045466, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865709977221145827, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7467547676109737284, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}
