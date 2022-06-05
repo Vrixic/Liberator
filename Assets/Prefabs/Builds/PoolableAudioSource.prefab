@@ -141,4 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd30653e6d1b2d4d9d40225e6c66b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPoolTime: 1
+  autoPoolTime: 2

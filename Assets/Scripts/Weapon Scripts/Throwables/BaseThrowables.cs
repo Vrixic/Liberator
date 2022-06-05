@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(AudioSource))]
 public class BaseThrowables : PoolableObject
 {
     /* time it takes before the throwable expodes */
@@ -44,7 +43,6 @@ public class BaseThrowables : PoolableObject
     {
         yield return new WaitForSeconds(throwableExplodeTimer);
 
-        PlayExplodeAudio();
         PlayExplodeSFX();
 
         Debug.Log(name + " just exploded!");
@@ -59,14 +57,6 @@ public class BaseThrowables : PoolableObject
     {
         Debug.Log("Throw" + name);
         StartCoroutine(OnThrowableExplode());
-    }
-
-    /*
-    * plays the explosion audio
-    */
-    protected void PlayExplodeAudio()
-    {
-        m_AudioSource.Play();
     }
 
     /*

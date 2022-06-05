@@ -22430,6 +22430,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3812307965037846977, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.162333
+      objectReference: {fileID: 0}
     - target: {fileID: 5994487195960309196, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -45070,7 +45074,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-286710
+  m_Name: pb_Mesh-342486
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -53350,7 +53354,7 @@ PrefabInstance:
       objectReference: {fileID: 1387129697}
     - target: {fileID: 8156911008342082172, guid: cd9bc06aa5bfb8e40a7cf099b7cded76, type: 3}
       propertyPath: m_VersionIndex
-      value: 6363
+      value: 6372
       objectReference: {fileID: 0}
     - target: {fileID: 8156911008538188881, guid: cd9bc06aa5bfb8e40a7cf099b7cded76, type: 3}
       propertyPath: m_Mesh
@@ -53358,7 +53362,7 @@ PrefabInstance:
       objectReference: {fileID: 995285395}
     - target: {fileID: 8156911008538188881, guid: cd9bc06aa5bfb8e40a7cf099b7cded76, type: 3}
       propertyPath: m_VersionIndex
-      value: 2265
+      value: 2274
       objectReference: {fileID: 0}
     - target: {fileID: 8156911008538188885, guid: cd9bc06aa5bfb8e40a7cf099b7cded76, type: 3}
       propertyPath: m_Mesh
@@ -63148,7 +63152,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-286696
+  m_Name: pb_Mesh-342472
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -100935,10 +100939,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChasePlayerOnOpen: []
-  openDoorAudioSource: {fileID: 3575245770123757407}
-  closeDoorAudioSource: {fileID: 5418769286253319257}
-  openDoorAudio: {fileID: 8300000, guid: bc59ce5d225369f4c9382dd718279df8, type: 3}
-  closeDoorAudio: {fileID: 8300000, guid: 4b816cc31ff84794a9d997c31da11f4f, type: 3}
 --- !u!23 &415230642256364090
 MeshRenderer:
   m_ObjectHideFlags: 0

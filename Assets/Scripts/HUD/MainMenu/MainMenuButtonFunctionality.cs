@@ -40,7 +40,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour
         MenuMusicScript.Instance.StopMenuMusic();
 
         //starts game music
-        MenuMusicScript.Instance.PlayGameMusicDelayed(3);
+        //MenuMusicScript.Instance.PlayGameMusicDelayed(3);
 
         //SceneManager.LoadScene(1);
         // Sets cursor state to locked and turns off the visibility

@@ -72,7 +72,27 @@ MonoBehaviour:
       volMultiplier: 1
     objectTag: EnemyDeath
   - sound:
-      audioType: 1
+      audioType: 0
       audio: {fileID: 8300000, guid: 1d51b0bd80072ee4d8b7991affbdafe1, type: 3}
       volMultiplier: 1
     objectTag: ButtonPress
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: bc59ce5d225369f4c9382dd718279df8, type: 3}
+      volMultiplier: 1
+    objectTag: DoorOpen
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: 4b816cc31ff84794a9d997c31da11f4f, type: 3}
+      volMultiplier: 1
+    objectTag: DoorClose
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: dba1a0ef5c381024cb013330709a1064, type: 3}
+      volMultiplier: 5
+    objectTag: FlashBang
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: 3f3e45e7366666f4a82c8b883ecd2933, type: 3}
+      volMultiplier: 5
+    objectTag: ScanGrenade

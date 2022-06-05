@@ -28,7 +28,7 @@ public class MenuMusicScript : MonoBehaviour
     }
     void Start()
     {
-        PlayMenuMusic();
+        //PlayMenuMusic();
         DontDestroyOnLoad(this.gameObject);
     }
     private void Update()

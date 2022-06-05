@@ -7,12 +7,12 @@ public class DoorController : MonoBehaviour
     //drag and drop assassin enemies in here
     [SerializeField] private List<AIAgent> ChasePlayerOnOpen = new List<AIAgent>();
 
-    //create open and close door audio sources
-    [SerializeField] private AudioSource openDoorAudioSource = null;
-    [SerializeField] private AudioSource closeDoorAudioSource = null;
+    ////create open and close door audio sources
+    //[SerializeField] private AudioSource openDoorAudioSource = null;
+    //[SerializeField] private AudioSource closeDoorAudioSource = null;
 
-    [SerializeField] private AudioClip openDoorAudio = null;
-    [SerializeField] private AudioClip closeDoorAudio = null;
+    //[SerializeField] private AudioClip openDoorAudio = null;
+    //[SerializeField] private AudioClip closeDoorAudio = null;
     //once a door has been opened once, I don't want to keep trying to swap assassins to chase player anymore
     private bool chaseTriggeredOnce = false; 
 
@@ -41,7 +41,7 @@ public class DoorController : MonoBehaviour
             {
                 doorAnimator.Play("DoorOpenNew", 0, 0.0f);
                 doorOpen = true;
-                openDoorAudioSource.PlayOneShot(openDoorAudio);
+                AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorOpen");
 
                 //tell subscribed assassins to start chasing player(if any are attached)
                 if (!chaseTriggeredOnce && ChasePlayerOnOpen.Count > 0)
@@ -67,7 +67,7 @@ public class DoorController : MonoBehaviour
             {
                 doorAnimator.Play("DoorCloseNew", 0, 0.0f);
                 doorOpen = false;
-                closeDoorAudioSource.PlayOneShot(closeDoorAudio);
+                AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorClose");
             }
 
             //alert any enemies within a certain range of the door interaction
@@ -88,7 +88,7 @@ public class DoorController : MonoBehaviour
             {
                 doorAnimator.Play("DoorOpenNew", 0, 0.0f);
                 doorOpen = true;
-                openDoorAudioSource.PlayOneShot(openDoorAudio);
+                AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorOpen");
             }
         }
     }
@@ -107,7 +107,7 @@ public class DoorController : MonoBehaviour
                 //if door is open then close the door
                 doorAnimator.Play("DoorCloseNew", 0, 0.0f);
                 doorOpen = false;
-                closeDoorAudioSource.PlayOneShot(closeDoorAudio);
+                AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorClose");
             }
         }
     }

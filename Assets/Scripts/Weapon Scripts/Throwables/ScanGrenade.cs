@@ -18,7 +18,7 @@ public class ScanGrenade : BaseThrowables
     {
         yield return new WaitForSeconds(GetExplodeTimer());
 
-        PlayExplodeAudio();
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, "ScanGrenade");
         PlayExplodeSFX();
 
         // Do Physics.OverlapSphereNonAlloc here
