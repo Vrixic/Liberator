@@ -81,15 +81,15 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject shopCanvas;
     [HideInInspector]
-    public TextMeshProUGUI itemTabCashCountText;
+    public TMP_Text itemTabCashCountText;
     [HideInInspector]
-    public TextMeshProUGUI buyWeaponTabCashCountText;
+    public TMP_Text buyWeaponTabCashCountText;
     [HideInInspector]
-    public TextMeshProUGUI weaponUpgradeText;
+    public TMP_Text weaponUpgradeText;
     [HideInInspector]
-    public TextMeshProUGUI weaponMaxUpgradeText;
+    public TMP_Text weaponMaxUpgradeText;
     [HideInInspector]
-    public TextMeshProUGUI sensorGrenadeCount;
+    public TMP_Text sensorGrenadeCount;
     [HideInInspector]
     public GameObject sensorGrenadeIcon;
     [HideInInspector]
@@ -102,7 +102,8 @@ public class GameManager : MonoBehaviour
     public bool isPauseMenuOpen;
     [HideInInspector]
     public GameObject ammoCanvas;
-
+    [HideInInspector]
+    public TMP_Text cashGainedText;
     [HideInInspector]
     public bool isShopMenuOpen;
     public bool IsUIOverlayVisible { get; set; } = false;
@@ -210,6 +211,8 @@ public class GameManager : MonoBehaviour
 
         ammoCanvas = GameObject.FindGameObjectWithTag("AmmoCanvas");
 
+        cashGainedText = GameObject.FindGameObjectWithTag("CashGainedText").GetComponent<TextMeshProUGUI>();
+
         if (player == null)
         {
             Debug.LogError("Player class cannot be found, does not exist");
@@ -269,6 +272,14 @@ public class GameManager : MonoBehaviour
 
         Debug.LogWarning("Restart your game bud, you suck!");
         //SceneManager.LoadScene(0);
+    }
+
+    // Still Needs To be properly Implemented
+    public void DisplayCashReward(int cashAmount)
+    {
+        cashGainedText.text = "+ $" + cashAmount;
+        cashGainedText.alpha = 100;
+       
     }
 
     /* 
