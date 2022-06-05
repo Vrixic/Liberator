@@ -41,6 +41,8 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.openDoorInteractText.SetActive(false);
                 GameManager.Instance.secureHostageText.SetActive(false);
             }
+            //pause game music
+            MenuMusicScript.Instance.PauseGameMusic();
             // Turn off Reticle
             reticle.SetActive(false);
             // Turns on Pause menu image
@@ -69,6 +71,9 @@ public class ButtonFunctionality : MonoBehaviour
 
     public void Resume()
     {
+        //RESUME GAME MUSIC
+        MenuMusicScript.Instance.PlayGameMusic();
+
         // Turn Reticle back on
         reticle.SetActive(true);
 

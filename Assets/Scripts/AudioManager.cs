@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public PoolableObject pAudioSource;
+
     /* list of sounds */
     public List<SoundEffect> sfxSounds = new List<SoundEffect>();
 
@@ -32,25 +33,18 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Debug.LogError("Multiple AudioManagers! Destroying the newest one: " + this.name);
-            Destroy(this.gameObject);
-            return;
-        }
-
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+    }
+    private void Start()
+    {
         foreach (SoundEffect sound in sfxSounds)
         {
             audioSourceDictionary.Add(sound.objectTag, ObjectPoolManager.Instance.CreateObjectPool(pAudioSource, 1));
             audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.sound);
         }
     }
-    private void Start()
-    {
-        
-    }
+
     public void PlayAudioAtLocation(Vector3 location, string objectTag)
     {
         PoolableObject poolable;

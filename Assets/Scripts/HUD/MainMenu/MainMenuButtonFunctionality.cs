@@ -36,6 +36,12 @@ public class MainMenuButtonFunctionality : MonoBehaviour
         PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
         ScreenManager.Instance.ShowScreen("Transition_Screen");
 
+        //pauses menu music
+        MenuMusicScript.Instance.StopMenuMusic();
+
+        //starts game music
+        MenuMusicScript.Instance.PlayGameMusicDelayed(3);
+
         //SceneManager.LoadScene(1);
         // Sets cursor state to locked and turns off the visibility
         Cursor.lockState = CursorLockMode.Locked;
