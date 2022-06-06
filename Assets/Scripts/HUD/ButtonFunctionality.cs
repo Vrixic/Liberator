@@ -26,11 +26,11 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "ButtonPress");
+        AudioManager.Instance.Play2dAudioOnce("ButtonPress");
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "ButtonHover");
+        AudioManager.Instance.Play2dAudioOnce("ButtonHover");
     }
 
     #region PauseMenu
@@ -47,7 +47,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 GameManager.Instance.secureHostageText.SetActive(false);
             }
             //pause game music
-            AudioManager.Instance.PauseMusic();
+            //AudioManager.Instance.PauseMusic();
 
             // Turn off Reticle
             reticle.SetActive(false);
@@ -81,7 +81,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
 
             //RESUME GAME MUSIC
-            AudioManager.Instance.ResumeMusic();
+            //AudioManager.Instance.ResumeMusic();
 
             // Turn Reticle back on
             reticle.SetActive(true);

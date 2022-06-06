@@ -166,7 +166,7 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX", true);
+            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
 
         }
 
@@ -259,7 +259,7 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX", true);
+            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
 
         }
     }
