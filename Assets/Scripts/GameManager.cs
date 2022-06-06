@@ -275,6 +275,8 @@ public class GameManager : MonoBehaviour
 
         // Loads all player perferences from last save
         PlayerPrefManager.Instance.LoadGame();
+        RenderSettings.ambientLight = new Color(PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, 1.0f);
+
     }
 
     private void Update()
