@@ -15,11 +15,11 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonPress");
+        AudioManager.Instance.Play2dAudioOnce("ButtonPress");
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonHover");
+        AudioManager.Instance.Play2dAudioOnce("ButtonHover");
     }
 
     #region MainMenu
@@ -41,7 +41,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
         AudioManager.Instance.StopMusic();
 
         //starts game music
-        Invoke("PlayGameMusicInvoked", 2);
+        //Invoke("PlayGameMusicInvoked", 2);
 
         //SceneManager.LoadScene(1);
         // Sets cursor state to locked and turns off the visibility
