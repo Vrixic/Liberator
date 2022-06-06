@@ -33,8 +33,9 @@ public class Sprinkler : MonoBehaviour
     IEnumerator DeactivateSprinkler()
     {
         yield return new WaitForSeconds(5.0f);
-        sprinkle.enabled = false;
         stunTrigger.enabled = false;
+        sprinkle.enabled = false;
+        
     }
 
 }

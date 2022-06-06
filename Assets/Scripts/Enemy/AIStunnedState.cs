@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class AIStunnedState : AIState
 {
-    public float stunnedTimer = 3f;
-    float currentStunTime = 3f;
+    public float stunTimer = 5f;
     void AIState.Enter(AIAgent agent)
     {
-        agent.animator.SetTrigger("Flashbang");
-        if(agent.transform.parent.tag == "Juggernaut")
-        {
-            currentStunTime = 6f;
-        }
+        agent.currentState = AIStateID.Stunned;
+        agent.animator.SetBool("Flashbang", true);
         agent.navMeshAgent.isStopped = true;
-        agent.isFlashed = true;
     }
 
     void AIState.Exit(AIAgent agent)
     {
-        agent.isFlashed = false;
-        currentStunTime = stunnedTimer;
+        agent.animator.SetBool("Flashbang", false);
         agent.navMeshAgent.isStopped = false;
     }
 
@@ -31,8 +25,8 @@ public class AIStunnedState : AIState
 
     void AIState.Update(AIAgent agent)
     {
-        currentStunTime -= Time.deltaTime;
-        if(currentStunTime <= 0.0f)
+        stunTimer -= Time.deltaTime;
+        if (stunTimer <= 0)
         {
             agent.stateMachine.ChangeState(AIStateID.Idle);
         }
