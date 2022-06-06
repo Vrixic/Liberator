@@ -256,6 +256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JuggernautScripts
       objectReference: {fileID: 0}
+    - target: {fileID: 1567501891342151133, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1567501891342184955, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -319,6 +323,20 @@ CapsuleCollider:
   m_Height: 2.25
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1449718064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812428721721932882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3326872f55a12674d9352eb68b101ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniMapLocator: {fileID: 176942370}
+  locationExposedTimer: 5
 --- !u!114 &3159087118973286974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,8 +349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6215d5fffe529a40990ff77121b26b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 4
-  damage: 3
+  fireRate: 0.9
+  damage: 14
   bulletPrefab: {fileID: -7061582049979965478, guid: 0bacc6736d7e36244b8f36b20e092033, type: 3}
   bulletSpawnLocation: {fileID: 621706907}
   maxNumOfBullets: 60
@@ -350,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829cace10e07f0a4a9861922ac760b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 1150
   currentHealth: 0
   skinnedMeshRenderer: {fileID: 0}
   blinkIntensity: 0
@@ -380,7 +398,6 @@ MonoBehaviour:
   aimDirection: {x: 0, y: 0, z: 0}
   disableEnemyInterval: 2
   isFlashed: 0
-  enemyAudioSource: {fileID: 0}
 --- !u!114 &5352958576046171733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,17 +446,3 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1449718064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6812428721721932882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3326872f55a12674d9352eb68b101ccf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miniMapLocator: {fileID: 176942370}
-  locationExposedTimer: 5
