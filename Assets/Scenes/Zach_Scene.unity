@@ -961,11 +961,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4349689160829392, guid: 7f0c31dcd24808146bd2f1b4545c5787, type: 3}
   m_PrefabInstance: {fileID: 34342139}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &37039503 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6871955234078439162, guid: dee4b291c67714042a12c874e9c1009c, type: 3}
-  m_PrefabInstance: {fileID: 1870382599}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &37190032
 GameObject:
   m_ObjectHideFlags: 0
@@ -22432,7 +22427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3812307965037846977, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00005657842
+      value: 0.00036775196
       objectReference: {fileID: 0}
     - target: {fileID: 5994487195960309196, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_RootOrder
@@ -88472,10 +88467,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7736637662195262972, guid: dee4b291c67714042a12c874e9c1009c, type: 3}
-      propertyPath: m_Object
-      value: 
-      objectReference: {fileID: 37039503}
     - target: {fileID: 9167060488812780058, guid: dee4b291c67714042a12c874e9c1009c, type: 3}
       propertyPath: m_Name
       value: SpawnPoint_Player
