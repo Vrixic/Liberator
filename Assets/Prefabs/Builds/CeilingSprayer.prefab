@@ -11862,7 +11862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f08a0bcd744b904ab001372444c9657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stunTime: 5
+  stunTime: 4
   spray: {fileID: 8721767983205460486, guid: 1a721c32a409ec04886acd1d464b8a99, type: 3}
 --- !u!54 &835318614
 Rigidbody:
