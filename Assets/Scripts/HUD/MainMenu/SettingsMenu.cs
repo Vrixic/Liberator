@@ -203,6 +203,11 @@ public class SettingsMenu : MonoBehaviour
         sensitivitySlider.value = int.Parse(sensitivityInput.text);
 
         PlayerPrefManager.Instance.playerSensitivity = sensitivitySlider.value;
+
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+        }
     }
 
     public void UpdateMasterVolumeSliderValue()
@@ -280,6 +285,11 @@ public class SettingsMenu : MonoBehaviour
         sensitivityInput.text = sensitivitySlider.value.ToString();
 
         PlayerPrefManager.Instance.playerSensitivity = sensitivitySlider.value;
+
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+        }
 
     }
 

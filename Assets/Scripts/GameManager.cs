@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public PlayerMotor playerMoveScript;
     [HideInInspector]
+    public PlayerLook playerLookScript;
+    [HideInInspector]
     public GameObject player;
     [HideInInspector]
     public Player playerScript;
@@ -159,6 +161,8 @@ public class GameManager : MonoBehaviour
         playerTransform = player.transform;
         playerScript = player.GetComponent<Player>();
         playerCharacterController = player.GetComponent<CharacterController>();
+
+
         pause = GameObject.FindGameObjectWithTag("PauseMenu");
         pause.SetActive(false);
 
@@ -238,9 +242,9 @@ public class GameManager : MonoBehaviour
             Debug.LogError("MainCamera not found in scene");
         }
 
-        // Adds listeners to options update event
-        PlayerPrefManager.Instance.OnOptionsUpdateAction += playerScript.OnOptionsUpdate;
-        PlayerPrefManager.Instance.OnOptionsUpdateAction += player.GetComponent<PlayerLook>().OnOptionsUpdate;
+        
+        playerLookScript = player.GetComponent<PlayerLook>();
+        playerLookScript.OnSensitivityUpdate();
 
         // Takes the info from enemyKillXpReward and populates it into a dictionary, so that accessing information can be constant time later on.
         for (int i = 0; i < enemyKillXPReward.Count; i++)
