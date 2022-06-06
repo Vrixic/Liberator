@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    #region Player related variables
     [HideInInspector]
     public PlayerMotor playerMoveScript;
     [HideInInspector]
@@ -27,6 +28,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool playerIsGrounded;
     [HideInInspector]
+    #endregion
+
+    #region UI Variables
     public GameObject pause;
     [HideInInspector]
     public GameObject hostageSecured;
@@ -70,16 +74,6 @@ public class GameManager : MonoBehaviour
     public DISystem damageIndicatorSystem;
     [HideInInspector]
     public GameObject hostageProgressBar;
-    [Header("Current cash for viewing, starting cash for testing")]
-    [SerializeField] private int currentCash;
-    public int CurrentCash { get { return currentCash; } set { currentCash = value; } }
-    [SerializeField] private int startingCash = 1000;
-    // public int PreviousXP { get; set; }
-    [SerializeField] public int maxXPAmount = 100;
-    public Dictionary<string, int> enemiesKilled = new Dictionary<string, int>();
-    [SerializeField] List<EnemyKillReward> enemyKillXPReward = new List<EnemyKillReward>();
-    private Dictionary<string, int> enemiesKillXPReward = new Dictionary<string, int>();
-    public int IntelCollected { get; set; }
     [HideInInspector]
     public GameObject shopCanvas;
     [HideInInspector]
@@ -112,13 +106,32 @@ public class GameManager : MonoBehaviour
     public int cashRewardAmount;
     [HideInInspector]
     public bool isShopMenuOpen;
+    [HideInInspector]
+    public GameObject settingsMenu;
+
+    Color textColor = new Color(39, 255, 0);
+    Color clearcolor = Color.clear;
     public bool IsUIOverlayVisible { get; set; } = false;
+    #endregion
+
+    #region Player Stats and info Variables
+    [Header("Current cash for viewing, starting cash for testing")]
+    [SerializeField] private int currentCash;
+    public int CurrentCash { get { return currentCash; } set { currentCash = value; } }
+    [SerializeField] private int startingCash = 1000;
+    // public int PreviousXP { get; set; }
+    [SerializeField] public int maxXPAmount = 100;
+    public Dictionary<string, int> enemiesKilled = new Dictionary<string, int>();
+    [SerializeField] List<EnemyKillReward> enemyKillXPReward = new List<EnemyKillReward>();
+    private Dictionary<string, int> enemiesKillXPReward = new Dictionary<string, int>();
+    public int IntelCollected { get; set; }
+
 
     public int RewardAmount { get; set; } = 0;
     public int RewardID { get; set; } = 0;
-    public bool RewardCollected { get; set; } = true;
-    Color textColor = new Color(39, 255, 0);
-    Color clearcolor = Color.clear;
+    public bool RewardCollected { get; set; } = true; 
+    #endregion
+
 
     //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
     private Collider[] enemyColliders = new Collider[18];
@@ -163,6 +176,7 @@ public class GameManager : MonoBehaviour
         playerCharacterController = player.GetComponent<CharacterController>();
 
 
+        #region Ui Related Variables being Set
         pause = GameObject.FindGameObjectWithTag("PauseMenu");
         pause.SetActive(false);
 
@@ -224,6 +238,11 @@ public class GameManager : MonoBehaviour
         cashGainedText = GameObject.FindGameObjectWithTag("CashGainedText").GetComponent<TextMeshProUGUI>();
         cashGainedText.enabled = false;
         cashRewardAmount = 0;
+
+        settingsMenu = GameObject.FindGameObjectWithTag("SettingsMenu");
+        settingsMenu.SetActive(false); 
+        #endregion
+
         if (player == null)
         {
             Debug.LogError("Player class cannot be found, does not exist");
@@ -255,7 +274,9 @@ public class GameManager : MonoBehaviour
         enemyLayerMask = LayerMask.GetMask("Enemy");
 
         // Loads all player perferences from last save
-        //PlayerPrefManager.Instance.LoadGame();
+        PlayerPrefManager.Instance.LoadGame();
+        RenderSettings.ambientLight = new Color(PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, 1.0f);
+
     }
 
     private void Update()

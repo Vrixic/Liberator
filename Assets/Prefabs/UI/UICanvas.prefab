@@ -3518,6 +3518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMoveScript: {fileID: 0}
+  playerLookScript: {fileID: 0}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   mainCamera: {fileID: 0}
@@ -3574,6 +3575,7 @@ MonoBehaviour:
   cashGainedText: {fileID: 0}
   cashRewardAmount: 0
   isShopMenuOpen: 0
+  settingsMenu: {fileID: 0}
 --- !u!1 &4621048792268023294
 GameObject:
   m_ObjectHideFlags: 0
@@ -3887,11 +3889,11 @@ GameObject:
   - component: {fileID: 9146930947970468764}
   m_Layer: 5
   m_Name: SettingsMenu
-  m_TagString: Untagged
+  m_TagString: SettingsMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9207386121940096565
 Transform:
   m_ObjectHideFlags: 0
