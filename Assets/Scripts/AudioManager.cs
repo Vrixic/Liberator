@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayAudioAtLocation(Vector3 location, string objectTag)
+    public void PlayAudioAtLocation(Vector3 location, string objectTag, bool isPlayer = false)
     {
         PoolableObject poolable;
         AudioSource audioSource;
@@ -60,8 +60,15 @@ public class AudioManager : MonoBehaviour
             poolable = ObjectPoolManager.Instance.SpawnObject(audioSourceDictionary[sfxSounds[0].objectTag]);
             sound = audioSoundsAudioClipDictionary[sfxSounds[0].objectTag];
         }
+        if (isPlayer)
+        {
+            poolable.transform.position = GameManager.Instance.playerScript.transform.position;
+        }
+        else
+        {
+            poolable.transform.position = location;
+        }
 
-        poolable.transform.position = location;
         audioSource = poolable.GetComponent<AudioSource>();
         
         if (sound.audioType == AudioType.sfx) {
