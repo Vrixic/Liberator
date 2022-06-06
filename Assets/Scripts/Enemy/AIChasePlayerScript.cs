@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AIChasePlayerScript : AIState
 {
+    private bool reacting = false;
+
     public AIStateID GetId()
     {
         return AIStateID.ChasePlayer;
@@ -33,10 +35,11 @@ public class AIChasePlayerScript : AIState
         //}
 
         bool inSight = agent.sensor.IsInsight();
-        if (inSight) // players is in sight of the enemy
+
+        if (inSight && reacting == false) // players is in sight of the enemy
         {
-            agent.StartCoroutine(WaitForShotsCoroutine());
-            agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
+            agent.StartCoroutine(WaitForShotsCoroutine(agent));
+            reacting = true;
         }
         else
         {
@@ -71,10 +74,12 @@ public class AIChasePlayerScript : AIState
     public void Exit(AIAgent agent)
     {
         agent.animator.SetBool("Chase", false);
+        reacting = false;
     }
 
-    IEnumerator WaitForShotsCoroutine()
+    IEnumerator WaitForShotsCoroutine(AIAgent agent)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
+        agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
     }
 }
