@@ -189,7 +189,19 @@ public class XPScreen : BaseScreen
             EnemyTextBlock block = new EnemyTextBlock();
             // Adds a new textholder to the scroll view, ands sets its appopriate names and kill amounts            
             block.holder = AddEnemyTextHolder();
-            block.holder.enemyNameText.text = pair.Key;
+            switch (pair.Key)
+            {
+                case "BasicEnemy":
+                    block.holder.enemyNameText.text = "Soldier";
+                    break;
+                case "MeleeUnit":
+                    block.holder.enemyNameText.text = "Stabber";
+                    break;
+                default:
+                    block.holder.enemyNameText.text = pair.Key;
+                    break;
+            }
+            
             block.holder.enemyKillText.text = "x" + pair.Value;
 
             block.transform = block.holder.GetComponent<RectTransform>();
