@@ -237,13 +237,18 @@ public class BaseWeapon :MonoBehaviour//, IWeapon
     protected void PlayAttackAudio()
     {
         //m_AudioSource.PlayOneShot(attackAudioClip);
-        GameManager.Instance.playerScript.PlayOneShotAudio(attackAudioClip);
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, "ShotFired");
     }
 
     /*
     * plays the audio 
     */
-    protected void PlayAudioOneShot(AudioClip clip)
+    protected void PlayAudioOneShot(string clip)
+    {
+        //m_AudioSource.PlayOneShot(clip);
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, clip);
+    }
+    protected void PlayMeeleAudioShot(AudioClip clip)
     {
         //m_AudioSource.PlayOneShot(clip);
         GameManager.Instance.playerScript.PlayOneShotAudio(clip);

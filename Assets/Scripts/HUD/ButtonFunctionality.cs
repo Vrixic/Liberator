@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
-public class ButtonFunctionality : MonoBehaviour
+public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     GameObject pause;
     GameObject virtualCam;
@@ -22,6 +24,15 @@ public class ButtonFunctionality : MonoBehaviour
         SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "ButtonPress");
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "ButtonHover");
+    }
+
     #region PauseMenu
     public void PauseGame()
     {
@@ -34,6 +45,8 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.openDoorInteractText.SetActive(false);
                 GameManager.Instance.secureHostageText.SetActive(false);
             }
+            //pause game music
+            //MenuMusicScript.Instance.PauseGameMusic();
             // Turn off Reticle
             reticle.SetActive(false);
             // Turns on Pause menu image
@@ -62,6 +75,9 @@ public class ButtonFunctionality : MonoBehaviour
 
     public void Resume()
     {
+        //RESUME GAME MUSIC
+        //MenuMusicScript.Instance.PlayGameMusic();
+
         // Turn Reticle back on
         reticle.SetActive(true);
 
@@ -127,7 +143,7 @@ public class ButtonFunctionality : MonoBehaviour
             GameManager.Instance.virtualCam.SetActive(false);
         GameManager.Instance.minimapCanvas.SetActive(false);
         GameManager.Instance.shopCanvas.SetActive(true);
-        GameManager.Instance.buttonFuncScript.UpdateCashCountShopUi();
+        UpdateCashCountShopUi();
         GameManager.Instance.isShopMenuOpen = true;
 
     }
@@ -259,7 +275,7 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
                 // Refill players flashbang Count to max
-                GameManager.Instance.playerScript.IncreaseFlashbang(GameManager.Instance.playerScript.GetMaxFlashBangs());
+                GameManager.Instance.playerScript.IncreaseFlashbangAmount(GameManager.Instance.playerScript.GetMaxFlashBangs());
                 // Update Flashbang UI
                 GameManager.Instance.playerScript.UpdateFlashbangCount();
 
@@ -281,8 +297,8 @@ public class ButtonFunctionality : MonoBehaviour
                     GameManager.Instance.CurrentCash -= 200;
                     UpdateCashCountShopUi();
                     // Refill Flashbangs and Sensor Grenades to max
-                    GameManager.Instance.playerScript.IncreaseFlashbang(GameManager.Instance.playerScript.GetMaxFlashBangs());
-                    GameManager.Instance.playerScript.IncreaseSensorGrenade(GameManager.Instance.playerScript.GetMaxSensorGrenadeCount());
+                    GameManager.Instance.playerScript.IncreaseFlashbangAmount(GameManager.Instance.playerScript.GetMaxFlashBangs());
+                    GameManager.Instance.playerScript.IncreaseSensorGrenadeAmount(GameManager.Instance.playerScript.GetMaxSensorGrenadeCount());
 
                     // Update Ui
                     GameManager.Instance.playerScript.UpdateFlashbangCount();
@@ -303,7 +319,7 @@ public class ButtonFunctionality : MonoBehaviour
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
                 // Refill Sensor Grenades to max
-                GameManager.Instance.playerScript.IncreaseSensorGrenade(GameManager.Instance.playerScript.GetMaxSensorGrenadeCount());
+                GameManager.Instance.playerScript.IncreaseSensorGrenadeAmount(GameManager.Instance.playerScript.GetMaxSensorGrenadeCount());
                 // Update Sensor Grenade UI
                 GameManager.Instance.playerScript.UpdateSensorGrenadeUi();
             }

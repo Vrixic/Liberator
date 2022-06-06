@@ -65,12 +65,14 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public Image gunIcon;
     [HideInInspector]
+    public DISystem damageIndicatorSystem;
+    [HideInInspector]
     public GameObject hostageProgressBar;
     [Header("Current cash for viewing, starting cash for testing")]
     [SerializeField] private int currentCash;
     public int CurrentCash { get { return currentCash; } set { currentCash = value; } }
     [SerializeField] private int startingCash = 1000;
-   // public int PreviousXP { get; set; }
+    // public int PreviousXP { get; set; }
     [SerializeField] public int maxXPAmount = 100;
     public Dictionary<string, int> enemiesKilled = new Dictionary<string, int>();
     [SerializeField] List<EnemyKillReward> enemyKillXPReward = new List<EnemyKillReward>();
@@ -79,15 +81,15 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject shopCanvas;
     [HideInInspector]
-    public TextMeshProUGUI itemTabCashCountText;
+    public TMP_Text itemTabCashCountText;
     [HideInInspector]
-    public TextMeshProUGUI buyWeaponTabCashCountText;
+    public TMP_Text buyWeaponTabCashCountText;
     [HideInInspector]
-    public TextMeshProUGUI weaponUpgradeText;
+    public TMP_Text weaponUpgradeText;
     [HideInInspector]
-    public TextMeshProUGUI weaponMaxUpgradeText;
+    public TMP_Text weaponMaxUpgradeText;
     [HideInInspector]
-    public TextMeshProUGUI sensorGrenadeCount;
+    public TMP_Text sensorGrenadeCount;
     [HideInInspector]
     public GameObject sensorGrenadeIcon;
     [HideInInspector]
@@ -100,7 +102,8 @@ public class GameManager : MonoBehaviour
     public bool isPauseMenuOpen;
     [HideInInspector]
     public GameObject ammoCanvas;
-
+    [HideInInspector]
+    public TMP_Text cashGainedText;
     [HideInInspector]
     public bool isShopMenuOpen;
     public bool IsUIOverlayVisible { get; set; } = false;
@@ -108,8 +111,6 @@ public class GameManager : MonoBehaviour
     public int RewardAmount { get; set; } = 0;
     public int RewardID { get; set; } = 0;
     public bool RewardCollected { get; set; } = true;
-
-    public AsyncOperation SceneOperation { get; set; }
 
     //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
     private Collider[] enemyColliders = new Collider[18];
@@ -155,11 +156,11 @@ public class GameManager : MonoBehaviour
         pause = GameObject.FindGameObjectWithTag("PauseMenu");
         pause.SetActive(false);
 
-
         virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
         reticle = GameObject.FindGameObjectWithTag("Reticle");
         ui = GameObject.FindGameObjectWithTag("UI");
         buttonFuncScript = ui.GetComponent<ButtonFunctionality>();
+        damageIndicatorSystem = ui.GetComponent<DISystem>();
 
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthBarScript = healthBar.GetComponent<HealthBar>();
@@ -210,6 +211,8 @@ public class GameManager : MonoBehaviour
 
         ammoCanvas = GameObject.FindGameObjectWithTag("AmmoCanvas");
 
+        cashGainedText = GameObject.FindGameObjectWithTag("CashGainedText").GetComponent<TextMeshProUGUI>();
+
         if (player == null)
         {
             Debug.LogError("Player class cannot be found, does not exist");
@@ -218,6 +221,8 @@ public class GameManager : MonoBehaviour
         }
         playerMoveScript = player.GetComponent<PlayerMotor>();
 
+        // Sets starting cash to player pref for starting cash
+        startingCash = PlayerPrefManager.Instance.startingCash;
         currentCash = startingCash;
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -267,6 +272,14 @@ public class GameManager : MonoBehaviour
 
         Debug.LogWarning("Restart your game bud, you suck!");
         //SceneManager.LoadScene(0);
+    }
+
+    // Still Needs To be properly Implemented
+    public void DisplayCashReward(int cashAmount)
+    {
+        cashGainedText.text = "+ $" + cashAmount;
+        cashGainedText.alpha = 100;
+       
     }
 
     /* 

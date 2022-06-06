@@ -52,6 +52,7 @@ TagManager:
   - EnvironmentWood
   - EnvironmentMetal
   - Sprinkler
+  - CashGainedText
   layers:
   - Default
   - TransparentFX

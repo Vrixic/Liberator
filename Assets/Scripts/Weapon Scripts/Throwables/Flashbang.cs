@@ -17,7 +17,7 @@ public class Flashbang : BaseThrowables
     {
         yield return new WaitForSeconds(GetExplodeTimer());
 
-        PlayExplodeAudio();
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, "FlashBang");
         PlayExplodeSFX();
 
         // Do Physics.OverlapSphereNonAlloc here

@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class MainMenuButtonFunctionality : MonoBehaviour
+public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     private void Awake()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonPress");
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonHover");
     }
 
     #region MainMenu
@@ -22,7 +31,18 @@ public class MainMenuButtonFunctionality : MonoBehaviour
         // Loads the game Scene
         Debug.Log("Starting Game From Main Menu");
         PlayerPrefManager.Instance.LoadGame();
-        SceneManager.LoadScene(1);
+
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+        ScreenManager.Instance.ShowScreen("Transition_Screen");
+
+        //pauses menu music
+        MenuMusicScript.Instance.StopMenuMusic();
+
+        //starts game music
+        //MenuMusicScript.Instance.PlayGameMusicDelayed(3);
+
+        //SceneManager.LoadScene(1);
         // Sets cursor state to locked and turns off the visibility
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

@@ -121,10 +121,17 @@ public class Player : MonoBehaviour
         {
             m_CurrentWeapons[i] = WeaponSpawnManager.Instance.GetWeapon(startWeaponIDs[i], weaponsParent.transform);
             //m_CurrentWeapons[i].OnPickup(weaponsParent);
-        }   
-        
+        }
+
         ActivateWeapon(0);
         DeactivateWeapon(1);
+
+        // Set capcity of flashbangs and sensor grenades to Capacity dictated by Player Prefs
+        flashbang.SetMaxAmountOfThrowables(PlayerPrefManager.Instance.flashBangCapacity);
+        flashbang.IncreaseThrowable(PlayerPrefManager.Instance.flashBangCapacity);
+
+        sensor.SetMaxAmountOfThrowables(PlayerPrefManager.Instance.sensorGrenadeCapacity);
+        sensor.IncreaseThrowable(PlayerPrefManager.Instance.sensorGrenadeCapacity);
 
         UpdateFlashbangCount();
         UpdateSensorGrenadeUi();
@@ -155,7 +162,7 @@ public class Player : MonoBehaviour
         if (bPlayerDead) return;
 
         if (GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
-        {            
+        {
             if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
             {
                 AudioManager.Instance.PlayAudioAtLocation(transform.position, GetGroundsTag());
@@ -498,6 +505,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Player died");
 
+        GameManager.Instance.damageIndicatorSystem.ClearAllIndicators();
+
         characterController.enabled = false;
         bPlayerDead = true;
 
@@ -753,6 +762,7 @@ public class Player : MonoBehaviour
 
     public void PlayOneShotAudio(AudioClip clip)
     {
+        weaponAudioSrc.volume = PlayerPrefManager.Instance.sfxVolume / 100;
         weaponAudioSrc.PlayOneShot(clip);
     }
 
@@ -761,7 +771,7 @@ public class Player : MonoBehaviour
         return m_CurrentEquippedWeapon.CanSwitchWeapon();
     }
 
-    public void IncreaseFlashbang(int amount)
+    public void IncreaseFlashbangAmount(int amount)
     {
         flashbang.IncreaseThrowable(amount);
     }
@@ -776,10 +786,11 @@ public class Player : MonoBehaviour
         return m_CurrentEquippedWeapon.GetRecoilPatternIndex();
     }
 
-    public void IncreaseSensorGrenade(int amount)
+    public void IncreaseSensorGrenadeAmount(int amount)
     {
         sensor.IncreaseThrowable(amount);
     }
+
     public int GetCurrentSensorGrenadeCount()
     {
         return sensor.GetCurrentAmountOfThrowables();

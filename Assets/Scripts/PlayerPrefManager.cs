@@ -8,9 +8,9 @@ public class PlayerPrefManager : MonoBehaviour
     [HideInInspector]
     public float masterVolume = 100;
     [HideInInspector]
-    public float musicVolume = 0f;
+    public float musicVolume = 100;
     [HideInInspector]
-    public float sfxVolume = 0f;
+    public float sfxVolume = 100;
     [HideInInspector]
     public float brightness = 0f;
     [HideInInspector]
@@ -22,6 +22,11 @@ public class PlayerPrefManager : MonoBehaviour
     public int currentSkillPoints;
     [HideInInspector]
     public int startingCash;
+    [HideInInspector]
+    public int flashBangCapacity;
+    [HideInInspector]
+    public int sensorGrenadeCapacity;
+    public AsyncOperation SceneOperation { get; set; }
 
     public Action OnOptionsUpdateAction;
 
@@ -125,17 +130,32 @@ public class PlayerPrefManager : MonoBehaviour
         }
         #endregion
 
+        #region Player Upgrades and Xp preferences
+
         // Skill Points
         if (PlayerPrefs.HasKey("Skill Points"))
         {
 
-            currentSkillPoints = PlayerPrefs.GetInt("Skill Points", 100);
+            currentSkillPoints = PlayerPrefs.GetInt("Skill Points", 0);
             Debug.Log("Loading Skill Points, Current: " + currentSkillPoints);
         }
         else
         {
             currentSkillPoints = 0;
             PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
+        }
+
+        // Player XP
+        if (PlayerPrefs.HasKey("Current XP"))
+        {
+
+            currentXP = PlayerPrefs.GetInt("Current XP", 1000);
+            Debug.Log("Loading Player XP, Current : " + currentXP);
+        }
+        else
+        {
+            currentXP = 0;
+            PlayerPrefs.SetInt("Current XP", currentXP);
         }
 
         // Starting Cash 
@@ -147,9 +167,38 @@ public class PlayerPrefManager : MonoBehaviour
         }
         else
         {
-            startingCash = 0;
-            PlayerPrefs.SetInt("Upgraded Starting Cash, Current; ", startingCash);
+            startingCash = 1000;
+            PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
         }
+
+        // Flashbang Capacity 
+        if (PlayerPrefs.HasKey("Flashbang Capacity"))
+        {
+
+            flashBangCapacity = PlayerPrefs.GetInt("Flashbang Capacity", 2);
+            Debug.Log("Loading Flashbang Capacity, Current : " + flashBangCapacity);
+        }
+        else
+        {
+            flashBangCapacity = 2;
+            PlayerPrefs.SetInt("Flashbang Capacity", flashBangCapacity);
+        }
+
+        // Sensor Grenade Capacity 
+        if (PlayerPrefs.HasKey("Sensor Grenade Capacity"))
+        {
+
+            sensorGrenadeCapacity = PlayerPrefs.GetInt("Sensor Grenade Capacity", 2);
+            Debug.Log("Loading Sensor Grenade Capacity, Current : " + sensorGrenadeCapacity);
+        }
+        else
+        {
+            sensorGrenadeCapacity = 2;
+            PlayerPrefs.SetInt("Sensor Grenade Capacity", sensorGrenadeCapacity);
+        }
+
+        #endregion
+
 
     }
 
@@ -158,78 +207,43 @@ public class PlayerPrefManager : MonoBehaviour
     */
     public void SaveGame()
     {
-        SaveMasterVolume();
-        SaveMusicVolume();
-        SaveSFXVolume();
-        SaveBrightness();
-        SavePlayerSensitivity();
-        SaveStartingCash();
-        SaveSkillPoints();
+        // Save Player Settings
+        PlayerPrefs.SetFloat("Master Volume", masterVolume);
+        PlayerPrefs.SetFloat("Music Volume", musicVolume);
+        PlayerPrefs.SetFloat("SFX Volume", sfxVolume);
+        PlayerPrefs.SetFloat("Brightness", brightness);
+        PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
+
+        // Save Player Upgrades and Xp Info
+        PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
+        PlayerPrefs.SetInt("Current XP", currentXP);
+        PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
+        PlayerPrefs.SetInt("Flashbang Capacity", flashBangCapacity);
+        PlayerPrefs.SetInt("Sensor Grenade Capacity", sensorGrenadeCapacity);
 
         // Fires an event to all listening clients that player perferences has been updated
         OnOptionsUpdateAction?.Invoke();
         Debug.Log("Game Saved");
     }
 
-    #region Save Settings
-    /* 
-    * Saves master volume
-    */
-    private void SaveMasterVolume()
+
+
+    public void ResetAllPlayerPrefs()
     {
-        PlayerPrefs.SetFloat("Master Volume", masterVolume);
+        // Resetting Stats to default
+        PlayerPrefs.SetFloat("Master Volume", 100);
+        PlayerPrefs.SetFloat("Music Volume", 100);
+        PlayerPrefs.SetFloat("SFX Volume", 100);
+        PlayerPrefs.SetFloat("Player Sensitivity", 100);
+        PlayerPrefs.SetFloat("Brightness", 100);
+
+
+        // Resetting player upgrades and xp back to defaults
+        PlayerPrefs.SetInt("Skill Points", 0);
+        PlayerPrefs.SetInt("Current XP", 0);
+        PlayerPrefs.SetInt("Upgraded Starting Cash", 1000);
+        PlayerPrefs.SetInt("Flashbang Capacity", 2);
+        PlayerPrefs.SetInt("Sensor Grenade Capacity", 2);
 
     }
-
-    /* 
-   * Saves music volume
-   */
-    private void SaveMusicVolume()
-    {
-        PlayerPrefs.SetFloat("Music Volume", musicVolume);
-
-    }
-
-    /* 
-   * Saves sfx volume
-   */
-    private void SaveSFXVolume()
-    {
-        PlayerPrefs.SetFloat("SFX Volume", sfxVolume);
-
-    }
-    /* 
-   * Saves brightness
-   */
-    private void SaveBrightness()
-    {
-        PlayerPrefs.SetFloat("Brightness", brightness);
-
-    }
-
-    /* 
-    * Saves player sensitivity
-    */
-    private void SavePlayerSensitivity()
-    {
-        PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
-    }
-    #endregion
-
-    #region Save Player Info
-    /* 
-    * Saves Skill Points
-    */
-    private void SaveSkillPoints()
-    {
-        PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
-
-    }
-
-    private void SaveStartingCash()
-    {
-        PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
-
-    }
-    #endregion
 }

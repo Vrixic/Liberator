@@ -5,10 +5,11 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public PoolableObject pAudioSource;
-    /* list of sounds */
-    public List<sfxSound> sfxSounds = new List<sfxSound>();
 
-    public Dictionary<string, string> audioSoundDictionary = new Dictionary<string, string>();
+    /* list of sounds */
+    public List<SoundEffect> sfxSounds = new List<SoundEffect>();
+
+    public Dictionary<string, string> audioSourceDictionary = new Dictionary<string, string>();
 
     public Dictionary<string, Sound> audioSoundsAudioClipDictionary = new Dictionary<string, Sound>();
 
@@ -32,44 +33,44 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Debug.LogError("Multiple AudioManagers! Destroying the newest one: " + this.name);
-            Destroy(this.gameObject);
-            return;
-        }
-
         Instance = this;
-
-        foreach (sfxSound sound in sfxSounds)
+        DontDestroyOnLoad(this.gameObject);
+    }
+    private void Start()
+    {
+        foreach (SoundEffect sound in sfxSounds)
         {
-            audioSoundDictionary.Add(sound.objectTag, ObjectPoolManager.Instance.CreateObjectPool(pAudioSource, 1));
+            audioSourceDictionary.Add(sound.objectTag, ObjectPoolManager.Instance.CreateObjectPool(pAudioSource, 1));
             audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.sound);
         }
-
-        //foreach (Sound sound in uiSounds)
-        //{
-        //    audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.audio);
-        //}
     }
 
     public void PlayAudioAtLocation(Vector3 location, string objectTag)
     {
-        PoolableObject obj;
+        PoolableObject poolable;
+        AudioSource audioSource;
+        Sound sound;
         if (audioSoundsAudioClipDictionary.ContainsKey(objectTag))
         {
-            obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary[objectTag]);
+            poolable = ObjectPoolManager.Instance.SpawnObject(audioSourceDictionary[objectTag]);
+            sound = audioSoundsAudioClipDictionary[objectTag];
         }
         else
         {
-            obj = ObjectPoolManager.Instance.SpawnObject(audioSoundDictionary["Untagged"]);
+            poolable = ObjectPoolManager.Instance.SpawnObject(audioSourceDictionary[sfxSounds[0].objectTag]);
+            sound = audioSoundsAudioClipDictionary[sfxSounds[0].objectTag];
         }
 
-        //SetAudioSource(audioSource);
-        obj.transform.position = location;
-        AudioSource ad = obj.GetComponent<AudioSource>();
-        ad.volume = PlayerPrefManager.Instance.masterVolume * audioSoundsAudioClipDictionary[objectTag].volMultiplier;
-        ad.PlayOneShot(GetAudioClip(objectTag));
+        poolable.transform.position = location;
+        audioSource = poolable.GetComponent<AudioSource>();
+        
+        if (sound.audioType == AudioType.sfx) {
+            audioSource.volume = (PlayerPrefManager.Instance.sfxVolume/100) * sound.volMultiplier; }
+        else if (sound.audioType == AudioType.ui) {
+            audioSource.volume = (PlayerPrefManager.Instance.musicVolume/100) * sound.volMultiplier; }
+        else { audioSource.volume = 1f; }
+
+        audioSource.PlayOneShot(GetAudioClip(objectTag));
     }
 
     public AudioClip GetAudioClip(string objectTag)
@@ -88,7 +89,7 @@ public class AudioManager : MonoBehaviour
      * Stores the tag and the particle system associated with the tag
      */
     [System.Serializable]
-    public class sfxSound
+    public class SoundEffect
     {
         public Sound sound;
         public string objectTag;
@@ -97,7 +98,14 @@ public class AudioManager : MonoBehaviour
     [System.Serializable]
     public class Sound
     {
+        public AudioType audioType;
         public AudioClip audio;
         public float volMultiplier = 1f;
+    }
+
+    public enum AudioType
+    {
+        sfx,
+        ui
     }
 }

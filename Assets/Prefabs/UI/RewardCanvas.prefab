@@ -253,7 +253,7 @@ MonoBehaviour:
   rewardAmountText: {fileID: 8270063793849100528}
   rewards:
   - ID: 100
-    rewardSprite: {fileID: 21300000, guid: 7a3cac1c511ebfe4c9018b34c96aefde, type: 3}
+    rewardSprite: {fileID: 21300000, guid: 8b81bd001e6f9a747a906794322aff05, type: 3}
 --- !u!1 &6121882759847238843
 GameObject:
   m_ObjectHideFlags: 0

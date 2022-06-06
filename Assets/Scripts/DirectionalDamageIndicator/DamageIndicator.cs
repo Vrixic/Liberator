@@ -34,6 +34,7 @@ public class DamageIndicator : MonoBehaviour
         player = _player;
         unregister = _unregister;
 
+        StartTimer();
         StartCoroutine(RotateIndicatorToTarget());
 
     }
@@ -78,6 +79,13 @@ public class DamageIndicator : MonoBehaviour
         unregister();
 
         //destroy this specific indicator
+        Destroy(gameObject);
+    }
+
+    public void DestroyIndicator()
+    {
+        if (IE_Countdown != null) { StopCoroutine(IE_Countdown); }
+
         Destroy(gameObject);
     }
 
