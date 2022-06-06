@@ -67,7 +67,7 @@ public class Knife : BaseMelee
             MeleeImpactManager.Instance.SpawnMeleeImpact(hitInfo.point, hitInfo.normal, hitInfo.collider.tag);
 
             // Audio
-            PlayAudioOneShot(MeleeImpactManager.Instance.GetAudioClipForImpactFromTag(hitInfo.collider.tag));
+            PlayMeeleAudioShot(MeleeImpactManager.Instance.GetAudioClipForImpactFromTag(hitInfo.collider.tag));
         }
     }
 

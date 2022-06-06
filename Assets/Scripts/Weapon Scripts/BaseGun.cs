@@ -339,7 +339,7 @@ public class BaseGun : BaseWeapon
 
     void PlayBulletDropAudio()
     {
-        PlayAudioOneShot(bulletDropAudioClip);
+        PlayAudioOneShot("BulletDropped");
     }
 
     /*
@@ -352,7 +352,7 @@ public class BaseGun : BaseWeapon
 
     void PlayRelaodAudio()
     {
-        PlayAudioOneShot(reloadAudioClip);
+        PlayAudioOneShot("ReloadGun");
     }
 
     /*

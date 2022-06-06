@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class MainMenuButtonFunctionality : MonoBehaviour
+public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     private void Awake()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
-    private void Start()
-    {
-        Button btn = GetComponentInChildren<Button>();
-        btn?.onClick.AddListener(PlayOnClick);
-    }
-    void PlayOnClick()
+    public void OnPointerClick(PointerEventData eventData)
     {
         AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonPress");
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonHover");
     }
 
     #region MainMenu

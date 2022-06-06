@@ -4,8 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
-public class ButtonFunctionality : MonoBehaviour
+public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     GameObject pause;
     GameObject virtualCam;
@@ -21,14 +22,17 @@ public class ButtonFunctionality : MonoBehaviour
         reticle = GameManager.Instance.reticle;
         shotgunAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells);
         SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
-        Button btn = GetComponentInChildren<Button>();
-        btn?.onClick.AddListener(PlayOnClick);
     }
-    void PlayOnClick()
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonPress");
+        AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "ButtonPress");
     }
-    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "ButtonHover");
+    }
+
     #region PauseMenu
     public void PauseGame()
     {
