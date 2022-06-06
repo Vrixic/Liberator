@@ -3548,18 +3548,6 @@ MonoBehaviour:
   gunIcon: {fileID: 0}
   damageIndicatorSystem: {fileID: 0}
   hostageProgressBar: {fileID: 0}
-  currentCash: 0
-  startingCash: 1000
-  maxXPAmount: 100
-  enemyKillXPReward:
-  - enemyName: BasicEnemy
-    rewardAmount: 5
-  - enemyName: MeleeUnit
-    rewardAmount: 5
-  - enemyName: Assassin
-    rewardAmount: 10
-  - enemyName: Juggernaut
-    rewardAmount: 50
   shopCanvas: {fileID: 0}
   itemTabCashCountText: {fileID: 0}
   buyWeaponTabCashCountText: {fileID: 0}
@@ -3576,6 +3564,18 @@ MonoBehaviour:
   cashRewardAmount: 0
   isShopMenuOpen: 0
   settingsMenu: {fileID: 0}
+  currentCash: 0
+  startingCash: 1000
+  maxXPAmount: 100
+  enemyKillXPReward:
+  - enemyName: BasicEnemy
+    rewardAmount: 5
+  - enemyName: MeleeUnit
+    rewardAmount: 5
+  - enemyName: Assassin
+    rewardAmount: 10
+  - enemyName: Juggernaut
+    rewardAmount: 50
 --- !u!1 &4621048792268023294
 GameObject:
   m_ObjectHideFlags: 0
@@ -5804,7 +5804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 7987560300835406211}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!114 &7987560301393037638
@@ -7399,6 +7399,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7339117119295259806, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
+--- !u!1 &7987560300835406211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7339117119246605216, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
+  m_PrefabInstance: {fileID: 792716979875093027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7987560301579283102 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7339117118635716797, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
