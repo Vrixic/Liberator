@@ -231,5 +231,5 @@ MonoBehaviour:
   queryLayers:
     serializedVersion: 2
     m_Bits: 8192
-  scanSphereRadius: 5
-  scanThroughWalls: 0
+  scanSphereRadius: 10
+  scanThroughWalls: 1

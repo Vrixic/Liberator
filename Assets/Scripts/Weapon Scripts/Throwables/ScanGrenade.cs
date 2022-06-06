@@ -52,7 +52,11 @@ public class ScanGrenade : BaseThrowables
             }
             else
             {
-                colliders[i].GetComponent<MiniMapScanable>().Show();
+                if (colliders[i].GetComponent<SphereCollider>() == null)
+                {
+                    Debug.Log("scannin: " + colliders[i].name);
+                    colliders[i].GetComponentInChildren<MiniMapScanable>().Show();
+                }
             }
         }
 
