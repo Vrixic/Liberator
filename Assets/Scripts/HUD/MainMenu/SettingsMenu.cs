@@ -186,6 +186,8 @@ public class SettingsMenu : MonoBehaviour
 
         PlayerPrefManager.Instance.brightness = brightnessSlider.value;
 
+        RenderSettings.ambientLight = new Color(PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, 1.0f);
+
     }
 
     public void UpdateSensitivityInputValue()
@@ -239,6 +241,7 @@ public class SettingsMenu : MonoBehaviour
 
         PlayerPrefManager.Instance.musicVolume = musicVolumeSlider.value;
     }
+
     public void UpdateSFXVolumeSliderValue()
     {
         // Updates Player preference to value set by slider
@@ -272,6 +275,7 @@ public class SettingsMenu : MonoBehaviour
 
         PlayerPrefManager.Instance.brightness = brightnessSlider.value;
 
+        RenderSettings.ambientLight = new Color(PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, 1.0f);
     }
 
 
