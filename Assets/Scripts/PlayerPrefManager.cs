@@ -48,12 +48,6 @@ public class PlayerPrefManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Debug.LogError("Multiple Player Pref Mangers! Destroying the newest one: " + this.name);
-            Destroy(this.gameObject);
-            return;
-        }
 
         Instance = this;
         LoadGame();

@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     PoolableObject poolable;
     AudioSource audioSource;
     Sound sound;
+    bool bPoolReady = false;
+
     /* list of sounds */
     public List<SoundEffect> sfxSounds = new List<SoundEffect>();
 
@@ -51,6 +53,7 @@ public class AudioManager : MonoBehaviour
         {
             audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.sound);
         }
+        bPoolReady = true;
         //PlayAudioAtLocation(Vector3.zero, "MenuMusic");
     }
 
@@ -61,14 +64,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlayAudioAtLocation(Vector3 location, string objectTag)
     {
+        if (!bPoolReady) return;
+
+        poolable = ObjectPoolManager.Instance.SpawnObject(POOLNAME);
         if (audioSoundsAudioClipDictionary.ContainsKey(objectTag))
         {
-            poolable = ObjectPoolManager.Instance.SpawnObject(POOLNAME);
             sound = audioSoundsAudioClipDictionary[objectTag];
         }
         else
         {
-            poolable = ObjectPoolManager.Instance.SpawnObject(POOLNAME);
             sound = audioSoundsAudioClipDictionary[sfxSounds[0].objectTag];
         }
         
