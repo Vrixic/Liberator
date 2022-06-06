@@ -82,7 +82,9 @@ public class Explodable : MonoBehaviour
            // Debug.Log(colliders[i].name);
             if (colliders[i].CompareTag("Player"))
             {
-                float dist = Vector3.Distance(colliders[i].transform.position, transform.position);
+                Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
+                Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
+                float dist = Vector3.Distance(charPos, explodePos);
                 damage = 300 - (dist * 50);
                 if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
                 {
@@ -98,7 +100,9 @@ public class Explodable : MonoBehaviour
                 GameManager.Instance.playerScript.TakeDamage((int)damage);
             }
             else if (colliders[i].CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null){
-                float dist = Vector3.Distance(colliders[i].transform.position, transform.position);
+                Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
+                Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
+                float dist = Vector3.Distance(charPos, explodePos);
                 damage = 300 - (dist * 50);
                 colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
             }

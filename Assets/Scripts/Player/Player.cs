@@ -510,6 +510,20 @@ public class Player : MonoBehaviour
         characterController.enabled = false;
         bPlayerDead = true;
 
+        StartCoroutine(PlayPlayerDeath());
+    }
+
+    IEnumerator PlayPlayerDeath()
+    {
+        float time = 1f;
+        while (Time.timeScale > 0)
+        {
+            time -= 1f * Time.unscaledDeltaTime;
+            time = Mathf.Clamp(time, 0f, 1f);
+            Time.timeScale = time;
+            transform.Rotate(-95 * Time.unscaledDeltaTime, 0, 0);
+            yield return null;
+        }
         GameManager.Instance.GameWon = false;
 
         DeactivateWeapon(m_CurrentWeaponIndex);
