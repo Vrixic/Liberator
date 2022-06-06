@@ -35,6 +35,8 @@ public class AIAgent : MonoBehaviour
     private EnemyGun enemyGun;
     private EnemyMelee enemyMelee;
 
+    [HideInInspector] public MiniMapScanable miniMapLocator;
+
     // Colliders 
     SphereCollider meleeSphereCollider;
     SphereCollider headShotCollider;
@@ -50,7 +52,9 @@ public class AIAgent : MonoBehaviour
         animator = GetComponent<Animator>();
         //creates a new state machine for this agent type. 
         stateMachine = new AIStateMachine(this);
-        
+
+        miniMapLocator = GetComponent<MiniMapScanable>();
+
         sensor = GetComponent<AiSensor>();
         //adds the chase player to the enum for AIState
         stateMachine.RegisterState(new AIChasePlayerScript());

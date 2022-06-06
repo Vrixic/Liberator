@@ -73,7 +73,7 @@ public class BaseMelee : BaseWeapon
     */
     protected void PlayAttack2Audio()
     {
-        PlayAudioOneShot("MeeleAttack");
+        PlayAudioOneShot("MeleeAttack");
     }
     public override void UpdateAmmoGUI()
     {
