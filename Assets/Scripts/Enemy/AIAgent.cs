@@ -29,6 +29,7 @@ public class AIAgent : MonoBehaviour
     private Coroutine lookCouroutine;
 
     public bool isFlashed = false;
+    public bool isStunned = false;
 
     private Health enemyHealth;
 

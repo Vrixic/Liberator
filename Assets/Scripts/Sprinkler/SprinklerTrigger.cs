@@ -6,14 +6,20 @@ public class SprinklerTrigger : MonoBehaviour
 {
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("Trigger Entered");
         
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            AIAgent agent = other.gameObject.GetComponent<AIAgent>();
-            if (agent.currentState != AIStateID.Stunned)
+            AIAgent agent;
+            Debug.Log("Trigger Entered");
+            if (other.gameObject.TryGetComponent<AIAgent>(out agent))
             {
-                agent.stateMachine.ChangeState(AIStateID.Stunned);
+                Debug.Log(agent.currentState);
+                Debug.Log(agent);
+                if (agent.currentState != AIStateID.Stunned)
+                {
+                    agent.stateMachine.ChangeState(AIStateID.Stunned);
+                    Debug.Log(agent.currentState);
+                }
             }
         }
         else if(other.gameObject.layer == LayerMask.NameToLayer("Player"))

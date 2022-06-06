@@ -11,7 +11,7 @@ public class Knife : BaseMelee
     {
         if (!bIsAttacking)
         {
-            PlayAttackAudio();
+            PlayAudioOneShot("MeleeAttack");
             GetAnimator().Play("Attack1");
             UpdateLastAttackTime();
         }
