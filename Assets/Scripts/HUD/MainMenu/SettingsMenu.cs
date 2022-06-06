@@ -239,6 +239,7 @@ public class SettingsMenu : MonoBehaviour
 
         PlayerPrefManager.Instance.musicVolume = musicVolumeSlider.value;
     }
+
     public void UpdateSFXVolumeSliderValue()
     {
         // Updates Player preference to value set by slider

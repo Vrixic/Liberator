@@ -36,7 +36,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     #region PauseMenu
     public void PauseGame()
     {
-        if (GameManager.Instance.isPauseMenuOpen == false && GameManager.Instance.isShopMenuOpen == false)
+
+        if (GameManager.Instance.isPauseMenuOpen == false && !GameManager.Instance.settingsMenu.activeInHierarchy && GameManager.Instance.isShopMenuOpen == false)
         {
             if (GameManager.Instance.intelInteractText != null || GameManager.Instance.closeDoorInteractText != null || GameManager.Instance.openDoorInteractText != null || GameManager.Instance.secureHostageText != null)
             {
@@ -76,26 +77,30 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void Resume()
     {
-        //RESUME GAME MUSIC
-        AudioManager.Instance.ResumeMusic();
-
-        // Turn Reticle back on
-        reticle.SetActive(true);
-
-        // Set Cursor state back to locked and turn visibility off
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        // Resumes time
-        Time.timeScale = 1f;
-        // Re Enables players ability to look around and disables the Pause menu UI image
-
-        if (virtualCam != null)
+        if (!GameManager.Instance.settingsMenu.activeInHierarchy)
         {
 
-            virtualCam.SetActive(true);
+            //RESUME GAME MUSIC
+            AudioManager.Instance.ResumeMusic();
+
+            // Turn Reticle back on
+            reticle.SetActive(true);
+
+            // Set Cursor state back to locked and turn visibility off
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            // Resumes time
+            Time.timeScale = 1f;
+            // Re Enables players ability to look around and disables the Pause menu UI image
+
+            if (virtualCam != null)
+            {
+
+                virtualCam.SetActive(true);
+            }
+            pause.SetActive(false);
+            GameManager.Instance.isPauseMenuOpen = false;
         }
-        pause.SetActive(false);
-        GameManager.Instance.isPauseMenuOpen = false;
     }
 
     public void Restart()

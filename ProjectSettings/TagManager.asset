@@ -53,6 +53,7 @@ TagManager:
   - EnvironmentMetal
   - Sprinkler
   - CashGainedText
+  - SettingsMenu
   layers:
   - Default
   - TransparentFX
