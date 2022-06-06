@@ -23,13 +23,13 @@ public class AIDeathState : AIState
         //if there is a damage indicator for this enemy then this will destroy it from the screen
         GameManager.Instance.damageIndicatorSystem.FindAndDestroyIndicator(agent.transform);
 
+        agent.miniMapLocator.Disable();
         agent.animator.SetBool("isDead", true);
         agent.animator.Play("Death");
 
         AudioManager.Instance.PlayAudioAtLocation(agent.transform.position, "EnemyDeath");
-
         GameManager.Instance.CurrentCash += 50;
-
+       
         string tag = agent.GetComponentInChildren<BoxCollider>().tag;
         if (GameManager.Instance.enemiesKilled.ContainsKey(tag))
         {
