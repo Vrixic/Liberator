@@ -139,7 +139,7 @@ public class PlayerInteract : MonoBehaviour
                 else if (hit.collider.CompareTag("Intel"))
                 {
                     GameManager.Instance.CurrentCash += intelCashReward;
-
+                    GameManager.Instance.cashRewardAmount = intelCashReward;
                     //get that instance so we can disable it
                     IntelPickup intelInstance = hit.collider.gameObject.GetComponent<IntelPickup>();
 

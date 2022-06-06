@@ -29,6 +29,8 @@ public class AIDeathState : AIState
 
         AudioManager.Instance.PlayAudioAtLocation(agent.transform.position, "EnemyDeath");
         GameManager.Instance.CurrentCash += 50;
+        GameManager.Instance.cashRewardAmount = 50;
+        GameManager.Instance.StartDisplayCashCoroutine();
        
         string tag = agent.GetComponentInChildren<BoxCollider>().tag;
         if (GameManager.Instance.enemiesKilled.ContainsKey(tag))

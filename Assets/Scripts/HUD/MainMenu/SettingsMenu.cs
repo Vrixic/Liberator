@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 public class SettingsMenu : MonoBehaviour
 {
     public Slider masterVolumeSlider;
@@ -95,6 +97,7 @@ public class SettingsMenu : MonoBehaviour
 
         brightnessInput.text = PlayerPrefManager.Instance.brightness.ToString();
         brightnessSlider.value = PlayerPrefManager.Instance.brightness;
+        Debug.Log("Settings Sliders Initialized");
     }
 
     #region Update Sliders and Text Fields Methods
@@ -116,6 +119,10 @@ public class SettingsMenu : MonoBehaviour
         masterVolumeSlider.value = int.Parse(masterVolumeInput.text);
         musicVolumeSlider.value = int.Parse(masterVolumeInput.text);
         sfxVolumeSlider.value = int.Parse(masterVolumeInput.text);
+
+        PlayerPrefManager.Instance.masterVolume = masterVolumeSlider.value;
+        //PlayerPrefManager.Instance.musicVolume = masterVolumeSlider.value;
+        //PlayerPrefManager.Instance.sfxVolume = masterVolumeSlider.value;
     }
 
     public void UpdateMusicVolumeInputValue()
@@ -131,6 +138,9 @@ public class SettingsMenu : MonoBehaviour
 
         // Updates Slider to represent value inputted into text box
         musicVolumeSlider.value = int.Parse(musicVolumeInput.text);
+
+        PlayerPrefManager.Instance.musicVolume = musicVolumeSlider.value;
+
     }
 
     public void UpdateSFXVolumeInputValue()
@@ -146,6 +156,20 @@ public class SettingsMenu : MonoBehaviour
 
         // Updates Slider to represent value inputted into text box
         sfxVolumeSlider.value = int.Parse(sfxVolumeInput.text);
+
+        PlayerPrefManager.Instance.sfxVolume = sfxVolumeSlider.value;
+
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
+        }
+        else
+        {
+            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX", true);
+
+        }
+
     }
 
     public void UpdateBrightnessInputValue()
@@ -159,6 +183,9 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.SetFloat("Brightness", int.Parse(brightnessInput.text));
         // Updates Slider to represent value inputted into text box
         brightnessSlider.value = int.Parse(brightnessInput.text);
+
+        PlayerPrefManager.Instance.brightness = brightnessSlider.value;
+
     }
 
     public void UpdateSensitivityInputValue()
@@ -174,6 +201,8 @@ public class SettingsMenu : MonoBehaviour
 
         // Updates Slider to represent value inputted into text box
         sensitivitySlider.value = int.Parse(sensitivityInput.text);
+
+        PlayerPrefManager.Instance.playerSensitivity = sensitivitySlider.value;
     }
 
     public void UpdateMasterVolumeSliderValue()
@@ -189,6 +218,9 @@ public class SettingsMenu : MonoBehaviour
         musicVolumeInput.text = masterVolumeSlider.value.ToString();
         sfxVolumeInput.text = masterVolumeSlider.value.ToString();
 
+        PlayerPrefManager.Instance.masterVolume = masterVolumeSlider.value;
+        //PlayerPrefManager.Instance.musicVolume = masterVolumeSlider.value;
+        //PlayerPrefManager.Instance.sfxVolume = masterVolumeSlider.value;
     }
 
     public void UpdateMusicVolumeSliderValue()
@@ -200,6 +232,7 @@ public class SettingsMenu : MonoBehaviour
         // Updates text box to represent number input by slider
         musicVolumeInput.text = musicVolumeSlider.value.ToString();
 
+        PlayerPrefManager.Instance.musicVolume = musicVolumeSlider.value;
     }
     public void UpdateSFXVolumeSliderValue()
     {
@@ -210,6 +243,17 @@ public class SettingsMenu : MonoBehaviour
         // Updates text box to represent number input by slider
         sfxVolumeInput.text = sfxVolumeSlider.value.ToString();
 
+        PlayerPrefManager.Instance.sfxVolume = sfxVolumeSlider.value;
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
+        }
+        else
+        {
+            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX", true);
+
+        }
     }
 
     public void UpdateBrightnessSliderValue()
@@ -220,6 +264,9 @@ public class SettingsMenu : MonoBehaviour
 
         // Updates text box to represent number input by slider
         brightnessInput.text = brightnessSlider.value.ToString();
+
+        PlayerPrefManager.Instance.brightness = brightnessSlider.value;
+
     }
 
 
@@ -231,6 +278,8 @@ public class SettingsMenu : MonoBehaviour
 
         // Updates text box to represent number input by slider
         sensitivityInput.text = sensitivitySlider.value.ToString();
+
+        PlayerPrefManager.Instance.playerSensitivity = sensitivitySlider.value;
 
     }
 

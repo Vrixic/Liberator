@@ -121,3 +121,8 @@ MonoBehaviour:
       audio: {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
       volMultiplier: 1
     objectTag: MeleeAttack
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: 1d51b0bd80072ee4d8b7991affbdafe1, type: 3}
+      volMultiplier: 1
+    objectTag: TestSFX

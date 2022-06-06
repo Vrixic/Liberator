@@ -56,11 +56,6 @@ public class MetaShopScript : MonoBehaviour
         }
 
 
-        // *********************** TEMP GIVE 100 SKILL POINTS, DISABLE AFTER TESTING IS FINISHED **********************************************************************
-        Give100SkillPoints();
-
-        // UNCOMMENT BELOW TO RETURN PLAYER UPGRADES TO DEFAULT VALUES
-        //ResetPlayerUpgradesToDefault();
 
         UpdateSkillPointCount();
     }
@@ -164,17 +159,36 @@ public class MetaShopScript : MonoBehaviour
     #endregion
 
     // METHODs FOR TESTING SKILL POINTS BEING SAVED AND META SHOP UPGRADES
-    private void Give100SkillPoints()
+    public void Give100SkillPoints()
     {
         PlayerPrefs.SetInt("Skill Points", 100);
+        PlayerPrefManager.Instance.currentSkillPoints = PlayerPrefs.GetInt("Skill Points");
+        Debug.Log("Player Skill points: " + PlayerPrefManager.Instance.currentSkillPoints);
+        UpdateSkillPointCount();
     }
 
-    private void ResetPlayerUpgradesToDefault()
+    public void ResetPlayerUpgradesToDefault()
     {
         PlayerPrefs.SetInt("Skill Points", 0);
         PlayerPrefs.SetInt("Upgraded Starting Cash", 1000);
         PlayerPrefs.SetInt("Flashbang Capacity", 2);
         PlayerPrefs.SetInt("Sensor Grenade Capacity", 2);
+        PlayerPrefManager.Instance.LoadPlayerUpgrades();
+        UpdateSkillPointCount();
 
+    }
+
+    public void SetStartingCash10000()
+    {
+        PlayerPrefs.SetInt("Upgraded Starting Cash", 10000);
+        PlayerPrefManager.Instance.startingCash = PlayerPrefs.GetInt("Upgraded Starting Cash");
+        Debug.Log("Player current starting cash: " + PlayerPrefManager.Instance.startingCash);
+
+    }
+
+    public void ResetAllPlayerPrefs()
+    {
+        PlayerPrefManager.Instance.ResetAllPlayerPrefs();
+        UpdateSkillPointCount();
     }
 }

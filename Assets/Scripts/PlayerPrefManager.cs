@@ -50,19 +50,29 @@ public class PlayerPrefManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogError("Multiple GameManagers! Destroying the newest one: " + this.name);
+            Debug.LogError("Multiple Player Pref Mangers! Destroying the newest one: " + this.name);
             Destroy(this.gameObject);
             return;
         }
 
         Instance = this;
         LoadGame();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     /* 
     * Loads player perferences
     */
     public void LoadGame()
+    {
+
+        LoadSettings();
+        LoadPlayerUpgrades();
+
+    }
+
+
+    public void LoadSettings()
     {
         #region Load Settings
         // Master Volume
@@ -129,7 +139,10 @@ public class PlayerPrefManager : MonoBehaviour
             PlayerPrefs.SetFloat("Brightness", brightness);
         }
         #endregion
+    }
 
+    public void LoadPlayerUpgrades()
+    {
         #region Player Upgrades and Xp preferences
 
         // Skill Points
@@ -198,9 +211,8 @@ public class PlayerPrefManager : MonoBehaviour
         }
 
         #endregion
-
-
     }
+
 
     /* 
     * Saves player perferences
@@ -245,5 +257,6 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("Flashbang Capacity", 2);
         PlayerPrefs.SetInt("Sensor Grenade Capacity", 2);
 
+        LoadGame();
     }
 }

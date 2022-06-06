@@ -105,12 +105,18 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public TMP_Text cashGainedText;
     [HideInInspector]
+    float cashGainedDecaytimer = 0;
+    [HideInInspector]
+    public int cashRewardAmount;
+    [HideInInspector]
     public bool isShopMenuOpen;
     public bool IsUIOverlayVisible { get; set; } = false;
 
     public int RewardAmount { get; set; } = 0;
     public int RewardID { get; set; } = 0;
     public bool RewardCollected { get; set; } = true;
+    Color textColor = new Color(39, 255, 0);
+    Color clearcolor = Color.clear;
 
     //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
     private Collider[] enemyColliders = new Collider[18];
@@ -212,7 +218,8 @@ public class GameManager : MonoBehaviour
         ammoCanvas = GameObject.FindGameObjectWithTag("AmmoCanvas");
 
         cashGainedText = GameObject.FindGameObjectWithTag("CashGainedText").GetComponent<TextMeshProUGUI>();
-
+        cashGainedText.enabled = false;
+        cashRewardAmount = 0;
         if (player == null)
         {
             Debug.LogError("Player class cannot be found, does not exist");
@@ -274,13 +281,43 @@ public class GameManager : MonoBehaviour
         //SceneManager.LoadScene(0);
     }
 
-    // Still Needs To be properly Implemented
-    public void DisplayCashReward(int cashAmount)
+    public void StartDisplayCashCoroutine()
     {
-        cashGainedText.text = "+ $" + cashAmount;
-        cashGainedText.alpha = 100;
-       
+        ResetTimer();
+        StartCoroutine(DisplayCashReward());
     }
+
+    public void ResetTimer()
+    {
+        StopCoroutine(DisplayCashReward());
+        cashGainedDecaytimer = 0;
+    }
+    // Still Needs To be properly Implemented
+    IEnumerator DisplayCashReward()
+    {
+        // Reset timer to 0
+        cashGainedDecaytimer = 0;
+
+        // Enable text 
+        cashGainedText.enabled = true;
+        // Set cashGainedText color to current color of text
+        cashGainedText.color = textColor;
+        // Change text to cash rewards
+        cashGainedText.text = "+ $" + cashRewardAmount;
+        cashRewardAmount = 0;
+
+        // Begin Timer
+        while (cashGainedDecaytimer < 1)
+        {
+
+            cashGainedText.color = Color.Lerp(textColor, clearcolor, cashGainedDecaytimer);
+            cashGainedDecaytimer += Time.deltaTime * 0.5f;
+            yield return null;
+        }
+
+    }
+
+
 
     /* 
      * Sets the gun icon and fades it out
