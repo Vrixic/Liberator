@@ -4,7 +4,9 @@ using UnityEngine;
 //[RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
-    public PoolableObject pAudioSource;
+    public PoolableObject poolableAudioSource;
+
+    public AudioSource musicAudioSource;
 
     /* list of sounds */
     public List<SoundEffect> sfxSounds = new List<SoundEffect>();
@@ -40,9 +42,15 @@ public class AudioManager : MonoBehaviour
     {
         foreach (SoundEffect sound in sfxSounds)
         {
-            audioSourceDictionary.Add(sound.objectTag, ObjectPoolManager.Instance.CreateObjectPool(pAudioSource, 1));
+            audioSourceDictionary.Add(sound.objectTag, ObjectPoolManager.Instance.CreateObjectPool(poolableAudioSource, 1));
             audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.sound);
         }
+        PlayAudioAtLocation(Vector3.zero, "MenuMusic");
+    }
+
+    private void Update()
+    {
+        musicAudioSource.volume = (PlayerPrefManager.Instance.musicVolume / 100) * 0.2f;
     }
 
     public void PlayAudioAtLocation(Vector3 location, string objectTag, bool isPlayer = false)
@@ -60,6 +68,7 @@ public class AudioManager : MonoBehaviour
             poolable = ObjectPoolManager.Instance.SpawnObject(audioSourceDictionary[sfxSounds[0].objectTag]);
             sound = audioSoundsAudioClipDictionary[sfxSounds[0].objectTag];
         }
+
         if (isPlayer)
         {
             poolable.transform.position = GameManager.Instance.playerScript.transform.position;
@@ -68,16 +77,21 @@ public class AudioManager : MonoBehaviour
         {
             poolable.transform.position = location;
         }
-
-        audioSource = poolable.GetComponent<AudioSource>();
         
-        if (sound.audioType == AudioType.sfx) {
-            audioSource.volume = (PlayerPrefManager.Instance.sfxVolume/100) * sound.volMultiplier; }
-        else if (sound.audioType == AudioType.ui) {
-            audioSource.volume = (PlayerPrefManager.Instance.musicVolume/100) * sound.volMultiplier; }
-        else { audioSource.volume = 1f; }
+        if (sound.audioType == AudioType.sfx) 
+        {
+            audioSource = poolable.GetComponent<AudioSource>();
+            audioSource.volume = (PlayerPrefManager.Instance.sfxVolume/100) * sound.volMultiplier;
+            audioSource.PlayOneShot(GetAudioClip(objectTag));
 
-        audioSource.PlayOneShot(GetAudioClip(objectTag));
+        }
+        else if (sound.audioType == AudioType.ui)
+        {
+            audioSource = musicAudioSource;
+            audioSource.volume = (PlayerPrefManager.Instance.musicVolume/100) * sound.volMultiplier;
+            audioSource.clip = GetAudioClip(objectTag);
+            audioSource.Play();
+        }        
     }
 
     public AudioClip GetAudioClip(string objectTag)
@@ -90,6 +104,21 @@ public class AudioManager : MonoBehaviour
         {
             return audioSoundsAudioClipDictionary[sfxSounds[0].objectTag].audio;
         }
+    }
+
+    public void StopMusic()
+    {
+        musicAudioSource.Stop();
+    }
+
+    public void PauseMusic()
+    {
+        musicAudioSource.Pause();
+    }
+
+    public void ResumeMusic()
+    {
+        musicAudioSource.Play();
     }
 
     /*

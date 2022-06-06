@@ -46,7 +46,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 GameManager.Instance.secureHostageText.SetActive(false);
             }
             //pause game music
-            //MenuMusicScript.Instance.PauseGameMusic();
+            AudioManager.Instance.PauseMusic();
+
             // Turn off Reticle
             reticle.SetActive(false);
             // Turns on Pause menu image
@@ -76,7 +77,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     public void Resume()
     {
         //RESUME GAME MUSIC
-        //MenuMusicScript.Instance.PlayGameMusic();
+        AudioManager.Instance.ResumeMusic();
 
         // Turn Reticle back on
         reticle.SetActive(true);
