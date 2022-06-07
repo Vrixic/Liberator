@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class MetaShopScript : MonoBehaviour
 {
     public TMP_Text skillPointCount;
     private void OnEnable()
     {
+
+
+        EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
+
+
         // Skill points
         if (PlayerPrefs.HasKey("Skill Points"))
         {
