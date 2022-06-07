@@ -17,6 +17,8 @@ public class BulletImpactManager : MonoBehaviour
 
     AudioSource m_AudioSource;
 
+    public float volumeMultiplier = 1f;
+
     /* instance of this object, singleton pattern */
     private static BulletImpactManager m_Instance;
     public static BulletImpactManager Instance
@@ -80,7 +82,7 @@ public class BulletImpactManager : MonoBehaviour
 
     public void SetAudioVolume(float val)
     {
-        m_AudioSource.volume = val;
+        m_AudioSource.volume = val * volumeMultiplier;
     }
 
     public AudioClip GetAudioClipForImpactFromTag(string objectTag)
