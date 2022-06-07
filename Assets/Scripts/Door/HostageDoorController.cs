@@ -22,7 +22,6 @@ public class HostageDoorController : MonoBehaviour
     {
         doorAnimator.Play("DoorOpenNew", 0, 0.0f);
         doorOpen = true;
-        AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorOpen");
     }
 
     public void CloseHostageDoor()
