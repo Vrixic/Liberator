@@ -144,6 +144,9 @@ public class XPScreen : BaseScreen
         //Cursor.visible = false;
 
         // clear all holders from scroll view 
+        for (int i = 0; i < m_EnemyTextHolders.Count; i++)
+            Destroy(m_EnemyTextHolders[i].holder.gameObject);
+
         m_EnemyTextHolders.Clear();
 
         // resets enemy kill counts
