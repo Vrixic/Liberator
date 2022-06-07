@@ -58,22 +58,22 @@ MonoBehaviour:
   - sound:
       audioType: 2
       audio: {fileID: 8300000, guid: 682c593d51a9bfa40ba69f575f17fcf1, type: 3}
-      volMultiplier: 0.4
+      volMultiplier: 0.2
     objectTag: EnvironmentWood
   - sound:
       audioType: 2
       audio: {fileID: 8300000, guid: e256d61aa224ea24f83007433b99291f, type: 3}
-      volMultiplier: 0.4
+      volMultiplier: 0.2
     objectTag: EnvironmentMetal
   - sound:
       audioType: 2
       audio: {fileID: 8300000, guid: 2389f804f3d523c49b59b0abc9d47fbb, type: 3}
-      volMultiplier: 0.3
+      volMultiplier: 0.1
     objectTag: EnvironmentConcrete
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: ed5dbd8279befda47bafa570d862880c, type: 3}
-      volMultiplier: 0.5
+      volMultiplier: 0.3
     objectTag: EnemyDeath
   - sound:
       audioType: 0
@@ -88,37 +88,37 @@ MonoBehaviour:
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: bc59ce5d225369f4c9382dd718279df8, type: 3}
-      volMultiplier: 0.5
+      volMultiplier: 0.4
     objectTag: DoorOpen
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 4b816cc31ff84794a9d997c31da11f4f, type: 3}
-      volMultiplier: 0.5
+      volMultiplier: 0.4
     objectTag: DoorClose
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: dba1a0ef5c381024cb013330709a1064, type: 3}
-      volMultiplier: 3
+      volMultiplier: 2.5
     objectTag: FlashBang
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 3f3e45e7366666f4a82c8b883ecd2933, type: 3}
-      volMultiplier: 3
+      volMultiplier: 2.5
     objectTag: ScanGrenade
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 892fb91d2838cf74091383b8e1d6f3f5, type: 3}
-      volMultiplier: 0.5
+      volMultiplier: 0.3
     objectTag: ShotFired
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
-      volMultiplier: 0.5
+      volMultiplier: 0.2
     objectTag: BulletDropped
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 526b78049a014dc44aa04587f0e6ea40, type: 3}
-      volMultiplier: 0.5
+      volMultiplier: 0.3
     objectTag: ReloadGun
   - sound:
       audioType: 0
@@ -140,6 +140,11 @@ MonoBehaviour:
       audio: {fileID: 8300000, guid: 6b542afe2a5c5e54abf7599243d24c4f, type: 3}
       volMultiplier: 0.05
     objectTag: GameMusic
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: 5e249dfa519a6ae42bb9fcd44d3b08e1, type: 3}
+      volMultiplier: 0.4
+    objectTag: Pickup
 --- !u!82 &1763185080
 AudioSource:
   m_ObjectHideFlags: 0
