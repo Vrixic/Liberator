@@ -165,12 +165,12 @@ public class Player : MonoBehaviour
         {
             if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
             {
-                AudioManager.Instance.PlayAudioAtLocation(transform.position, GetGroundsTag());
+                //AudioManager.Instance.PlayAudioAtLocation(transform.position, GetGroundsTag());
                 m_LastStepSoundTime = Time.time;
             }
             else if (Time.time - m_LastStepSoundTime > footStepRunAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D > 0.3f)
             {
-                AudioManager.Instance.PlayAudioAtLocation(transform.position, GetGroundsTag());
+                //AudioManager.Instance.PlayAudioAtLocation(transform.position, GetGroundsTag());
                 m_LastStepSoundTime = Time.time;
             }
         }

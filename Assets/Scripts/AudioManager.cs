@@ -62,7 +62,7 @@ public class AudioManager : MonoBehaviour
         musicAudioSource.volume = (PlayerPrefManager.Instance.musicVolume / 100) * 0.2f;
     }
 
-    public void PlayAudioAtLocation(Vector3 location, string objectTag)
+    public void PlayAudioAtLocation(Vector3 location, string objectTag, float volM = 1f, bool isLandingSound = false)
     {
         if (!bPoolReady) return;
 
@@ -75,7 +75,7 @@ public class AudioManager : MonoBehaviour
         {
             sound = audioSoundsAudioClipDictionary[sfxSounds[0].objectTag];
         }
-        
+
         if (sound.audioType == AudioType.sfx) 
         {
             audioSource = poolable.GetComponent<AudioSource>();
@@ -96,6 +96,7 @@ public class AudioManager : MonoBehaviour
             audioSource = poolable.GetComponent<AudioSource>();
             audioSource.transform.position = location;
             audioSource.volume = (PlayerPrefManager.Instance.sfxVolume / 100) * sound.volMultiplier;
+            if (isLandingSound) { audioSource.volume *= volM; }
             audioSource.PlayOneShot(GetAudioClip(objectTag));
         }
     }

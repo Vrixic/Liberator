@@ -65,7 +65,6 @@ public class BaseThrowableHands : BaseWeapon
 
         if (TakeAction(m_LastAttackTime, attackRate))
         {
-            PlayAttackAudio();
 
             GetAnimator().Play("Attack1");
             UpdateLastAttackTime();

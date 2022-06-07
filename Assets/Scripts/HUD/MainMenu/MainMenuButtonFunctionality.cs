@@ -7,12 +7,17 @@ using UnityEngine.EventSystems;
 
 public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
+    private void OnEnable()
+    {
+        SetSelectedGameObject();
+    }
+
     private void Awake()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
-    
+
     public void OnPointerClick(PointerEventData eventData)
     {
         AudioManager.Instance.Play2dAudioOnce("ButtonPress");
@@ -20,6 +25,12 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     public void OnPointerEnter(PointerEventData eventData)
     {
         AudioManager.Instance.Play2dAudioOnce("ButtonHover");
+    }
+
+    public void SetSelectedGameObject()
+    {
+
+        EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
     }
 
     #region MainMenu
@@ -73,7 +84,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
 
     #endregion
 
-   
+
 
 
 }
