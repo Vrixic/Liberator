@@ -98,7 +98,7 @@ public class PlayerInteract : MonoBehaviour
                 }
                 else if(hit.collider.CompareTag("Shop"))
                 {
-                    //add shop interact prompt
+                    currentInteractPrompt = GameManager.Instance.openShopInteractText;
                     currentInteractPrompt.SetActive(true);
                 }
                 else //if not an interactable object
@@ -130,15 +130,22 @@ public class PlayerInteract : MonoBehaviour
                     //access that door's doorController script
                     DoorController doorScript = hit.collider.gameObject.GetComponent<DoorController>();
 
-                    //interact method will decide whether that specific door needs to be opened or closed
-                    doorScript.Interact();
+                    if (doorScript != null)
+                    {
+                        //interact method will decide whether that specific door needs to be opened or closed
+                        doorScript.Interact();
 
-                    //disable current door interaction prompt since it is no longer accurate
-                    currentInteractPrompt.SetActive(false);
+                        //disable current door interaction prompt since it is no longer accurate
+                        currentInteractPrompt.SetActive(false);
+                    }
+                    else
+                    {
+                        LEdoorController levelEntryDoorScript = hit.collider.gameObject.GetComponent<LEdoorController>();
 
-                    //play a sound
-                    //TO DO----------------------------------------------------
+                        levelEntryDoorScript.Interact();
 
+                        currentInteractPrompt.SetActive(false);
+                    }
                 }
                 //player interacts with a piece of intel
                 else if (hit.collider.CompareTag("Intel"))

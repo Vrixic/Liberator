@@ -9,6 +9,8 @@ public class HostageDoorController : MonoBehaviour
     private bool doorOpen = false;
     public bool DoorOpen { get { return doorOpen; } }
 
+    private bool doorLocked = false;
+
     private bool isPlaying;
 
     private void Start()
@@ -25,9 +27,13 @@ public class HostageDoorController : MonoBehaviour
 
     public void CloseHostageDoor()
     {
-        doorAnimator.Play("DoorCloseNew", 0, 0.0f);
-        doorOpen = false;
-        AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorClose");
+        if (!doorLocked)
+        {
+            doorAnimator.Play("DoorCloseNew", 0, 0.0f);
+            doorOpen = false;
+            AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorClose");
+            doorLocked = true;
+        }
     }
 }
 
