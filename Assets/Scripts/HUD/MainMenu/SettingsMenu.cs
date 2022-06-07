@@ -208,7 +208,7 @@ public class SettingsMenu : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+            //GameManager.Instance.playerLookScript.OnSensitivityUpdate();
         }
     }
 
@@ -292,7 +292,7 @@ public class SettingsMenu : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+            //GameManager.Instance.playerLookScript.OnSensitivityUpdate();
         }
 
     }

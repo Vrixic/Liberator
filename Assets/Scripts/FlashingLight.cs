@@ -9,7 +9,6 @@ public class FlashingLight : MonoBehaviour
     Material sphereMaterial;
     private new Light light;
 
-
     private void Start()
     {
         light = GetComponent<Light>();
