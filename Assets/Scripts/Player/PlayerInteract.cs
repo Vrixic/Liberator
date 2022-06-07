@@ -171,6 +171,9 @@ public class PlayerInteract : MonoBehaviour
                     //save that hostage's script to open the hostage door if the hold is completed
                     currentHostage = hit.collider.GetComponent<Hostage>();
 
+                    //save the transform of the attached hostage door for playing audio
+                    GameManager.Instance.currentHostageDoorTransform = currentHostage.doorToOpenWhenHostageSecured.gameObject.transform;
+
                     //play audio
                     AudioManager.Instance.PlayAudioAtLocation(transform.position, "Hostage");
 
