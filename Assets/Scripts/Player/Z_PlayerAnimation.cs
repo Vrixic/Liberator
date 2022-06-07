@@ -5,11 +5,11 @@ using UnityEngine;
 public class Z_PlayerAnimation : MonoBehaviour
 {
     Animator playerAnimator;
-    float x, z;
     string groundTag = "Untagged";
 
     float footStepWalkAudioPlayDelay = 0.2f;
     float m_LastStepSoundTime = 0f;
+
     private void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -28,10 +28,8 @@ public class Z_PlayerAnimation : MonoBehaviour
 
         if (GameManager.Instance.playerMoveScript.ReturnIsGrounded())
         {
-            x = GameManager.Instance.playerMoveScript.currentInputVector.x;
-            z = GameManager.Instance.playerMoveScript.currentInputVector.y;
-            playerAnimator.SetFloat("VelocityX", x);
-            playerAnimator.SetFloat("VelocityZ", z);
+            playerAnimator.SetFloat("VelocityX", GameManager.Instance.playerMoveScript.currentInputVector.x);
+            playerAnimator.SetFloat("VelocityZ", GameManager.Instance.playerMoveScript.currentInputVector.y);
             playerAnimator.speed = 0.2f + (GameManager.Instance.playerMoveScript.currentActiveSpeed2D*1.5f);
         }
     }
