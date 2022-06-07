@@ -53,7 +53,24 @@ public class PlayerInteract : MonoBehaviour
                 //player is looking at a door within interact range
                 if (hit.collider.CompareTag("Door"))
                 {
-                    bool doorIsOpen = hit.collider.gameObject.GetComponent<DoorController>().DoorOpen;
+                    DoorController doorController = hit.collider.gameObject.GetComponent<DoorController>();
+                    bool doorIsOpen = false;
+
+                    if(doorController != null)
+                    {
+                        doorIsOpen = doorController.DoorOpen;
+                    }
+                    else
+                    {
+                        LEdoorController levelEntryDoorController = hit.collider.gameObject.GetComponent<LEdoorController>();
+
+                        if (levelEntryDoorController != null)
+                            doorIsOpen = levelEntryDoorController.DoorOpen;
+                        else
+                        {
+                            Debug.LogError("This door doesn't have a compatible door controller");
+                        }
+                    }
 
                     //set interaction text depending on whether a given door is open or closed
                     if (doorIsOpen == false)
@@ -163,6 +180,7 @@ public class PlayerInteract : MonoBehaviour
                 else if (hit.collider.CompareTag("Shop"))
                 {
                     GameManager.Instance.buttonFuncScript.OpenShopMenu();
+                    currentInteractPrompt.SetActive(false);
                 }
             }
             else //hold interactions go here VVVVVVVVVVVVVVVVVVVVVVVV
