@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject intelInteractText;
     [HideInInspector]
+    public GameObject openShopInteractText;
+    [HideInInspector]
     public Image flashbangImage;
     [HideInInspector]
     public TextMeshProUGUI flashBangCount;
@@ -202,6 +204,9 @@ public class GameManager : MonoBehaviour
 
         intelInteractText = GameObject.FindGameObjectWithTag("IntelInteractText");
         intelInteractText.SetActive(false);
+
+        openShopInteractText = GameObject.FindGameObjectWithTag("OpenShopInteractText");
+        openShopInteractText.SetActive(false);
 
 
         flashBangIcon = GameObject.FindGameObjectWithTag("FlashBangIcon");

@@ -24,6 +24,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
     }
 
+
+
     public void OnPointerClick(PointerEventData eventData)
     {
         AudioManager.Instance.Play2dAudioOnce("ButtonPress");
@@ -39,6 +41,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
         if (GameManager.Instance.isPauseMenuOpen == false && !GameManager.Instance.settingsMenu.activeInHierarchy && GameManager.Instance.isShopMenuOpen == false)
         {
+
             if (GameManager.Instance.intelInteractText != null || GameManager.Instance.closeDoorInteractText != null || GameManager.Instance.openDoorInteractText != null || GameManager.Instance.secureHostageText != null)
             {
                 GameManager.Instance.intelInteractText.SetActive(false);
@@ -53,6 +56,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             reticle.SetActive(false);
             // Turns on Pause menu image
             pause.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
+
             // Unlock cursor
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -149,6 +154,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             GameManager.Instance.virtualCam.SetActive(false);
         GameManager.Instance.minimapCanvas.SetActive(false);
         GameManager.Instance.shopCanvas.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
+
         UpdateCashCountShopUi();
         GameManager.Instance.isShopMenuOpen = true;
 
@@ -199,6 +206,12 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         }
     }
 
+    public void SetCurrentSelectedButton()
+    {
+        EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
+    }
+
+    #region Buy Items Methods
     // Refill Health
     public void BuyHealth()
     {
@@ -354,6 +367,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         }
     }
 
+    #endregion
 
     public void UpdateCashCountShopUi()
     {
