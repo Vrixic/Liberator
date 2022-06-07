@@ -167,6 +167,8 @@ public class XPScreen : BaseScreen
             // shows shop
             //GameManager.Instance.buttonFuncScript.OpenShopMenu();
 
+            AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.currentHostageDoorTransform.position, "DoorOpen");
+
             GameManager.Instance.minimapCanvas.SetActive(true);
 
             GameManager.Instance.IsUIOverlayVisible = false;
