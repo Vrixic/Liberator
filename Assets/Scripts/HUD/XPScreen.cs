@@ -162,7 +162,17 @@ public class XPScreen : BaseScreen
         if (GameManager.Instance.GameWon)
         {
             // shows shop
-            GameManager.Instance.buttonFuncScript.OpenShopMenu();
+            //GameManager.Instance.buttonFuncScript.OpenShopMenu();
+
+            GameManager.Instance.minimapCanvas.SetActive(true);
+
+            GameManager.Instance.IsUIOverlayVisible = false;
+
+            // unlock mouse 
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            Time.timeScale = 1f;
         }
         else
         {
