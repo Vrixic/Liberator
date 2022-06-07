@@ -18,7 +18,7 @@ public class PlayerInteract : MonoBehaviour
     private bool securingHostage = false;
     private GameObject currentInteractPrompt;
     private Image hostageProgressBarImage;
-
+    private Hostage currentHostage;
     private void Start()
     {
         hostageProgressBarImage = GameManager.Instance.hostageProgressBar.GetComponent<Image>();
@@ -96,6 +96,11 @@ public class PlayerInteract : MonoBehaviour
                     currentInteractPrompt = GameManager.Instance.secureHostageText;
                     currentInteractPrompt.SetActive(true);
                 }
+                else if(hit.collider.CompareTag("Shop"))
+                {
+                    //add shop interact prompt
+                    currentInteractPrompt.SetActive(true);
+                }
                 else //if not an interactable object
                     currentInteractPrompt.SetActive(false);
             }
@@ -163,6 +168,9 @@ public class PlayerInteract : MonoBehaviour
                     PlayerMotor.MovementEnabled = false;
                     securingHostage = true;
 
+                    //save that hostage's script to open the hostage door if the hold is completed
+                    currentHostage = hit.collider.GetComponent<Hostage>();
+
                     //play audio
                     AudioManager.Instance.PlayAudioAtLocation(transform.position, "Hostage");
 
@@ -205,6 +213,16 @@ public class PlayerInteract : MonoBehaviour
             Time.timeScale = 0f;
 
             GameManager.Instance.hostageProgressBar.SetActive(false);
+
+            if(currentHostage != null)
+            {
+                //tells the corresponding hostage door to open
+                currentHostage.HostageSecured();
+            }
+            else
+            {
+                Debug.LogError("No hostage script attached to the hostage that was secured.");
+            }
 
             // Disables virtual camera so player can not look around in the pause menu
             if (GameManager.Instance.virtualCam != null)
