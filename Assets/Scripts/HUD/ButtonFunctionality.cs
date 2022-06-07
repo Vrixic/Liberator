@@ -154,7 +154,11 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             GameManager.Instance.virtualCam.SetActive(false);
         GameManager.Instance.minimapCanvas.SetActive(false);
         GameManager.Instance.shopCanvas.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
+        if (GameManager.Instance.openShopInteractText.activeInHierarchy)
+        {
+            GameManager.Instance.openShopInteractText.SetActive(false);
+        }
+        //EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
 
         UpdateCashCountShopUi();
         GameManager.Instance.isShopMenuOpen = true;
@@ -181,6 +185,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         GameManager.Instance.buyWeaponsCanvas.SetActive(false);
         GameManager.Instance.minimapCanvas.SetActive(true);
         GameManager.Instance.isShopMenuOpen = false;
+
 
     }
 
