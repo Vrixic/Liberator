@@ -32,7 +32,7 @@ public class Z_PlayerAnimation : MonoBehaviour
             z = GameManager.Instance.playerMoveScript.currentInputVector.y;
             playerAnimator.SetFloat("VelocityX", x);
             playerAnimator.SetFloat("VelocityZ", z);
-            playerAnimator.speed = 0.5f + GameManager.Instance.playerMoveScript.currentActiveSpeed2D;
+            playerAnimator.speed = 0.2f + (GameManager.Instance.playerMoveScript.currentActiveSpeed2D*1.5f);
         }
     }
 

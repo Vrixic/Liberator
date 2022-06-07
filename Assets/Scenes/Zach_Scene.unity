@@ -24293,7 +24293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3812307965037846977, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000027132895
+      value: 66.093796
       objectReference: {fileID: 0}
     - target: {fileID: 4609551323158735221, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.y
@@ -47833,23 +47833,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1 &981035428 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6038660843879722067, guid: f860514cc2aae5048a905395c97792be, type: 3}
-  m_PrefabInstance: {fileID: 4663825272736592118}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &981035431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981035428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aecd84031f649748bf5bbb3d564cd88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &991570461
 GameObject:
   m_ObjectHideFlags: 0
@@ -111127,10 +111110,6 @@ PrefabInstance:
     - target: {fileID: 4579822800344469496, guid: f860514cc2aae5048a905395c97792be, type: 3}
       propertyPath: m_Name
       value: Z_SpawnPoint_Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4683910549103705638, guid: f860514cc2aae5048a905395c97792be, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9217591922968435345, guid: f860514cc2aae5048a905395c97792be, type: 3}
       propertyPath: m_RootOrder
