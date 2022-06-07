@@ -174,6 +174,7 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefManager.Instance.sfxVolume = sfxVolumeSlider.value;
 
 
+
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
@@ -183,6 +184,7 @@ public class SettingsMenu : MonoBehaviour
             AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
 
         }
+
 
     }
 
@@ -219,10 +221,12 @@ public class SettingsMenu : MonoBehaviour
         sensitivitySlider.value = int.Parse(sensitivityInput.text);
 
         PlayerPrefManager.Instance.playerSensitivity = sensitivitySlider.value;
-
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (!dontUpdate)
         {
-            //GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+            }
         }
     }
 
@@ -309,10 +313,13 @@ public class SettingsMenu : MonoBehaviour
         sensitivityInput.text = sensitivitySlider.value.ToString();
 
         PlayerPrefManager.Instance.playerSensitivity = sensitivitySlider.value;
-
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (!dontUpdate)
         {
-            //GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+            }
+
         }
 
     }

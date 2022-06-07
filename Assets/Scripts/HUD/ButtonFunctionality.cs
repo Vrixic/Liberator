@@ -154,7 +154,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             GameManager.Instance.virtualCam.SetActive(false);
         GameManager.Instance.minimapCanvas.SetActive(false);
         GameManager.Instance.shopCanvas.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
+        //EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
 
         UpdateCashCountShopUi();
         GameManager.Instance.isShopMenuOpen = true;
