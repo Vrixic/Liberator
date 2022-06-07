@@ -91,6 +91,13 @@ public class AudioManager : MonoBehaviour
             audioSource.clip = GetAudioClip(objectTag);
             audioSource.Play();
         }
+        else if (sound.audioType == AudioType.footstep)
+        {
+            audioSource = poolable.GetComponent<AudioSource>();
+            audioSource.transform.position = location;
+            audioSource.volume = (PlayerPrefManager.Instance.sfxVolume / 100) * sound.volMultiplier;
+            audioSource.PlayOneShot(GetAudioClip(objectTag));
+        }
     }
 
     public void Play2dAudioOnce(string objectTag)
@@ -148,6 +155,7 @@ public class AudioManager : MonoBehaviour
     public enum AudioType
     {
         sfx,
-        ui
+        ui,
+        footstep
     }
 }
