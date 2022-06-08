@@ -224,6 +224,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GodMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""e76c360e-c53f-4cf0-a3f3-cf14875c83aa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -611,6 +620,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""ShowCaseLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee8e6760-982f-4443-a05c-8fdaa8cd7bd5"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GodMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -641,6 +661,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
         m_OnFoot_AttackReleased = m_OnFoot.FindAction("AttackReleased", throwIfNotFound: true);
         m_OnFoot_ShowCaseLevel = m_OnFoot.FindAction("ShowCaseLevel", throwIfNotFound: true);
+        m_OnFoot_GodMode = m_OnFoot.FindAction("GodMode", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -722,6 +743,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_PauseGame;
     private readonly InputAction m_OnFoot_AttackReleased;
     private readonly InputAction m_OnFoot_ShowCaseLevel;
+    private readonly InputAction m_OnFoot_GodMode;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -748,6 +770,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
         public InputAction @AttackReleased => m_Wrapper.m_OnFoot_AttackReleased;
         public InputAction @ShowCaseLevel => m_Wrapper.m_OnFoot_ShowCaseLevel;
+        public InputAction @GodMode => m_Wrapper.m_OnFoot_GodMode;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -823,6 +846,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ShowCaseLevel.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowCaseLevel;
                 @ShowCaseLevel.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowCaseLevel;
                 @ShowCaseLevel.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowCaseLevel;
+                @GodMode.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGodMode;
+                @GodMode.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGodMode;
+                @GodMode.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGodMode;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -893,6 +919,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ShowCaseLevel.started += instance.OnShowCaseLevel;
                 @ShowCaseLevel.performed += instance.OnShowCaseLevel;
                 @ShowCaseLevel.canceled += instance.OnShowCaseLevel;
+                @GodMode.started += instance.OnGodMode;
+                @GodMode.performed += instance.OnGodMode;
+                @GodMode.canceled += instance.OnGodMode;
             }
         }
     }
@@ -921,5 +950,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnPauseGame(InputAction.CallbackContext context);
         void OnAttackReleased(InputAction.CallbackContext context);
         void OnShowCaseLevel(InputAction.CallbackContext context);
+        void OnGodMode(InputAction.CallbackContext context);
     }
 }
