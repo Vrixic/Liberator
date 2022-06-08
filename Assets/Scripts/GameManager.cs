@@ -344,7 +344,7 @@ public class GameManager : MonoBehaviour
         {
 
             cashGainedText.color = Color.Lerp(textColor, clearcolor, cashGainedDecaytimer);
-            cashGainedDecaytimer += Time.deltaTime * 0.5f;
+            cashGainedDecaytimer += Time.unscaledDeltaTime * 0.5f;
             yield return null;
         }
 
