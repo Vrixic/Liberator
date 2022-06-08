@@ -101,6 +101,9 @@ public class Player : MonoBehaviour
 
     bool bPlayerDead = false;
 
+    bool godMode = false;
+
+
     CharacterController characterController;
 
     private void Start()
@@ -717,6 +720,22 @@ public class Player : MonoBehaviour
     int GetShieldDamage(int damageTaken)
     {
         return (int)(damageTaken * playerShieldFallOffScale);
+    }
+    public void ToggleGodMode()
+    {
+        if (!godMode)
+        {
+            m_CurrentPlayerHealth = 999999999;
+            Debug.Log("God Mode On");
+            godMode = true;
+        }
+        else
+        {
+            ResetHealth();
+            godMode = false;
+            Debug.Log("max Health: " + maxPlayerHealth + "current Health: " + m_CurrentPlayerHealth);
+            Debug.Log("God Mode off");
+        }
     }
 
     /*

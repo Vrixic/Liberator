@@ -7,7 +7,6 @@ public class AudioManager : MonoBehaviour
     public PoolableObject poolableAudioSource;
 
     public AudioSource musicAudioSource;
-
     public AudioSource buttonAudioSource;
 
     string POOLNAME = "AudioSourcePool";

@@ -83,6 +83,8 @@ public class InputManager : MonoBehaviour
         onFoot.Test_PlayerDamage.performed += ctx => player.TakeDamageTen();
 
         onFoot.ShowCaseLevel.performed += ctx => buttonFunc.LoadShowcaseLevel();
+
+        onFoot.GodMode.performed += ctx => player.ToggleGodMode();
     }
 
     private void Start()

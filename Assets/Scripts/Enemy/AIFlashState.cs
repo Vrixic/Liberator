@@ -14,22 +14,30 @@ public class AIFlashState : AIState
     {
         agent.currentState = AIStateID.Flashed;
         agent.navMeshAgent.isStopped = true;
-        agent.animator.SetTrigger("Flashbang");
+        agent.animator.SetBool("Flashbang", true);
         agent.isFlashed = true;
 
     }
     public void Update(AIAgent agent)
     {
         currentFlashTimer -= Time.deltaTime;
-        if(currentFlashTimer <= 0.0f)
+        if (currentFlashTimer <= 0.0f) 
         {
-            agent.stateMachine.ChangeState(AIStateID.Idle);
+            if (!agent.sensor.IsInsight())
+            {
+                agent.stateMachine.ChangeState(AIStateID.Idle);
+            }
+            else if (agent.sensor.IsInsight())
+            {
+                agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
+            }
         }
     }
     public void Exit(AIAgent agent)
     {
         agent.navMeshAgent.isStopped = false;
         currentFlashTimer = flashTimer;
+        agent.animator.SetBool("Flashbang", false);
         agent.isFlashed = false;
     }
 }

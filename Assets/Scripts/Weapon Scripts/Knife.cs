@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Knife : BaseMelee
 {
-    [SerializeField] float knifeHitRange = 0.5f;
+    [SerializeField] float knifeHitRange = 0.75f;
 
     /*
     * triggers first attack 
@@ -55,7 +55,7 @@ public class Knife : BaseMelee
                 if (hitInfo.collider.GetComponent<CapsuleCollider>() != null)
                 {
                     //Debug.Log("Body Shot");
-                    hitInfo.collider.GetComponent<Health>().TakeDamage(GetDamage(), transform.forward);
+                    hitInfo.collider.GetComponent<Health>().TakeDamage(100.0f, transform.forward);
                 }
                 else
                 {

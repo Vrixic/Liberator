@@ -28,6 +28,8 @@ public class AIDeathState : AIState
         agent.animator.Play("Death");
 
         AudioManager.Instance.PlayAudioAtLocation(agent.transform.position, "EnemyDeath");
+        AudioManager.Instance.PlayAudioAtLocation(agent.transform.position, "BulletKillEnemy");
+
         GameManager.Instance.CurrentCash += 50;
         GameManager.Instance.cashRewardAmount = 50;
         GameManager.Instance.StartDisplayCashCoroutine();

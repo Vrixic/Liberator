@@ -59,19 +59,19 @@ public class DamageIndicator : MonoBehaviour
         //Make the indicator visible by raising the opacity
         while (Indicator.alpha < 1.0f)
         {
-            Indicator.alpha += 8 * Time.deltaTime;
+            Indicator.alpha += 8 * Time.unscaledDeltaTime;
             yield return null;
         }
         //wait until it is time to decay the indicator
         while(currentIndicatorDecayTimer > 0)
         {
             currentIndicatorDecayTimer--;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSecondsRealtime(1f);
         }
         //make the indicator invisible(decay) from the screen
         while(Indicator.alpha > 0.0f)
         {
-            Indicator.alpha -= 2 * Time.deltaTime;
+            Indicator.alpha -= 2 * Time.unscaledDeltaTime;
             yield return null;
         }
 
