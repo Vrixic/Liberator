@@ -206,6 +206,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3249861944807672062, guid: 63d012930b44d614c98d7bc1f24d3b2a, type: 3}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
+      propertyPath: meleeImpacts.Array.data[1].collisionParticleSystem
+      value: 
+      objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
+    - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[2].collisionParticleSystem
       value: 
       objectReference: {fileID: 1866769461889266661, guid: 2f0f668a164822f49aa6988aab5670e9, type: 3}
@@ -220,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[5].collisionParticleSystem
       value: 
-      objectReference: {fileID: 3348676198658618746, guid: c35cab76504166941aaec775941770e7, type: 3}
+      objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
     - target: {fileID: 5904537738071572409, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: m_Name
       value: KnifeImpactManager

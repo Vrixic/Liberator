@@ -156,6 +156,34 @@ public class AiSensor : MonoBehaviour
         return false;
     }
 
+    public bool IsInsightAttackAndChase()
+    {
+        //get the agents position in the world
+        Vector3 origin = raycastOrigin.position;
+
+        //get player's position in the world from the gamemanager
+        Vector3 dest = GameManager.Instance.playerTransform.position;
+
+        //look for the player's midsection
+        dest.y -= 0.2f;
+
+        Vector3 direction = (dest - origin).normalized;
+
+        //fire a raycast from the enemy to the player to see if anything obstructs the enemies view
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, raycastDistance))
+        {
+            //Debug.Log("Entered raycast line, " + hit.collider.tag);
+            //Debug.DrawLine(origin, dest, Color.green, 1f);
+
+            //if the player is in range and inside the FOV, with no objects obstructing the enemies view
+            if (hit.collider.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     Mesh CreateWedgeMesh()
     {
