@@ -258,7 +258,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         if (GameManager.Instance.CurrentCash >= 100)
         {
             // Checks if player is at max ammo for ammo type small and ammo type shells
-            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) == shotgunAmmoCapacity || AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) == SmallAmmoCapacity)
+            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) == shotgunAmmoCapacity && AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) == SmallAmmoCapacity)
             {
                 Debug.Log("ammo at capacity.");
                 return;
