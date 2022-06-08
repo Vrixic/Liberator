@@ -72,9 +72,6 @@ public class PlayerMotor : MonoBehaviour
     bool isPlayerStrafing;
     bool isPlayerWalkingBackwards;
 
-
-    [SerializeField] Animator moveAnimator;
-
     // Start is called before the first frame update
     void Start()
     {

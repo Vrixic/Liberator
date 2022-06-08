@@ -504,6 +504,7 @@ public class Player : MonoBehaviour
     void PlayerDied()
     {
         Debug.Log("Player died");
+        AudioManager.Instance.StopMusic();
 
         GameManager.Instance.damageIndicatorSystem.ClearAllIndicators();
 
