@@ -1329,6 +1329,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8742855664516082945, guid: ed73b227b581c5b4fb58e4c167514697, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8794728554634174611, guid: ed73b227b581c5b4fb58e4c167514697, type: 3}
       propertyPath: m_Name
       value: ControlsDisplayMenu
