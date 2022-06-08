@@ -15,9 +15,9 @@ public class SprinklerTrigger : MonoBehaviour
             {
                 Debug.Log(agent.currentState);
                 Debug.Log(agent);
-                if (agent.currentState != AIStateID.Stunned)
+                if (agent.currentState != AIStateID.Flashed)
                 {
-                    agent.stateMachine.ChangeState(AIStateID.Stunned);
+                    agent.stateMachine.ChangeState(AIStateID.Flashed);
                     Debug.Log(agent.currentState);
                 }
             }
