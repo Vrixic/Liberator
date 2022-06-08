@@ -16,6 +16,7 @@
             "."
         ],
         "fbxSavePaths": [
+            "Prefabs/Builds/Test",
             "LowPolySoldiers_demo/models",
             "."
         ],
