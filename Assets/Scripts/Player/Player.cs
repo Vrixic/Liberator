@@ -163,6 +163,14 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (bPlayerDead) return;
+        if (godMode)
+        {
+            if (m_CurrentPlayerHealth <= 100)
+            {
+                Debug.Log("Health too low, Resetting");
+                m_CurrentPlayerHealth = 999999999;
+            }
+        }
 
         if (GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
         {
@@ -725,7 +733,9 @@ public class Player : MonoBehaviour
     {
         if (!godMode)
         {
+
             m_CurrentPlayerHealth = 999999999;
+
             Debug.Log("God Mode On");
             godMode = true;
         }
@@ -733,7 +743,6 @@ public class Player : MonoBehaviour
         {
             ResetHealth();
             godMode = false;
-            Debug.Log("max Health: " + maxPlayerHealth + "current Health: " + m_CurrentPlayerHealth);
             Debug.Log("God Mode off");
         }
     }
