@@ -386,6 +386,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 3277b0a2754c77649a8725423b9720ea, type: 3}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[1].collisionParticleSystem
+      value: 
+      objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[2].collisionParticleSystem
+      value: 
+      objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[4].collisionParticleSystem
       value: 
       objectReference: {fileID: 1896897486744008779, guid: 7acd5f4e032486645900ef7dc2d42d7e, type: 3}
@@ -400,7 +408,7 @@ PrefabInstance:
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[7].collisionParticleSystem
       value: 
-      objectReference: {fileID: 3348676198658618746, guid: c35cab76504166941aaec775941770e7, type: 3}
+      objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
     - target: {fileID: 7934257650302403587, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: m_Name
       value: BulletImpactManager
