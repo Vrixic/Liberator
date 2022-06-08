@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,12 +12,32 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
 
     [SerializeField] private float loadTimeMin = 1f;
 
+    [SerializeField] private List<Sprite> backgroundImagesList;
+
+    [SerializeField] private TextMeshProUGUI loadedText;
+
+    [SerializeField] private List<string> loadingTips;
+
+    private Image m_BackgroundImage;
+
     private float m_LoadEndTimeMin = 0f;
     private bool bSceneLoading = false;
+
+    public override void Start()
+    {
+        base.Start();
+
+        m_BackgroundImage = GetComponentInChildren<Image>();
+    }
 
     public override void Show()
     {
         base.Show();
+
+        Random.InitState(Time.frameCount);
+        m_BackgroundImage.sprite = backgroundImagesList[Random.Range(0, backgroundImagesList.Count)];
+        Random.InitState(Time.frameCount);
+        loadedText.text = loadingTips[Random.Range(0, loadingTips.Count)];
 
         PlayerPrefManager.Instance.SceneOperation.completed += OnSceneLoaded;
         m_LoadEndTimeMin = Time.realtimeSinceStartup + loadTimeMin;
