@@ -8,7 +8,7 @@ public class Sprinkler : MonoBehaviour
     BoxCollider stunTrigger;
     Sprinkler sprinkle;
 
-    [SerializeField] ParticleSystem spray;
+    [SerializeField] ParticleSystem spray; 
 
     bool isUsed;
     // Start is called before the first frame update
@@ -19,6 +19,7 @@ public class Sprinkler : MonoBehaviour
         sprinkle = gameObject.GetComponent<Sprinkler>();
         isUsed = false;
     }
+
 
     public void Sprinkle()
     {

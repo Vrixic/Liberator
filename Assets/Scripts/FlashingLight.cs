@@ -7,7 +7,7 @@ public class FlashingLight : MonoBehaviour
     [SerializeField] GameObject sphere;
 
     Material sphereMaterial;
-    Light light;
+    private new Light light;
 
     private void Start()
     {

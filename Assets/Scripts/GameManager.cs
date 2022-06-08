@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject intelInteractText;
     [HideInInspector]
+    public GameObject openShopInteractText;
+    [HideInInspector]
     public Image flashbangImage;
     [HideInInspector]
     public TextMeshProUGUI flashBangCount;
@@ -129,9 +131,12 @@ public class GameManager : MonoBehaviour
 
     public int RewardAmount { get; set; } = 0;
     public int RewardID { get; set; } = 0;
-    public bool RewardCollected { get; set; } = true; 
+    public bool RewardCollected { get; set; } = true;
     #endregion
 
+    //current hostage door transform for playing dooropen audio once the XP screen is closed(justified I promise)
+    [HideInInspector]
+    public Transform currentHostageDoorTransform = null;
 
     //used to alert enemies in the AlertEnemies method, will pickup the head collider and body collider of each enemy
     private Collider[] enemyColliders = new Collider[18];
@@ -202,6 +207,9 @@ public class GameManager : MonoBehaviour
 
         intelInteractText = GameObject.FindGameObjectWithTag("IntelInteractText");
         intelInteractText.SetActive(false);
+
+        openShopInteractText = GameObject.FindGameObjectWithTag("OpenShopInteractText");
+        openShopInteractText.SetActive(false);
 
 
         flashBangIcon = GameObject.FindGameObjectWithTag("FlashBangIcon");

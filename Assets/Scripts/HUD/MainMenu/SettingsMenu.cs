@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -18,9 +19,12 @@ public class SettingsMenu : MonoBehaviour
     public TMP_InputField sfxVolumeInput;
     public TMP_InputField brightnessInput;
     public TMP_InputField sensitivityInput;
-
+    bool dontUpdate = false;
     private void OnEnable()
     {
+
+        EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
+
         // Master Volume
         if (PlayerPrefs.HasKey("Master Volume"))
         {
@@ -80,9 +84,12 @@ public class SettingsMenu : MonoBehaviour
     }
 
 
+
     // Initialize Sliders and text boxes to current player prefs
     public void InitSliders()
     {
+        // Set dont update bool to true to prevent master volume from changing other sliders when settings menu is entered for first time
+        dontUpdate = true;
         masterVolumeInput.text = PlayerPrefManager.Instance.masterVolume.ToString();
         masterVolumeSlider.value = PlayerPrefManager.Instance.masterVolume;
 
@@ -97,6 +104,8 @@ public class SettingsMenu : MonoBehaviour
 
         brightnessInput.text = PlayerPrefManager.Instance.brightness.ToString();
         brightnessSlider.value = PlayerPrefManager.Instance.brightness;
+
+        dontUpdate = false;
         Debug.Log("Settings Sliders Initialized");
     }
 
@@ -108,21 +117,26 @@ public class SettingsMenu : MonoBehaviour
         {
             masterVolumeInput.text = "0";
         }
-        // Updates all volume preferences to represent what master volume is set to in text box
 
-
+        // Updates master volume preferences
         PlayerPrefs.SetFloat("Master Volume", int.Parse(masterVolumeInput.text));
-        PlayerPrefs.SetFloat("Music Volume", int.Parse(masterVolumeInput.text));
-        PlayerPrefs.SetFloat("SFX Volume", int.Parse(masterVolumeInput.text));
-
-        // Updates Slider to represent value inputted into text box
         masterVolumeSlider.value = int.Parse(masterVolumeInput.text);
-        musicVolumeSlider.value = int.Parse(masterVolumeInput.text);
-        sfxVolumeSlider.value = int.Parse(masterVolumeInput.text);
-
         PlayerPrefManager.Instance.masterVolume = masterVolumeSlider.value;
-        //PlayerPrefManager.Instance.musicVolume = masterVolumeSlider.value;
-        //PlayerPrefManager.Instance.sfxVolume = masterVolumeSlider.value;
+
+        // Updates all volume preferences to represent what master volume is set to in text box
+        if (!dontUpdate)
+        {
+            PlayerPrefs.SetFloat("Music Volume", int.Parse(masterVolumeInput.text));
+            PlayerPrefs.SetFloat("SFX Volume", int.Parse(masterVolumeInput.text));
+
+            // Updates Slider to represent value inputted into text box
+            musicVolumeSlider.value = int.Parse(masterVolumeInput.text);
+            sfxVolumeSlider.value = int.Parse(masterVolumeInput.text);
+
+            PlayerPrefManager.Instance.musicVolume = masterVolumeSlider.value;
+            PlayerPrefManager.Instance.sfxVolume = masterVolumeSlider.value;
+        }
+
     }
 
     public void UpdateMusicVolumeInputValue()
@@ -160,15 +174,17 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefManager.Instance.sfxVolume = sfxVolumeSlider.value;
 
 
+
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
+            //AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
         }
         else
         {
-            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX", true);
+            //AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
 
         }
+
 
     }
 
@@ -205,29 +221,37 @@ public class SettingsMenu : MonoBehaviour
         sensitivitySlider.value = int.Parse(sensitivityInput.text);
 
         PlayerPrefManager.Instance.playerSensitivity = sensitivitySlider.value;
-
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (!dontUpdate)
         {
-            GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+            }
         }
     }
 
     public void UpdateMasterVolumeSliderValue()
     {
-        // Updates all volume preferences to represent what master volume is set to
 
+        // Updates master volume preferences
         PlayerPrefs.SetFloat("Master Volume", masterVolumeSlider.value);
-        PlayerPrefs.SetFloat("Music Volume", masterVolumeSlider.value);
-        PlayerPrefs.SetFloat("SFX Volume", masterVolumeSlider.value);
-
-        // Updates text box to represent number input by slider
         masterVolumeInput.text = masterVolumeSlider.value.ToString();
-        musicVolumeInput.text = masterVolumeSlider.value.ToString();
-        sfxVolumeInput.text = masterVolumeSlider.value.ToString();
-
         PlayerPrefManager.Instance.masterVolume = masterVolumeSlider.value;
-        //PlayerPrefManager.Instance.musicVolume = masterVolumeSlider.value;
-        //PlayerPrefManager.Instance.sfxVolume = masterVolumeSlider.value;
+
+        // Updates all volume preferences to represent what master volume is set
+        if (!dontUpdate)
+        {
+            PlayerPrefs.SetFloat("Music Volume", masterVolumeSlider.value);
+            PlayerPrefs.SetFloat("SFX Volume", masterVolumeSlider.value);
+
+            // Updates text box to represent number input by slider
+            musicVolumeInput.text = masterVolumeSlider.value.ToString();
+            sfxVolumeInput.text = masterVolumeSlider.value.ToString();
+
+            PlayerPrefManager.Instance.musicVolume = masterVolumeSlider.value;
+            PlayerPrefManager.Instance.sfxVolume = masterVolumeSlider.value;
+        }
+
     }
 
     public void UpdateMusicVolumeSliderValue()
@@ -259,7 +283,7 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX", true);
+            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
 
         }
     }
@@ -289,10 +313,13 @@ public class SettingsMenu : MonoBehaviour
         sensitivityInput.text = sensitivitySlider.value.ToString();
 
         PlayerPrefManager.Instance.playerSensitivity = sensitivitySlider.value;
-
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (!dontUpdate)
         {
-            GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                GameManager.Instance.playerLookScript.OnSensitivityUpdate();
+            }
+
         }
 
     }

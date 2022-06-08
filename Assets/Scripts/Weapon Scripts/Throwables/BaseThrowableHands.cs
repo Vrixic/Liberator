@@ -16,7 +16,7 @@ public class BaseThrowableHands : BaseWeapon
     /* max amount of Throwables the player can hold at a given time */
     [SerializeField] [Tooltip("max amount of Throwables the player can hold at a given time")] int maxThrowableAmount = 2;
 
-    [SerializeField] GameObject throwableMesh;
+    [SerializeField] public GameObject throwableMesh;
 
     /* current amount of Throwables */
     int m_CurrentThrowableAmount;
@@ -65,7 +65,6 @@ public class BaseThrowableHands : BaseWeapon
 
         if (TakeAction(m_LastAttackTime, attackRate))
         {
-            PlayAttackAudio();
 
             GetAnimator().Play("Attack1");
             UpdateLastAttackTime();

@@ -421,6 +421,17 @@ public class Player : MonoBehaviour
         sensor.SetActive(false);
     }
 
+    // enables flashbang mesh
+    public void ActivateFlashbangMesh()
+    {
+        flashbang.throwableMesh.SetActive(true);
+    }
+
+    public void ActivateSensorMesh()
+    {
+        sensor.throwableMesh.SetActive(true);
+    }
+
     /*
      * Damages player
      * 
@@ -504,6 +515,7 @@ public class Player : MonoBehaviour
     void PlayerDied()
     {
         Debug.Log("Player died");
+        AudioManager.Instance.StopMusic();
 
         GameManager.Instance.damageIndicatorSystem.ClearAllIndicators();
 

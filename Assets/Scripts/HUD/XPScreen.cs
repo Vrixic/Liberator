@@ -144,6 +144,9 @@ public class XPScreen : BaseScreen
         //Cursor.visible = false;
 
         // clear all holders from scroll view 
+        for (int i = 0; i < m_EnemyTextHolders.Count; i++)
+            Destroy(m_EnemyTextHolders[i].holder.gameObject);
+
         m_EnemyTextHolders.Clear();
 
         // resets enemy kill counts
@@ -162,7 +165,19 @@ public class XPScreen : BaseScreen
         if (GameManager.Instance.GameWon)
         {
             // shows shop
-            GameManager.Instance.buttonFuncScript.OpenShopMenu();
+            //GameManager.Instance.buttonFuncScript.OpenShopMenu();
+
+            AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.currentHostageDoorTransform.position, "DoorOpen");
+
+            GameManager.Instance.minimapCanvas.SetActive(true);
+
+            GameManager.Instance.IsUIOverlayVisible = false;
+
+            // unlock mouse 
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            Time.timeScale = 1f;
         }
         else
         {

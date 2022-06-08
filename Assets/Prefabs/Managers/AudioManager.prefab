@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3358181032577500178}
   - component: {fileID: 3358181032577500173}
   - component: {fileID: 1763185080}
+  - component: {fileID: 1527200331}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -47,97 +48,113 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolableAudioSource: {fileID: 3649557836288084548, guid: ffb0905561a00d447b99b10f88034966, type: 3}
   musicAudioSource: {fileID: 1763185080}
+  buttonAudioSource: {fileID: 1527200331}
   sfxSounds:
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.1
     objectTag: Untagged
   - sound:
-      audioType: 0
+      audioType: 2
       audio: {fileID: 8300000, guid: 682c593d51a9bfa40ba69f575f17fcf1, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.2
     objectTag: EnvironmentWood
   - sound:
-      audioType: 0
+      audioType: 2
       audio: {fileID: 8300000, guid: e256d61aa224ea24f83007433b99291f, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.2
     objectTag: EnvironmentMetal
   - sound:
-      audioType: 0
+      audioType: 2
       audio: {fileID: 8300000, guid: 2389f804f3d523c49b59b0abc9d47fbb, type: 3}
-      volMultiplier: 0.2
+      volMultiplier: 0.1
     objectTag: EnvironmentConcrete
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: ed5dbd8279befda47bafa570d862880c, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.3
     objectTag: EnemyDeath
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 1d51b0bd80072ee4d8b7991affbdafe1, type: 3}
-      volMultiplier: 0.6
+      volMultiplier: 0.1
     objectTag: ButtonPress
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
-      volMultiplier: 0.5
+      volMultiplier: 0.1
     objectTag: ButtonHover
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: bc59ce5d225369f4c9382dd718279df8, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.4
     objectTag: DoorOpen
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 4b816cc31ff84794a9d997c31da11f4f, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.4
     objectTag: DoorClose
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: dba1a0ef5c381024cb013330709a1064, type: 3}
-      volMultiplier: 5
+      volMultiplier: 2.5
     objectTag: FlashBang
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 3f3e45e7366666f4a82c8b883ecd2933, type: 3}
-      volMultiplier: 5
+      volMultiplier: 2.5
     objectTag: ScanGrenade
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 892fb91d2838cf74091383b8e1d6f3f5, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.3
     objectTag: ShotFired
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.2
     objectTag: BulletDropped
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 526b78049a014dc44aa04587f0e6ea40, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.3
     objectTag: ReloadGun
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
-      volMultiplier: 0.5
+      volMultiplier: 0.1
     objectTag: MeleeAttack
   - sound:
       audioType: 0
       audio: {fileID: 8300000, guid: 1d51b0bd80072ee4d8b7991affbdafe1, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.2
     objectTag: TestSFX
   - sound:
       audioType: 1
       audio: {fileID: 8300000, guid: 56d089bdf64e0d34ca100aeb5d3dea90, type: 3}
-      volMultiplier: 0.1
+      volMultiplier: 0.05
     objectTag: MenuMusic
   - sound:
       audioType: 1
       audio: {fileID: 8300000, guid: 6b542afe2a5c5e54abf7599243d24c4f, type: 3}
-      volMultiplier: 0.1
+      volMultiplier: 0.01
     objectTag: GameMusic
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: 5e249dfa519a6ae42bb9fcd44d3b08e1, type: 3}
+      volMultiplier: 0.4
+    objectTag: Pickup
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: 309b24d48ccc87f42b2aac3d63139fdc, type: 3}
+      volMultiplier: 2
+    objectTag: FireExplosion
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: 0f390c5b5be5ebb4db9c625a62fe71e3, type: 3}
+      volMultiplier: 3
+    objectTag: FireSpray
 --- !u!82 &1763185080
 AudioSource:
   m_ObjectHideFlags: 0
@@ -153,6 +170,102 @@ AudioSource:
   m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1527200331
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3358181032577500179}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.05
+  m_Pitch: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

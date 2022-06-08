@@ -7,19 +7,30 @@ using UnityEngine.EventSystems;
 
 public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
+    private void OnEnable()
+    {
+        SetSelectedGameObject();
+    }
+
     private void Awake()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
-    
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonPress");
+        AudioManager.Instance.Play2dAudioOnce("ButtonPress");
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "ButtonHover");
+        AudioManager.Instance.Play2dAudioOnce("ButtonHover");
+    }
+
+    public void SetSelectedGameObject()
+    {
+
+        EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
     }
 
     #region MainMenu
@@ -41,7 +52,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
         AudioManager.Instance.StopMusic();
 
         //starts game music
-        Invoke("PlayGameMusicInvoked", 2);
+        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "GameMusic");
 
         //SceneManager.LoadScene(1);
         // Sets cursor state to locked and turns off the visibility
@@ -73,7 +84,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
 
     #endregion
 
-   
+
 
 
 }

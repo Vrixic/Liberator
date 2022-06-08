@@ -24,13 +24,15 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
     }
 
+
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "ButtonPress");
+        AudioManager.Instance.Play2dAudioOnce("ButtonPress");
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "ButtonHover");
+        AudioManager.Instance.Play2dAudioOnce("ButtonHover");
     }
 
     #region PauseMenu
@@ -39,6 +41,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
         if (GameManager.Instance.isPauseMenuOpen == false && !GameManager.Instance.settingsMenu.activeInHierarchy && GameManager.Instance.isShopMenuOpen == false)
         {
+
             if (GameManager.Instance.intelInteractText != null || GameManager.Instance.closeDoorInteractText != null || GameManager.Instance.openDoorInteractText != null || GameManager.Instance.secureHostageText != null)
             {
                 GameManager.Instance.intelInteractText.SetActive(false);
@@ -53,6 +56,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             reticle.SetActive(false);
             // Turns on Pause menu image
             pause.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
+
             // Unlock cursor
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -149,6 +154,12 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             GameManager.Instance.virtualCam.SetActive(false);
         GameManager.Instance.minimapCanvas.SetActive(false);
         GameManager.Instance.shopCanvas.SetActive(true);
+        if (GameManager.Instance.openShopInteractText.activeInHierarchy)
+        {
+            GameManager.Instance.openShopInteractText.SetActive(false);
+        }
+        //EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
+
         UpdateCashCountShopUi();
         GameManager.Instance.isShopMenuOpen = true;
 
@@ -175,6 +186,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         GameManager.Instance.minimapCanvas.SetActive(true);
         GameManager.Instance.isShopMenuOpen = false;
 
+
     }
 
     public void LoadNextLevel()
@@ -199,6 +211,12 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         }
     }
 
+    public void SetCurrentSelectedButton()
+    {
+        EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
+    }
+
+    #region Buy Items Methods
     // Refill Health
     public void BuyHealth()
     {
@@ -240,7 +258,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         if (GameManager.Instance.CurrentCash >= 100)
         {
             // Checks if player is at max ammo for ammo type small and ammo type shells
-            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) == shotgunAmmoCapacity || AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) == SmallAmmoCapacity)
+            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) == shotgunAmmoCapacity && AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) == SmallAmmoCapacity)
             {
                 Debug.Log("ammo at capacity.");
                 return;
@@ -277,6 +295,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             if (GameManager.Instance.playerScript.GetCurrentFlashbangsAmount() != GameManager.Instance.playerScript.GetMaxFlashBangs())
             {
+                GameManager.Instance.playerScript.ActivateFlashbangMesh();
                 // Subtract Cost of items and update Cash Count
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
@@ -299,6 +318,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             {
                 if (GameManager.Instance.playerScript.GetCurrentSensorGrenadeCount() != GameManager.Instance.playerScript.GetMaxSensorGrenadeCount())
                 {
+                    GameManager.Instance.playerScript.ActivateFlashbangMesh(); 
+                    GameManager.Instance.playerScript.ActivateSensorMesh();
                     // Subtract Cost of items and update Cash Count
                     GameManager.Instance.CurrentCash -= 200;
                     UpdateCashCountShopUi();
@@ -321,6 +342,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             if (GameManager.Instance.playerScript.GetCurrentSensorGrenadeCount() != GameManager.Instance.playerScript.GetMaxSensorGrenadeCount())
             {
+                GameManager.Instance.playerScript.ActivateSensorMesh();
                 // Subtract Cost of items and update Cash Count
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
@@ -354,6 +376,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         }
     }
 
+    #endregion
 
     public void UpdateCashCountShopUi()
     {

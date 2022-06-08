@@ -81,7 +81,7 @@ public class AiSensor : MonoBehaviour
         Vector3 dest = GameManager.Instance.playerTransform.position;
 
         //look for the player's midsection
-        dest.y *= 0.5f;
+        dest.y -= 0.2f;
 
         Vector3 direction = (dest - origin).normalized;
         //Debug.Log(direction);
@@ -127,8 +127,8 @@ public class AiSensor : MonoBehaviour
         //get player's position in the world from the gamemanager
         Vector3 dest = GameManager.Instance.playerTransform.position;
 
-        //look for the player's midsection
-        dest.y *= 0.5f;
+        //look for the player's head
+        dest.y -= 0.2f;
 
         Vector3 direction = (dest - origin).normalized;
         //checks if an object is within the height of the sensor
@@ -258,16 +258,16 @@ public class AiSensor : MonoBehaviour
 
     private void OnValidate()
     {
-        mesh = CreateWedgeMesh();
+        //mesh = CreateWedgeMesh();
     }
 
     private void OnDrawGizmos()
     {
-        if (mesh)
-        {
-            Gizmos.color = meshColor;
-            //draws the sight mesh on the agent transform and position.
-            Gizmos.DrawMesh(mesh, transform.position, transform.rotation);
-        }
+        //if (mesh)
+        //{
+        //    Gizmos.color = meshColor;
+        //    //draws the sight mesh on the agent transform and position.
+        //    Gizmos.DrawMesh(mesh, transform.position, transform.rotation);
+        //}
     }
 }

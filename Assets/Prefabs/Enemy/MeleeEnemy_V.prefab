@@ -333,6 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872deff75f88fd42a24353c1ff3a8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPosition: {x: 0, y: 0, z: 0}
+  initialRotation: {x: 0, y: 0, z: 0}
   initialState: 3
   currentState: 0
   navMeshAgent: {fileID: 0}
@@ -344,6 +346,8 @@ MonoBehaviour:
   aimDirection: {x: 0, y: 0, z: 0}
   disableEnemyInterval: 2
   isFlashed: 0
+  isStunned: 0
+  miniMapLocator: {fileID: 0}
 --- !u!114 &8602766105409519030
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -54,6 +54,7 @@ TagManager:
   - Sprinkler
   - CashGainedText
   - SettingsMenu
+  - OpenShopInteractText
   layers:
   - Default
   - TransparentFX

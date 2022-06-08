@@ -7,11 +7,6 @@ public class Explodable : MonoBehaviour
     [SerializeField] PoolableObject fire;
     [SerializeField] PoolableObject explosion;
 
-    [Header("Sound Effects")]
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip fireSound;
-    [SerializeField] AudioClip exploSound;
-
     [SerializeField] LayerMask layers;
 
     PoolableObject[] m_FirePooled;
@@ -52,8 +47,7 @@ public class Explodable : MonoBehaviour
             StartCoroutine(TimeTillExplode());
             if (!firstHit)
             {
-                audioSource.clip = fireSound;
-                audioSource.Play();
+                AudioManager.Instance.PlayAudioAtLocation(transform.position, "FireSpray");
                 firstHit = true;
             }
 
@@ -122,8 +116,7 @@ public class Explodable : MonoBehaviour
             explosion = ObjectPoolManager.Instance.SpawnObject(m_ExplosionPool);
             explosion.transform.position = transform.position;
 
-            audioSource.clip = exploSound;
-            audioSource.Play();
+            AudioManager.Instance.PlayAudioAtLocation(transform.position, "FireExplosion");
 
             ExplodeDamage();
 

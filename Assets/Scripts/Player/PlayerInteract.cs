@@ -18,7 +18,7 @@ public class PlayerInteract : MonoBehaviour
     private bool securingHostage = false;
     private GameObject currentInteractPrompt;
     private Image hostageProgressBarImage;
-
+    private Hostage currentHostage;
     private void Start()
     {
         hostageProgressBarImage = GameManager.Instance.hostageProgressBar.GetComponent<Image>();
@@ -53,7 +53,24 @@ public class PlayerInteract : MonoBehaviour
                 //player is looking at a door within interact range
                 if (hit.collider.CompareTag("Door"))
                 {
-                    bool doorIsOpen = hit.collider.gameObject.GetComponent<DoorController>().DoorOpen;
+                    DoorController doorController = hit.collider.gameObject.GetComponent<DoorController>();
+                    bool doorIsOpen = false;
+
+                    if(doorController != null)
+                    {
+                        doorIsOpen = doorController.DoorOpen;
+                    }
+                    else
+                    {
+                        LEdoorController levelEntryDoorController = hit.collider.gameObject.GetComponent<LEdoorController>();
+
+                        if (levelEntryDoorController != null)
+                            doorIsOpen = levelEntryDoorController.DoorOpen;
+                        else
+                        {
+                            Debug.LogError("This door doesn't have a compatible door controller");
+                        }
+                    }
 
                     //set interaction text depending on whether a given door is open or closed
                     if (doorIsOpen == false)
@@ -96,6 +113,11 @@ public class PlayerInteract : MonoBehaviour
                     currentInteractPrompt = GameManager.Instance.secureHostageText;
                     currentInteractPrompt.SetActive(true);
                 }
+                else if(hit.collider.CompareTag("Shop"))
+                {
+                    currentInteractPrompt = GameManager.Instance.openShopInteractText;
+                    currentInteractPrompt.SetActive(true);
+                }
                 else //if not an interactable object
                     currentInteractPrompt.SetActive(false);
             }
@@ -125,15 +147,22 @@ public class PlayerInteract : MonoBehaviour
                     //access that door's doorController script
                     DoorController doorScript = hit.collider.gameObject.GetComponent<DoorController>();
 
-                    //interact method will decide whether that specific door needs to be opened or closed
-                    doorScript.Interact();
+                    if (doorScript != null)
+                    {
+                        //interact method will decide whether that specific door needs to be opened or closed
+                        doorScript.Interact();
 
-                    //disable current door interaction prompt since it is no longer accurate
-                    currentInteractPrompt.SetActive(false);
+                        //disable current door interaction prompt since it is no longer accurate
+                        currentInteractPrompt.SetActive(false);
+                    }
+                    else
+                    {
+                        LEdoorController levelEntryDoorScript = hit.collider.gameObject.GetComponent<LEdoorController>();
 
-                    //play a sound
-                    //TO DO----------------------------------------------------
+                        levelEntryDoorScript.Interact();
 
+                        currentInteractPrompt.SetActive(false);
+                    }
                 }
                 //player interacts with a piece of intel
                 else if (hit.collider.CompareTag("Intel"))
@@ -141,9 +170,11 @@ public class PlayerInteract : MonoBehaviour
                     GameManager.Instance.CurrentCash += intelCashReward;
                     GameManager.Instance.cashRewardAmount = intelCashReward;
                     //get that instance so we can disable it
-                    IntelPickup intelInstance = hit.collider.gameObject.GetComponent<IntelPickup>();
+                    GameObject intelInstance = hit.collider.gameObject;
 
-                    intelInstance.OnPickup(GameManager.Instance.player);
+                    intelInstance.SetActive(false);
+                    AudioManager.Instance.PlayAudioAtLocation(transform.position, "Pickup");
+                    GameManager.Instance.StartDisplayCashCoroutine();
 
                     GameManager.Instance.IntelCollected++;
                 }
@@ -151,6 +182,7 @@ public class PlayerInteract : MonoBehaviour
                 else if (hit.collider.CompareTag("Shop"))
                 {
                     GameManager.Instance.buttonFuncScript.OpenShopMenu();
+                    currentInteractPrompt.SetActive(false);
                 }
             }
             else //hold interactions go here VVVVVVVVVVVVVVVVVVVVVVVV
@@ -162,6 +194,12 @@ public class PlayerInteract : MonoBehaviour
                     GameManager.Instance.hostageProgressBar.SetActive(true);
                     PlayerMotor.MovementEnabled = false;
                     securingHostage = true;
+
+                    //save that hostage's script to open the hostage door if the hold is completed
+                    currentHostage = hit.collider.GetComponent<Hostage>();
+
+                    //save the transform of the attached hostage door for playing audio
+                    GameManager.Instance.currentHostageDoorTransform = currentHostage.doorToOpenWhenHostageSecured.gameObject.transform;
 
                     //play audio
                     AudioManager.Instance.PlayAudioAtLocation(transform.position, "Hostage");
@@ -205,6 +243,16 @@ public class PlayerInteract : MonoBehaviour
             Time.timeScale = 0f;
 
             GameManager.Instance.hostageProgressBar.SetActive(false);
+
+            if(currentHostage != null)
+            {
+                //tells the corresponding hostage door to open
+                currentHostage.HostageSecured();
+            }
+            else
+            {
+                Debug.LogError("No hostage script attached to the hostage that was secured.");
+            }
 
             // Disables virtual camera so player can not look around in the pause menu
             if (GameManager.Instance.virtualCam != null)

@@ -65,7 +65,7 @@ public class PlayerMotor : MonoBehaviour
     [Tooltip("How long it takes the player to crouch and uncrouch")]
     [SerializeField] private float crouchTimer = 1f;
     
-    private Vector2 currentInputVector;
+    public Vector2 currentInputVector;
     private Vector2 smoothInputVelocity;
 
     // Strafe
@@ -141,6 +141,7 @@ public class PlayerMotor : MonoBehaviour
            CheckSlowWalk();
     }
 
+    
     //receives the inputs from our InputManager.cs and applies them to the character controller component
     //move inputs x and y  can each be either -1, 0, or 1 (ex. pressing 'A' sets input.x to -1, letting go of 'A' resets it to 0)
     public void ProcessMove(Vector2 input)
@@ -237,6 +238,11 @@ public class PlayerMotor : MonoBehaviour
     public void SetPlayerPosition(Vector3 position)
     {
         transform.position = position;
+    }
+
+    public bool ReturnIsGrounded()
+    {
+        return isGrounded;
     }
 
     public void Crouch()
