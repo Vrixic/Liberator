@@ -145,6 +145,16 @@ MonoBehaviour:
       audio: {fileID: 8300000, guid: 5e249dfa519a6ae42bb9fcd44d3b08e1, type: 3}
       volMultiplier: 0.4
     objectTag: Pickup
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: 309b24d48ccc87f42b2aac3d63139fdc, type: 3}
+      volMultiplier: 2
+    objectTag: FireExplosion
+  - sound:
+      audioType: 0
+      audio: {fileID: 8300000, guid: 0f390c5b5be5ebb4db9c625a62fe71e3, type: 3}
+      volMultiplier: 3
+    objectTag: FireSpray
 --- !u!82 &1763185080
 AudioSource:
   m_ObjectHideFlags: 0

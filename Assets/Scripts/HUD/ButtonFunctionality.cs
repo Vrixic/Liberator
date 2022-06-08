@@ -295,6 +295,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             if (GameManager.Instance.playerScript.GetCurrentFlashbangsAmount() != GameManager.Instance.playerScript.GetMaxFlashBangs())
             {
+                GameManager.Instance.playerScript.ActivateFlashbangMesh();
                 // Subtract Cost of items and update Cash Count
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
@@ -317,6 +318,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             {
                 if (GameManager.Instance.playerScript.GetCurrentSensorGrenadeCount() != GameManager.Instance.playerScript.GetMaxSensorGrenadeCount())
                 {
+                    GameManager.Instance.playerScript.ActivateFlashbangMesh(); 
+                    GameManager.Instance.playerScript.ActivateSensorMesh();
                     // Subtract Cost of items and update Cash Count
                     GameManager.Instance.CurrentCash -= 200;
                     UpdateCashCountShopUi();
@@ -339,6 +342,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             if (GameManager.Instance.playerScript.GetCurrentSensorGrenadeCount() != GameManager.Instance.playerScript.GetMaxSensorGrenadeCount())
             {
+                GameManager.Instance.playerScript.ActivateSensorMesh();
                 // Subtract Cost of items and update Cash Count
                 GameManager.Instance.CurrentCash -= 100;
                 UpdateCashCountShopUi();
