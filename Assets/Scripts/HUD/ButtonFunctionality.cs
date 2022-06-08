@@ -50,7 +50,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 GameManager.Instance.secureHostageText.SetActive(false);
             }
             //pause game music
-            //AudioManager.Instance.PauseMusic();
+            AudioManager.Instance.PauseMusic();
 
             // Turn off Reticle
             reticle.SetActive(false);
@@ -86,7 +86,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
 
             //RESUME GAME MUSIC
-            //AudioManager.Instance.ResumeMusic();
+            AudioManager.Instance.ResumeMusic();
 
             // Turn Reticle back on
             reticle.SetActive(true);

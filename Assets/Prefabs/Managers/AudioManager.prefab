@@ -138,7 +138,7 @@ MonoBehaviour:
   - sound:
       audioType: 1
       audio: {fileID: 8300000, guid: 6b542afe2a5c5e54abf7599243d24c4f, type: 3}
-      volMultiplier: 0.05
+      volMultiplier: 0.01
     objectTag: GameMusic
   - sound:
       audioType: 0
@@ -252,8 +252,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -163,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[2].objectTag
@@ -176,6 +176,10 @@ PrefabInstance:
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[4].objectTag
       value: EnvironmentMetal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
+      propertyPath: meleeImpacts.Array.data[5].objectTag
+      value: Hostage
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[0].impactAudio
@@ -194,6 +198,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 087bace50db49124c9737a5840e97554, type: 3}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
+      propertyPath: meleeImpacts.Array.data[5].impactAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 019b1cad8d20c6748abcaeabd40d6746, type: 3}
+    - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[0].collisionParticleSystem
       value: 
       objectReference: {fileID: -3249861944807672062, guid: 63d012930b44d614c98d7bc1f24d3b2a, type: 3}
@@ -209,6 +217,10 @@ PrefabInstance:
       propertyPath: meleeImpacts.Array.data[4].collisionParticleSystem
       value: 
       objectReference: {fileID: -3249861944807672062, guid: 63d012930b44d614c98d7bc1f24d3b2a, type: 3}
+    - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
+      propertyPath: meleeImpacts.Array.data[5].collisionParticleSystem
+      value: 
+      objectReference: {fileID: 3348676198658618746, guid: c35cab76504166941aaec775941770e7, type: 3}
     - target: {fileID: 5904537738071572409, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: m_Name
       value: KnifeImpactManager
@@ -332,6 +344,10 @@ PrefabInstance:
     - target: {fileID: 7934257650302403584, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: volumeMultiplier
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.size

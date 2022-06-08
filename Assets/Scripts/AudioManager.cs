@@ -54,12 +54,12 @@ public class AudioManager : MonoBehaviour
             audioSoundsAudioClipDictionary.Add(sound.objectTag, sound.sound);
         }
         bPoolReady = true;
-        //PlayAudioAtLocation(Vector3.zero, "MenuMusic");
+        PlayAudioAtLocation(Vector3.zero, "MenuMusic");
     }
 
     private void Update()
     {
-        musicAudioSource.volume = (PlayerPrefManager.Instance.musicVolume / 100) * 0.2f;
+        musicAudioSource.volume = (PlayerPrefManager.Instance.musicVolume / 2000) ;
     }
 
     public void PlayAudioAtLocation(Vector3 location, string objectTag, float volM = 1f, bool isLandingSound = false)
@@ -86,10 +86,9 @@ public class AudioManager : MonoBehaviour
         }
         else if (sound.audioType == AudioType.ui)
         {
-            audioSource = musicAudioSource;
-            audioSource.volume = (PlayerPrefManager.Instance.musicVolume/100) * sound.volMultiplier;
-            audioSource.clip = GetAudioClip(objectTag);
-            audioSource.Play();
+            musicAudioSource.volume = (PlayerPrefManager.Instance.musicVolume / 2000);
+            musicAudioSource.clip = GetAudioClip(objectTag);
+            musicAudioSource.Play();
         }
         else if (sound.audioType == AudioType.footstep)
         {

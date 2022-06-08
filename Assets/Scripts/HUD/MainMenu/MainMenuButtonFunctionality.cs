@@ -52,7 +52,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
         AudioManager.Instance.StopMusic();
 
         //starts game music
-        //Invoke("PlayGameMusicInvoked", 2);
+        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "GameMusic");
 
         //SceneManager.LoadScene(1);
         // Sets cursor state to locked and turns off the visibility

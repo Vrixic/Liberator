@@ -177,11 +177,11 @@ public class SettingsMenu : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
+            //AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
         }
         else
         {
-            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
+            //AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
 
         }
 
