@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScanGrenade : BaseThrowables
 {
     [SerializeField] float scanSphereRadius = 5f;
-    [SerializeField] bool scanThroughWalls = false;
+    [SerializeField] bool scanThroughWalls = true;
 
     /*
     * Called when flashbang explodes
@@ -52,10 +52,10 @@ public class ScanGrenade : BaseThrowables
             }
             else
             {
-                if (colliders[i].GetComponent<SphereCollider>() == null)
+                if (colliders[i].GetComponent<CapsuleCollider>() != null)
                 {
                     Debug.Log("scannin: " + colliders[i].name);
-                    colliders[i].GetComponentInChildren<MiniMapScanable>().Show();
+                    colliders[i].GetComponent<MiniMapScanable>().Show();
                 }
             }
         }
