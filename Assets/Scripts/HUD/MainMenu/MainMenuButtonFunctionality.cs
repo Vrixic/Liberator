@@ -39,14 +39,13 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     // Main menu Scene index = 0 & Game scene index = 1
     public void StartGame()
     {
-
         // Loads the game Scene
         Debug.Log("Starting Game From Main Menu");
-        PlayerPrefManager.Instance.LoadGame();
-
-        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(1);
         PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
         ScreenManager.Instance.ShowScreen("Transition_Screen");
+        
+        PlayerPrefManager.Instance.LoadGame();
 
         //pauses menu music
         AudioManager.Instance.StopMusic();
@@ -80,11 +79,11 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     public void LoadTutorial()
     {
         Debug.Log("Starting Tutorial");
-        PlayerPrefManager.Instance.LoadGame();
-
         PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(4, LoadSceneMode.Single);
         PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
         ScreenManager.Instance.ShowScreen("Transition_Screen");
+
+        PlayerPrefManager.Instance.LoadGame();
 
         //pauses menu music
         AudioManager.Instance.StopMusic();
@@ -97,7 +96,6 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
         Cursor.visible = false;
         // Resumes time
         Time.timeScale = 1f;
-        
     }
 
     #endregion

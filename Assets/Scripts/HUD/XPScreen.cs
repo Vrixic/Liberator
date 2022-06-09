@@ -337,6 +337,11 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        SkipAllAnimations();
+    }
+
+    private void SkipAllAnimations()
+    {
         if (bSkipAnimations) return;
 
         bSkipAnimations = true;
@@ -344,7 +349,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
         int currIndex = 0;
 
-        if(currIndex < GameManager.Instance.enemiesKilled.Count)
+        if (currIndex < GameManager.Instance.enemiesKilled.Count)
         {
             foreach (KeyValuePair<string, int> pair in GameManager.Instance.enemiesKilled)
             {
@@ -410,7 +415,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
             //CalculateBarSpeed();
 
-           // yield return new WaitForSecondsRealtime(timeBetweenUIBlocks);
+            // yield return new WaitForSecondsRealtime(timeBetweenUIBlocks);
         }
 
         for (int i = 0; i < m_EnemyTextHolders.Count; i++)
