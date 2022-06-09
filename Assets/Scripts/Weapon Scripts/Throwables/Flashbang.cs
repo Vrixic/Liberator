@@ -31,7 +31,7 @@ public class Flashbang : BaseThrowables
         for (int i = 0; i < collidersCount; i++)
         {
             Vector3 target = colliders[i].transform.position;
-            target.y += 0.25f; // so it doesn't target the ground
+            target.y += 1.1f; // so it doesn't target the ground
 
             //Debug.DrawLine(origin, origin + (target - origin).normalized * raycastDistance, Color.green, 2f);
             RaycastHit hitInfo;
