@@ -19,6 +19,8 @@ public class PlayerInteract : MonoBehaviour
     private GameObject currentInteractPrompt;
     private Image hostageProgressBarImage;
     private Hostage currentHostage;
+    Collider previousHit = null;
+
     private void Start()
     {
         hostageProgressBarImage = GameManager.Instance.hostageProgressBar.GetComponent<Image>();
@@ -43,17 +45,24 @@ public class PlayerInteract : MonoBehaviour
             //reset the timer for interaction prompt updates
             updateInteractPromptTimer = updateInteractPromptTime;
 
+            RaycastHit currentHit;
+
             Vector3 launchPosition = transform.position;
             launchPosition.y = GameManager.Instance.mainCamera.transform.position.y;
             //raycast where the player is aiming to see if they are looking at an interactable item
-            if (Physics.Raycast(launchPosition, GameManager.Instance.playerAimVector, out RaycastHit hit, interactRange))
+            if (Physics.Raycast(launchPosition, GameManager.Instance.playerAimVector, out currentHit, interactRange))
             {
-                //enters this scope if the raycast hit a collider within the interact range
-
+                if (previousHit != null)
+                {                 //enters this scope if the raycast hit a collider within the interact range
+                    if (previousHit != currentHit.collider)
+                    {
+                        currentInteractPrompt.SetActive(false);
+                    }
+                }
                 //player is looking at a door within interact range
-                if (hit.collider.CompareTag("Door"))
+                if (currentHit.collider.CompareTag("Door"))
                 {
-                    DoorController doorController = hit.collider.gameObject.GetComponent<DoorController>();
+                    DoorController doorController = currentHit.collider.gameObject.GetComponent<DoorController>();
                     bool doorIsOpen = false;
 
                     if(doorController != null)
@@ -62,7 +71,7 @@ public class PlayerInteract : MonoBehaviour
                     }
                     else
                     {
-                        LEdoorController levelEntryDoorController = hit.collider.gameObject.GetComponent<LEdoorController>();
+                        LEdoorController levelEntryDoorController = currentHit.collider.gameObject.GetComponent<LEdoorController>();
 
                         if (levelEntryDoorController != null)
                             doorIsOpen = levelEntryDoorController.DoorOpen;
@@ -102,24 +111,27 @@ public class PlayerInteract : MonoBehaviour
                     currentInteractPrompt.SetActive(true);
                 }
                 //player is looking at intel within interact range
-                else if (hit.collider.CompareTag("Intel"))
+                else if (currentHit.collider.CompareTag("Intel"))
                 {
                     currentInteractPrompt = GameManager.Instance.intelInteractText;
                     currentInteractPrompt.SetActive(true);
                 }
                 //player is looking at a hostage within interact range
-                else if (hit.collider.CompareTag("Hostage"))
+                else if (currentHit.collider.CompareTag("Hostage"))
                 {
                     currentInteractPrompt = GameManager.Instance.secureHostageText;
                     currentInteractPrompt.SetActive(true);
                 }
-                else if(hit.collider.CompareTag("Shop"))
+                else if(currentHit.collider.CompareTag("Shop"))
                 {
                     currentInteractPrompt = GameManager.Instance.openShopInteractText;
                     currentInteractPrompt.SetActive(true);
                 }
                 else //if not an interactable object
                     currentInteractPrompt.SetActive(false);
+
+                //store the previous collider hit by the interaction raycast
+                previousHit = currentHit.collider;
             }
             else //if no game object is within interact range
                 currentInteractPrompt.SetActive(false);
