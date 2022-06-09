@@ -23,7 +23,7 @@ public class Flashbang : BaseThrowables
         // Do Physics.OverlapSphereNonAlloc here
         Collider[] colliders = new Collider[10];
         Vector3 origin = transform.position;
-        origin.y += 1f;
+        origin.y += 2f;
         int collidersCount = Physics.OverlapSphereNonAlloc(origin, flashSphereRadius, colliders, GetLayerMask());
 
         float raycastDistance = flashSphereRadius * 2f;
