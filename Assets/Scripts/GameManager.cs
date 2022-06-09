@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public ButtonFunctionality buttonFuncScript;
     [HideInInspector]
+    public GameObject infomationTriggerText;
+    [HideInInspector]
     public GameObject secureHostageText;
     [HideInInspector]
     public GameObject openDoorInteractText;
@@ -195,6 +197,9 @@ public class GameManager : MonoBehaviour
         healthBarScript = healthBar.GetComponent<HealthBar>();
         ShieldBar = GameObject.FindGameObjectWithTag("ShieldBar");
         shieldBarScript = ShieldBar.GetComponent<ShieldBar>();
+
+        infomationTriggerText = GameObject.FindGameObjectWithTag("InformationalTriggerText");
+        infomationTriggerText.SetActive(false);
 
         secureHostageText = GameObject.FindGameObjectWithTag("SecureHostageText");
         secureHostageText.SetActive(false);
