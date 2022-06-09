@@ -189,7 +189,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
         else
         {
-            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(0);
             PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
             ScreenManager.Instance.ShowScreen("Transition_Screen");
         }

@@ -437,7 +437,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -603,6 +603,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2388958939110035255, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388958939110035255, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4155586109140297701, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -610,6 +618,14 @@ PrefabInstance:
     - target: {fileID: 4241517259813634705, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509814225954442655, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: loadTimeMin
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188655787326550318, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: m_Type
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8672613831734843546, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

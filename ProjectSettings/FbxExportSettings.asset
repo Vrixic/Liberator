@@ -16,6 +16,8 @@
             "."
         ],
         "fbxSavePaths": [
+            "SovietBunker/Pipes",
+            "Prefabs/Builds/Test",
             "LowPolySoldiers_demo/models",
             "."
         ],
