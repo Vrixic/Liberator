@@ -20,6 +20,8 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
 
     private Image m_BackgroundImage;
 
+    private int m_CurrentTipIndex = 0;
+
     private float m_LoadEndTimeMin = 0f;
     private bool bSceneLoading = false;
 
@@ -37,7 +39,10 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
         Random.InitState(Time.frameCount);
         m_BackgroundImage.sprite = backgroundImagesList[Random.Range(0, backgroundImagesList.Count)];
         Random.InitState(Time.frameCount);
-        loadedText.text = loadingTips[Random.Range(0, loadingTips.Count)];
+        m_CurrentTipIndex = Random.Range(0, loadingTips.Count);
+        loadedText.text = loadingTips[m_CurrentTipIndex];
+
+        StartCoroutine(ChangeDisplayTips());
 
         PlayerPrefManager.Instance.SceneOperation.completed += OnSceneLoaded;
         m_LoadEndTimeMin = Time.realtimeSinceStartup + loadTimeMin;
@@ -53,11 +58,18 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
         }
         else 
         {
+            bSceneLoading = true;
             PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = true;
         }
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        //if(eventData.button == PointerEventData.InputButton.Right)
+        //{
+        //    DisplayNextTip();
+        //    return;
+        //}
+
         if(PlayerPrefManager.Instance.SceneOperation.progress > 0.89 && !bSceneLoading)
         {
             bSceneLoading = true;
@@ -68,5 +80,23 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
     void OnSceneLoaded(AsyncOperation operation)
     {
         ScreenManager.Instance.HideScreen(screenName);
+    }
+
+    IEnumerator ChangeDisplayTips()
+    { 
+        while(!bSceneLoading)
+        {
+            yield return new WaitForSecondsRealtime(3f);
+            DisplayNextTip();
+        }       
+    }
+
+    void DisplayNextTip()
+    {
+        m_CurrentTipIndex++;
+        if (m_CurrentTipIndex >= loadingTips.Count)
+            m_CurrentTipIndex = 0;
+
+        loadedText.text = loadingTips[m_CurrentTipIndex];
     }
 }
