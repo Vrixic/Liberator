@@ -79,7 +79,25 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     // TO DO: IMPLEMENT Tutorial
     public void LoadTutorial()
     {
+        Debug.Log("Starting Tutorial");
+        PlayerPrefManager.Instance.LoadGame();
 
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(4, LoadSceneMode.Single);
+        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+        ScreenManager.Instance.ShowScreen("Transition_Screen");
+
+        //pauses menu music
+        AudioManager.Instance.StopMusic();
+
+        //starts game music
+        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "GameMusic");
+
+        // Sets cursor state to locked and turns off the visibility
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        // Resumes time
+        Time.timeScale = 1f;
+        
     }
 
     #endregion

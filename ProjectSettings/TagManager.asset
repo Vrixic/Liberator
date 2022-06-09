@@ -55,6 +55,7 @@ TagManager:
   - CashGainedText
   - SettingsMenu
   - OpenShopInteractText
+  - InformationalTriggerText
   layers:
   - Default
   - TransparentFX
