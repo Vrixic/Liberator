@@ -8,6 +8,7 @@ public class InformationPopup : MonoBehaviour
 {
     [SerializeField] string popUpText = "";
     [SerializeField] bool slowTime = true;
+    [SerializeField] float slowTimeLength = 3f;
     GameObject informationPrompt;
 
     private void Start()
@@ -33,15 +34,8 @@ public class InformationPopup : MonoBehaviour
     IEnumerator ShowSlow()
     {
         informationPrompt.SetActive(true);
-        float time = 0f;
-        Time.timeScale = 0.1f;
-        while (Time.timeScale < 0.6)
-        {
-            time += 0.2f * Time.unscaledDeltaTime;
-            time = Mathf.Clamp(time, 0f, 1f);
-            Time.timeScale = time;
-            yield return null;
-        }
+        Time.timeScale = 0.2f;
+        yield return new WaitForSeconds(slowTimeLength* 0.2f);
         informationPrompt.SetActive(false);
         Time.timeScale = 1;
         gameObject.SetActive(false);

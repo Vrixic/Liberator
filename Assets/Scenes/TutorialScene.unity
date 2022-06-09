@@ -2094,6 +2094,10 @@ PrefabInstance:
       propertyPath: popUpText
       value: After rescuing the hostage you will be granted access to the shop
       objectReference: {fileID: 0}
+    - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
+      propertyPath: slowTimeLength
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7078924842423067788, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2953,6 +2957,10 @@ PrefabInstance:
       propertyPath: popUpText
       value: Make sure you check every corner
       objectReference: {fileID: 0}
+    - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
+      propertyPath: slowTimeLength
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7078924842423067788, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3349,6 +3357,10 @@ PrefabInstance:
     - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: popUpText
       value: Holding E to rescue the hostage will let you progress to the next level
+      objectReference: {fileID: 0}
+    - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
+      propertyPath: slowTimeLength
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7078924842423067788, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: m_RootOrder
@@ -6703,6 +6715,10 @@ PrefabInstance:
     - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: popUpText
       value: Watch out for enemy's
+      objectReference: {fileID: 0}
+    - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
+      propertyPath: slowTimeLength
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7078924842423067788, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: m_RootOrder
@@ -13346,6 +13362,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2060680257, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060680257, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060680257, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060680257, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1259816206456108068, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -17893,6 +17925,10 @@ PrefabInstance:
       propertyPath: popUpText
       value: HealthKits, and Ammo boxes are placed around the map to help you on
         your mission
+      objectReference: {fileID: 0}
+    - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
+      propertyPath: slowTimeLength
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7078924842423067788, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: m_RootOrder
