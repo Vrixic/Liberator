@@ -41,11 +41,15 @@ public class AIChasePlayerScript : AIState
             agent.StartCoroutine(WaitForShotsCoroutine(agent));
             reacting = true;
         }
+        else if(reacting == true)
+        {
+              
+        }
         else
         {
             //constantly sets move target for enemy to the player
             // only chase if player is in within the chase range and not in sight
-            agent.navMeshAgent.destination = GameManager.Instance.playerTransform.position; // player within range    
+            agent.navMeshAgent.destination = GameManager.Instance.playerTransform.position; // player within range  
         }
 
         //bool inSight = agent.sensor.IsInsight();
