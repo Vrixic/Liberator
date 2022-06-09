@@ -762,6 +762,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+    - target: {fileID: 5552697653957424621, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5888950848708577750, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2487,6 +2491,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: sfxSounds.Array.data[21].objectTag
+      value: MeleeEnemyYell
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: sfxSounds.Array.data[21].sound.audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f390c5b5be5ebb4db9c625a62fe71e3, type: 3}
+    - target: {fileID: 3358181032577500173, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
+      propertyPath: sfxSounds.Array.data[21].sound.volMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3358181032577500178, guid: 79688f5487e681b45ad0b3f0333606de, type: 3}
       propertyPath: m_RootOrder
       value: 1
