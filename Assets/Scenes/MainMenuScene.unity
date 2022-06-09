@@ -623,6 +623,10 @@ PrefabInstance:
       propertyPath: loadTimeMin
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5188655787326550318, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8672613831734843546, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
