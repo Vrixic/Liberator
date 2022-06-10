@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(BoxCollider))]
 public class EnemyMelee : MonoBehaviour
 {
     [SerializeField] [Tooltip("amount of times to attack per second")] float attackRate = 1f;
     [SerializeField] int damage = 50;
     float m_LastAttackTime = 0f;
 
-    SphereCollider m_SphereCollider;
+    BoxCollider m_SphereCollider;
 
     /* if player has been attacked once already, prevent infinite damage on one hit */
     bool bHasAttacked = false;
@@ -19,7 +19,7 @@ public class EnemyMelee : MonoBehaviour
         m_LastAttackTime = 0f;
         attackRate = 1f / attackRate;
 
-        m_SphereCollider = GetComponent<SphereCollider>();
+        m_SphereCollider = GetComponent<BoxCollider>();
         m_SphereCollider.isTrigger = true;
         m_SphereCollider.enabled = false;
     }
