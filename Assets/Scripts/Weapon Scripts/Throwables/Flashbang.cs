@@ -21,9 +21,9 @@ public class Flashbang : BaseThrowables
         PlayExplodeSFX();
 
         // Do Physics.OverlapSphereNonAlloc here
-        Collider[] colliders = new Collider[10];
+        Collider[] colliders = new Collider[14];
         Vector3 origin = transform.position;
-        origin.y += 1f;
+        origin.y += 2f;
         int collidersCount = Physics.OverlapSphereNonAlloc(origin, flashSphereRadius, colliders, GetLayerMask());
 
         float raycastDistance = flashSphereRadius * 2f;
@@ -31,17 +31,19 @@ public class Flashbang : BaseThrowables
         for (int i = 0; i < collidersCount; i++)
         {
             Vector3 target = colliders[i].transform.position;
-            target.y += 0.25f; // so it doesn't target the ground
+
+            //give the flashbang a better chance of hitting enemies by raycasting from a higher position.
+            if(colliders[i].CompareTag("Hitbox"))
+                target.y += 1.1f; // so it doesn't target the ground
 
             //Debug.DrawLine(origin, origin + (target - origin).normalized * raycastDistance, Color.green, 2f);
-            RaycastHit hitInfo;
-            if (Physics.Raycast(origin, (target - origin).normalized, out hitInfo, raycastDistance))
+            if (Physics.Raycast(origin, (target - origin).normalized, out RaycastHit hitInfo, raycastDistance))
             {
-                if (hitInfo.collider.tag == "Player")
+                if (hitInfo.collider.CompareTag("Player"))
                 {
                     GameManager.Instance.playerScript.FlashPlayer();
                 }
-                else if (hitInfo.collider.tag == "Hitbox")
+                else if (hitInfo.collider.CompareTag("Hitbox"))
                 {
                     colliders[i].GetComponentInParent<AIAgent>().stateMachine.ChangeState(AIStateID.Flashed);
                 }

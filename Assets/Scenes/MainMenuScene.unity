@@ -603,6 +603,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1931620151795253820, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931620151795253820, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323607558197208348, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2388958939110035255, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -622,6 +634,10 @@ PrefabInstance:
     - target: {fileID: 4509814225954442655, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: loadTimeMin
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509814225954442655, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: loadingTips.Array.data[1]
+      value: Watchout for assassins.....
       objectReference: {fileID: 0}
     - target: {fileID: 5188655787326550318, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_Type

@@ -60,7 +60,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!114 &9025766368396454601
 MonoBehaviour:
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7403914871262705290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,15 +116,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenName: Transition_Screen
   barSlider: {fileID: 1485411498460869398}
-  loadTimeMin: 2.5
+  loadTimeMin: 5
   backgroundImagesList:
-  - {fileID: 21300000, guid: 2ba4e205e8182d841a935ff62032c2c9, type: 3}
+  - {fileID: 21300000, guid: ba3ab56559ea006419bd1949847923d2, type: 3}
   - {fileID: 21300000, guid: 79f18ce1c73b56647bfddbb6cedf747f, type: 3}
-  - {fileID: 21300000, guid: 7a6096eb4320c644694f3df854c1bf46, type: 3}
+  - {fileID: 21300000, guid: 368dc2376d58ee54aada056e2bcc97f8, type: 3}
+  - {fileID: 21300000, guid: 0693c1084258e7a4c93270e022a25066, type: 3}
+  - {fileID: 21300000, guid: 2ae8e90d7dd5edd44a48e9986ced8e1a, type: 3}
+  - {fileID: 21300000, guid: 4d292c454e90e304f8be02100ae23a72, type: 3}
+  - {fileID: 21300000, guid: c5e36e7d5822f9f4f9d0d89215816d52, type: 3}
   loadedText: {fileID: 8551821342320920830}
   loadingTips:
   - Headshots kill enemies in one shot......
-  - Watchout for assasins.....
+  - Watchout for assassins.....
   - Keep an eye out for intel......
   - Stabbers are named after what they do.....
   - Listen for sound cues... door...
@@ -137,25 +141,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 930611167563045466}
     m_Modifications:
-    - target: {fileID: 300549844079895344, guid: 6ae95c75c5a63694b9c34787b78ca1e1, type: 3}
-      propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417107561725718237, guid: 6ae95c75c5a63694b9c34787b78ca1e1, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 79f18ce1c73b56647bfddbb6cedf747f, type: 3}
     - target: {fileID: 5203678430465501416, guid: 6ae95c75c5a63694b9c34787b78ca1e1, type: 3}
       propertyPath: m_Name
       value: LoadingScreen_BG
-      objectReference: {fileID: 0}
-    - target: {fileID: 5203678430465501416, guid: 6ae95c75c5a63694b9c34787b78ca1e1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7849592266362458308, guid: 6ae95c75c5a63694b9c34787b78ca1e1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7849592266362458308, guid: 6ae95c75c5a63694b9c34787b78ca1e1, type: 3}
       propertyPath: m_AnchorMax.y

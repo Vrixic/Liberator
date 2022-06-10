@@ -24,8 +24,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         SmallAmmoCapacity = AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small);
     }
 
-
-
     public void OnPointerClick(PointerEventData eventData)
     {
         AudioManager.Instance.Play2dAudioOnce("ButtonPress");
@@ -523,7 +521,10 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene(0);
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(0);
+        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+        ScreenManager.Instance.ShowScreen("Transition_Screen");
+        //SceneManager.LoadScene(0);
     }
 
     //temporary for alpha sprint
