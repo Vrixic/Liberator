@@ -21,6 +21,7 @@ public class AIAgent : MonoBehaviour
     [HideInInspector] public AiSensor sensor;
     [HideInInspector] public Animator animator;
     [SerializeField] bool isMelee = false;
+    [SerializeField] BoxCollider meleeCollider;
 
     [HideInInspector] public Vector3 aimDirection;
 

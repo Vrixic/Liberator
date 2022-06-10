@@ -33,6 +33,7 @@ public class AIAttackPlayerState : AIState
         {
             if (agent.GetGun().ShootAtTarget(agent.playerTransform.position, agent.config.shootSprayRadius))
                 agent.animator.Play("Attack");
+            else if(agent.)
         }
     }
     public void Exit(AIAgent agent)
