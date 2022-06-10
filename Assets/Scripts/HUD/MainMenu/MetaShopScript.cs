@@ -14,55 +14,7 @@ public class MetaShopScript : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
 
-
-        // Skill points
-        if (PlayerPrefs.HasKey("Skill Points"))
-        {
-            PlayerPrefs.GetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
-        }
-        else
-        {
-            Debug.Log("Skill Point player pref not found");
-        }
-
-        // Starting Cash 
-        if (PlayerPrefs.HasKey("Upgraded Starting Cash"))
-        {
-            PlayerPrefManager.Instance.startingCash = PlayerPrefs.GetInt("Upgraded Starting Cash", 1000);
-        }
-        else
-        {
-            Debug.Log("Upgraded Starting Cash player pref not found");
-        }
-
-
-        // Flashbang Capacity 
-        if (PlayerPrefs.HasKey("Flashbang Capacity"))
-        {
-
-            PlayerPrefManager.Instance.flashBangCapacity = PlayerPrefs.GetInt("Flashbang Capacity", 1000);
-            Debug.Log("Loading Flashbang Capacity, Current : " + PlayerPrefManager.Instance.flashBangCapacity);
-        }
-        else
-        {
-            Debug.Log("Flashbang Capacity player pref not found");
-
-        }
-
-        // Sensor Grenade Capacity 
-        if (PlayerPrefs.HasKey("Sensor Grenade Capacity"))
-        {
-
-            PlayerPrefManager.Instance.sensorGrenadeCapacity = PlayerPrefs.GetInt("Sensor Grenade Capacity", 2);
-            Debug.Log("Loading Sensor Grenade Capacity, Current : " + PlayerPrefManager.Instance.sensorGrenadeCapacity);
-        }
-        else
-        {
-            Debug.Log("Sensor Grenade Capacity player pref not found");
-        }
-
-
-
+        PlayerPrefManager.Instance.LoadGame();
         UpdateSkillPointCount();
     }
 
@@ -74,6 +26,7 @@ public class MetaShopScript : MonoBehaviour
 
     #region MetaShop Upgrades Methods
 
+    #region Player Upgrades
     public void UpgradeStartingCash()
     {
         if (PlayerPrefManager.Instance.currentSkillPoints == 0)
@@ -83,14 +36,14 @@ public class MetaShopScript : MonoBehaviour
         }
 
         // Check if player has enough skill points to afford upgrade
-        if (PlayerPrefs.GetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints) >= 2)
+        if (PlayerPrefs.GetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints) >= 4)
         {
             Debug.Log("Upgrading Starting Cash by $250");
             Debug.Log("Skill points before: " + PlayerPrefManager.Instance.currentSkillPoints + " starting cash before: " + PlayerPrefManager.Instance.startingCash);
 
-            // Subtract 2 Skill points and add 250 to starting cash in Player Pref Manager
-            PlayerPrefManager.Instance.currentSkillPoints -= 2;
-            PlayerPrefManager.Instance.startingCash += 250;
+            // Subtract 2 Skill points and add 1000 to starting cash in Player Pref Manager
+            PlayerPrefManager.Instance.currentSkillPoints -= 4;
+            PlayerPrefManager.Instance.startingCash += 1000;
 
             // Set player pref to new skill point and capacity values
             PlayerPrefs.SetInt("Upgraded Starting Cash", PlayerPrefManager.Instance.startingCash);
@@ -103,10 +56,69 @@ public class MetaShopScript : MonoBehaviour
         }
 
     }
+    public void UpgradeStartingHealth()
+    {
+        if (PlayerPrefManager.Instance.currentSkillPoints == 0)
+        {
+            Debug.Log("player has zero Skill points");
+            return;
+        }
 
+        // Check if player has enough skill points to afford upgrade
+        if (PlayerPrefs.GetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints) >= 4)
+        {
+            Debug.Log("Upgrading Player Starting Health by 100");
+            Debug.Log("Skill points before: " + PlayerPrefManager.Instance.currentSkillPoints + " starting health before: " + PlayerPrefManager.Instance.playerStartingHealth);
+
+            PlayerPrefManager.Instance.currentSkillPoints -= 4;
+            PlayerPrefManager.Instance.playerStartingHealth += 100;
+
+            // Set player pref to new skill point and capacity values
+            PlayerPrefs.SetInt("Player Starting Health", PlayerPrefManager.Instance.playerStartingHealth);
+            PlayerPrefs.SetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
+
+            Debug.Log("Skill points after: " + PlayerPrefManager.Instance.currentSkillPoints + " starting health after: " + PlayerPrefManager.Instance.playerStartingHealth);
+
+            // Update Skill point count Ui
+            UpdateSkillPointCount();
+        }
+    }
+
+    public void UpgradeStartingArmor()
+    {
+        if (PlayerPrefManager.Instance.currentSkillPoints == 0)
+        {
+            Debug.Log("player has zero Skill points");
+            return;
+        }
+
+        // Check if player has enough skill points to afford upgrade
+        if (PlayerPrefs.GetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints) >= 4)
+        {
+            Debug.Log("Upgrading Player Starting Armor by 100");
+            Debug.Log("Skill points before: " + PlayerPrefManager.Instance.currentSkillPoints + " starting armor before: " + PlayerPrefManager.Instance.playerStartingArmor);
+
+            PlayerPrefManager.Instance.currentSkillPoints -= 4;
+            PlayerPrefManager.Instance.playerStartingArmor += 100;
+
+            // Set player pref to new skill point and capacity values
+            PlayerPrefs.SetInt("Player Starting Armor", PlayerPrefManager.Instance.playerStartingArmor);
+            PlayerPrefs.SetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
+
+            Debug.Log("Skill points after: " + PlayerPrefManager.Instance.currentSkillPoints + " starting armor after: " + PlayerPrefManager.Instance.playerStartingArmor);
+
+            // Update Skill point count Ui
+            UpdateSkillPointCount();
+        }
+    } 
+
+    #endregion
+
+    #region Equipment Related Upgrades
     public void UpgradeFlashbangCapacity()
     {
         if (PlayerPrefManager.Instance.currentSkillPoints == 0)
+
         {
             Debug.Log("player has zero Skill points");
             return;
@@ -123,8 +135,8 @@ public class MetaShopScript : MonoBehaviour
             PlayerPrefManager.Instance.flashBangCapacity += 1;
 
             // Set player pref to new skill point and capacity values
-            PlayerPrefs.SetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
             PlayerPrefs.SetInt("Flashbang Capacity", PlayerPrefManager.Instance.flashBangCapacity);
+            PlayerPrefs.SetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
 
             Debug.Log("Skill points after: " + PlayerPrefManager.Instance.currentSkillPoints + " Flashbang Capacity after: " + PlayerPrefManager.Instance.flashBangCapacity);
 
@@ -153,8 +165,8 @@ public class MetaShopScript : MonoBehaviour
             PlayerPrefManager.Instance.sensorGrenadeCapacity += 1;
 
             // Set player pref to new skill point and capacity values
-            PlayerPrefs.SetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
             PlayerPrefs.SetInt("Sensor Grenade Capacity", PlayerPrefManager.Instance.sensorGrenadeCapacity);
+            PlayerPrefs.SetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
 
             Debug.Log("Skill points after: " + PlayerPrefManager.Instance.currentSkillPoints + " Sensor Grenade Capacity after: " + PlayerPrefManager.Instance.sensorGrenadeCapacity);
 
@@ -162,6 +174,65 @@ public class MetaShopScript : MonoBehaviour
             UpdateSkillPointCount();
         }
     }
+
+    public void UpgradeEquipmentEffectiveness()
+    {
+        if (PlayerPrefManager.Instance.currentSkillPoints == 0)
+        {
+            Debug.Log("player has zero Skill points");
+            return;
+        }
+
+        // Check if player has enough skill points to afford upgrade
+        if (PlayerPrefs.GetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints) >= 4)
+        {
+            Debug.Log("Upgrading Equipment Effectiveness by ");
+            Debug.Log("Skill points before: " + PlayerPrefManager.Instance.currentSkillPoints + " equip effectiveness before: " + PlayerPrefManager.Instance.equipmentEffectiveness);
+
+            PlayerPrefManager.Instance.currentSkillPoints -= 4;
+            // TO DO: PUT CODE FOR CHANGING PLAYER PREF
+
+            // Set player pref to new skill point and capacity values
+            PlayerPrefs.SetInt("Equipment Effectiveness", PlayerPrefManager.Instance.equipmentEffectiveness);
+            PlayerPrefs.SetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
+
+            Debug.Log("Skill points after: " + PlayerPrefManager.Instance.currentSkillPoints + " equip effectiveness after: " + PlayerPrefManager.Instance.equipmentEffectiveness);
+
+            // Update Skill point count Ui
+            UpdateSkillPointCount();
+        }
+
+    }
+
+    public void UpgradeEquipmentRange()
+    {
+        if (PlayerPrefManager.Instance.currentSkillPoints == 0)
+        {
+            Debug.Log("player has zero Skill points");
+            return;
+        }
+
+        // Check if player has enough skill points to afford upgrade
+        if (PlayerPrefs.GetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints) >= 4)
+        {
+            Debug.Log("Upgrading Equipment Range by ");
+            Debug.Log("Skill points before: " + PlayerPrefManager.Instance.currentSkillPoints + " equip range before: " + PlayerPrefManager.Instance.equipmentRange);
+
+            PlayerPrefManager.Instance.currentSkillPoints -= 4;
+            // TO DO: PUT CODE FOR CHANGING PLAYER PREF
+
+            // Set player pref to new skill point and capacity values
+            PlayerPrefs.SetInt("Equipment Range", PlayerPrefManager.Instance.equipmentRange);
+            PlayerPrefs.SetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
+
+            Debug.Log("Skill points after: " + PlayerPrefManager.Instance.currentSkillPoints + " equip range after: " + PlayerPrefManager.Instance.equipmentRange);
+
+            // Update Skill point count Ui
+            UpdateSkillPointCount();
+        }
+    } 
+    #endregion
+
     #endregion
 
     // METHODs FOR TESTING SKILL POINTS BEING SAVED AND META SHOP UPGRADES
@@ -179,6 +250,10 @@ public class MetaShopScript : MonoBehaviour
         PlayerPrefs.SetInt("Upgraded Starting Cash", 1000);
         PlayerPrefs.SetInt("Flashbang Capacity", 2);
         PlayerPrefs.SetInt("Sensor Grenade Capacity", 2);
+        PlayerPrefs.SetInt("Player Starting Health", 100);
+        PlayerPrefs.SetInt("Player Starting Armor", 100);
+        PlayerPrefs.SetInt("Equipment Effectiveness", 0);
+        PlayerPrefs.SetInt("Equipment Range", 0);
         PlayerPrefManager.Instance.LoadPlayerUpgrades();
         UpdateSkillPointCount();
 
