@@ -33,10 +33,10 @@ public class Player : MonoBehaviour
     [Header("Player Settings")]
 
     /* max health player can have */
-    [SerializeField] int maxPlayerHealth = 200;
+     int maxPlayerHealth = 100;
 
     /* max health player can have */
-    [SerializeField] int maxPlayerShield = 150;
+     int maxPlayerShield = 100;
 
     /* amount of percentage of damage the shield can intake when player has been damaged */
     [SerializeField] float playerShieldFallOffScale = 0.8f;
@@ -138,7 +138,8 @@ public class Player : MonoBehaviour
 
         UpdateFlashbangCount();
         UpdateSensorGrenadeUi();
-
+        maxPlayerHealth = PlayerPrefManager.Instance.playerStartingHealth;
+        maxPlayerShield = PlayerPrefManager.Instance.playerStartingArmor;
         ResetHealth();
 
         flashbang.OnPickup(weaponsParent);
@@ -155,9 +156,10 @@ public class Player : MonoBehaviour
     {
         m_CurrentPlayerHealth = maxPlayerHealth;
         m_CurrentPlayerShield = maxPlayerShield;
-
         healthBar.SetMaxHealth();
         shieldBar.SetMaxShield();
+        healthBar.UpdateHealthBar();
+        shieldBar.UpdateShieldBar();
     }
 
     private void Update()
