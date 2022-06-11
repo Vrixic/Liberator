@@ -24,7 +24,7 @@ public class PlayerLook : MonoBehaviour
         xRotation -= currentInputVector.y;
 
         //keep the player from breaking their neck trying to look too far up or down
-        xRotation = Mathf.Clamp(xRotation, -60f, 80f);
+        xRotation = Mathf.Clamp(xRotation, -60f, 60f);
 
         GameManager.Instance.mainCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 

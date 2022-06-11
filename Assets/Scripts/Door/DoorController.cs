@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DoorController : MonoBehaviour
 {
     //drag and drop assassin enemies in here
     [SerializeField] private List<AIAgent> ChasePlayerOnOpen = new List<AIAgent>();
+
+    //this is how the door obstructs the nav mesh for the enemies
+    private NavMeshObstacle navMeshObstacle;
 
     ////create open and close door audio sources
     //[SerializeField] private AudioSource openDoorAudioSource = null;
@@ -26,6 +30,7 @@ public class DoorController : MonoBehaviour
     private void Start()
     {
         doorAnimator = gameObject.GetComponent<Animator>();
+        navMeshObstacle = gameObject.GetComponent<NavMeshObstacle>();
     }
 
     //let the door decide whether it needs to open or close, used for playerInteract
@@ -39,6 +44,8 @@ public class DoorController : MonoBehaviour
             //neither animation is currently playing so...
             if (doorOpen == false)
             {
+                navMeshObstacle.carving = true;
+
                 doorAnimator.Play("DoorOpenNew", 0, 0.0f);
                 doorOpen = true;
                 AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorOpen");
@@ -67,6 +74,9 @@ public class DoorController : MonoBehaviour
             {
                 doorAnimator.Play("DoorCloseNew", 0, 0.0f);
                 doorOpen = false;
+
+                navMeshObstacle.carving = false;
+
                 AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorClose");
             }
 
@@ -86,6 +96,8 @@ public class DoorController : MonoBehaviour
             //neither animation is currently playing so...
             if (doorOpen == false)
             {
+                navMeshObstacle.carving = true;
+
                 doorAnimator.Play("DoorOpenNew", 0, 0.0f);
                 doorOpen = true;
                 AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorOpen");
@@ -104,6 +116,8 @@ public class DoorController : MonoBehaviour
             //neither animation is currently playing so...
             if (doorOpen == true)
             {
+                navMeshObstacle.carving = false;
+
                 //if door is open then close the door
                 doorAnimator.Play("DoorCloseNew", 0, 0.0f);
                 doorOpen = false;
