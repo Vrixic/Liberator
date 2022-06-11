@@ -8,6 +8,8 @@ public class CameraShake : MonoBehaviour
     [Range(0, 1)] [SerializeField] private float trauma = 0f;
     [SerializeField] private float frequency = 18f;
     [SerializeField] private float amplitude = 0.6f;
+    [SerializeField] private float minimumAmplitude = 0.2f;
+    [SerializeField] private float amplitudeMultiplier = 3f;
 
     public float Trauma
     {
@@ -32,13 +34,15 @@ public class CameraShake : MonoBehaviour
 
     Vector3 GetVector3()
     {
-        //generates a new noise value for x, y, and potentially z rotation(depth)
+        //generates a new noise value for x, y, and potentially z rotation
         return new Vector3(GetFloat(1), GetFloat(10), 0);
     }
 
     void Update()
     {
-        amplitude = trauma * 3 + 0.2f;
+        amplitude = trauma * amplitudeMultiplier + 0.2f;
+
+        //move through the noisemap with a nice decay curve by square rooting the trauma
         sampleLocation += Time.deltaTime * Mathf.Sqrt(trauma) * frequency;
 
         trauma = Mathf.Clamp01(trauma - Time.deltaTime);

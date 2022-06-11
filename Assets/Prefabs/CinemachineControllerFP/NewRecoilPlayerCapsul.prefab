@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5321043106473002230}
   m_Layer: 0
   m_Name: CameraShake
-  m_TagString: Untagged
+  m_TagString: CameraShake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,9 +131,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trauma: 0
-  traumaMultiplier: 3
-  traumaMagnitude: 0.6
-  rotationalMagnitude: 3
+  frequency: 18
+  amplitude: 0.6
+  minimumAmplitude: 0.2
+  amplitudeMultiplier: 3
 --- !u!1 &1296551694906811319
 GameObject:
   m_ObjectHideFlags: 0

@@ -201,6 +201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player5_22
       objectReference: {fileID: 0}
+    - target: {fileID: 1833786865883805940, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_TagString
+      value: CameraShake
+      objectReference: {fileID: 0}
     - target: {fileID: 3023301750189076927, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
