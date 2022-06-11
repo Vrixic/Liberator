@@ -34,15 +34,14 @@ public class AIDeathState : AIState
         GameManager.Instance.cashRewardAmount = 50;
         GameManager.Instance.StartDisplayCashCoroutine();
        
-        string tag = agent.GetComponentInChildren<BoxCollider>().tag;
-        if (GameManager.Instance.enemiesKilled.ContainsKey(tag))
+        if (GameManager.Instance.enemiesKilled.ContainsKey(agent.name))
         {
-            GameManager.Instance.enemiesKilled[tag]++;
+            GameManager.Instance.enemiesKilled[agent.name]++;
 
         }
         else
         {
-            GameManager.Instance.enemiesKilled.Add(tag, 1);
+            GameManager.Instance.enemiesKilled.Add(agent.name, 1);
         }
 
         agent.navMeshAgent.isStopped = true;

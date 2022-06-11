@@ -23,6 +23,8 @@ public class AIAgent : MonoBehaviour
     [SerializeField] bool isMelee = false;
     public float sqrDistance;
 
+    public string name = "";
+
     [HideInInspector] public Vector3 aimDirection;
 
     [SerializeField] [Tooltip("How long should it wait to clean up the enemy's body after death")]float disableEnemyInterval = 2f;
