@@ -13,8 +13,8 @@ public class SprinklerTrigger : MonoBehaviour
             Debug.Log("Trigger Entered");
             if (other.gameObject.TryGetComponent<AIAgent>(out agent))
             {
-                Debug.Log(agent.currentState);
-                Debug.Log(agent);
+                //Debug.Log(agent.currentState);
+                //Debug.Log(agent);
                 if (agent.currentState != AIStateID.Flashed)
                 {
                     agent.stateMachine.ChangeState(AIStateID.Flashed);

@@ -231,6 +231,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 8803556263222267670, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.04
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
 --- !u!1 &5341400865192960332 stripped
@@ -238,6 +242,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8803556263221842806, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
   m_PrefabInstance: {fileID: 3462410555603202618}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &191360138
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341400865192960332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.3289096
+  m_Center: {x: 0, y: 1.0953584, z: 1.8306041}
+--- !u!114 &191360137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341400865192960332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bad900edcba1464d9850bb9c5c0d529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRate: 1
+  damage: 50
 --- !u!114 &1776756332
 MonoBehaviour:
   m_ObjectHideFlags: 0

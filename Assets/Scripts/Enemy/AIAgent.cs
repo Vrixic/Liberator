@@ -21,7 +21,7 @@ public class AIAgent : MonoBehaviour
     [HideInInspector] public AiSensor sensor;
     [HideInInspector] public Animator animator;
     [SerializeField] bool isMelee = false;
-    [SerializeField] BoxCollider meleeCollider;
+    public float sqrDistance;
 
     [HideInInspector] public Vector3 aimDirection;
 
@@ -67,12 +67,9 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIReturnState());
         stateMachine.RegisterState(new AIStunnedState());
         stateMachine.RegisterState(new AIAlertedState());
-        if (isMelee)
-        {
-            enemyMelee = GetComponent<EnemyMelee>();
-            meleeSphereCollider = GetComponent<SphereCollider>();
-        }
-        else
+        enemyMelee = GetComponent<EnemyMelee>();
+        meleeSphereCollider = GetComponent<SphereCollider>();
+        if (!isMelee)
         {
             enemyGun = GetComponent<EnemyGun>();
         }
@@ -105,7 +102,7 @@ public class AIAgent : MonoBehaviour
         playerTransform = GameManager.Instance.player.transform;
         //constantly updates the machine
         stateMachine.Update();
-
+        sqrDistance = (GameManager.Instance.playerTransform.position - transform.position).sqrMagnitude;
         animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
     }
 
