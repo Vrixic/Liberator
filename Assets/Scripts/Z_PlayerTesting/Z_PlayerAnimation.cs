@@ -7,9 +7,6 @@ public class Z_PlayerAnimation : MonoBehaviour
     Animator playerAnimator;
     string groundTag = "Untagged";
 
-    float footStepWalkAudioPlayDelay = 0.2f;
-    float m_LastStepSoundTime = 0f;
-
     private void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -30,7 +27,7 @@ public class Z_PlayerAnimation : MonoBehaviour
         {
             playerAnimator.SetFloat("VelocityX", input.x);
             playerAnimator.SetFloat("VelocityZ", input.y);
-            if (GameManager.Instance.playerMoveScript.IsShifting())
+            if (GameManager.Instance.playerMoveScript.IsShifting() || GameManager.Instance.playerMoveScript.IsCrouching())
             {
                 playerAnimator.speed = 0.5f;
             }
@@ -40,14 +37,9 @@ public class Z_PlayerAnimation : MonoBehaviour
 
     void PlayFootStepSound()
     {
-        if (!GameManager.Instance.playerIsGrounded) return;
+        if (!GameManager.Instance.playerIsGrounded || GameManager.Instance.playerMoveScript.IsShifting() || GameManager.Instance.playerMoveScript.IsCrouching()) return;
 
         AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, GetGroundsTag());
-        //if (GameManager.Instance.playerMoveScript.currentActiveSpeed2D > 0.2f && (Time.time - m_LastStepSoundTime) > footStepWalkAudioPlayDelay)
-        //{
-        //    m_LastStepSoundTime = Time.time;
-            
-        //}
     }
 
     string GetGroundsTag()

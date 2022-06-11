@@ -14,7 +14,7 @@ public class PlayerMotor : MonoBehaviour
 
     private CharacterController controller;
     private Vector3 playerVelocity; //used for vertical movement and gravity only
-    public Vector3 moveDirection = Vector3.zero; //used for horizontal movement
+    private Vector3 moveDirection = Vector3.zero; //used for horizontal movement
 
     private bool isGrounded; //used for gravity
     private bool lerpCrouch = false;
@@ -248,6 +248,11 @@ public class PlayerMotor : MonoBehaviour
     public bool IsShifting()
     {
         return shiftPressed;
+    }
+
+    public bool IsCrouching()
+    {
+        return crouching;
     }
     public void Crouch()
     {
