@@ -14,7 +14,7 @@ public class PlayerMotor : MonoBehaviour
 
     private CharacterController controller;
     private Vector3 playerVelocity; //used for vertical movement and gravity only
-    Vector3 moveDirection = Vector3.zero; //used for horizontal movement
+    public Vector3 moveDirection = Vector3.zero; //used for horizontal movement
 
     private bool isGrounded; //used for gravity
     private bool lerpCrouch = false;
@@ -245,6 +245,10 @@ public class PlayerMotor : MonoBehaviour
         return isGrounded;
     }
 
+    public bool IsShifting()
+    {
+        return shiftPressed;
+    }
     public void Crouch()
     {
         //if they start crouching in the air, let the movement function know that it should run the given function(crouch)
