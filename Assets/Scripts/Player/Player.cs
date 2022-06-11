@@ -50,18 +50,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] AudioSource weaponAudioSrc;
 
-    /* footstep audio when player walks */
-    //[SerializeField] AudioClip footStepWalkAudio;
-
-    /* footstep audio when player runs */
-    //[SerializeField] AudioClip footStepRunAudio;
-
-    /* delay on the foot step walk audio to keep it in control */
-    [SerializeField] float footStepWalkAudioPlayDelay = 0.75f;
-
-    /* delay on the foot step run audio to keep it in control */
-    [SerializeField] float footStepRunAudioPlayDelay = 0.75f;
-
     /* the ground under the players tag */
     string groundTag = "Untagged";
 
@@ -81,9 +69,6 @@ public class Player : MonoBehaviour
     AudioSource m_PlayerAudioSrc;
 
     float m_DefaultVolume = 1f;
-
-    /* last time a sound effect was played for footsteps */
-    float m_LastStepSoundTime = 0f;
 
     /* player motor of the player */
     PlayerMotor m_PlayerMotor;
@@ -171,20 +156,6 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Health too low, Resetting");
                 m_CurrentPlayerHealth = 999999999;
-            }
-        }
-
-        if (GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
-        {
-            if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
-            {
-                AudioManager.Instance.PlayAudioAtLocation(transform.position, GetGroundsTag());
-                m_LastStepSoundTime = Time.time;
-            }
-            else if (Time.time - m_LastStepSoundTime > footStepRunAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D > 0.3f)
-            {
-                AudioManager.Instance.PlayAudioAtLocation(transform.position, GetGroundsTag());
-                m_LastStepSoundTime = Time.time;
             }
         }
 
@@ -747,35 +718,6 @@ public class Player : MonoBehaviour
             godMode = false;
             Debug.Log("God Mode off");
         }
-    }
-
-    /*
-    * set the footstep audio sources clip to the @Param: 'clip'
-    */
-    //void SetFootstepAudio(AudioClip clip)
-    //{
-    //    m_FootstepAudioSrc.clip = clip;
-    //}
-
-    /*
-    * plays a footstep audio
-    //*/
-    //void PlayFootStepAudio(string tag)
-    //{
-    //    AudioManager.Instance.PlayAudioAtLocation(m_PlayerAudioSrc, tag, m_PlayerAudioSrc.volume);
-    //}
-
-    /* sends a raycast to check the grounds tag, used for footsteps */
-    string GetGroundsTag()
-    {
-        RaycastHit tag;
-        Ray checkGroundTag = new Ray(transform.position, Vector3.down);
-        if (Physics.Raycast(checkGroundTag, out tag, 2f))
-        {
-            groundTag = tag.collider.tag;
-            Debug.Log(tag.collider.tag);
-        }
-        return groundTag;
     }
 
     public int GetCurrentFlashbangsAmount()

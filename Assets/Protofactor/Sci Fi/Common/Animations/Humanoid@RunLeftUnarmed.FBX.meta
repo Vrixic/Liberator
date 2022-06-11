@@ -430,7 +430,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8222222
+      - time: 0.8296296
         functionName: PlayFootStepSound
         data: 
         objectReferenceParameter: {instanceID: 0}
