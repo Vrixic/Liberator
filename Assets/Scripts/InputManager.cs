@@ -100,7 +100,7 @@ public class InputManager : MonoBehaviour
     {
         //tell the playerMotor to move using the value from the "movement" action(WASD)
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
-        playerAnimation.PlayAnimation(onFoot.Movement.ReadValue<Vector2>());
+        playerAnimation?.PlayAnimation(onFoot.Movement.ReadValue<Vector2>());
     }
 
     private void LateUpdate()
