@@ -14,12 +14,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/CurtisScene.unity
     guid: bf9f188ae25388242a6441127e4cfb77
+  - enabled: 0
+    path: Assets/Scenes/ChandlerScene.unity
+    guid: 7a834766090277d4a8cffcb0cf2c5759
   - enabled: 1
     path: Assets/Scenes/MainMenuScene.unity
     guid: 0e295f5101d265448b28db3d0aa422e3
-  - enabled: 1
-    path: Assets/Scenes/ChandlerScene.unity
-    guid: 7a834766090277d4a8cffcb0cf2c5759
   - enabled: 1
     path: Assets/Scenes/Level_One Chandler.unity
     guid: 2f7567f61146dc24589acff5874dc45e
