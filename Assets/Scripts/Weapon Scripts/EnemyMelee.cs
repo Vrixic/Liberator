@@ -60,6 +60,10 @@ public class EnemyMelee : MonoBehaviour
             {
                 DISystem.createIndicator(transform);
                 GameManager.Instance.playerScript.TakeDamage(damage);
+
+                //add camerashake for flinch
+                GameManager.Instance.cameraShakeScript.Trauma += 1f;
+
                 bHasAttacked = true;
             }
         }

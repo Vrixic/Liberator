@@ -119,6 +119,9 @@ public class EnemyGun : MonoBehaviour
             {
                 GameManager.Instance.playerScript.TakeDamage(damage);
 
+                //add camera shake for player flinch
+                GameManager.Instance.cameraShakeScript.Trauma = 0.4f;
+
                 //create damage indicator UI
                 DISystem.createIndicator(transform);
 

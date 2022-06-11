@@ -153,6 +153,10 @@ public class BaseGun : BaseWeapon
 
         ShootBullet();
 
+        //apply camera shake
+        if(GameManager.Instance.cameraShakeScript.Trauma < 0.10f)
+            GameManager.Instance.cameraShakeScript.Trauma += 0.25f;
+
         PlayBulletDropAudio();
         UpdateAmmoGUI();
     }

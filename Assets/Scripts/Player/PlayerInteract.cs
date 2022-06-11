@@ -146,7 +146,6 @@ public class PlayerInteract : MonoBehaviour
 
     public void ProcessInteraction(bool pressOrHoldBehavior)
     {
-
         //send raycast and store whatever it collides with to check and see if it is something the player can 
         //interact with by comparing the gameObject's tag
         if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.playerAimVector, out RaycastHit hit, interactRange))
