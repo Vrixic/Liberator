@@ -31,8 +31,18 @@ public class AIAttackPlayerState : AIState
         }
         else
         {
-            if (agent.GetGun().ShootAtTarget(agent.playerTransform.position, agent.config.shootSprayRadius))
+            Debug.Log(agent.sqrDistance);
+            if (agent.sqrDistance < 6)
+            {
+
+                if (agent.GetMeleeWeapon().Attack()) // check to see if enemy is capable of attacking right now
+                {
+                    agent.animator.Play("Melee");
+                }
+            }
+            else if (agent.GetGun().ShootAtTarget(agent.playerTransform.position, agent.config.shootSprayRadius) && agent.sqrDistance >= 6)
                 agent.animator.Play("Attack");
+            
         }
     }
     public void Exit(AIAgent agent)

@@ -949,6 +949,7 @@ MonoBehaviour:
   playerLookScript: {fileID: 0}
   player: {fileID: 0}
   playerScript: {fileID: 0}
+  cameraShakeScript: {fileID: 0}
   mainCamera: {fileID: 0}
   playerAimVector: {x: 0, y: 0, z: 0}
   playerTransform: {fileID: 0}
@@ -1677,6 +1678,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionsButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7339117119298286735, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7339117119298286735, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents:
     - {fileID: 7339117119295259806, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c1913642b3730149bc72b37f4824001, type: 3}

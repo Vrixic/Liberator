@@ -23,7 +23,7 @@ public class Sprinkler : MonoBehaviour
 
     public void Sprinkle()
     {
-        Debug.Log("Sprinkler Shot");
+        //Debug.Log("Sprinkler Shot");
         stunTrigger.enabled = true;
         if (isUsed == false) { Instantiate(spray, transform.position, Quaternion.identity); }
         isUsed = true;

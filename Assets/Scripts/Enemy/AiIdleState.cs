@@ -47,10 +47,10 @@ public class AIIdleState : AIState
         //    agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
         //}
         //}
-        float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
+        
 
         //if the player is within the enemies detection range
-        if (sqrDistance <= agent.config.maxDistance)
+        if (agent.sqrDistance <= agent.config.maxDistance)
         {
             //check if the player is in the enemies FOV
             if (agent.sensor.IsInsightWithAngleDistance())
