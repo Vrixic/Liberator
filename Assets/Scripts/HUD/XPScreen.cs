@@ -72,6 +72,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         m_PreviousXP = PlayerPrefManager.Instance.CurrentXP;
 
         GameManager.Instance.IsUIOverlayVisible = true;
+        GameManager.Instance.isXPScreenActive = true;
+        GameManager.Instance.canOpenPauseMenu = false;
 
         // unlock mouse 
         Cursor.lockState = CursorLockMode.None;
@@ -150,7 +152,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         // lock mouse again
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
-
+        GameManager.Instance.isXPScreenActive = false;
+        GameManager.Instance.canOpenPauseMenu = true;
         // clear all holders from scroll view 
         for (int i = 0; i < m_EnemyTextHolders.Count; i++)
             Destroy(m_EnemyTextHolders[i].holder.gameObject);

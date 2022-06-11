@@ -202,6 +202,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6852158747326469880, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.46999273
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852158747326469880, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Size.y
+      value: 1.657372
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852158747326469880, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Size.z
+      value: 1.5442526
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852158747326469880, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Center.x
+      value: 0.014142484
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852158747326469880, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Center.y
+      value: 1.1806667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852158747326469880, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Center.z
+      value: 0.59494495
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852158747326469880, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583747801035261904, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8376758520260349309, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_TagString
       value: Hitbox

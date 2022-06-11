@@ -56,6 +56,7 @@ TagManager:
   - SettingsMenu
   - OpenShopInteractText
   - InformationalTriggerText
+  - CameraShake
   layers:
   - Default
   - TransparentFX

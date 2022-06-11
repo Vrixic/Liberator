@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenName: Transition_Screen
   barSlider: {fileID: 1485411498460869398}
+  handleRect: {fileID: 0}
   loadTimeMin: 5
   backgroundImagesList:
   - {fileID: 21300000, guid: ba3ab56559ea006419bd1949847923d2, type: 3}

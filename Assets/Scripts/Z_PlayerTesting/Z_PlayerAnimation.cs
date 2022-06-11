@@ -7,15 +7,12 @@ public class Z_PlayerAnimation : MonoBehaviour
     Animator playerAnimator;
     string groundTag = "Untagged";
 
-    float footStepWalkAudioPlayDelay = 0.2f;
-    float m_LastStepSoundTime = 0f;
-
     private void Start()
     {
         playerAnimator = GetComponent<Animator>();
     }
 
-    private void Update()
+    public void PlayAnimation(Vector2 input)
     {
         if (!GameManager.Instance.playerIsGrounded) { 
             playerAnimator.SetBool("isJumping", true);
@@ -28,21 +25,21 @@ public class Z_PlayerAnimation : MonoBehaviour
 
         if (GameManager.Instance.playerIsGrounded)
         {
-            playerAnimator.SetFloat("VelocityX", GameManager.Instance.playerMoveScript.currentInputVector.x);
-            playerAnimator.SetFloat("VelocityZ", GameManager.Instance.playerMoveScript.currentInputVector.y);
-            playerAnimator.speed = 0.2f + (GameManager.Instance.playerMoveScript.currentActiveSpeed2D*1.5f);
+            playerAnimator.SetFloat("VelocityX", input.x);
+            playerAnimator.SetFloat("VelocityZ", input.y);
+            if (GameManager.Instance.playerMoveScript.IsShifting() || GameManager.Instance.playerMoveScript.IsCrouching())
+            {
+                playerAnimator.speed = 0.5f;
+            }
+            else playerAnimator.speed = 1;
         }
     }
 
     void PlayFootStepSound()
     {
-        if (!GameManager.Instance.playerIsGrounded) return;
+        if (!GameManager.Instance.playerIsGrounded || GameManager.Instance.playerMoveScript.IsShifting() || GameManager.Instance.playerMoveScript.IsCrouching()) return;
 
-        if (GameManager.Instance.playerMoveScript.currentActiveSpeed2D > 0.2 && (Time.time - m_LastStepSoundTime) > footStepWalkAudioPlayDelay)
-        {
-            m_LastStepSoundTime = Time.time;
-            AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, GetGroundsTag());
-        }
+        AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, GetGroundsTag());
     }
 
     string GetGroundsTag()

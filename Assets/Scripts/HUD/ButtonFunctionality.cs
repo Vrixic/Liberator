@@ -37,7 +37,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     public void PauseGame()
     {
 
-        if (GameManager.Instance.isPauseMenuOpen == false && !GameManager.Instance.settingsMenu.activeInHierarchy && GameManager.Instance.isShopMenuOpen == false)
+        if (GameManager.Instance.canOpenPauseMenu == true && GameManager.Instance.isPauseMenuOpen == false && !GameManager.Instance.settingsMenu.activeInHierarchy && GameManager.Instance.isShopMenuOpen == false)
         {
 
             if (GameManager.Instance.intelInteractText != null || GameManager.Instance.closeDoorInteractText != null || GameManager.Instance.openDoorInteractText != null || GameManager.Instance.secureHostageText != null)
@@ -72,7 +72,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             CloseShop();
         }
-        else
+        else if(!GameManager.Instance.isXPScreenActive)
         {
             Resume();
         }

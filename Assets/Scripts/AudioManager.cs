@@ -115,11 +115,11 @@ public class AudioManager : MonoBehaviour
     {
         if (audioSoundsAudioClipDictionary.ContainsKey(objectTag))
         {
-            return audioSoundsAudioClipDictionary[objectTag].audio;
+            return audioSoundsAudioClipDictionary[objectTag].audio[Random.Range(0, audioSoundsAudioClipDictionary[objectTag].audio.Length)];
         }
         else
         {
-            return audioSoundsAudioClipDictionary[sfxSounds[0].objectTag].audio;
+            return audioSoundsAudioClipDictionary[sfxSounds[0].objectTag].audio[0];
         }
     }
 
@@ -152,7 +152,7 @@ public class AudioManager : MonoBehaviour
     public class Sound
     {
         public AudioType audioType;
-        public AudioClip audio;
+        public AudioClip[] audio;
         public float volMultiplier = 1f;
     }
 

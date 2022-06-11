@@ -92,6 +92,9 @@ public class Explodable : MonoBehaviour
                 }
 
                 GameManager.Instance.playerScript.TakeDamage((int)damage);
+
+                //add high camera shake
+                GameManager.Instance.cameraShakeScript.Trauma += 1f;
             }
             else if (colliders[i].CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null){
                 Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
@@ -101,6 +104,9 @@ public class Explodable : MonoBehaviour
                 colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
             }
         }
+
+        //whether or not it was close enough to the player, at least add a small amount of camera shake
+        GameManager.Instance.cameraShakeScript.Trauma += 0.3f;
     }
 
     public void Explode()

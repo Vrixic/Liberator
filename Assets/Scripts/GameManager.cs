@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public Player playerScript;
     [HideInInspector]
+    public CameraShake cameraShakeScript;
+    [HideInInspector]
     public GameObject mainCamera;
     [HideInInspector]
     public Vector3 playerAimVector;
@@ -112,7 +114,10 @@ public class GameManager : MonoBehaviour
     public bool isShopMenuOpen;
     [HideInInspector]
     public GameObject settingsMenu;
-
+    [HideInInspector]
+    public bool canOpenPauseMenu;
+    [HideInInspector]
+    public bool isXPScreenActive;
     Color textColor = new Color(39, 255, 0);
     Color clearcolor = Color.clear;
     public bool IsUIOverlayVisible { get; set; } = false;
@@ -181,7 +186,7 @@ public class GameManager : MonoBehaviour
         playerTransform = player.transform;
         playerScript = player.GetComponent<Player>();
         playerCharacterController = player.GetComponent<CharacterController>();
-
+        cameraShakeScript = GameObject.FindGameObjectWithTag("CameraShake").GetComponent<CameraShake>();
 
         #region Ui Related Variables being Set
         pause = GameObject.FindGameObjectWithTag("PauseMenu");

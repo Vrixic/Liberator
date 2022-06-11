@@ -36,7 +36,7 @@ MonoBehaviour:
     value: 0.3
   color:
     overrideState: 1
-    value: {r: 0.5949226, g: 0.0233303, b: 0, a: 1}
+    value: {r: 0, g: 0, b: 0, a: 1}
   fastMode:
     overrideState: 0
     value: 0
@@ -126,9 +126,9 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: -9
+    value: -10
   tint:
-    overrideState: 1
+    overrideState: 0
     value: 52
   colorFilter:
     overrideState: 0

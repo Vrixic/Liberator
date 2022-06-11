@@ -18,6 +18,8 @@ public class InputManager : MonoBehaviour
     private PlayerLook look;
     private PlayerInteract interact;
 
+    private Z_PlayerAnimation playerAnimation;
+
     // Player class
     private Player player;
 
@@ -41,6 +43,7 @@ public class InputManager : MonoBehaviour
         look = GetComponent<PlayerLook>();
         player = GetComponent<Player>();
         interact = GetComponent<PlayerInteract>();
+        playerAnimation = GetComponentInChildren<Z_PlayerAnimation>();
 
         //set the "Jump" action in the "OnFoot" action map to point to the Jump function in the player motor script
         //basically just says "Hey, if the player jumps call this function"
@@ -97,6 +100,7 @@ public class InputManager : MonoBehaviour
     {
         //tell the playerMotor to move using the value from the "movement" action(WASD)
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
+        playerAnimation?.PlayAnimation(onFoot.Movement.ReadValue<Vector2>());
     }
 
     private void LateUpdate()

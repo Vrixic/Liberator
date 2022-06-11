@@ -26,6 +26,16 @@ public class PlayerPrefManager : MonoBehaviour
     public int flashBangCapacity;
     [HideInInspector]
     public int sensorGrenadeCapacity;
+    [HideInInspector]
+    public int equipmentEffectiveness;
+    [HideInInspector]
+    public int equipmentRange;
+    [HideInInspector]
+    public int playerStartingHealth;
+    [HideInInspector]
+    public int playerStartingArmor;
+
+
     public AsyncOperation SceneOperation { get; set; }
 
     public Action OnOptionsUpdateAction;
@@ -48,6 +58,11 @@ public class PlayerPrefManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
 
         Instance = this;
         LoadGame();
@@ -204,6 +219,55 @@ public class PlayerPrefManager : MonoBehaviour
             PlayerPrefs.SetInt("Sensor Grenade Capacity", sensorGrenadeCapacity);
         }
 
+        // Player Starting Health
+        if (PlayerPrefs.HasKey("Player Starting Health"))
+        {
+            playerStartingHealth = PlayerPrefs.GetInt("Player Starting Health");
+            Debug.Log("Loading Player Starting Health, Current : " + playerStartingHealth);
+        }
+        else
+        {
+            playerStartingHealth = 100;
+            PlayerPrefs.SetInt("Player Starting Health", playerStartingHealth);
+
+        }
+
+        // Player Starting Armor
+        if (PlayerPrefs.HasKey("Player Starting Armor"))
+        {
+            playerStartingArmor = PlayerPrefs.GetInt("Player Starting Armor");
+            Debug.Log("Loading Player Starting Armor, Current : " + playerStartingArmor);
+        }
+        else
+        {
+            playerStartingArmor = 100;
+            PlayerPrefs.SetInt("Player Starting Armor", playerStartingArmor);
+        }
+
+        // Equipment Effectiveness ( how long sensor and flash effect lasts)
+        if (PlayerPrefs.HasKey("Equipment Effectiveness"))
+        {
+            equipmentEffectiveness = PlayerPrefs.GetInt("Equipment Effectiveness");
+            Debug.Log("Loading Equipment Effectiveness, Current : " + equipmentEffectiveness);
+        }
+        else
+        {
+            equipmentEffectiveness = 0;
+            PlayerPrefs.SetInt("Equipment Effectiveness", equipmentEffectiveness);
+        }
+
+        // Equipment range (How big the sensor and flashbangs range is)
+        if (PlayerPrefs.HasKey("Equipment Range"))
+        {
+            equipmentRange = PlayerPrefs.GetInt("Equipment Range");
+            Debug.Log("Loading Equipment Range, Current : " + equipmentRange);
+        }
+        else
+        {
+            equipmentRange = 0;
+            PlayerPrefs.SetInt("Equipment Range", equipmentRange);
+        }
+
         #endregion
     }
 
@@ -250,6 +314,10 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("Upgraded Starting Cash", 1000);
         PlayerPrefs.SetInt("Flashbang Capacity", 2);
         PlayerPrefs.SetInt("Sensor Grenade Capacity", 2);
+        PlayerPrefs.SetInt("Player Starting Health", 100);
+        PlayerPrefs.SetInt("Player Starting Armor", 100);
+        PlayerPrefs.SetInt("Equipment Effectiveness", 0);
+        PlayerPrefs.SetInt("Equipment Range", 0);
 
         LoadGame();
     }

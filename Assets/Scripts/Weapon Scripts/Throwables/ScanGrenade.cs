@@ -28,6 +28,10 @@ public class ScanGrenade : BaseThrowables
         int collidersCount = Physics.OverlapSphereNonAlloc(origin, scanSphereRadius, colliders, GetLayerMask());
         //Debug.Log("scan colliders: " + collidersCount);
 
+        //if the player is close to the flashbang(not necessarily effected) apply camera shake
+        if ((GameManager.Instance.playerTransform.position - transform.position).sqrMagnitude < scanSphereRadius * scanSphereRadius * 1.5f)
+            GameManager.Instance.cameraShakeScript.Trauma += 0.4f;
+
         float raycastDistance = scanSphereRadius * 2f;
 
         for (int i = 0; i < collidersCount; i++)

@@ -26,6 +26,10 @@ public class Flashbang : BaseThrowables
         origin.y += 2f;
         int collidersCount = Physics.OverlapSphereNonAlloc(origin, flashSphereRadius, colliders, GetLayerMask());
 
+        //if the player is close to the flashbang(not necessarily effected) apply camera shake
+        if ((GameManager.Instance.playerTransform.position - transform.position).sqrMagnitude < flashSphereRadius * flashSphereRadius * 1.5f)
+            GameManager.Instance.cameraShakeScript.Trauma += 0.65f;
+
         float raycastDistance = flashSphereRadius * 2f;
 
         for (int i = 0; i < collidersCount; i++)
