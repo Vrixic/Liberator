@@ -310,8 +310,8 @@ MonoBehaviour:
   crouchSpeedMultiplier: 0.5
   timeToAccelerate: 0.2
   airTimeToAccelerate: 0.7
-  gravity: -9.8
-  jumpHeight: 0.8
+  gravity: -11
+  jumpHeight: 0.4
   crouchTimer: 1
   currentInputVector: {x: 0, y: 0}
 --- !u!114 &2983848051424858103
