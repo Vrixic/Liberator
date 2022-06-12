@@ -47,7 +47,7 @@ public class Explodable : MonoBehaviour
             StartCoroutine(TimeTillExplode());
             if (!firstHit)
             {
-                AudioManager.Instance.PlayAudioAtLocation(transform.position, "FireSpray");
+                AudioManager.Instance.Play2dAudioOnce("FireSpray");
                 firstHit = true;
             }
 
@@ -122,7 +122,7 @@ public class Explodable : MonoBehaviour
             explosion = ObjectPoolManager.Instance.SpawnObject(m_ExplosionPool);
             explosion.transform.position = transform.position;
 
-            AudioManager.Instance.PlayAudioAtLocation(transform.position, "FireExplosion");
+            AudioManager.Instance.Play2dAudioOnce("FireExplosion");
 
             ExplodeDamage();
 
