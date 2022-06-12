@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.281
       objectReference: {fileID: 0}
+    - target: {fileID: 2241902604161986062, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
+      propertyPath: name
+      value: Assassin
+      objectReference: {fileID: 0}
     - target: {fileID: 5853604252493979014, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -242,6 +246,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8803556263221842806, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
   m_PrefabInstance: {fileID: 3462410555603202618}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &304520702360566884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341400865192960332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.055941, y: 3.751256, z: 2.0434504}
+  m_Center: {x: -0.004302222, y: 1.3756294, z: 0.52172625}
 --- !u!114 &191360137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,19 +287,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miniMapLocator: {fileID: 368926117}
   locationExposedTimer: 7
---- !u!65 &304520702360566884
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5341400865192960332}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.055941, y: 3.751256, z: 2.0434504}
-  m_Center: {x: -0.004302222, y: 1.3756294, z: 0.52172625}
 --- !u!4 &5341400865193196844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8803556263222267670, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}

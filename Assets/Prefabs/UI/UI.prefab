@@ -923,6 +923,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 811849676270548595, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: enemyKillXPReward.Array.data[0].enemyName
+      value: Soldier
+      objectReference: {fileID: 0}
+    - target: {fileID: 811849676270548595, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: enemyKillXPReward.Array.data[1].enemyName
+      value: Stabber
+      objectReference: {fileID: 0}
     - target: {fileID: 2100883832608772135, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

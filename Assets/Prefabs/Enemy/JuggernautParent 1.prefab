@@ -395,6 +395,8 @@ MonoBehaviour:
   sensor: {fileID: 0}
   animator: {fileID: 0}
   isMelee: 0
+  sqrDistance: 0
+  name: Juggernaut
   aimDirection: {x: 0, y: 0, z: 0}
   disableEnemyInterval: 2
   isFlashed: 0

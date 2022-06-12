@@ -1001,9 +1001,9 @@ MonoBehaviour:
   startingCash: 1000
   maxXPAmount: 100
   enemyKillXPReward:
-  - enemyName: BasicEnemy
+  - enemyName: Soldier
     rewardAmount: 5
-  - enemyName: MeleeUnit
+  - enemyName: Stabber
     rewardAmount: 5
   - enemyName: Assassin
     rewardAmount: 10
