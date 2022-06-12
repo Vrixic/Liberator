@@ -126,18 +126,10 @@ MonoBehaviour:
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: 12d3aec0d13475042a0942613ecc5186, type: 3}
-      - {fileID: 8300000, guid: d05847eba04faa646a8bb5ca7c50b5ac, type: 3}
-      - {fileID: 8300000, guid: 4fa85eb8be773d948a0bf7b8fcd30e6e, type: 3}
-      - {fileID: 8300000, guid: 71bf072d25912e9429bc774978b237eb, type: 3}
-      - {fileID: 8300000, guid: 44f33c4fdb97c414cb54a165c14f6b33, type: 3}
-      volMultiplier: 1
-    objectTag: ShotFired
-  - sound:
-      audioType: 0
-      audio:
       - {fileID: 8300000, guid: f09a736935df5e6479f550837fba1f68, type: 3}
       - {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
+      - {fileID: 8300000, guid: 998fce9b0c9480148be789cd725bbd50, type: 3}
+      - {fileID: 8300000, guid: 8e9444cecd7e16a48b5a6645dd26d62e, type: 3}
       volMultiplier: 0.5
     objectTag: BulletDropped
   - sound:
@@ -196,6 +188,78 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
       volMultiplier: 3
     objectTag: MeleeEnemyYell
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 12d3aec0d13475042a0942613ecc5186, type: 3}
+      - {fileID: 8300000, guid: d05847eba04faa646a8bb5ca7c50b5ac, type: 3}
+      - {fileID: 8300000, guid: 4fa85eb8be773d948a0bf7b8fcd30e6e, type: 3}
+      - {fileID: 8300000, guid: 71bf072d25912e9429bc774978b237eb, type: 3}
+      - {fileID: 8300000, guid: 44f33c4fdb97c414cb54a165c14f6b33, type: 3}
+      volMultiplier: 2
+    objectTag: Automatic_Rifle3_Shot
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 12d3aec0d13475042a0942613ecc5186, type: 3}
+      - {fileID: 8300000, guid: d05847eba04faa646a8bb5ca7c50b5ac, type: 3}
+      - {fileID: 8300000, guid: 4fa85eb8be773d948a0bf7b8fcd30e6e, type: 3}
+      - {fileID: 8300000, guid: 71bf072d25912e9429bc774978b237eb, type: 3}
+      - {fileID: 8300000, guid: 44f33c4fdb97c414cb54a165c14f6b33, type: 3}
+      volMultiplier: 2
+    objectTag: Pistol2_Shot
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 12d3aec0d13475042a0942613ecc5186, type: 3}
+      - {fileID: 8300000, guid: d05847eba04faa646a8bb5ca7c50b5ac, type: 3}
+      - {fileID: 8300000, guid: 4fa85eb8be773d948a0bf7b8fcd30e6e, type: 3}
+      - {fileID: 8300000, guid: 71bf072d25912e9429bc774978b237eb, type: 3}
+      - {fileID: 8300000, guid: 44f33c4fdb97c414cb54a165c14f6b33, type: 3}
+      volMultiplier: 2
+    objectTag: Automatic_Rifle_Shot
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 079a856ec169986469046c620b77c4f7, type: 3}
+      volMultiplier: 2
+    objectTag: Shotgun_Shot
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: b62235906ddf9fe45a56e26fcd539a86, type: 3}
+      volMultiplier: 2
+    objectTag: Shotgun_EndReload
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 64d1e05df4ba3c84a912a47c26f2fa96, type: 3}
+      volMultiplier: 2
+    objectTag: Shotgun_ReloadBullet
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: f1198f3fd86876b408f01d02a3beaa30, type: 3}
+      volMultiplier: 2
+    objectTag: Automatic_Rifle3_Reload
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 526b78049a014dc44aa04587f0e6ea40, type: 3}
+      volMultiplier: 2
+    objectTag: Pistol2_Reload
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 586d58f81555a854996339b8111bd791, type: 3}
+      volMultiplier: 2
+    objectTag: Automatic_Rifle_Reload
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: fa91a57cabf00b14895a8689ce0635c2, type: 3}
+      volMultiplier: 2
+    objectTag: EnemyHeadshot
 --- !u!82 &1763185080
 AudioSource:
   m_ObjectHideFlags: 0
