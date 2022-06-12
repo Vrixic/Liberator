@@ -47,6 +47,10 @@ PrefabInstance:
       propertyPath: raycastDistance
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 4360709112517062547, guid: 770c9d5041ee12645991179483550776, type: 3}
+      propertyPath: name
+      value: Assassin
+      objectReference: {fileID: 0}
     - target: {fileID: 6463805212560364267, guid: 770c9d5041ee12645991179483550776, type: 3}
       propertyPath: m_Name
       value: Soldier
