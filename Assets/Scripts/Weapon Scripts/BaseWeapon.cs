@@ -121,7 +121,8 @@ public class BaseWeapon :MonoBehaviour//, IWeapon
     */
     public virtual void Reload() { }
 
-    public virtual void OnAnimationEvent_ReloadStart() { }
+    public virtual void OnAnimationEvent_ReloadRemoveMag() { }
+    public virtual void OnAnimationEvent_ReloadReplaceMag() { }
     public virtual void OnAnimationEvent_ReloadEnd() { }
 
     /*

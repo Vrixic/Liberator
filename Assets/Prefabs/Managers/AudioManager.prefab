@@ -126,29 +126,6 @@ MonoBehaviour:
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: f09a736935df5e6479f550837fba1f68, type: 3}
-      - {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
-      - {fileID: 8300000, guid: 998fce9b0c9480148be789cd725bbd50, type: 3}
-      - {fileID: 8300000, guid: 8e9444cecd7e16a48b5a6645dd26d62e, type: 3}
-      volMultiplier: 0.5
-    objectTag: BulletDropped
-  - sound:
-      audioType: 0
-      audio:
-      - {fileID: 8300000, guid: 586d58f81555a854996339b8111bd791, type: 3}
-      volMultiplier: 0.6
-    objectTag: ReloadGun
-  - sound:
-      audioType: 0
-      audio:
-      - {fileID: 8300000, guid: 4e98ba36f61354f4caf1cdeb71e1ad56, type: 3}
-      - {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
-      - {fileID: 8300000, guid: 9efc9e015e347d943a6f0d6242e9a349, type: 3}
-      volMultiplier: 1
-    objectTag: MeleeAttack
-  - sound:
-      audioType: 0
-      audio:
       - {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
       volMultiplier: 0.2
     objectTag: TestSFX
@@ -191,11 +168,32 @@ MonoBehaviour:
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: 12d3aec0d13475042a0942613ecc5186, type: 3}
-      - {fileID: 8300000, guid: d05847eba04faa646a8bb5ca7c50b5ac, type: 3}
-      - {fileID: 8300000, guid: 4fa85eb8be773d948a0bf7b8fcd30e6e, type: 3}
-      - {fileID: 8300000, guid: 71bf072d25912e9429bc774978b237eb, type: 3}
-      - {fileID: 8300000, guid: 44f33c4fdb97c414cb54a165c14f6b33, type: 3}
+      - {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
+      - {fileID: 8300000, guid: 9efc9e015e347d943a6f0d6242e9a349, type: 3}
+      volMultiplier: 1
+    objectTag: MeleeAttack
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: fa91a57cabf00b14895a8689ce0635c2, type: 3}
+      volMultiplier: 2
+    objectTag: EnemyHeadshot
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: f09a736935df5e6479f550837fba1f68, type: 3}
+      - {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
+      - {fileID: 8300000, guid: 998fce9b0c9480148be789cd725bbd50, type: 3}
+      - {fileID: 8300000, guid: 8e9444cecd7e16a48b5a6645dd26d62e, type: 3}
+      volMultiplier: 0.5
+    objectTag: BulletDropped
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 104755200ced6ff4880a25abc0dc37a9, type: 3}
+      - {fileID: 8300000, guid: 032548a30e7412548a7986a2358bcbaa, type: 3}
+      - {fileID: 8300000, guid: 0b60a88b41e236345ad7f7fb7da39128, type: 3}
+      - {fileID: 8300000, guid: 24f29742bdeee7f46a18bfc3980987c9, type: 3}
       volMultiplier: 2
     objectTag: Automatic_Rifle3_Shot
   - sound:
@@ -211,11 +209,10 @@ MonoBehaviour:
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: 12d3aec0d13475042a0942613ecc5186, type: 3}
-      - {fileID: 8300000, guid: d05847eba04faa646a8bb5ca7c50b5ac, type: 3}
-      - {fileID: 8300000, guid: 4fa85eb8be773d948a0bf7b8fcd30e6e, type: 3}
-      - {fileID: 8300000, guid: 71bf072d25912e9429bc774978b237eb, type: 3}
-      - {fileID: 8300000, guid: 44f33c4fdb97c414cb54a165c14f6b33, type: 3}
+      - {fileID: 8300000, guid: 40a9276065d69f04ebe73021676f7fc6, type: 3}
+      - {fileID: 8300000, guid: 7833cce12c063c545abdb01ac6003730, type: 3}
+      - {fileID: 8300000, guid: 3d6ee6e0515410c4c838911546c78c4a, type: 3}
+      - {fileID: 8300000, guid: d81bebac9cee217409b15b76e7011fc6, type: 3}
       volMultiplier: 2
     objectTag: Automatic_Rifle_Shot
   - sound:
@@ -239,27 +236,51 @@ MonoBehaviour:
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: f1198f3fd86876b408f01d02a3beaa30, type: 3}
+      - {fileID: 8300000, guid: c4f16976657d99b478782493b3a4e40a, type: 3}
       volMultiplier: 2
-    objectTag: Automatic_Rifle3_Reload
+    objectTag: Pistol2_ReloadStart
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: 526b78049a014dc44aa04587f0e6ea40, type: 3}
+      - {fileID: 8300000, guid: 0789f5458c83d404e82450fd5cd09be4, type: 3}
       volMultiplier: 2
-    objectTag: Pistol2_Reload
+    objectTag: Pistol2_ReloadMiddle
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: 586d58f81555a854996339b8111bd791, type: 3}
+      - {fileID: 8300000, guid: 88f3e50291b69244b8b490fa25985139, type: 3}
       volMultiplier: 2
-    objectTag: Automatic_Rifle_Reload
+    objectTag: Pistol2_ReloadEnd
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: fa91a57cabf00b14895a8689ce0635c2, type: 3}
+      - {fileID: 8300000, guid: 27062ab1f9e909a4a9a73b958ea91906, type: 3}
       volMultiplier: 2
-    objectTag: EnemyHeadshot
+    objectTag: Automatic_Rifle3_ReloadStart
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 9713ec8371d2ac24d8ddafe1f7de4e6f, type: 3}
+      volMultiplier: 2
+    objectTag: Automatic_Rifle3_ReloadEnd
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 27062ab1f9e909a4a9a73b958ea91906, type: 3}
+      volMultiplier: 2
+    objectTag: Automatic_Rifle_ReloadStart
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 9713ec8371d2ac24d8ddafe1f7de4e6f, type: 3}
+      volMultiplier: 2
+    objectTag: Automatic_Rifle_ReloadMiddle
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 48e0ad872319cbd458c5373053cbd50b, type: 3}
+      volMultiplier: 2
+    objectTag: Automatic_Rifle_ReloadEnd
 --- !u!82 &1763185080
 AudioSource:
   m_ObjectHideFlags: 0

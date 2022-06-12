@@ -288,6 +288,7 @@ public class BaseGun : BaseWeapon
         }
     }
 
+    // Ienumerator for reloading shotgun 1 bullet at a time
     IEnumerator ReloadingShotgun()
     {
         GetAnimator().SetBool("isReloading", true);
@@ -317,20 +318,27 @@ public class BaseGun : BaseWeapon
         GetAnimator().speed = 1f;
     }
 
-    public override void OnAnimationEvent_ReloadStart()
+    // event that is called when the clip is taken from the weapon
+    public override void OnAnimationEvent_ReloadRemoveMag()
     {
-        if (GetWeaponID() != WeaponID.Shotgun)
-        {
-            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
-            PlayRelaodAudio();
-        }
-       
-        //Debug.Log(name + ": Reloading started");
+        Debug.Log(name + ": Reloading remove mag");
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadStart");
+        m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
     }
 
+    // event that is called when the clip is put back into the weapon
+    public override void OnAnimationEvent_ReloadReplaceMag()
+    {
+        Debug.Log(name + ": Reloading replace mag");
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadMiddle");
+        m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
+    }
+
+    //event that is called at the end of the animation, for certain weapon sounds
     public override void OnAnimationEvent_ReloadEnd()
     {
-        //Debug.Log(name + ": Reloading ended");
+        Debug.Log(name + ": Reloading ended");
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadEnd");
         UpdateAmmoGUI();
         StopReloading();
     }
@@ -341,7 +349,11 @@ public class BaseGun : BaseWeapon
     public void StopReloading()
     {
         bIsReloading = false;
-        GetAnimator().SetBool("isReloading", false);
+        if (GetWeaponID() == WeaponID.Shotgun)
+        {
+            GetAnimator().SetBool("isReloading", false);
+        }
+        
     }
 
     /*
