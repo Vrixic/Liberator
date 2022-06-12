@@ -1977,7 +1977,6 @@ MonoBehaviour:
   attackRate: 5.5
   raycastOrigin: {fileID: 4913780900570080257}
   damage: 40
-  headShotDamage: 60
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.643, z: -0.15}
   raycastLayers:
     serializedVersion: 2
@@ -1989,6 +1988,8 @@ MonoBehaviour:
   muzzleFlashTime: 0.05
   bulletPrefab: {fileID: -7061582049979965478, guid: cb821671db89c704ea873bec606a6513, type: 3}
   bulletRange: 100
+  damageFallOffPercentage: 0.15
+  minDamageFallOff: 0.5
   ammoType: 0
   maxNumOfBullets: 30
   bulletDropAudioClip: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
