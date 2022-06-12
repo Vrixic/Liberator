@@ -234,6 +234,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8371469716251819282, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: enemyTagCollider
+      value: 
+      objectReference: {fileID: 2941708526224630527}
     - target: {fileID: 8376758520260349309, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_TagString
       value: Hitbox
@@ -243,6 +247,11 @@ PrefabInstance:
 --- !u!4 &2389266026455561310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4045892240907410525, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+  m_PrefabInstance: {fileID: 1805245554192640003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2941708526224630527 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 3593460279404006140, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
   m_PrefabInstance: {fileID: 1805245554192640003}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3054478925871361764 stripped
