@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 10
+  raycastDistance: 23
   angle: 30
   height: 1
   heightOffsetFromOrigin: 1
@@ -369,6 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872deff75f88fd42a24353c1ff3a8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPosition: {x: 0, y: 0, z: 0}
+  initialRotation: {x: 0, y: 0, z: 0}
   initialState: 3
   currentState: 3
   navMeshAgent: {fileID: 0}
@@ -376,4 +379,11 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   sensor: {fileID: 0}
   animator: {fileID: 0}
+  isMelee: 0
+  sqrDistance: 0
+  name: Soldier
+  aimDirection: {x: 0, y: 0, z: 0}
+  disableEnemyInterval: 2
   isFlashed: 0
+  isStunned: 0
+  miniMapLocator: {fileID: 0}

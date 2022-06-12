@@ -58,7 +58,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 70
   field of view: 90
   orthographic: 0
   orthographic size: 5
@@ -301,7 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf786cae5914e7048a956069d80e9216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDirection: {x: 0, y: 0, z: 0}
   track2dSpeed: 1
   currentActiveSpeed2D: 0
   speedCheckTimerMax: 0.1
@@ -311,8 +310,8 @@ MonoBehaviour:
   crouchSpeedMultiplier: 0.5
   timeToAccelerate: 0.2
   airTimeToAccelerate: 0.7
-  gravity: -9.8
-  jumpHeight: 0.8
+  gravity: -11
+  jumpHeight: 0.4
   crouchTimer: 1
   currentInputVector: {x: 0, y: 0}
 --- !u!114 &2983848051424858103

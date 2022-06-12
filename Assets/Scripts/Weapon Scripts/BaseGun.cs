@@ -1,4 +1,5 @@
 using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -277,21 +278,59 @@ public class BaseGun : BaseWeapon
     public void StartWeaponReloading()
     {
         bIsReloading = true;
-        GetAnimator().SetTrigger("Reload");
+        if (GetWeaponID() == WeaponID.Shotgun)
+        {
+            StartCoroutine(ReloadingShotgun());
+        }
+        else
+        {
+            GetAnimator().SetTrigger("Reload");
+        }
+    }
+
+    IEnumerator ReloadingShotgun()
+    {
+        GetAnimator().SetBool("isReloading", true);
+        
+        yield return new WaitForSeconds(0.5f);
+        while (m_CurrentNumOfBullets < maxNumOfBullets)
+        {
+            GetAnimator().speed = 1.2f;
+            if (m_CurrentNumOfBullets == maxNumOfBullets - 1)
+            {
+                GetAnimator().Play("EndReload");
+            }
+            else
+            {
+                GetAnimator().Play("ReloadBullet");
+            }
+            
+            yield return new WaitForSeconds(1f);
+            AudioManager.Instance.PlayAudioAtLocation(transform.position, "Shotgun_ReloadBullet");
+            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, 1);
+            
+            UpdateAmmoGUI();
+        }
+        yield return new WaitForSeconds(0.4f);
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, "Shotgun_EndReload");
+        StopReloading();
+        GetAnimator().speed = 1f;
     }
 
     public override void OnAnimationEvent_ReloadStart()
     {
-        m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
-        PlayRelaodAudio();
-
+        if (GetWeaponID() != WeaponID.Shotgun)
+        {
+            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
+            PlayRelaodAudio();
+        }
+       
         //Debug.Log(name + ": Reloading started");
     }
 
     public override void OnAnimationEvent_ReloadEnd()
     {
         //Debug.Log(name + ": Reloading ended");
-
         UpdateAmmoGUI();
         StopReloading();
     }
@@ -302,6 +341,7 @@ public class BaseGun : BaseWeapon
     public void StopReloading()
     {
         bIsReloading = false;
+        GetAnimator().SetBool("isReloading", false);
     }
 
     /*
@@ -356,7 +396,7 @@ public class BaseGun : BaseWeapon
 
     void PlayRelaodAudio()
     {
-        PlayAudioOneShot("ReloadGun");
+        PlayReloadAudio();
     }
 
     /*

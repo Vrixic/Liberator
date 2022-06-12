@@ -55,7 +55,15 @@ public class Bullet : PoolableObject
     {
         if (hit.collider.tag == "Hitbox")
         {
-            AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "BulletHitEnemy");
+            if (hit.collider.gameObject.GetComponent<SphereCollider>())
+            {
+                AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "EnemyHeadshot");
+            }
+            else
+            {
+                AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "BulletHitEnemy");
+            }
+            
         }
         else if (hit.collider.tag == "Explodable")
         {

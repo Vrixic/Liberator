@@ -246,6 +246,19 @@ CapsuleCollider:
   m_Height: 1.625
   m_Direction: 1
   m_Center: {x: -0.01, y: 0.81, z: 0.042652726}
+--- !u!65 &6852158747326469880
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3705957963525768935}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.58134484, y: 2.459556, z: 1.6054503}
+  m_Center: {x: -0.008228183, y: 0.72977793, z: 0.5618774}
 --- !u!135 &7583747801035261904
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -342,7 +355,10 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   sensor: {fileID: 0}
   animator: {fileID: 0}
+  enemyTagCollider: {fileID: 0}
   isMelee: 1
+  sqrDistance: 0
+  name: Stabber
   aimDirection: {x: 0, y: 0, z: 0}
   disableEnemyInterval: 2
   isFlashed: 0

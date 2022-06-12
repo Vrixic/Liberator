@@ -20,8 +20,11 @@ public class AIAgent : MonoBehaviour
     [HideInInspector]public Transform playerTransform;
     [HideInInspector] public AiSensor sensor;
     [HideInInspector] public Animator animator;
+    [SerializeField] Collider enemyTagCollider;
     [SerializeField] bool isMelee = false;
     public float sqrDistance;
+
+    public string name = "";
 
     [HideInInspector] public Vector3 aimDirection;
 
@@ -133,6 +136,8 @@ public class AIAgent : MonoBehaviour
             headShotCollider.enabled = true;
         }
         boxCollider.enabled = true;
+
+        enemyTagCollider.enabled = true;
     }
 
     public void DisableColliders()
@@ -146,6 +151,8 @@ public class AIAgent : MonoBehaviour
             headShotCollider.enabled = false;
         }
         boxCollider.enabled = false;
+
+        enemyTagCollider.enabled = false;
     }
 
     //public IEnumerator LookAt()
