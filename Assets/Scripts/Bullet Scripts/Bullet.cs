@@ -55,7 +55,7 @@ public class Bullet : PoolableObject
     {
         if (hit.collider.tag == "Hitbox")
         {
-            if (hit.collider.gameObject.GetComponent<SphereCollider>())
+            if (hit.collider.gameObject.GetComponent<Headshot_Hitbox>())
             {
                 AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "EnemyHeadshot");
             }
