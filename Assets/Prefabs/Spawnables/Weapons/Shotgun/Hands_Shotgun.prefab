@@ -1176,11 +1176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowPlayerToHoldAttackTrigger: 0
-  allowPlayerToHoldAimTrigger: 0
-  attackRate: 1
+  allowPlayerToHoldAimTrigger: 1
+  attackRate: 0.8
   raycastOrigin: {fileID: 2637064437270479832}
-  damage: 20
-  headShotDamage: 40
+  damage: 60
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.6875, z: -0.41}
   raycastLayers:
     serializedVersion: 2
@@ -1197,10 +1196,20 @@ MonoBehaviour:
   ammoType: 3
   maxNumOfBullets: 5
   bulletDropAudioClip: {fileID: 8300000, guid: f09a736935df5e6479f550837fba1f68, type: 3}
-  verticalRecoil: []
-  horizontalRecoil: []
-  bulletConeRadius: {x: 2.5, y: 2.5}
-  pellets: 8
+  verticalRecoil:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  horizontalRecoil:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  bulletConeRadius: {x: 1, y: 1.5}
+  pellets: 10
 --- !u!1 &1416144876138884
 GameObject:
   m_ObjectHideFlags: 0

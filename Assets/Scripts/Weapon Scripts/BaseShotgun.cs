@@ -33,5 +33,8 @@ public class BaseShotgun : BaseGun
                 OnRayCastHit(bullet, hitInfo);
             }
         }
+
+        //add significant camera shake to make it feel powerful
+        GameManager.Instance.cameraShakeScript.Trauma = 0.7f;
     }
 }
