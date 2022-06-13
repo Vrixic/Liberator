@@ -162,7 +162,7 @@ MonoBehaviour:
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
+      - {fileID: 8300000, guid: 951e1afd677605e45900765cebb84281, type: 3}
       volMultiplier: 3
     objectTag: MeleeEnemyYell
   - sound:
