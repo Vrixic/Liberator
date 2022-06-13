@@ -17,6 +17,9 @@ public class BaseThrowables : PoolableObject
 
     [SerializeField] protected float sphereRadius = 10f;
 
+    [SerializeField] protected float equipmentTimer = 5f;
+
+
     /* the audio source used to play audio for this throwable */
     AudioSource m_AudioSource;
 
@@ -108,6 +111,11 @@ public class BaseThrowables : PoolableObject
     public void SetSphereRadius(float radius)
     {
         sphereRadius = radius;
+    }
+
+    public void SetEquipmentTimer(float timer)
+    {
+        equipmentTimer = timer;
     }
 
 }

@@ -33,7 +33,6 @@ public class AIAttackPlayerState : AIState
             }
             else
             {
-                Debug.Log(agent.sqrDistance);
                 if (agent.sqrDistance < 6)
                 {
 

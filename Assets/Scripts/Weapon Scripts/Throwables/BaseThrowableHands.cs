@@ -156,5 +156,18 @@ public class BaseThrowableHands : BaseWeapon
         }
     }
 
+    public void SetEquipmentTimer()
+    {
+        List<PoolableObject> poolableObjects = ObjectPoolManager.Instance.GetObjectsInPool(m_ThrowablePool);
+        for (int i = 0; i < poolableObjects.Count; i++)
+        {
+            BaseThrowables throwable = poolableObjects[i] as BaseThrowables;
+            if (throwable != null)
+            {
+                throwable.SetEquipmentTimer(PlayerPrefManager.Instance.equipmentEffectiveness);
+            }
+        }
+    }
+
 
 }

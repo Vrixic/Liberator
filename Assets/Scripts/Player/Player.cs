@@ -65,6 +65,8 @@ public class Player : MonoBehaviour
     /* Last Animation speed */
     float m_LastAnimSpeed = 0f;
 
+    public float equipmentTimer = 100f;
+
     /* audio source used for audio on player */
     AudioSource m_PlayerAudioSrc;
 
@@ -87,6 +89,7 @@ public class Player : MonoBehaviour
     bool bPlayerDead = false;
 
     bool godMode = false;
+
 
 
     CharacterController characterController;
@@ -121,6 +124,7 @@ public class Player : MonoBehaviour
         sensor.SetMaxAmountOfThrowables(PlayerPrefManager.Instance.sensorGrenadeCapacity);
         sensor.IncreaseThrowable(PlayerPrefManager.Instance.sensorGrenadeCapacity);
 
+
         SetEquipmentEffectivness();
 
         UpdateFlashbangCount();
@@ -142,6 +146,8 @@ public class Player : MonoBehaviour
     {
         flashbang.SetSphereRadius();
         sensor.SetSphereRadius();
+        equipmentTimer = PlayerPrefManager.Instance.equipmentEffectiveness;
+        sensor.SetEquipmentTimer();
     }
 
     void ResetHealth()

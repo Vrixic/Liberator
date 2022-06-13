@@ -5,7 +5,6 @@ using UnityEngine;
 public class ScanGrenade : BaseThrowables
 {
     [SerializeField] bool scanThroughWalls = true;
-    [SerializeField] float revealedTime = 7f;
 
     /*
     * Called when flashbang explodes
@@ -50,7 +49,7 @@ public class ScanGrenade : BaseThrowables
                     if(hitInfo.collider.tag == "Hitbox")
                     {
                         Debug.Log("scannin: " + colliders[i].tag);
-                        hitInfo.collider.GetComponent<MiniMapScanable>().Show(revealedTime);
+                        hitInfo.collider.GetComponent<MiniMapScanable>().Show(equipmentTimer);
                     }                        
                 }
             }
@@ -59,7 +58,7 @@ public class ScanGrenade : BaseThrowables
                 if (colliders[i].GetComponent<CapsuleCollider>() != null)
                 {
                     Debug.Log("scannin: " + colliders[i].name);
-                    colliders[i].GetComponent<MiniMapScanable>().Show(revealedTime);
+                    colliders[i].GetComponent<MiniMapScanable>().Show(equipmentTimer);
                 }
             }
         }
