@@ -269,7 +269,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
             EnemyTextBlock block = new EnemyTextBlock();
             // Adds a new textholder to the scroll view, ands sets its appopriate names and kill amounts            
             block.holder = AddEnemyTextHolder();
-            block.holder.enemyNameText.text = "Intels";
+            block.holder.enemyNameText.text = "Intel";
             block.holder.enemyKillText.text = "x" + GameManager.Instance.IntelCollected;
 
             block.transform = block.holder.GetComponent<RectTransform>();
