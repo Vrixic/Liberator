@@ -172,6 +172,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""EquipSensorPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""994069e6-5f06-485a-b282-6da7cd6d8461"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Test_PlayerDamage"",
                     ""type"": ""Button"",
                     ""id"": ""def05250-eb13-41b5-b1be-ae4c7ea62c9c"",
@@ -536,7 +545,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""661014fd-ddd2-4e2f-8f0b-41a44ad72de7"",
-                    ""path"": ""<Keyboard>/g"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
@@ -631,6 +640,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""GodMode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a5097d7-d463-4d19-95ab-f4f1ca97827c"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipSensorPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -655,6 +675,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_EquipWeaponOnePressed = m_OnFoot.FindAction("EquipWeaponOnePressed", throwIfNotFound: true);
         m_OnFoot_EquipWeaponTwoPressed = m_OnFoot.FindAction("EquipWeaponTwoPressed", throwIfNotFound: true);
         m_OnFoot_EquipFlashbangPressed = m_OnFoot.FindAction("EquipFlashbangPressed", throwIfNotFound: true);
+        m_OnFoot_EquipSensorPressed = m_OnFoot.FindAction("EquipSensorPressed", throwIfNotFound: true);
         m_OnFoot_Test_PlayerDamage = m_OnFoot.FindAction("Test_PlayerDamage", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_HoldInteract = m_OnFoot.FindAction("HoldInteract", throwIfNotFound: true);
@@ -737,6 +758,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_EquipWeaponOnePressed;
     private readonly InputAction m_OnFoot_EquipWeaponTwoPressed;
     private readonly InputAction m_OnFoot_EquipFlashbangPressed;
+    private readonly InputAction m_OnFoot_EquipSensorPressed;
     private readonly InputAction m_OnFoot_Test_PlayerDamage;
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_HoldInteract;
@@ -764,6 +786,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @EquipWeaponOnePressed => m_Wrapper.m_OnFoot_EquipWeaponOnePressed;
         public InputAction @EquipWeaponTwoPressed => m_Wrapper.m_OnFoot_EquipWeaponTwoPressed;
         public InputAction @EquipFlashbangPressed => m_Wrapper.m_OnFoot_EquipFlashbangPressed;
+        public InputAction @EquipSensorPressed => m_Wrapper.m_OnFoot_EquipSensorPressed;
         public InputAction @Test_PlayerDamage => m_Wrapper.m_OnFoot_Test_PlayerDamage;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @HoldInteract => m_Wrapper.m_OnFoot_HoldInteract;
@@ -828,6 +851,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @EquipFlashbangPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipFlashbangPressed;
                 @EquipFlashbangPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipFlashbangPressed;
                 @EquipFlashbangPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipFlashbangPressed;
+                @EquipSensorPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipSensorPressed;
+                @EquipSensorPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipSensorPressed;
+                @EquipSensorPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipSensorPressed;
                 @Test_PlayerDamage.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnTest_PlayerDamage;
                 @Test_PlayerDamage.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnTest_PlayerDamage;
                 @Test_PlayerDamage.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnTest_PlayerDamage;
@@ -901,6 +927,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @EquipFlashbangPressed.started += instance.OnEquipFlashbangPressed;
                 @EquipFlashbangPressed.performed += instance.OnEquipFlashbangPressed;
                 @EquipFlashbangPressed.canceled += instance.OnEquipFlashbangPressed;
+                @EquipSensorPressed.started += instance.OnEquipSensorPressed;
+                @EquipSensorPressed.performed += instance.OnEquipSensorPressed;
+                @EquipSensorPressed.canceled += instance.OnEquipSensorPressed;
                 @Test_PlayerDamage.started += instance.OnTest_PlayerDamage;
                 @Test_PlayerDamage.performed += instance.OnTest_PlayerDamage;
                 @Test_PlayerDamage.canceled += instance.OnTest_PlayerDamage;
@@ -944,6 +973,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnEquipWeaponOnePressed(InputAction.CallbackContext context);
         void OnEquipWeaponTwoPressed(InputAction.CallbackContext context);
         void OnEquipFlashbangPressed(InputAction.CallbackContext context);
+        void OnEquipSensorPressed(InputAction.CallbackContext context);
         void OnTest_PlayerDamage(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnHoldInteract(InputAction.CallbackContext context);

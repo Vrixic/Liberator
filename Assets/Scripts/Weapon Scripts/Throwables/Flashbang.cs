@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Flashbang : BaseThrowables
 {
-
+    [SerializeField] float flashTimer;
 
     /*
     * Called when flashbang explodes

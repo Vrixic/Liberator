@@ -252,7 +252,7 @@ public class PlayerPrefManager : MonoBehaviour
         }
         else
         {
-            equipmentEffectiveness = 0;
+            equipmentEffectiveness = 5;
             PlayerPrefs.SetInt("Equipment Effectiveness", equipmentEffectiveness);
         }
 
@@ -264,7 +264,7 @@ public class PlayerPrefManager : MonoBehaviour
         }
         else
         {
-            equipmentRange = 0;
+            equipmentRange = 10;
             PlayerPrefs.SetInt("Equipment Range", equipmentRange);
         }
 
@@ -316,7 +316,7 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("Sensor Grenade Capacity", 2);
         PlayerPrefs.SetInt("Player Starting Health", 100);
         PlayerPrefs.SetInt("Player Starting Armor", 100);
-        PlayerPrefs.SetInt("Equipment Effectiveness", 0);
+        PlayerPrefs.SetInt("Equipment Effectiveness", 5);
         PlayerPrefs.SetInt("Equipment Range", 10);
 
         LoadGame();
