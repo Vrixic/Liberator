@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
 public class EnemyMelee : MonoBehaviour
 {
     [SerializeField] [Tooltip("amount of times to attack per second")] float attackRate = 1f;
