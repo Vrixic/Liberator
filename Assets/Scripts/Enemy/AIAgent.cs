@@ -35,6 +35,8 @@ public class AIAgent : MonoBehaviour
     public bool isFlashed = false;
     public bool isStunned = false;
 
+    public bool bFirstChase = true;
+
     private Health enemyHealth;
 
     private EnemyGun enemyGun;
