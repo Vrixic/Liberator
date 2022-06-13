@@ -24,7 +24,7 @@ public class AIAgent : MonoBehaviour
     [SerializeField] bool isMelee = false;
     public float sqrDistance;
 
-    public string name = "";
+    public string aiName = "";
 
     [HideInInspector] public Vector3 aimDirection;
 
