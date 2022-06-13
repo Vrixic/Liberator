@@ -332,13 +332,6 @@ public class BaseGun : BaseWeapon
     {
         Debug.Log(name + ": Reloading replace mag");
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadMiddle");
-        if (GetWeaponID() != WeaponID.Shotgun) { 
-            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets); 
-        }
-        if (GetWeaponID() == WeaponID.Shotgun) { 
-            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, 1);
-        }
-        UpdateAmmoGUI();
     }
 
     //event that is called at the end of the animation, for certain weapon sounds
@@ -346,6 +339,15 @@ public class BaseGun : BaseWeapon
     {
         Debug.Log(name + ": Reloading ended");
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadEnd");
+        if (GetWeaponID() != WeaponID.Shotgun)
+        {
+            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
+        }
+        if (GetWeaponID() == WeaponID.Shotgun)
+        {
+            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, 1);
+        }
+        UpdateAmmoGUI();
         StopReloading();
     }
 
@@ -405,11 +407,6 @@ public class BaseGun : BaseWeapon
     void HideMuzzleFlash()
     {
         muzzleFlash.SetActive(false);
-    }
-
-    void PlayRelaodAudio()
-    {
-        PlayReloadAudio();
     }
 
     /*
