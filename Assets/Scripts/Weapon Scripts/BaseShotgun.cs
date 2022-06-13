@@ -5,22 +5,29 @@ using UnityEngine;
 public class BaseShotgun : BaseGun
 {
     [SerializeField] Vector2 bulletConeRadius;
-    [SerializeField] int pellets = 8;
+    [SerializeField] Vector2 aimConeRadius;
+    Vector2 coneRadius;
+    [SerializeField] int pellets = 9;
+
 
     public override void ShootBullet()
     {
         if (bIsAiming)
         {
-            bulletConeRadius /= 2;
+            coneRadius = aimConeRadius;
+        }
+        else
+        {
+            coneRadius = bulletConeRadius;
         }
         Vector3 centerPoint = raycastOrigin.position + GameManager.Instance.mainCamera.transform.forward * GetBulletRange();
         Vector3 targetPoints;
 
-        float minX = centerPoint.x - bulletConeRadius.x;
-        float maxX = centerPoint.x + bulletConeRadius.x;
+        float minX = centerPoint.x - coneRadius.x;
+        float maxX = centerPoint.x + coneRadius.x;
 
-        float minY = centerPoint.y - bulletConeRadius.y;
-        float maxY = centerPoint.y + bulletConeRadius.y;
+        float minY = centerPoint.y - coneRadius.y;
+        float maxY = centerPoint.y + coneRadius.y;
 
         for (int i = 0; i < pellets; i++)
         {
