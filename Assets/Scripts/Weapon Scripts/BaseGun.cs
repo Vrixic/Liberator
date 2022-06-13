@@ -407,11 +407,6 @@ public class BaseGun : BaseWeapon
         muzzleFlash.SetActive(false);
     }
 
-    void PlayRelaodAudio()
-    {
-        PlayReloadAudio();
-    }
-
     /*
     * returns if gun has ammo 
     */
