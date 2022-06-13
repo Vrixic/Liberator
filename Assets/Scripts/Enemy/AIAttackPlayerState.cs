@@ -14,35 +14,38 @@ public class AIAttackPlayerState : AIState
     }
     public void Update(AIAgent agent)
     {
-        agent.Rotating();
-        bool inSight = agent.sensor.IsInsightAttackAndChase();
-        if (!inSight)
+        if (!agent.isFlashed)
         {
-            //Debug.Log("fail");
-            agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
-        }
-
-        if (agent.IsMelee()) // if the weapon enemy is holding is melee type
-        {
-            if (agent.GetMeleeWeapon().Attack()) // check to see if enemy is capable of attacking right now
+            agent.Rotating();
+            bool inSight = agent.sensor.IsInsightAttackAndChase();
+            if (!inSight)
             {
-                agent.animator.Play("Attack");
+                //Debug.Log("fail");
+                agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
             }
-        }
-        else
-        {
-            Debug.Log(agent.sqrDistance);
-            if (agent.sqrDistance < 6)
-            {
 
+            if (agent.IsMelee()) // if the weapon enemy is holding is melee type
+            {
                 if (agent.GetMeleeWeapon().Attack()) // check to see if enemy is capable of attacking right now
                 {
-                    agent.animator.Play("Melee");
+                    agent.animator.Play("Attack");
                 }
             }
-            else if (agent.GetGun().ShootAtTarget(agent.playerTransform.position, agent.config.shootSprayRadius) && agent.sqrDistance >= 6)
-                agent.animator.Play("Attack");
-            
+            else
+            {
+                Debug.Log(agent.sqrDistance);
+                if (agent.sqrDistance < 6)
+                {
+
+                    if (agent.GetMeleeWeapon().Attack()) // check to see if enemy is capable of attacking right now
+                    {
+                        agent.animator.Play("Melee");
+                    }
+                }
+                else if (agent.GetGun().ShootAtTarget(agent.playerTransform.position, agent.config.shootSprayRadius) && agent.sqrDistance >= 6)
+                    agent.animator.Play("Attack");
+
+            }
         }
     }
     public void Exit(AIAgent agent)
