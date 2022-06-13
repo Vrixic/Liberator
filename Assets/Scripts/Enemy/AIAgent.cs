@@ -45,7 +45,6 @@ public class AIAgent : MonoBehaviour
     [HideInInspector] public MiniMapScanable miniMapLocator;
 
     // Colliders 
-    SphereCollider meleeSphereCollider;
     SphereCollider headShotCollider;
     CapsuleCollider bodyCollider;
     BoxCollider boxCollider;
@@ -70,10 +69,8 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIFlashState());
         stateMachine.RegisterState(new AIAttackPlayerState());
         stateMachine.RegisterState(new AIReturnState());
-        stateMachine.RegisterState(new AIStunnedState());
         stateMachine.RegisterState(new AIAlertedState());
         enemyMelee = GetComponent<EnemyMelee>();
-        meleeSphereCollider = GetComponent<SphereCollider>();
         if (!isMelee)
         {
             enemyGun = GetComponent<EnemyGun>();
@@ -129,9 +126,6 @@ public class AIAgent : MonoBehaviour
 
     void EnableColliders()
     {
-        if (isMelee)
-            meleeSphereCollider.enabled = true;
-
         bodyCollider.enabled = true;
         if (!(transform.parent.tag == "Juggernaut"))
         {
@@ -144,9 +138,6 @@ public class AIAgent : MonoBehaviour
 
     public void DisableColliders()
     {
-        if (isMelee)
-            meleeSphereCollider.enabled = false;
-
         bodyCollider.enabled = false;
         if (!(transform.parent.tag == "Juggernaut"))
         {
