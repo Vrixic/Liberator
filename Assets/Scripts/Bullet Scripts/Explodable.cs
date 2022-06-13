@@ -79,7 +79,7 @@ public class Explodable : MonoBehaviour
                 Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
                 Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
                 float dist = Vector3.Distance(charPos, explodePos);
-                damage = 300 - (dist * 50);
+                damage = 300 - ((dist/2) * 50);
                 if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
                 {
                     if (gameObject.activeInHierarchy == true)
@@ -100,7 +100,7 @@ public class Explodable : MonoBehaviour
                 Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
                 Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
                 float dist = Vector3.Distance(charPos, explodePos);
-                damage = 300 - (dist * 50);
+                damage = 300 - ((dist / 2) * 50);
                 colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
             }
         }
