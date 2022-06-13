@@ -37,17 +37,7 @@ public class PlayerPrefManager : MonoBehaviour
     [HideInInspector]
     public int playerStartingArmor;
     [HideInInspector]
-    public int startingCashUpgradeCount = 0;
-    [HideInInspector]
-    public int flashbangCapacityUpgradeCount = 0;
-    [HideInInspector]
-    public int sensorGrenadeCapacityUpgradeCount = 0;
-    [HideInInspector]
     public int equipmentEffectivenessUpgradeCount = 0;
-    [HideInInspector]
-    public int startingHealthUpgradeCount = 0;
-    [HideInInspector]
-    public int startingArmorUpgradeCount = 0;
 
 
     public AsyncOperation SceneOperation { get; set; }
@@ -299,41 +289,6 @@ public class PlayerPrefManager : MonoBehaviour
 
         #region Upgrade Counts
 
-        // Starting Cash Upgrade Count
-        if (PlayerPrefs.HasKey("Starting Cash Upgrade Count"))
-        {
-            startingCashUpgradeCount = PlayerPrefs.GetInt("Starting Cash Upgrade Count");
-            Debug.Log("Loading Starting Cash Upgrade Count, Current : " + startingCashUpgradeCount);
-        }
-        else
-        {
-            startingCashUpgradeCount = 0;
-            PlayerPrefs.SetInt("Starting Cash Upgrade Count", startingCashUpgradeCount);
-        }
-
-        //Flashbang Capacity Upgrade Count
-        if (PlayerPrefs.HasKey("Flashbang Capacity Upgrade Count"))
-        {
-            flashbangCapacityUpgradeCount = PlayerPrefs.GetInt("Flashbang Capacity Upgrade Count");
-            Debug.Log("Loading Flashbang Capacity Upgrade Count, Current : " + flashbangCapacityUpgradeCount);
-        }
-        else
-        {
-            flashbangCapacityUpgradeCount = 0;
-            PlayerPrefs.SetInt("Flashbang Capacity Upgrade Count", flashbangCapacityUpgradeCount);
-        }
-
-        //Sensor Grenade Capacity Upgrade Count
-        if (PlayerPrefs.HasKey("Sensor Grenade Capacity Upgrade Count"))
-        {
-            sensorGrenadeCapacityUpgradeCount = PlayerPrefs.GetInt("Sensor Grenade Capacity Upgrade Count");
-            Debug.Log("Loading Sensor Grenade Capacity Upgrade Count, Current : " + sensorGrenadeCapacityUpgradeCount);
-        }
-        else
-        {
-            sensorGrenadeCapacityUpgradeCount = 0;
-            PlayerPrefs.SetInt("Sensor Grenade Capacity Upgrade Count", sensorGrenadeCapacityUpgradeCount);
-        }
 
         //Equipment Effectiveness Upgrade Count
         if (PlayerPrefs.HasKey("Equipment Effectiveness Upgrade Count"))
@@ -347,29 +302,6 @@ public class PlayerPrefManager : MonoBehaviour
             PlayerPrefs.SetInt("Equipment Effectiveness Upgrade Count", equipmentEffectivenessUpgradeCount);
         }
 
-        //Starting Health Upgrade Count
-        if (PlayerPrefs.HasKey("Starting Health Upgrade Count"))
-        {
-            startingHealthUpgradeCount = PlayerPrefs.GetInt("Starting Health Upgrade Count");
-            Debug.Log("Loading Starting Health Upgrade Count, Current : " + startingHealthUpgradeCount);
-        }
-        else
-        {
-            startingHealthUpgradeCount = 0;
-            PlayerPrefs.SetInt("Starting Health Upgrade Count", startingHealthUpgradeCount);
-        }
-
-        //Starting Armor Upgrade Count
-        if (PlayerPrefs.HasKey("Starting Armor Upgrade Count"))
-        {
-            startingArmorUpgradeCount = PlayerPrefs.GetInt("Starting Armor Upgrade Count");
-            Debug.Log("Starting Armor Upgrade Count, Current : " + startingArmorUpgradeCount);
-        }
-        else
-        {
-            startingArmorUpgradeCount = 0;
-            PlayerPrefs.SetInt("Starting Armor Upgrade Count", startingArmorUpgradeCount);
-        } 
 
         #endregion
 
@@ -396,13 +328,8 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("Flashbang Capacity", flashBangCapacity);
         PlayerPrefs.SetInt("Sensor Grenade Capacity", sensorGrenadeCapacity);
 
-        // Save amount of times meta upgrades have occured
-        PlayerPrefs.SetInt("Starting Cash Upgrade Count", startingCashUpgradeCount);
-        PlayerPrefs.SetInt("Flashbang Capacity Upgrade Count", flashbangCapacityUpgradeCount);
-        PlayerPrefs.SetInt("Sensor Grenade Capacity Upgrade Count", sensorGrenadeCapacityUpgradeCount);
+        // Save amount of times equipment effectiveness upgrades has occured
         PlayerPrefs.SetInt("Equipment Effectiveness Upgrade Count", equipmentEffectivenessUpgradeCount);
-        PlayerPrefs.SetInt("Starting Health Upgrade Count", startingHealthUpgradeCount);
-        PlayerPrefs.SetInt("Starting Armor Upgrade Count", startingArmorUpgradeCount);
 
         // Fires an event to all listening clients that player perferences has been updated
         OnOptionsUpdateAction?.Invoke();
@@ -433,12 +360,7 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("Equipment Range", 10);
 
         // Resets counts for amount of times upgrades have been purchased to 0
-        PlayerPrefs.SetInt("Starting Cash Upgrade Count", 0);
-        PlayerPrefs.SetInt("Flashbang Capacity Upgrade Count", 0);
-        PlayerPrefs.SetInt("Sensor Grenade Capacity Upgrade Count", 0);
         PlayerPrefs.SetInt("Equipment Effectiveness Upgrade Count", 0);
-        PlayerPrefs.SetInt("Starting Health Upgrade Count", 0);
-        PlayerPrefs.SetInt("Starting Armor Upgrade Count", 0);
 
         LoadGame();
     }
