@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7403914871262705290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +134,9 @@ MonoBehaviour:
   - Listen for sound cues... door...
   - Use your throwables strategicially..
   - Sensor grenades have the power to sense enemies through walls.
+  - Upon dies, XP is the only thing that remains.
+  - Be sure you cash wisely...
+  - Shop is available  after you complete a mission.
 --- !u!1001 &1204424411170738214
 PrefabInstance:
   m_ObjectHideFlags: 0
