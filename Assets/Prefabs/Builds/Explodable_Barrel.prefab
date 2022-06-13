@@ -51,7 +51,7 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 12288
-  radius: 5
+  radius: 7
 --- !u!64 &2531239637587182344
 MeshCollider:
   m_ObjectHideFlags: 0
