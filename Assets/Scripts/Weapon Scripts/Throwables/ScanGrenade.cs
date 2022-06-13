@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ScanGrenade : BaseThrowables
 {
-    [SerializeField] float scanSphereRadius = 5f;
     [SerializeField] bool scanThroughWalls = true;
 
     /*
@@ -25,14 +24,14 @@ public class ScanGrenade : BaseThrowables
         Collider[] colliders = new Collider[20];
         Vector3 origin = transform.position;
         origin.y += 1f;
-        int collidersCount = Physics.OverlapSphereNonAlloc(origin, scanSphereRadius, colliders, GetLayerMask());
+        int collidersCount = Physics.OverlapSphereNonAlloc(origin, sphereRadius, colliders, GetLayerMask());
         //Debug.Log("scan colliders: " + collidersCount);
 
         //if the player is close to the flashbang(not necessarily effected) apply camera shake
-        if ((GameManager.Instance.playerTransform.position - transform.position).sqrMagnitude < scanSphereRadius * scanSphereRadius * 1.5f)
+        if ((GameManager.Instance.playerTransform.position - transform.position).sqrMagnitude < sphereRadius * sphereRadius * 1.5f)
             GameManager.Instance.cameraShakeScript.Trauma += 0.4f;
 
-        float raycastDistance = scanSphereRadius * 2f;
+        float raycastDistance = sphereRadius * 2f;
 
         for (int i = 0; i < collidersCount; i++)
         {
@@ -76,4 +75,6 @@ public class ScanGrenade : BaseThrowables
         GetRigidbody().AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
         StartCoroutine(OnThrowableExplode());
     }
+
+   
 }

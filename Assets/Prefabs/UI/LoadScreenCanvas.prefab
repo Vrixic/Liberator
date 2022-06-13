@@ -116,7 +116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenName: Transition_Screen
   barSlider: {fileID: 1485411498460869398}
-  handleRect: {fileID: 0}
   loadTimeMin: 5
   backgroundImagesList:
   - {fileID: 21300000, guid: ba3ab56559ea006419bd1949847923d2, type: 3}
@@ -134,7 +133,7 @@ MonoBehaviour:
   - Stabbers are named after what they do.....
   - Listen for sound cues... door...
   - Use your throwables strategicially..
-  - Sensor grenades has the power to sense enemies through walls.
+  - Sensor grenades have the power to sense enemies through walls.
 --- !u!1001 &1204424411170738214
 PrefabInstance:
   m_ObjectHideFlags: 0

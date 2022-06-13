@@ -12,6 +12,7 @@ public class DynamicButtonScalingScript : MonoBehaviour , IPointerEnterHandler, 
     float zScaler = .19f;
     public bool isBiggerButtton = false;
     public bool isMenuButton = false;
+    public bool isSettingsGear = false;
     private void Start()
     {
         originalScale = gameObject.transform.localScale;
@@ -26,6 +27,13 @@ public class DynamicButtonScalingScript : MonoBehaviour , IPointerEnterHandler, 
         {
             xScaler = .1f;
             yScaler = .01f;
+            zScaler = .1f;
+        }
+
+        if (isSettingsGear)
+        {
+            xScaler = .1f;
+            yScaler = .1f;
             zScaler = .1f;
         }
     }

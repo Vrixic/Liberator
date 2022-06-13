@@ -15,6 +15,8 @@ public class BaseThrowables : PoolableObject
 
     [SerializeField] [Tooltip("On explosion, only these layers will be queried")] LayerMask queryLayers;
 
+    [SerializeField] protected float sphereRadius = 10f;
+
     /* the audio source used to play audio for this throwable */
     AudioSource m_AudioSource;
 
@@ -102,4 +104,10 @@ public class BaseThrowables : PoolableObject
     {
         return queryLayers;
     }
+
+    public void SetSphereRadius(float radius)
+    {
+        sphereRadius = radius;
+    }
+
 }
