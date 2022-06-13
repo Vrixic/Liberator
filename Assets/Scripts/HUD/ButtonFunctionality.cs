@@ -272,10 +272,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             AmmoManager.Instance.RefillAmmo(AmmoType.Small);
 
             // Update Ammo Ui
-            AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Shells, AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells));
-            AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
-
-
+           //AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Shells, AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells));
+           //AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
         }
     }
 

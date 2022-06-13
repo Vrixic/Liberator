@@ -52,6 +52,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
     private bool bSkipAnimations = false;
 
+    private bool bFullGameWon = false;
+
     public override void Start()
     {
         base.Start();
@@ -79,8 +81,15 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        bFullGameWon = Hostage.hostagesSecured == 4;
+
         // Update header text
-        if (GameManager.Instance.GameWon)
+        if(bFullGameWon)
+        {
+            headerText.text = "You Win!";
+            buttonText.text = "Main Menu";
+        }
+        else if (GameManager.Instance.GameWon)
         {
             headerText.text = "Success";
             buttonText.text = "Next";
@@ -173,7 +182,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
         PlayerPrefManager.Instance.SaveGame();
 
-        if (GameManager.Instance.GameWon)
+        if (GameManager.Instance.GameWon && !bFullGameWon)
         {
             // shows shop
             //GameManager.Instance.buttonFuncScript.OpenShopMenu();
