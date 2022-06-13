@@ -14,7 +14,7 @@ public class MetaShopScript : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
 
-        PlayerPrefManager.Instance.LoadGame();
+        PlayerPrefManager.Instance.LoadPlayerUpgrades();
         UpdateSkillPointCount();
     }
 
@@ -235,6 +235,15 @@ public class MetaShopScript : MonoBehaviour
         PlayerPrefs.SetInt("Player Starting Armor", 100);
         PlayerPrefs.SetInt("Equipment Effectiveness", 5);
         PlayerPrefs.SetInt("Equipment Range", 10);
+
+        // Reset counts for amount of times player has purchased upgrades
+        PlayerPrefs.SetInt("Starting Cash Upgrade Count", 0);
+        PlayerPrefs.SetInt("Flashbang Capacity Upgrade Count", 0);
+        PlayerPrefs.SetInt("Sensor Grenade Capacity Upgrade Count", 0);
+        PlayerPrefs.SetInt("Equipment Effectiveness Upgrade Count", 0);
+        PlayerPrefs.SetInt("Starting Health Upgrade Count", 0);
+        PlayerPrefs.SetInt("Starting Armor Upgrade Count", 0);
+
         PlayerPrefManager.Instance.LoadPlayerUpgrades();
         UpdateSkillPointCount();
 
