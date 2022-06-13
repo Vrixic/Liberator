@@ -75,6 +75,14 @@ MonoBehaviour:
   - sound:
       audioType: 2
       audio:
+      - {fileID: 8300000, guid: f2475e24bd828d744af01a8a4eb6b459, type: 3}
+      - {fileID: 8300000, guid: af97a57c90915b646beae4c64ed0de9d, type: 3}
+      - {fileID: 8300000, guid: f18d728b3351dcc4f920a798ac05c069, type: 3}
+      volMultiplier: 0.2
+    objectTag: EnvironmentCloth
+  - sound:
+      audioType: 2
+      audio:
       - {fileID: 8300000, guid: fa3741a38c9853c41af93c27d45a61bf, type: 3}
       - {fileID: 8300000, guid: 39512b537a14f114daa448f4317a0fe4, type: 3}
       - {fileID: 8300000, guid: 1608c5815cf4e38498eefc32395d22f8, type: 3}
@@ -151,13 +159,13 @@ MonoBehaviour:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 60d4c692dba3b5144a3ae348aa8943da, type: 3}
-      volMultiplier: 4
+      volMultiplier: 8
     objectTag: FireExplosion
   - sound:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 8746e549d8143d04b8a283e64534e35b, type: 3}
-      volMultiplier: 4
+      volMultiplier: 5
     objectTag: FireSpray
   - sound:
       audioType: 0
@@ -219,24 +227,24 @@ MonoBehaviour:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 079a856ec169986469046c620b77c4f7, type: 3}
-      volMultiplier: 2
+      volMultiplier: 1
     objectTag: Shotgun_Shot
-  - sound:
-      audioType: 0
-      audio:
-      - {fileID: 8300000, guid: b62235906ddf9fe45a56e26fcd539a86, type: 3}
-      volMultiplier: 2
-    objectTag: Shotgun_EndReload
   - sound:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 64d1e05df4ba3c84a912a47c26f2fa96, type: 3}
       volMultiplier: 2
-    objectTag: Shotgun_ReloadBullet
+    objectTag: Shotgun_ReloadMiddle
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: c4f16976657d99b478782493b3a4e40a, type: 3}
+      - {fileID: 8300000, guid: b62235906ddf9fe45a56e26fcd539a86, type: 3}
+      volMultiplier: 2
+    objectTag: Shotgun_ReloadEnd
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 27062ab1f9e909a4a9a73b958ea91906, type: 3}
       volMultiplier: 2
     objectTag: Pistol2_ReloadStart
   - sound:

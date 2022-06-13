@@ -79,6 +79,7 @@ public class InputManager : MonoBehaviour
         onFoot.EquipWeaponTwoPressed.performed += ctx => player.EquipWeaponTwoPressed();
 
         onFoot.EquipFlashbangPressed.performed += ctx => player.EquipFlashbang();
+        onFoot.EquipSensorPressed.performed += ctx => player.EquipSensor();
 
         onFoot.PauseGame.performed += ctx => buttonFunc.PauseGame();
 

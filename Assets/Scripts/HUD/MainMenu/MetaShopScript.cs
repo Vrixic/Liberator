@@ -195,7 +195,9 @@ public class MetaShopScript : MonoBehaviour
             Debug.Log(" equip range before: " + PlayerPrefManager.Instance.equipmentRange);
 
             PlayerPrefManager.Instance.currentSkillPoints -= 4;
-            // TO DO: PUT CODE FOR CHANGING PLAYER PREF
+
+            PlayerPrefManager.Instance.equipmentEffectiveness += 1;
+            PlayerPrefManager.Instance.equipmentRange += 1;
 
             // Set player pref to new skill point and capacity values
             PlayerPrefs.SetInt("Equipment Effectiveness", PlayerPrefManager.Instance.equipmentEffectiveness);
@@ -231,8 +233,8 @@ public class MetaShopScript : MonoBehaviour
         PlayerPrefs.SetInt("Sensor Grenade Capacity", 2);
         PlayerPrefs.SetInt("Player Starting Health", 100);
         PlayerPrefs.SetInt("Player Starting Armor", 100);
-        PlayerPrefs.SetInt("Equipment Effectiveness", 0);
-        PlayerPrefs.SetInt("Equipment Range", 0);
+        PlayerPrefs.SetInt("Equipment Effectiveness", 5);
+        PlayerPrefs.SetInt("Equipment Range", 10);
         PlayerPrefManager.Instance.LoadPlayerUpgrades();
         UpdateSkillPointCount();
 

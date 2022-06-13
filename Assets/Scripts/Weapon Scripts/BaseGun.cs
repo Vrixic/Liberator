@@ -155,7 +155,7 @@ public class BaseGun : BaseWeapon
         ShootBullet();
 
         //apply camera shake
-        if(GameManager.Instance.cameraShakeScript.Trauma < 0.10f)
+        if (GameManager.Instance.cameraShakeScript.Trauma < 0.10f)
             GameManager.Instance.cameraShakeScript.Trauma += 0.25f;
 
         PlayBulletDropAudio();
@@ -225,7 +225,7 @@ public class BaseGun : BaseWeapon
         //Debug.Log(hit.collider.tag);
         if (hit.collider.CompareTag("Hitbox"))
         {
-            if(hit.collider.GetComponent<CapsuleCollider>() != null)
+            if (hit.collider.GetComponent<CapsuleCollider>() != null)
             {
                 //Debug.Log("Body Shot");
                 hit.collider.GetComponent<Health>().TakeDamage(GetDamage() * damageFallOff, transform.forward);
@@ -235,7 +235,7 @@ public class BaseGun : BaseWeapon
                 //Debug.Log("Head Shot");
                 hit.collider.GetComponentInParent<Health>().TakeDamage(100.0f, transform.forward);
             }
-            
+
         }
 
         bullet.Spawn(raycastOrigin.position, deltaPosition.normalized, hit, 0.5f);
@@ -292,30 +292,32 @@ public class BaseGun : BaseWeapon
     IEnumerator ReloadingShotgun()
     {
         GetAnimator().SetBool("isReloading", true);
-        
-        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForSeconds(0.3f);
         while (m_CurrentNumOfBullets < maxNumOfBullets)
         {
-            GetAnimator().speed = 1.2f;
-            if (m_CurrentNumOfBullets == maxNumOfBullets - 1)
+            if (HasMoreAmmoInPouch())
             {
-                GetAnimator().Play("EndReload");
+                if ((m_CurrentNumOfBullets == maxNumOfBullets - 1) || AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) == 1)
+                {
+                    GetAnimator().Play("EndReload");
+
+                    GetAnimator().SetBool("isReloading", false);
+                }
+                else
+                {
+                    GetAnimator().Play("ReloadBullet");
+                }
             }
             else
             {
-                GetAnimator().Play("ReloadBullet");
+                GetAnimator().SetBool("isReloading", false);
+                break;
             }
-            
-            yield return new WaitForSeconds(1f);
-            AudioManager.Instance.PlayAudioAtLocation(transform.position, "Shotgun_ReloadBullet");
-            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, 1);
-            
-            UpdateAmmoGUI();
+
+            yield return new WaitForSeconds(0.3f);
         }
-        yield return new WaitForSeconds(0.4f);
-        AudioManager.Instance.PlayAudioAtLocation(transform.position, "Shotgun_EndReload");
-        StopReloading();
-        GetAnimator().speed = 1f;
+        yield return new WaitForSeconds(0.3f);
     }
 
     // event that is called when the clip is taken from the weapon
@@ -323,7 +325,6 @@ public class BaseGun : BaseWeapon
     {
         Debug.Log(name + ": Reloading remove mag");
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadStart");
-        m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
     }
 
     // event that is called when the clip is put back into the weapon
@@ -331,7 +332,6 @@ public class BaseGun : BaseWeapon
     {
         Debug.Log(name + ": Reloading replace mag");
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadMiddle");
-        m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
     }
 
     //event that is called at the end of the animation, for certain weapon sounds
@@ -339,6 +339,14 @@ public class BaseGun : BaseWeapon
     {
         Debug.Log(name + ": Reloading ended");
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadEnd");
+        if (GetWeaponID() != WeaponID.Shotgun)
+        {
+            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
+        }
+        if (GetWeaponID() == WeaponID.Shotgun)
+        {
+            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, 1);
+        }
         UpdateAmmoGUI();
         StopReloading();
     }
@@ -349,11 +357,6 @@ public class BaseGun : BaseWeapon
     public void StopReloading()
     {
         bIsReloading = false;
-        if (GetWeaponID() == WeaponID.Shotgun)
-        {
-            GetAnimator().SetBool("isReloading", false);
-        }
-        
     }
 
     /*
@@ -404,11 +407,6 @@ public class BaseGun : BaseWeapon
     void HideMuzzleFlash()
     {
         muzzleFlash.SetActive(false);
-    }
-
-    void PlayRelaodAudio()
-    {
-        PlayReloadAudio();
     }
 
     /*

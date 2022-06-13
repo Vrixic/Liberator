@@ -43,8 +43,8 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
         loadedText.text = loadingTips[m_CurrentTipIndex];
 
         StartCoroutine(ChangeDisplayTips());
-
-        PlayerPrefManager.Instance.SceneOperation.completed += OnSceneLoaded;
+        StartCoroutine(BindSceneLoadedEvent());
+        
         m_LoadEndTimeMin = Time.realtimeSinceStartup + loadTimeMin;
 
         bSceneLoading = false;
@@ -62,6 +62,13 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
             PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = true;
         }
     }
+
+    IEnumerator BindSceneLoadedEvent()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        PlayerPrefManager.Instance.SceneOperation.completed += OnSceneLoaded;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         //if(eventData.button == PointerEventData.InputButton.Right)

@@ -5,7 +5,6 @@ using UnityEngine;
 public class AIFlashState : AIState
 {
     float flashTimer = 5.0f;
-    float currentFlashTimer = 5.0f;
     public AIStateID GetId()
     {
         return AIStateID.Flashed;        
@@ -16,12 +15,13 @@ public class AIFlashState : AIState
         agent.navMeshAgent.isStopped = true;
         agent.animator.SetBool("Flashbang", true);
         agent.isFlashed = true;
-
+        flashTimer = GameManager.Instance.playerScript.equipmentTimer;
+        Debug.Log(flashTimer);
     }
     public void Update(AIAgent agent)
     {
-        currentFlashTimer -= Time.deltaTime;
-        if (currentFlashTimer <= 0.0f) 
+        flashTimer -= Time.deltaTime;
+        if (flashTimer <= 0.0f) 
         {
             if (!agent.sensor.IsInsight())
             {
@@ -36,7 +36,6 @@ public class AIFlashState : AIState
     public void Exit(AIAgent agent)
     {
         agent.navMeshAgent.isStopped = false;
-        currentFlashTimer = flashTimer;
         agent.animator.SetBool("Flashbang", false);
         agent.isFlashed = false;
     }

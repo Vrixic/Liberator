@@ -150,6 +150,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "EquipSensorPressed",
+                    "type": "Button",
+                    "id": "994069e6-5f06-485a-b282-6da7cd6d8461",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Test_PlayerDamage",
                     "type": "Button",
                     "id": "def05250-eb13-41b5-b1be-ae4c7ea62c9c",
@@ -514,7 +523,7 @@
                 {
                     "name": "",
                     "id": "661014fd-ddd2-4e2f-8f0b-41a44ad72de7",
-                    "path": "<Keyboard>/g",
+                    "path": "<Keyboard>/f",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
@@ -607,6 +616,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "GodMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a5097d7-d463-4d19-95ab-f4f1ca97827c",
+                    "path": "<Keyboard>/g",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipSensorPressed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -241,12 +241,6 @@ public class BaseWeapon :MonoBehaviour//, IWeapon
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_Shot");
     }
 
-    protected void PlayReloadAudio()
-    {
-        //m_AudioSource.PlayOneShot(attackAudioClip);
-        AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_Reload");
-    }
-
     /*
     * plays the audio 
     */

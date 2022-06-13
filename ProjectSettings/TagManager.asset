@@ -57,6 +57,8 @@ TagManager:
   - OpenShopInteractText
   - InformationalTriggerText
   - CameraShake
+  - EnvironmentCloth
+  - EnvironmentWater
   layers:
   - Default
   - TransparentFX

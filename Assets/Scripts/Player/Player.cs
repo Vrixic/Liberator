@@ -50,9 +50,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] AudioSource weaponAudioSrc;
 
-    /* the ground under the players tag */
-    string groundTag = "Untagged";
-
     /* current equipped weapon */
     int m_CurrentWeaponIndex;
 
@@ -64,6 +61,8 @@ public class Player : MonoBehaviour
 
     /* Last Animation speed */
     float m_LastAnimSpeed = 0f;
+
+    public float equipmentTimer = 100f;
 
     /* audio source used for audio on player */
     AudioSource m_PlayerAudioSrc;
@@ -89,6 +88,7 @@ public class Player : MonoBehaviour
     bool godMode = false;
 
 
+
     CharacterController characterController;
 
     private void Start()
@@ -111,8 +111,8 @@ public class Player : MonoBehaviour
             //m_CurrentWeapons[i].OnPickup(weaponsParent);
         }
 
-        ActivateWeapon(0);
-        DeactivateWeapon(1);
+        //ActivateWeapon(0);
+        //DeactivateWeapon(1);
 
         // Set capcity of flashbangs and sensor grenades to Capacity dictated by Player Prefs
         flashbang.SetMaxAmountOfThrowables(PlayerPrefManager.Instance.flashBangCapacity);
@@ -120,6 +120,9 @@ public class Player : MonoBehaviour
 
         sensor.SetMaxAmountOfThrowables(PlayerPrefManager.Instance.sensorGrenadeCapacity);
         sensor.IncreaseThrowable(PlayerPrefManager.Instance.sensorGrenadeCapacity);
+
+
+        SetEquipmentEffectivness();
 
         UpdateFlashbangCount();
         UpdateSensorGrenadeUi();
@@ -135,6 +138,15 @@ public class Player : MonoBehaviour
 
         OnOptionsUpdate();
 
+        ActivateWeapon(0);
+        DeactivateWeapon(1);
+    }
+    void SetEquipmentEffectivness()
+    {
+        flashbang.SetSphereRadius();
+        sensor.SetSphereRadius();
+        equipmentTimer = PlayerPrefManager.Instance.equipmentEffectiveness;
+        sensor.SetEquipmentTimer();
     }
 
     void ResetHealth()
@@ -224,30 +236,49 @@ public class Player : MonoBehaviour
         if (!GameRunningCheck()) return;
         if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
 
-        if (flashbang.isActiveAndEnabled)
+        //if (flashbang.isActiveAndEnabled)
+        //{
+        //    if (sensor.HasMoreThrowables())
+        //    {
+        //        DeactivateFlashbang();
+        //        ActivateSensor();
+        //    }
+        //}
+        //else
+        //{
+        //    if (flashbang.HasMoreThrowables())
+        //    {
+        //        DeactivateSensor();
+        //        DeactivateWeapon(m_CurrentWeaponIndex);
+        //        ActivateFlashbang();
+        //    }
+        //    else
+        //    {
+        //        if (sensor.HasMoreThrowables())
+        //        {
+        //            DeactivateWeapon(m_CurrentWeaponIndex);
+        //            ActivateSensor();
+        //        }
+        //    }
+        //}
+
+        if (flashbang.HasMoreThrowables())
         {
-            if (sensor.HasMoreThrowables())
-            {
-                DeactivateFlashbang();
-                ActivateSensor();
-            }
+         //   DeactivateSensor();
+            DeactivateWeapon(m_CurrentWeaponIndex);
+            ActivateFlashbang();
         }
-        else
+    }
+
+    public void EquipSensor()
+    {
+        if (!GameRunningCheck()) return;
+        if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
+
+        if (sensor.HasMoreThrowables())
         {
-            if (flashbang.HasMoreThrowables())
-            {
-                DeactivateSensor();
-                DeactivateWeapon(m_CurrentWeaponIndex);
-                ActivateFlashbang();
-            }
-            else
-            {
-                if (sensor.HasMoreThrowables())
-                {
-                    DeactivateWeapon(m_CurrentWeaponIndex);
-                    ActivateSensor();
-                }
-            }
+            DeactivateWeapon(m_CurrentWeaponIndex);
+            ActivateSensor();
         }
     }
 
@@ -374,12 +405,18 @@ public class Player : MonoBehaviour
     */
     private void ActivateFlashbang()
     {
+        if (sensor.isActiveAndEnabled)
+            DeactivateSensor();
+
         flashbang.SetActive(true);
         m_CurrentEquippedWeapon = flashbang;
     }
 
     private void ActivateSensor()
     {
+        if (flashbang.isActiveAndEnabled)
+            DeactivateFlashbang();
+
         sensor.SetActive(true);
         m_CurrentEquippedWeapon = sensor;
     }

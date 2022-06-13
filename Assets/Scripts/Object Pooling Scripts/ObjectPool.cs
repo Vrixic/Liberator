@@ -82,6 +82,11 @@ public class ObjectPool
         m_CurrentActiveObjects--;
     }
 
+    public List<PoolableObject> GetAllObjectsInPool()
+    {
+        return m_ObjectPool;
+    }
+
     //public void DisableObjInPool()
     //{
     //    //for (int i = 0; i < m_Size; i++)

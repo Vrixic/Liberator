@@ -34,14 +34,14 @@ public class AIDeathState : AIState
         GameManager.Instance.cashRewardAmount = 50;
         GameManager.Instance.StartDisplayCashCoroutine();
        
-        if (GameManager.Instance.enemiesKilled.ContainsKey(agent.name))
+        if (GameManager.Instance.enemiesKilled.ContainsKey(agent.aiName))
         {
-            GameManager.Instance.enemiesKilled[agent.name]++;
+            GameManager.Instance.enemiesKilled[agent.aiName]++;
 
         }
         else
         {
-            GameManager.Instance.enemiesKilled.Add(agent.name, 1);
+            GameManager.Instance.enemiesKilled.Add(agent.aiName, 1);
         }
 
         agent.navMeshAgent.isStopped = true;

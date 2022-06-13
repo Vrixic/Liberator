@@ -10,7 +10,6 @@ public class MiniMapScanable : MonoBehaviour
 
     bool bIsAlreadyShowing = false;
 
-    [SerializeField] float locationExposedTimer = 5f;
 
     private void Start()
     {
@@ -18,12 +17,12 @@ public class MiniMapScanable : MonoBehaviour
         locatorMaterial = miniMapLocator.GetComponent<Renderer>().material;
     }
 
-    public void Show()
+    public void Show(float timer)
     {
         if (bIsAlreadyShowing) return;
 
         miniMapLocator.SetActive(true);
-        StartCoroutine(FlashLocator(locationExposedTimer));
+        StartCoroutine(FlashLocator(timer));
 
         bIsAlreadyShowing = true;
     }
