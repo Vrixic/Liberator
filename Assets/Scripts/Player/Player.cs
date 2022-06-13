@@ -158,9 +158,6 @@ public class Player : MonoBehaviour
                 m_CurrentPlayerHealth = 999999999;
             }
         }
-
-        if (bPlayerWantsToAttack)
-            StartAttacking();
     }
 
     private void FixedUpdate()
@@ -183,6 +180,9 @@ public class Player : MonoBehaviour
 
         if (sensor.isActiveAndEnabled && !sensor.HasMoreThrowables())
             EquipPreviousWeapon();
+
+        if (bPlayerWantsToAttack)
+            StartAttacking();
     }
 
     /*
