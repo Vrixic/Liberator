@@ -18,6 +18,8 @@ public class MetaShopScript : MonoBehaviour
         UpdateSkillPointCount();
     }
 
+  
+
     // Updates Skill Point Text to represent current skill points, Add at end of upgrade methods to properly update menu with new skill point count
     public void UpdateSkillPointCount()
     {
@@ -175,6 +177,7 @@ public class MetaShopScript : MonoBehaviour
         }
     }
 
+    // Upgrades equipment range as well as how long the effects of the equipment lasts
     public void UpgradeEquipmentEffectiveness()
     {
         if (PlayerPrefManager.Instance.currentSkillPoints == 0)
@@ -188,49 +191,25 @@ public class MetaShopScript : MonoBehaviour
         {
             Debug.Log("Upgrading Equipment Effectiveness by ");
             Debug.Log("Skill points before: " + PlayerPrefManager.Instance.currentSkillPoints + " equip effectiveness before: " + PlayerPrefManager.Instance.equipmentEffectiveness);
+            Debug.Log("Upgrading Equipment Range by ");
+            Debug.Log(" equip range before: " + PlayerPrefManager.Instance.equipmentRange);
 
             PlayerPrefManager.Instance.currentSkillPoints -= 4;
             // TO DO: PUT CODE FOR CHANGING PLAYER PREF
 
             // Set player pref to new skill point and capacity values
             PlayerPrefs.SetInt("Equipment Effectiveness", PlayerPrefManager.Instance.equipmentEffectiveness);
+            PlayerPrefs.SetInt("Equipment Range", PlayerPrefManager.Instance.equipmentRange);
             PlayerPrefs.SetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
 
             Debug.Log("Skill points after: " + PlayerPrefManager.Instance.currentSkillPoints + " equip effectiveness after: " + PlayerPrefManager.Instance.equipmentEffectiveness);
-
+            Debug.Log(" equip range before: " + PlayerPrefManager.Instance.equipmentRange);
             // Update Skill point count Ui
             UpdateSkillPointCount();
         }
 
     }
 
-    public void UpgradeEquipmentRange()
-    {
-        if (PlayerPrefManager.Instance.currentSkillPoints == 0)
-        {
-            Debug.Log("player has zero Skill points");
-            return;
-        }
-
-        // Check if player has enough skill points to afford upgrade
-        if (PlayerPrefs.GetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints) >= 4)
-        {
-            Debug.Log("Upgrading Equipment Range by ");
-            Debug.Log("Skill points before: " + PlayerPrefManager.Instance.currentSkillPoints + " equip range before: " + PlayerPrefManager.Instance.equipmentRange);
-
-            PlayerPrefManager.Instance.currentSkillPoints -= 4;
-            // TO DO: PUT CODE FOR CHANGING PLAYER PREF
-
-            // Set player pref to new skill point and capacity values
-            PlayerPrefs.SetInt("Equipment Range", PlayerPrefManager.Instance.equipmentRange);
-            PlayerPrefs.SetInt("Skill Points", PlayerPrefManager.Instance.currentSkillPoints);
-
-            Debug.Log("Skill points after: " + PlayerPrefManager.Instance.currentSkillPoints + " equip range after: " + PlayerPrefManager.Instance.equipmentRange);
-
-            // Update Skill point count Ui
-            UpdateSkillPointCount();
-        }
-    } 
     #endregion
 
     #endregion
@@ -272,4 +251,6 @@ public class MetaShopScript : MonoBehaviour
         PlayerPrefManager.Instance.ResetAllPlayerPrefs();
         UpdateSkillPointCount();
     }
+
+    
 }

@@ -201,6 +201,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player5_22
       objectReference: {fileID: 0}
+    - target: {fileID: 1539644695927821961, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539790305903396239, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540134591261861913, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540211582427491315, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1833786865883805940, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: m_TagString
       value: CameraShake
@@ -225,9 +241,37 @@ PrefabInstance:
       propertyPath: raycastLayers.m_Bits
       value: 12288
       objectReference: {fileID: 0}
+    - target: {fileID: 3956058395033344222, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956430704604206776, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956551089408091228, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956689796466627164, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934845984880947642, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934949883186250590, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5240015624332743366, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: moveAnimator
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435013265802236607, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5949036525270202500, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: raycastLayers.m_Bits
