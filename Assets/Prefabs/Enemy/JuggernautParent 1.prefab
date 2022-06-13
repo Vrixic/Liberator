@@ -336,7 +336,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miniMapLocator: {fileID: 176942370}
-  locationExposedTimer: 5
 --- !u!114 &3159087118973286974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,11 +396,12 @@ MonoBehaviour:
   enemyTagCollider: {fileID: 255728192}
   isMelee: 0
   sqrDistance: 0
-  name: Juggernaut
+  aiName: Juggernaut
   aimDirection: {x: 0, y: 0, z: 0}
   disableEnemyInterval: 2
   isFlashed: 0
   isStunned: 0
+  bFirstChase: 1
   miniMapLocator: {fileID: 0}
 --- !u!114 &5352958576046171733
 MonoBehaviour:

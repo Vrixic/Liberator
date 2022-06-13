@@ -630,6 +630,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4509814225954442655, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: loadingTips.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509814225954442655, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: loadingTips.Array.data[7]
+      value: Upon dies, XP is the only thing that remains.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509814225954442655, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: loadingTips.Array.data[8]
+      value: Be sure you cash wisely...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509814225954442655, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: loadingTips.Array.data[9]
+      value: Shop is available  after you complete a mission.
+      objectReference: {fileID: 0}
     - target: {fileID: 4538710362626340919, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 619
