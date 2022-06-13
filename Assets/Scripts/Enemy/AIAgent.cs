@@ -69,7 +69,6 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIFlashState());
         stateMachine.RegisterState(new AIAttackPlayerState());
         stateMachine.RegisterState(new AIReturnState());
-        stateMachine.RegisterState(new AIStunnedState());
         stateMachine.RegisterState(new AIAlertedState());
         enemyMelee = GetComponent<EnemyMelee>();
         if (!isMelee)

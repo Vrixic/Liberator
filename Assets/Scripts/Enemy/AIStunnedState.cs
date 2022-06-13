@@ -7,7 +7,6 @@ public class AIStunnedState : AIState
     public float stunTimer = 5f;
     void AIState.Enter(AIAgent agent)
     {
-        agent.currentState = AIStateID.Stunned;
         agent.animator.SetBool("Flashbang", true);
         agent.navMeshAgent.isStopped = true;
     }
