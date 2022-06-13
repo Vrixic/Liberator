@@ -332,6 +332,12 @@ public class BaseGun : BaseWeapon
     {
         Debug.Log(name + ": Reloading replace mag");
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadMiddle");
+
+        if (GetWeaponID() == WeaponID.Shotgun)
+        {
+            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, 1);
+            UpdateAmmoGUI();
+        }
     }
 
     //event that is called at the end of the animation, for certain weapon sounds
@@ -342,12 +348,8 @@ public class BaseGun : BaseWeapon
         if (GetWeaponID() != WeaponID.Shotgun)
         {
             m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
+            UpdateAmmoGUI();
         }
-        if (GetWeaponID() == WeaponID.Shotgun)
-        {
-            m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, 1);
-        }
-        UpdateAmmoGUI();
         StopReloading();
     }
 
