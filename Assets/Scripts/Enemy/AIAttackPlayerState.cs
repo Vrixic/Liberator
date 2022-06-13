@@ -33,7 +33,8 @@ public class AIAttackPlayerState : AIState
             }
             else
             {
-                if (agent.sqrDistance < 6)
+                Debug.Log(agent.sqrDistance);
+                if (agent.sqrDistance < 4)
                 {
 
                     if (agent.GetMeleeWeapon().Attack()) // check to see if enemy is capable of attacking right now

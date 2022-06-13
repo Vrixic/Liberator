@@ -224,15 +224,15 @@ MonoBehaviour:
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: b62235906ddf9fe45a56e26fcd539a86, type: 3}
+      - {fileID: 8300000, guid: 64d1e05df4ba3c84a912a47c26f2fa96, type: 3}
       volMultiplier: 2
-    objectTag: Shotgun_EndReload
+    objectTag: Shotgun_ReloadMiddle
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: 64d1e05df4ba3c84a912a47c26f2fa96, type: 3}
+      - {fileID: 8300000, guid: b62235906ddf9fe45a56e26fcd539a86, type: 3}
       volMultiplier: 2
-    objectTag: Shotgun_ReloadBullet
+    objectTag: Shotgun_ReloadEnd
   - sound:
       audioType: 0
       audio:
