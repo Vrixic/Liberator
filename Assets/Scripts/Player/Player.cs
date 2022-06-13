@@ -50,9 +50,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] AudioSource weaponAudioSrc;
 
-    /* the ground under the players tag */
-    string groundTag = "Untagged";
-
     /* current equipped weapon */
     int m_CurrentWeaponIndex;
 
