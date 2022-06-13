@@ -593,6 +593,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5994487195960309196}
     m_Modifications:
+    - target: {fileID: 2710364134487769638, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6326081732116033494, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1218,8 +1222,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadScreenCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7467547676109737284, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8960372210641666274, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9025766368396454601, guid: 3b69b3c199e54a24081ecae04cc5adce, type: 3}
+      propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

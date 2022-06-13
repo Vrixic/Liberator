@@ -72,7 +72,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             CloseShop();
         }
-        else if(!GameManager.Instance.isXPScreenActive)
+        else if (!GameManager.Instance.isXPScreenActive)
         {
             Resume();
         }
@@ -262,25 +262,19 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 return;
             }
 
-            if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Shells) || AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) != AmmoManager.Instance.GetAmmoCapacity(AmmoType.Small))
-            {
-                // Subtract Cost of items and update Cash Count
-                GameManager.Instance.CurrentCash -= 100;
-                UpdateCashCountShopUi();
-                // Checks if player has shotgun equipped then refills Players Ammo to max depending on ammo type
-                if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() == WeaponID.Shotgun)
-                {
-                    AmmoManager.Instance.RefillAmmo(AmmoType.Shells);
 
-                }
-                else
-                {
-                    AmmoManager.Instance.RefillAmmo(AmmoType.Small);
-                }
+            // Subtract Cost of items and update Cash Count
+            GameManager.Instance.CurrentCash -= 100;
+            UpdateCashCountShopUi();
 
-                // Update Ammo Ui
-                AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
-            }
+            // Refills ammo
+            AmmoManager.Instance.RefillAmmo(AmmoType.Shells);
+            AmmoManager.Instance.RefillAmmo(AmmoType.Small);
+
+            // Update Ammo Ui
+            AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Shells, AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells));
+            AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
+
 
         }
     }
@@ -316,7 +310,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             {
                 if (GameManager.Instance.playerScript.GetCurrentSensorGrenadeCount() != GameManager.Instance.playerScript.GetMaxSensorGrenadeCount())
                 {
-                    GameManager.Instance.playerScript.ActivateFlashbangMesh(); 
+                    GameManager.Instance.playerScript.ActivateFlashbangMesh();
                     GameManager.Instance.playerScript.ActivateSensorMesh();
                     // Subtract Cost of items and update Cash Count
                     GameManager.Instance.CurrentCash -= 200;
@@ -355,12 +349,12 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void UpgradeCurrentWeapon()
     {
-        if (GameManager.Instance.CurrentCash >= 500)
+        if (GameManager.Instance.CurrentCash >= 750)
         {
             if (!GameManager.Instance.isCurrentWeaponUpgraded)
             {
                 Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage before Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
-                GameManager.Instance.CurrentCash -= 500;
+                GameManager.Instance.CurrentCash -= 750;
                 UpdateCashCountShopUi();
                 // Gets current weapon equipped and increases the damage of the gun by 25
                 GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 25);
@@ -446,11 +440,11 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
         // Check if player can afford Purchase
-        if (GameManager.Instance.CurrentCash >= 500)
+        if (GameManager.Instance.CurrentCash >= 1000)
         {
             if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() != WeaponID.Automatic_Rifle3)
             {
-                GameManager.Instance.CurrentCash -= 500;
+                GameManager.Instance.CurrentCash -= 1000;
                 UpdateCashCountShopUi();
 
                 // Switches player's current weapon to an assualt rife
@@ -470,11 +464,11 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
         // Check if player can afford Purchase
-        if (GameManager.Instance.CurrentCash >= 500)
+        if (GameManager.Instance.CurrentCash >= 1000)
         {
             if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() != WeaponID.Automatic_Rifle)
             {
-                GameManager.Instance.CurrentCash -= 500;
+                GameManager.Instance.CurrentCash -= 1000;
                 UpdateCashCountShopUi();
 
                 // Switches player's current weapon to a Scar
@@ -494,11 +488,11 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
         // Check if player can afford Purchase
-        if (GameManager.Instance.CurrentCash >= 500)
+        if (GameManager.Instance.CurrentCash >= 1000)
         {
             if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() != WeaponID.Shotgun)
             {
-                GameManager.Instance.CurrentCash -= 500;
+                GameManager.Instance.CurrentCash -= 1000;
                 UpdateCashCountShopUi();
 
                 // Switches player's current weapon to a Shotgun

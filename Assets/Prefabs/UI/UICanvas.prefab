@@ -1689,6 +1689,63 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7339117119295259806, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
+--- !u!1 &7987560300604670302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7339117119007480701, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
+  m_PrefabInstance: {fileID: 792716979875093027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5873731934735177089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987560300604670302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 1
+--- !u!1 &7987560300835406211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7339117119246605216, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
+  m_PrefabInstance: {fileID: 792716979875093027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6116210628663757755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987560300835406211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 1
+--- !u!1 &7987560300888268472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7339117119295259803, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
+  m_PrefabInstance: {fileID: 792716979875093027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6918919356559311466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987560300888268472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 1
 --- !u!224 &7987560301579283102 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7339117118635716797, guid: 9c1913642b3730149bc72b37f4824001, type: 3}
