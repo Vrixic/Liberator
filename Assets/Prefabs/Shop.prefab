@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8988025890784248994}
   m_Layer: 0
   m_Name: Shop
-  m_TagString: Shop
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -135,9 +135,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8988025890784248994}
     m_Modifications:
+    - target: {fileID: -7202273557117439936, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
+      propertyPath: m_Size.y
+      value: 0.34133103
+      objectReference: {fileID: 0}
+    - target: {fileID: -7202273557117439936, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
+      propertyPath: m_Size.z
+      value: 0.4616953
+      objectReference: {fileID: 0}
+    - target: {fileID: -7202273557117439936, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
+      propertyPath: m_Center.y
+      value: 0.17066552
+      objectReference: {fileID: 0}
     - target: {fileID: 2164406911649492855, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
       propertyPath: m_Name
       value: Weapon Crate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164406911649492855, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
+      propertyPath: m_TagString
+      value: Shop
       objectReference: {fileID: 0}
     - target: {fileID: 2905628005308194148, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
       propertyPath: m_RootOrder
@@ -245,7 +261,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -570673371256743524, guid: 7ed20352687dcfa40a1bc8782b023748, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7ed20352687dcfa40a1bc8782b023748, type: 3}
 --- !u!4 &1615037800630830977 stripped
 Transform:
