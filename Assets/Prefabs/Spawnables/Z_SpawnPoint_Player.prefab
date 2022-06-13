@@ -235,7 +235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3109904136557413142, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: startWeaponIDs.Array.data[1]
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3314986820819352915, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: raycastLayers.m_Bits
