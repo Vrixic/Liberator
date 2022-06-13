@@ -4,7 +4,6 @@ using UnityEngine;
 public class Flashbang : BaseThrowables
 {
 
-    [SerializeField] float flashSphereRadius = 50f;
 
     /*
     * Called when flashbang explodes
@@ -24,13 +23,13 @@ public class Flashbang : BaseThrowables
         Collider[] colliders = new Collider[14];
         Vector3 origin = transform.position;
         origin.y += 2f;
-        int collidersCount = Physics.OverlapSphereNonAlloc(origin, flashSphereRadius, colliders, GetLayerMask());
+        int collidersCount = Physics.OverlapSphereNonAlloc(origin, sphereRadius, colliders, GetLayerMask());
 
         //if the player is close to the flashbang(not necessarily effected) apply camera shake
-        if ((GameManager.Instance.playerTransform.position - transform.position).sqrMagnitude < flashSphereRadius * flashSphereRadius * 1.5f)
+        if ((GameManager.Instance.playerTransform.position - transform.position).sqrMagnitude < sphereRadius * sphereRadius * 1.5f)
             GameManager.Instance.cameraShakeScript.Trauma += 0.65f;
 
-        float raycastDistance = flashSphereRadius * 2f;
+        float raycastDistance = sphereRadius * 2f;
 
         for (int i = 0; i < collidersCount; i++)
         {
@@ -65,4 +64,5 @@ public class Flashbang : BaseThrowables
         GetRigidbody().AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
         StartCoroutine(OnThrowableExplode());
     }
+
 }
