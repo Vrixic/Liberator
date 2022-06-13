@@ -2437,6 +2437,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1770512416}
     m_Modifications:
     - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
+      propertyPath: slowTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: popUpText
       value: After rescuing the hostage you will be granted access to the shop
       objectReference: {fileID: 0}
@@ -3136,6 +3140,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1770512416}
     m_Modifications:
     - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
+      propertyPath: slowTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: popUpText
       value: Make sure you check every corner
       objectReference: {fileID: 0}
@@ -3205,6 +3213,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1770512416}
     m_Modifications:
+    - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
+      propertyPath: slowTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: popUpText
       value: Holding E to rescue the hostage will let you progress to the next level
@@ -6727,6 +6739,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1770512416}
     m_Modifications:
+    - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
+      propertyPath: slowTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: popUpText
       value: Watch out for enemy's
@@ -17783,6 +17799,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1770512416}
     m_Modifications:
+    - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
+      propertyPath: slowTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 724827259, guid: d8409be33fa8dbc41a8530f64d8c34dd, type: 3}
       propertyPath: popUpText
       value: HealthKits, and Ammo boxes are placed around the map to help you on

@@ -10,13 +10,16 @@ public class InformationPopup : MonoBehaviour
     [SerializeField] bool slowTime = true;
     [SerializeField] float slowTimeLength = 3f;
     GameObject informationPrompt;
+    AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         informationPrompt = GameManager.Instance.infomationTriggerText;
     }
     private void OnTriggerEnter(Collider other)
     {
+        GetComponent<BoxCollider>().enabled = false;
         informationPrompt.GetComponent<TMP_Text>().text = popUpText;
         if (other.CompareTag("Player"))
         {
@@ -44,7 +47,8 @@ public class InformationPopup : MonoBehaviour
     IEnumerator ShowNormal()
     {
         informationPrompt.SetActive(true);
-        yield return new WaitForSeconds(2);
+        audioSource.Play();
+        yield return new WaitForSeconds(10);
         informationPrompt.SetActive(false);
         gameObject.SetActive(false);
     }
