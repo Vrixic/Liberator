@@ -9,6 +9,10 @@ public class BaseShotgun : BaseGun
 
     public override void ShootBullet()
     {
+        if (bIsAiming)
+        {
+            bulletConeRadius /= 2;
+        }
         Vector3 centerPoint = raycastOrigin.position + GameManager.Instance.mainCamera.transform.forward * GetBulletRange();
         Vector3 targetPoints;
 
