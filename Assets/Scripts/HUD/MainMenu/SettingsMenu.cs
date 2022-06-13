@@ -19,67 +19,13 @@ public class SettingsMenu : MonoBehaviour
     public TMP_InputField sfxVolumeInput;
     public TMP_InputField brightnessInput;
     public TMP_InputField sensitivityInput;
+    public Toggle voicePromptToggle;
     bool dontUpdate = false;
     private void OnEnable()
     {
 
         EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
-
-        // Master Volume
-        if (PlayerPrefs.HasKey("Master Volume"))
-        {
-            PlayerPrefManager.Instance.masterVolume = PlayerPrefs.GetFloat("Master Volume", 100f);
-        }
-        else
-        {
-            PlayerPrefManager.Instance.masterVolume = 100f;
-            PlayerPrefs.SetFloat("Master Volume", PlayerPrefManager.Instance.masterVolume);
-        }
-
-        // Music Volume
-        if (PlayerPrefs.HasKey("Music Volume"))
-        {
-            PlayerPrefManager.Instance.musicVolume = PlayerPrefs.GetFloat("Music Volume", 100f);
-        }
-        else
-        {
-            PlayerPrefManager.Instance.musicVolume = 100f;
-            PlayerPrefs.SetFloat("Music Volume", PlayerPrefManager.Instance.musicVolume);
-        }
-
-        // SFX volume
-        if (PlayerPrefs.HasKey("SFX Volume"))
-        {
-            PlayerPrefManager.Instance.sfxVolume = PlayerPrefs.GetFloat("SFX Volume", 100f);
-        }
-        else
-        {
-            PlayerPrefManager.Instance.sfxVolume = 100f;
-            PlayerPrefs.SetFloat("SFX Volume", PlayerPrefManager.Instance.sfxVolume);
-        }
-
-        // Player Sensitivity
-        if (PlayerPrefs.HasKey("Player Sensitivity"))
-        {
-            PlayerPrefManager.Instance.playerSensitivity = PlayerPrefs.GetFloat("Player Sensitivity", 100f);
-        }
-        else
-        {
-            PlayerPrefManager.Instance.playerSensitivity = 100f;
-            PlayerPrefs.SetFloat("Player Sensitivity", PlayerPrefManager.Instance.playerSensitivity);
-        }
-
-        // Brightness
-        if (PlayerPrefs.HasKey("Brightness"))
-        {
-            PlayerPrefManager.Instance.brightness = PlayerPrefs.GetFloat("Brightness", 100f);
-        }
-        else
-        {
-            PlayerPrefManager.Instance.brightness = 100f;
-            PlayerPrefs.SetFloat("Brightness", PlayerPrefManager.Instance.brightness);
-        }
-
+        PlayerPrefManager.Instance.LoadSettings();
         InitSliders();
     }
 
@@ -105,8 +51,33 @@ public class SettingsMenu : MonoBehaviour
         brightnessInput.text = PlayerPrefManager.Instance.brightness.ToString();
         brightnessSlider.value = PlayerPrefManager.Instance.brightness;
 
+        if (PlayerPrefManager.Instance.voicePromptState == 1)
+        {
+            voicePromptToggle.isOn = true;
+        }
+        else if(PlayerPrefManager.Instance.voicePromptState == 0)
+        {
+            voicePromptToggle.isOn = false;
+        }
+
         dontUpdate = false;
         Debug.Log("Settings Sliders Initialized");
+    }
+    public void OnUpdateVoicePromptToggle()
+    {
+        if (voicePromptToggle.isOn)
+        {
+            PlayerPrefs.SetInt("Voice Prompts State", 1);
+            PlayerPrefManager.Instance.voicePromptState = 1;
+            Debug.Log("voice pref prompt player pref, " + PlayerPrefManager.Instance.voicePromptState);
+        }
+        else if (!voicePromptToggle.isOn)
+        {
+            PlayerPrefs.SetInt("Voice Prompts State", 0);
+            PlayerPrefManager.Instance.voicePromptState = 0;
+            Debug.Log("voice pref prompt player pref, " + PlayerPrefManager.Instance.voicePromptState);
+
+        }
     }
 
     #region Update Sliders and Text Fields Methods
@@ -325,4 +296,6 @@ public class SettingsMenu : MonoBehaviour
     }
 
     #endregion
+
+
 }

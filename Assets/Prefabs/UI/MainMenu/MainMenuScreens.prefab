@@ -8503,7 +8503,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4734532475633146357}
         m_TargetAssemblyTypeName: MetaShopScript, Assembly-CSharp
         m_MethodName: SetStartingCash10000
         m_Mode: 1
@@ -10260,14 +10260,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1310418742393690305}
-    - target: {fileID: 7327209426704658934, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7327209426765640359, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7327209426880758028, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -10316,38 +10308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 7327209427083058621, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7327209427232132123, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7327209427302434974, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7327209427970140546, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1027590546095572681}
-    - target: {fileID: 7327209428300376866, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7327209428349371910, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7327209428682458994, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7327209428712425390, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 702c2f4a150510a4ab0f0c5a67d35946, type: 3}
 --- !u!4 &1027590545778404344 stripped

@@ -16,6 +16,8 @@ public class PlayerPrefManager : MonoBehaviour
     [HideInInspector]
     public float playerSensitivity = 100;
     [HideInInspector]
+    public int voicePromptState = 1;
+    [HideInInspector]
     public int CurrentXP { get { return currentXP; } set { currentXP = value; } }
     private int currentXP = 0;
     [HideInInspector]
@@ -34,6 +36,18 @@ public class PlayerPrefManager : MonoBehaviour
     public int playerStartingHealth;
     [HideInInspector]
     public int playerStartingArmor;
+    [HideInInspector]
+    public int startingCashUpgradeCount = 0;
+    [HideInInspector]
+    public int flashbangCapacityUpgradeCount = 0;
+    [HideInInspector]
+    public int sensorGrenadeCapacityUpgradeCount = 0;
+    [HideInInspector]
+    public int equipmentEffectivenessUpgradeCount = 0;
+    [HideInInspector]
+    public int startingHealthUpgradeCount = 0;
+    [HideInInspector]
+    public int startingArmorUpgradeCount = 0;
 
 
     public AsyncOperation SceneOperation { get; set; }
@@ -146,6 +160,19 @@ public class PlayerPrefManager : MonoBehaviour
         {
             brightness = 100f;
             PlayerPrefs.SetFloat("Brightness", brightness);
+        }
+
+        // playerPromt On/Off Status
+        if (PlayerPrefs.HasKey("Voice Prompts State"))
+        {
+
+            voicePromptState = PlayerPrefs.GetInt("Voice Prompts State", 1);
+            Debug.Log("Loading voicePrompt Setting, Current: " + voicePromptState);
+        }
+        else
+        {
+            voicePromptState = 1;
+            PlayerPrefs.SetFloat("Voice Prompts State", voicePromptState);
         }
         #endregion
     }
@@ -269,6 +296,83 @@ public class PlayerPrefManager : MonoBehaviour
         }
 
         #endregion
+
+        #region Upgrade Counts
+
+        // Starting Cash Upgrade Count
+        if (PlayerPrefs.HasKey("Starting Cash Upgrade Count"))
+        {
+            startingCashUpgradeCount = PlayerPrefs.GetInt("Starting Cash Upgrade Count");
+            Debug.Log("Loading Starting Cash Upgrade Count, Current : " + startingCashUpgradeCount);
+        }
+        else
+        {
+            startingCashUpgradeCount = 0;
+            PlayerPrefs.SetInt("Starting Cash Upgrade Count", startingCashUpgradeCount);
+        }
+
+        //Flashbang Capacity Upgrade Count
+        if (PlayerPrefs.HasKey("Flashbang Capacity Upgrade Count"))
+        {
+            flashbangCapacityUpgradeCount = PlayerPrefs.GetInt("Flashbang Capacity Upgrade Count");
+            Debug.Log("Loading Flashbang Capacity Upgrade Count, Current : " + flashbangCapacityUpgradeCount);
+        }
+        else
+        {
+            flashbangCapacityUpgradeCount = 0;
+            PlayerPrefs.SetInt("Flashbang Capacity Upgrade Count", flashbangCapacityUpgradeCount);
+        }
+
+        //Sensor Grenade Capacity Upgrade Count
+        if (PlayerPrefs.HasKey("Sensor Grenade Capacity Upgrade Count"))
+        {
+            sensorGrenadeCapacityUpgradeCount = PlayerPrefs.GetInt("Sensor Grenade Capacity Upgrade Count");
+            Debug.Log("Loading Sensor Grenade Capacity Upgrade Count, Current : " + sensorGrenadeCapacityUpgradeCount);
+        }
+        else
+        {
+            sensorGrenadeCapacityUpgradeCount = 0;
+            PlayerPrefs.SetInt("Sensor Grenade Capacity Upgrade Count", sensorGrenadeCapacityUpgradeCount);
+        }
+
+        //Equipment Effectiveness Upgrade Count
+        if (PlayerPrefs.HasKey("Equipment Effectiveness Upgrade Count"))
+        {
+            equipmentEffectivenessUpgradeCount = PlayerPrefs.GetInt("Equipment Effectiveness Upgrade Count");
+            Debug.Log("Loading Equipment Effectiveness Upgrade Count, Current : " + equipmentEffectivenessUpgradeCount);
+        }
+        else
+        {
+            equipmentEffectivenessUpgradeCount = 0;
+            PlayerPrefs.SetInt("Equipment Effectiveness Upgrade Count", equipmentEffectivenessUpgradeCount);
+        }
+
+        //Starting Health Upgrade Count
+        if (PlayerPrefs.HasKey("Starting Health Upgrade Count"))
+        {
+            startingHealthUpgradeCount = PlayerPrefs.GetInt("Starting Health Upgrade Count");
+            Debug.Log("Loading Starting Health Upgrade Count, Current : " + startingHealthUpgradeCount);
+        }
+        else
+        {
+            startingHealthUpgradeCount = 0;
+            PlayerPrefs.SetInt("Starting Health Upgrade Count", startingHealthUpgradeCount);
+        }
+
+        //Starting Armor Upgrade Count
+        if (PlayerPrefs.HasKey("Starting Armor Upgrade Count"))
+        {
+            startingArmorUpgradeCount = PlayerPrefs.GetInt("Starting Armor Upgrade Count");
+            Debug.Log("Starting Armor Upgrade Count, Current : " + startingArmorUpgradeCount);
+        }
+        else
+        {
+            startingArmorUpgradeCount = 0;
+            PlayerPrefs.SetInt("Starting Armor Upgrade Count", startingArmorUpgradeCount);
+        } 
+
+        #endregion
+
     }
 
 
@@ -283,6 +387,7 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetFloat("SFX Volume", sfxVolume);
         PlayerPrefs.SetFloat("Brightness", brightness);
         PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
+        PlayerPrefs.SetInt("Voice Prompts State", voicePromptState);
 
         // Save Player Upgrades and Xp Info
         PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
@@ -290,6 +395,14 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
         PlayerPrefs.SetInt("Flashbang Capacity", flashBangCapacity);
         PlayerPrefs.SetInt("Sensor Grenade Capacity", sensorGrenadeCapacity);
+
+        // Save amount of times meta upgrades have occured
+        PlayerPrefs.SetInt("Starting Cash Upgrade Count", startingCashUpgradeCount);
+        PlayerPrefs.SetInt("Flashbang Capacity Upgrade Count", flashbangCapacityUpgradeCount);
+        PlayerPrefs.SetInt("Sensor Grenade Capacity Upgrade Count", sensorGrenadeCapacityUpgradeCount);
+        PlayerPrefs.SetInt("Equipment Effectiveness Upgrade Count", equipmentEffectivenessUpgradeCount);
+        PlayerPrefs.SetInt("Starting Health Upgrade Count", startingHealthUpgradeCount);
+        PlayerPrefs.SetInt("Starting Armor Upgrade Count", startingArmorUpgradeCount);
 
         // Fires an event to all listening clients that player perferences has been updated
         OnOptionsUpdateAction?.Invoke();
@@ -306,7 +419,7 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetFloat("SFX Volume", 100);
         PlayerPrefs.SetFloat("Player Sensitivity", 100);
         PlayerPrefs.SetFloat("Brightness", 100);
-
+        PlayerPrefs.SetInt("Voice Prompts State", 1);
 
         // Resetting player upgrades and xp back to defaults
         PlayerPrefs.SetInt("Skill Points", 0);
@@ -318,6 +431,14 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("Player Starting Armor", 100);
         PlayerPrefs.SetInt("Equipment Effectiveness", 5);
         PlayerPrefs.SetInt("Equipment Range", 10);
+
+        // Resets counts for amount of times upgrades have been purchased to 0
+        PlayerPrefs.SetInt("Starting Cash Upgrade Count", 0);
+        PlayerPrefs.SetInt("Flashbang Capacity Upgrade Count", 0);
+        PlayerPrefs.SetInt("Sensor Grenade Capacity Upgrade Count", 0);
+        PlayerPrefs.SetInt("Equipment Effectiveness Upgrade Count", 0);
+        PlayerPrefs.SetInt("Starting Health Upgrade Count", 0);
+        PlayerPrefs.SetInt("Starting Armor Upgrade Count", 0);
 
         LoadGame();
     }
