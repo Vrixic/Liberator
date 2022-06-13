@@ -158,6 +158,13 @@ MonoBehaviour:
   - sound:
       audioType: 0
       audio:
+      - {fileID: 8300000, guid: 1d9949e39c6b3164e8cbc92ce5f3a999, type: 3}
+      - {fileID: 8300000, guid: fcdd658db5813094cb39b5aaa364b135, type: 3}
+      volMultiplier: 0.4
+    objectTag: WaterDrip
+  - sound:
+      audioType: 0
+      audio:
       - {fileID: 8300000, guid: 60d4c692dba3b5144a3ae348aa8943da, type: 3}
       volMultiplier: 8
     objectTag: FireExplosion
@@ -227,7 +234,7 @@ MonoBehaviour:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 079a856ec169986469046c620b77c4f7, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.5
     objectTag: Shotgun_Shot
   - sound:
       audioType: 0

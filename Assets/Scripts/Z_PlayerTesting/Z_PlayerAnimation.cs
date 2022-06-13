@@ -20,7 +20,7 @@ public class Z_PlayerAnimation : MonoBehaviour
         }
         else if (GameManager.Instance.playerIsGrounded && playerAnimator.GetBool("isJumping") == true){ 
             playerAnimator.SetBool("isJumping", false);
-            AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, GetGroundsTag(), 3f, true);
+            AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, GetGroundsTag(), 4f, true);
         }
 
         if (GameManager.Instance.playerIsGrounded)
