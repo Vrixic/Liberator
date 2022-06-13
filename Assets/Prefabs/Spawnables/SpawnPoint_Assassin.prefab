@@ -176,6 +176,10 @@ PrefabInstance:
       value: 0.281
       objectReference: {fileID: 0}
     - target: {fileID: 2241902604161986062, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
+      propertyPath: aiName
+      value: Assassin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241902604161986062, guid: 0d8443f61fec2a84b8468b6875388acd, type: 3}
       propertyPath: enemyTagCollider
       value: 
       objectReference: {fileID: 161844408626303827}

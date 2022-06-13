@@ -192,6 +192,10 @@ PrefabInstance:
       value: Soldier
       objectReference: {fileID: 0}
     - target: {fileID: 2241902604161986062, guid: 4a4849c21e1be0741a0d3406447c560e, type: 3}
+      propertyPath: aiName
+      value: Soldier
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241902604161986062, guid: 4a4849c21e1be0741a0d3406447c560e, type: 3}
       propertyPath: enemyTagCollider
       value: 
       objectReference: {fileID: 6929036418239434809}
