@@ -194,7 +194,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 463726535639868226}
+  m_TargetGraphic: {fileID: 463726535696088223}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -340,7 +340,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 463726535647971388}
+  m_TargetGraphic: {fileID: 463726535987439017}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 463726535696088220}
   - component: {fileID: 463726535696088222}
   - component: {fileID: 463726535696088223}
+  - component: {fileID: 5427244570481129244}
   m_Layer: 5
   m_Name: AmmoButtonBackground
   m_TagString: Untagged
@@ -445,6 +446,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5427244570481129244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463726535696088221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 0
 --- !u!1 &463726535851434728
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +578,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 463726535851434733}
+  m_TargetGraphic: {fileID: 463726536305082404}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -602,6 +617,7 @@ GameObject:
   - component: {fileID: 463726535987439014}
   - component: {fileID: 463726535987439016}
   - component: {fileID: 463726535987439017}
+  - component: {fileID: 3238484603225854670}
   m_Layer: 5
   m_Name: HealthButtonBackground
   m_TagString: Untagged
@@ -668,6 +684,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3238484603225854670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463726535987439015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 0
 --- !u!1 &463726536010970050
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +709,7 @@ GameObject:
   - component: {fileID: 463726536010970053}
   - component: {fileID: 463726536010970055}
   - component: {fileID: 463726536010970052}
+  - component: {fileID: 4029929659716279508}
   m_Layer: 5
   m_Name: ArmorButtonBackground
   m_TagString: Untagged
@@ -745,6 +776,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4029929659716279508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463726536010970050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 0
 --- !u!1 &463726536270721472
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,6 +842,7 @@ GameObject:
   - component: {fileID: 463726536305082405}
   - component: {fileID: 463726536305082407}
   - component: {fileID: 463726536305082404}
+  - component: {fileID: 3424499247601585014}
   m_Layer: 5
   m_Name: FlashBangRefillButtonBackground
   m_TagString: Untagged
@@ -863,6 +909,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3424499247601585014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463726536305082402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 0
 --- !u!1 &463726536474736999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,7 +1176,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 463726536551641327}
+  m_TargetGraphic: {fileID: 463726536010970052}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1290,6 +1350,7 @@ GameObject:
   - component: {fileID: 7540258030576349600}
   - component: {fileID: 4823746078037348255}
   - component: {fileID: 4994128769432130802}
+  - component: {fileID: 140013905038744117}
   m_Layer: 5
   m_Name: SensorGrenadeRefillButtonBackground
   m_TagString: Untagged
@@ -1356,6 +1417,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &140013905038744117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571538666855632434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 0
 --- !u!1 &683382520153404115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,7 +1499,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Purchase Assault Rifle
 
-    $500'
+    $1000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c6e06e88f2e960e4cb97084a105f30c1, type: 2}
   m_sharedMaterial: {fileID: -2581324764842141943, guid: c6e06e88f2e960e4cb97084a105f30c1, type: 2}
@@ -1687,7 +1762,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 6404752635494721649}
+  m_TargetGraphic: {fileID: 4994128769432130802}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1726,6 +1801,7 @@ GameObject:
   - component: {fileID: 3905778818856667063}
   - component: {fileID: 316243769130076107}
   - component: {fileID: 5126835799197140307}
+  - component: {fileID: 2677995204573153114}
   m_Layer: 5
   m_Name: BuyScarBackground
   m_TagString: Untagged
@@ -1754,7 +1830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.999985, y: -42.451057}
+  m_AnchoredPosition: {x: -88, y: -42.451057}
   m_SizeDelta: {x: 520.91, y: 154.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &316243769130076107
@@ -1795,6 +1871,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2677995204573153114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962251189130207941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 1
+  isMenuButton: 0
 --- !u!1 &1165677495991766992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,7 +1953,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300040, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1913,7 +2003,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1705760566334877536}
+  m_TargetGraphic: {fileID: 5126835799197140307}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2812,7 +2902,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1859772294773582456}
+  m_TargetGraphic: {fileID: 5047002383090648513}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3370,7 +3460,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Purchase Shotgun
 
-    $500'
+    $1000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c6e06e88f2e960e4cb97084a105f30c1, type: 2}
   m_sharedMaterial: {fileID: -2581324764842141943, guid: c6e06e88f2e960e4cb97084a105f30c1, type: 2}
@@ -3945,6 +4035,7 @@ GameObject:
   - component: {fileID: 2476163692822351730}
   - component: {fileID: 9194276678375651887}
   - component: {fileID: 4604013918106707986}
+  - component: {fileID: 138961291502546947}
   m_Layer: 5
   m_Name: BuyShotgunBackground
   m_TagString: Untagged
@@ -3973,7 +4064,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.998672, y: -124.11365}
+  m_AnchoredPosition: {x: -87.99866, y: -124.11365}
   m_SizeDelta: {x: 520.907, y: 154.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9194276678375651887
@@ -4014,6 +4105,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &138961291502546947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334550581052433291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 1
+  isMenuButton: 0
 --- !u!1 &3353350516372452326
 GameObject:
   m_ObjectHideFlags: 0
@@ -4082,7 +4187,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Upgrade Current Gun Damage
 
-    $500'
+    $750'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c6e06e88f2e960e4cb97084a105f30c1, type: 2}
   m_sharedMaterial: {fileID: -2581324764842141943, guid: c6e06e88f2e960e4cb97084a105f30c1, type: 2}
@@ -4510,6 +4615,7 @@ GameObject:
   - component: {fileID: 8522715451613214414}
   - component: {fileID: 2742777624427161358}
   - component: {fileID: 5999104409056595809}
+  - component: {fileID: 1950546578230277446}
   m_Layer: 5
   m_Name: UpgadeWeaponBackground
   m_TagString: Untagged
@@ -4576,6 +4682,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1950546578230277446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3949287971548721933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 1
 --- !u!1 &4046686602783188749
 GameObject:
   m_ObjectHideFlags: 0
@@ -5267,7 +5387,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 7132416873189872173}
+  m_TargetGraphic: {fileID: 4604013918106707986}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -5560,7 +5680,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 4496722373572853708}
+  m_TargetGraphic: {fileID: 7413537675349393150}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -6550,7 +6670,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Purchase Scar
 
-    $500'
+    $1000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c6e06e88f2e960e4cb97084a105f30c1, type: 2}
   m_sharedMaterial: {fileID: -2581324764842141943, guid: c6e06e88f2e960e4cb97084a105f30c1, type: 2}
@@ -6737,7 +6857,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 6054056516484033585}
+  m_TargetGraphic: {fileID: 5915200865203041202}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7214,7 +7334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300040, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
+  m_Sprite: {fileID: 21300046, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7264,7 +7384,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 4210590765089528601}
+  m_TargetGraphic: {fileID: 5999104409056595809}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7303,6 +7423,8 @@ GameObject:
   - component: {fileID: 1744397111534569338}
   - component: {fileID: 8017099279375150754}
   - component: {fileID: 5047002383090648513}
+  - component: {fileID: 3925852679837681327}
+  - component: {fileID: 4125508778773518043}
   m_Layer: 5
   m_Name: BuyAssaultRifleBackground
   m_TagString: Untagged
@@ -7331,7 +7453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.999985, y: 47.89892}
+  m_AnchoredPosition: {x: -87.99997, y: 47.89892}
   m_SizeDelta: {x: 520.91, y: 154.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8017099279375150754
@@ -7372,6 +7494,34 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3925852679837681327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136728831361944870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 0
+--- !u!114 &4125508778773518043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136728831361944870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 1
+  isMenuButton: 0
 --- !u!1 &8283763583932470382
 GameObject:
   m_ObjectHideFlags: 0
@@ -7459,6 +7609,7 @@ GameObject:
   - component: {fileID: 5107257275375017932}
   - component: {fileID: 2949383310327343068}
   - component: {fileID: 7413537675349393150}
+  - component: {fileID: 4907587658421757524}
   m_Layer: 5
   m_Name: EquipmentRefillButtonBackground
   m_TagString: Untagged
@@ -7525,6 +7676,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4907587658421757524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8541329026254624986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 0
 --- !u!1 &8729334647212820856
 GameObject:
   m_ObjectHideFlags: 0
@@ -7612,6 +7777,7 @@ GameObject:
   - component: {fileID: 9124757923064333324}
   - component: {fileID: 4170636430813611868}
   - component: {fileID: 5915200865203041202}
+  - component: {fileID: 3664129107552427824}
   m_Layer: 5
   m_Name: BuyPistolButtonBackground
   m_TagString: Untagged
@@ -7640,7 +7806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44, y: 138.1839}
+  m_AnchoredPosition: {x: -87.999985, y: 138.1839}
   m_SizeDelta: {x: 520.91, y: 154.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4170636430813611868
@@ -7681,3 +7847,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3664129107552427824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9130420699361142804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b34b556ad2f60d4e86da6128859dd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBiggerButtton: 0
+  isMenuButton: 1

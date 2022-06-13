@@ -59,10 +59,6 @@ public class EnemyMelee : MonoBehaviour
             if (other.CompareTag("Player"))
             {
                 DISystem.createIndicator(transform);
-                
-
-                //add camerashake for flinch
-                GameManager.Instance.cameraShakeScript.Trauma += 1f;
 
                 bHasAttacked = true;
             }
@@ -72,6 +68,9 @@ public class EnemyMelee : MonoBehaviour
     public void DealDamage()
     {
         GameManager.Instance.playerScript.TakeDamage(damage);
+
+        //add camerashake for flinch
+        GameManager.Instance.cameraShakeScript.Trauma = 1f;
     }
     private void OnTriggerExit(Collider other)
     {

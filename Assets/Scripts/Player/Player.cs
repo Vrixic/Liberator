@@ -121,6 +121,8 @@ public class Player : MonoBehaviour
         sensor.SetMaxAmountOfThrowables(PlayerPrefManager.Instance.sensorGrenadeCapacity);
         sensor.IncreaseThrowable(PlayerPrefManager.Instance.sensorGrenadeCapacity);
 
+        SetEquipmentEffectivness();
+
         UpdateFlashbangCount();
         UpdateSensorGrenadeUi();
         maxPlayerHealth = PlayerPrefManager.Instance.playerStartingHealth;
@@ -135,6 +137,11 @@ public class Player : MonoBehaviour
 
         OnOptionsUpdate();
 
+    }
+    void SetEquipmentEffectivness()
+    {
+        flashbang.SetSphereRadius();
+        sensor.SetSphereRadius();
     }
 
     void ResetHealth()
@@ -158,9 +165,6 @@ public class Player : MonoBehaviour
                 m_CurrentPlayerHealth = 999999999;
             }
         }
-
-        if (bPlayerWantsToAttack)
-            StartAttacking();
     }
 
     private void FixedUpdate()
@@ -183,6 +187,9 @@ public class Player : MonoBehaviour
 
         if (sensor.isActiveAndEnabled && !sensor.HasMoreThrowables())
             EquipPreviousWeapon();
+
+        if (bPlayerWantsToAttack)
+            StartAttacking();
     }
 
     /*

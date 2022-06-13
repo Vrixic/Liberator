@@ -35,6 +35,10 @@ public class ObjectPoolManager : MonoBehaviour
     {
        return m_ObjectPools[poolName].SpawnObject();
     }
+    public List<PoolableObject> GetObjectsInPool(string poolName)
+    {
+        return m_ObjectPools[poolName].GetAllObjectsInPool();
+    }
 
     //public void DisableAllInPool(string poolName)
     //{

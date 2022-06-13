@@ -317,7 +317,7 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("Player Starting Health", 100);
         PlayerPrefs.SetInt("Player Starting Armor", 100);
         PlayerPrefs.SetInt("Equipment Effectiveness", 0);
-        PlayerPrefs.SetInt("Equipment Range", 0);
+        PlayerPrefs.SetInt("Equipment Range", 10);
 
         LoadGame();
     }

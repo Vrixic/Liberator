@@ -394,6 +394,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   sensor: {fileID: 0}
   animator: {fileID: 0}
+  enemyTagCollider: {fileID: 255728192}
   isMelee: 0
   sqrDistance: 0
   name: Juggernaut
