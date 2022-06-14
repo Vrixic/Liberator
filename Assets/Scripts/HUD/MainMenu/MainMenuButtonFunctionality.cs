@@ -50,9 +50,6 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
         //pauses menu music
         AudioManager.Instance.StopMusic();
 
-        //starts game music
-        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "GameMusic");
-
         //SceneManager.LoadScene(1);
         // Sets cursor state to locked and turns off the visibility
         Cursor.lockState = CursorLockMode.Locked;
@@ -70,11 +67,6 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
         Application.Quit();
     }
 
-    public void PlayGameMusicInvoked()
-    {
-        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "GameMusic");
-    }
-
     // TO DO: IMPLEMENT Tutorial
     public void LoadTutorial()
     {
@@ -87,9 +79,6 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
 
         //pauses menu music
         AudioManager.Instance.StopMusic();
-
-        //starts game music
-        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "GameMusic");
 
         // Sets cursor state to locked and turns off the visibility
         Cursor.lockState = CursorLockMode.Locked;

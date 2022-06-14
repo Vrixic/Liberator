@@ -480,7 +480,10 @@ public class Player : MonoBehaviour
     {
         if (!GameRunningCheck()) return;
         m_CurrentPlayerHealth -= amount;
-
+        if (m_CurrentPlayerHealth <= 30)
+        {
+            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "GameMusic");
+        }
         if (m_CurrentPlayerHealth <= 0) // Player died
         {
             PlayerDied();
