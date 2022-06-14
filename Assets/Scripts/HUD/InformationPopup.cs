@@ -19,10 +19,11 @@ public class InformationPopup : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        GetComponent<BoxCollider>().enabled = false;
-        informationPrompt.GetComponent<TMP_Text>().text = popUpText;
+        
         if (other.CompareTag("Player"))
         {
+            GetComponent<BoxCollider>().enabled = false;
+            informationPrompt.GetComponent<TMP_Text>().text = popUpText;
             if (slowTime)
             {
                 StartCoroutine(ShowSlow());
@@ -48,7 +49,7 @@ public class InformationPopup : MonoBehaviour
     {
         informationPrompt.SetActive(true);
         audioSource.Play();
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(18);
         informationPrompt.SetActive(false);
         gameObject.SetActive(false);
     }
