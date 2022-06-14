@@ -78,6 +78,19 @@ public class MeleeImpactManager : MonoBehaviour
         }
     }
 
+    public void PlayAudioAtLocation(Vector3 location, string objectTag)
+    {
+        AudioSource source = GameManager.Instance.playerScript.weaponAudioSrc;
+        if (!meleeImpactDictionary.ContainsKey(objectTag))
+        {
+            objectTag = "Untagged";
+        }
+        source.transform.position = location;
+        source.volume = PlayerPrefManager.Instance.sfxVolume / 100;
+        source.volume *= meleeImpactAudioClipDictionary[objectTag].volMultiplier;
+        source.PlayOneShot(GetAudioClipForImpactFromTag(objectTag));
+    }
+
     /*
      * Updates the particle systems forward and position vectors
      */

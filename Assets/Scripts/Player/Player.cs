@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 
     [Header("Audio Settings")]
 
-    [SerializeField] AudioSource weaponAudioSrc;
+    [SerializeField] public AudioSource weaponAudioSrc;
 
     /* current equipped weapon */
     int m_CurrentWeaponIndex;
