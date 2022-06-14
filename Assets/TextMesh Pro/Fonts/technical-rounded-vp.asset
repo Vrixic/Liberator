@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: technical-rounded-vp Material
-  m_Shader: {fileID: 4800000, guid: 128e987d567d4e2c824d754223b3f3b0, type: 3}
+  m_Shader: {fileID: 4800000, guid: 1e3b057af24249748ff873be7fafee47, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -32,6 +32,7 @@ Material:
     m_Floats:
     - _ColorMask: 15
     - _CullMode: 0
+    - _DiffusePower: 1
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
     - _Stencil: 0
@@ -43,6 +44,7 @@ Material:
     - _VertexOffsetY: 0
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
@@ -57,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: technical-rounded-vp
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -2133727946
   material: {fileID: -1043457149565821571}
-  materialHashCode: 0
+  materialHashCode: -1425500074
   m_Version: 1.1.0
   m_SourceFontFileGUID: eb77326852388b240b568be74a8d37a9
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: eb77326852388b240b568be74a8d37a9, type: 3}
