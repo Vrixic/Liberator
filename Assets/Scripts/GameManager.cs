@@ -8,6 +8,12 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameObject levelOne;
+    [SerializeField] GameObject levelTwo;
+    [SerializeField] GameObject levelThree;
+    [SerializeField] GameObject levelFour;
+    [SerializeField] GameObject levelFive;
+
     #region Player related variables
     [HideInInspector]
     public PlayerMotor playerMoveScript;
