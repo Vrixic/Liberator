@@ -14,7 +14,6 @@ public class Z_PlayerAnimation : MonoBehaviour
 
     public void PlayAnimation(Vector2 input)
     {
-        if (Time.timeScale < 0.01f) return;
         if (!GameManager.Instance.playerIsGrounded) { 
             playerAnimator.SetBool("isJumping", true);
             return; 

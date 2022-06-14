@@ -482,7 +482,7 @@ public class Player : MonoBehaviour
         m_CurrentPlayerHealth -= amount;
         if (m_CurrentPlayerHealth <= 30)
         {
-            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "GameMusic");
+            AudioManager.Instance.ResumeMusic();
         }
         if (m_CurrentPlayerHealth <= 0) // Player died
         {
@@ -501,6 +501,10 @@ public class Player : MonoBehaviour
             m_CurrentPlayerHealth = GetPlayersMaxHealth();
 
         healthBar.UpdateHealthBar();
+        if (m_CurrentPlayerHealth > 30)
+        {
+            AudioManager.Instance.PauseMusic();
+        }
     }
 
     /*

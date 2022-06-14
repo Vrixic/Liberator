@@ -84,7 +84,10 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
 
             //RESUME GAME MUSIC
-            AudioManager.Instance.ResumeMusic();
+            if (GameManager.Instance.playerScript.GetCurrentPlayerHealth() <= 30)
+            {
+                AudioManager.Instance.ResumeMusic();
+            }
 
             // Turn Reticle back on
             reticle.SetActive(true);

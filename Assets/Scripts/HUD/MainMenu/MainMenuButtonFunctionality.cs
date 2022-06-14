@@ -50,6 +50,10 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
         //pauses menu music
         AudioManager.Instance.StopMusic();
 
+        // initialize game music, and pause it
+        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "GameMusic");
+        AudioManager.Instance.PauseMusic();
+
         //SceneManager.LoadScene(1);
         // Sets cursor state to locked and turns off the visibility
         Cursor.lockState = CursorLockMode.Locked;
@@ -79,6 +83,10 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
 
         //pauses menu music
         AudioManager.Instance.StopMusic();
+
+        // initialize game music, and pause it
+        AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "GameMusic");
+        AudioManager.Instance.PauseMusic();
 
         // Sets cursor state to locked and turns off the visibility
         Cursor.lockState = CursorLockMode.Locked;
