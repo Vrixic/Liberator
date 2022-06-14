@@ -84,7 +84,9 @@ public class InputManager : MonoBehaviour
         onFoot.PauseGame.performed += ctx => buttonFunc.PauseGame();
 
         // DEBUG-----------------------------------------------------------------------------------
-        onFoot.Test_PlayerDamage.performed += ctx => player.TakeDamageTen();
+
+        onFoot.ShowFPSCounter.performed += ctx => GameManager.Instance.ToggleFpsCounter();
+        //onFoot.Test_PlayerDamage.performed += ctx => player.TakeDamageTen();
 
         onFoot.ShowCaseLevel.performed += ctx => buttonFunc.LoadShowcaseLevel();
 

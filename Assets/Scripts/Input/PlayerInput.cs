@@ -181,15 +181,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Test_PlayerDamage"",
-                    ""type"": ""Button"",
-                    ""id"": ""def05250-eb13-41b5-b1be-ae4c7ea62c9c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""3561a37a-535f-4179-aa47-77a2384ede53"",
@@ -238,6 +229,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": ""GodMode"",
                     ""type"": ""Button"",
                     ""id"": ""e76c360e-c53f-4cf0-a3f3-cf14875c83aa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowFPSCounter"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c83bf5c-61a7-4125-8392-183ed80522e3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -566,17 +566,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""08316b3a-22f7-4efe-9a44-406c4fadea1c"",
-                    ""path"": ""<Keyboard>/quote"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Test_PlayerDamage"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""598d117b-c8b2-41e1-af25-17faf38ee523"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": ""Press"",
@@ -651,6 +640,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""EquipSensorPressed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4de465b4-a3b3-4483-99e5-aa53ffae2b90"",
+                    ""path"": ""<Keyboard>/f3"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowFPSCounter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -676,13 +676,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_EquipWeaponTwoPressed = m_OnFoot.FindAction("EquipWeaponTwoPressed", throwIfNotFound: true);
         m_OnFoot_EquipFlashbangPressed = m_OnFoot.FindAction("EquipFlashbangPressed", throwIfNotFound: true);
         m_OnFoot_EquipSensorPressed = m_OnFoot.FindAction("EquipSensorPressed", throwIfNotFound: true);
-        m_OnFoot_Test_PlayerDamage = m_OnFoot.FindAction("Test_PlayerDamage", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_HoldInteract = m_OnFoot.FindAction("HoldInteract", throwIfNotFound: true);
         m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
         m_OnFoot_AttackReleased = m_OnFoot.FindAction("AttackReleased", throwIfNotFound: true);
         m_OnFoot_ShowCaseLevel = m_OnFoot.FindAction("ShowCaseLevel", throwIfNotFound: true);
         m_OnFoot_GodMode = m_OnFoot.FindAction("GodMode", throwIfNotFound: true);
+        m_OnFoot_ShowFPSCounter = m_OnFoot.FindAction("ShowFPSCounter", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -759,13 +759,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_EquipWeaponTwoPressed;
     private readonly InputAction m_OnFoot_EquipFlashbangPressed;
     private readonly InputAction m_OnFoot_EquipSensorPressed;
-    private readonly InputAction m_OnFoot_Test_PlayerDamage;
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_HoldInteract;
     private readonly InputAction m_OnFoot_PauseGame;
     private readonly InputAction m_OnFoot_AttackReleased;
     private readonly InputAction m_OnFoot_ShowCaseLevel;
     private readonly InputAction m_OnFoot_GodMode;
+    private readonly InputAction m_OnFoot_ShowFPSCounter;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -787,13 +787,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @EquipWeaponTwoPressed => m_Wrapper.m_OnFoot_EquipWeaponTwoPressed;
         public InputAction @EquipFlashbangPressed => m_Wrapper.m_OnFoot_EquipFlashbangPressed;
         public InputAction @EquipSensorPressed => m_Wrapper.m_OnFoot_EquipSensorPressed;
-        public InputAction @Test_PlayerDamage => m_Wrapper.m_OnFoot_Test_PlayerDamage;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @HoldInteract => m_Wrapper.m_OnFoot_HoldInteract;
         public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
         public InputAction @AttackReleased => m_Wrapper.m_OnFoot_AttackReleased;
         public InputAction @ShowCaseLevel => m_Wrapper.m_OnFoot_ShowCaseLevel;
         public InputAction @GodMode => m_Wrapper.m_OnFoot_GodMode;
+        public InputAction @ShowFPSCounter => m_Wrapper.m_OnFoot_ShowFPSCounter;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -854,9 +854,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @EquipSensorPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipSensorPressed;
                 @EquipSensorPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipSensorPressed;
                 @EquipSensorPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipSensorPressed;
-                @Test_PlayerDamage.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnTest_PlayerDamage;
-                @Test_PlayerDamage.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnTest_PlayerDamage;
-                @Test_PlayerDamage.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnTest_PlayerDamage;
                 @Interact.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
@@ -875,6 +872,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @GodMode.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGodMode;
                 @GodMode.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGodMode;
                 @GodMode.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGodMode;
+                @ShowFPSCounter.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowFPSCounter;
+                @ShowFPSCounter.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowFPSCounter;
+                @ShowFPSCounter.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowFPSCounter;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -930,9 +930,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @EquipSensorPressed.started += instance.OnEquipSensorPressed;
                 @EquipSensorPressed.performed += instance.OnEquipSensorPressed;
                 @EquipSensorPressed.canceled += instance.OnEquipSensorPressed;
-                @Test_PlayerDamage.started += instance.OnTest_PlayerDamage;
-                @Test_PlayerDamage.performed += instance.OnTest_PlayerDamage;
-                @Test_PlayerDamage.canceled += instance.OnTest_PlayerDamage;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -951,6 +948,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @GodMode.started += instance.OnGodMode;
                 @GodMode.performed += instance.OnGodMode;
                 @GodMode.canceled += instance.OnGodMode;
+                @ShowFPSCounter.started += instance.OnShowFPSCounter;
+                @ShowFPSCounter.performed += instance.OnShowFPSCounter;
+                @ShowFPSCounter.canceled += instance.OnShowFPSCounter;
             }
         }
     }
@@ -974,12 +974,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnEquipWeaponTwoPressed(InputAction.CallbackContext context);
         void OnEquipFlashbangPressed(InputAction.CallbackContext context);
         void OnEquipSensorPressed(InputAction.CallbackContext context);
-        void OnTest_PlayerDamage(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnHoldInteract(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
         void OnAttackReleased(InputAction.CallbackContext context);
         void OnShowCaseLevel(InputAction.CallbackContext context);
         void OnGodMode(InputAction.CallbackContext context);
+        void OnShowFPSCounter(InputAction.CallbackContext context);
     }
 }
