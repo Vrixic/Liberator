@@ -159,15 +159,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Test_PlayerDamage",
-                    "type": "Button",
-                    "id": "def05250-eb13-41b5-b1be-ae4c7ea62c9c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "3561a37a-535f-4179-aa47-77a2384ede53",
@@ -216,6 +207,15 @@
                     "name": "GodMode",
                     "type": "Button",
                     "id": "e76c360e-c53f-4cf0-a3f3-cf14875c83aa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShowFPSCounter",
+                    "type": "Button",
+                    "id": "0c83bf5c-61a7-4125-8392-183ed80522e3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -544,17 +544,6 @@
                 },
                 {
                     "name": "",
-                    "id": "08316b3a-22f7-4efe-9a44-406c4fadea1c",
-                    "path": "<Keyboard>/quote",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Test_PlayerDamage",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "598d117b-c8b2-41e1-af25-17faf38ee523",
                     "path": "<Keyboard>/e",
                     "interactions": "Press",
@@ -627,6 +616,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "EquipSensorPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4de465b4-a3b3-4483-99e5-aa53ffae2b90",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowFPSCounter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
