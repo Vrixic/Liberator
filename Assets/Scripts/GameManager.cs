@@ -123,6 +123,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool canOpenPauseMenu;
     [HideInInspector]
+    public Fps_Counter fpsCounter;
+    [HideInInspector]
     public bool isXPScreenActive;
     Color textColor = new Color(39, 255, 0);
     Color clearcolor = Color.clear;
@@ -201,6 +203,7 @@ public class GameManager : MonoBehaviour
         virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
         reticle = GameObject.FindGameObjectWithTag("Reticle");
         ui = GameObject.FindGameObjectWithTag("UI");
+        fpsCounter = ui.GetComponentInChildren<Fps_Counter>();
         buttonFuncScript = ui.GetComponent<ButtonFunctionality>();
         damageIndicatorSystem = ui.GetComponent<DISystem>();
 
@@ -456,5 +459,10 @@ public class GameManager : MonoBehaviour
                     agent.stateMachine.ChangeState(AIStateID.Alerted);
             }
         }
+    }
+
+    public void ToggleFpsCounter()
+    {
+        fpsCounter.ToggleCounterDisplay();
     }
 }
