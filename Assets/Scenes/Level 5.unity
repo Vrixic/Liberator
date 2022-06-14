@@ -27786,6 +27786,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Shop
       objectReference: {fileID: 0}
+    - target: {fileID: 7245154260956615456, guid: d0fc3da7a7033044b922f539b84dd40b, type: 3}
+      propertyPath: maxHealth
+      value: 1750
+      objectReference: {fileID: 0}
     - target: {fileID: 8948379773336298846, guid: d0fc3da7a7033044b922f539b84dd40b, type: 3}
       propertyPath: m_Mesh
       value: 
