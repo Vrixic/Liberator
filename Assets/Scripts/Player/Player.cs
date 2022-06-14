@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [Header("Weapon Settings")]
@@ -169,6 +169,11 @@ public class Player : MonoBehaviour
                 Debug.Log("Health too low, Resetting");
                 m_CurrentPlayerHealth = 999999999;
             }
+        }
+
+        if (bPlayerWantsToAttack && !Mouse.current.leftButton.isPressed)
+        {
+            bPlayerWantsToAttack = false;
         }
     }
 
