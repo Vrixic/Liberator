@@ -17529,10 +17529,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1279982034755843841, guid: 70a3515ae83a79440b842a194371f102, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300044, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
     - target: {fileID: 2433496881653387053, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17600,18 +17596,6 @@ PrefabInstance:
     - target: {fileID: 5994487195960309199, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106648552401769810, guid: 70a3515ae83a79440b842a194371f102, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106648552401769810, guid: 70a3515ae83a79440b842a194371f102, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106648552401769810, guid: 70a3515ae83a79440b842a194371f102, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6173530889034040894, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.y
