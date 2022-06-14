@@ -93,6 +93,7 @@ MonoBehaviour:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: ed5dbd8279befda47bafa570d862880c, type: 3}
+      - {fileID: 8300000, guid: 57dd5c03a49450543a8dd14fd415baa9, type: 3}
       volMultiplier: 0.2
     objectTag: EnemyDeath
   - sound:
@@ -153,14 +154,14 @@ MonoBehaviour:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 5e249dfa519a6ae42bb9fcd44d3b08e1, type: 3}
-      volMultiplier: 0.4
+      volMultiplier: 0.2
     objectTag: Pickup
   - sound:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 1d9949e39c6b3164e8cbc92ce5f3a999, type: 3}
       - {fileID: 8300000, guid: fcdd658db5813094cb39b5aaa364b135, type: 3}
-      volMultiplier: 0.4
+      volMultiplier: 0.1
     objectTag: WaterDrip
   - sound:
       audioType: 0
@@ -178,20 +179,20 @@ MonoBehaviour:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 951e1afd677605e45900765cebb84281, type: 3}
-      volMultiplier: 3
+      volMultiplier: 1
     objectTag: MeleeEnemyYell
   - sound:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
       - {fileID: 8300000, guid: 9efc9e015e347d943a6f0d6242e9a349, type: 3}
-      volMultiplier: 1
+      volMultiplier: 0.2
     objectTag: MeleeAttack
   - sound:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: fa91a57cabf00b14895a8689ce0635c2, type: 3}
-      volMultiplier: 2
+      volMultiplier: 0.5
     objectTag: EnemyHeadshot
   - sound:
       audioType: 0
@@ -209,7 +210,7 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 032548a30e7412548a7986a2358bcbaa, type: 3}
       - {fileID: 8300000, guid: 0b60a88b41e236345ad7f7fb7da39128, type: 3}
       - {fileID: 8300000, guid: 24f29742bdeee7f46a18bfc3980987c9, type: 3}
-      volMultiplier: 2
+      volMultiplier: 0.8
     objectTag: Automatic_Rifle3_Shot
   - sound:
       audioType: 0
@@ -219,7 +220,7 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 4fa85eb8be773d948a0bf7b8fcd30e6e, type: 3}
       - {fileID: 8300000, guid: 71bf072d25912e9429bc774978b237eb, type: 3}
       - {fileID: 8300000, guid: 44f33c4fdb97c414cb54a165c14f6b33, type: 3}
-      volMultiplier: 2
+      volMultiplier: 0.8
     objectTag: Pistol2_Shot
   - sound:
       audioType: 0
@@ -228,25 +229,25 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 7833cce12c063c545abdb01ac6003730, type: 3}
       - {fileID: 8300000, guid: 3d6ee6e0515410c4c838911546c78c4a, type: 3}
       - {fileID: 8300000, guid: d81bebac9cee217409b15b76e7011fc6, type: 3}
-      volMultiplier: 2
+      volMultiplier: 0.8
     objectTag: Automatic_Rifle_Shot
   - sound:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 079a856ec169986469046c620b77c4f7, type: 3}
-      volMultiplier: 0.5
+      volMultiplier: 0.2
     objectTag: Shotgun_Shot
   - sound:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 64d1e05df4ba3c84a912a47c26f2fa96, type: 3}
-      volMultiplier: 2
+      volMultiplier: 0.6
     objectTag: Shotgun_ReloadMiddle
   - sound:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: b62235906ddf9fe45a56e26fcd539a86, type: 3}
-      volMultiplier: 2
+      volMultiplier: 0.6
     objectTag: Shotgun_ReloadEnd
   - sound:
       audioType: 0

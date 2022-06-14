@@ -13,11 +13,9 @@ public class BulletImpactManager : MonoBehaviour
     /* stores the object pool related to a string, second string is the pool name */
     public Dictionary<string, string> bulletImpactDictionary = new Dictionary<string, string>();
 
-    public Dictionary<string, AudioClip> bulletImpactAudioClipDictionary = new Dictionary<string, AudioClip>();
+    public Dictionary<string, ImpactSound> bulletImpactAudioClipDictionary = new Dictionary<string, ImpactSound>();
 
     AudioSource m_AudioSource;
-
-    public float volumeMultiplier = 1f;
 
     /* instance of this object, singleton pattern */
     private static BulletImpactManager m_Instance;
@@ -74,26 +72,25 @@ public class BulletImpactManager : MonoBehaviour
 
     public void PlayAudioAtLocation(Vector3 location, string objectTag)
     {
-        SetAudioVolume(PlayerPrefManager.Instance.sfxVolume/100);
-
+        if (!bulletImpactDictionary.ContainsKey(objectTag))
+        {
+            objectTag = "Untagged";
+        }
         m_AudioSource.transform.position = location;
+        m_AudioSource.volume = PlayerPrefManager.Instance.sfxVolume / 100;
+        m_AudioSource.volume *= bulletImpactAudioClipDictionary[objectTag].volMultiplier;
         m_AudioSource.PlayOneShot(GetAudioClipForImpactFromTag(objectTag));
-    }
-
-    public void SetAudioVolume(float val)
-    {
-        m_AudioSource.volume = val * volumeMultiplier;
     }
 
     public AudioClip GetAudioClipForImpactFromTag(string objectTag)
     {
         if (bulletImpactDictionary.ContainsKey(objectTag))
         {
-            return bulletImpactAudioClipDictionary[objectTag];
+            return bulletImpactAudioClipDictionary[objectTag].audio[Random.Range(0, bulletImpactAudioClipDictionary[objectTag].audio.Length)];
         }
         else
         {
-            return bulletImpactAudioClipDictionary[bulletImpacts[0].objectTag];
+            return bulletImpactAudioClipDictionary[bulletImpacts[0].objectTag].audio[0];
         }
     }
 
@@ -115,6 +112,13 @@ public class BulletImpactManager : MonoBehaviour
     {
         public string objectTag;
         public PoolableObject collisionParticleSystem;
-        public AudioClip impactAudio;
+        public ImpactSound impactAudio;
+    }
+
+    [System.Serializable]
+    public class ImpactSound
+    {
+        public AudioClip[] audio;
+        public float volMultiplier = 1f;
     }
 }

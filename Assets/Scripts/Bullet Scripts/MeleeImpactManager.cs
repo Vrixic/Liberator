@@ -13,7 +13,7 @@ public class MeleeImpactManager : MonoBehaviour
     /* stores the object pool related to a string, seconds string is the key to the repective object pool */
     public Dictionary<string, string> meleeImpactDictionary = new Dictionary<string, string>();
 
-    public Dictionary<string, AudioClip> meleeImpactAudioClipDictionary = new Dictionary<string, AudioClip>();
+    public Dictionary<string, ImpactSound> meleeImpactAudioClipDictionary = new Dictionary<string, ImpactSound>();
 
     /* instance of this object, singleton pattern */
     private static MeleeImpactManager m_Instance;
@@ -70,11 +70,11 @@ public class MeleeImpactManager : MonoBehaviour
     {
         if (meleeImpactDictionary.ContainsKey(objectTag))
         {
-            return meleeImpactAudioClipDictionary[objectTag];
+            return meleeImpactAudioClipDictionary[objectTag].audio[Random.Range(0, meleeImpactAudioClipDictionary[objectTag].audio.Length)];
         }
         else
         {
-            return meleeImpactAudioClipDictionary[meleeImpacts[0].objectTag];
+            return meleeImpactAudioClipDictionary[meleeImpacts[0].objectTag].audio[0];
         }
     }
 
