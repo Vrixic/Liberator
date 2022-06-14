@@ -46,7 +46,7 @@ public class BaseMelee : BaseWeapon
     */
     public virtual void OnAnimationEvent_AttackHit()
     {
-        Debug.Log("Melee Hit");
+        //Debug.Log("Melee Hit");
     }
 
     /*

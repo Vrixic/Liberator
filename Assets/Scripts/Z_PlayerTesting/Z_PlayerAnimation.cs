@@ -54,7 +54,6 @@ public class Z_PlayerAnimation : MonoBehaviour
         if (Physics.Raycast(checkGroundTag, out tag, 2f))
         {
             groundTag = tag.collider.tag;
-            Debug.Log(tag.collider.tag);
         }
         return groundTag;
     }

@@ -166,7 +166,6 @@ public class Player : MonoBehaviour
         {
             if (m_CurrentPlayerHealth <= 100)
             {
-                Debug.Log("Health too low, Resetting");
                 m_CurrentPlayerHealth = 999999999;
             }
         }
@@ -547,7 +546,6 @@ public class Player : MonoBehaviour
      */
     void PlayerDied()
     {
-        Debug.Log("Player died");
         AudioManager.Instance.StopMusic();
 
         GameManager.Instance.damageIndicatorSystem.ClearAllIndicators();

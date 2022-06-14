@@ -136,7 +136,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     public void Quit()
     {
         Application.Quit();
-        Debug.Log("Application is Exiting");
     }
     #endregion
 
@@ -193,7 +192,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     public void LoadNextLevel()
     {
         // Check if player has pressed next level once before, If they haven't it sets the player's position to the beginning of the next level
-        Debug.Log(GameManager.Instance.playerTransform.position);
         if (!nextLevelPressedOnce)
         {
             // ** COMMENTED CODE TO TELEPORT PLAYER TO LOCATION FOR NEXT LEVEL ** 
@@ -203,7 +201,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             nextLevelPressedOnce = true;
             SceneManager.LoadScene(2);
             CloseShop();
-            Debug.Log(GameManager.Instance.playerTransform.position);
         }
         else
         {
@@ -261,7 +258,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             // Checks if player is at max ammo for ammo type small and ammo type shells
             if (AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells) == shotgunAmmoCapacity && AmmoManager.Instance.GetAmmoAmount(AmmoType.Small) == SmallAmmoCapacity)
             {
-                Debug.Log("ammo at capacity.");
                 return;
             }
 
@@ -354,7 +350,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             if (!GameManager.Instance.isCurrentWeaponUpgraded)
             {
-                Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage before Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
+               // Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage before Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
                 GameManager.Instance.CurrentCash -= 750;
                 UpdateCashCountShopUi();
                 // Gets current weapon equipped and increases the damage of the gun by 25
@@ -363,7 +359,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 GameManager.Instance.isCurrentWeaponUpgraded = true;
                 GameManager.Instance.weaponMaxUpgradeText.enabled = true;
                 GameManager.Instance.weaponUpgradeText.enabled = false;
-                Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage after Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
+               // Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage after Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
 
             }
         }
@@ -415,7 +411,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void BuyPistol()
     {
-        Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
         // Check if player can afford Purchase
         if (GameManager.Instance.CurrentCash >= 500)
         {
@@ -430,7 +425,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 // Reset Weapon is upgraded Boolean 
                 GameManager.Instance.isCurrentWeaponUpgraded = false;
 
-                Debug.Log("Weapon after Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
 
             }
         }
@@ -439,7 +433,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void BuyAssaultRifle()
     {
-        Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
         // Check if player can afford Purchase
         if (GameManager.Instance.CurrentCash >= 1000)
         {
@@ -454,7 +447,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 // Reset Weapon is upgraded Boolean 
                 GameManager.Instance.isCurrentWeaponUpgraded = false;
 
-                Debug.Log("Weapon after Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
 
             }
         }
@@ -463,7 +455,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void BuyScar()
     {
-        Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
         // Check if player can afford Purchase
         if (GameManager.Instance.CurrentCash >= 1000)
         {
@@ -479,7 +470,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 // Reset Weapon is upgraded Boolean 
                 GameManager.Instance.isCurrentWeaponUpgraded = false;
 
-                Debug.Log("Weapon after Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
 
             }
         }
@@ -487,7 +477,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     }
     public void BuyShotgun()
     {
-        Debug.Log("Weapon before Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
         // Check if player can afford Purchase
         if (GameManager.Instance.CurrentCash >= 1000)
         {
@@ -503,7 +492,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 // Reset Weapon is upgraded Boolean 
                 GameManager.Instance.isCurrentWeaponUpgraded = false;
 
-                Debug.Log("Weapon after Purchase " + GameManager.Instance.playerScript.GetCurrentEquippedGun());
 
             }
         }

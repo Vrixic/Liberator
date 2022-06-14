@@ -35,7 +35,6 @@ public class ScanGrenade : BaseThrowables
 
         for (int i = 0; i < collidersCount; i++)
         {
-            Debug.Log("Scanned: " + colliders[i].tag);
 
             if (scanThroughWalls == false)
             {
@@ -48,7 +47,6 @@ public class ScanGrenade : BaseThrowables
                 {
                     if(hitInfo.collider.tag == "Hitbox")
                     {
-                        Debug.Log("scannin: " + colliders[i].tag);
                         hitInfo.collider.GetComponent<MiniMapScanable>().Show(equipmentTimer);
                     }                        
                 }
@@ -57,7 +55,6 @@ public class ScanGrenade : BaseThrowables
             {
                 if (colliders[i].GetComponent<CapsuleCollider>() != null)
                 {
-                    Debug.Log("scannin: " + colliders[i].name);
                     colliders[i].GetComponent<MiniMapScanable>().Show(equipmentTimer);
                 }
             }

@@ -50,7 +50,6 @@ public class BaseThrowables : PoolableObject
 
         PlayExplodeSFX();
 
-        Debug.Log(name + " just exploded!");
 
         Invoke("Pool", poolTimeAfterExplosion);
     }

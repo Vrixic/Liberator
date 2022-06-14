@@ -323,14 +323,12 @@ public class BaseGun : BaseWeapon
     // event that is called when the clip is taken from the weapon
     public override void OnAnimationEvent_ReloadRemoveMag()
     {
-        Debug.Log(name + ": Reloading remove mag");
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadStart");
     }
 
     // event that is called when the clip is put back into the weapon
     public override void OnAnimationEvent_ReloadReplaceMag()
     {
-        Debug.Log(name + ": Reloading replace mag");
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadMiddle");
 
         if (GetWeaponID() == WeaponID.Shotgun)
@@ -343,7 +341,6 @@ public class BaseGun : BaseWeapon
     //event that is called at the end of the animation, for certain weapon sounds
     public override void OnAnimationEvent_ReloadEnd()
     {
-        Debug.Log(name + ": Reloading ended");
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadEnd");
         if (GetWeaponID() != WeaponID.Shotgun)
         {

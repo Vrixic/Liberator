@@ -10,6 +10,5 @@ public class Pistol : BaseGun
     public override void ShootWithRecoil()
     {
         base.ShootWithRecoil();
-        Debug.Log("Pistol: add recoil -- Need to be Implemented");
     }
 }

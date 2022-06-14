@@ -92,7 +92,7 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Master Volume"))
         {
             masterVolume = PlayerPrefs.GetFloat("Master Volume", 100f);
-            Debug.Log("Loading Master Volume Setting, Current: " + masterVolume);
+            // Debug.Log("Loading Master Volume Setting, Current: " + masterVolume);
         }
         else
         {
@@ -104,7 +104,7 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Music Volume"))
         {
             musicVolume = PlayerPrefs.GetFloat("Music Volume", 100f);
-            Debug.Log("Loading music Volume Setting, Current: " + musicVolume);
+            // Debug.Log("Loading music Volume Setting, Current: " + musicVolume);
 
         }
         else
@@ -118,7 +118,7 @@ public class PlayerPrefManager : MonoBehaviour
         {
 
             sfxVolume = PlayerPrefs.GetFloat("SFX Volume", 100f);
-            Debug.Log("Loading SFX Volume Setting, Current : " + sfxVolume);
+            // Debug.Log("Loading SFX Volume Setting, Current : " + sfxVolume);
         }
         else
         {
@@ -130,7 +130,7 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Player Sensitivity"))
         {
             playerSensitivity = PlayerPrefs.GetFloat("Player Sensitivity", 100f);
-            Debug.Log("Loading Sensitivity, current: " + playerSensitivity);
+            // Debug.Log("Loading Sensitivity, current: " + playerSensitivity);
 
         }
         else
@@ -144,7 +144,7 @@ public class PlayerPrefManager : MonoBehaviour
         {
 
             brightness = PlayerPrefs.GetFloat("Brightness", 100f);
-            Debug.Log("Loading Brightness Setting, Current: " + brightness);
+            // Debug.Log("Loading Brightness Setting, Current: " + brightness);
         }
         else
         {
@@ -157,7 +157,7 @@ public class PlayerPrefManager : MonoBehaviour
         {
 
             voicePromptState = PlayerPrefs.GetInt("Voice Prompts State", 1);
-            Debug.Log("Loading voicePrompt Setting, Current: " + voicePromptState);
+            // Debug.Log("Loading voicePrompt Setting, Current: " + voicePromptState);
         }
         else
         {
@@ -176,7 +176,7 @@ public class PlayerPrefManager : MonoBehaviour
         {
 
             currentSkillPoints = PlayerPrefs.GetInt("Skill Points", 0);
-            Debug.Log("Loading Skill Points, Current: " + currentSkillPoints);
+            // Debug.Log("Loading Skill Points, Current: " + currentSkillPoints);
         }
         else
         {
@@ -189,7 +189,7 @@ public class PlayerPrefManager : MonoBehaviour
         {
 
             currentXP = PlayerPrefs.GetInt("Current XP", 1000);
-            Debug.Log("Loading Player XP, Current : " + currentXP);
+            // Debug.Log("Loading Player XP, Current : " + currentXP);
         }
         else
         {
@@ -202,7 +202,7 @@ public class PlayerPrefManager : MonoBehaviour
         {
 
             startingCash = PlayerPrefs.GetInt("Upgraded Starting Cash", 1000);
-            Debug.Log("Loading Starting Cash, Current : " + startingCash);
+            // Debug.Log("Loading Starting Cash, Current : " + startingCash);
         }
         else
         {
@@ -215,7 +215,7 @@ public class PlayerPrefManager : MonoBehaviour
         {
 
             flashBangCapacity = PlayerPrefs.GetInt("Flashbang Capacity", 2);
-            Debug.Log("Loading Flashbang Capacity, Current : " + flashBangCapacity);
+            // Debug.Log("Loading Flashbang Capacity, Current : " + flashBangCapacity);
         }
         else
         {
@@ -228,7 +228,7 @@ public class PlayerPrefManager : MonoBehaviour
         {
 
             sensorGrenadeCapacity = PlayerPrefs.GetInt("Sensor Grenade Capacity", 2);
-            Debug.Log("Loading Sensor Grenade Capacity, Current : " + sensorGrenadeCapacity);
+            // Debug.Log("Loading Sensor Grenade Capacity, Current : " + sensorGrenadeCapacity);
         }
         else
         {
@@ -240,7 +240,7 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Player Starting Health"))
         {
             playerStartingHealth = PlayerPrefs.GetInt("Player Starting Health");
-            Debug.Log("Loading Player Starting Health, Current : " + playerStartingHealth);
+            // Debug.Log("Loading Player Starting Health, Current : " + playerStartingHealth);
         }
         else
         {
@@ -253,7 +253,7 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Player Starting Armor"))
         {
             playerStartingArmor = PlayerPrefs.GetInt("Player Starting Armor");
-            Debug.Log("Loading Player Starting Armor, Current : " + playerStartingArmor);
+            // Debug.Log("Loading Player Starting Armor, Current : " + playerStartingArmor);
         }
         else
         {
@@ -265,7 +265,7 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Equipment Effectiveness"))
         {
             equipmentEffectiveness = PlayerPrefs.GetInt("Equipment Effectiveness");
-            Debug.Log("Loading Equipment Effectiveness, Current : " + equipmentEffectiveness);
+            // Debug.Log("Loading Equipment Effectiveness, Current : " + equipmentEffectiveness);
         }
         else
         {
@@ -277,7 +277,7 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Equipment Range"))
         {
             equipmentRange = PlayerPrefs.GetInt("Equipment Range");
-            Debug.Log("Loading Equipment Range, Current : " + equipmentRange);
+            // Debug.Log("Loading Equipment Range, Current : " + equipmentRange);
         }
         else
         {
@@ -294,7 +294,7 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Equipment Effectiveness Upgrade Count"))
         {
             equipmentEffectivenessUpgradeCount = PlayerPrefs.GetInt("Equipment Effectiveness Upgrade Count");
-            Debug.Log("Loading Equipment Effectiveness Upgrade Count, Current : " + equipmentEffectivenessUpgradeCount);
+            // Debug.Log("Loading Equipment Effectiveness Upgrade Count, Current : " + equipmentEffectivenessUpgradeCount);
         }
         else
         {
@@ -333,7 +333,7 @@ public class PlayerPrefManager : MonoBehaviour
 
         // Fires an event to all listening clients that player perferences has been updated
         OnOptionsUpdateAction?.Invoke();
-        Debug.Log("Game Saved");
+        // Debug.Log("Game Saved");
     }
 
 

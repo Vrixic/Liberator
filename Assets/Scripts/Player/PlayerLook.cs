@@ -46,12 +46,8 @@ public class PlayerLook : MonoBehaviour
 
     public void OnSensitivityUpdate()
     {
-        Debug.Log("X Sens before: " + xSensitivity);
-        Debug.Log("y-Sens before: " + ySensitivity);
         xSensitivity = PlayerPrefManager.Instance.playerSensitivity * 0.1f;
-        Debug.Log("x-Sens: " + xSensitivity);
         ySensitivity = PlayerPrefManager.Instance.playerSensitivity * 0.1f;
-        Debug.Log("y-Sens: " + ySensitivity);
 
     }
 }
