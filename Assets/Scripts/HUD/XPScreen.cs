@@ -81,7 +81,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        bFullGameWon = Hostage.hostagesSecured == 4;
+        bFullGameWon = Hostage.hostagesSecured == 5;
 
         // Update header text
         if(bFullGameWon)
@@ -108,7 +108,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         //bRewardScreenShowing = false;
         bStopAddingBlocks = false;
 
-        totalSkillPointsText.text = "Skill Points: " + PlayerPrefManager.Instance.currentSkillPoints;
+        totalSkillPointsText.text = "Renown : " + PlayerPrefManager.Instance.currentSkillPoints;
 
         m_CompletedUIBlocks = 0;
         bSkipAnimations = false;
@@ -315,7 +315,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         CalculateBarSpeed();
         UpdateTotalXPText();
 
-        totalSkillPointsText.text = "Skill Points: " + PlayerPrefManager.Instance.currentSkillPoints;
+        totalSkillPointsText.text = "Renown : " + PlayerPrefManager.Instance.currentSkillPoints;
     }
 
     //void ShowRewardScreen()
