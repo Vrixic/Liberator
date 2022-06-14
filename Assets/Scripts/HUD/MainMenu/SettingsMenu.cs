@@ -61,7 +61,6 @@ public class SettingsMenu : MonoBehaviour
         }
 
         dontUpdate = false;
-        Debug.Log("Settings Sliders Initialized");
     }
     public void OnUpdateVoicePromptToggle()
     {
@@ -69,13 +68,11 @@ public class SettingsMenu : MonoBehaviour
         {
             PlayerPrefs.SetInt("Voice Prompts State", 1);
             PlayerPrefManager.Instance.voicePromptState = 1;
-            Debug.Log("voice pref prompt player pref, " + PlayerPrefManager.Instance.voicePromptState);
         }
         else if (!voicePromptToggle.isOn)
         {
             PlayerPrefs.SetInt("Voice Prompts State", 0);
             PlayerPrefManager.Instance.voicePromptState = 0;
-            Debug.Log("voice pref prompt player pref, " + PlayerPrefManager.Instance.voicePromptState);
 
         }
     }
