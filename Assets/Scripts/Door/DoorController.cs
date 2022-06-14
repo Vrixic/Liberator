@@ -51,7 +51,7 @@ public class DoorController : MonoBehaviour
                 AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorOpen");
 
                 //tell subscribed assassins to start chasing player(if any are attached)
-                if (!chaseTriggeredOnce && ChasePlayerOnOpen.Count > 0)
+                if (!chaseTriggeredOnce && ChasePlayerOnOpen.Count > 0 && ChasePlayerOnOpen[0] != null)
                 {
                     //loop through subscribed enemies(AiAgents in the list)
                     for (int i = 0; i < ChasePlayerOnOpen.Count; i++)

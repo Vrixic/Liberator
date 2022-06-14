@@ -24,10 +24,6 @@ public class Hostage : MonoBehaviour
         {
             doorToOpenWhenHostageSecured.OpenHostageDoor();
         }
-        else
-        {
-            Debug.LogError("No hostage door script attached to this hostage.");
-        }
 
         gameObject.SetActive(false);
     }
