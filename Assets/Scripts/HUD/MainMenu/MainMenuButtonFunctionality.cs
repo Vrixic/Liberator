@@ -76,7 +76,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     {
         Debug.Log("Starting Tutorial");
         ScreenManager.Instance.ShowScreen("Transition_Screen");
-        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(4, LoadSceneMode.Single);
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(3, LoadSceneMode.Single);
         PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
 
         PlayerPrefManager.Instance.LoadGame();
