@@ -460,6 +460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 0
   isMenuButton: 0
+  isSettingsGear: 0
 --- !u!1 &463726535851434728
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 0
   isMenuButton: 0
+  isSettingsGear: 0
 --- !u!1 &463726536010970050
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 0
   isMenuButton: 0
+  isSettingsGear: 0
 --- !u!1 &463726536270721472
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 0
   isMenuButton: 0
+  isSettingsGear: 0
 --- !u!1 &463726536474736999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,6 +1435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 0
   isMenuButton: 0
+  isSettingsGear: 0
 --- !u!1 &683382520153404115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +1890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 1
   isMenuButton: 0
+  isSettingsGear: 0
 --- !u!1 &1165677495991766992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,7 +1959,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300002, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
+  m_Sprite: {fileID: 21300044, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4119,6 +4125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 1
   isMenuButton: 0
+  isSettingsGear: 0
 --- !u!1 &3353350516372452326
 GameObject:
   m_ObjectHideFlags: 0
@@ -4696,6 +4703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 0
   isMenuButton: 1
+  isSettingsGear: 0
 --- !u!1 &4046686602783188749
 GameObject:
   m_ObjectHideFlags: 0
@@ -7508,6 +7516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 0
   isMenuButton: 0
+  isSettingsGear: 0
 --- !u!114 &4125508778773518043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7522,6 +7531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 1
   isMenuButton: 0
+  isSettingsGear: 0
 --- !u!1 &8283763583932470382
 GameObject:
   m_ObjectHideFlags: 0
@@ -7690,6 +7700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 0
   isMenuButton: 0
+  isSettingsGear: 0
 --- !u!1 &8729334647212820856
 GameObject:
   m_ObjectHideFlags: 0
@@ -7861,3 +7872,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBiggerButtton: 0
   isMenuButton: 1
+  isSettingsGear: 0

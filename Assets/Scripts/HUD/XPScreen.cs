@@ -88,6 +88,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         {
             headerText.text = "You Win!";
             buttonText.text = "Main Menu";
+            Hostage.hostagesSecured = 0;
         }
         else if (GameManager.Instance.GameWon)
         {
@@ -98,6 +99,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         {
             buttonText.text = "Main Menu";
             headerText.text = "";
+            Hostage.hostagesSecured = 0;
         }
 
         // set the bars value to the previous xp earned from last run
