@@ -10,7 +10,6 @@ public class SprinklerTrigger : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             AIAgent agent;
-            Debug.Log("Trigger Entered");
             if (other.gameObject.TryGetComponent<AIAgent>(out agent))
             {
                 //Debug.Log(agent.currentState);
@@ -18,7 +17,6 @@ public class SprinklerTrigger : MonoBehaviour
                 if (agent.currentState != AIStateID.Flashed)
                 {
                     agent.stateMachine.ChangeState(AIStateID.Flashed);
-                    Debug.Log(agent.currentState);
                 }
             }
         }
