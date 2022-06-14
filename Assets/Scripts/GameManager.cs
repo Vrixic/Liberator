@@ -27,12 +27,12 @@ public class GameManager : MonoBehaviour
     public Transform playerTransform;
     [HideInInspector]
     public CharacterController playerCharacterController;
-    [HideInInspector]
+    //   [HideInInspector]
     public bool playerIsGrounded;
-    [HideInInspector]
     #endregion
 
     #region UI Variables
+    [HideInInspector]
     public GameObject pause;
     [HideInInspector]
     public GameObject hostageSecured;
@@ -258,7 +258,7 @@ public class GameManager : MonoBehaviour
         cashRewardAmount = 0;
 
         settingsMenu = GameObject.FindGameObjectWithTag("SettingsMenu");
-        settingsMenu.SetActive(false); 
+        settingsMenu.SetActive(false);
         #endregion
 
         if (player == null)
@@ -279,7 +279,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("MainCamera not found in scene");
         }
 
-        
+
         playerLookScript = player.GetComponent<PlayerLook>();
         playerLookScript.OnSensitivityUpdate();
 
@@ -307,6 +307,8 @@ public class GameManager : MonoBehaviour
 
         //implemented to use for footstep audio so it doesn't play if the player is in the air, can be used or anything
         playerIsGrounded = playerCharacterController.isGrounded;
+
+
     }
 
     public void ResetGame()
