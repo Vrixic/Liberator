@@ -175,7 +175,12 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
     public void OnNextButtonClick()
     {
-        if (!m_AnimationFinished) return;
+
+        if (!m_AnimationFinished)
+        {
+            SkipAllAnimations();
+            return;
+        }
         // hides this screen
         ScreenManager.Instance.HideScreen(screenName);
         ScreenManager.Instance.HideScreen("Death_Screen");
