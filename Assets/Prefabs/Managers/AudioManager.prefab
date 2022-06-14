@@ -54,7 +54,7 @@ MonoBehaviour:
       audioType: 0
       audio:
       - {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
-      volMultiplier: 0.1
+      volMultiplier: 0
     objectTag: Untagged
   - sound:
       audioType: 2
@@ -297,6 +297,23 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 48e0ad872319cbd458c5373053cbd50b, type: 3}
       volMultiplier: 2
     objectTag: Automatic_Rifle_ReloadEnd
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 3fde4266e750d624c97cdb4d0f6aa8b9, type: 3}
+      - {fileID: 8300000, guid: db2e74430b4d8db4ba44ffbdf5841393, type: 3}
+      - {fileID: 8300000, guid: 88b56ae6c951c7a4fb871eeb843c929f, type: 3}
+      volMultiplier: 0.1
+    objectTag: PlayerMovingSoundEffects
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 9e7829ea442f0fb4bb0b23b841aa74d0, type: 3}
+      - {fileID: 8300000, guid: e9f1324febea39e47a2c1b49bd34c668, type: 3}
+      - {fileID: 8300000, guid: c521e53aa3132ea49959cc2b76e5ad60, type: 3}
+      - {fileID: 8300000, guid: 2ddecaaa880833f49b6d9b56eb81b5ce, type: 3}
+      volMultiplier: 0.3
+    objectTag: BulletRicochet
 --- !u!82 &1763185080
 AudioSource:
   m_ObjectHideFlags: 0

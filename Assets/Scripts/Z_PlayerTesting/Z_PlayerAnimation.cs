@@ -14,6 +14,7 @@ public class Z_PlayerAnimation : MonoBehaviour
 
     public void PlayAnimation(Vector2 input)
     {
+        if (Time.timeScale < 0.01f) return;
         if (!GameManager.Instance.playerIsGrounded) { 
             playerAnimator.SetBool("isJumping", true);
             return; 
@@ -21,6 +22,7 @@ public class Z_PlayerAnimation : MonoBehaviour
         else if (GameManager.Instance.playerIsGrounded && playerAnimator.GetBool("isJumping") == true){ 
             playerAnimator.SetBool("isJumping", false);
             AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, GetGroundsTag(), 4f, true);
+
         }
 
         if (GameManager.Instance.playerIsGrounded)
@@ -38,8 +40,12 @@ public class Z_PlayerAnimation : MonoBehaviour
     void PlayFootStepSound()
     {
         if (!GameManager.Instance.playerIsGrounded || GameManager.Instance.playerMoveScript.IsShifting() || GameManager.Instance.playerMoveScript.IsCrouching()) return;
-
+        
         AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, GetGroundsTag());
+        if (Random.Range(0 ,3) == 0)
+        {
+            AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "PlayerMovingSoundEffects");
+        }
     }
 
     string GetGroundsTag()
