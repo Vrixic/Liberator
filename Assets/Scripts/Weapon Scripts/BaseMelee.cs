@@ -73,7 +73,7 @@ public class BaseMelee : BaseWeapon
     */
     protected void PlayAttack2Audio()
     {
-        AudioManager.Instance.PlayAudioAtLocation(transform.position, "MeleeAttack");
+        AudioManager.Instance.PlayAudioAtLocation(transform.position, "MeleeAttackRight");
     }
     public override void UpdateAmmoGUI()
     {

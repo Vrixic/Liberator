@@ -184,13 +184,6 @@ MonoBehaviour:
   - sound:
       audioType: 0
       audio:
-      - {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
-      - {fileID: 8300000, guid: 9efc9e015e347d943a6f0d6242e9a349, type: 3}
-      volMultiplier: 0.2
-    objectTag: MeleeAttack
-  - sound:
-      audioType: 0
-      audio:
       - {fileID: 8300000, guid: fa91a57cabf00b14895a8689ce0635c2, type: 3}
       volMultiplier: 0.5
     objectTag: EnemyHeadshot
@@ -203,6 +196,18 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 8e9444cecd7e16a48b5a6645dd26d62e, type: 3}
       volMultiplier: 0.5
     objectTag: BulletDropped
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
+      volMultiplier: 0.2
+    objectTag: MeleeAttackLeft
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 9efc9e015e347d943a6f0d6242e9a349, type: 3}
+      volMultiplier: 0.2
+    objectTag: MeleeAttackRight
   - sound:
       audioType: 0
       audio:
@@ -303,7 +308,7 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 3fde4266e750d624c97cdb4d0f6aa8b9, type: 3}
       - {fileID: 8300000, guid: db2e74430b4d8db4ba44ffbdf5841393, type: 3}
       - {fileID: 8300000, guid: 88b56ae6c951c7a4fb871eeb843c929f, type: 3}
-      volMultiplier: 0.1
+      volMultiplier: 0.075
     objectTag: PlayerMovingSoundEffects
   - sound:
       audioType: 0

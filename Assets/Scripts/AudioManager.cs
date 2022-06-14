@@ -135,7 +135,7 @@ public class AudioManager : MonoBehaviour
 
     public void ResumeMusic()
     {
-        musicAudioSource.Play();
+        musicAudioSource.UnPause();
     }
 
     /*
