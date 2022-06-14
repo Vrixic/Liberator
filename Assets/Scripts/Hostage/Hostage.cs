@@ -20,5 +20,7 @@ public class Hostage : MonoBehaviour
         {
             Debug.LogError("No hostage door script attached to this hostage.");
         }
+
+        gameObject.SetActive(false);
     }
 }
