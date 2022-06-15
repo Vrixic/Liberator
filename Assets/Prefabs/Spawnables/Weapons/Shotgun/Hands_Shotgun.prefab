@@ -1208,9 +1208,9 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  bulletConeRadius: {x: 8, y: 10}
-  aimConeRadius: {x: 4, y: 5}
-  pellets: 9
+  bulletConeRadius: {x: 3, y: 3}
+  aimConeRadius: {x: 2, y: 2}
+  pellets: 12
 --- !u!1 &1416144876138884
 GameObject:
   m_ObjectHideFlags: 0
