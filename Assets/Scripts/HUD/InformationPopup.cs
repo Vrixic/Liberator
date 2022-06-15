@@ -49,7 +49,7 @@ public class InformationPopup : MonoBehaviour
     {
         informationPrompt.SetActive(true);
         audioSource.Play();
-        yield return new WaitForSeconds(18);
+        yield return new WaitForSeconds(20);
         informationPrompt.SetActive(false);
         gameObject.SetActive(false);
     }

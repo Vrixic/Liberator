@@ -201,12 +201,12 @@ public class PlayerPrefManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Upgraded Starting Cash"))
         {
 
-            startingCash = PlayerPrefs.GetInt("Upgraded Starting Cash", 1000);
+            startingCash = PlayerPrefs.GetInt("Upgraded Starting Cash", 250);
             // Debug.Log("Loading Starting Cash, Current : " + startingCash);
         }
         else
         {
-            startingCash = 1000;
+            startingCash = 250;
             PlayerPrefs.SetInt("Upgraded Starting Cash", startingCash);
         }
 

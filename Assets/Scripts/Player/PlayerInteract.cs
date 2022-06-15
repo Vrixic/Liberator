@@ -209,6 +209,10 @@ public class PlayerInteract : MonoBehaviour
                     //save that hostage's script to open the hostage door if the hold is completed
                     currentHostage = hit.collider.GetComponent<Hostage>();
 
+
+                    //reset the progress bar when they press E on the hostage again
+                    hostageProgressBarImage.fillAmount = 0;
+
                     if (currentHostage.doorToOpenWhenHostageSecured.gameObject != null)
                     {
                         //save the transform of the attached hostage door for playing audio
@@ -216,10 +220,7 @@ public class PlayerInteract : MonoBehaviour
                     }
 
                     //play audio
-                    AudioManager.Instance.PlayAudioAtLocation(transform.position, "Hostage");
-
-                    //reset the progress bar when they press E on the hostage again
-                    hostageProgressBarImage.fillAmount = 0;
+                    AudioManager.Instance.PlayAudioAtLocation(transform.position, "Hostage"); 
                 }
             }
 
