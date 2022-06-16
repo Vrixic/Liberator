@@ -114,7 +114,7 @@ public class BaseWeapon :MonoBehaviour//, IWeapon
 
     public virtual void OnAnimationEvent_AttackEnd() { bIsAttacking = false; }
 
-    public virtual void StopAttacking() { bIsAttacking = false; }
+    public virtual void StopAttacking() {  }
 
     /*
     * for override purposes

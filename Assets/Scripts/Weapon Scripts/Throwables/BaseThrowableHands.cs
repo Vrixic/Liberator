@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,11 +19,18 @@ public class BaseThrowableHands : BaseWeapon
 
     [SerializeField] public GameObject throwableMesh;
 
+    public Action OnThrowCompleted;
+
     /* current amount of Throwables */
     int m_CurrentThrowableAmount;
 
     /* object pool of Throwables */
     private string m_ThrowablePool;
+
+    protected bool bIsThrowing = false;
+    protected bool bThrowReady = false;
+
+    protected bool bPlayerWantsToThrow = false;
 
     public BaseThrowableHands()
     {
@@ -46,9 +54,43 @@ public class BaseThrowableHands : BaseWeapon
     public override void OnWeaponUnequip()
     { }
 
+    public override void Update()
+    {
+        base.Update();
+        TryThrowing();
+    }
+
     public void OnAnimationEvent_ThrowStart()
     {
         throwableMesh.SetActive(false);
+        m_CurrentThrowableAmount--;
+        GameManager.Instance.playerScript.UpdateAllThrowablesCountUI();
+    }
+
+    public void OnAnimationEvent_ThrowReady()
+    {
+        bThrowReady = true;
+    }
+
+    public void TryThrowing()
+    {
+        if (bThrowReady && !bIsThrowing && bPlayerWantsToThrow)
+        {
+            Throw();
+        }
+    }
+
+    public void Throw()
+    {
+        if (bIsAttacking)
+        {
+            bIsThrowing = true;
+            m_Animator.Play("Throw");
+            bIsAttacking = false;
+
+            bThrowReady = false;
+            bPlayerWantsToThrow = false;
+        }
     }
 
     /*
@@ -63,19 +105,28 @@ public class BaseThrowableHands : BaseWeapon
     {
         if (!HasMoreThrowables()) return;
 
-        if (TakeAction(m_LastAttackTime, attackRate))
+        if (TakeAction(m_LastAttackTime, attackRate) && !bIsThrowing)
         {
+            bPlayerWantsToThrow = false;
 
             GetAnimator().Play("Attack1");
             UpdateLastAttackTime();
-
-            m_CurrentThrowableAmount--;
         }
+    }
+
+    public override void StopAttacking()
+    {
+       bPlayerWantsToThrow = true;
+
+        TryThrowing();
     }
 
     public void OnAnimationEvent_ThrowEnd()
     {
         throwableMesh.SetActive(true);
+        bIsThrowing = false;
+
+        OnThrowCompleted?.Invoke();
     }
 
     /*
@@ -111,7 +162,7 @@ public class BaseThrowableHands : BaseWeapon
     */
     public override bool CanSwitchWeapon()
     {
-        return !bIsAttacking;
+        return !bIsThrowing;
     }
 
     /*

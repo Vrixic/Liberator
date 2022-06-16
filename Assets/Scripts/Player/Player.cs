@@ -133,6 +133,9 @@ public class Player : MonoBehaviour
         flashbang.OnPickup(weaponsParent);
         sensor.OnPickup(weaponsParent);
 
+        flashbang.OnThrowCompleted += OnFlashbangThrowCompleted;
+        sensor.OnThrowCompleted += OnSensorThrowCompleted;
+
         DeactivateFlashbang();
         DeactivateSensor();
 
@@ -546,6 +549,9 @@ public class Player : MonoBehaviour
      */
     void PlayerDied()
     {
+        flashbang.OnThrowCompleted -= OnFlashbangThrowCompleted;
+        sensor.OnThrowCompleted -= OnSensorThrowCompleted;
+
         AudioManager.Instance.StopMusic();
 
         GameManager.Instance.damageIndicatorSystem.ClearAllIndicators();
@@ -607,7 +613,7 @@ public class Player : MonoBehaviour
     public void OnAttackReleased()
     {
         bPlayerWantsToAttack = false;
-        //m_CurrentEquippedWeapon.StopAttacking();
+        m_CurrentEquippedWeapon.StopAttacking();
     }
 
     /*
@@ -650,8 +656,6 @@ public class Player : MonoBehaviour
     void StartAttacking()
     {
         m_CurrentEquippedWeapon.StartAttacking();
-        UpdateFlashbangCount();
-        UpdateSensorGrenadeUi();
     }
 
     /*
@@ -783,9 +787,27 @@ public class Player : MonoBehaviour
         return Time.timeScale > 0f && !GameManager.Instance.IsUIOverlayVisible;
     }
 
+    public void UpdateAllThrowablesCountUI()
+    {
+        UpdateFlashbangCount();
+        UpdateSensorGrenadeUi();
+    }
+
     public void UpdateFlashbangCount()
     {
         GameManager.Instance.flashBangCount.text = flashbang.GetCurrentAmountOfThrowables().ToString();
+    }
+
+    public void OnFlashbangThrowCompleted()
+    {
+        DeactivateFlashbang();
+        ActivateWeapon(m_CurrentWeaponIndex);
+    }
+
+    public void OnSensorThrowCompleted()
+    {
+        DeactivateSensor();
+        ActivateWeapon(m_CurrentWeaponIndex);
     }
 
     public void FlashPlayer()
