@@ -667,6 +667,7 @@ public class Player : MonoBehaviour
      */
     void StartAiming()
     {
+        if (m_CurrentEquippedWeapon.IsWeaponReloading()) return;
         m_CurrentEquippedWeapon.StartAiming();
 
         if (m_CurrentEquippedWeapon.GetWeaponID() == WeaponID.Knife) return;
