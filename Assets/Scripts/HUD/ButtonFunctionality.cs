@@ -127,8 +127,9 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         // find Instance of Reticle
         reticle = GameManager.Instance.reticle;
         // Find active scene and reload it
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(1);
+        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+        ScreenManager.Instance.ShowScreen("Transition_Screen");
 
         #endregion
 
