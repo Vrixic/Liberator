@@ -1180,7 +1180,7 @@ MonoBehaviour:
   attackRate: 0.8
   raycastOrigin: {fileID: 2637064437270479832}
   damage: 60
-  weaponSpawnLocalPositionOffset: {x: 0, y: -1.6875, z: -0.41}
+  weaponSpawnLocalPositionOffset: {x: 0, y: -1.688, z: -0.435}
   raycastLayers:
     serializedVersion: 2
     m_Bits: 8385

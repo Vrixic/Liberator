@@ -105,8 +105,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.19
-  m_Center: {x: 0, y: 2.375, z: 0.02}
+  m_Radius: 0.2342544
+  m_Center: {x: 0.010989987, y: 2.3900728, z: 0.020000003}
 --- !u!1 &6463805212560364161
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,6 +985,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872deff75f88fd42a24353c1ff3a8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPosition: {x: 0, y: 0, z: 0}
+  initialRotation: {x: 0, y: 0, z: 0}
   initialState: 3
   currentState: 0
   navMeshAgent: {fileID: 0}
@@ -992,10 +994,16 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   sensor: {fileID: 0}
   animator: {fileID: 0}
+  enemyTagCollider: {fileID: 0}
   isMelee: 0
+  sqrDistance: 0
+  aiName: 
   aimDirection: {x: 0, y: 0, z: 0}
   disableEnemyInterval: 2
   isFlashed: 0
+  isStunned: 0
+  bFirstChase: 1
+  miniMapLocator: {fileID: 0}
 --- !u!114 &7732467788609504263
 MonoBehaviour:
   m_ObjectHideFlags: 0
