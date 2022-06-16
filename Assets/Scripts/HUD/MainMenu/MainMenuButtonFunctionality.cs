@@ -67,6 +67,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     {
         PlayerPrefManager.Instance.SaveGame();
         Application.Quit();
+
     }
 
     // TO DO: IMPLEMENT Tutorial

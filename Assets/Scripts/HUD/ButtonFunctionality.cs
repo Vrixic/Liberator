@@ -112,25 +112,26 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     public void Restart()
     {
         #region Old Restart code (Commented Out)
-        // This code Reloads the scene
-        //// Resume time
-        //Time.timeScale = 1f;
-        //// Get instance of Pause menu and turn it off
-        //pause = GameManager.Instance.pause;
-        //pause.SetActive(false);
-        //if (virtualCam != null)
-        //{
-        //    // Get instance of virtual camera
-        //    virtualCam = GameManager.Instance.virtualCam;
 
-        //}
-        //// find Instance of Reticle
-        //reticle = GameManager.Instance.reticle;
-        //// Find active scene and reload it
-        //Scene scene = SceneManager.GetActiveScene();
-        //SceneManager.LoadScene(scene.name); 
+        // Resume time
+        Time.timeScale = 1f;
+        // Get instance of Pause menu and turn it off
+        pause = GameManager.Instance.pause;
+        pause.SetActive(false);
+        if (virtualCam != null)
+        {
+            // Get instance of virtual camera
+            virtualCam = GameManager.Instance.virtualCam;
+
+        }
+        // find Instance of Reticle
+        reticle = GameManager.Instance.reticle;
+        // Find active scene and reload it
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+
         #endregion
-        GameManager.Instance.ResetGame();
+
     }
 
     public void Quit()
@@ -158,6 +159,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             GameManager.Instance.openShopInteractText.SetActive(false);
         }
+        SetUpgradeWeaponIcon();
+
         //EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
 
         UpdateCashCountShopUi();
@@ -188,25 +191,23 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
 
     }
-
-    public void LoadNextLevel()
+    private void SetUpgradeWeaponIcon()
     {
-        // Check if player has pressed next level once before, If they haven't it sets the player's position to the beginning of the next level
-        if (!nextLevelPressedOnce)
+        if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() != WeaponID.Knife)
         {
-            // ** COMMENTED CODE TO TELEPORT PLAYER TO LOCATION FOR NEXT LEVEL ** 
-            //nextLevelPosition = new Vector3(-143, 2.461f, 97.97f);
-            //GameManager.Instance.playerMoveScript.SetPlayerPosition(nextLevelPosition);
+            GameManager.Instance.weaponUpgradeButton.GetComponent<Image>().sprite = GameManager.Instance.gunIcon.sprite;
 
-            nextLevelPressedOnce = true;
-            SceneManager.LoadScene(2);
-            CloseShop();
+        }
+
+        if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() == WeaponID.Pistol2)
+        {
+            GameManager.Instance.weaponUpgradeButton.gameObject.transform.localScale = new Vector2(0.4f, 3);
         }
         else
         {
-            // Returns player to main menu if they have already played the last level
-            ReturnToMainMenu();
+            GameManager.Instance.weaponUpgradeButton.gameObject.transform.localScale = new Vector2(0.7191864f, 2.388015f);
         }
+
     }
 
     public void SetCurrentSelectedButton()
@@ -271,8 +272,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             AmmoManager.Instance.RefillAmmo(AmmoType.Small);
 
             // Update Ammo Ui
-           //AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Shells, AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells));
-           //AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
+            //AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Shells, AmmoManager.Instance.GetAmmoAmount(AmmoType.Shells));
+            //AmmoManager.Instance.UpdateAmmoGUI(AmmoType.Small, AmmoManager.Instance.GetAmmoAmount(AmmoType.Small));
         }
     }
 
@@ -350,7 +351,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             if (!GameManager.Instance.isCurrentWeaponUpgraded)
             {
-               // Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage before Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
+                // Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage before Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
                 GameManager.Instance.CurrentCash -= 750;
                 UpdateCashCountShopUi();
                 // Gets current weapon equipped and increases the damage of the gun by 25
@@ -359,7 +360,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 GameManager.Instance.isCurrentWeaponUpgraded = true;
                 GameManager.Instance.weaponMaxUpgradeText.enabled = true;
                 GameManager.Instance.weaponUpgradeText.enabled = false;
-               // Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage after Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
+                // Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage after Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
 
             }
         }
@@ -380,6 +381,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             GameManager.Instance.buyWeaponsCanvas.SetActive(false);
             GameManager.Instance.shopCanvas.SetActive(true);
+            SetUpgradeWeaponIcon();
             // Dynamically change Weapon Upgrade Text depending on whether the weapon has been upgraded or not
             if (GameManager.Instance.isCurrentWeaponUpgraded == true)
             {
@@ -394,8 +396,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
             UpdateCashCountShopUi();
         }
-    }
 
+    }
     public void ShowBuyGunsTab()
     {
         if (!GameManager.Instance.buyWeaponsCanvas.activeInHierarchy)

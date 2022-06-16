@@ -59,6 +59,7 @@ TagManager:
   - CameraShake
   - EnvironmentCloth
   - EnvironmentWater
+  - UpgradeWeaponButton
   layers:
   - Default
   - TransparentFX

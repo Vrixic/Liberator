@@ -4520,7 +4520,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 7327209428712425390}
   m_HandleRect: {fileID: 7327209428682458994}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 1
   m_MaxValue: 100
   m_WholeNumbers: 1
   m_Value: 0

@@ -125,6 +125,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public Fps_Counter fpsCounter;
     [HideInInspector]
+    public Button weaponUpgradeButton;
+    [HideInInspector]
     public bool isXPScreenActive;
     Color textColor = new Color(39, 255, 0);
     Color clearcolor = Color.clear;
@@ -248,6 +250,7 @@ public class GameManager : MonoBehaviour
         weaponMaxUpgradeText = GameObject.FindGameObjectWithTag("MaxWeaponUpgradeText").GetComponent<TextMeshProUGUI>();
         weaponMaxUpgradeText.enabled = false;
         isCurrentWeaponUpgraded = false;
+        weaponUpgradeButton = GameObject.FindGameObjectWithTag("UpgradeWeaponButton").GetComponent<Button>();
         shopCanvas.SetActive(false);
         buyWeaponsCanvas = GameObject.FindGameObjectWithTag("BuyWeaponsCanvas");
         buyWeaponTabCashCountText = GameObject.FindGameObjectWithTag("CashCountText").GetComponent<TextMeshProUGUI>();
