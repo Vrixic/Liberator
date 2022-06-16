@@ -6,14 +6,38 @@ public class Z_PlayerAnimation : MonoBehaviour
 {
     Animator playerAnimator;
     string groundTag = "Untagged";
+    bool bJustPaused = false;
+    bool bCanPlaySound = true;
 
     private void Start()
     {
         playerAnimator = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        if (Time.timeScale < 0.01f && !bJustPaused)
+        {
+            bJustPaused = true;
+            bCanPlaySound = false;
+        }
+        else if (bJustPaused)
+        {
+
+            bJustPaused = false;
+            Invoke("TogglePlaySound", 0.25f);
+        }
+
+    }
+
+    public void TogglePlaySound()
+    {
+        bCanPlaySound = true;
+    }
+
     public void PlayAnimation(Vector2 input)
     {
+        if (!bCanPlaySound) return;
         if (!GameManager.Instance.playerIsGrounded) { 
             playerAnimator.SetBool("isJumping", true);
             return; 
@@ -38,6 +62,7 @@ public class Z_PlayerAnimation : MonoBehaviour
 
     void PlayFootStepSound()
     {
+        if (!bCanPlaySound) return;
         if (!GameManager.Instance.playerIsGrounded || GameManager.Instance.playerMoveScript.IsShifting() || GameManager.Instance.playerMoveScript.IsCrouching()) return;
         
         AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, GetGroundsTag());

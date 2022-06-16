@@ -295,4 +295,9 @@ public class PlayerInteract : MonoBehaviour
 
     }
 
+    public bool SecuringHostage()
+    {
+        return securingHostage;
+    }
+
 }

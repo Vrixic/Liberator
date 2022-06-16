@@ -549,15 +549,17 @@ public class Player : MonoBehaviour
      */
     void PlayerDied()
     {
-        flashbang.OnThrowCompleted -= OnFlashbangThrowCompleted;
-        sensor.OnThrowCompleted -= OnSensorThrowCompleted;
-
         AudioManager.Instance.StopMusic();
 
         GameManager.Instance.damageIndicatorSystem.ClearAllIndicators();
 
         characterController.enabled = false;
         bPlayerDead = true;
+
+        DeactivateWeapon(m_CurrentWeaponIndex);
+        DeactivateSensor();
+        DeactivateFlashbang();
+        GameManager.Instance.GameWon = false;
 
         StartCoroutine(PlayPlayerDeath());
     }
@@ -573,11 +575,6 @@ public class Player : MonoBehaviour
             transform.Rotate(-95 * Time.unscaledDeltaTime, 0, 0);
             yield return null;
         }
-        GameManager.Instance.GameWon = false;
-
-        DeactivateWeapon(m_CurrentWeaponIndex);
-        DeactivateSensor();
-        DeactivateFlashbang();
 
         GameManager.Instance.ResetGame();
 
