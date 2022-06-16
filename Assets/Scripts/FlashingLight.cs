@@ -17,6 +17,15 @@ public class FlashingLight : MonoBehaviour
         StartCoroutine(FlashLocator());
     }
 
+    public void Disable()
+    {
+        StopCoroutine(FlashLocator());
+        sphereMaterial.color = Color.black; 
+        sphereMaterial.SetColor("_EmissionColor", Color.black);
+        light.gameObject.SetActive(false);
+    }
+
+
     IEnumerator FlashLocator()
     {
         Color color = Color.red;

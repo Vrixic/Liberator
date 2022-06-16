@@ -70,38 +70,38 @@ public class Explodable : MonoBehaviour
         Vector3 origin = transform.position;
         int collidersCount = Physics.OverlapSphereNonAlloc(origin, radius, colliders, layers);
         //Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-
+        
         for (int i = 0; i < collidersCount; i++)
         {
-           // Debug.Log(colliders[i].name);
-            if (colliders[i].CompareTag("Player"))
+            if (Physics.Raycast(origin + new Vector3(0, 1f, 0), (colliders[i].transform.position - origin).normalized, out RaycastHit hitInfo, radius*2f))
             {
                 Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
                 Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
-                float dist = Vector3.Distance(charPos, explodePos);
-                damage = 300 - ((dist/2) * 50);
-                if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
-                {
-                    if (gameObject.activeInHierarchy == true)
-                        gameObject.SetActive(false);
-                }
-                else
-                {
-                    //create damage indicator UI
-                    DISystem.createIndicator(transform);
-                }
 
-                GameManager.Instance.playerScript.TakeDamage((int)damage);
-
-                //add high camera shake
-                GameManager.Instance.cameraShakeScript.Trauma += 1f;
-            }
-            else if (colliders[i].CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null){
-                Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
-                Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
                 float dist = Vector3.Distance(charPos, explodePos);
                 damage = 300 - ((dist / 2) * 50);
-                colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
+                if (hitInfo.collider.CompareTag("Player"))
+                {
+                    if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
+                    {
+                        if (gameObject.activeInHierarchy == true)
+                            gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        //create damage indicator UI
+                        DISystem.createIndicator(transform);
+                    }
+
+                    GameManager.Instance.playerScript.TakeDamage((int)damage);
+
+                    //add high camera shake
+                    GameManager.Instance.cameraShakeScript.Trauma += 1f;
+                }
+                else if (hitInfo.collider.CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null)
+                {
+                    colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
+                }
             }
         }
 

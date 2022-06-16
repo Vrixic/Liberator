@@ -102,7 +102,8 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         //tell the playerMotor to move using the value from the "movement" action(WASD)
-        motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
+        if (!GameManager.Instance.playerScript.isPlayerDead()) { motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>()); }
+        
         if (!interact.SecuringHostage()) { playerAnimation.PlayAnimation(onFoot.Movement.ReadValue<Vector2>()); }
         else { playerAnimation.PlayAnimation(Vector2.zero); }
     }

@@ -6,7 +6,6 @@ public class Sprinkler : MonoBehaviour
 {
     public float stunTime = 5.0f;
     BoxCollider stunTrigger;
-    Sprinkler sprinkle;
 
     [SerializeField] ParticleSystem spray; 
 
@@ -16,27 +15,26 @@ public class Sprinkler : MonoBehaviour
     {
         stunTrigger = gameObject.GetComponentInChildren<BoxCollider>();
         stunTrigger.enabled = false;
-        sprinkle = gameObject.GetComponent<Sprinkler>();
         isUsed = false;
     }
 
 
     public void Sprinkle()
     {
-        //Debug.Log("Sprinkler Shot");
         stunTrigger.enabled = true;
-        if (isUsed == false) { Instantiate(spray, transform.position, Quaternion.identity); }
-        isUsed = true;
+        if (!isUsed) { 
+            spray = Instantiate(spray, transform.position - new Vector3(0,2,0), Quaternion.identity);
+            isUsed = true;
+        }
 
-        StartCoroutine(DeactivateSprinkler());
+        Invoke("DeactivateSprinkler", 5f);
     }
 
-    IEnumerator DeactivateSprinkler()
+    void DeactivateSprinkler()
     {
-        yield return new WaitForSeconds(5.0f);
+        spray.gameObject.SetActive(false);
         stunTrigger.enabled = false;
-        sprinkle.enabled = false;
-        
+        gameObject.GetComponentInChildren<FlashingLight>().Disable();
     }
 
 }

@@ -583,6 +583,10 @@ public class Player : MonoBehaviour
         //SceneManager.LoadScene(0);
     }
 
+    public bool isPlayerDead()
+    {
+        return bPlayerDead;
+    }
     /*
      * called when user presses attack button
      */
