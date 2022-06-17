@@ -242,9 +242,12 @@ public class BaseGun : BaseWeapon
             }
 
         }
-        else if ((hostage = hit.collider.GetComponent<Hostage>()) != null)
+        else if ((hostage = hit.collider.GetComponentInParent<Hostage>()) != null)
         {
-            hostage.TakeDamage(GetDamage()); 
+            if (hit.collider.GetComponent<Headshot_Hitbox>() != null)
+                hostage.TakeDamage(100);
+            else
+                hostage.TakeDamage(GetDamage()); 
         }
 
         bullet.Spawn(raycastOrigin.position, deltaPosition.normalized, hit, 0.5f);
