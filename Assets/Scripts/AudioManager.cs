@@ -70,7 +70,6 @@ public class AudioManager : MonoBehaviour
     {
         if (!bPoolReady) return;
 
-        poolable = ObjectPoolManager.Instance.SpawnObject(POOLNAME);
         if (audioSoundsAudioClipDictionary.ContainsKey(objectTag))
         {
             sound = audioSoundsAudioClipDictionary[objectTag];
@@ -82,6 +81,7 @@ public class AudioManager : MonoBehaviour
 
         if (sound.audioType == AudioType.sfx) 
         {
+            poolable = ObjectPoolManager.Instance.SpawnObject(POOLNAME);
             audioSource = poolable.GetComponent<AudioSource>();
             audioSource.transform.position = location;
             audioSource.volume = (PlayerPrefManager.Instance.sfxVolume/100) * sound.volMultiplier;
@@ -96,11 +96,10 @@ public class AudioManager : MonoBehaviour
         }
         else if (sound.audioType == AudioType.footstep)
         {
-            audioSource = poolable.GetComponent<AudioSource>();
-            audioSource.transform.position = location;
-            audioSource.volume = (PlayerPrefManager.Instance.sfxVolume / 100) * sound.volMultiplier;
-            if (isLandingSound) { audioSource.volume *= volM; }
-            audioSource.PlayOneShot(GetAudioClip(objectTag));
+            AudioSource aS = GameManager.Instance.playerScript.m_PlayerAudioSrc;
+            aS.volume = (PlayerPrefManager.Instance.sfxVolume / 100) * sound.volMultiplier;
+            if (isLandingSound) { aS.volume *= volM; }
+            aS.PlayOneShot(GetAudioClip(objectTag));
         }
     }
 

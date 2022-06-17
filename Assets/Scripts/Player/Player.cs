@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     public float equipmentTimer = 100f;
 
     /* audio source used for audio on player */
-    AudioSource m_PlayerAudioSrc;
+    public AudioSource m_PlayerAudioSrc;
 
     float m_DefaultVolume = 1f;
 
