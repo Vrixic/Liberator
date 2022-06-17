@@ -931,6 +931,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 679510193120201208, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 234.78564
+      objectReference: {fileID: 0}
+    - target: {fileID: 679510193120201208, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -93
+      objectReference: {fileID: 0}
     - target: {fileID: 811849676270548595, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: startingCash
       value: 0
@@ -974,6 +982,14 @@ PrefabInstance:
     - target: {fileID: 6997391976822111338, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7204601621662534740, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 235
+      objectReference: {fileID: 0}
+    - target: {fileID: 7204601621662534740, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -53
       objectReference: {fileID: 0}
     - target: {fileID: 7987560300835406213, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode

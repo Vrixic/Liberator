@@ -43,7 +43,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
         ScreenManager.Instance.ShowScreen("Transition_Screen");
         PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(1);
         PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
-        
+
         PlayerPrefManager.Instance.LoadGame();
 
         //pauses menu music
@@ -66,7 +66,17 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     public void QuitGame()
     {
         PlayerPrefManager.Instance.SaveGame();
-        Application.Quit();
+
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            Application.OpenURL("https://vrixic.itch.io/liberator");
+        }
+        else
+        {
+
+            Application.Quit();
+        }
+
 
     }
 
