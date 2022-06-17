@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject mainCamera;
     [HideInInspector]
+    public Camera mainCameraComponent;
+    [HideInInspector]
     public Vector3 playerAimVector;
     [HideInInspector]
     public Transform playerTransform;
@@ -294,7 +296,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("MainCamera not found in scene");
         }
-
+        mainCameraComponent = mainCamera.GetComponent<Camera>();
 
         playerLookScript = player.GetComponent<PlayerLook>();
         playerLookScript.OnSensitivityUpdate();
