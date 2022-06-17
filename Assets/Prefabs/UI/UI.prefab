@@ -641,6 +641,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopCanvases
       objectReference: {fileID: 0}
+    - target: {fileID: 7696606392939991490, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7696606392939991490, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
 --- !u!4 &5883316308512061367 stripped
@@ -851,7 +859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436097391666426249, guid: 6153d5cf9432bc4449a45f04749d5615, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00034374432
+      value: -0.00035838544
       objectReference: {fileID: 0}
     - target: {fileID: 3690814153664300116, guid: 6153d5cf9432bc4449a45f04749d5615, type: 3}
       propertyPath: m_Size
@@ -924,6 +932,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 811849676270548595, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: startingCash
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811849676270548595, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: enemyKillXPReward.Array.data[0].enemyName
       value: Soldier
       objectReference: {fileID: 0}
@@ -942,6 +954,14 @@ PrefabInstance:
     - target: {fileID: 3114087286620247058, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935812948500045977, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 542
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935812948500045977, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 6796604860578837964, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: m_AnchorMax.y
@@ -967,6 +987,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 5034768641014579496}
+    - target: {fileID: 7987560301360061049, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7987560301360061049, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7987560302118354936, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7987560302118354936, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7987560302308651548, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7987560302308651548, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7987560302406004792, guid: 8bf6dcd433e8934479ae10c606f1c662, type: 3}
       propertyPath: m_Name
       value: UICanvas
