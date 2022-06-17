@@ -133,9 +133,9 @@ MonoBehaviour:
       volMultiplier: 2.5
     objectTag: ScanGrenade
   - sound:
-      audioType: 0
+      audioType: 3
       audio:
-      - {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
+      - {fileID: 8300000, guid: 1d51b0bd80072ee4d8b7991affbdafe1, type: 3}
       volMultiplier: 0.2
     objectTag: TestSFX
   - sound:
