@@ -23,14 +23,7 @@ public class AIFlashState : AIState
         flashTimer -= Time.deltaTime;
         if (flashTimer <= 0.0f) 
         {
-            if (!agent.sensor.IsInsight())
-            {
-                agent.stateMachine.ChangeState(AIStateID.Idle);
-            }
-            else if (agent.sensor.IsInsight())
-            {
-                agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
-            }
+            agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
         }
     }
     public void Exit(AIAgent agent)
