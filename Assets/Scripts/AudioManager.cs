@@ -123,6 +123,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlaySoundAtVolume(float vol, string objectTag)
+    {
+        buttonAudioSource.volume = vol/100;
+        buttonAudioSource.PlayOneShot(GetAudioClip(objectTag));
+    }
+
     public void StopMusic()
     {
         musicAudioSource.Stop();
@@ -160,6 +166,7 @@ public class AudioManager : MonoBehaviour
     {
         sfx,
         ui,
-        footstep
+        footstep,
+        other
     }
 }
