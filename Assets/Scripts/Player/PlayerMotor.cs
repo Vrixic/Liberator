@@ -64,6 +64,9 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private float jumpHeight = 1.2f;
     [Tooltip("How long it takes the player to crouch and uncrouch")]
     [SerializeField] private float crouchTimer = 1f;
+
+    [Tooltip("Raycast origin, players origin + half height")]
+    [SerializeField] private Transform raycastOrigin;
     
     public Vector2 currentInputVector;
     private Vector2 smoothInputVelocity;
@@ -256,6 +259,14 @@ public class PlayerMotor : MonoBehaviour
     }
     public void Crouch()
     {
+        if (crouching || waitingToLandAndCrouch)
+        {
+            if (Physics.Raycast(raycastOrigin.position, Vector3.up, controller.height * 0.5f + 0.5f)) // check if player is under neath roof
+            {
+                return; 
+            }
+        }
+
         //if they start crouching in the air, let the movement function know that it should run the given function(crouch)
         //whenever the player lands so that it can actually update the speed as opposed to doing it in the air or not at all
         //i.e. if the player starts crouching in the air, when they land slow down to the correct speed
