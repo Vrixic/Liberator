@@ -16,7 +16,7 @@ public class PlayerInteract : MonoBehaviour
 
     private float updateInteractPromptTimer;
     private bool securingHostage = false;
-    private GameObject currentInteractPrompt;
+    public GameObject currentInteractPrompt;
     private Image hostageProgressBarImage;
     private Hostage currentHostage;
     Collider previousHit = null;
