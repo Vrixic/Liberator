@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public PlayerLook playerLookScript;
     [HideInInspector]
+    public PlayerInteract playerInteractScript;
+    [HideInInspector]
     public GameObject player;
     [HideInInspector]
     public Player playerScript;
@@ -287,6 +289,7 @@ public class GameManager : MonoBehaviour
 
         }
         playerMoveScript = player.GetComponent<PlayerMotor>();
+        playerInteractScript = player.GetComponent<PlayerInteract>();
 
         // Sets starting cash to player pref for starting cash
         startingCash = PlayerPrefManager.Instance.startingCash;
@@ -332,6 +335,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        //make sure that the interaction prompt gets disabled
+        if (Instance.playerInteractScript.currentInteractPrompt != null)
+            Instance.playerInteractScript.currentInteractPrompt.SetActive(false);
 
         Time.timeScale = 0f;
 
@@ -341,7 +347,6 @@ public class GameManager : MonoBehaviour
         else
             ScreenManager.Instance.ShowScreen("Death_Screen");
 
-        Debug.LogWarning("Restart your game bud, you suck!");
         //SceneManager.LoadScene(0);
     }
 
