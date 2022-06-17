@@ -227,6 +227,7 @@ public class BaseGun : BaseWeapon
         //Debug.Log(damageFallOff);
 
         //Debug.Log(hit.collider.tag);
+        Hostage hostage;
         if (hit.collider.CompareTag("Hitbox"))
         {
             if (hit.collider.GetComponent<CapsuleCollider>() != null)
@@ -240,6 +241,10 @@ public class BaseGun : BaseWeapon
                 hit.collider.GetComponentInParent<Health>().TakeDamage(100.0f, transform.forward);
             }
 
+        }
+        else if ((hostage = hit.collider.GetComponent<Hostage>()) != null)
+        {
+            hostage.TakeDamage(GetDamage()); 
         }
 
         bullet.Spawn(raycastOrigin.position, deltaPosition.normalized, hit, 0.5f);

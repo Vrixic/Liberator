@@ -164,6 +164,7 @@ public class GameManager : MonoBehaviour
     private LayerMask enemyLayerMask;
 
     public bool GameWon { get; set; } = false;
+    public bool HostageDied { get; set; } = false;
 
     public Action OnRewardCollected;
 
@@ -341,7 +342,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
 
         // Show the xp screen
-        if (GameWon)
+        if (GameWon || HostageDied)
             ScreenManager.Instance.ShowScreen("XP_Screen");
         else
             ScreenManager.Instance.ShowScreen("Death_Screen");
