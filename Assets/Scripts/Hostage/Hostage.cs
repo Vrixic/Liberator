@@ -36,7 +36,6 @@ public class Hostage : MonoBehaviour
 
         if (health < 0) // Player lost the game
         {
-            Debug.LogWarning("hostage died");
             GameManager.Instance.GameWon = false;
             GameManager.Instance.HostageDied = false;
             GameManager.Instance.ResetGame();
