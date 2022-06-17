@@ -8,6 +8,8 @@ public class Hostage : MonoBehaviour
     [SerializeField] private GameObject levelToLoad = null;
     [SerializeField] private GameObject levelToUnload = null;
 
+    private int health = 100;
+
     public static int hostagesSecured = 0;
 
     public void HostageSecured()
@@ -26,5 +28,18 @@ public class Hostage : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+
+    public void TakeDamage(int d)
+    {
+        health -= d;
+
+        if (health < 0) // Player lost the game
+        {
+            Debug.LogWarning("hostage died");
+            GameManager.Instance.GameWon = false;
+            GameManager.Instance.HostageDied = false;
+            GameManager.Instance.ResetGame();
+        }
     }
 }
