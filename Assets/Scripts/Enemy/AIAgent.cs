@@ -200,7 +200,8 @@ public class AIAgent : MonoBehaviour
     {
         isInHitReaction = false;
 
-        navMeshAgent.isStopped = false;
+        if(!IsDead())
+            navMeshAgent.isStopped = false;
     }
 
     public EnemyGun GetGun()
