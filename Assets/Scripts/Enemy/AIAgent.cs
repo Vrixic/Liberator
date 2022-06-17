@@ -35,6 +35,8 @@ public class AIAgent : MonoBehaviour
     public bool isFlashed = false;
     public bool isStunned = false;
 
+    public bool isInHitReaction = false;
+
     public bool bFirstChase = true;
 
     private Health enemyHealth;
@@ -184,6 +186,21 @@ public class AIAgent : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void HitReacted()
+    {
+        isInHitReaction = true;
+        Invoke("ExitHitReaction", 0.94f);
+
+        navMeshAgent.isStopped = true;
+    }
+
+    public void ExitHitReaction()
+    {
+        isInHitReaction = false;
+
+        navMeshAgent.isStopped = false;
     }
 
     public EnemyGun GetGun()

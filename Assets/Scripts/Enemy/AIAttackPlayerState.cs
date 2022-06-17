@@ -14,7 +14,7 @@ public class AIAttackPlayerState : AIState
     }
     public void Update(AIAgent agent)
     {
-        if (!agent.isFlashed)
+        if (!agent.isFlashed && !agent.isInHitReaction)
         {
             agent.Rotating();
             bool inSight = agent.sensor.IsInsightAttackAndChase();
@@ -46,6 +46,10 @@ public class AIAttackPlayerState : AIState
                     agent.animator.Play("Attack");
 
             }
+        }
+        else 
+        {
+            agent.navMeshAgent.isStopped = true;
         }
     }
     public void Exit(AIAgent agent)

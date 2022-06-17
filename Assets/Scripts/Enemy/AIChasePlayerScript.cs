@@ -25,7 +25,11 @@ public class AIChasePlayerScript : AIState
 
     public void Update(AIAgent agent)
     {
-
+        if (agent.isInHitReaction)
+        {
+            agent.navMeshAgent.isStopped = true;
+            return;
+        };
         //stops a lot of cost for the enemy.
         // gets the squared dist from player to enemy
         //float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
