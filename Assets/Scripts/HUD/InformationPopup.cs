@@ -12,30 +12,45 @@ public class InformationPopup : MonoBehaviour
     GameObject informationPrompt;
     AudioSource audioSource;
 
+    bool bAudioIsPlaying = false;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         informationPrompt = GameManager.Instance.infomationTriggerText;
     }
+    private void Update()
+    {
+        if (PlayerPrefManager.Instance.voicePromptState == 0)
+        {
+            StopAllPrompts();
+        }
+
+        if (bAudioIsPlaying)
+        {
+            audioSource.volume = PlayerPrefManager.Instance.sfxVolume / 100;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (PlayerPrefManager.Instance.voicePromptState == 0) return;
         if (other.CompareTag("Player"))
         {
             GetComponent<BoxCollider>().enabled = false;
             informationPrompt.GetComponent<TMP_Text>().text = popUpText;
             if (slowTime)
             {
-                StartCoroutine(ShowSlow());
+                StartCoroutine(TextPromptSlow());
             }
             else
             {
-                StartCoroutine(ShowNormal());
+                StartCoroutine(VoicePrompt());
             }
         }
     }
 
-    IEnumerator ShowSlow()
+    IEnumerator TextPromptSlow()
     {
         informationPrompt.SetActive(true);
         Time.timeScale = 0.2f;
@@ -45,12 +60,25 @@ public class InformationPopup : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    IEnumerator ShowNormal()
+    IEnumerator VoicePrompt()
     {
+        bAudioIsPlaying = true;
         informationPrompt.SetActive(true);
         audioSource.Play();
         yield return new WaitForSeconds(20);
         informationPrompt.SetActive(false);
         gameObject.SetActive(false);
+    }
+
+
+    void StopAllPrompts()
+    {
+        StopCoroutine(TextPromptSlow());
+        StopCoroutine(VoicePrompt());
+        Time.timeScale = 1;
+        informationPrompt.SetActive(false);
+        gameObject.SetActive(false);
+        audioSource.Stop();
+        bAudioIsPlaying = false;
     }
 }
