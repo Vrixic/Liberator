@@ -67,6 +67,7 @@ public class PlayerMotor : MonoBehaviour
 
     [Tooltip("Raycast origin, players origin + half height")]
     [SerializeField] private Transform raycastOrigin;
+    [SerializeField] private LayerMask ignoreRaycastLayers;
     
     public Vector2 currentInputVector;
     private Vector2 smoothInputVelocity;
@@ -80,6 +81,8 @@ public class PlayerMotor : MonoBehaviour
     {
         currentMaxSpeed = maxSpeed;
         controller = GetComponent<CharacterController>();
+
+        ignoreRaycastLayers = ~ignoreRaycastLayers;
     }
 
     // Update is called once per frame
@@ -217,6 +220,9 @@ public class PlayerMotor : MonoBehaviour
         //the player's downward velocity as expected
         if (isGrounded && playerVelocity.y < 0)
             playerVelocity.y = -4f;
+        else if (Physics.Raycast(raycastOrigin.position, Vector3.up, controller.height * 0.5f + 0.1f, ignoreRaycastLayers))
+            playerVelocity.y = gravity * 2.5f * Time.deltaTime;
+               
 
         //apply the downward vector(which exclusively deals with Y axis movement(jumping and gravity)
         controller.Move(playerVelocity * Time.deltaTime);
