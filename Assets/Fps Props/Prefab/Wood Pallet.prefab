@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 6730082158027753594}
   - component: {fileID: 1034288031059391619}
   - component: {fileID: 7577198919459190835}
+  - component: {fileID: 5226869497331245881}
+  - component: {fileID: 5226869497331245882}
+  - component: {fileID: 5226869497331245883}
   m_Layer: 0
   m_Name: Wood Pallet
   m_TagString: EnvironmentWood
@@ -28,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1614067089262870623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.9499999, y: 1.9499999, z: 1.9499999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,5 +98,44 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0251032, y: 0.16549426, z: 1.0032146}
-  m_Center: {x: 0, y: 0.08274703, z: 0.00029841065}
+  m_Size: {x: 1.0251032, y: 0.022328855, z: 1.0032146}
+  m_Center: {x: 0, y: 0.011164333, z: 0.0002984206}
+--- !u!65 &5226869497331245881
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614067089262870623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0251032, y: 0.021745991, z: 1.0032146}
+  m_Center: {x: 0, y: 0.15630178, z: 0.0002984206}
+--- !u!65 &5226869497331245882
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614067089262870623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.038908325, y: 0.16549426, z: 1.0032146}
+  m_Center: {x: -0.49309874, y: 0.08274704, z: 0.0002984206}
+--- !u!65 &5226869497331245883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614067089262870623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.030680712, y: 0.16549426, z: 1.0032146}
+  m_Center: {x: 0.49721292, y: 0.08274704, z: 0.0002984206}
