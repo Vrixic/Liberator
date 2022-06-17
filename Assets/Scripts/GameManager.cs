@@ -194,6 +194,8 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        Hostage.hostagesSecured = 0;
+
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         playerScript = player.GetComponent<Player>();
