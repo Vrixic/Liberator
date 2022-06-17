@@ -244,16 +244,6 @@ public class SettingsMenu : MonoBehaviour
         sfxVolumeInput.text = sfxVolumeSlider.value.ToString();
 
         PlayerPrefManager.Instance.sfxVolume = sfxVolumeSlider.value;
-
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
-        }
-        else
-        {
-            AudioManager.Instance.PlayAudioAtLocation(Vector3.zero, "TestSFX");
-
-        }
     }
 
     public void UpdateBrightnessSliderValue()

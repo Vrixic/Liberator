@@ -23,11 +23,9 @@ public class Z_PlayerAnimation : MonoBehaviour
         }
         else if (bJustPaused)
         {
-
             bJustPaused = false;
             Invoke("TogglePlaySound", 0.25f);
         }
-
     }
 
     public void TogglePlaySound()
