@@ -6,6 +6,8 @@ public class LEdoorController : MonoBehaviour
 {
     private Animator doorAnimator;
 
+    [SerializeField] private GameObject levelToUnload;
+
     private bool doorOpen = false;
     public bool DoorOpen { get { return doorOpen; } }
 
@@ -48,8 +50,16 @@ public class LEdoorController : MonoBehaviour
             AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorClose");
         }
 
+        //unloads the previous level once the door finishes closing
+        StartCoroutine(UnloadPreviousLevel());
+
         doorLocked = true;
     }
 
+    IEnumerator UnloadPreviousLevel()
+    {
+        yield return new WaitForSecondsRealtime(3);
 
+        levelToUnload.SetActive(false);
+    }
 }

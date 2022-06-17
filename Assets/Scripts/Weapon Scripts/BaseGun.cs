@@ -110,7 +110,11 @@ public class BaseGun : BaseWeapon
     public override void StartAttacking()
     {
         if (bIsReloading) return; // dont do anything when gun is being reloaded
-        if (!HasMoreAmmo()) return; // need to reload gun, gun doesn't have enough ammo
+        if (!HasMoreAmmo()) { 
+            AudioManager.Instance.PlayAudioAtLocation(transform.position, "OutOfAmmo");
+            return;
+        }
+         // need to reload gun, gun doesn't have enough ammo
 
         if (TakeAction(m_LastAttackTime, attackRate)) // can shoot this weapon now
         {
@@ -266,7 +270,11 @@ public class BaseGun : BaseWeapon
     {
         if (bIsReloading) return; // gun is already reloading
         if (IsAtMaxAmmo()) return; // doesn't allow reload when gun has full ammo
-        if (!HasMoreAmmoInPouch()) return; // no more ammo left 
+        if (!HasMoreAmmoInPouch())
+        {
+            AudioManager.Instance.PlayAudioAtLocation(transform.position, "OutOfAmmo");
+            return; // no more ammo left 
+        }
 
         StopAiming();
         StartWeaponReloading();
