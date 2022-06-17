@@ -67,6 +67,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
     {
         base.Show();
 
+        GameManager.Instance.playerInteractScript.currentInteractPrompt.SetActive(false);
+
         // Disables minimap canvas
         GameManager.Instance.minimapCanvas.SetActive(false);
 

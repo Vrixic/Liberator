@@ -40,13 +40,11 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         if (GameManager.Instance.canOpenPauseMenu == true && GameManager.Instance.isPauseMenuOpen == false && !GameManager.Instance.settingsMenu.activeInHierarchy && GameManager.Instance.isShopMenuOpen == false)
         {
 
-            if (GameManager.Instance.intelInteractText != null || GameManager.Instance.closeDoorInteractText != null || GameManager.Instance.openDoorInteractText != null || GameManager.Instance.secureHostageText != null)
+            if (GameManager.Instance.playerInteractScript.currentInteractPrompt != null)
             {
-                GameManager.Instance.intelInteractText.SetActive(false);
-                GameManager.Instance.closeDoorInteractText.SetActive(false);
-                GameManager.Instance.openDoorInteractText.SetActive(false);
-                GameManager.Instance.secureHostageText.SetActive(false);
+                GameManager.Instance.playerInteractScript.currentInteractPrompt.SetActive(false);
             }
+
             //pause game music
             AudioManager.Instance.PauseMusic();
 
@@ -148,6 +146,11 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        if (GameManager.Instance.playerInteractScript.currentInteractPrompt != null)
+        {
+            GameManager.Instance.playerInteractScript.currentInteractPrompt.SetActive(false);
+        }
 
         Time.timeScale = 0f;
 
