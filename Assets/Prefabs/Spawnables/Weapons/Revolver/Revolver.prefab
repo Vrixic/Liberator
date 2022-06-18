@@ -2325,7 +2325,7 @@ MonoBehaviour:
   damageFallOffPercentage: 0.15
   minDamageFallOff: 0.5
   ammoType: 0
-  maxNumOfBullets: 18
+  maxNumOfBullets: 6
   bulletDropAudioClip: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
   verticalRecoil:
   - 1
