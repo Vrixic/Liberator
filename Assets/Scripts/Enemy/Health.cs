@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
    {
         currentHealth -= _amount;
 
-        int hitReact = Random.Range(0, 1);
+        int hitReact = Random.Range(0, 10);
         if (hitReact < 2 && !agent.isInHitReaction && !agent.isFlashed)
         {
             agent.animator.SetTrigger("ReactToHit");
