@@ -14,8 +14,8 @@ public class PlayerLook : MonoBehaviour
     public void ProcessLook(Vector2 input)
     {
         //recieve mouse input from the user
-        currentInputVector.x = input.x * xSensitivity * Time.deltaTime;
-        currentInputVector.y = input.y * ySensitivity * Time.deltaTime;
+        currentInputVector.x = input.x * xSensitivity * Time.timeScale;// * Time.deltaTime;
+        currentInputVector.y = input.y * ySensitivity * Time.timeScale;// * Time.deltaTime;
 
         //rotate the player to look left and right
         transform.Rotate(currentInputVector.x * Vector3.up);
@@ -46,8 +46,8 @@ public class PlayerLook : MonoBehaviour
 
     public void OnSensitivityUpdate()
     {
-        xSensitivity = PlayerPrefManager.Instance.playerSensitivity * 0.1f;
-        ySensitivity = PlayerPrefManager.Instance.playerSensitivity * 0.1f;
+        xSensitivity = PlayerPrefManager.Instance.playerSensitivity * 0.005f;
+        ySensitivity = PlayerPrefManager.Instance.playerSensitivity * 0.005f;
 
     }
 }
