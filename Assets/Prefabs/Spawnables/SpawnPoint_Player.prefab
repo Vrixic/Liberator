@@ -74,13 +74,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player5_22
       objectReference: {fileID: 0}
+    - target: {fileID: 2968545468281075097, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_Height
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968545468281075097, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 3109904136557413142, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: m_PlayerAudioSrc
       value: 
       objectReference: {fileID: 1835776574}
     - target: {fileID: 3109904136557413142, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: startWeaponIDs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3109904136557413142, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: startWeaponIDs.Array.data[1]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3109904136557413142, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: startWeaponIDs.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3109904136557413142, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
+      propertyPath: startWeaponIDs.Array.data[3]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5240015624332743366, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: raycastOrigin

@@ -340,6 +340,13 @@ public class BaseGun : BaseWeapon
     public override void OnAnimationEvent_ReloadRemoveMag()
     {
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_ReloadStart");
+        if (GetWeaponID() == WeaponID.Revolver)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                AudioManager.Instance.PlayAudioAtLocation(transform.position, "BulletDropped");
+            }
+        }
     }
 
     // event that is called when the clip is put back into the weapon

@@ -194,7 +194,7 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
       - {fileID: 8300000, guid: 998fce9b0c9480148be789cd725bbd50, type: 3}
       - {fileID: 8300000, guid: 8e9444cecd7e16a48b5a6645dd26d62e, type: 3}
-      volMultiplier: 0.5
+      volMultiplier: 0.75
     objectTag: BulletDropped
   - sound:
       audioType: 0
@@ -227,6 +227,24 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 44f33c4fdb97c414cb54a165c14f6b33, type: 3}
       volMultiplier: 0.8
     objectTag: Pistol2_Shot
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 12d3aec0d13475042a0942613ecc5186, type: 3}
+      - {fileID: 8300000, guid: d05847eba04faa646a8bb5ca7c50b5ac, type: 3}
+      - {fileID: 8300000, guid: 4fa85eb8be773d948a0bf7b8fcd30e6e, type: 3}
+      - {fileID: 8300000, guid: 71bf072d25912e9429bc774978b237eb, type: 3}
+      - {fileID: 8300000, guid: 44f33c4fdb97c414cb54a165c14f6b33, type: 3}
+      volMultiplier: 0.8
+    objectTag: Pistol_Shot
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: d78fd3e92516b334895d70ba82564232, type: 3}
+      - {fileID: 8300000, guid: 40a9276065d69f04ebe73021676f7fc6, type: 3}
+      - {fileID: 8300000, guid: d81bebac9cee217409b15b76e7011fc6, type: 3}
+      volMultiplier: 0.8
+    objectTag: Revolver_Shot
   - sound:
       audioType: 0
       audio:
@@ -277,6 +295,36 @@ MonoBehaviour:
       audio:
       - {fileID: 8300000, guid: 27062ab1f9e909a4a9a73b958ea91906, type: 3}
       volMultiplier: 2
+    objectTag: Pistol_ReloadStart
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 0789f5458c83d404e82450fd5cd09be4, type: 3}
+      volMultiplier: 2
+    objectTag: Pistol_ReloadMiddle
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 27062ab1f9e909a4a9a73b958ea91906, type: 3}
+      volMultiplier: 2
+    objectTag: Revolver_ReloadStart
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 0789f5458c83d404e82450fd5cd09be4, type: 3}
+      volMultiplier: 2
+    objectTag: Revolver_ReloadMiddle
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 88f3e50291b69244b8b490fa25985139, type: 3}
+      volMultiplier: 2
+    objectTag: Revolver_ReloadEnd
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 27062ab1f9e909a4a9a73b958ea91906, type: 3}
+      volMultiplier: 2
     objectTag: Automatic_Rifle3_ReloadStart
   - sound:
       audioType: 0
@@ -303,7 +351,7 @@ MonoBehaviour:
       volMultiplier: 2
     objectTag: Automatic_Rifle_ReloadEnd
   - sound:
-      audioType: 2
+      audioType: 0
       audio:
       - {fileID: 8300000, guid: 3fde4266e750d624c97cdb4d0f6aa8b9, type: 3}
       - {fileID: 8300000, guid: db2e74430b4d8db4ba44ffbdf5841393, type: 3}

@@ -2314,7 +2314,7 @@ MonoBehaviour:
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.55, z: -0.25}
   raycastLayers:
     serializedVersion: 2
-    m_Bits: 8385
+    m_Bits: 41153
   gunIcon: {fileID: 21300028, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
   attackAudioClip: {fileID: 8300000, guid: 96434fb9d0ba9d14292e6d36365b6105, type: 3}
   reloadAudioClip: {fileID: 8300000, guid: 526b78049a014dc44aa04587f0e6ea40, type: 3}
@@ -2328,31 +2328,31 @@ MonoBehaviour:
   maxNumOfBullets: 6
   bulletDropAudioClip: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
   verticalRecoil:
+  - 2.2
+  - 2.2
+  - 2.2
+  - 2.2
+  - 2.2
+  - 2.2
+  - 2.2
+  - 1.5
   - 1
   - 1
-  - 1
-  - 1
-  - 1
-  - 0.1
-  - 0.1
-  - 0.1
-  - 0.1
-  - 0.1
-  - 0.1
-  - 0.1
+  - 0.5
+  - 0.5
   horizontalRecoil:
-  - 0
-  - 0
-  - -0.25
-  - -0.25
-  - 0.3
-  - 0
-  - -0.25
   - -0.5
-  - 0.3
+  - -0.5
+  - -0.3
+  - 0.5
+  - 0.7
+  - -0.2
+  - -0.8
+  - -1
   - 0.4
-  - 0.2
-  - -0.25
+  - 1
+  - 1
+  - 1
 --- !u!1 &1734435904563876
 GameObject:
   m_ObjectHideFlags: 0
