@@ -105,8 +105,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.20105046
-  m_Center: {x: -0.0000000028769298, y: -0.0000000044547575, z: -0.29894897}
+  m_Radius: 0.206
+  m_Center: {x: -0.02, y: -0.02, z: -0.29894897}
 --- !u!1 &6463805212560364161
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 8945579489144491081}
   - component: {fileID: 1219684654140752586}
   - component: {fileID: 4636078994247953679}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 L Thigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.188927
+  m_Radius: 0.16
   m_Height: 0.6297566
   m_Direction: 0
   m_Center: {x: -0.3148783, y: 0, z: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 4699570607394020921}
   - component: {fileID: 6328483233210562760}
   - component: {fileID: 750895778063734617}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 L Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.12190735
+  m_Radius: 0.09
   m_Height: 0.60953677
   m_Direction: 0
   m_Center: {x: -0.30476838, y: 0, z: 0}
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 6037363823102484869}
   - component: {fileID: 65706930794580470}
   - component: {fileID: 7398123848767038056}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 L UpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 2235272447390757602}
   - component: {fileID: 9074786683549835280}
   - component: {fileID: 4043510187697159252}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ GameObject:
   - component: {fileID: 4313644723100281062}
   - component: {fileID: 3082879640701493808}
   - component: {fileID: 6875901043018743490}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 L Calf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1024,7 +1024,7 @@ GameObject:
   - component: {fileID: 7107509834722242733}
   - component: {fileID: 5404409075830417987}
   - component: {fileID: 4938038974919427053}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 R UpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1198,7 +1198,7 @@ GameObject:
   - component: {fileID: 7335761280877590767}
   - component: {fileID: 633544189666937440}
   - component: {fileID: 9023688954450282627}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 R Thigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1231,7 +1231,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.18892704
+  m_Radius: 0.16
   m_Height: 0.62975675
   m_Direction: 0
   m_Center: {x: -0.31487837, y: 0, z: 0}
@@ -1620,7 +1620,7 @@ GameObject:
   - component: {fileID: 6754797264125254668}
   - component: {fileID: 6712671841659808085}
   - component: {fileID: 3785955774457861910}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1656,7 +1656,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.47319284, y: 0.3652798, z: 0.5446209}
+  m_Size: {x: 0.53, y: 0.3652798, z: 0.5446209}
   m_Center: {x: 0.23659651, y: -0.014559716, z: -0.0000002682209}
 --- !u!54 &6712671841659808085
 Rigidbody:
@@ -1828,7 +1828,7 @@ GameObject:
   - component: {fileID: 4277508458741711110}
   - component: {fileID: 485836121536720164}
   - component: {fileID: 4513817387505431900}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 R Calf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1938,7 +1938,7 @@ GameObject:
   - component: {fileID: 6463805212560526999}
   - component: {fileID: 8244788655291975006}
   - component: {fileID: 3088696786405691323}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 Pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2036,7 +2036,7 @@ GameObject:
   - component: {fileID: 2475252379412970518}
   - component: {fileID: 5450375782001457495}
   - component: {fileID: 1640634445444944791}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bip001 R Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2069,10 +2069,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.228452
-  m_Height: 1.14226
+  m_Radius: 0.1
+  m_Height: 0.69
   m_Direction: 0
-  m_Center: {x: -0.57113, y: 0, z: 0}
+  m_Center: {x: -0.27, y: 0, z: 0}
 --- !u!54 &5450375782001457495
 Rigidbody:
   m_ObjectHideFlags: 0

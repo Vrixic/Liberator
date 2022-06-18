@@ -130,6 +130,42 @@ PrefabInstance:
       propertyPath: raycastDistance
       value: 1.6
       objectReference: {fileID: 0}
+    - target: {fileID: 1050276216019993615, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341313344310600153, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608772272528864743, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Radius
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149698333535406725, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216758092846573932, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822687023054257206, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069449703012411913, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3395931660831566732, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685988700679208494, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4040348554044067879, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_StoppingDistance
       value: 1.6
@@ -138,9 +174,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.11
       objectReference: {fileID: 0}
+    - target: {fileID: 4059557368992226391, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Radius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4406333510484423332, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy_V
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440469636194939808, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Radius
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440469636194939808, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Center.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581021469931087921, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Radius
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 4976265396055958085, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -154,9 +206,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5034897238412261924, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5219868724901251929, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: attackRate
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5540824680835631396, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Height
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5540824680835631396, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Center.y
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6072270437285368068, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_RootOrder
@@ -202,6 +266,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6341480799062109265, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365014157568254049, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6852158747326469880, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_Size.x
       value: 0.46999273
@@ -230,21 +302,29 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7427477973826278807, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Radius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7583747801035261904, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7730793430256912642, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Radius
+      value: 0.09
+      objectReference: {fileID: 0}
     - target: {fileID: 7869669855441951900, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_Radius
-      value: 0.14266472
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 7869669855441951900, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_Center.x
-      value: -0.034329847
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7869669855441951900, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_Center.y
-      value: -0.020000001
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 7869669855441951900, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_Center.z
@@ -261,6 +341,10 @@ PrefabInstance:
     - target: {fileID: 8376758520260349309, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
       propertyPath: m_TagString
       value: Hitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117168220500112038, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
+      propertyPath: m_Radius
+      value: 0.07
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7583747801035261904, guid: 03f451bf97d009e4ab6d3a1b96d4457b, type: 3}
