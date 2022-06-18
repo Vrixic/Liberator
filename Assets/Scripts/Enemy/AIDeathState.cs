@@ -24,11 +24,11 @@ public class AIDeathState : AIState
         GameManager.Instance.damageIndicatorSystem.FindAndDestroyIndicator(agent.transform);
 
         agent.miniMapLocator.Disable();
-        agent.animator.SetBool("isDead", true);
+        //agent.animator.SetBool("isDead", true);
         agent.headshot.enabled = false;
         agent.animator.enabled = false;
         agent.ragdoll.ActivateRagdoll();
-        agent.animator.Play("Death");
+        //agent.animator.Play("Death");
 
         AudioManager.Instance.PlayAudioAtLocation(agent.transform.position, "EnemyDeath");
         AudioManager.Instance.PlayAudioAtLocation(agent.transform.position, "BulletKillEnemy");
