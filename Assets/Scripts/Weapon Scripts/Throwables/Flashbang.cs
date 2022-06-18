@@ -31,6 +31,9 @@ public class Flashbang : BaseThrowables
 
         float raycastDistance = sphereRadius * 2f;
 
+        if (collidersCount > 0)
+            EnemyHitFeedbackManager.Instance.ShowHitFeedback(Color.white);
+
         for (int i = 0; i < collidersCount; i++)
         {
             Vector3 target = colliders[i].transform.position;
