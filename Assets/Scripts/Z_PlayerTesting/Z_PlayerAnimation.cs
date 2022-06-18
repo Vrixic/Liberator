@@ -8,6 +8,7 @@ public class Z_PlayerAnimation : MonoBehaviour
     string groundTag = "Untagged";
     bool bJustPaused = false;
     bool bCanPlaySound = true;
+    bool bCanPlayJumpSound = true;
 
     private void Start()
     {
@@ -38,12 +39,15 @@ public class Z_PlayerAnimation : MonoBehaviour
         if (!bCanPlaySound) return;
         if (!GameManager.Instance.playerIsGrounded) { 
             playerAnimator.SetBool("isJumping", true);
-            return; 
         }
         else if (GameManager.Instance.playerIsGrounded && playerAnimator.GetBool("isJumping") == true){ 
             playerAnimator.SetBool("isJumping", false);
-            AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, GetGroundsTag(), 4f, true);
-
+            if (bCanPlayJumpSound)
+            {
+                AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, GetGroundsTag(), 4f, true);
+                bCanPlayJumpSound = false;
+                Invoke("CanPlayJumpAudio", 0.5f);
+            }
         }
 
         if (GameManager.Instance.playerIsGrounded)
@@ -68,6 +72,11 @@ public class Z_PlayerAnimation : MonoBehaviour
         {
             AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "PlayerMovingSoundEffects");
         }
+    }
+
+    void CanPlayJumpAudio()
+    {
+        bCanPlayJumpSound = true;
     }
 
     string GetGroundsTag()
