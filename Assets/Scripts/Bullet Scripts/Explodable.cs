@@ -44,6 +44,8 @@ public class Explodable : MonoBehaviour
     {
         if (!isExploded)
         {
+            EnemyHitFeedbackManager.Instance.ShowHitFeedback(Color.red);
+
             StartCoroutine(TimeTillExplode());
             if (!firstHit)
             {

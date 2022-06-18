@@ -47,7 +47,7 @@ public class EnemyHitFeedbackManager : MonoBehaviour
         {
             alpha -= Time.deltaTime * 5f;
 
-            mImageColor.a = alpha;
+            mImageColor.a = alpha * Time.timeScale;
             mFeedbackImage.color = mImageColor;
 
             yield return null;
