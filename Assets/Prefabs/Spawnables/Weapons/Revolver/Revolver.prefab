@@ -2311,7 +2311,7 @@ MonoBehaviour:
   raycastOrigin: {fileID: 9182998055217905357}
   damage: 60
   headShotDamageMultiplier: 2
-  weaponSpawnLocalPositionOffset: {x: 0, y: -1.55, z: -0.1}
+  weaponSpawnLocalPositionOffset: {x: 0, y: -1.55, z: -0.25}
   raycastLayers:
     serializedVersion: 2
     m_Bits: 8385
@@ -4113,7 +4113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5183093343658011121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1827, y: 0.0183, z: -0.2089}
+  m_LocalPosition: {x: 0.3276, y: 0.0658, z: -0.2551}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
