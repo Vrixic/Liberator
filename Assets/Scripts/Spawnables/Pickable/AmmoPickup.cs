@@ -16,5 +16,6 @@ public class AmmoPickup : IPickable
 
         AmmoManager.Instance.RefillAmmo(AmmoType.Small);
         AmmoManager.Instance.RefillAmmo(AmmoType.Shells);
+        GameManager.Instance.StartDisplayAmmoGainedCoroutine();
     }
 }

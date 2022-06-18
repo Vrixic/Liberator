@@ -117,7 +117,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public TMP_Text cashGainedText;
     [HideInInspector]
-    float cashGainedDecaytimer = 0;
+    public TMP_Text ammoGainedText;
+    [HideInInspector]
+    public TMP_Text healthGainedText;
+    [HideInInspector]
+    float ItemGainedDecaytimer = 0;
     [HideInInspector]
     public int cashRewardAmount;
     [HideInInspector]
@@ -285,6 +289,12 @@ public class GameManager : MonoBehaviour
         cashGainedText.enabled = false;
         cashRewardAmount = 0;
 
+        ammoGainedText = GameObject.FindGameObjectWithTag("AmmoGainedText").GetComponent<TextMeshProUGUI>();
+        ammoGainedText.enabled = false;
+
+        healthGainedText = GameObject.FindGameObjectWithTag("HealthGainedText").GetComponent<TextMeshProUGUI>();
+        healthGainedText.enabled = false;
+
         settingsMenu = GameObject.FindGameObjectWithTag("SettingsMenu");
         settingsMenu.SetActive(false);
         #endregion
@@ -357,22 +367,78 @@ public class GameManager : MonoBehaviour
         //SceneManager.LoadScene(0);
     }
 
+    #region Text Pop up Coroutines/Methods
     public void StartDisplayCashCoroutine()
     {
         ResetTimer();
         StartCoroutine(DisplayCashReward());
     }
+    public void StartDisplayAmmoGainedCoroutine()
+    {
+        ResetTimer();
+        StartCoroutine(DisplayAmmoGained());
+    }
+    public void StartDisplayHealthGainedCoroutine()
+    {
+        ResetTimer();
+        StartCoroutine(DisplayHealthGained());
+    }
 
     public void ResetTimer()
     {
         StopCoroutine(DisplayCashReward());
-        cashGainedDecaytimer = 0;
+        ItemGainedDecaytimer = 0;
     }
-    // Still Needs To be properly Implemented
+    IEnumerator DisplayAmmoGained()
+    {
+        // Reset timer to 0
+        ItemGainedDecaytimer = 0;
+
+        // Enable text 
+        ammoGainedText.enabled = true;
+        // Set cashGainedText color to current color of text
+        ammoGainedText.color = textColor;
+        // Change text to ++
+        ammoGainedText.text = "Ammo++";
+
+        // Begin Timer
+        while (ItemGainedDecaytimer < 1)
+        {
+
+            ammoGainedText.color = Color.Lerp(textColor, clearcolor, ItemGainedDecaytimer);
+            ItemGainedDecaytimer += Time.unscaledDeltaTime * 0.5f;
+            yield return null;
+        }
+
+    }
+
+    IEnumerator DisplayHealthGained()
+    {
+        // Reset timer to 0
+        ItemGainedDecaytimer = 0;
+
+        // Enable text 
+        healthGainedText.enabled = true;
+        // Set cashGainedText color to current color of text
+        healthGainedText.color = textColor;
+        // Change text to ++
+        healthGainedText.text = "Health++";
+
+        // Begin Timer
+        while (ItemGainedDecaytimer < 1)
+        {
+
+            healthGainedText.color = Color.Lerp(textColor, clearcolor, ItemGainedDecaytimer);
+            ItemGainedDecaytimer += Time.unscaledDeltaTime * 0.5f;
+            yield return null;
+        }
+
+    }
+
     IEnumerator DisplayCashReward()
     {
         // Reset timer to 0
-        cashGainedDecaytimer = 0;
+        ItemGainedDecaytimer = 0;
 
         // Enable text 
         cashGainedText.enabled = true;
@@ -383,15 +449,17 @@ public class GameManager : MonoBehaviour
         cashRewardAmount = 0;
 
         // Begin Timer
-        while (cashGainedDecaytimer < 1)
+        while (ItemGainedDecaytimer < 1)
         {
 
-            cashGainedText.color = Color.Lerp(textColor, clearcolor, cashGainedDecaytimer);
-            cashGainedDecaytimer += Time.unscaledDeltaTime * 0.5f;
+            cashGainedText.color = Color.Lerp(textColor, clearcolor, ItemGainedDecaytimer);
+            ItemGainedDecaytimer += Time.unscaledDeltaTime * 0.5f;
             yield return null;
         }
 
-    }
+    } 
+
+    #endregion
 
 
 
