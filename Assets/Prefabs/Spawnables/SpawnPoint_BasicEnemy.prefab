@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4805057147955249337}
   - component: {fileID: 6929036418239434809}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BasicEnemyColliderTag
   m_TagString: BasicEnemy
   m_Icon: {fileID: 0}

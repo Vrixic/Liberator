@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 4018209427504873910}
   - component: {fileID: 4018209427504873911}
   - component: {fileID: 4018209427504873904}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: InteractableDoor (1)
   m_TagString: Door
   m_Icon: {fileID: 0}

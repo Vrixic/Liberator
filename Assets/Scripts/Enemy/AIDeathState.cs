@@ -27,6 +27,7 @@ public class AIDeathState : AIState
         //agent.animator.SetBool("isDead", true);
         agent.headshot.enabled = false;
         agent.animator.enabled = false;
+        agent.DisableColliders();
         agent.ragdoll.ActivateRagdoll();
         //agent.animator.Play("Death");
 

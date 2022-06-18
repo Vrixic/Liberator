@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7390328602342593664}
   - component: {fileID: 161844408626303827}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: AssassinColliderTag
   m_TagString: Assassin
   m_Icon: {fileID: 0}

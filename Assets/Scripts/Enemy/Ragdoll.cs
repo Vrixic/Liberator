@@ -29,12 +29,12 @@ public class Ragdoll : MonoBehaviour
         }
     }
 
-    public void ApplyForce(Vector3 force)
-    {
-        //applies force to all
-        foreach (var rigidBody in rigidBodies)
-        {
-            rigidBody.AddForce(force, ForceMode.VelocityChange);
-        }
-    }
+    //public void ApplyForce(Vector3 force)
+    //{
+    //    //applies force to all
+    //    foreach (var rigidBody in rigidBodies)
+    //    {
+    //        rigidBody.AddForce(force, ForceMode.VelocityChange);
+    //    }
+    //}
 }

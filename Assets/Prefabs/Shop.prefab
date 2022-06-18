@@ -152,6 +152,10 @@ PrefabInstance:
       value: Weapon Crate
       objectReference: {fileID: 0}
     - target: {fileID: 2164406911649492855, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164406911649492855, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
       propertyPath: m_TagString
       value: Shop
       objectReference: {fileID: 0}

@@ -134,7 +134,7 @@ public class AIAgent : MonoBehaviour
     void EnableColliders()
     {
         bodyCollider.enabled = true;
-        if (!(transform.parent.tag == "Juggernaut"))
+        if (!(transform.parent.CompareTag("Juggernaut")))
         {
             headShotCollider.enabled = true;
         }
@@ -146,11 +146,10 @@ public class AIAgent : MonoBehaviour
     public void DisableColliders()
     {
         bodyCollider.enabled = false;
-        if (!(transform.parent.tag == "Juggernaut"))
+        if (!(transform.parent.CompareTag("Juggernaut")))
         {
             headShotCollider.enabled = false;
         }
-        boxCollider.enabled = false;
 
         enemyTagCollider.enabled = false;
     }

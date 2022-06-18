@@ -204,7 +204,7 @@ public class BaseGun : BaseWeapon
         Bullet bullet = ObjectPoolManager.Instance.SpawnObject(m_BulletPool) as Bullet;
 
         RaycastHit hitInfo;
-        if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, bulletRange, raycastLayers))
+        if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.playerAimVector, out hitInfo, bulletRange, raycastLayers))
         {
             OnRayCastHit(bullet, hitInfo);
         }

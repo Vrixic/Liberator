@@ -10,20 +10,26 @@ public class DoorTrigger : MonoBehaviour
     //if a gameObject enters the DoorOpenCloseTrigger
     private void OnTriggerEnter(Collider other)
     {
-        //if it's an assassin enemy
-        if(other.CompareTag("Assassin"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("TagColliders"))
         {
-            doorScript.Open();
+            //if it's an assassin enemy
+            if (other.CompareTag("Assassin"))
+            {
+                doorScript.Open();
+            }
         }
     }
 
     //if a gameObject leaves the DoorOpenCloseTrigger
     private void OnTriggerExit(Collider other)
     {
-        //if it's an assassin enemy
-        if(other.CompareTag("Assassin"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("TagColliders"))
         {
-            doorScript.Close();
+            //if it's an assassin enemy
+            if (other.CompareTag("Assassin"))
+            {
+                doorScript.Close();
+            }
         }
     }
 }

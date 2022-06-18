@@ -14,6 +14,7 @@ public class PlayerInteract : MonoBehaviour
     [Tooltip("How much cash the player recieves for rescuing the hostage")]
     [SerializeField] private int hostageCashReward = 250;
 
+    private LayerMask interactionLayerMask;
     private float updateInteractPromptTimer;
     private bool securingHostage = false;
     public GameObject currentInteractPrompt;
@@ -26,7 +27,7 @@ public class PlayerInteract : MonoBehaviour
         hostageProgressBarImage = GameManager.Instance.hostageProgressBar.GetComponent<Image>();
         hostageProgressBarImage.fillAmount = 0;
         GameManager.Instance.hostageProgressBar.SetActive(false);
-
+        interactionLayerMask = LayerMask.GetMask("Interaction");
 
         //intitializing the interact prompt to a value so I don't need a null check condition
         currentInteractPrompt = GameManager.Instance.openDoorInteractText;
@@ -46,11 +47,10 @@ public class PlayerInteract : MonoBehaviour
             updateInteractPromptTimer = updateInteractPromptTime;
 
             RaycastHit currentHit;
-
             Vector3 launchPosition = transform.position;
             launchPosition.y = GameManager.Instance.mainCamera.transform.position.y;
             //raycast where the player is aiming to see if they are looking at an interactable item
-            if (Physics.Raycast(launchPosition, GameManager.Instance.playerAimVector, out currentHit, interactRange))
+            if (Physics.Raycast(launchPosition, GameManager.Instance.playerAimVector, out currentHit, interactRange, interactionLayerMask))
             {
                 if (previousHit != null)
                 {                 //enters this scope if the raycast hit a collider within the interact range
@@ -84,25 +84,11 @@ public class PlayerInteract : MonoBehaviour
                     //set interaction text depending on whether a given door is open or closed
                     if (doorIsOpen == false)
                     {
-                        //if player looks from an open door to a closed one
-                        if (currentInteractPrompt == GameManager.Instance.closeDoorInteractText)
-                        {
-                            //deactivate the prompt for the old door
-                            currentInteractPrompt.SetActive(false);
-                        }
-
                         //set the new text to prompt the user to open the door
                         currentInteractPrompt = GameManager.Instance.openDoorInteractText;
                     }
                     else //door is open(needs to be closed)
                     {
-                        //if player looks from a closed door to an open one
-                        if (currentInteractPrompt == GameManager.Instance.openDoorInteractText)
-                        {
-                            //deactivate the prompt for the old door
-                            currentInteractPrompt.SetActive(false);
-                        }
-
                         //set the new text to prompt the user to close the door
                         currentInteractPrompt = GameManager.Instance.closeDoorInteractText;
                     }
@@ -148,7 +134,7 @@ public class PlayerInteract : MonoBehaviour
     {
         //send raycast and store whatever it collides with to check and see if it is something the player can 
         //interact with by comparing the gameObject's tag
-        if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.playerAimVector, out RaycastHit hit, interactRange))
+        if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.playerAimVector, out RaycastHit hit, interactRange, interactionLayerMask))
         {
             if (pressOrHoldBehavior) //press interactions go here VVVVVVVVVVVVVVVVVV
             {
