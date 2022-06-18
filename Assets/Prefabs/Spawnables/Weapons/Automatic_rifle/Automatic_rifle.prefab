@@ -1981,7 +1981,7 @@ MonoBehaviour:
   weaponSpawnLocalPositionOffset: {x: 0, y: -1.667, z: -0.364}
   raycastLayers:
     serializedVersion: 2
-    m_Bits: 8385
+    m_Bits: 41153
   gunIcon: {fileID: 21300044, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
   attackAudioClip: {fileID: 8300000, guid: 31dd766815c5f184e8c5d75aee7ec18b, type: 3}
   reloadAudioClip: {fileID: 8300000, guid: 586d58f81555a854996339b8111bd791, type: 3}

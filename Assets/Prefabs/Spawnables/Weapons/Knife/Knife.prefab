@@ -1880,10 +1880,11 @@ MonoBehaviour:
   attackRate: 2
   raycastOrigin: {fileID: 1271278699885218752}
   damage: 75
+  headShotDamageMultiplier: 1.5
   weaponSpawnLocalPositionOffset: {x: 0.02, y: -1.7, z: -0.42}
   raycastLayers:
     serializedVersion: 2
-    m_Bits: 8389
+    m_Bits: 41153
   gunIcon: {fileID: 21300038, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
   attackAudioClip: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
   attack2Audio: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
