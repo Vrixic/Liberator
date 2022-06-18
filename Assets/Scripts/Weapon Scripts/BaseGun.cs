@@ -238,14 +238,14 @@ public class BaseGun : BaseWeapon
             else
             {
                 //Debug.Log("Head Shot");
-                hit.collider.GetComponentInParent<Health>().TakeDamage(100.0f, transform.forward);
+                hit.collider.GetComponentInParent<Health>().TakeDamage((GetDamage() * GetHeadShotDamageMultiplier()), transform.forward);
             }
 
         }
         else if ((hostage = hit.collider.GetComponentInParent<Hostage>()) != null)
         {
             if (hit.collider.GetComponent<Headshot_Hitbox>() != null)
-                hostage.TakeDamage(100);
+                hostage.TakeDamage((int)(GetDamage() * GetHeadShotDamageMultiplier()));
             else
                 hostage.TakeDamage(GetDamage()); 
         }

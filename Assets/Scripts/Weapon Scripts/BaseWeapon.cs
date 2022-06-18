@@ -26,7 +26,7 @@ public class BaseWeapon :MonoBehaviour//, IWeapon
 
     [SerializeField] protected int damage = 25;
 
-    //[SerializeField] float headShotDamageMultiplier = 100f;
+    [SerializeField] float headShotDamageMultiplier = 1.5f;
 
     [SerializeField] Vector3 weaponSpawnLocalPositionOffset;
 
@@ -198,15 +198,15 @@ public class BaseWeapon :MonoBehaviour//, IWeapon
         return damage;
     }
 
-    //public void SetHeadShotDamageMultiplier(float multiplier)
-    //{
-    //    headShotDamageMultiplier = multiplier;
-    //}
+    public void SetHeadShotDamageMultiplier(float multiplier)
+    {
+        headShotDamageMultiplier = multiplier;
+    }
 
-    //public float GetHeadShotDamageMultiplier()
-    //{
-    //    return headShotDamageMultiplier;
-    //}
+    public float GetHeadShotDamageMultiplier()
+    {
+        return headShotDamageMultiplier;
+    }
 
     /*
     * returns last attack time
