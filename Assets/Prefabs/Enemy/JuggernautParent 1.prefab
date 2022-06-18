@@ -388,6 +388,7 @@ MonoBehaviour:
   initialRotation: {x: 0, y: 0, z: 0}
   initialState: 3
   currentState: 0
+  ragdoll: {fileID: 0}
   navMeshAgent: {fileID: 0}
   config: {fileID: 11400000, guid: 8ee259b6c9066a04693d51b540291e70, type: 2}
   playerTransform: {fileID: 0}
@@ -401,8 +402,10 @@ MonoBehaviour:
   disableEnemyInterval: 2
   isFlashed: 0
   isStunned: 0
+  isInHitReaction: 0
   bFirstChase: 1
   miniMapLocator: {fileID: 0}
+  headshot: {fileID: 0}
 --- !u!114 &5352958576046171733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,3 +454,17 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1618675421756066566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812428721721932882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bad900edcba1464d9850bb9c5c0d529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRate: 0.5
+  damage: 25
