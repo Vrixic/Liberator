@@ -55,13 +55,21 @@ MonoBehaviour:
       weaponAliasPrefab: {fileID: 2055446721109439322, guid: b7250a11fb129694da80019826188c61, type: 3}
   - weaponID: 2
     weapon:
+      weaponPrefab: {fileID: 8747229972197352225, guid: 210cbe0ee1a59754ca3587ab0e2d7206, type: 3}
+      weaponAliasPrefab: {fileID: 8092555426111453982, guid: e287b1bece0d58b4dafaac10cd11c895, type: 3}
+  - weaponID: 3
+    weapon:
+      weaponPrefab: {fileID: 2883065688284033943, guid: 3dae5c5f864e5ad4998dbcbf8aa60fc3, type: 3}
+      weaponAliasPrefab: {fileID: 8092555426111453982, guid: e287b1bece0d58b4dafaac10cd11c895, type: 3}
+  - weaponID: 4
+    weapon:
       weaponPrefab: {fileID: 2755654415605225305, guid: 49aaaabaa393e024b80c5e1342432d94, type: 3}
       weaponAliasPrefab: {fileID: 8491713281380594268, guid: 806b3a19aac922c40ac1245279f0e9da, type: 3}
-  - weaponID: 3
+  - weaponID: 5
     weapon:
       weaponPrefab: {fileID: 1618597011196432241, guid: 90515aa6952b55648bcd002b7ba74683, type: 3}
       weaponAliasPrefab: {fileID: 8092555426111453982, guid: e287b1bece0d58b4dafaac10cd11c895, type: 3}
-  - weaponID: 4
+  - weaponID: 6
     weapon:
       weaponPrefab: {fileID: 4517463678201417947, guid: c44dd45c804874c418379b5d3585666a, type: 3}
       weaponAliasPrefab: {fileID: 8092555426111453982, guid: e287b1bece0d58b4dafaac10cd11c895, type: 3}
