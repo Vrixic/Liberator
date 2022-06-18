@@ -14,6 +14,8 @@ public class InformationPopup : MonoBehaviour
 
     bool bAudioIsPlaying = false;
 
+    bool bPaused = false;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -25,7 +27,14 @@ public class InformationPopup : MonoBehaviour
         {
             StopAllPrompts();
         }
-
+        if (Time.timeScale < 0.01f)
+        {
+            bPaused = true;
+        }
+        if (bPaused && Time.timeScale > 0)
+        {
+            bPaused = false;
+        }
         if (bAudioIsPlaying)
         {
             audioSource.volume = PlayerPrefManager.Instance.sfxVolume / 100;
