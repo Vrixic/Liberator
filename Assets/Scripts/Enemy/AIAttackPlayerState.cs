@@ -9,6 +9,7 @@ public class AIAttackPlayerState : AIState
     public void Enter(AIAgent agent)
     {
         //Debug.Log("Attack");
+        agent.currentState = AIStateID.AttackPlayer;
         agent.navMeshAgent.isStopped = true;
         agent.animator.SetTrigger("Attack");
     }
