@@ -41,10 +41,12 @@ public class Health : MonoBehaviour
 
         if (currentHealth < 1f)
         {
+            EnemyHitFeedbackManager.Instance.ShowHitFeedback(Color.red);
             agent.stateMachine.ChangeState(AIStateID.Death);
         }
-        else if(currentHealth > 0.0f && !agent.isFlashed)
+        else if (currentHealth > 0.0f && !agent.isFlashed)
         {
+            EnemyHitFeedbackManager.Instance.ShowHitFeedback(Color.white);
             agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
         }
         blinkTimer = blinkDuration;
