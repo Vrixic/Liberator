@@ -7,8 +7,7 @@ using TMPro;
 public class InformationPopup : MonoBehaviour
 {
     [SerializeField] string popUpText = "";
-    [SerializeField] bool slowTime = true;
-    [SerializeField] float slowTimeLength = 3f;
+    [SerializeField] bool textPrompt = true;
     GameObject informationPrompt;
     AudioSource audioSource;
 
@@ -27,13 +26,19 @@ public class InformationPopup : MonoBehaviour
         {
             StopAllPrompts();
         }
+        else
+        {
+            ResumeAllPrompts();
+        }
         if (Time.timeScale < 0.01f)
         {
             bPaused = true;
+            informationPrompt.gameObject.SetActive(false);
         }
         if (bPaused && Time.timeScale > 0)
         {
             bPaused = false;
+            informationPrompt.gameObject.SetActive(true);
         }
         if (bAudioIsPlaying)
         {
@@ -48,7 +53,7 @@ public class InformationPopup : MonoBehaviour
         {
             GetComponent<BoxCollider>().enabled = false;
             informationPrompt.GetComponent<TMP_Text>().text = popUpText;
-            if (slowTime)
+            if (textPrompt)
             {
                 StartCoroutine(TextPromptSlow());
             }
@@ -62,19 +67,32 @@ public class InformationPopup : MonoBehaviour
     IEnumerator TextPromptSlow()
     {
         informationPrompt.SetActive(true);
-        Time.timeScale = 0.2f;
-        yield return new WaitForSeconds(slowTimeLength* 0.2f);
+        yield return new WaitForSeconds(3f);
         informationPrompt.SetActive(false);
-        Time.timeScale = 1;
         gameObject.SetActive(false);
     }
 
     IEnumerator VoicePrompt()
     {
+        float timeToPlay = 20;
         bAudioIsPlaying = true;
         informationPrompt.SetActive(true);
         audioSource.Play();
-        yield return new WaitForSeconds(20);
+        while (timeToPlay > 0)
+        {
+            if (!bPaused)
+            {
+                timeToPlay -= Time.deltaTime;
+                audioSource.UnPause();
+                informationPrompt.SetActive(true);
+            }
+            if (bPaused)
+            {
+                audioSource.Pause();
+                informationPrompt.SetActive(false);
+            }
+            yield return null;
+        }
         informationPrompt.SetActive(false);
         gameObject.SetActive(false);
     }
@@ -84,10 +102,14 @@ public class InformationPopup : MonoBehaviour
     {
         StopCoroutine(TextPromptSlow());
         StopCoroutine(VoicePrompt());
-        Time.timeScale = 1;
         informationPrompt.SetActive(false);
         gameObject.SetActive(false);
         audioSource.Stop();
         bAudioIsPlaying = false;
+    }
+
+    void ResumeAllPrompts()
+    {
+        gameObject.SetActive(true);
     }
 }

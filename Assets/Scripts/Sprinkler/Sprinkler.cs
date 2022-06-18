@@ -34,7 +34,7 @@ public class Sprinkler : MonoBehaviour
     {
         spray.gameObject.SetActive(false);
         stunTrigger.enabled = false;
-        gameObject.GetComponentInChildren<FlashingLight>().Disable();
+        gameObject.GetComponentInChildren<FlashingLight>()?.Disable();
     }
 
 }
