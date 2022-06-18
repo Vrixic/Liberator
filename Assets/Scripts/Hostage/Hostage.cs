@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hostage : MonoBehaviour
 {
-    [SerializeField] public HostageDoorController doorToOpenWhenHostageSecured;
+    [SerializeField] public HostageDoorController doorToOpenWhenHostageSecured = null;
     [SerializeField] private GameObject levelToLoad = null;
     [SerializeField] private GameObject levelToUnload = null;
 

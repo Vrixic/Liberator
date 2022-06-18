@@ -192,6 +192,14 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        if(levelTwo != null)
+        {
+            levelTwo.SetActive(false);
+            levelThree.SetActive(false);
+            levelFour.SetActive(false);
+            levelFive.SetActive(false);
+        }
+
         Instance = this;
 
         Application.targetFrameRate = 1000;
