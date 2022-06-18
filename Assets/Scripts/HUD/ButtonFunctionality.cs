@@ -147,11 +147,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        if (GameManager.Instance.playerInteractScript.currentInteractPrompt != null)
-        {
-            GameManager.Instance.playerInteractScript.currentInteractPrompt.SetActive(false);
-        }
-
         Time.timeScale = 0f;
 
         // Disables virtual camera so player can not look around in game
@@ -170,6 +165,11 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         UpdateCashCountShopUi();
         GameManager.Instance.isShopMenuOpen = true;
 
+
+        if (GameManager.Instance.playerInteractScript.currentInteractPrompt != null)
+        {
+            GameManager.Instance.playerInteractScript.currentInteractPrompt.SetActive(false);
+        }
     }
 
     // Close Shop menu
