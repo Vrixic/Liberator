@@ -52,7 +52,13 @@ public class BaseThrowableHands : BaseWeapon
     }
 
     public override void OnWeaponUnequip()
-    { }
+    {
+        bIsThrowing = false;
+        bIsAttacking = false;
+
+        bThrowReady = false;
+        bPlayerWantsToThrow = false;
+    }
 
     public override void Update()
     {
