@@ -54,6 +54,8 @@ public class LEdoorController : MonoBehaviour
         StartCoroutine(UnloadPreviousLevel());
 
         doorLocked = true;
+
+        gameObject.tag = "Untagged";
     }
 
     IEnumerator UnloadPreviousLevel()
