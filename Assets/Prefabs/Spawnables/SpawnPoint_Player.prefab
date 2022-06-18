@@ -88,7 +88,7 @@ PrefabInstance:
       objectReference: {fileID: 1835776574}
     - target: {fileID: 3109904136557413142, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: startWeaponIDs.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3109904136557413142, guid: a437861647f1fe74f9fff0e659f696d3, type: 3}
       propertyPath: startWeaponIDs.Array.data[1]
