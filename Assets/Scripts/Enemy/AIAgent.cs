@@ -15,6 +15,7 @@ public class AIAgent : MonoBehaviour
     public Vector3 initialRotation;
     public AIStateID initialState;
     public AIStateID currentState;
+    public Ragdoll ragdoll;
     [HideInInspector]public NavMeshAgent navMeshAgent;
     public AIAgentConfig config;
     [HideInInspector]public Transform playerTransform;
@@ -48,6 +49,7 @@ public class AIAgent : MonoBehaviour
 
     // Colliders 
     SphereCollider headShotCollider;
+    public Headshot_Hitbox headshot;
     CapsuleCollider bodyCollider;
     BoxCollider boxCollider;
 
@@ -58,6 +60,7 @@ public class AIAgent : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        ragdoll = GetComponent<Ragdoll>();
         //creates a new state machine for this agent type. 
         stateMachine = new AIStateMachine(this);
 
@@ -86,6 +89,8 @@ public class AIAgent : MonoBehaviour
         if (!(transform.parent.tag == "Juggernaut"))
         {
             headShotCollider = GetComponentInChildren<SphereCollider>();
+            headshot = GetComponentInChildren<Headshot_Hitbox>();
+            Debug.Log(headshot);
         }
         bodyCollider = GetComponent<CapsuleCollider>();
         boxCollider = GetComponentInChildren<BoxCollider>();

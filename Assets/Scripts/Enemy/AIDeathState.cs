@@ -25,6 +25,8 @@ public class AIDeathState : AIState
 
         agent.miniMapLocator.Disable();
         agent.animator.SetBool("isDead", true);
+        agent.headshot.enabled = false;
+        agent.ragdoll.ActivateRagdoll();
         agent.animator.Play("Death");
 
         AudioManager.Instance.PlayAudioAtLocation(agent.transform.position, "EnemyDeath");
@@ -46,7 +48,6 @@ public class AIDeathState : AIState
 
         agent.navMeshAgent.isStopped = true;
 
-        agent.DisableColliders();
     }
 
     public void Update(AIAgent agent)
@@ -58,4 +59,5 @@ public class AIDeathState : AIState
     {
 
     }
+    
 }
