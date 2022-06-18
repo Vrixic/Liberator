@@ -17,6 +17,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
     /*  */
     [SerializeField] private TextMeshProUGUI buttonText;
 
+    [SerializeField] private GameObject retryButton;
+
     /* Displays the total xp earned from this run */
     [SerializeField] private TextMeshProUGUI totalXPText;
 
@@ -85,8 +87,10 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
         bFullGameWon = Hostage.hostagesSecured == 5;
 
+        retryButton.SetActive(false);
+
         // Update header text
-        if(bFullGameWon)
+        if (bFullGameWon)
         {
             headerText.text = "You Win!";
             buttonText.text = "Main Menu";
@@ -98,6 +102,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
         else
         {
+            retryButton.SetActive(true);
             buttonText.text = "Main Menu";
             headerText.text = "";
         }
@@ -173,6 +178,24 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
         // resets enemy kill counts
         GameManager.Instance.enemiesKilled.Clear();
+    }
+
+    public void OnRetryButtonClick()
+    {
+        if (!m_AnimationFinished)
+        {
+            SkipAllAnimations();
+            return;
+        }
+
+        // Resume time
+        Time.timeScale = 1f;
+        // Get instance of Pause menu and turn it off
+        GameManager.Instance.pause.SetActive(false);
+        // Find active scene and reload it
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(1);
+        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+        ScreenManager.Instance.ShowScreen("Transition_Screen");
     }
 
     public void OnNextButtonClick()
