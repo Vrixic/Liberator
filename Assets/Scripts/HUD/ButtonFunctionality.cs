@@ -437,6 +437,27 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
     }
 
+    public void BuyRevolver()
+    {
+        // Check if player can afford Purchase
+        if (GameManager.Instance.CurrentCash >= 750)
+        {
+            // Check if player already has weapon equipped
+            if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() != WeaponID.Revolver)
+            {
+                GameManager.Instance.CurrentCash -= 750;
+                UpdateCashCountShopUi();
+
+                // Switches player's current weapon to a pistol
+                GameManager.Instance.playerScript.Equip(WeaponID.Revolver);
+                // Reset Weapon is upgraded Boolean 
+                GameManager.Instance.isCurrentWeaponUpgraded = false;
+
+            }
+        }
+
+    }
+
     public void BuyAssaultRifle()
     {
         // Check if player can afford Purchase
