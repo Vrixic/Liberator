@@ -18884,6 +18884,10 @@ PrefabInstance:
       value: shop_one (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6431070905457379548, guid: 7f6581748d748a9449fcbdb7a41d2ad4, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431070905457379548, guid: 7f6581748d748a9449fcbdb7a41d2ad4, type: 3}
       propertyPath: m_TagString
       value: Shop
       objectReference: {fileID: 0}
@@ -19046,6 +19050,10 @@ PrefabInstance:
     - target: {fileID: 6431070905457379548, guid: 7f6581748d748a9449fcbdb7a41d2ad4, type: 3}
       propertyPath: m_Name
       value: shop_one (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431070905457379548, guid: 7f6581748d748a9449fcbdb7a41d2ad4, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6431070905457379548, guid: 7f6581748d748a9449fcbdb7a41d2ad4, type: 3}
       propertyPath: m_TagString
