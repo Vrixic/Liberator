@@ -275,7 +275,7 @@ public class GameManager : MonoBehaviour
         buyWeaponsCanvas.SetActive(false);
 
         minimapCanvas = GameObject.FindGameObjectWithTag("MinimapCanvas");
-
+        minimapCanvas.SetActive(true);
 
         gunIcon = GameObject.FindGameObjectWithTag("GunIcon").GetComponent<Image>();
 

@@ -553,6 +553,8 @@ public class Player : MonoBehaviour
 
         GameManager.Instance.damageIndicatorSystem.ClearAllIndicators();
 
+        GameManager.Instance.minimapCanvas.SetActive(false);
+
         characterController.enabled = false;
         bPlayerDead = true;
 
