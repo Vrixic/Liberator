@@ -60,6 +60,8 @@ TagManager:
   - EnvironmentCloth
   - EnvironmentWater
   - UpgradeWeaponButton
+  - AmmoGainedText
+  - HealthGainedText
   layers:
   - Default
   - TransparentFX

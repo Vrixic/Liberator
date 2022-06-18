@@ -12,5 +12,6 @@ public class HealthPickup : IPickable
 
         gameObject.SetActive(false);
         GameManager.Instance.playerScript.IncreasePlayerHealth(restoreAmount);
+        GameManager.Instance.StartDisplayHealthGainedCoroutine();
     }
 }
