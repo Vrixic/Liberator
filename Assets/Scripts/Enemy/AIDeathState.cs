@@ -26,6 +26,7 @@ public class AIDeathState : AIState
         agent.miniMapLocator.Disable();
         agent.animator.SetBool("isDead", true);
         agent.headshot.enabled = false;
+        agent.animator.enabled = false;
         agent.ragdoll.ActivateRagdoll();
         agent.animator.Play("Death");
 
