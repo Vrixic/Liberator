@@ -47,7 +47,7 @@ public class AIChasePlayerScript : AIState
 
         if (inSight && reacting == false) // players is in sight of the enemy
         {
-            agent.StartCoroutine(WaitForShotsCoroutine(agent));
+            agent.StartCoroutine(WaitForReactionTime(agent));
             reacting = true;
         }
         else if(reacting == true)
@@ -60,28 +60,6 @@ public class AIChasePlayerScript : AIState
             // only chase if player is in within the chase range and not in sight
             agent.navMeshAgent.destination = GameManager.Instance.playerTransform.position; // player within range  
         }
-
-        //bool inSight = agent.sensor.IsInsight();
-
-        //// checks if player is insight and the distance between them is < the maxdistance the player can see before having to move
-        //if (inSight && sqrDistance < (agent.config.maxDistance * agent.config.maxDistance))
-        //{
-        //    //Debug.Log("Attack");
-        //    agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
-        //}
-        //else
-        //{
-        //    //Debug.Log("Chase");
-        //    //constantly sets move target for enemy to the player
-        //    agent.navMeshAgent.destination = GameManager.Instance.playerTransform.position;
-
-        //    // if the player has left the range of the enemy, make the enemy idle
-        //    if (sqrDistance > (agent.config.maxSightDistance * agent.config.maxSightDistance))
-        //    {
-        //        //Debug.Log("Idle");
-        //        agent.stateMachine.ChangeState(AIStateID.Idle);
-        //    }
-        //}
     }
 
     public void Exit(AIAgent agent)
@@ -90,7 +68,7 @@ public class AIChasePlayerScript : AIState
         reacting = false;
     }
 
-    IEnumerator WaitForShotsCoroutine(AIAgent agent)
+    IEnumerator WaitForReactionTime(AIAgent agent)
     {
         yield return new WaitForSeconds(0.3f);
         agent.stateMachine.ChangeState(AIStateID.AttackPlayer);

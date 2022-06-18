@@ -199,7 +199,7 @@ public class PlayerInteract : MonoBehaviour
                     //reset the progress bar when they press E on the hostage again
                     hostageProgressBarImage.fillAmount = 0;
 
-                    if (currentHostage.doorToOpenWhenHostageSecured.gameObject != null)
+                    if (currentHostage.doorToOpenWhenHostageSecured != null)
                     {
                         //save the transform of the attached hostage door for playing audio
                         GameManager.Instance.currentHostageDoorTransform = currentHostage.doorToOpenWhenHostageSecured.gameObject.transform;

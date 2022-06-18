@@ -43,7 +43,7 @@ public class AIAttackPlayerState : AIState
                         agent.animator.Play("Melee");
                     }
                 }
-                else if (agent.GetGun().ShootAtTarget(agent.playerTransform.position, agent.config.shootSprayRadius) && agent.sqrDistance >= 6)
+                else if (agent.GetGun().ShootAtTarget(GameManager.Instance.playerTransform.position, agent.config.shootSprayRadius) && agent.sqrDistance >= 6)
                     agent.animator.Play("Attack");
 
             }

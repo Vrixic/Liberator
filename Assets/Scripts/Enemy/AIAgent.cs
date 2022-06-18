@@ -33,6 +33,8 @@ public class AIAgent : MonoBehaviour
 
     private Coroutine lookCouroutine;
 
+    public bool alreadyNavigatingToPlayer = false;
+
     public bool isFlashed = false;
     public bool isStunned = false;
 
@@ -107,8 +109,6 @@ public class AIAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //sets the player transform to look for the player tagged object
-        playerTransform = GameManager.Instance.player.transform;
         //constantly updates the machine
         stateMachine.Update();
         sqrDistance = (GameManager.Instance.playerTransform.position - transform.position).sqrMagnitude;
@@ -130,6 +130,34 @@ public class AIAgent : MonoBehaviour
 
         lookCouroutine = StartCoroutine(LookAt());
     }
+
+    public IEnumerator WaitForReactionTime()
+    {
+        yield return new WaitForSeconds(0.2f);
+        stateMachine.ChangeState(AIStateID.AttackPlayer);
+    }
+
+    //not implemented correctly yet
+    //public void StartNavigatingToPlayer()
+    //{
+    //    if(!alreadyNavigatingToPlayer)
+    //        StartCoroutine(NavigateToPlayer());
+    //}
+
+    //public void StopNavigatingToPlayer()
+    //{
+    //    StopCoroutine(NavigateToPlayer());
+
+    //    alreadyNavigatingToPlayer = false;
+    //}
+
+    //private IEnumerator NavigateToPlayer()
+    //{
+    //    alreadyNavigatingToPlayer = true;
+
+    //    navMeshAgent.destination = GameManager.Instance.playerTransform.position;
+    //    yield return new WaitForSeconds(0.1f);
+    //}
 
     void EnableColliders()
     {

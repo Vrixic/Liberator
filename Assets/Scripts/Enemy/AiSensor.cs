@@ -11,7 +11,7 @@ public class AiSensor : MonoBehaviour
     public float heightOffsetFromOrigin = 1.0f;
     public Color meshColor = Color.red;
     public int scanFrequency = 30;
-    public LayerMask layers;
+    public LayerMask playerLayer;
     public LayerMask occlusionLayers;
     [SerializeField] Transform raycastOrigin;
 
@@ -26,16 +26,24 @@ public class AiSensor : MonoBehaviour
     }
     private List<GameObject> objects = new List<GameObject>();
 
-    Collider[] colliders = new Collider[50];
+    Collider[] colliders = new Collider[2];
     Mesh mesh;
 
     int count;
     float scanInterval;
     float scanTimer;
+    public bool playerInRange = false;
+    private bool alreadyScanning = false;
+
+    public bool playerFoundByRaycast = false;
+    private bool alreadyIdleRaycasting = false;
+    private bool alreadyRaycasting = false;
+
     // Start is called before the first frame update
     void Start()
     {
         scanInterval = 1.0f / scanFrequency;
+        playerLayer = LayerMask.NameToLayer("Player");
     }
 
     // Update is called once per frame
@@ -49,24 +57,13 @@ public class AiSensor : MonoBehaviour
         //}
     }
 
-    public void Scan()
+    public bool Scan()
     {
-        //adds all the physical objects scanned in the cone distance to the count.
-        count = Physics.OverlapSphereNonAlloc(transform.position, distance, colliders, layers, QueryTriggerInteraction.Collide);
+        //scans within the enemy's range for a gameObject on the player layer(the player)
+        count = Physics.OverlapSphereNonAlloc(transform.position, raycastDistance, colliders, playerLayer, QueryTriggerInteraction.Collide);
 
-        objects.Clear();
-        //adds objects found in the layer to the object array.
-        for (int i = 0; i < count; ++i)
-        {
-            GameObject obj = colliders[i].gameObject;
-            if (obj.CompareTag("Player"))
-            {
-                if (IsInsight())
-                {
-
-                }
-            }
-        }
+        //returns true if it found the player to be in range, false if not
+        return count > 0;
     }
 
     public bool IsInsight()
@@ -80,7 +77,7 @@ public class AiSensor : MonoBehaviour
         //get player's position in the world from the gamemanager
         Vector3 dest = GameManager.Instance.playerTransform.position;
 
-        //look for the player's midsection
+        //look for the player's head
         dest.y -= 0.2f;
 
         Vector3 direction = (dest - origin).normalized;
@@ -109,13 +106,14 @@ public class AiSensor : MonoBehaviour
             //Debug.Log("Entered raycast line, " + hit.collider.tag);
             //Debug.DrawLine(origin, dest, Color.green, 1f);
 
-            //if the player is in range and inside the FOV, with no objects obstructing the enemies view
-            if (hit.collider.CompareTag("Player"))
+            //if the player is hit by the raycast, the player is in sight
+            if (hit.collider.gameObject.layer == playerLayer)
             {
                 return true;
             }
         }
 
+        //the raycast hit nothing or didn't hit the player
         return false;
     }
    
@@ -147,7 +145,7 @@ public class AiSensor : MonoBehaviour
         if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
         {
             //if the player is in range and inside the FOV, with no objects obstructing the enemies view
-            if (hit.collider.CompareTag("Player"))
+            if (hit.collider.gameObject.layer == playerLayer)
             {
                 return true;
             }
@@ -175,14 +173,89 @@ public class AiSensor : MonoBehaviour
             //Debug.Log("Entered raycast line, " + hit.collider.tag);
             //Debug.DrawLine(origin, dest, Color.green, 1f);
 
-            //if the player is in range and inside the FOV, with no objects obstructing the enemies view
-            if (hit.collider.CompareTag("Player"))
+            if (hit.collider.gameObject.layer == playerLayer)
             {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public void StartScan()
+    {
+        if(!alreadyScanning)
+            StartCoroutine(IncrementalScan());
+    }
+
+    public void StopScan()
+    {
+        StopCoroutine(IncrementalScan());
+
+        alreadyScanning = false;
+    }
+
+    private IEnumerator IncrementalScan()
+    {
+        alreadyScanning = true;
+
+        while (true)
+        {
+            playerInRange = Scan();
+
+            if (playerInRange) { StartIdleRaycast(); }
+            else if (alreadyIdleRaycasting) { StopIdleRaycast(); }
+
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
+    public void StartIdleRaycast()
+    {
+        if (!alreadyIdleRaycasting)
+            StartCoroutine(IncrementalIdleRaycast());
+    }
+
+    public void StopIdleRaycast()
+    {
+        StopCoroutine(IncrementalIdleRaycast());
+
+        alreadyIdleRaycasting = false;
+    }
+
+    private IEnumerator IncrementalIdleRaycast()
+    {
+        alreadyIdleRaycasting = true;
+
+        while (true)
+        {
+            playerFoundByRaycast = IsInsightWithAngleDistance();
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    public void StartChaseAndAttackRaycast()
+    {
+        if (!alreadyRaycasting)
+            StartCoroutine(IncrementalChaseAndAttackRaycast());
+    }
+
+    public void StopChaseAndAttackRaycast()
+    {
+        StopCoroutine(IncrementalChaseAndAttackRaycast());
+
+        alreadyRaycasting = false;
+    }
+
+    public IEnumerator IncrementalChaseAndAttackRaycast()
+    {
+        alreadyRaycasting = true;
+
+        while (true)
+        {
+            playerFoundByRaycast = IsInsightAttackAndChase();
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     Mesh CreateWedgeMesh()

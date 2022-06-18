@@ -8,11 +8,15 @@ public class AIAlertedState : AIState
     {
         agent.currentState = AIStateID.Alerted;
         agent.navMeshAgent.isStopped = true;
+        agent.sensor.StartScan();
     }
 
     void AIState.Exit(AIAgent agent)
     {
         agent.navMeshAgent.isStopped = false;
+        agent.sensor.playerFoundByRaycast = false;
+        agent.sensor.StopScan();
+        agent.sensor.StopIdleRaycast();
     }
 
     AIStateID AIState.GetId()
@@ -25,14 +29,9 @@ public class AIAlertedState : AIState
         //have enemy look at the player from a still position
         agent.Rotating();
 
-        //if the player is within the enemies detection range
-        if (agent.sqrDistance <= agent.config.maxDistance)
+        if (agent.sensor.playerFoundByRaycast)
         {
-            //check if the player is in the enemies FOV
-            if (agent.sensor.IsInsightWithAngleDistance())
-            {
-                agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
-            }
+            agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
         }
     }
 }
