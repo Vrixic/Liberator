@@ -25,7 +25,10 @@ public class AIDeathState : AIState
 
         agent.miniMapLocator.Disable();
         //agent.animator.SetBool("isDead", true);
-        agent.headshot.enabled = false;
+
+        if(!agent.transform.parent.CompareTag("Juggernaut"))
+            agent.headshot.enabled = false;
+
         agent.animator.enabled = false;
         agent.DisableColliders();
         agent.ragdoll.ActivateRagdoll();

@@ -40,6 +40,12 @@ public class PlayerInteract : MonoBehaviour
     {
         updateInteractPromptTimer -= Time.deltaTime;
 
+        if (Time.timeScale <= 0.1f)
+        {
+            currentInteractPrompt.SetActive(false);
+            return;
+        }
+
         #region Display "E" to interact prompts
         if (updateInteractPromptTimer < 0f)
         {

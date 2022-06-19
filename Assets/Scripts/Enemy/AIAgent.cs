@@ -88,7 +88,7 @@ public class AIAgent : MonoBehaviour
         //sets state to initial state.
         stateMachine.ChangeState(initialState);
 
-        if (!(transform.parent.tag == "Juggernaut"))
+        if (!(transform.parent.CompareTag("Juggernaut")))
         {
             headShotCollider = GetComponentInChildren<SphereCollider>();
             headshot = GetComponentInChildren<Headshot_Hitbox>();
