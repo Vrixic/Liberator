@@ -21,13 +21,13 @@ public class Sprinkler : MonoBehaviour
 
     public void Sprinkle()
     {
-        stunTrigger.enabled = true;
-        if (!isUsed) { 
+        if (!isUsed) {
+            stunTrigger.enabled = true;
             spray = Instantiate(spray, transform.position - new Vector3(0,2,0), Quaternion.identity);
             isUsed = true;
+            Invoke("DeactivateSprinkler", 5f);
         }
 
-        Invoke("DeactivateSprinkler", 5f);
     }
 
     void DeactivateSprinkler()
