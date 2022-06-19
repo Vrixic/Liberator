@@ -197,13 +197,14 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     }
     private void SetUpgradeWeaponIcon()
     {
-        if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() != WeaponID.Knife)
+        WeaponID weaponID = GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID();
+        if (weaponID != WeaponID.Knife)
         {
             GameManager.Instance.weaponUpgradeButton.GetComponent<Image>().sprite = GameManager.Instance.gunIcon.sprite;
 
         }
 
-        if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() == WeaponID.Pistol2)
+        if (weaponID == WeaponID.Pistol || weaponID == WeaponID.Revolver)
         {
             GameManager.Instance.weaponUpgradeButton.gameObject.transform.localScale = new Vector2(0.4f, 3);
         }
@@ -421,13 +422,13 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         if (GameManager.Instance.CurrentCash >= 500)
         {
             // Check if player already has weapon equipped
-            if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() != WeaponID.Pistol2)
+            if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() != WeaponID.Pistol)
             {
                 GameManager.Instance.CurrentCash -= 500;
                 UpdateCashCountShopUi();
 
                 // Switches player's current weapon to a pistol
-                GameManager.Instance.playerScript.Equip(WeaponID.Pistol2);
+                GameManager.Instance.playerScript.Equip(WeaponID.Pistol);
                 // Reset Weapon is upgraded Boolean 
                 GameManager.Instance.isCurrentWeaponUpgraded = false;
 
@@ -448,7 +449,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                 GameManager.Instance.CurrentCash -= 750;
                 UpdateCashCountShopUi();
 
-                // Switches player's current weapon to a pistol
+                // Switches player's current weapon to a revolver
                 GameManager.Instance.playerScript.Equip(WeaponID.Revolver);
                 // Reset Weapon is upgraded Boolean 
                 GameManager.Instance.isCurrentWeaponUpgraded = false;
@@ -470,7 +471,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
                 // Switches player's current weapon to an assualt rife
                 GameManager.Instance.playerScript.Equip(WeaponID.Automatic_Rifle3);
-                // Force player to equip newly purchase weapon
+
                 // Reset Weapon is upgraded Boolean 
                 GameManager.Instance.isCurrentWeaponUpgraded = false;
 
