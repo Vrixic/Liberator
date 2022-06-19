@@ -1888,7 +1888,7 @@ MonoBehaviour:
   gunIcon: {fileID: 21300038, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
   attackAudioClip: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
   attack2Audio: {fileID: 8300000, guid: daf2a7f569342b34d96808b6fd6e8b27, type: 3}
-  knifeHitRange: 1
+  knifeHitRange: 1.3
 --- !u!1 &7890389062910755632
 GameObject:
   m_ObjectHideFlags: 0
