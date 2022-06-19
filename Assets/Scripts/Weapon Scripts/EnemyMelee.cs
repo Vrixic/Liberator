@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMelee : MonoBehaviour
 {
+    AIAgent agent;
     [SerializeField] [Tooltip("amount of times to attack per second")] float attackRate = 1f;
     [SerializeField] int damage = 50;
     float m_LastAttackTime = 0f;
@@ -13,7 +14,7 @@ public class EnemyMelee : MonoBehaviour
     {
         m_LastAttackTime = 0f;
         attackRate = 1f / attackRate;
-
+        agent = GetComponent<AIAgent>();
     }
 
     /* returns if enemy can attack based on the last time the enemy attacked */
@@ -31,11 +32,14 @@ public class EnemyMelee : MonoBehaviour
 
     public void DealDamage()
     {
-        DISystem.createIndicator(transform);
-        GameManager.Instance.playerScript.TakeDamage(damage);
+        if (agent.sqrDistance <= 4)
+        {
+            DISystem.createIndicator(transform);
+            GameManager.Instance.playerScript.TakeDamage(damage);
 
-        //add camerashake for flinch
-        GameManager.Instance.cameraShakeScript.Trauma = 1f;
+            //add camerashake for flinch
+            GameManager.Instance.cameraShakeScript.Trauma = 1f;
+        }
     }
 
     bool CanAttack()
