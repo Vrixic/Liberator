@@ -203,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[2].objectTag
@@ -219,10 +219,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[5].objectTag
-      value: EnvironmentMetal
+      value: Shop
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[6].objectTag
+      value: EnvironmentMetal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
+      propertyPath: meleeImpacts.Array.data[7].objectTag
       value: Hostage
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
@@ -272,9 +276,13 @@ PrefabInstance:
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[5].collisionParticleSystem
       value: 
-      objectReference: {fileID: -3249861944807672062, guid: 63d012930b44d614c98d7bc1f24d3b2a, type: 3}
+      objectReference: {fileID: -3425578141262494802, guid: 47dbf0270b8dd3540ae8087ff75723e9, type: 3}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[6].collisionParticleSystem
+      value: 
+      objectReference: {fileID: -3249861944807672062, guid: 63d012930b44d614c98d7bc1f24d3b2a, type: 3}
+    - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
+      propertyPath: meleeImpacts.Array.data[7].collisionParticleSystem
       value: 
       objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
@@ -299,10 +307,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[5].impactAudio.volMultiplier
-      value: 0.1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[6].impactAudio.volMultiplier
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
+      propertyPath: meleeImpacts.Array.data[7].impactAudio.volMultiplier
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
@@ -334,6 +346,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
+      propertyPath: meleeImpacts.Array.data[7].impactAudio.audio.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[0].impactAudio.audio.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 6431c1753b2c58c458113debd619d31e, type: 3}
@@ -356,9 +372,13 @@ PrefabInstance:
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[5].impactAudio.audio.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 087bace50db49124c9737a5840e97554, type: 3}
+      objectReference: {fileID: 8300000, guid: dd81689a6c84d6a41bf6177c4e8eaa27, type: 3}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[6].impactAudio.audio.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 087bace50db49124c9737a5840e97554, type: 3}
+    - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
+      propertyPath: meleeImpacts.Array.data[7].impactAudio.audio.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 6431c1753b2c58c458113debd619d31e, type: 3}
     - target: {fileID: 5904537738071572409, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
@@ -495,7 +515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[4].objectTag
@@ -511,10 +531,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[7].objectTag
-      value: EnvironmentMetal
+      value: Shop
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[8].objectTag
+      value: EnvironmentMetal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[9].objectTag
       value: Hostage
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
@@ -564,9 +588,13 @@ PrefabInstance:
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[7].collisionParticleSystem
       value: 
-      objectReference: {fileID: -3249861944807672062, guid: 63d012930b44d614c98d7bc1f24d3b2a, type: 3}
+      objectReference: {fileID: -3425578141262494802, guid: 47dbf0270b8dd3540ae8087ff75723e9, type: 3}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[8].collisionParticleSystem
+      value: 
+      objectReference: {fileID: -3249861944807672062, guid: 63d012930b44d614c98d7bc1f24d3b2a, type: 3}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[9].collisionParticleSystem
       value: 
       objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
@@ -599,10 +627,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[7].impactAudio.volMultiplier
-      value: 0.2
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[8].impactAudio.volMultiplier
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[9].impactAudio.volMultiplier
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
@@ -635,10 +667,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[7].impactAudio.audio.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[8].impactAudio.audio.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[9].impactAudio.audio.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
@@ -680,7 +716,7 @@ PrefabInstance:
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[7].impactAudio.audio.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: a438bb66ee16d03479e0bcee9b99329f, type: 3}
+      objectReference: {fileID: 8300000, guid: dd81689a6c84d6a41bf6177c4e8eaa27, type: 3}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[7].impactAudio.audio.Array.data[1]
       value: 
@@ -696,9 +732,25 @@ PrefabInstance:
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[8].impactAudio.audio.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 019b1cad8d20c6748abcaeabd40d6746, type: 3}
+      objectReference: {fileID: 8300000, guid: a438bb66ee16d03479e0bcee9b99329f, type: 3}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[8].impactAudio.audio.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 02bf6c72c1c2f60448d66de1e0a10798, type: 3}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[8].impactAudio.audio.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 087bace50db49124c9737a5840e97554, type: 3}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[8].impactAudio.audio.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 15e3679feeb466d478ed4f93d0f92038, type: 3}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[9].impactAudio.audio.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 019b1cad8d20c6748abcaeabd40d6746, type: 3}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[9].impactAudio.audio.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 3277b0a2754c77649a8725423b9720ea, type: 3}
     - target: {fileID: 7934257650302403587, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
