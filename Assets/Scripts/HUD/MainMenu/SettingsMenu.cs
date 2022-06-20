@@ -170,7 +170,7 @@ public class SettingsMenu : MonoBehaviour
 
         PlayerPrefManager.Instance.brightness = brightnessSlider.value;
 
-        RenderSettings.ambientLight = new Color(PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, 1.0f);
+        RenderSettings.ambientLight = new Color(PlayerPrefManager.Instance.brightness / 100 + .3f, PlayerPrefManager.Instance.brightness / 100 + .3f, PlayerPrefManager.Instance.brightness / 100 + .3f, 1.0f);
 
     }
 
@@ -257,7 +257,8 @@ public class SettingsMenu : MonoBehaviour
 
         PlayerPrefManager.Instance.brightness = brightnessSlider.value;
 
-        RenderSettings.ambientLight = new Color(PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, PlayerPrefManager.Instance.brightness / 100, 1.0f);
+        RenderSettings.ambientLight = new Color(PlayerPrefManager.Instance.brightness / 100 + .3f, PlayerPrefManager.Instance.brightness / 100 + .3f, PlayerPrefManager.Instance.brightness / 100 + .3f, 1.0f);
+
     }
 
 
