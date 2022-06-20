@@ -81,12 +81,14 @@ public class InputManager : MonoBehaviour
         onFoot.EquipFlashbangPressed.performed += ctx => player.EquipFlashbang();
         onFoot.EquipSensorPressed.performed += ctx => player.EquipSensor();
 
-        onFoot.PauseGame.performed += ctx => buttonFunc.PauseGame();
+        onFoot.PauseGameEsc.performed += ctx => buttonFunc.PauseGame();
+        onFoot.PauseGameP.performed += ctx => buttonFunc.PauseGame();
 
         // DEBUG-----------------------------------------------------------------------------------
 
         onFoot.ShowFPSCounter.performed += ctx => GameManager.Instance.ToggleFpsCounter();
         onFoot.ShowTimer.performed += ctx => TimerUI.Instance.Toggle();
+
         //onFoot.Test_PlayerDamage.performed += ctx => player.TakeDamageTen();
 
         //onFoot.ShowCaseLevel.performed += ctx => buttonFunc.LoadShowcaseLevel();

@@ -199,7 +199,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PauseGame"",
+                    ""name"": ""PauseGame(Esc)"",
                     ""type"": ""Button"",
                     ""id"": ""36e29e9a-13f0-4e2a-8dd0-990cc737619b"",
                     ""expectedControlType"": ""Button"",
@@ -238,6 +238,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": ""ShowTimer"",
                     ""type"": ""Button"",
                     ""id"": ""d26daeff-d417-4e80-b788-a7fc61a9b891"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseGame(P)"",
+                    ""type"": ""Button"",
+                    ""id"": ""10c5313a-ca23-48c0-8886-f1e389d4c899"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -578,11 +587,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""765c9e58-0d5d-4633-954f-66e4eecae1a6"",
-                    ""path"": ""<Keyboard>/p"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PauseGame"",
+                    ""action"": ""PauseGame(Esc)"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -651,6 +660,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""ShowTimer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcccf1e3-901c-4981-b089-43af8713ed82"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame(P)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -678,11 +698,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_EquipSensorPressed = m_OnFoot.FindAction("EquipSensorPressed", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_HoldInteract = m_OnFoot.FindAction("HoldInteract", throwIfNotFound: true);
-        m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
+        m_OnFoot_PauseGameEsc = m_OnFoot.FindAction("PauseGame(Esc)", throwIfNotFound: true);
         m_OnFoot_AttackReleased = m_OnFoot.FindAction("AttackReleased", throwIfNotFound: true);
         m_OnFoot_GodMode = m_OnFoot.FindAction("GodMode", throwIfNotFound: true);
         m_OnFoot_ShowFPSCounter = m_OnFoot.FindAction("ShowFPSCounter", throwIfNotFound: true);
         m_OnFoot_ShowTimer = m_OnFoot.FindAction("ShowTimer", throwIfNotFound: true);
+        m_OnFoot_PauseGameP = m_OnFoot.FindAction("PauseGame(P)", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -761,11 +782,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_EquipSensorPressed;
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_HoldInteract;
-    private readonly InputAction m_OnFoot_PauseGame;
+    private readonly InputAction m_OnFoot_PauseGameEsc;
     private readonly InputAction m_OnFoot_AttackReleased;
     private readonly InputAction m_OnFoot_GodMode;
     private readonly InputAction m_OnFoot_ShowFPSCounter;
     private readonly InputAction m_OnFoot_ShowTimer;
+    private readonly InputAction m_OnFoot_PauseGameP;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -789,11 +811,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @EquipSensorPressed => m_Wrapper.m_OnFoot_EquipSensorPressed;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @HoldInteract => m_Wrapper.m_OnFoot_HoldInteract;
-        public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
+        public InputAction @PauseGameEsc => m_Wrapper.m_OnFoot_PauseGameEsc;
         public InputAction @AttackReleased => m_Wrapper.m_OnFoot_AttackReleased;
         public InputAction @GodMode => m_Wrapper.m_OnFoot_GodMode;
         public InputAction @ShowFPSCounter => m_Wrapper.m_OnFoot_ShowFPSCounter;
         public InputAction @ShowTimer => m_Wrapper.m_OnFoot_ShowTimer;
+        public InputAction @PauseGameP => m_Wrapper.m_OnFoot_PauseGameP;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -860,9 +883,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @HoldInteract.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnHoldInteract;
                 @HoldInteract.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnHoldInteract;
                 @HoldInteract.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnHoldInteract;
-                @PauseGame.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
-                @PauseGame.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
-                @PauseGame.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
+                @PauseGameEsc.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameEsc;
+                @PauseGameEsc.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameEsc;
+                @PauseGameEsc.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameEsc;
                 @AttackReleased.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
                 @AttackReleased.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
                 @AttackReleased.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
@@ -875,6 +898,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ShowTimer.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowTimer;
                 @ShowTimer.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowTimer;
                 @ShowTimer.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowTimer;
+                @PauseGameP.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameP;
+                @PauseGameP.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameP;
+                @PauseGameP.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameP;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -936,9 +962,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @HoldInteract.started += instance.OnHoldInteract;
                 @HoldInteract.performed += instance.OnHoldInteract;
                 @HoldInteract.canceled += instance.OnHoldInteract;
-                @PauseGame.started += instance.OnPauseGame;
-                @PauseGame.performed += instance.OnPauseGame;
-                @PauseGame.canceled += instance.OnPauseGame;
+                @PauseGameEsc.started += instance.OnPauseGameEsc;
+                @PauseGameEsc.performed += instance.OnPauseGameEsc;
+                @PauseGameEsc.canceled += instance.OnPauseGameEsc;
                 @AttackReleased.started += instance.OnAttackReleased;
                 @AttackReleased.performed += instance.OnAttackReleased;
                 @AttackReleased.canceled += instance.OnAttackReleased;
@@ -951,6 +977,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ShowTimer.started += instance.OnShowTimer;
                 @ShowTimer.performed += instance.OnShowTimer;
                 @ShowTimer.canceled += instance.OnShowTimer;
+                @PauseGameP.started += instance.OnPauseGameP;
+                @PauseGameP.performed += instance.OnPauseGameP;
+                @PauseGameP.canceled += instance.OnPauseGameP;
             }
         }
     }
@@ -976,10 +1005,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnEquipSensorPressed(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnHoldInteract(InputAction.CallbackContext context);
-        void OnPauseGame(InputAction.CallbackContext context);
+        void OnPauseGameEsc(InputAction.CallbackContext context);
         void OnAttackReleased(InputAction.CallbackContext context);
         void OnGodMode(InputAction.CallbackContext context);
         void OnShowFPSCounter(InputAction.CallbackContext context);
         void OnShowTimer(InputAction.CallbackContext context);
+        void OnPauseGameP(InputAction.CallbackContext context);
     }
 }
