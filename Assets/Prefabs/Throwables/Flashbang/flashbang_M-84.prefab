@@ -502,7 +502,9 @@ MonoBehaviour:
   queryLayers:
     serializedVersion: 2
     m_Bits: 12288
-  flashSphereRadius: 10
+  sphereRadius: 10
+  equipmentTimer: 5
+  flashTimer: 3
 --- !u!135 &6926533898521878406
 SphereCollider:
   m_ObjectHideFlags: 0
