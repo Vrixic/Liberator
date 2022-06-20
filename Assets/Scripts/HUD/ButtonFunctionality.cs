@@ -35,6 +35,10 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     #region PauseMenu
     public void PauseGame()
     {
+        if (GameManager.Instance.playerScript.isPlayerDead())
+        {
+            return;
+        }
 
         if (GameManager.Instance.canOpenPauseMenu == true && GameManager.Instance.isPauseMenuOpen == false && !GameManager.Instance.settingsMenu.activeInHierarchy && GameManager.Instance.isShopMenuOpen == false)
         {

@@ -64,6 +64,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Crouch(C)"",
+                    ""type"": ""Button"",
+                    ""id"": ""d5134b08-4013-473a-9d55-160d20cceac8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""SlowWalk"",
                     ""type"": ""Button"",
                     ""id"": ""c93ee351-d62d-4d56-962a-c8984643efbf"",
@@ -208,6 +217,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""PauseGame(P)"",
+                    ""type"": ""Button"",
+                    ""id"": ""10c5313a-ca23-48c0-8886-f1e389d4c899"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""AttackReleased"",
                     ""type"": ""Button"",
                     ""id"": ""1562614f-deb4-451a-9365-2f14faf6fec1"",
@@ -238,15 +256,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": ""ShowTimer"",
                     ""type"": ""Button"",
                     ""id"": ""d26daeff-d417-4e80-b788-a7fc61a9b891"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""PauseGame(P)"",
-                    ""type"": ""Button"",
-                    ""id"": ""10c5313a-ca23-48c0-8886-f1e389d4c899"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -411,7 +420,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d9202dfa-ac04-4c69-b42c-50c88883cb4a"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -671,6 +680,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""PauseGame(P)"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8bb19262-ba33-474c-bb88-8bc38d33e066"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch(C)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -683,6 +703,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
         m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
+        m_OnFoot_CrouchC = m_OnFoot.FindAction("Crouch(C)", throwIfNotFound: true);
         m_OnFoot_SlowWalk = m_OnFoot.FindAction("SlowWalk", throwIfNotFound: true);
         m_OnFoot_LowerXSensitivity = m_OnFoot.FindAction("LowerXSensitivity", throwIfNotFound: true);
         m_OnFoot_RaiseXSensitivity = m_OnFoot.FindAction("RaiseXSensitivity", throwIfNotFound: true);
@@ -699,11 +720,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_HoldInteract = m_OnFoot.FindAction("HoldInteract", throwIfNotFound: true);
         m_OnFoot_PauseGameEsc = m_OnFoot.FindAction("PauseGame(Esc)", throwIfNotFound: true);
+        m_OnFoot_PauseGameP = m_OnFoot.FindAction("PauseGame(P)", throwIfNotFound: true);
         m_OnFoot_AttackReleased = m_OnFoot.FindAction("AttackReleased", throwIfNotFound: true);
         m_OnFoot_GodMode = m_OnFoot.FindAction("GodMode", throwIfNotFound: true);
         m_OnFoot_ShowFPSCounter = m_OnFoot.FindAction("ShowFPSCounter", throwIfNotFound: true);
         m_OnFoot_ShowTimer = m_OnFoot.FindAction("ShowTimer", throwIfNotFound: true);
-        m_OnFoot_PauseGameP = m_OnFoot.FindAction("PauseGame(P)", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -767,6 +788,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Jump;
     private readonly InputAction m_OnFoot_Look;
     private readonly InputAction m_OnFoot_Crouch;
+    private readonly InputAction m_OnFoot_CrouchC;
     private readonly InputAction m_OnFoot_SlowWalk;
     private readonly InputAction m_OnFoot_LowerXSensitivity;
     private readonly InputAction m_OnFoot_RaiseXSensitivity;
@@ -783,11 +805,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_HoldInteract;
     private readonly InputAction m_OnFoot_PauseGameEsc;
+    private readonly InputAction m_OnFoot_PauseGameP;
     private readonly InputAction m_OnFoot_AttackReleased;
     private readonly InputAction m_OnFoot_GodMode;
     private readonly InputAction m_OnFoot_ShowFPSCounter;
     private readonly InputAction m_OnFoot_ShowTimer;
-    private readonly InputAction m_OnFoot_PauseGameP;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -796,6 +818,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
         public InputAction @Look => m_Wrapper.m_OnFoot_Look;
         public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
+        public InputAction @CrouchC => m_Wrapper.m_OnFoot_CrouchC;
         public InputAction @SlowWalk => m_Wrapper.m_OnFoot_SlowWalk;
         public InputAction @LowerXSensitivity => m_Wrapper.m_OnFoot_LowerXSensitivity;
         public InputAction @RaiseXSensitivity => m_Wrapper.m_OnFoot_RaiseXSensitivity;
@@ -812,11 +835,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @HoldInteract => m_Wrapper.m_OnFoot_HoldInteract;
         public InputAction @PauseGameEsc => m_Wrapper.m_OnFoot_PauseGameEsc;
+        public InputAction @PauseGameP => m_Wrapper.m_OnFoot_PauseGameP;
         public InputAction @AttackReleased => m_Wrapper.m_OnFoot_AttackReleased;
         public InputAction @GodMode => m_Wrapper.m_OnFoot_GodMode;
         public InputAction @ShowFPSCounter => m_Wrapper.m_OnFoot_ShowFPSCounter;
         public InputAction @ShowTimer => m_Wrapper.m_OnFoot_ShowTimer;
-        public InputAction @PauseGameP => m_Wrapper.m_OnFoot_PauseGameP;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -838,6 +861,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Crouch.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouch;
                 @Crouch.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouch;
                 @Crouch.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouch;
+                @CrouchC.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouchC;
+                @CrouchC.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouchC;
+                @CrouchC.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouchC;
                 @SlowWalk.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSlowWalk;
                 @SlowWalk.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSlowWalk;
                 @SlowWalk.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSlowWalk;
@@ -886,6 +912,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @PauseGameEsc.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameEsc;
                 @PauseGameEsc.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameEsc;
                 @PauseGameEsc.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameEsc;
+                @PauseGameP.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameP;
+                @PauseGameP.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameP;
+                @PauseGameP.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameP;
                 @AttackReleased.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
                 @AttackReleased.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
                 @AttackReleased.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
@@ -898,9 +927,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ShowTimer.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowTimer;
                 @ShowTimer.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowTimer;
                 @ShowTimer.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowTimer;
-                @PauseGameP.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameP;
-                @PauseGameP.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameP;
-                @PauseGameP.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGameP;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -917,6 +943,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
+                @CrouchC.started += instance.OnCrouchC;
+                @CrouchC.performed += instance.OnCrouchC;
+                @CrouchC.canceled += instance.OnCrouchC;
                 @SlowWalk.started += instance.OnSlowWalk;
                 @SlowWalk.performed += instance.OnSlowWalk;
                 @SlowWalk.canceled += instance.OnSlowWalk;
@@ -965,6 +994,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @PauseGameEsc.started += instance.OnPauseGameEsc;
                 @PauseGameEsc.performed += instance.OnPauseGameEsc;
                 @PauseGameEsc.canceled += instance.OnPauseGameEsc;
+                @PauseGameP.started += instance.OnPauseGameP;
+                @PauseGameP.performed += instance.OnPauseGameP;
+                @PauseGameP.canceled += instance.OnPauseGameP;
                 @AttackReleased.started += instance.OnAttackReleased;
                 @AttackReleased.performed += instance.OnAttackReleased;
                 @AttackReleased.canceled += instance.OnAttackReleased;
@@ -977,9 +1009,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ShowTimer.started += instance.OnShowTimer;
                 @ShowTimer.performed += instance.OnShowTimer;
                 @ShowTimer.canceled += instance.OnShowTimer;
-                @PauseGameP.started += instance.OnPauseGameP;
-                @PauseGameP.performed += instance.OnPauseGameP;
-                @PauseGameP.canceled += instance.OnPauseGameP;
             }
         }
     }
@@ -990,6 +1019,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnCrouchC(InputAction.CallbackContext context);
         void OnSlowWalk(InputAction.CallbackContext context);
         void OnLowerXSensitivity(InputAction.CallbackContext context);
         void OnRaiseXSensitivity(InputAction.CallbackContext context);
@@ -1006,10 +1036,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnHoldInteract(InputAction.CallbackContext context);
         void OnPauseGameEsc(InputAction.CallbackContext context);
+        void OnPauseGameP(InputAction.CallbackContext context);
         void OnAttackReleased(InputAction.CallbackContext context);
         void OnGodMode(InputAction.CallbackContext context);
         void OnShowFPSCounter(InputAction.CallbackContext context);
         void OnShowTimer(InputAction.CallbackContext context);
-        void OnPauseGameP(InputAction.CallbackContext context);
     }
 }
