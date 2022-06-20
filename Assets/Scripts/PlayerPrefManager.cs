@@ -351,7 +351,7 @@ public class PlayerPrefManager : MonoBehaviour
         // Resetting player upgrades and xp back to defaults
         PlayerPrefs.SetInt("Skill Points", 0);
         PlayerPrefs.SetInt("Current XP", 0);
-        PlayerPrefs.SetInt("Upgraded Starting Cash", 1000);
+        PlayerPrefs.SetInt("Upgraded Starting Cash", 250);
         PlayerPrefs.SetInt("Flashbang Capacity", 2);
         PlayerPrefs.SetInt("Sensor Grenade Capacity", 2);
         PlayerPrefs.SetInt("Player Starting Health", 100);
