@@ -32,7 +32,7 @@ public class EnemyMelee : MonoBehaviour
 
     public void DealDamage()
     {
-        if (agent.sqrDistance <= 4)
+        if (agent.sqrDistance <= 6)
         {
             DISystem.createIndicator(transform);
             GameManager.Instance.playerScript.TakeDamage(damage);
