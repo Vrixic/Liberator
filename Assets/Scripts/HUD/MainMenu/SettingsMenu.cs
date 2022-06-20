@@ -64,15 +64,17 @@ public class SettingsMenu : MonoBehaviour
     }
     public void OnUpdateVoicePromptToggle()
     {
-        if (!voicePromptToggle.isOn)
+        if (voicePromptToggle.isOn)
         {
             PlayerPrefs.SetInt("Voice Prompts State", 1);
             PlayerPrefManager.Instance.voicePromptState = 1;
+            Debug.Log("voice prompt state when checked: " + PlayerPrefs.GetInt("Voice Prompts State"));
         }
-        else if (voicePromptToggle.isOn)
+        else if (!voicePromptToggle.isOn)
         {
             PlayerPrefs.SetInt("Voice Prompts State", 0);
             PlayerPrefManager.Instance.voicePromptState = 0;
+            Debug.Log("voice prompt state when not checked: " + PlayerPrefs.GetInt("Voice Prompts State"));
         }
 
     }

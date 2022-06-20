@@ -248,7 +248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 599, y: 675}
+  m_AnchoredPosition: {x: 624, y: 584}
   m_SizeDelta: {x: 131.4617, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8443317438627615901
@@ -2135,6 +2135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7327209427082029991}
   - component: {fileID: 7327209427082029985}
+  - component: {fileID: 5474851148043909741}
   m_Layer: 5
   m_Name: BrightnessSlider
   m_TagString: Untagged
@@ -2228,6 +2229,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5474851148043909741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327209427082029988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7b895a927c27d4688f025a645abcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7327209427083058610
 GameObject:
   m_ObjectHideFlags: 0
@@ -4267,6 +4280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7327209427776823304}
   - component: {fileID: 7327209427776823307}
+  - component: {fileID: 575323571164278522}
   m_Layer: 5
   m_Name: MasterVolumeSlider
   m_TagString: Untagged
@@ -4360,6 +4374,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &575323571164278522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327209427776823305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7b895a927c27d4688f025a645abcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7327209427886018319
 GameObject:
   m_ObjectHideFlags: 0
@@ -4446,6 +4472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7327209427894197799}
   - component: {fileID: 7327209427894197793}
+  - component: {fileID: 7385255367468981652}
   m_Layer: 5
   m_Name: SensitivitySlider
   m_TagString: Untagged
@@ -4539,6 +4566,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7385255367468981652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327209427894197796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7b895a927c27d4688f025a645abcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7327209427903566624
 GameObject:
   m_ObjectHideFlags: 0
@@ -5450,6 +5489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7327209428296609698}
   - component: {fileID: 7327209428296609699}
+  - component: {fileID: 512505700913210510}
   m_Layer: 5
   m_Name: MusicVolumeSlider
   m_TagString: Untagged
@@ -5543,6 +5583,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &512505700913210510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327209428296609696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7b895a927c27d4688f025a645abcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7327209428300376867
 GameObject:
   m_ObjectHideFlags: 0
@@ -5665,6 +5717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7327209428341421931}
   - component: {fileID: 7327209428341421928}
+  - component: {fileID: 8724368348975284347}
   m_Layer: 5
   m_Name: SFXVolumeSlider
   m_TagString: Untagged
@@ -5758,6 +5811,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8724368348975284347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327209428341421929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7b895a927c27d4688f025a645abcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7327209428349371911
 GameObject:
   m_ObjectHideFlags: 0
