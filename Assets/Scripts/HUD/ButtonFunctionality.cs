@@ -110,6 +110,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         #region Old Restart code (Commented Out)
 
+        TimerUI.Instance.ResetTimer();
         // Resume time
         Time.timeScale = 1f;
         // Get instance of Pause menu and turn it off

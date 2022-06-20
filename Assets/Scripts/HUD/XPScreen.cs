@@ -24,6 +24,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
     [SerializeField] private TextMeshProUGUI totalSkillPointsText;
 
+    [SerializeField] private TextMeshProUGUI timeText;
+
     /* prefab of enemy text holder */
     [SerializeField] private GameObject enemyUIPrefab;
 
@@ -94,17 +96,25 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         {
             headerText.text = "You Win!";
             buttonText.text = "Main Menu";
+
+            timeText.enabled = false;
         }
         else if (GameManager.Instance.GameWon)
         {
             headerText.text = "Success";
             buttonText.text = "Next";
+
+            float time = TimerUI.Instance.TimePastFromTimeStamp();
+            int seconds = (int)(time % 60);
+            timeText.text = ((int)(time / 60f)).ToString() + (seconds < 10 ? ":0" : ":") + seconds;
         }
         else
         {
             retryButton.SetActive(true);
             buttonText.text = "Main Menu";
             headerText.text = "";
+
+            timeText.enabled = false;
         }
 
         // set the bars value to the previous xp earned from last run
@@ -187,6 +197,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
             SkipAllAnimations();
             return;
         }
+
+        TimerUI.Instance.ResetTimer();
 
         // Resume time
         Time.timeScale = 1f;

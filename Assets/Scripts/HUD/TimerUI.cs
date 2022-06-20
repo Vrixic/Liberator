@@ -10,7 +10,9 @@ public class TimerUI : MonoBehaviour
 
     private TextMeshProUGUI mText;
 
+    private float mTime = 0f;
     private int mSeconds = 0;
+    private float mTimeStamp = 0f;
     // Start is called before the first frame update
 
     private void Awake()
@@ -25,35 +27,42 @@ public class TimerUI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        mSeconds = (int)(Time.time % 60);
-        if (mSeconds > 10)
+        mTime += Time.fixedDeltaTime;
+
+        mSeconds = (int)(mTime % 60);
+        if (mSeconds > 9)
         {
-            mText.text = ((int)(Time.time / 60f)).ToString() + ":" + mSeconds.ToString();
+            mText.text = ((int)(mTime / 60f)).ToString() + ":" + mSeconds.ToString();
         }
         else
         {
-            mText.text = ((int)(Time.time / 60f)).ToString() + ":0" + mSeconds.ToString();
+            mText.text = ((int)(mTime / 60f)).ToString() + ":0" + mSeconds.ToString();
         }
-        
     }
 
     public void Toggle()
     {
-        gameObject.SetActive(!gameObject.activeInHierarchy);
-        //if (gameObject.activeSelf)
-        //    Hide();
-        //else
-        //    Show();
+        gameObject.SetActive(gameObject.activeInHierarchy);
     }
 
-    private void Show()
+    private void TimeStamp()
     {
-        gameObject.SetActive(false);
+        mTimeStamp = Time.time;
     }
-    private void Hide()
+
+    public float TimePastFromTimeStamp()
     {
-        gameObject.SetActive(false);
+        float deltaTime = mTime - mTimeStamp;
+        TimeStamp();
+
+        return deltaTime;
+    }
+
+    public void ResetTimer()
+    {
+        mTime = 0f;
+        mTimeStamp = 0f;
     }
 }
