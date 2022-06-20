@@ -13,7 +13,6 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     GameObject reticle;
     int shotgunAmmoCapacity;
     int SmallAmmoCapacity;
-    bool nextLevelPressedOnce = false;
     void Start()
     {
         // Get instances of pause menu, reticle and Virtual cam
@@ -532,7 +531,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void ReturnToMainMenu()
     {
-        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(0);
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("MainMenuScene");
         PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
         ScreenManager.Instance.ShowScreen("Transition_Screen");
         //SceneManager.LoadScene(0);
@@ -541,7 +540,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     //temporary for alpha sprint
     public void LoadShowcaseLevel()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("ShowCase_Scene");
     }
 
 }

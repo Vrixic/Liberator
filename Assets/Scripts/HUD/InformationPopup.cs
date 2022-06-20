@@ -26,7 +26,7 @@ public class InformationPopup : MonoBehaviour
         {
             StopAllPrompts();
         }
-        else
+        else if (PlayerPrefManager.Instance.voicePromptState == 1)
         {
             ResumeAllPrompts();
         }

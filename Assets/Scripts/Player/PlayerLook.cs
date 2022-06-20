@@ -13,6 +13,7 @@ public class PlayerLook : MonoBehaviour
 
     public void ProcessLook(Vector2 input)
     {
+        if (GameManager.Instance.playerScript.isPlayerDead()) return;
         //recieve mouse input from the user
         currentInputVector.x = input.x * xSensitivity * Time.timeScale;// * Time.deltaTime;
         currentInputVector.y = input.y * ySensitivity * Time.timeScale;// * Time.deltaTime;

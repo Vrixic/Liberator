@@ -558,7 +558,6 @@ public class Player : MonoBehaviour
         characterController.enabled = false;
         bPlayerDead = true;
 
-        DeactivateWeapon(m_CurrentWeaponIndex);
         DeactivateSensor();
         DeactivateFlashbang();
         GameManager.Instance.GameWon = false;
@@ -578,6 +577,7 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
+        DeactivateWeapon(m_CurrentWeaponIndex);
         GameManager.Instance.ResetGame();
 
         AmmoManager.Instance.ResetAmmoManager();
@@ -787,7 +787,7 @@ public class Player : MonoBehaviour
 
     bool GameRunningCheck()
     {
-        return Time.timeScale > 0f && !GameManager.Instance.IsUIOverlayVisible;
+        return Time.timeScale > 0f && !GameManager.Instance.IsUIOverlayVisible && !isPlayerDead();
     }
 
     public void UpdateAllThrowablesCountUI()

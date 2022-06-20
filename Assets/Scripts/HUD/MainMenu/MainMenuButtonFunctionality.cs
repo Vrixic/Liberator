@@ -41,7 +41,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     {
         // Loads the game Scene
         ScreenManager.Instance.ShowScreen("Transition_Screen");
-        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(1);
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One");
         PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
 
         PlayerPrefManager.Instance.LoadGame();
@@ -84,7 +84,7 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     public void LoadTutorial()
     {
         ScreenManager.Instance.ShowScreen("Transition_Screen");
-        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(3, LoadSceneMode.Single);
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("TutorialScene", LoadSceneMode.Single);
         PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
 
         PlayerPrefManager.Instance.LoadGame();
