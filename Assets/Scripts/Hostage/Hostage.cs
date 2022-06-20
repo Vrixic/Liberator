@@ -40,11 +40,17 @@ public class Hostage : MonoBehaviour
 
             GameManager.Instance.GameWon = false;
             GameManager.Instance.HostageDied = false;
-            GameManager.Instance.ResetGame();
+
+            Invoke("ResetGame", 0.3f);
 
             return;
         }
 
         EnemyHitFeedbackManager.Instance.ShowHitFeedback(Color.white);
+    }
+
+    public void ResetGame()
+    {
+        GameManager.Instance.ResetGame();
     }
 }

@@ -177,7 +177,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PauseGame",
+                    "name": "PauseGame(Esc)",
                     "type": "Button",
                     "id": "36e29e9a-13f0-4e2a-8dd0-990cc737619b",
                     "expectedControlType": "Button",
@@ -216,6 +216,15 @@
                     "name": "ShowTimer",
                     "type": "Button",
                     "id": "d26daeff-d417-4e80-b788-a7fc61a9b891",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PauseGame(P)",
+                    "type": "Button",
+                    "id": "10c5313a-ca23-48c0-8886-f1e389d4c899",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -556,11 +565,11 @@
                 {
                     "name": "",
                     "id": "765c9e58-0d5d-4633-954f-66e4eecae1a6",
-                    "path": "<Keyboard>/p",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PauseGame",
+                    "action": "PauseGame(Esc)",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -627,6 +636,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShowTimer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcccf1e3-901c-4981-b089-43af8713ed82",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseGame(P)",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

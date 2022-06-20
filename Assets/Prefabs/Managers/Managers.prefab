@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[0].collisionParticleSystem
       value: 
-      objectReference: {fileID: -3249861944807672062, guid: 63d012930b44d614c98d7bc1f24d3b2a, type: 3}
+      objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[1].collisionParticleSystem
       value: 
@@ -279,11 +279,11 @@ PrefabInstance:
       objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[0].impactAudio.volMultiplier
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[1].impactAudio.volMultiplier
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[2].impactAudio.volMultiplier
@@ -291,11 +291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[3].impactAudio.volMultiplier
-      value: 0.8
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[4].impactAudio.volMultiplier
-      value: 0.8
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[5].impactAudio.volMultiplier
@@ -336,7 +336,7 @@ PrefabInstance:
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[0].impactAudio.audio.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
+      objectReference: {fileID: 8300000, guid: 6431c1753b2c58c458113debd619d31e, type: 3}
     - target: {fileID: 5904537738071572407, guid: 27b07632032d6794a8c6a9cbb50b8d16, type: 3}
       propertyPath: meleeImpacts.Array.data[1].impactAudio.audio.Array.data[0]
       value: 
@@ -538,6 +538,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 3277b0a2754c77649a8725423b9720ea, type: 3}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
+      propertyPath: bulletImpacts.Array.data[0].collisionParticleSystem
+      value: 
+      objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
+    - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[1].collisionParticleSystem
       value: 
       objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
@@ -567,7 +571,7 @@ PrefabInstance:
       objectReference: {fileID: 2015157677111975843, guid: 04512d1a1b973a04098f4d9f41b9c32a, type: 3}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[0].impactAudio.volMultiplier
-      value: 0.1
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[1].impactAudio.volMultiplier
@@ -640,7 +644,7 @@ PrefabInstance:
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[0].impactAudio.audio.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 65916663b0da35e4ca01b380eb28927c, type: 3}
+      objectReference: {fileID: 8300000, guid: 3277b0a2754c77649a8725423b9720ea, type: 3}
     - target: {fileID: 7934257650302403585, guid: c6dbd3cc195b01a48af860a33b8ef9fd, type: 3}
       propertyPath: bulletImpacts.Array.data[1].impactAudio.audio.Array.data[0]
       value: 

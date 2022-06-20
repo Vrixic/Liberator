@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class HealthPickup : IPickable
 {
-    [SerializeField] int restoreAmount;
-
     public override void OnPickup(GameObject picker)
     {
         base.OnPickup(picker);
