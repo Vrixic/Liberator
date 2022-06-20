@@ -190,15 +190,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 73181332256833953, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.57
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 73181332256833953, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8169397
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 73181332256833953, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 73181332256833953, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_LocalRotation.w
@@ -206,15 +206,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 73181332256833953, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 73181332256833953, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 73181332256833953, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 73181332256833953, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -251,6 +251,26 @@ PrefabInstance:
     - target: {fileID: 73181333248421344, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567501891342150695, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567501891342150703, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567501891342150713, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567501891342150719, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567501891342150733, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1567501891342151133, guid: b38a1a6246e7ad54b88f1e0551008486, type: 3}
       propertyPath: m_Name
@@ -336,6 +356,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miniMapLocator: {fileID: 176942370}
+--- !u!114 &1618675421756066566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812428721721932882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bad900edcba1464d9850bb9c5c0d529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRate: 0.5
+  damage: 25
 --- !u!114 &3159087118973286974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +434,7 @@ MonoBehaviour:
   aiName: Juggernaut
   aimDirection: {x: 0, y: 0, z: 0}
   disableEnemyInterval: 2
+  alreadyNavigatingToPlayer: 0
   isFlashed: 0
   isStunned: 0
   isInHitReaction: 0
@@ -425,13 +460,15 @@ MonoBehaviour:
   heightOffsetFromOrigin: 1
   meshColor: {r: 1, g: 0, b: 0, a: 1}
   scanFrequency: 30
-  layers:
+  playerLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   occlusionLayers:
     serializedVersion: 2
     m_Bits: 32
   raycastOrigin: {fileID: 1341411492}
+  playerInRange: 0
+  playerFoundByRaycast: 0
 --- !u!195 &5352958576046171734
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -454,17 +491,3 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1618675421756066566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6812428721721932882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bad900edcba1464d9850bb9c5c0d529, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRate: 0.5
-  damage: 25
