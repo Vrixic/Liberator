@@ -49,6 +49,7 @@ public class Knife : BaseMelee
         //Debug.DrawLine(raycastOrigin.position, raycastOrigin.position + GameManager.Instance.mainCamera.transform.forward * knifeHitRange, Color.red, 2f);
         if (Physics.Raycast(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, knifeHitRange, raycastLayers))
         {
+            Hostage hostage;
             //Debug.Log(hitInfo.collider.tag);
             if (hitInfo.collider.CompareTag("Hitbox"))
             {
@@ -62,6 +63,13 @@ public class Knife : BaseMelee
                     //Debug.Log("Head Shot");
                     hitInfo.collider.GetComponentInParent<Health>().TakeDamage(100.0f, transform.forward);
                 }
+            }
+            else if ((hostage = hitInfo.collider.GetComponentInParent<Hostage>()) != null)
+            {
+                if (hitInfo.collider.GetComponent<Headshot_Hitbox>() != null)
+                    hostage.TakeDamage((int)(GetDamage() * GetHeadShotDamageMultiplier()));
+                else
+                    hostage.TakeDamage(GetDamage());
             }
 
             MeleeImpactManager.Instance.SpawnMeleeImpact(hitInfo.point, hitInfo.normal, hitInfo.collider.tag);
