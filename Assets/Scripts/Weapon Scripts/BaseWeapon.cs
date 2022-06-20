@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BaseWeapon :MonoBehaviour//, IWeapon
+public class BaseWeapon : MonoBehaviour//, IWeapon
 {
     [Header("BaseWeapon")]
 
@@ -114,7 +114,7 @@ public class BaseWeapon :MonoBehaviour//, IWeapon
 
     public virtual void OnAnimationEvent_AttackEnd() { bIsAttacking = false; }
 
-    public virtual void StopAttacking() {  }
+    public virtual void StopAttacking() { }
 
     /*
     * for override purposes
@@ -289,5 +289,14 @@ public class BaseWeapon :MonoBehaviour//, IWeapon
     public virtual int GetRecoilPatternIndex()
     {
         return 0;
+    }
+    public float GetFireRate()
+    {
+        return attackRate;
+    }
+
+    public void SetFireRate(float fireRate)
+    {
+         attackRate = fireRate;
     }
 }

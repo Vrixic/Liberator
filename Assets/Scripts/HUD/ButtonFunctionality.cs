@@ -163,7 +163,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             GameManager.Instance.openShopInteractText.SetActive(false);
         }
         SetUpgradeWeaponIcon();
-
+        UpdateUpgradeWeaponText();
         //EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject);
 
         UpdateCashCountShopUi();
@@ -360,11 +360,39 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             if (!GameManager.Instance.isCurrentWeaponUpgraded)
             {
+                WeaponID weaponID = GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID();
                 // Debug.Log(GameManager.Instance.playerScript.GetCurrentEquippedGun() + " Damage before Upgrade: " + GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage());
                 GameManager.Instance.CurrentCash -= 750;
                 UpdateCashCountShopUi();
-                // Gets current weapon equipped and increases the damage of the gun by 25
-                GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 25);
+                // Gets current weapon equipped and increases the damage of the guns
+                switch (weaponID)
+                {
+                    case WeaponID.Pistol:
+                        {
+                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 10);
+                            break;
+                        }
+                    case WeaponID.Revolver:
+                        {
+                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetFireRate(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetFireRate() * .8f);
+                            break;
+                        }
+                    case WeaponID.Automatic_Rifle:
+                        {
+                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 25);
+                            break;
+                        }
+                    case WeaponID.Automatic_Rifle3:
+                        {
+                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 25);
+                            break;
+                        }
+                    case WeaponID.Shotgun:
+                        {
+                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 25);
+                            break;
+                        }
+                }
                 // Sets a bool that stores whether a weapon has been upgraded or not then turns on the text to represent the current weapon has been upgraded
                 GameManager.Instance.isCurrentWeaponUpgraded = true;
                 GameManager.Instance.weaponMaxUpgradeText.enabled = true;
@@ -392,20 +420,35 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             GameManager.Instance.shopCanvas.SetActive(true);
             SetUpgradeWeaponIcon();
             // Dynamically change Weapon Upgrade Text depending on whether the weapon has been upgraded or not
-            if (GameManager.Instance.isCurrentWeaponUpgraded == true)
-            {
-                GameManager.Instance.weaponMaxUpgradeText.enabled = true;
-                GameManager.Instance.weaponUpgradeText.enabled = false;
-            }
-            else
-            {
-                GameManager.Instance.weaponMaxUpgradeText.enabled = false;
-                GameManager.Instance.weaponUpgradeText.enabled = true;
-            }
+            UpdateUpgradeWeaponText();
 
             UpdateCashCountShopUi();
         }
 
+    }
+
+    public void UpdateUpgradeWeaponText()
+    {
+
+        if (GameManager.Instance.isCurrentWeaponUpgraded == true)
+        {
+            GameManager.Instance.weaponMaxUpgradeText.enabled = true;
+            GameManager.Instance.weaponUpgradeText.enabled = false;
+        }
+        else
+        {
+            GameManager.Instance.weaponMaxUpgradeText.enabled = false;
+            GameManager.Instance.weaponUpgradeText.enabled = true;
+
+            if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() == WeaponID.Revolver)
+            {
+                GameManager.Instance.weaponUpgradeText.text = "Upgrade Weapon Fire Rate \n$750";
+            }
+            else
+            {
+                GameManager.Instance.weaponUpgradeText.text = "Upgrade Current Gun Damage \n$750";
+            }
+        }
     }
     public void ShowBuyGunsTab()
     {

@@ -139,6 +139,8 @@ MonoBehaviour:
   - Shop is available after you complete a mission.
   - Earn renown to spend in the renown shop by leveling up with xp
   - In the renown shop in the main menu, you can purchase various permanent buffs
+  - Keep your eyes up, maybe shooting those red lights may do something
+  - Keep an eye out for explosive barrels. Maybe you can do some massive damage
 --- !u!1001 &1204424411170738214
 PrefabInstance:
   m_ObjectHideFlags: 0
