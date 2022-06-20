@@ -86,9 +86,10 @@ public class InputManager : MonoBehaviour
         // DEBUG-----------------------------------------------------------------------------------
 
         onFoot.ShowFPSCounter.performed += ctx => GameManager.Instance.ToggleFpsCounter();
+        onFoot.ShowTimer.performed += ctx => TimerUI.Instance.Toggle();
         //onFoot.Test_PlayerDamage.performed += ctx => player.TakeDamageTen();
 
-        onFoot.ShowCaseLevel.performed += ctx => buttonFunc.LoadShowcaseLevel();
+        //onFoot.ShowCaseLevel.performed += ctx => buttonFunc.LoadShowcaseLevel();
 
         //onFoot.GodMode.performed += ctx => player.ToggleGodMode();
     }
