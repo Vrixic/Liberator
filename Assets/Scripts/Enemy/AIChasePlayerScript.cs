@@ -71,6 +71,7 @@ public class AIChasePlayerScript : AIState
     IEnumerator WaitForReactionTime(AIAgent agent)
     {
         yield return new WaitForSeconds(0.3f);
-        agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
+        if(agent.currentState != AIStateID.Flashed && agent.currentState != AIStateID.Death)
+            agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
     }
 }
