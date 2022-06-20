@@ -14,6 +14,6 @@ public class SliderValueChangedAudio : MonoBehaviour, IPointerUpHandler
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        AudioManager.Instance.PlaySoundAtVolume(slider.value, "TestSFX");
+        AudioManager.Instance.PlaySoundAtVolume(PlayerPrefManager.Instance.sfxVolume, "TestSFX");
     }
 }
