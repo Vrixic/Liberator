@@ -41,7 +41,15 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
     {
         // Loads the game Scene
         ScreenManager.Instance.ShowScreen("Transition_Screen");
-        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One");
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One_WBGL");
+        }
+        else
+        {
+            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One");
+        }
+
         PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
 
         PlayerPrefManager.Instance.LoadGame();
