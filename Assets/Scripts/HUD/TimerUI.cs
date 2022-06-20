@@ -19,7 +19,7 @@ public class TimerUI : MonoBehaviour
 
     private void Awake()
     {
-        if (mInstance != this)
+        if (mInstance == null)
             mInstance = this;
     }
 
