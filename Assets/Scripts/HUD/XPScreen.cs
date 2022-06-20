@@ -97,7 +97,9 @@ public class XPScreen : BaseScreen, IPointerClickHandler
             headerText.text = "You Win!";
             buttonText.text = "Main Menu";
 
-            timeText.enabled = false;
+            float time = TimerUI.Instance.TimePastFromTimeStamp();
+            int seconds = (int)(time % 60);
+            timeText.text = ((int)(time / 60f)).ToString() + (seconds < 10 ? ":0" : ":") + seconds;
         }
         else if (GameManager.Instance.GameWon)
         {
