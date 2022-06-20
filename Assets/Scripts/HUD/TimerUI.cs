@@ -10,6 +10,8 @@ public class TimerUI : MonoBehaviour
 
     private TextMeshProUGUI mText;
 
+    private bool bIsShowing = true;
+
     private float mTime = 0f;
     private int mSeconds = 0;
     private float mTimeStamp = 0f;
@@ -44,7 +46,8 @@ public class TimerUI : MonoBehaviour
 
     public void Toggle()
     {
-        gameObject.SetActive(gameObject.activeInHierarchy);
+        bIsShowing = !bIsShowing;
+        gameObject.SetActive(bIsShowing);
     }
 
     private void TimeStamp()
