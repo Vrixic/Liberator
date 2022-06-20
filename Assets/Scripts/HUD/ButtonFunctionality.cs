@@ -540,7 +540,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     //temporary for alpha sprint
     public void LoadShowcaseLevel()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("ShowCase_Scene");
     }
 
 }
