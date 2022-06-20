@@ -221,7 +221,7 @@ public class PlayerMotor : MonoBehaviour
         if (isGrounded && playerVelocity.y < 0)
             playerVelocity.y = -4f;
         else if (Physics.Raycast(raycastOrigin.position, Vector3.up, controller.height * 0.5f + 0.1f, ignoreRaycastLayers))
-            playerVelocity.y = gravity * 2.5f * Time.deltaTime;
+            playerVelocity.y += gravity * 2.5f * Time.deltaTime;
                
 
         //apply the downward vector(which exclusively deals with Y axis movement(jumping and gravity)

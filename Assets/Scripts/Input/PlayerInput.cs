@@ -217,15 +217,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ShowCaseLevel"",
-                    ""type"": ""Button"",
-                    ""id"": ""9f41b0bd-2a5c-49e4-9028-02a238a6371b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""GodMode"",
                     ""type"": ""Button"",
                     ""id"": ""e76c360e-c53f-4cf0-a3f3-cf14875c83aa"",
@@ -238,6 +229,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": ""ShowFPSCounter"",
                     ""type"": ""Button"",
                     ""id"": ""0c83bf5c-61a7-4125-8392-183ed80522e3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowTimer"",
+                    ""type"": ""Button"",
+                    ""id"": ""d26daeff-d417-4e80-b788-a7fc61a9b891"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -402,7 +402,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d9202dfa-ac04-4c69-b42c-50c88883cb4a"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -578,7 +578,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""765c9e58-0d5d-4633-954f-66e4eecae1a6"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -605,17 +605,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""AttackReleased"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e76cb149-0dc0-4311-852e-8ee5b9f61528"",
-                    ""path"": ""<Keyboard>/f1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShowCaseLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -651,6 +640,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""ShowFPSCounter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""658d4a8f-f05b-4522-824d-93832f468e70"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowTimer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -680,9 +680,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_HoldInteract = m_OnFoot.FindAction("HoldInteract", throwIfNotFound: true);
         m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
         m_OnFoot_AttackReleased = m_OnFoot.FindAction("AttackReleased", throwIfNotFound: true);
-        m_OnFoot_ShowCaseLevel = m_OnFoot.FindAction("ShowCaseLevel", throwIfNotFound: true);
         m_OnFoot_GodMode = m_OnFoot.FindAction("GodMode", throwIfNotFound: true);
         m_OnFoot_ShowFPSCounter = m_OnFoot.FindAction("ShowFPSCounter", throwIfNotFound: true);
+        m_OnFoot_ShowTimer = m_OnFoot.FindAction("ShowTimer", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -763,9 +763,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_HoldInteract;
     private readonly InputAction m_OnFoot_PauseGame;
     private readonly InputAction m_OnFoot_AttackReleased;
-    private readonly InputAction m_OnFoot_ShowCaseLevel;
     private readonly InputAction m_OnFoot_GodMode;
     private readonly InputAction m_OnFoot_ShowFPSCounter;
+    private readonly InputAction m_OnFoot_ShowTimer;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -791,9 +791,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @HoldInteract => m_Wrapper.m_OnFoot_HoldInteract;
         public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
         public InputAction @AttackReleased => m_Wrapper.m_OnFoot_AttackReleased;
-        public InputAction @ShowCaseLevel => m_Wrapper.m_OnFoot_ShowCaseLevel;
         public InputAction @GodMode => m_Wrapper.m_OnFoot_GodMode;
         public InputAction @ShowFPSCounter => m_Wrapper.m_OnFoot_ShowFPSCounter;
+        public InputAction @ShowTimer => m_Wrapper.m_OnFoot_ShowTimer;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -866,15 +866,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @AttackReleased.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
                 @AttackReleased.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
                 @AttackReleased.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
-                @ShowCaseLevel.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowCaseLevel;
-                @ShowCaseLevel.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowCaseLevel;
-                @ShowCaseLevel.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowCaseLevel;
                 @GodMode.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGodMode;
                 @GodMode.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGodMode;
                 @GodMode.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGodMode;
                 @ShowFPSCounter.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowFPSCounter;
                 @ShowFPSCounter.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowFPSCounter;
                 @ShowFPSCounter.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowFPSCounter;
+                @ShowTimer.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowTimer;
+                @ShowTimer.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowTimer;
+                @ShowTimer.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnShowTimer;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -942,15 +942,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @AttackReleased.started += instance.OnAttackReleased;
                 @AttackReleased.performed += instance.OnAttackReleased;
                 @AttackReleased.canceled += instance.OnAttackReleased;
-                @ShowCaseLevel.started += instance.OnShowCaseLevel;
-                @ShowCaseLevel.performed += instance.OnShowCaseLevel;
-                @ShowCaseLevel.canceled += instance.OnShowCaseLevel;
                 @GodMode.started += instance.OnGodMode;
                 @GodMode.performed += instance.OnGodMode;
                 @GodMode.canceled += instance.OnGodMode;
                 @ShowFPSCounter.started += instance.OnShowFPSCounter;
                 @ShowFPSCounter.performed += instance.OnShowFPSCounter;
                 @ShowFPSCounter.canceled += instance.OnShowFPSCounter;
+                @ShowTimer.started += instance.OnShowTimer;
+                @ShowTimer.performed += instance.OnShowTimer;
+                @ShowTimer.canceled += instance.OnShowTimer;
             }
         }
     }
@@ -978,8 +978,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnHoldInteract(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
         void OnAttackReleased(InputAction.CallbackContext context);
-        void OnShowCaseLevel(InputAction.CallbackContext context);
         void OnGodMode(InputAction.CallbackContext context);
         void OnShowFPSCounter(InputAction.CallbackContext context);
+        void OnShowTimer(InputAction.CallbackContext context);
     }
 }
