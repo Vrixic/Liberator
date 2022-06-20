@@ -515,4 +515,6 @@ public class BaseGun : BaseWeapon
     {
         return bulletRange;
     }
+
+  
 }

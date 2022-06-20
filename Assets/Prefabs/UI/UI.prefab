@@ -832,6 +832,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopCanvases
       objectReference: {fileID: 0}
+    - target: {fileID: 8226261324107425019, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
+      propertyPath: m_text
+      value: 'Upgrade Current Gun Damage
+
+        $750'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3360ec9d50bcf1543812c810b04aff60, type: 3}
 --- !u!4 &5883316308512061367 stripped
