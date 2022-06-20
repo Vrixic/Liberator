@@ -49,7 +49,7 @@ public class TimerUI : MonoBehaviour
 
     private void TimeStamp()
     {
-        mTimeStamp = Time.time;
+        mTimeStamp = mTime;
     }
 
     public float TimePastFromTimeStamp()
