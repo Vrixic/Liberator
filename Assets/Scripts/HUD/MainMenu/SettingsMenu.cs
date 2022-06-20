@@ -64,17 +64,17 @@ public class SettingsMenu : MonoBehaviour
     }
     public void OnUpdateVoicePromptToggle()
     {
-        if (voicePromptToggle.isOn)
+        if (!voicePromptToggle.isOn)
         {
             PlayerPrefs.SetInt("Voice Prompts State", 1);
             PlayerPrefManager.Instance.voicePromptState = 1;
         }
-        else if (!voicePromptToggle.isOn)
+        else if (voicePromptToggle.isOn)
         {
             PlayerPrefs.SetInt("Voice Prompts State", 0);
             PlayerPrefManager.Instance.voicePromptState = 0;
-
         }
+
     }
 
     #region Update Sliders and Text Fields Methods
