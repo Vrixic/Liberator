@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "W A S D - Move player\nE - Interact \r\nHold E - Interact with Hostage\nR
-    - Reload weapon\r\nF - Equip FlashBang\r\nG - Equip Sensor Grenade\r\nEscape
+    - Reload weapon\r\nF - Equip FlashBang\r\nG - Equip Sensor Grenade\r\nEscape/P
     - Pause Game\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c6e06e88f2e960e4cb97084a105f30c1, type: 2}
@@ -205,7 +205,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Space - Jump
 
-    Ctrl - Crouch
+    Ctrl/C - Crouch
 
     Shift - Slow Walk
 

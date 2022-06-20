@@ -49,6 +49,7 @@ public class InputManager : MonoBehaviour
         //basically just says "Hey, if the player jumps call this function"
         onFoot.Jump.performed += ctx => motor.Jump();
         onFoot.Crouch.performed += ctx => motor.Crouch();
+        onFoot.CrouchC.performed += ctx => motor.Crouch();
         onFoot.SlowWalk.performed += ctx => motor.SlowWalk();
         onFoot.LowerXSensitivity.performed += ctx => look.LowerXSensitivity();
         onFoot.RaiseXSensitivity.performed += ctx => look.RaiseXSensitivity();
@@ -93,7 +94,7 @@ public class InputManager : MonoBehaviour
 
         //onFoot.ShowCaseLevel.performed += ctx => buttonFunc.LoadShowcaseLevel();
 
-        //onFoot.GodMode.performed += ctx => player.ToggleGodMode();
+        onFoot.GodMode.performed += ctx => player.ToggleGodMode();
     }
 
     private void Start()

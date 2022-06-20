@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Crouch(C)",
+                    "type": "Button",
+                    "id": "d5134b08-4013-473a-9d55-160d20cceac8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "SlowWalk",
                     "type": "Button",
                     "id": "c93ee351-d62d-4d56-962a-c8984643efbf",
@@ -186,6 +195,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "PauseGame(P)",
+                    "type": "Button",
+                    "id": "10c5313a-ca23-48c0-8886-f1e389d4c899",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "AttackReleased",
                     "type": "Button",
                     "id": "1562614f-deb4-451a-9365-2f14faf6fec1",
@@ -216,15 +234,6 @@
                     "name": "ShowTimer",
                     "type": "Button",
                     "id": "d26daeff-d417-4e80-b788-a7fc61a9b891",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "PauseGame(P)",
-                    "type": "Button",
-                    "id": "10c5313a-ca23-48c0-8886-f1e389d4c899",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -389,7 +398,7 @@
                 {
                     "name": "",
                     "id": "d9202dfa-ac04-4c69-b42c-50c88883cb4a",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -647,6 +656,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseGame(P)",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8bb19262-ba33-474c-bb88-8bc38d33e066",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch(C)",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
