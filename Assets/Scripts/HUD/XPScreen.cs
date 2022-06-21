@@ -93,9 +93,18 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
         // Update header text
         if (bFullGameWon)
-        {
+        {            
             headerText.text = "You Win!";
-            buttonText.text = "Main Menu";
+
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                retryButton.SetActive(false);
+                buttonText.text = "Leaderboard";
+            }
+            else
+            {
+                buttonText.text = "Main Menu";
+            }
 
             float time = TimerUI.Instance.TimePastFromTimeStamp();
             int seconds = (int)(time % 60);
@@ -112,16 +121,9 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
         else
         {
-            if (Application.platform == RuntimePlatform.WebGLPlayer)
-            {
-                retryButton.SetActive(false);
-                buttonText.text = "Leaderboard";
-            }
-            else
-            {
-                retryButton.SetActive(true);
-                buttonText.text = "Main Menu";
-            }
+            retryButton.SetActive(true);
+
+            buttonText.text = "Main Menu";
             headerText.text = "";
 
             timeText.enabled = false;
@@ -253,7 +255,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
         else
         {
-            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            if (Application.platform == RuntimePlatform.WebGLPlayer && bFullGameWon)
             {
                 ScreenManager.Instance.HideScreen("XP_Screen");
                 ScreenManager.Instance.ShowScreen("Leaderboard_Screen");
