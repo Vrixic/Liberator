@@ -153,6 +153,10 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
         Time.timeScale = 0f;
 
+        // Disable time and fps counter
+        GameManager.Instance.fpsCounter.Hide();
+        TimerUI.Instance.Hide();
+
         // Disables virtual camera so player can not look around in game
         if (GameManager.Instance.virtualCam != null)
             GameManager.Instance.virtualCam.SetActive(false);
@@ -183,6 +187,11 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         // Set Cursor state back to locked and turn visibility off
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // Set fps counter and timer to their previous state before opening shop
+        GameManager.Instance.fpsCounter.SetToLastState();
+        TimerUI.Instance.SetToLastState();
+
         // Resumes time
         Time.timeScale = 1f;
         // Re Enables players ability to look around and disables the Pause menu UI image

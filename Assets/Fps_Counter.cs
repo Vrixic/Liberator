@@ -6,6 +6,7 @@ using UnityEngine;
 public class Fps_Counter : MonoBehaviour
 {
     TextMeshProUGUI m_FPSText;
+    bool bLastState = false;
 
     private void Start()
     {
@@ -21,5 +22,16 @@ public class Fps_Counter : MonoBehaviour
     public void ToggleCounterDisplay()
     {
         m_FPSText.enabled = !m_FPSText.enabled;
+    }
+
+    public void Hide()
+    {
+        bLastState = m_FPSText.enabled;
+        m_FPSText.enabled = false;
+    }
+
+    public void SetToLastState()
+    {
+        m_FPSText.enabled = bLastState;
     }
 }

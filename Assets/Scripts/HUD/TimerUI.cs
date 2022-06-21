@@ -11,6 +11,7 @@ public class TimerUI : MonoBehaviour
     private TextMeshProUGUI mText;
 
     private bool bIsShowing = true;
+    private bool bLastState = false;
 
     private float mTime = 0f;
     private int mSeconds = 0;
@@ -47,6 +48,19 @@ public class TimerUI : MonoBehaviour
     public void Toggle()
     {
         bIsShowing = !bIsShowing;
+        gameObject.SetActive(bIsShowing);
+    }
+
+    public void Hide()
+    {
+        bLastState = bIsShowing;
+        bIsShowing = false;
+        gameObject.SetActive(bIsShowing);
+    }
+
+    public void SetToLastState()
+    {
+        bIsShowing = bLastState;
         gameObject.SetActive(bIsShowing);
     }
 
