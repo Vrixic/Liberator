@@ -146,7 +146,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     }
 
     #endregion
-  
+
     #endregion
 
     #region ShopMenu
@@ -164,6 +164,12 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         // Disable time and fps counter
         GameManager.Instance.fpsCounter.Hide();
         TimerUI.Instance.Hide();
+
+        // swaps to gun if playe enters shop with knife equipped
+        if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID() == WeaponID.Knife)
+        {
+            GameManager.Instance.playerScript.EquipNextWeapon();
+        }
 
         // Disables virtual camera so player can not look around in game
         if (GameManager.Instance.virtualCam != null)
@@ -218,7 +224,10 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     }
     private void SetUpgradeWeaponIcon()
     {
-        WeaponID weaponID = GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID();
+        WeaponID weaponID = GameManager.Instance.playerScript.GetCurrentEquippedWeapon().GetWeaponID();
+
+
+
         if (weaponID != WeaponID.Knife)
         {
             GameManager.Instance.weaponUpgradeButton.GetComponent<Image>().sprite = GameManager.Instance.gunIcon.sprite;

@@ -117,7 +117,11 @@ public class PlayerInteract : MonoBehaviour
                 else if(currentHit.collider.CompareTag("Shop"))
                 {
                     currentInteractPrompt = GameManager.Instance.openShopInteractText;
-                    currentInteractPrompt.SetActive(true);
+
+                    if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().CanSwitchWeapon())
+                        currentInteractPrompt.SetActive(true);
+                    else
+                        currentInteractPrompt.SetActive(false);
                 }
                 else //if not an interactable object
                     currentInteractPrompt.SetActive(false);
