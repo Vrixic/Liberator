@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LeaderboardScreen : BaseScreen
 {
     private const int ID = 3838;
-    private const int MAX_SCORES = 5;    
+    private const int MAX_SCORES = 5;
 
     //[SerializeField] private TMP_InputField memberID;
+    [SerializeField] private Button submitButton;
+    [SerializeField] private TextMeshProUGUI mainMenuButtonText;
     [SerializeField] private TextMeshProUGUI[] textHolders;
 
     private bool bHasScoreBeenSubmitted = false;
@@ -25,13 +28,24 @@ public class LeaderboardScreen : BaseScreen
     {
         base.Show();
 
-        GameManager.Instance.IsUIOverlayVisible = true;
-        GameManager.Instance.isXPScreenActive = true;
-        GameManager.Instance.canOpenPauseMenu = false;
-
         // unlock mouse 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        if(SceneManager.GetActiveScene().name == "MainMenuScene")
+        {
+            submitButton.gameObject.SetActive(false);
+            mainMenuButtonText.text = "Close";
+        }
+        else
+        {
+            submitButton.gameObject.SetActive(true);
+            mainMenuButtonText.text = "Main Menu";
+
+            GameManager.Instance.IsUIOverlayVisible = true;
+            GameManager.Instance.isXPScreenActive = true;
+            GameManager.Instance.canOpenPauseMenu = false;
+        }
 
         RefreshScores();
     }
@@ -46,9 +60,16 @@ public class LeaderboardScreen : BaseScreen
 
     public void OnMainMenuButtonClick()
     {
-        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("MainMenuScene");
-        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
-        ScreenManager.Instance.ShowScreen("Transition_Screen");
+        if (SceneManager.GetActiveScene().name == "MainMenuScene")
+        {
+            ScreenManager.Instance.HideScreen(screenName);
+        }
+        else
+        {
+            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("MainMenuScene");
+            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+            ScreenManager.Instance.ShowScreen("Transition_Screen");
+        }       
     }
 
     private void InitLeaderboard()

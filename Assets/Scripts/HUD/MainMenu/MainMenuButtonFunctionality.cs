@@ -111,6 +111,11 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
         Time.timeScale = 1f;
     }
 
+    public void ShowLeaderboard()
+    {
+        ScreenManager.Instance.ShowScreen("Leaderboard_Screen");
+    }
+
     #endregion
 
 
