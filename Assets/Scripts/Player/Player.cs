@@ -218,8 +218,10 @@ public class Player : MonoBehaviour
     /*
     * Equips a weapon with teh incoming wepaon ID, drops current weapon at the drop location 
     */
-    public void Equip(WeaponID weaponID)
+    public bool Equip(WeaponID weaponID)
     {
+        if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return false;
+
         DeactivateSensor();
         DeactivateFlashbang();
         DeactivateWeapon(m_CurrentWeaponIndex);
@@ -228,46 +230,14 @@ public class Player : MonoBehaviour
 
         m_CurrentWeapons[m_CurrentWeaponIndex] = WeaponSpawnManager.Instance.GetWeapon(weaponID, weaponsParent.transform);
         ActivateWeapon(m_CurrentWeaponIndex);
-    }
 
-    /*
-     * DEBUG_-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-     */
-    public void TakeDamageTen()
-    {
-        TakeDamage(10);
+        return true;
     }
 
     public void EquipFlashbang()
     {
         if (!GameRunningCheck()) return;
         if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
-
-        //if (flashbang.isActiveAndEnabled)
-        //{
-        //    if (sensor.HasMoreThrowables())
-        //    {
-        //        DeactivateFlashbang();
-        //        ActivateSensor();
-        //    }
-        //}
-        //else
-        //{
-        //    if (flashbang.HasMoreThrowables())
-        //    {
-        //        DeactivateSensor();
-        //        DeactivateWeapon(m_CurrentWeaponIndex);
-        //        ActivateFlashbang();
-        //    }
-        //    else
-        //    {
-        //        if (sensor.HasMoreThrowables())
-        //        {
-        //            DeactivateWeapon(m_CurrentWeaponIndex);
-        //            ActivateSensor();
-        //        }
-        //    }
-        //}
 
         if (flashbang.HasMoreThrowables())
         {

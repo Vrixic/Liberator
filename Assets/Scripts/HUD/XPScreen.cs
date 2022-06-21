@@ -58,14 +58,16 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
     private bool bFullGameWon = false;
 
+    /*********** Starting Variables setup **********/
     public override void Start()
     {
         base.Start();
 
         m_UIBlocknAnimationSpeed = 15 / timeBetweenUIBlocks;
-
-        //GameManager.Instance.OnRewardCollected += OnRewardCollected;
     }
+
+    /*********** Screen stuff **********/
+    #region Screen
 
     public override void Show()
     {
@@ -140,6 +142,25 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         StartCoroutine(ShowCollectedXP());
     }
 
+    public override void Hide()
+    {
+        base.Hide();
+
+        GameManager.Instance.isXPScreenActive = false;
+        GameManager.Instance.canOpenPauseMenu = true;
+        // clear all holders from scroll view 
+        for (int i = 0; i < m_EnemyTextHolders.Count; i++)
+            Destroy(m_EnemyTextHolders[i].holder.gameObject);
+
+        m_EnemyTextHolders.Clear();
+
+        // resets enemy kill counts
+        GameManager.Instance.enemiesKilled.Clear();
+    }
+
+    #endregion
+
+    /*********** Update Logic **********/
     public override void Update()
     {
         if (m_AnimationFinished || bSkipAnimations) return; //|| bRewardScreenShowing) return;
@@ -161,6 +182,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         barSlider.value = m_CurrentXP / GameManager.Instance.maxXPAmount;
 
         totalXPText.text = "XP: " + ((int)m_CurrentXP).ToString() + "/" + GameManager.Instance.maxXPAmount.ToString();
+        PlayXPBarSound(barSlider.value);
 
         if (PlayerPrefManager.Instance.CurrentXP >= 100f)
         {
@@ -168,8 +190,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
             if (m_CurrentXP >= 99f)
             {
-                //bRewardScreenShowing = true;
                 GiveSkillPoint();
+                PlayEarnedSkillPointSound();
             }
         }
         else
@@ -178,24 +200,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
     }
 
-    public override void Hide()
-    {
-        base.Hide();
-
-        // lock mouse again
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-        GameManager.Instance.isXPScreenActive = false;
-        GameManager.Instance.canOpenPauseMenu = true;
-        // clear all holders from scroll view 
-        for (int i = 0; i < m_EnemyTextHolders.Count; i++)
-            Destroy(m_EnemyTextHolders[i].holder.gameObject);
-
-        m_EnemyTextHolders.Clear();
-
-        // resets enemy kill counts
-        GameManager.Instance.enemiesKilled.Clear();
-    }
+    /*********** Button stuff **********/
+    #region Button
 
     public void OnRetryButtonClick()
     {
@@ -264,6 +270,12 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
     }
 
+    #endregion
+
+    /*********** XP stuff **********/
+
+    #region XP
+
     /* 
      * Shows all the xp collected from every thing
      */
@@ -281,18 +293,6 @@ public class XPScreen : BaseScreen, IPointerClickHandler
             EnemyTextBlock block = new EnemyTextBlock();
             // Adds a new textholder to the scroll view, ands sets its appopriate names and kill amounts            
             block.holder = AddEnemyTextHolder();
-            //switch (pair.Key)
-            //{
-            //    case "BasicEnemy":
-            //        block.holder.enemyNameText.text = "Soldier";
-            //        break;
-            //    case "MeleeUnit":
-            //        block.holder.enemyNameText.text = "Stabber";
-            //        break;
-            //    default:
-            //        block.holder.enemyNameText.text = pair.Key;
-            //        break;
-            //}
 
             block.holder.enemyNameText.text = pair.Key;
 
@@ -332,6 +332,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
             block.transform = block.holder.GetComponent<RectTransform>();
 
             m_EnemyTextHolders.Add(block);
+            PlayAddedBlockSound();
 
             // resets player intel collected count
             GameManager.Instance.IntelCollected = 0;
@@ -348,6 +349,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         while (PlayerPrefManager.Instance.CurrentXP >= 100f)
         {
             GiveSkillPoint();
+            PlayEarnedSkillPointSound();
             yield return new WaitForSecondsRealtime(0.1f);
         }
 
@@ -374,26 +376,6 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
         totalSkillPointsText.text = "Renown : " + PlayerPrefManager.Instance.currentSkillPoints;
     }
-
-    //void ShowRewardScreen()
-    //{
-    //    //GameManager.Instance.RewardID = 0;
-    //    //GameManager.Instance.RewardAmount = 100;
-    //    //ScreenManager.Instance.ShowScreen("XP_Reward_Screen");
-
-    //    PlayerPrefManager.Instance.currentSkillPoints++;
-    //    PlayerPrefManager.Instance.CurrentXP -= 100;
-    //    m_PreviousXP = 0;
-    //    m_CurrentXP = 0;
-
-    //    CalculateBarSpeed();
-    //    UpdateTotalXPText();
-    //}
-
-    //void OnRewardCollected()
-    //{
-    //    bRewardScreenShowing = false;
-    //}
 
     private void CalculateBarSpeed()
     {
@@ -517,4 +499,26 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         public EnemyTextHolder holder;
         public RectTransform transform;
     }
+
+    #endregion
+
+    /*********** Audio stuff **********/
+    #region Audio
+    void PlayXPBarSound(float vol)
+    {
+
+    }
+
+    /* Blocks = the rect in the middle that drops down, this sound plays when the block is added to the screen */
+    void PlayAddedBlockSound()
+    {
+        
+    }
+
+    /* Plays when a renown is earned */
+    void PlayEarnedSkillPointSound()
+    {
+
+    }
+    #endregion
 }

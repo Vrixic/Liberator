@@ -71,12 +71,6 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //if(eventData.button == PointerEventData.InputButton.Right)
-        //{
-        //    DisplayNextTip();
-        //    return;
-        //}
-
         if(PlayerPrefManager.Instance.SceneOperation.progress > 0.89 && !bSceneLoading)
         {
             bSceneLoading = true;
