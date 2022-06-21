@@ -79,6 +79,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         }
     }
 
+    #region Resume/Restart
     public void Resume()
     {
         if (!GameManager.Instance.settingsMenu.activeInHierarchy)
@@ -112,10 +113,9 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void Restart()
     {
-        #region Old Restart code (Commented Out)
 
         TimerUI.Instance.ResetTimer();
-        
+
         // Get instance of Pause menu and turn it off
         pause = GameManager.Instance.pause;
         pause.SetActive(false);
@@ -128,28 +128,25 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         // find Instance of Reticle
         reticle = GameManager.Instance.reticle;
         // Find active scene and reload it
-        if(Application.platform == RuntimePlatform.WebGLPlayer)
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One_WBGL");
+            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
             PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
             ScreenManager.Instance.ShowScreen("Transition_Screen");
         }
         else
         {
-            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One");
+            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
             PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
             ScreenManager.Instance.ShowScreen("Transition_Screen");
         }
-        
 
-        #endregion
+
 
     }
 
-    public void Quit()
-    {
-        Application.Quit();
-    }
+    #endregion
+  
     #endregion
 
     #region ShopMenu
@@ -157,7 +154,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     // Open Shop Menu
     public void OpenShopMenu()
     {
-        if (!GameManager.Instance.playerScript.GetCurrentEquippedWeapon().CanSwitchWeapon()) return; 
+        if (!GameManager.Instance.playerScript.GetCurrentEquippedWeapon().CanSwitchWeapon()) return;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
