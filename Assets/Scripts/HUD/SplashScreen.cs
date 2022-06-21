@@ -23,10 +23,14 @@ public class SplashScreen : MonoBehaviour
    private IEnumerator Wait()
    {
         float time = 0f;
+        Color color = splashImage.color;
 
-        while(time < 2f)
+        while(time < minWaitTime)
         {
             time += Time.deltaTime;
+            color.a = Mathf.Sin(Time.time);
+
+            splashImage.color = color;
 
             yield return null;
         }
