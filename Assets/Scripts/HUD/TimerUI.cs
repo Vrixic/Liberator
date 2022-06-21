@@ -68,4 +68,9 @@ public class TimerUI : MonoBehaviour
         mTime = 0f;
         mTimeStamp = 0f;
     }
+
+    public int GetElapsedTime()
+    {
+        return (int)mTime;
+    }
 }

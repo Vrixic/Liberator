@@ -112,8 +112,16 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
         else
         {
-            retryButton.SetActive(true);
-            buttonText.text = "Main Menu";
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                retryButton.SetActive(false);
+                buttonText.text = "Leaderboard";
+            }
+            else
+            {
+                retryButton.SetActive(true);
+                buttonText.text = "Main Menu";
+            }
             headerText.text = "";
 
             timeText.enabled = false;
@@ -245,9 +253,17 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
         else
         {
-            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(0);
-            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
-            ScreenManager.Instance.ShowScreen("Transition_Screen");
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                ScreenManager.Instance.HideScreen("XP_Screen");
+                ScreenManager.Instance.ShowScreen("Leaderboard_Screen");
+            }
+            else
+            {
+                PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(0);
+                PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+                ScreenManager.Instance.ShowScreen("Transition_Screen");
+            }
         }
     }
 
