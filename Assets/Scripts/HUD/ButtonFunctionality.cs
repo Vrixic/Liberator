@@ -397,7 +397,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                         }
                     case WeaponID.Shotgun:
                         {
-                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 25);
+                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetFireRate(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetFireRate() * .5f);
+
                             break;
                         }
                 }
@@ -448,7 +449,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
             GameManager.Instance.weaponMaxUpgradeText.enabled = false;
             GameManager.Instance.weaponUpgradeText.enabled = true;
 
-            if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() == WeaponID.Revolver)
+            if (GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() == WeaponID.Revolver || GameManager.Instance.playerScript.GetCurrentEquippedGun().GetWeaponID() == WeaponID.Shotgun)
             {
                 GameManager.Instance.weaponUpgradeText.text = "Upgrade Weapon Fire Rate \n$750";
             }
