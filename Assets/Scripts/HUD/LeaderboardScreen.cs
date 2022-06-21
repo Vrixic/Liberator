@@ -46,7 +46,7 @@ public class LeaderboardScreen : BaseScreen
 
     public void OnMainMenuButtonClick()
     {
-        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(0);
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("MainMenuScene");
         PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
         ScreenManager.Instance.ShowScreen("Transition_Screen");
     }

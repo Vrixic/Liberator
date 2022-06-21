@@ -218,9 +218,19 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         // Get instance of Pause menu and turn it off
         GameManager.Instance.pause.SetActive(false);
         // Find active scene and reload it
-        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(1);
-        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
-        ScreenManager.Instance.ShowScreen("Transition_Screen");
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One_WBGL");
+            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+            ScreenManager.Instance.ShowScreen("Transition_Screen");
+        }
+        else
+        {
+            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One");
+            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+            ScreenManager.Instance.ShowScreen("Transition_Screen");
+        }
+
     }
 
     public void OnNextButtonClick()
@@ -261,9 +271,9 @@ public class XPScreen : BaseScreen, IPointerClickHandler
                 ScreenManager.Instance.HideScreen("XP_Screen");
                 ScreenManager.Instance.ShowScreen("Leaderboard_Screen");
             }
-            else
+            else 
             {
-                PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(0);
+                PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("MainMenuScene");
                 PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
                 ScreenManager.Instance.ShowScreen("Transition_Screen");
             }
@@ -512,7 +522,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
     /* Blocks = the rect in the middle that drops down, this sound plays when the block is added to the screen */
     void PlayAddedBlockSound()
     {
-        
+
     }
 
     /* Plays when a renown is earned */
