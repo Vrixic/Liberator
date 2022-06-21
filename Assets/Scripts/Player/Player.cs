@@ -218,20 +218,16 @@ public class Player : MonoBehaviour
     /*
     * Equips a weapon with teh incoming wepaon ID, drops current weapon at the drop location 
     */
-    public bool Equip(WeaponID weaponID)
+    public void Equip(WeaponID weaponID)
     {
-        if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return false;
-
         DeactivateSensor();
         DeactivateFlashbang();
         DeactivateWeapon(m_CurrentWeaponIndex);
-
+        
         m_CurrentWeaponIndex = 1;
 
         m_CurrentWeapons[m_CurrentWeaponIndex] = WeaponSpawnManager.Instance.GetWeapon(weaponID, weaponsParent.transform);
         ActivateWeapon(m_CurrentWeaponIndex);
-
-        return true;
     }
 
     public void EquipFlashbang()

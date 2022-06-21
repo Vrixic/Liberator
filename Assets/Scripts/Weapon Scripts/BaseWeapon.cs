@@ -97,6 +97,7 @@ public class BaseWeapon : MonoBehaviour//, IWeapon
     public virtual void OnWeaponUnequip()
     {
         bIsEquipped = false;
+        m_Animator.Play("Get");
     }
 
 

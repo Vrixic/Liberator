@@ -147,6 +147,8 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
     // Open Shop Menu
     public void OpenShopMenu()
     {
+        if (!GameManager.Instance.playerScript.GetCurrentEquippedWeapon().CanSwitchWeapon()) return; 
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
