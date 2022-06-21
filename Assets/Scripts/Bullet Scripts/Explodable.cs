@@ -8,6 +8,7 @@ public class Explodable : MonoBehaviour
     [SerializeField] PoolableObject explosion;
 
     [SerializeField] LayerMask layers;
+    [SerializeField] LayerMask rayLayers;
 
     PoolableObject[] m_FirePooled;
 
@@ -71,18 +72,27 @@ public class Explodable : MonoBehaviour
         Collider[] colliders = new Collider[10];
         Vector3 origin = transform.position;
         int collidersCount = Physics.OverlapSphereNonAlloc(origin, radius, colliders, layers);
-        //Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         
         for (int i = 0; i < collidersCount; i++)
         {
-            if (Physics.Raycast(origin + new Vector3(0, 1f, 0), (colliders[i].transform.position - origin).normalized, out RaycastHit hitInfo, radius*2f))
-            {
-                Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
-                Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
+            Debug.Log(colliders[i].gameObject.name);
+            Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
+            Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
+            float dist = Vector3.Distance(charPos, explodePos);
+            damage = 300 - ((dist / 2) * 50);
 
-                float dist = Vector3.Distance(charPos, explodePos);
-                damage = 300 - ((dist / 2) * 50);
-                if (hitInfo.collider.CompareTag("Player"))
+            Vector3 target = colliders[i].transform.position;
+            target.y += 0.3f;
+            origin.y += 1f;
+
+            RaycastHit[] results = new RaycastHit[10];
+            Ray ray = new Ray(origin, (target - origin).normalized);
+            int hits = Physics.RaycastNonAlloc(ray, results, radius, rayLayers);
+            Debug.DrawLine(origin, origin + (ray.direction * radius), Color.green, 2f);
+            for (int j = 0; j < hits; j++)
+            {
+                Debug.Log(results[j].collider.name);
+                if (results[j].collider.CompareTag("Player"))
                 {
                     if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
                     {
@@ -99,13 +109,57 @@ public class Explodable : MonoBehaviour
 
                     //add high camera shake
                     GameManager.Instance.cameraShakeScript.Trauma += 1f;
+                    break;
                 }
-                else if (hitInfo.collider.CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null)
+                else if (results[j].collider.CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null)
                 {
                     colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
+                    break;
                 }
+                else if (results[j].collider.CompareTag("EnvironmentWood")) { damage *= 0.6f; }
+                else if (results[j].collider.CompareTag("EnvironmentMetal")) { damage *= 0.3f; }
+                else if (results[j].collider.CompareTag("EnvironmentConcrete")) { damage = 0; }
             }
         }
+
+        //Collider[] colliders = new Collider[10];
+        //Vector3 origin = transform.position;
+        //int collidersCount = Physics.OverlapSphereNonAlloc(origin, radius, colliders, layers);
+        ////Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+
+        //for (int i = 0; i < collidersCount; i++)
+        //{
+        //    if (Physics.Raycast(origin + new Vector3(0, 1f, 0), (colliders[i].transform.position - origin).normalized, out RaycastHit hitInfo, radius*2f))
+        //    {
+        //        Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
+        //        Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
+
+        //        float dist = Vector3.Distance(charPos, explodePos);
+        //        damage = 300 - ((dist / 2) * 50);
+        //        if (hitInfo.collider.CompareTag("Player"))
+        //        {
+        //            if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
+        //            {
+        //                if (gameObject.activeInHierarchy == true)
+        //                    gameObject.SetActive(false);
+        //            }
+        //            else
+        //            {
+        //                //create damage indicator UI
+        //                DISystem.createIndicator(transform);
+        //            }
+
+        //            GameManager.Instance.playerScript.TakeDamage((int)damage);
+
+        //            //add high camera shake
+        //            GameManager.Instance.cameraShakeScript.Trauma += 1f;
+        //        }
+        //        else if (hitInfo.collider.CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null)
+        //        {
+        //            colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
+        //        }
+        //    }
+        //}
 
         //whether or not it was close enough to the player, at least add a small amount of camera shake
         GameManager.Instance.cameraShakeScript.Trauma += 0.3f;

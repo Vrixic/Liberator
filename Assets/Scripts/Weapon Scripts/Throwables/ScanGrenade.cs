@@ -35,7 +35,6 @@ public class ScanGrenade : BaseThrowables
 
         for (int i = 0; i < collidersCount; i++)
         {
-
             if (scanThroughWalls == false)
             {
                 Vector3 target = colliders[i].transform.position;
@@ -45,17 +44,19 @@ public class ScanGrenade : BaseThrowables
                 RaycastHit hitInfo;
                 if (Physics.Raycast(origin, (target - origin).normalized, out hitInfo, raycastDistance))
                 {
-                    if(hitInfo.collider.tag == "Hitbox")
+                    if(hitInfo.collider.tag == "Hitbox" || hitInfo.collider.tag == "Hostage")
                     {
                         hitInfo.collider.GetComponent<MiniMapScanable>().Show(equipmentTimer);
+                        AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "Scanned");
                     }                        
                 }
             }
             else
             {
-                if (colliders[i].GetComponent<CapsuleCollider>() != null)
+                if (colliders[i].GetComponent<MiniMapScanable>())
                 {
                     colliders[i].GetComponent<MiniMapScanable>().Show(equipmentTimer);
+                    AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "Scanned");
                 }
             }
         }
