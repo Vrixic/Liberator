@@ -16,11 +16,13 @@ public class AIChasePlayerScript : AIState
         //gun = agent.GetComponentInChildren<EnemyGun>();
         agent.currentState = AIStateID.ChasePlayer;
         agent.animator.SetBool("Chase", true);
+        agent.animator.SetFloat("Speed", 1);
         if (agent.aiName == "Stabber" && agent.bFirstChase)
         {
             AudioManager.Instance.PlayAudioAtLocation(agent.transform.position, "MeleeEnemyYell");
         }
         agent.bFirstChase = false;
+        agent.navMeshAgent.isStopped = false;
     }
 
     public void Update(AIAgent agent)

@@ -55,7 +55,7 @@ public class AIAttackPlayerState : AIState
     }
     public void Exit(AIAgent agent)
     {
-        agent.navMeshAgent.isStopped = false;
+        //agent.navMeshAgent.isStopped = false;
     }
 }
 

@@ -12,6 +12,7 @@ public class AIIdleState : AIState
     public void Enter(AIAgent agent)
     {
         agent.animator.SetTrigger("Idle");
+        agent.animator.SetFloat("Speed", 0);
         agent.currentState = AIStateID.Idle;
         agent.navMeshAgent.isStopped = true;
         agent.sensor.StartScan();
