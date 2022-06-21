@@ -75,6 +75,9 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
         {
             bSceneLoading = true;
             PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = true;
+
+            // Resume time
+            Time.timeScale = 1f;
         }
     }
 
