@@ -1881,7 +1881,7 @@ MonoBehaviour:
   raycastOrigin: {fileID: 1271278699885218752}
   damage: 75
   headShotDamageMultiplier: 1.5
-  weaponSpawnLocalPositionOffset: {x: 0.02, y: -1.7, z: -0.42}
+  weaponSpawnLocalPositionOffset: {x: 0.02, y: -1.7, z: -0.3}
   raycastLayers:
     serializedVersion: 2
     m_Bits: 41153
