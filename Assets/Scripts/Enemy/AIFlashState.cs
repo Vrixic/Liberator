@@ -11,6 +11,10 @@ public class AIFlashState : AIState
     }
     public void Enter(AIAgent agent)
     {
+        if (agent.isFlashed)
+        {
+            flashTimer += 1.0f;
+        }
         agent.currentState = AIStateID.Flashed;
         agent.navMeshAgent.isStopped = true;
         agent.animator.SetBool("Flashbang", true);
