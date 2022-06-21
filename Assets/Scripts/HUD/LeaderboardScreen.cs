@@ -10,7 +10,7 @@ public class LeaderboardScreen : BaseScreen
     private const int ID = 3838;
     private const int MAX_SCORES = 5;    
 
-    [SerializeField] private TMP_InputField memberID;
+    //[SerializeField] private TMP_InputField memberID;
     [SerializeField] private TextMeshProUGUI[] textHolders;
 
     private bool bHasScoreBeenSubmitted = false;
@@ -105,16 +105,16 @@ public class LeaderboardScreen : BaseScreen
         });
     }
     private void SubmitScore(int score)
-
     {
-        if (memberID.text.Length < 6 || memberID.text.Length > 12)
-        {
-            Debug.Log("Leaderboard score submitting failed: member id < 6 characters or > 12 characters");
-            bHasScoreBeenSubmitted = false;
-            return;
-        }
+        string memberID = PlayerPrefManager.Instance.PlayerName;
+        //if (memberID.text.Length < 6 || memberID.text.Length > 12)
+        //{
+        //    Debug.Log("Leaderboard score submitting failed: member id < 6 characters or > 12 characters");
+        //    bHasScoreBeenSubmitted = false;
+        //    return;
+        //}
 
-        LootLockerSDKManager.SubmitScore(memberID.text, score, ID, (response) => {
+        LootLockerSDKManager.SubmitScore(memberID, score, ID, (response) => {
             if (response.success)
             {
                 Debug.Log("Leaderboard score submitting response success!");

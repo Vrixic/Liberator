@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerPrefManager : MonoBehaviour
 {
@@ -38,14 +39,14 @@ public class PlayerPrefManager : MonoBehaviour
     public int playerStartingArmor;
     [HideInInspector]
     public int equipmentEffectivenessUpgradeCount = 0;
-
+    [HideInInspector]
+    public string PlayerName { get; set; } = "null_name";
 
     public AsyncOperation SceneOperation { get; set; }
 
     public Action OnOptionsUpdateAction;
 
     private static PlayerPrefManager instance;
-
 
     public static PlayerPrefManager Instance
     {
@@ -164,6 +165,8 @@ public class PlayerPrefManager : MonoBehaviour
             voicePromptState = 1;
             PlayerPrefs.SetFloat("Voice Prompts State", voicePromptState);
         }
+
+        PlayerName = PlayerPrefs.GetString("PlayerName", "null_name");
         #endregion
     }
 
@@ -336,6 +339,11 @@ public class PlayerPrefManager : MonoBehaviour
         // Debug.Log("Game Saved");
     }
 
+    /* Only will be called once -> Saves Players Name */
+    public void SavePlayerName()
+    {
+        PlayerPrefs.SetString("PlayerName", PlayerName);
+    }
 
 
     public void ResetAllPlayerPrefs()
