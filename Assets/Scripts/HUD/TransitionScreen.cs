@@ -86,6 +86,9 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
 
     void OnSceneLoaded(AsyncOperation operation)
     {
+        // Resume time
+        Time.timeScale = 1f;
+
         ScreenManager.Instance.HideScreen(screenName);
     }
 
