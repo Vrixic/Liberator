@@ -10,7 +10,7 @@ public class TriggerHostageDoor : MonoBehaviour
     //close the door
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && hostageDoorScript != null)
+        if(other.CompareTag("Player"))
         {
             hostageDoorScript.CloseHostageDoor();
         }
