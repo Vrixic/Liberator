@@ -33,16 +33,15 @@ public class LeaderboardScreen : BaseScreen
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        ShowScores();
+        RefreshScores();
     }
 
     public void OnSubmitScoreButtonClick()
     {
         if (bHasScoreBeenSubmitted) return;
 
-        SubmitScore(TimerUI.Instance.GetElapsedTime());
         bHasScoreBeenSubmitted = true;
-        ShowScores();
+        SubmitScore(TimerUI.Instance.GetElapsedTime());
     }
 
     public void OnMainMenuButtonClick()
@@ -67,7 +66,7 @@ public class LeaderboardScreen : BaseScreen
         });
     }
 
-    private void ShowScores()
+    private void RefreshScores()
     {
         LootLockerSDKManager.GetScoreList(ID, MAX_SCORES, (response) => {
             if (response.success)
@@ -105,8 +104,8 @@ public class LeaderboardScreen : BaseScreen
             }
         });
     }
-
     private void SubmitScore(int score)
+
     {
         if (memberID.text.Length < 6 || memberID.text.Length > 12)
         {
@@ -119,6 +118,7 @@ public class LeaderboardScreen : BaseScreen
             if (response.success)
             {
                 Debug.Log("Leaderboard score submitting response success!");
+                RefreshScores();
             }
             else
             {
