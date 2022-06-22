@@ -63,7 +63,7 @@ public class Flashbang : BaseThrowables
     */
     public override void OnThrowThrowable(Vector3 forceDirection, float forceMultiplier = 1f)
     {
-        transform.Translate(.5f, 0, 0);
+        transform.Translate(1f, .3f, 0);
         GetRigidbody().AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
         StartCoroutine(OnThrowableExplode());
     }
