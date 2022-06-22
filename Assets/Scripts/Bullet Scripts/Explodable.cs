@@ -7,16 +7,22 @@ public class Explodable : MonoBehaviour
     [SerializeField] PoolableObject fire;
     [SerializeField] PoolableObject explosion;
 
+    // layers that are dectected to deal damage
     [SerializeField] LayerMask layers;
+    // layers for the raycast, to check for objects to deal less damage
     [SerializeField] LayerMask rayLayers;
 
+    // pool of the fire spray effect
     PoolableObject[] m_FirePooled;
 
+    // barrels mesh
     Transform m_Mesh;
 
+    // name for the particle effects pool
     string m_ExplosionPool;
     string m_FirePool;
 
+    // how many times the barrel was hit
     int hits = 0;
 
     [SerializeField] float radius;
@@ -30,6 +36,7 @@ public class Explodable : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
+    // creates pools
     private void Start()
     {
         m_ExplosionPool = ObjectPoolManager.Instance.CreateObjectPool(explosion, 1);
@@ -65,8 +72,7 @@ public class Explodable : MonoBehaviour
         }
     }
 
-    // checks if enemy or player was hit by explosion and damages them according
-    // to distance away from explosion
+    /* checks for players or enemys in radius, deals damage based on distance away and objects inbetween */
     public void ExplodeDamage()
     {
         Collider[] colliders = new Collider[10];
@@ -122,49 +128,11 @@ public class Explodable : MonoBehaviour
             }
         }
 
-        //Collider[] colliders = new Collider[10];
-        //Vector3 origin = transform.position;
-        //int collidersCount = Physics.OverlapSphereNonAlloc(origin, radius, colliders, layers);
-        ////Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-
-        //for (int i = 0; i < collidersCount; i++)
-        //{
-        //    if (Physics.Raycast(origin + new Vector3(0, 1f, 0), (colliders[i].transform.position - origin).normalized, out RaycastHit hitInfo, radius*2f))
-        //    {
-        //        Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
-        //        Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
-
-        //        float dist = Vector3.Distance(charPos, explodePos);
-        //        damage = 300 - ((dist / 2) * 50);
-        //        if (hitInfo.collider.CompareTag("Player"))
-        //        {
-        //            if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
-        //            {
-        //                if (gameObject.activeInHierarchy == true)
-        //                    gameObject.SetActive(false);
-        //            }
-        //            else
-        //            {
-        //                //create damage indicator UI
-        //                DISystem.createIndicator(transform);
-        //            }
-
-        //            GameManager.Instance.playerScript.TakeDamage((int)damage);
-
-        //            //add high camera shake
-        //            GameManager.Instance.cameraShakeScript.Trauma += 1f;
-        //        }
-        //        else if (hitInfo.collider.CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null)
-        //        {
-        //            colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
-        //        }
-        //    }
-        //}
-
         //whether or not it was close enough to the player, at least add a small amount of camera shake
         GameManager.Instance.cameraShakeScript.Trauma += 0.3f;
     }
 
+    // called when the bullet hits the explodable
     public void Explode()
     {
         if (!isExploded)
