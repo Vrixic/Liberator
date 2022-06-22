@@ -2353,6 +2353,7 @@ GameObject:
   - component: {fileID: 349618263}
   - component: {fileID: 7411548093406682465}
   - component: {fileID: 7712379682569070568}
+  - component: {fileID: 6815307814063679951}
   m_Layer: 15
   m_Name: Hostage
   m_TagString: Hostage
@@ -2408,7 +2409,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 7518897225392068540}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.28803825
   m_Height: 1.1
   m_Direction: 1
@@ -2441,6 +2442,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miniMapLocator: {fileID: 1264199697407929884}
+--- !u!65 &6815307814063679951
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7518897225392068540}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.3705739, z: 1.0931594}
+  m_Center: {x: 0, y: 0.71822125, z: 0.04657961}
 --- !u!1 &7518897225392068854
 GameObject:
   m_ObjectHideFlags: 0
