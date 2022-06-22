@@ -11,6 +11,7 @@ public class Fps_Counter : MonoBehaviour
     private void Start()
     {
         m_FPSText = GetComponent<TextMeshProUGUI>();
+        m_FPSText.enabled = false;
     }
 
     // Update is called once per frame

@@ -141,8 +141,10 @@ public class Player : MonoBehaviour
 
         OnOptionsUpdate();
 
-        ActivateWeapon(0);
         DeactivateWeapon(1);
+        ActivateWeapon(0);
+
+        m_CurrentEquippedWeapon.OnWeaponEquip();
     }
     void SetEquipmentEffectivness()
     {

@@ -297,6 +297,7 @@ public class GameManager : MonoBehaviour
 
         settingsMenu = GameObject.FindGameObjectWithTag("SettingsMenu");
         settingsMenu.SetActive(false);
+
         #endregion
 
         if (player == null)
