@@ -225,18 +225,8 @@ public class MetaShopScript : MonoBehaviour
 
     public void ResetPlayerUpgradesToDefault()
     {
-        PlayerPrefs.SetInt("Skill Points", 0);
-        PlayerPrefs.SetInt("Upgraded Starting Cash", 250);
-        PlayerPrefs.SetInt("Flashbang Capacity", 2);
-        PlayerPrefs.SetInt("Sensor Grenade Capacity", 2);
-        PlayerPrefs.SetInt("Player Starting Health", 100);
-        PlayerPrefs.SetInt("Player Starting Armor", 100);
-        PlayerPrefs.SetInt("Equipment Effectiveness", 5);
-        PlayerPrefs.SetInt("Equipment Range", 10);
-        PlayerPrefs.SetInt("Equipment Effectiveness Upgrade Count", 0);
-        PlayerPrefManager.Instance.LoadPlayerUpgrades();
+        PlayerPrefManager.Instance.ResetPlayerUpgrades();
         UpdateSkillPointCount();
-
     }
 
     public void SetStartingCash10000()
