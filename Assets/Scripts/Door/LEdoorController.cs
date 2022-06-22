@@ -38,6 +38,11 @@ public class LEdoorController : MonoBehaviour
                 doorOpen = false;
                 AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorClose");
             }
+            else if(doorLocked)
+            {
+                //add door locked sound here
+
+            }
         }
     }
 
@@ -54,8 +59,7 @@ public class LEdoorController : MonoBehaviour
         StartCoroutine(UnloadPreviousLevel());
 
         doorLocked = true;
-
-        gameObject.tag = "Untagged";
+        
     }
 
     IEnumerator UnloadPreviousLevel()

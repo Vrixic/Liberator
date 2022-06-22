@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
     private PlayerInput playerInput;
 
     //reference to the specific "OnFoot" action map(has specific actions like walk, slow-walk, jump, crouch)
-    private PlayerInput.OnFootActions onFoot;
+    public PlayerInput.OnFootActions onFoot;
 
     private PlayerMotor motor;
     private PlayerLook look;
