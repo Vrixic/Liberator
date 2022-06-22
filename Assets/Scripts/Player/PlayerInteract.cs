@@ -138,6 +138,14 @@ public class PlayerInteract : MonoBehaviour
         {
             FillHostageProgressbar();
         }
+
+        if(GameManager.Instance.playerScript.isPlayerDead())
+        {
+            securingHostage = false;
+            GameManager.Instance.hostageProgressBar.SetActive(false);
+            hostageProgressBarImage.fillAmount = 0;
+            PlayerMotor.MovementEnabled = true;
+        }
     }
 
     public void ProcessInteraction(bool pressOrHoldBehavior)
