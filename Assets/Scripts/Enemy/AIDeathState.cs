@@ -15,7 +15,6 @@ public class AIDeathState : AIState
 
     public void Enter(AIAgent agent)
     {
-
         agent.currentState = AIStateID.Death;
         agent.SetIsDead(true);
         //diasbleTimer = Time.time + agent.GetDisableEnemyInterval();
@@ -52,7 +51,7 @@ public class AIDeathState : AIState
         }
 
         agent.navMeshAgent.isStopped = true;
-
+        agent.StartCoroutine(DisableEnemy(agent));
     }
 
     public void Update(AIAgent agent)
@@ -64,5 +63,11 @@ public class AIDeathState : AIState
     {
 
     }
-    
+
+    IEnumerator DisableEnemy(AIAgent agent)
+    {
+        yield return new WaitForSecondsRealtime(5.0f);
+        agent.ragdoll.DeactivateRagdoll();
+        agent.ragdoll.DisableColliders();
+    }
 }
