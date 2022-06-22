@@ -14,10 +14,8 @@ public class SprinklerTrigger : MonoBehaviour
             {
                 //Debug.Log(agent.currentState);
                 //Debug.Log(agent);
-                if (agent.currentState != AIStateID.Flashed)
-                {
-                    agent.stateMachine.ChangeState(AIStateID.Flashed);
-                }
+                agent.stateMachine.ChangeState(AIStateID.Flashed);
+                agent.currentState = AIStateID.Flashed;
             }
         }
         else if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
