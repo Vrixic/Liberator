@@ -26,10 +26,6 @@ public class InformationPopup : MonoBehaviour
         {
             StopAllPrompts();
         }
-        else if (PlayerPrefManager.Instance.voicePromptState == 1)
-        {
-            ResumeAllPrompts();
-        }
         if (Time.timeScale < 0.01f)
         {
             bPaused = true;
@@ -103,13 +99,7 @@ public class InformationPopup : MonoBehaviour
         StopCoroutine(TextPromptSlow());
         StopCoroutine(VoicePrompt());
         informationPrompt.SetActive(false);
-        gameObject.SetActive(false);
         audioSource.Stop();
         bAudioIsPlaying = false;
-    }
-
-    void ResumeAllPrompts()
-    {
-        gameObject.SetActive(true);
     }
 }

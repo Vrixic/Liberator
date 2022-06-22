@@ -51,6 +51,9 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 12288
+  rayLayers:
+    serializedVersion: 2
+    m_Bits: 12289
   radius: 7
 --- !u!64 &2531239637587182344
 MeshCollider:

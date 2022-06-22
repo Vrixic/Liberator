@@ -35,7 +35,7 @@ public class MiniMapScanable : MonoBehaviour
 
     IEnumerator FlashLocator(float time)
     {
-        Color color = Color.red;
+        Color color = locatorMaterial.color;
         while (time >= 0)
         {
             for (float a = 1f; a > -0.1f; a -= Time.deltaTime * 0.75f)
