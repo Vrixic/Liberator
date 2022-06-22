@@ -146,77 +146,81 @@ public class PlayerInteract : MonoBehaviour
         //interact with by comparing the gameObject's tag
         if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.playerAimVector, out RaycastHit hit, interactRange, interactionLayerMask))
         {
-            if (pressOrHoldBehavior) //press interactions go here VVVVVVVVVVVVVVVVVV
+            if (!GameManager.Instance.isPauseMenuOpen)
             {
-                //player interacts with a door
-                if (hit.collider.CompareTag("Door"))
+                if (pressOrHoldBehavior) //press interactions go here VVVVVVVVVVVVVVVVVV
                 {
-                    //access that door's doorController script
-                    DoorController doorScript = hit.collider.gameObject.GetComponent<DoorController>();
-
-                    if (doorScript != null)
+                    //player interacts with a door
+                    if (hit.collider.CompareTag("Door"))
                     {
-                        //interact method will decide whether that specific door needs to be opened or closed
-                        doorScript.Interact();
+                        //access that door's doorController script
+                        DoorController doorScript = hit.collider.gameObject.GetComponent<DoorController>();
 
-                        //disable current door interaction prompt since it is no longer accurate
+                        if (doorScript != null)
+                        {
+                            //interact method will decide whether that specific door needs to be opened or closed
+                            doorScript.Interact();
+
+                            //disable current door interaction prompt since it is no longer accurate
+                            currentInteractPrompt.SetActive(false);
+                        }
+                        else
+                        {
+                            LEdoorController levelEntryDoorScript = hit.collider.gameObject.GetComponent<LEdoorController>();
+
+                            levelEntryDoorScript.Interact();
+
+                            currentInteractPrompt.SetActive(false);
+                        }
+                    }
+                    //player interacts with a piece of intel
+                    else if (hit.collider.CompareTag("Intel"))
+                    {
+                        GameManager.Instance.CurrentCash += intelCashReward;
+                        GameManager.Instance.cashRewardAmount = intelCashReward;
+                        //get that instance so we can disable it
+                        GameObject intelInstance = hit.collider.gameObject;
+
+                        intelInstance.SetActive(false);
+                        AudioManager.Instance.PlayAudioAtLocation(transform.position, "Pickup");
+                        GameManager.Instance.StartDisplayCashCoroutine();
+
+                        GameManager.Instance.IntelCollected++;
+                    }
+                    //player interacts with an item tagged "shop"
+                    else if (hit.collider.CompareTag("Shop"))
+                    {
+
+                        GameManager.Instance.buttonFuncScript.OpenShopMenu();
                         currentInteractPrompt.SetActive(false);
                     }
-                    else
+                }
+                else //hold interactions go here VVVVVVVVVVVVVVVVVVVVVVVV
+                {
+                    if (hit.collider.CompareTag("Hostage"))
                     {
-                        LEdoorController levelEntryDoorScript = hit.collider.gameObject.GetComponent<LEdoorController>();
+                        //if the player pressed E on the hostage, disable their movement until they hold for enough time
+                        //to secure the hostage or if they "cancel" the action (done in methods below)
+                        GameManager.Instance.hostageProgressBar.SetActive(true);
+                        PlayerMotor.MovementEnabled = false;
+                        securingHostage = true;
 
-                        levelEntryDoorScript.Interact();
+                        //save that hostage's script to open the hostage door if the hold is completed
+                        currentHostage = hit.collider.GetComponent<Hostage>();
 
-                        currentInteractPrompt.SetActive(false);
+
+                        //reset the progress bar when they press E on the hostage again
+                        hostageProgressBarImage.fillAmount = 0;
+
+                        if (currentHostage.doorToOpenWhenHostageSecured != null)
+                        {
+                            //save the transform of the attached hostage door for playing audio
+                            GameManager.Instance.currentHostageDoorTransform = currentHostage.doorToOpenWhenHostageSecured.gameObject.transform;
+                        }
+
+                        //play audio
+                        AudioManager.Instance.PlayAudioAtLocation(transform.position, "Hostage");
                     }
-                }
-                //player interacts with a piece of intel
-                else if (hit.collider.CompareTag("Intel"))
-                {
-                    GameManager.Instance.CurrentCash += intelCashReward;
-                    GameManager.Instance.cashRewardAmount = intelCashReward;
-                    //get that instance so we can disable it
-                    GameObject intelInstance = hit.collider.gameObject;
-
-                    intelInstance.SetActive(false);
-                    AudioManager.Instance.PlayAudioAtLocation(transform.position, "Pickup");
-                    GameManager.Instance.StartDisplayCashCoroutine();
-
-                    GameManager.Instance.IntelCollected++;
-                }
-                //player interacts with an item tagged "shop"
-                else if (hit.collider.CompareTag("Shop"))
-                {
-                    GameManager.Instance.buttonFuncScript.OpenShopMenu();
-                    currentInteractPrompt.SetActive(false);
-                }
-            }
-            else //hold interactions go here VVVVVVVVVVVVVVVVVVVVVVVV
-            {
-                if (hit.collider.CompareTag("Hostage"))
-                {
-                    //if the player pressed E on the hostage, disable their movement until they hold for enough time
-                    //to secure the hostage or if they "cancel" the action (done in methods below)
-                    GameManager.Instance.hostageProgressBar.SetActive(true);
-                    PlayerMotor.MovementEnabled = false;
-                    securingHostage = true;
-
-                    //save that hostage's script to open the hostage door if the hold is completed
-                    currentHostage = hit.collider.GetComponent<Hostage>();
-
-
-                    //reset the progress bar when they press E on the hostage again
-                    hostageProgressBarImage.fillAmount = 0;
-
-                    if (currentHostage.doorToOpenWhenHostageSecured != null)
-                    {
-                        //save the transform of the attached hostage door for playing audio
-                        GameManager.Instance.currentHostageDoorTransform = currentHostage.doorToOpenWhenHostageSecured.gameObject.transform;
-                    }
-
-                    //play audio
-                    AudioManager.Instance.PlayAudioAtLocation(transform.position, "Hostage"); 
                 }
             }
 
