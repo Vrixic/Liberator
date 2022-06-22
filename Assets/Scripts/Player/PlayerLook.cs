@@ -15,8 +15,8 @@ public class PlayerLook : MonoBehaviour
     {
         if (GameManager.Instance.playerScript.isPlayerDead()) return;
         //recieve mouse input from the user
-        currentInputVector.x = input.x * xSensitivity * Time.timeScale;// * Time.deltaTime;
-        currentInputVector.y = input.y * ySensitivity * Time.timeScale;// * Time.deltaTime;
+        currentInputVector.x = input.x * xSensitivity * Time.timeScale * 0.2f;// * Time.deltaTime;
+        currentInputVector.y = input.y * ySensitivity * Time.timeScale * 0.2f;// * Time.deltaTime;
 
         //rotate the player to look left and right
         transform.Rotate(currentInputVector.x * Vector3.up);
