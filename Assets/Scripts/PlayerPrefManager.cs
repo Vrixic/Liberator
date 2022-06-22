@@ -345,17 +345,8 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetString("PlayerName", PlayerName);
     }
 
-
-    public void ResetAllPlayerPrefs()
+    public void ResetPlayerUpgrades()
     {
-        // Resetting Stats to default
-        PlayerPrefs.SetFloat("Master Volume", 100);
-        PlayerPrefs.SetFloat("Music Volume", 100);
-        PlayerPrefs.SetFloat("SFX Volume", 100);
-        PlayerPrefs.SetFloat("Player Sensitivity", 100);
-        PlayerPrefs.SetFloat("Brightness", 100);
-        PlayerPrefs.SetInt("Voice Prompts State", 1);
-
         // Resetting player upgrades and xp back to defaults
         PlayerPrefs.SetInt("Skill Points", 0);
         PlayerPrefs.SetInt("Current XP", 0);
@@ -369,6 +360,23 @@ public class PlayerPrefManager : MonoBehaviour
 
         // Resets counts for amount of times upgrades have been purchased to 0
         PlayerPrefs.SetInt("Equipment Effectiveness Upgrade Count", 0);
+
+        LoadPlayerUpgrades();
+    }
+    public void ResetAllPlayerPrefs()
+    {
+        // Resetting settings to default
+        PlayerPrefs.SetFloat("Master Volume", 100);
+        PlayerPrefs.SetFloat("Music Volume", 100);
+        PlayerPrefs.SetFloat("SFX Volume", 100);
+        PlayerPrefs.SetFloat("Player Sensitivity", 100);
+        PlayerPrefs.SetFloat("Brightness", 100);
+        PlayerPrefs.SetInt("Voice Prompts State", 1);
+
+        // Reset player name 
+        PlayerPrefs.SetString("PlayerName", "null_name");
+
+        ResetPlayerUpgrades();
 
         LoadGame();
     }

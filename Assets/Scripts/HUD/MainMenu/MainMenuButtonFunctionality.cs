@@ -88,7 +88,6 @@ public class MainMenuButtonFunctionality : MonoBehaviour, IPointerEnterHandler, 
 
     }
 
-    // TO DO: IMPLEMENT Tutorial
     public void LoadTutorial()
     {
         ScreenManager.Instance.ShowScreen("Transition_Screen");
