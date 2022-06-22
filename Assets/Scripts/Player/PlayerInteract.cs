@@ -118,7 +118,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     currentInteractPrompt = GameManager.Instance.openShopInteractText;
 
-                    if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().CanSwitchWeapon())
+                    if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().CanSwitchWeapon() && !GameManager.Instance.shopCanvas.activeInHierarchy)
                         currentInteractPrompt.SetActive(true);
                     else
                         currentInteractPrompt.SetActive(false);

@@ -220,9 +220,8 @@ public class PlayerMotor : MonoBehaviour
         //the player's downward velocity as expected
         if (isGrounded && playerVelocity.y < 0)
             playerVelocity.y = -4f;
-        else if (Physics.Raycast(raycastOrigin.position, Vector3.up, controller.height * 0.5f + 0.1f, ignoreRaycastLayers))
-            playerVelocity.y += gravity * 2.5f * Time.deltaTime;
-               
+        else 
+            playerVelocity.y += gravity * Time.deltaTime;
 
         //apply the downward vector(which exclusively deals with Y axis movement(jumping and gravity)
         controller.Move(playerVelocity * Time.deltaTime);
@@ -239,7 +238,27 @@ public class PlayerMotor : MonoBehaviour
             {
                 //give the player a positive upward vector(multiplied by a negative since gravity is negative)
                 playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+                StartCoroutine(CheckRoof());
             }
+        }
+    }
+
+    private IEnumerator CheckRoof()
+    {
+
+        while (true)
+        {
+            if (Physics.Raycast(raycastOrigin.position, Vector3.up, controller.height * 0.5f + 0.1f))
+            {
+                playerVelocity.y = 0f;
+                Debug.Log("Roof Detected");
+                StopCoroutine(CheckRoof());
+                break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+
+            if (isGrounded) { StopCoroutine(CheckRoof()); break; }
         }
     }
 
