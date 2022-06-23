@@ -82,13 +82,13 @@ public class Explodable : MonoBehaviour
         
         for (int i = 0; i < collidersCount; i++)
         {
-            Debug.Log(colliders[i].gameObject.name);
-            Vector3 charPos = new Vector3(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
-            Vector3 explodePos = new Vector3(transform.position.x, 0, transform.position.z);
+            //Debug.Log(colliders[i].gameObject.name);
+            Vector3 charPos = new(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
+            Vector3 explodePos = new(transform.position.x, 0, transform.position.z);
             float dist = Vector3.Distance(charPos, explodePos);
             damage = 300 - ((dist / 2) * 50);
 
-            if (colliders[i].gameObject.tag == "Player")
+            if (colliders[i].gameObject.CompareTag("Player"))
             {
                 if (dist < 1)
                 {
@@ -101,8 +101,8 @@ public class Explodable : MonoBehaviour
             target.y += 0.3f;
             if (Physics.Raycast(origin, (target - origin).normalized, out RaycastHit hit, radius, rayLayers))
             {
-                Debug.Log(hit.collider.tag + "Raycast hit this: ");
-                Debug.DrawLine(origin, origin + ((target - origin).normalized * radius), Color.green, 5f);
+                //Debug.Log(hit.collider.tag + "Raycast hit this: ");
+                //Debug.DrawLine(origin, origin + ((target - origin).normalized * radius), Color.green, 5f);
                 if (hit.collider.CompareTag("Player"))
                 {
                     ExplodeHitPlayer();
