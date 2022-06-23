@@ -97,8 +97,6 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
         // Headshot calculation
         headshotText.text = "Headshot %: " + ((int)(((float)GameManager.Instance.HeadshotHits / GameManager.Instance.BodyshotHits) * 100)).ToString();
-        GameManager.Instance.HeadshotHits = 0;
-        GameManager.Instance.BodyshotHits = 0;
 
         // Update header text
         if (bFullGameWon)
