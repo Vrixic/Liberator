@@ -136,7 +136,7 @@ MonoBehaviour:
       audioType: 3
       audio:
       - {fileID: 8300000, guid: 1d51b0bd80072ee4d8b7991affbdafe1, type: 3}
-      volMultiplier: 0.2
+      volMultiplier: 0.1
     objectTag: TestSFX
   - sound:
       audioType: 1
@@ -373,6 +373,20 @@ MonoBehaviour:
       - {fileID: 8300000, guid: a7974655e6a88a5449e8b8fefdfc1ad8, type: 3}
       volMultiplier: 0.4
     objectTag: OutOfAmmo
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: 1d51b0bd80072ee4d8b7991affbdafe1, type: 3}
+      volMultiplier: 0.4
+    objectTag: Scanned
+  - sound:
+      audioType: 0
+      audio:
+      - {fileID: 8300000, guid: b192419a5e6a80046b60d1e610ce011a, type: 3}
+      - {fileID: 8300000, guid: 90a9c0c1e65c7584f80509fa3eed04c8, type: 3}
+      - {fileID: 8300000, guid: 3178a056ec4b82b48b0fc49243249a85, type: 3}
+      volMultiplier: 0.5
+    objectTag: DoorOpenFail
 --- !u!82 &1763185080
 AudioSource:
   m_ObjectHideFlags: 0
