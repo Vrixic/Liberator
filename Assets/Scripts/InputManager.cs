@@ -94,7 +94,7 @@ public class InputManager : MonoBehaviour
 
         //onFoot.ShowCaseLevel.performed += ctx => buttonFunc.LoadShowcaseLevel();
 
-        //onFoot.GodMode.performed += ctx => player.ToggleGodMode();
+        onFoot.GodMode.performed += ctx => player.ToggleGodMode();
     }
 
     private void Start()
