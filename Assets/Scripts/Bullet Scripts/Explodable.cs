@@ -86,14 +86,13 @@ public class Explodable : MonoBehaviour
             Vector3 charPos = new(colliders[i].transform.position.x, 0, colliders[i].transform.position.z);
             Vector3 explodePos = new(transform.position.x, 0, transform.position.z);
             float dist = Vector3.Distance(charPos, explodePos);
-            damage = 300 - ((dist / 2) * 50);
+            damage = 200 - ((dist * 0.5f) * 50);
 
             if (colliders[i].gameObject.CompareTag("Player"))
             {
                 if (dist < 1)
                 {
-                    ExplodeHitPlayer();
-                    break;
+                    damage = 200;
                 }
             }
 
