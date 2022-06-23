@@ -109,7 +109,7 @@ public class Explodable : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null)
                 {
-                    colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
+                    colliders[i].GetComponent<Health>().TakeDamage(100, transform.position);
                 }
             }
             
