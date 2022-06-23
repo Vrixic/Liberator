@@ -173,6 +173,8 @@ public class GameManager : MonoBehaviour
     public int HeadshotHits { get; set; } = 0;
     public int BodyshotHits { get; set; } = 0;
 
+    public int HeadshotPercentage { get; set; } = 0;
+
     public Action OnRewardCollected;
 
     private static GameManager instance;
