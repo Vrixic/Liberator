@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door1forHostage
       objectReference: {fileID: 0}
+    - target: {fileID: 4018209427504873905, guid: 217e08d0d0097d6408470c8348dae6f1, type: 3}
+      propertyPath: m_TagString
+      value: HostageDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 4018209427504873908, guid: 217e08d0d0097d6408470c8348dae6f1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

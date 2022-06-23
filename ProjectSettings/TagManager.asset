@@ -62,6 +62,8 @@ TagManager:
   - UpgradeWeaponButton
   - AmmoGainedText
   - HealthGainedText
+  - HostageDoor
+  - LevelEntry
   layers:
   - Default
   - TransparentFX
