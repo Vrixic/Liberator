@@ -173,26 +173,11 @@ public class LeaderboardScreen : BaseScreen
     {
         string memberID = PlayerPrefManager.Instance.PlayerName;
 
-        LootLockerSDKManager.SubmitScore(memberID, score, TIME_LEADERBOARD_ID, (response) =>
-        {
-            if (response.success)
-            {
-                Debug.Log("Time Leaderboard score submitting response success!");
-
-            }
-            else
-            {
-                Debug.LogWarning("Time Leaderboard score submitting response failed!");
-                bHasScoreBeenSubmitted = false;
-            }
-        });
-
         LootLockerSDKManager.SubmitScore(memberID, GameManager.Instance.HeadshotPercentage, HEADSHOT_LEADERBOARD_ID, (response) =>
         {
             if (response.success)
             {
                 Debug.Log("Headshot Leaderboard score submitting response success!");
-                RefreshScores();
             }
             else
             {
@@ -200,5 +185,19 @@ public class LeaderboardScreen : BaseScreen
                 bHasScoreBeenSubmitted = false;
             }
         });
+
+        LootLockerSDKManager.SubmitScore(memberID, score, TIME_LEADERBOARD_ID, (response) =>
+        {
+            if (response.success)
+            {
+                Debug.Log("Time Leaderboard score submitting response success!");
+                Invoke("RefreshScores", 0.5f);
+            }
+            else
+            {
+                Debug.LogWarning("Time Leaderboard score submitting response failed!");
+                bHasScoreBeenSubmitted = false;
+            }
+        });        
     }
 }
