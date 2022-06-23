@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     private static InputManager _instance;
     public static InputManager Instance { get { return _instance; } }
     //reference to the C# class we generated with the input system
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
 
     //reference to the specific "OnFoot" action map(has specific actions like walk, slow-walk, jump, crouch)
     public PlayerInput.OnFootActions onFoot;
