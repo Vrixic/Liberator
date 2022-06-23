@@ -192,6 +192,7 @@ public class LeaderboardScreen : BaseScreen
             if (response.success)
             {
                 Debug.Log("Headshot Leaderboard score submitting response success!");
+                RefreshScores();
             }
             else
             {
@@ -199,7 +200,5 @@ public class LeaderboardScreen : BaseScreen
                 bHasScoreBeenSubmitted = false;
             }
         });
-
-        RefreshScores();
     }
 }
