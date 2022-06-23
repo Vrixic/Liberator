@@ -230,18 +230,10 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         // Get instance of Pause menu and turn it off
         GameManager.Instance.pause.SetActive(false);
         // Find active scene and reload it
-        if (Application.platform == RuntimePlatform.WebGLPlayer)
-        {
-            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One_WBGL");
-            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
-            ScreenManager.Instance.ShowScreen("Transition_Screen");
-        }
-        else
-        {
-            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One");
-            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
-            ScreenManager.Instance.ShowScreen("Transition_Screen");
-        }
+
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+        ScreenManager.Instance.ShowScreen("Transition_Screen");
 
     }
 
@@ -283,7 +275,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
                 ScreenManager.Instance.HideScreen("XP_Screen");
                 ScreenManager.Instance.ShowScreen("Leaderboard_Screen");
             }
-            else 
+            else
             {
                 PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("MainMenuScene");
                 PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;

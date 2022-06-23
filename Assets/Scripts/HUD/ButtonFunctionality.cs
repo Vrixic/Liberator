@@ -127,21 +127,11 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
         }
         // find Instance of Reticle
         reticle = GameManager.Instance.reticle;
+
         // Find active scene and reload it
-        if (Application.platform == RuntimePlatform.WebGLPlayer)
-        {
-            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
-            ScreenManager.Instance.ShowScreen("Transition_Screen");
-        }
-        else
-        {
-            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
-            ScreenManager.Instance.ShowScreen("Transition_Screen");
-        }
-
-
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+        ScreenManager.Instance.ShowScreen("Transition_Screen");
 
     }
 
