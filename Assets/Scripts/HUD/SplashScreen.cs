@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class SplashScreen : MonoBehaviour
 {
-    [SerializeField] private Image splashImage;
+    [SerializeField] private Image teamImage;
+    [SerializeField] private Image gameImage;
     [SerializeField] private float minWaitTime = 2f;
 
     private AsyncOperation mAsyncOperation;
@@ -17,24 +18,47 @@ public class SplashScreen : MonoBehaviour
         mAsyncOperation = SceneManager.LoadSceneAsync("MainMenuScene");
         mAsyncOperation.allowSceneActivation = false;
 
-        StartCoroutine(Wait());
+        gameImage.gameObject.SetActive(false);
+
+        StartCoroutine(FadeInOutTeamLogo());
     }
 
-   private IEnumerator Wait()
+   private IEnumerator FadeInOutTeamLogo()
    {
         float time = 0f;
-        Color color = splashImage.color;
+        Color color = teamImage.color;
 
         while(time < minWaitTime)
         {
             time += Time.deltaTime;
-            color.a = Mathf.Sin(Time.time);
+            color.a = Mathf.Sin(time);
 
-            splashImage.color = color;
+            teamImage.color = color;
+
+            yield return null;
+        }
+
+        teamImage.gameObject.SetActive(false);
+        StartCoroutine(FadeInOutGameLogo());
+   }
+
+    private IEnumerator FadeInOutGameLogo()
+    {
+        gameImage.gameObject.SetActive(true);
+
+        float time = 0f;
+        Color color = gameImage.color;
+
+        while (time < minWaitTime)
+        {
+            time += Time.deltaTime;
+            color.a = Mathf.Sin(time);
+
+            gameImage.color = color;
 
             yield return null;
         }
 
         mAsyncOperation.allowSceneActivation = true;
-   }
+    }
 }

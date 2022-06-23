@@ -96,7 +96,14 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         retryButton.SetActive(false);
 
         // Headshot calculation
-        headshotText.text = "Headshot %: " + ((int)(((float)GameManager.Instance.HeadshotHits / GameManager.Instance.BodyshotHits) * 100)).ToString();
+        if(GameManager.Instance.HeadshotHits == 0 && GameManager.Instance.BodyshotHits == 0)
+        {
+            headshotText.text = "Headshot %: 0";
+        }
+        else
+        {
+            headshotText.text = "Headshot %: " + ((int)(((float)GameManager.Instance.HeadshotHits / GameManager.Instance.BodyshotHits) * 100)).ToString();
+        }
 
         // Update header text
         if (bFullGameWon)
