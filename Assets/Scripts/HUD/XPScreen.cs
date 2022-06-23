@@ -28,6 +28,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
     [SerializeField] private TextMeshProUGUI headshotText;
 
+    [SerializeField] private GameObject leaderboardErrorGameObject;
+
     /* prefab of enemy text holder */
     [SerializeField] private GameObject enemyUIPrefab;
 
@@ -107,6 +109,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
             headshotText.text = "Headshot %: " + GameManager.Instance.HeadshotPercentage.ToString();
         }
 
+        leaderboardErrorGameObject.SetActive(false);
+
         // Update header text
         if (bFullGameWon)
         {
@@ -116,6 +120,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
             if(PlayerPrefManager.Instance.totalSkillPointsSpent > 0)
             {
+                leaderboardErrorGameObject.SetActive(true);
                 buttonText.text = "Main Menu";
             }
             else
