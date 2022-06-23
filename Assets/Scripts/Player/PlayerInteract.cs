@@ -27,7 +27,7 @@ public class PlayerInteract : MonoBehaviour
         hostageProgressBarImage = GameManager.Instance.hostageProgressBar.GetComponent<Image>();
         hostageProgressBarImage.fillAmount = 0;
         GameManager.Instance.hostageProgressBar.SetActive(false);
-        interactionLayerMask = LayerMask.GetMask("Interaction");
+        interactionLayerMask = LayerMask.GetMask("Interaction", "Default");
 
         //intitializing the interact prompt to a value so I don't need a null check condition
         currentInteractPrompt = GameManager.Instance.openDoorInteractText;
@@ -65,6 +65,7 @@ public class PlayerInteract : MonoBehaviour
                         currentInteractPrompt.SetActive(false);
                     }
                 }
+
                 //player is looking at a door within interact range
                 if (currentHit.collider.CompareTag("Door"))
                 {
