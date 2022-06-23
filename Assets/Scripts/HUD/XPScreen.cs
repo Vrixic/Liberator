@@ -283,7 +283,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
         else
         {
-            if (true || bFullGameWon && PlayerPrefManager.Instance.totalSkillPointsSpent == 0)
+            if (bFullGameWon && PlayerPrefManager.Instance.totalSkillPointsSpent == 0)
             {
                 ScreenManager.Instance.HideScreen("XP_Screen");
                 ScreenManager.Instance.ShowScreen("Leaderboard_Screen");
