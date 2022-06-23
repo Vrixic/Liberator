@@ -52,6 +52,7 @@ public class LEdoorController : MonoBehaviour
             doorAnimator.Play("DoorCloseNew", 0, 0.0f);
             doorOpen = false;
             AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorClose");
+            gameObject.tag = "LevelEntry";
         }
 
         //unloads the previous level once the door finishes closing

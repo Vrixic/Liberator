@@ -126,6 +126,16 @@ public class PlayerInteract : MonoBehaviour
                         else
                             currentInteractPrompt.SetActive(false);
                     }
+                    else if (currentHit.collider.CompareTag("HostageDoor"))
+                    {
+                        currentInteractPrompt = GameManager.Instance.hostageDoorPrompt;
+                        currentInteractPrompt.SetActive(true);
+                    }
+                    else if (currentHit.collider.CompareTag("LevelEntry"))
+                    {
+                        currentInteractPrompt = GameManager.Instance.doorLockedPrompt;
+                        currentInteractPrompt.SetActive(true);
+                    }
                     else //if not an interactable object
                         currentInteractPrompt.SetActive(false);
                 }
