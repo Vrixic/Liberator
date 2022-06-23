@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class InformationPopup : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class InformationPopup : MonoBehaviour
 
     bool bPaused = false;
 
+    bool bIsKeyPressed = false;
+
+    [SerializeField] string actionToDo = "";
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -26,15 +31,15 @@ public class InformationPopup : MonoBehaviour
         {
             StopAllPrompts();
         }
-        if (Time.timeScale < 0.01f)
+        if (GameManager.Instance.isPauseMenuOpen)
         {
             bPaused = true;
-            informationPrompt.gameObject.SetActive(false);
+            informationPrompt.SetActive(false);
         }
         if (bPaused && Time.timeScale > 0)
         {
             bPaused = false;
-            informationPrompt.gameObject.SetActive(true);
+            informationPrompt.SetActive(true);
         }
         if (bAudioIsPlaying)
         {
@@ -63,8 +68,27 @@ public class InformationPopup : MonoBehaviour
     IEnumerator TextPromptSlow()
     {
         informationPrompt.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        if (actionToDo != "")
+        {
+            while (!bIsKeyPressed)
+            {
+                if (InputManager.Instance.playerInput.FindAction(actionToDo).triggered && !GameManager.Instance.isPauseMenuOpen)
+                {
+                    bIsKeyPressed = true;
+                }
+                Time.timeScale = 0.0001f;
+
+                yield return null;
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(4);
+        }
+        
         informationPrompt.SetActive(false);
+        Time.timeScale = 1;
+        bIsKeyPressed = false;
         gameObject.SetActive(false);
     }
 

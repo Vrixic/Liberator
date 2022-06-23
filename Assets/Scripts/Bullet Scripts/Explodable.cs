@@ -77,7 +77,7 @@ public class Explodable : MonoBehaviour
     {
         Collider[] colliders = new Collider[10];
         Vector3 origin = transform.position;
-        origin.y += 1.5f;
+        origin.y += 2.5f;
         int collidersCount = Physics.OverlapSphereNonAlloc(origin, radius, colliders, layers);
         
         for (int i = 0; i < collidersCount; i++)
