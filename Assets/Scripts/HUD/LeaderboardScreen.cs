@@ -20,6 +20,8 @@ public class LeaderboardScreen : BaseScreen
     [SerializeField] private TextMeshProUGUI[] timeHolders;
     [SerializeField] private TextMeshProUGUI[] headshotHolders;
 
+    private Dictionary<string, int> mHeadshotPercentages = new Dictionary<string, int>();
+
     private bool bHasScoreBeenSubmitted = false;
 
     public override void Start()
@@ -36,7 +38,7 @@ public class LeaderboardScreen : BaseScreen
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        if(SceneManager.GetActiveScene().name == "MainMenuScene")
+        if (SceneManager.GetActiveScene().name == "MainMenuScene")
         {
             submitButton.gameObject.SetActive(false);
             mainMenuButtonText.text = "Close";
@@ -73,7 +75,7 @@ public class LeaderboardScreen : BaseScreen
             PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("MainMenuScene");
             PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
             ScreenManager.Instance.ShowScreen("Transition_Screen");
-        }       
+        }
     }
 
     private void InitLeaderboard()
@@ -93,7 +95,37 @@ public class LeaderboardScreen : BaseScreen
 
     private void RefreshScores()
     {
-        LootLockerSDKManager.GetScoreList(TIME_LEADERBOARD_ID, MAX_SCORES, (response) => {
+        LootLockerSDKManager.GetScoreList(HEADSHOT_LEADERBOARD_ID, MAX_SCORES, (response) =>
+        {
+            if (response.success)
+            {
+                Debug.Log("Leaderboard getting headshot scores response success!");
+
+                LootLockerLeaderboardMember[] scores = response.items;
+
+                int index = 0;
+
+                for (; index < scores.Length; index++)
+                {
+                    Debug.Log(scores[index].member_id + " " + scores[index].score);
+                    mHeadshotPercentages.Add(scores[index].member_id, scores[index].score);
+                }
+
+                GetTimeLeaderboardScores();
+            }
+            else
+            {
+                Debug.LogWarning("Leaderboard getting scores response failed!");
+            }
+        });
+
+        
+    }
+
+    private void GetTimeLeaderboardScores()
+    {
+        LootLockerSDKManager.GetScoreList(TIME_LEADERBOARD_ID, MAX_SCORES, (response) =>
+        {
             if (response.success)
             {
                 Debug.Log("Leaderboard getting time scores response success!");
@@ -104,14 +136,17 @@ public class LeaderboardScreen : BaseScreen
 
                 for (; index < scores.Length; index++)
                 {
-                    Debug.Log("Rank: " + scores[index].rank + ", Scores[" + index + "]: " + scores[index].score);
 
+                    // Time and rank
                     int seconds = scores[index].score % 60;
                     int minutes = (int)(scores[index].score / 60f);
                     string text = scores[index].rank + "." + scores[index].member_id;
 
                     timeHolders[index].text = minutes.ToString() + (seconds < 10 ? ":0" : ":").ToString() + seconds.ToString();
-                    textHolders[index].text =  text;
+                    textHolders[index].text = text;
+
+                    // Headshot
+                    headshotHolders[index].text = mHeadshotPercentages[scores[index].member_id].ToString();
                 }
 
                 if (index < MAX_SCORES)
@@ -123,35 +158,6 @@ public class LeaderboardScreen : BaseScreen
                         Debug.Log("Filling Score[" + index + "]: " + "empty");
                         timeHolders[index].text = "";
                         textHolders[index].text = "";
-                    }
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Leaderboard getting scores response failed!");
-            }
-        });
-
-        LootLockerSDKManager.GetScoreList(HEADSHOT_LEADERBOARD_ID, MAX_SCORES, (response) => {
-            if (response.success)
-            {
-                Debug.Log("Leaderboard getting headshot scores response success!");
-
-                LootLockerLeaderboardMember[] scores = response.items;
-
-                int index = 0;
-
-                for (; index < scores.Length; index++)
-                {
-                    headshotHolders[index].text = scores[index].score.ToString();
-                }
-
-                if (index < MAX_SCORES)
-                {
-                    Debug.Log("No more entries left!");
-
-                    for (; index < MAX_SCORES; index++)
-                    {
                         headshotHolders[index].text = "";
                     }
                 }
@@ -166,18 +172,13 @@ public class LeaderboardScreen : BaseScreen
     private void SubmitScore(int score)
     {
         string memberID = PlayerPrefManager.Instance.PlayerName;
-        //if (memberID.text.Length < 6 || memberID.text.Length > 12)
-        //{
-        //    Debug.Log("Leaderboard score submitting failed: member id < 6 characters or > 12 characters");
-        //    bHasScoreBeenSubmitted = false;
-        //    return;
-        //}
 
-        LootLockerSDKManager.SubmitScore(memberID, score, TIME_LEADERBOARD_ID, (response) => {
+        LootLockerSDKManager.SubmitScore(memberID, score, TIME_LEADERBOARD_ID, (response) =>
+        {
             if (response.success)
             {
                 Debug.Log("Time Leaderboard score submitting response success!");
-                
+
             }
             else
             {
@@ -186,11 +187,11 @@ public class LeaderboardScreen : BaseScreen
             }
         });
 
-        LootLockerSDKManager.SubmitScore(memberID, GameManager.Instance.HeadshotPercentage, HEADSHOT_LEADERBOARD_ID, (response) => {
+        LootLockerSDKManager.SubmitScore(memberID, GameManager.Instance.HeadshotPercentage, HEADSHOT_LEADERBOARD_ID, (response) =>
+        {
             if (response.success)
             {
                 Debug.Log("Headshot Leaderboard score submitting response success!");
-                //RefreshScores();
             }
             else
             {
