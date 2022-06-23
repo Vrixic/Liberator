@@ -143,7 +143,7 @@ public class LeaderboardScreen : BaseScreen
 
                 for (; index < scores.Length; index++)
                 {
-                    headshotHolders[index].text = scores[index].ToString();
+                    headshotHolders[index].text = scores[index].score.ToString();
                 }
 
                 if (index < MAX_SCORES)
