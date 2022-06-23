@@ -259,6 +259,8 @@ public class GameManager : MonoBehaviour
         openShopInteractText = GameObject.FindGameObjectWithTag("OpenShopInteractText");
         openShopInteractText.SetActive(false);
 
+        doorLockedPrompt.SetActive(false);
+        hostageDoorPrompt.SetActive(false);
 
         flashBangIcon = GameObject.FindGameObjectWithTag("FlashBangIcon");
         flashBangCount = GameObject.FindGameObjectWithTag("FlashbangCount").GetComponent<TextMeshProUGUI>();
