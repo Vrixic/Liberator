@@ -9,7 +9,7 @@ public class Explodable : MonoBehaviour
 
     // layers that are dectected to deal damage
     [SerializeField] LayerMask layers;
-    // layers for the raycast, to check for objects to deal less damage
+
     [SerializeField] LayerMask rayLayers;
 
     // pool of the fire spray effect
@@ -77,6 +77,7 @@ public class Explodable : MonoBehaviour
     {
         Collider[] colliders = new Collider[10];
         Vector3 origin = transform.position;
+        origin.y += 1.5f;
         int collidersCount = Physics.OverlapSphereNonAlloc(origin, radius, colliders, layers);
         
         for (int i = 0; i < collidersCount; i++)
@@ -87,45 +88,67 @@ public class Explodable : MonoBehaviour
             float dist = Vector3.Distance(charPos, explodePos);
             damage = 300 - ((dist / 2) * 50);
 
+            if (colliders[i].gameObject.tag == "Player")
+            {
+                if (dist < 1)
+                {
+                    ExplodeHitPlayer();
+                    break;
+                }
+            }
+
             Vector3 target = colliders[i].transform.position;
             target.y += 0.3f;
-            origin.y += 1f;
-
-            RaycastHit[] results = new RaycastHit[10];
-            Ray ray = new Ray(origin, (target - origin).normalized);
-            int hits = Physics.RaycastNonAlloc(ray, results, radius, rayLayers);
-            Debug.DrawLine(origin, origin + (ray.direction * radius), Color.green, 2f);
-            for (int j = 0; j < hits; j++)
+            if (Physics.Raycast(origin, (target - origin).normalized, out RaycastHit hit, radius, rayLayers))
             {
-                Debug.Log(results[j].collider.name);
-                if (results[j].collider.CompareTag("Player"))
+                Debug.Log(hit.collider.tag + "Raycast hit this: ");
+                Debug.DrawLine(origin, origin + ((target - origin).normalized * radius), Color.green, 5f);
+                if (hit.collider.CompareTag("Player"))
                 {
-                    if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
-                    {
-                        if (gameObject.activeInHierarchy == true)
-                            gameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        //create damage indicator UI
-                        DISystem.createIndicator(transform);
-                    }
-
-                    GameManager.Instance.playerScript.TakeDamage((int)damage);
-
-                    //add high camera shake
-                    GameManager.Instance.cameraShakeScript.Trauma += 1f;
-                    break;
+                    ExplodeHitPlayer();
                 }
-                else if (results[j].collider.CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null)
+                else if (hit.collider.CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null)
                 {
                     colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
-                    break;
                 }
-                else if (results[j].collider.CompareTag("EnvironmentWood")) { damage *= 0.6f; }
-                else if (results[j].collider.CompareTag("EnvironmentMetal")) { damage *= 0.3f; }
-                else if (results[j].collider.CompareTag("EnvironmentConcrete")) { damage = 0; }
             }
+            
+
+            //RaycastHit[] results = new RaycastHit[10];
+            //Ray ray = new Ray(origin, (target - origin).normalized);
+            //int hits = Physics.RaycastNonAlloc(ray, results, radius, rayLayers);
+            //Debug.DrawLine(origin, origin + (ray.direction * radius), Color.green, 2f);
+            //for (int j = 0; j < hits; j++)
+            //{
+            //    Debug.Log(results[j].collider.name);
+            //    if (results[j].collider.CompareTag("Player"))
+            //    {
+            //        if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
+            //        {
+            //            if (gameObject.activeInHierarchy == true)
+            //                gameObject.SetActive(false);
+            //        }
+            //        else
+            //        {
+            //            //create damage indicator UI
+            //            DISystem.createIndicator(transform);
+            //        }
+
+            //        GameManager.Instance.playerScript.TakeDamage((int)damage);
+
+            //        //add high camera shake
+            //        GameManager.Instance.cameraShakeScript.Trauma += 1f;
+            //        break;
+            //    }
+            //    else if (results[j].collider.CompareTag("Hitbox") && colliders[i].GetComponent<CapsuleCollider>() != null)
+            //    {
+            //        colliders[i].GetComponent<Health>().TakeDamage((int)damage, transform.position);
+            //        break;
+            //    }
+            //    else if (results[j].collider.CompareTag("EnvironmentWood")) { damage *= 0.6f; }
+            //    else if (results[j].collider.CompareTag("EnvironmentMetal")) { damage *= 0.3f; }
+            //    else if (results[j].collider.CompareTag("EnvironmentConcrete")) { damage = 0; }
+            //}
         }
 
         //whether or not it was close enough to the player, at least add a small amount of camera shake
@@ -155,6 +178,26 @@ public class Explodable : MonoBehaviour
 
             GameManager.Instance.AlertEnemiesInSphere(transform.position, 10f);
         }
+    }
+
+
+    void ExplodeHitPlayer()
+    {
+        if (damage >= GameManager.Instance.playerScript.GetCurrentPlayerHealth())
+        {
+            if (gameObject.activeInHierarchy == true)
+                gameObject.SetActive(false);
+        }
+        else
+        {
+            //create damage indicator UI
+            DISystem.createIndicator(transform);
+        }
+
+        GameManager.Instance.playerScript.TakeDamage((int)damage);
+
+        //add high camera shake
+        GameManager.Instance.cameraShakeScript.Trauma += 1f;
     }
 
     //counter for when to explode the tank
