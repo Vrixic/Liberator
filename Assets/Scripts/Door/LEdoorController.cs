@@ -40,8 +40,7 @@ public class LEdoorController : MonoBehaviour
             }
             else if(doorLocked)
             {
-                //add door locked sound here
-
+                AudioManager.Instance.PlayAudioAtLocation(transform.position, "DoorOpenFail");
             }
         }
     }
