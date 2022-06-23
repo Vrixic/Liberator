@@ -14,7 +14,6 @@ public class LeaderboardScreen : BaseScreen
     private const int MAX_SCORES = 5;
 
     //[SerializeField] private TMP_InputField memberID;
-    [SerializeField] private Button submitButton;
     [SerializeField] private TextMeshProUGUI mainMenuButtonText;
     [SerializeField] private TextMeshProUGUI[] textHolders;
     [SerializeField] private TextMeshProUGUI[] timeHolders;
@@ -40,17 +39,17 @@ public class LeaderboardScreen : BaseScreen
 
         if (SceneManager.GetActiveScene().name == "MainMenuScene")
         {
-            submitButton.gameObject.SetActive(false);
             mainMenuButtonText.text = "Close";
         }
         else
         {
-            submitButton.gameObject.SetActive(true);
             mainMenuButtonText.text = "Main Menu";
 
             GameManager.Instance.IsUIOverlayVisible = true;
             GameManager.Instance.isXPScreenActive = true;
             GameManager.Instance.canOpenPauseMenu = false;
+
+            OnSubmitScoreButtonClick();
         }
 
         RefreshScores();
@@ -108,7 +107,8 @@ public class LeaderboardScreen : BaseScreen
                 for (; index < scores.Length; index++)
                 {
                     Debug.Log(scores[index].member_id + " " + scores[index].score);
-                    mHeadshotPercentages.Add(scores[index].member_id, scores[index].score);
+                    if(!mHeadshotPercentages.ContainsKey(scores[index].member_id))
+                        mHeadshotPercentages.Add(scores[index].member_id, scores[index].score);
                 }
 
                 GetTimeLeaderboardScores();
@@ -178,6 +178,21 @@ public class LeaderboardScreen : BaseScreen
             if (response.success)
             {
                 Debug.Log("Headshot Leaderboard score submitting response success!");
+
+                LootLockerSDKManager.SubmitScore(memberID, score, TIME_LEADERBOARD_ID, (response) =>
+                {
+                    if (response.success)
+                    {
+                        Debug.Log("Time Leaderboard score submitting response success!");
+                        RefreshScores();
+                        //Invoke("RefreshScores", 0.5f);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Time Leaderboard score submitting response failed!");
+                        bHasScoreBeenSubmitted = false;
+                    }
+                });
             }
             else
             {
@@ -186,18 +201,6 @@ public class LeaderboardScreen : BaseScreen
             }
         });
 
-        LootLockerSDKManager.SubmitScore(memberID, score, TIME_LEADERBOARD_ID, (response) =>
-        {
-            if (response.success)
-            {
-                Debug.Log("Time Leaderboard score submitting response success!");
-                Invoke("RefreshScores", 0.5f);
-            }
-            else
-            {
-                Debug.LogWarning("Time Leaderboard score submitting response failed!");
-                bHasScoreBeenSubmitted = false;
-            }
-        });        
+        
     }
 }
