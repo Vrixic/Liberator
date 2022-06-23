@@ -121,11 +121,8 @@ public class LeaderboardScreen : BaseScreen
                     for (; index < MAX_SCORES; index++)
                     {
                         Debug.Log("Filling Score[" + index + "]: " + "empty");
-
-                        string text = index + "." + " ";
-
                         timeHolders[index].text = "";
-                        textHolders[index].text = text;
+                        textHolders[index].text = "";
                     }
                 }
             }
@@ -155,7 +152,7 @@ public class LeaderboardScreen : BaseScreen
 
                     for (; index < MAX_SCORES; index++)
                     {
-                        headshotHolders[index].text = "0";
+                        headshotHolders[index].text = "";
                     }
                 }
             }
