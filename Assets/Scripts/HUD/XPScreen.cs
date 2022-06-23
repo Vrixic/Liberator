@@ -113,9 +113,15 @@ public class XPScreen : BaseScreen, IPointerClickHandler
             headerText.text = "You Win!";
 
             retryButton.SetActive(false);
-            buttonText.text = "Leaderboard";
 
-            //buttonText.text = "Main Menu";
+            if(PlayerPrefManager.Instance.totalSkillPointsSpent > 0)
+            {
+                buttonText.text = "Main Menu";
+            }
+            else
+            {
+                buttonText.text = "Leaderboard";
+            }           
 
             float time = TimerUI.Instance.TimePastFromTimeStamp();
             int seconds = (int)(time % 60);
@@ -272,7 +278,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         }
         else
         {
-            if (bFullGameWon)
+            if (bFullGameWon && PlayerPrefManager.Instance.totalSkillPointsSpent == 0)
             {
                 ScreenManager.Instance.HideScreen("XP_Screen");
                 ScreenManager.Instance.ShowScreen("Leaderboard_Screen");

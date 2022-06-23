@@ -110,11 +110,12 @@ public class BaseGun : BaseWeapon
     public override void StartAttacking()
     {
         if (bIsReloading) return; // dont do anything when gun is being reloaded
-        if (!HasMoreAmmo()) { 
+        if (!HasMoreAmmo())
+        {
             AudioManager.Instance.PlayAudioAtLocation(transform.position, "OutOfAmmo");
             return;
         }
-         // need to reload gun, gun doesn't have enough ammo
+        // need to reload gun, gun doesn't have enough ammo
 
         if (TakeAction(m_LastAttackTime, attackRate)) // can shoot this weapon now
         {
@@ -230,7 +231,15 @@ public class BaseGun : BaseWeapon
         Hostage hostage;
         if (hit.collider.CompareTag("Hitbox"))
         {
-            GameManager.Instance.BodyshotHits++;
+            if (!hit.collider.transform.parent.CompareTag("Juggernaut"))
+            {
+                GameManager.Instance.BodyshotHits++;
+            }
+            else
+            {
+                Debug.Log("Bodyshots on Juggernaut do not count");
+            }
+
             if (hit.collider.GetComponent<CapsuleCollider>() != null)
             {
                 //Debug.Log("Body Shot");
@@ -249,7 +258,7 @@ public class BaseGun : BaseWeapon
             if (hit.collider.GetComponent<Headshot_Hitbox>() != null)
                 hostage.TakeDamage((int)(GetDamage() * GetHeadShotDamageMultiplier()));
             else
-                hostage.TakeDamage(GetDamage()); 
+                hostage.TakeDamage(GetDamage());
         }
 
         bullet.Spawn(raycastOrigin.position, deltaPosition.normalized, hit, 0.5f);
@@ -518,5 +527,5 @@ public class BaseGun : BaseWeapon
         return bulletRange;
     }
 
-  
+
 }
