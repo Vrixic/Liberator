@@ -170,6 +170,9 @@ public class GameManager : MonoBehaviour
     public bool GameWon { get; set; } = false;
     public bool HostageDied { get; set; } = false;
 
+    public int HeadshotHits { get; set; } = 0;
+    public int BodyshotHits { get; set; } = 0;
+
     public Action OnRewardCollected;
 
     private static GameManager instance;
