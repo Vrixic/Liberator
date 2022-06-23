@@ -26,6 +26,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
     [SerializeField] private TextMeshProUGUI timeText;
 
+    [SerializeField] private TextMeshProUGUI headshotText;
+
     /* prefab of enemy text holder */
     [SerializeField] private GameObject enemyUIPrefab;
 
@@ -92,6 +94,9 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         bFullGameWon = Hostage.hostagesSecured == 5;
 
         retryButton.SetActive(false);
+
+        // Headshot calculation
+        headshotText.text = "Headshot %: " + ((int)(((float)GameManager.Instance.HeadshotHits / GameManager.Instance.BodyshotHits) * 100)).ToString();
 
         // Update header text
         if (bFullGameWon)
