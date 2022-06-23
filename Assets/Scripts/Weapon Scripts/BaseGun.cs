@@ -230,6 +230,7 @@ public class BaseGun : BaseWeapon
         Hostage hostage;
         if (hit.collider.CompareTag("Hitbox"))
         {
+            GameManager.Instance.BodyshotHits++;
             if (hit.collider.GetComponent<CapsuleCollider>() != null)
             {
                 //Debug.Log("Body Shot");
@@ -238,6 +239,7 @@ public class BaseGun : BaseWeapon
             else
             {
                 //Debug.Log("Head Shot");
+                GameManager.Instance.HeadshotHits++;
                 hit.collider.GetComponentInParent<Health>().TakeDamage((GetDamage() * GetHeadShotDamageMultiplier()), transform.forward);
             }
 

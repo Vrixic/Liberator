@@ -513,6 +513,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1182210335901618845, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1310418742393690305, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -524,6 +528,10 @@ PrefabInstance:
     - target: {fileID: 1931620151795253820, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_SizeDelta.y
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225689628712052972, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2323607558197208348, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -537,6 +545,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3315377643012660691, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 368dc2376d58ee54aada056e2bcc97f8, type: 3}
     - target: {fileID: 3612032593476923067, guid: 48a82949d5f0f48489470fedd8430b91, type: 3}
       propertyPath: m_IsActive
       value: 1

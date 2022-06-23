@@ -26,6 +26,8 @@ public class XPScreen : BaseScreen, IPointerClickHandler
 
     [SerializeField] private TextMeshProUGUI timeText;
 
+    [SerializeField] private TextMeshProUGUI headshotText;
+
     /* prefab of enemy text holder */
     [SerializeField] private GameObject enemyUIPrefab;
 
@@ -92,6 +94,16 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         bFullGameWon = Hostage.hostagesSecured == 5;
 
         retryButton.SetActive(false);
+
+        // Headshot calculation
+        if(GameManager.Instance.HeadshotHits == 0 && GameManager.Instance.BodyshotHits == 0)
+        {
+            headshotText.text = "Headshot %: 0";
+        }
+        else
+        {
+            headshotText.text = "Headshot %: " + ((int)(((float)GameManager.Instance.HeadshotHits / GameManager.Instance.BodyshotHits) * 100)).ToString();
+        }
 
         // Update header text
         if (bFullGameWon)
@@ -218,18 +230,10 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         // Get instance of Pause menu and turn it off
         GameManager.Instance.pause.SetActive(false);
         // Find active scene and reload it
-        if (Application.platform == RuntimePlatform.WebGLPlayer)
-        {
-            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One_WBGL");
-            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
-            ScreenManager.Instance.ShowScreen("Transition_Screen");
-        }
-        else
-        {
-            PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("Level_One");
-            PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
-            ScreenManager.Instance.ShowScreen("Transition_Screen");
-        }
+
+        PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
+        ScreenManager.Instance.ShowScreen("Transition_Screen");
 
     }
 
@@ -271,7 +275,7 @@ public class XPScreen : BaseScreen, IPointerClickHandler
                 ScreenManager.Instance.HideScreen("XP_Screen");
                 ScreenManager.Instance.ShowScreen("Leaderboard_Screen");
             }
-            else 
+            else
             {
                 PlayerPrefManager.Instance.SceneOperation = SceneManager.LoadSceneAsync("MainMenuScene");
                 PlayerPrefManager.Instance.SceneOperation.allowSceneActivation = false;
