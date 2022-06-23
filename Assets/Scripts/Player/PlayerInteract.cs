@@ -66,65 +66,70 @@ public class PlayerInteract : MonoBehaviour
                     }
                 }
 
-                //player is looking at a door within interact range
-                if (currentHit.collider.CompareTag("Door"))
+                if (currentHit.collider.gameObject.layer == LayerMask.NameToLayer("Interaction"))
                 {
-                    DoorController doorController = currentHit.collider.gameObject.GetComponent<DoorController>();
-                    bool doorIsOpen = false;
-
-                    if(doorController != null)
+                    //player is looking at a door within interact range
+                    if (currentHit.collider.CompareTag("Door"))
                     {
-                        doorIsOpen = doorController.DoorOpen;
-                    }
-                    else
-                    {
-                        LEdoorController levelEntryDoorController = currentHit.collider.gameObject.GetComponent<LEdoorController>();
+                        DoorController doorController = currentHit.collider.gameObject.GetComponent<DoorController>();
+                        bool doorIsOpen = false;
 
-                        if (levelEntryDoorController != null)
-                            doorIsOpen = levelEntryDoorController.DoorOpen;
+                        if (doorController != null)
+                        {
+                            doorIsOpen = doorController.DoorOpen;
+                        }
                         else
                         {
-                            Debug.LogError("This door doesn't have a compatible door controller");
+                            LEdoorController levelEntryDoorController = currentHit.collider.gameObject.GetComponent<LEdoorController>();
+
+                            if (levelEntryDoorController != null)
+                                doorIsOpen = levelEntryDoorController.DoorOpen;
+                            else
+                            {
+                                Debug.LogError("This door doesn't have a compatible door controller");
+                            }
                         }
-                    }
 
-                    //set interaction text depending on whether a given door is open or closed
-                    if (doorIsOpen == false)
-                    {
-                        //set the new text to prompt the user to open the door
-                        currentInteractPrompt = GameManager.Instance.openDoorInteractText;
-                    }
-                    else //door is open(needs to be closed)
-                    {
-                        //set the new text to prompt the user to close the door
-                        currentInteractPrompt = GameManager.Instance.closeDoorInteractText;
-                    }
+                        //set interaction text depending on whether a given door is open or closed
+                        if (doorIsOpen == false)
+                        {
+                            //set the new text to prompt the user to open the door
+                            currentInteractPrompt = GameManager.Instance.openDoorInteractText;
+                        }
+                        else //door is open(needs to be closed)
+                        {
+                            //set the new text to prompt the user to close the door
+                            currentInteractPrompt = GameManager.Instance.closeDoorInteractText;
+                        }
 
-                    //display the appropriate prompt to the player
-                    currentInteractPrompt.SetActive(true);
-                }
-                //player is looking at intel within interact range
-                else if (currentHit.collider.CompareTag("Intel"))
-                {
-                    currentInteractPrompt = GameManager.Instance.intelInteractText;
-                    currentInteractPrompt.SetActive(true);
-                }
-                //player is looking at a hostage within interact range
-                else if (currentHit.collider.CompareTag("Hostage"))
-                {
-                    currentInteractPrompt = GameManager.Instance.secureHostageText;
-                    currentInteractPrompt.SetActive(true);
-                }
-                else if(currentHit.collider.CompareTag("Shop"))
-                {
-                    currentInteractPrompt = GameManager.Instance.openShopInteractText;
-
-                    if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().CanSwitchWeapon() && !GameManager.Instance.shopCanvas.activeInHierarchy)
+                        //display the appropriate prompt to the player
                         currentInteractPrompt.SetActive(true);
-                    else
+                    }
+                    //player is looking at intel within interact range
+                    else if (currentHit.collider.CompareTag("Intel"))
+                    {
+                        currentInteractPrompt = GameManager.Instance.intelInteractText;
+                        currentInteractPrompt.SetActive(true);
+                    }
+                    //player is looking at a hostage within interact range
+                    else if (currentHit.collider.CompareTag("Hostage"))
+                    {
+                        currentInteractPrompt = GameManager.Instance.secureHostageText;
+                        currentInteractPrompt.SetActive(true);
+                    }
+                    else if (currentHit.collider.CompareTag("Shop"))
+                    {
+                        currentInteractPrompt = GameManager.Instance.openShopInteractText;
+
+                        if (GameManager.Instance.playerScript.GetCurrentEquippedWeapon().CanSwitchWeapon() && !GameManager.Instance.shopCanvas.activeInHierarchy)
+                            currentInteractPrompt.SetActive(true);
+                        else
+                            currentInteractPrompt.SetActive(false);
+                    }
+                    else //if not an interactable object
                         currentInteractPrompt.SetActive(false);
                 }
-                else //if not an interactable object
+                else
                     currentInteractPrompt.SetActive(false);
 
                 //store the previous collider hit by the interaction raycast
