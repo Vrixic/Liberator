@@ -168,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4018209427504873905, guid: 5a7efd0ad8b6f914085a83c36406cfc3, type: 3}
       propertyPath: m_TagString
-      value: LevelEntry
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a7efd0ad8b6f914085a83c36406cfc3, type: 3}
