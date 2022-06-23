@@ -24,6 +24,8 @@ public class PlayerPrefManager : MonoBehaviour
     [HideInInspector]
     public int currentSkillPoints;
     [HideInInspector]
+    public int totalSkillPointsSpent;
+    [HideInInspector]
     public int startingCash;
     [HideInInspector]
     public int flashBangCapacity;
@@ -187,6 +189,19 @@ public class PlayerPrefManager : MonoBehaviour
             PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
         }
 
+        // total skill points spent
+        if (PlayerPrefs.HasKey("Total Skill Points"))
+        {
+
+            totalSkillPointsSpent = PlayerPrefs.GetInt("Total Skill Points", 0);
+            // Debug.Log("Loading Skill Points, Current: " + currentSkillPoints);
+        }
+        else
+        {
+            totalSkillPointsSpent = 0;
+            PlayerPrefs.SetInt("Total Skill Points", totalSkillPointsSpent);
+        }
+
         // Player XP
         if (PlayerPrefs.HasKey("Current XP"))
         {
@@ -323,6 +338,7 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetFloat("Brightness", brightness);
         PlayerPrefs.SetFloat("Player Sensitivity", playerSensitivity);
         PlayerPrefs.SetInt("Voice Prompts State", voicePromptState);
+        PlayerPrefs.SetInt("Total Skill Points", totalSkillPointsSpent);
 
         // Save Player Upgrades and Xp Info
         PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
@@ -348,7 +364,10 @@ public class PlayerPrefManager : MonoBehaviour
     public void ResetPlayerUpgrades()
     {
         // Resetting player upgrades and xp back to defaults
-        PlayerPrefs.SetInt("Skill Points", 0);
+        currentSkillPoints = totalSkillPointsSpent + currentSkillPoints;
+        totalSkillPointsSpent = 0;
+        PlayerPrefs.SetInt("Total Skill Points", totalSkillPointsSpent);
+        PlayerPrefs.SetInt("Skill Points", currentSkillPoints);
         PlayerPrefs.SetInt("Current XP", 0);
         PlayerPrefs.SetInt("Upgraded Starting Cash", 250);
         PlayerPrefs.SetInt("Flashbang Capacity", 2);
@@ -361,6 +380,7 @@ public class PlayerPrefManager : MonoBehaviour
         // Resets counts for amount of times upgrades have been purchased to 0
         PlayerPrefs.SetInt("Equipment Effectiveness Upgrade Count", 0);
 
+
         LoadPlayerUpgrades();
     }
     public void ResetAllPlayerPrefs()
@@ -372,6 +392,7 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetFloat("Player Sensitivity", 100);
         PlayerPrefs.SetFloat("Brightness", 100);
         PlayerPrefs.SetInt("Voice Prompts State", 1);
+        PlayerPrefs.SetInt("Total Skill Points", 0);
 
         // Reset player name 
         PlayerPrefs.SetString("PlayerName", "null_name");
