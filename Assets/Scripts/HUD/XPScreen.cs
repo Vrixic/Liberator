@@ -98,11 +98,13 @@ public class XPScreen : BaseScreen, IPointerClickHandler
         // Headshot calculation
         if(GameManager.Instance.HeadshotHits == 0 && GameManager.Instance.BodyshotHits == 0)
         {
+            GameManager.Instance.HeadshotPercentage = 0;
             headshotText.text = "Headshot %: 0";
         }
         else
         {
-            headshotText.text = "Headshot %: " + ((int)(((float)GameManager.Instance.HeadshotHits / GameManager.Instance.BodyshotHits) * 100)).ToString();
+            GameManager.Instance.HeadshotPercentage = ((int)(((float)GameManager.Instance.HeadshotHits / GameManager.Instance.BodyshotHits) * 100));
+            headshotText.text = "Headshot %: " + GameManager.Instance.HeadshotPercentage.ToString();
         }
 
         // Update header text
