@@ -74,6 +74,8 @@ public class GameManager : MonoBehaviour
     public GameObject intelInteractText;
     [HideInInspector]
     public GameObject openShopInteractText;
+    [SerializeField] public GameObject doorLockedPrompt;
+    [SerializeField] public GameObject hostageDoorPrompt;
     [HideInInspector]
     public Image flashbangImage;
     [HideInInspector]
