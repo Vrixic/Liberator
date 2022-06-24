@@ -53,7 +53,12 @@ public class Bullet : PoolableObject
      */
     void OnRayCastHit(RaycastHit hit)
     {
-        if (hit.collider.tag == "Hitbox")
+        if (hit.collider.tag == "EnvironmentConcrete" || hit.collider.tag == "EnvironmentMetal")
+        {
+            Debug.Log("Riccochetsound");
+            AudioManager.Instance.PlayAudioAtLocation(GameManager.Instance.playerScript.transform.position, "BulletRicochet");
+        }
+        else if (hit.collider.tag == "Hitbox")
         {
             if (hit.collider.gameObject.GetComponent<Headshot_Hitbox>())
             {
