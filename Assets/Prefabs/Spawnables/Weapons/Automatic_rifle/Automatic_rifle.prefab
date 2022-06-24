@@ -1996,9 +1996,9 @@ MonoBehaviour:
   maxNumOfBullets: 30
   bulletDropAudioClip: {fileID: 8300000, guid: 4c82044088dc32e4aa71b09a931c0a6b, type: 3}
   verticalRecoil:
-  - 0.2
-  - 0.4
-  - 0.4
+  - 0.6
+  - 0.6
+  - 0.6
   - 0.6
   - 0.6
   - 0.8
@@ -2027,12 +2027,12 @@ MonoBehaviour:
   - 0
   - 0
   horizontalRecoil:
-  - 0
+  - 0.15
   - 0.2
-  - 0.2
+  - 0.3
   - -0.2
   - -0.3
-  - -0.4
+  - -0.5
   - -0.4
   - 0.4
   - 0.6

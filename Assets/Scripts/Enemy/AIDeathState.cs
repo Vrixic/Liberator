@@ -66,7 +66,8 @@ public class AIDeathState : AIState
 
     IEnumerator DisableEnemy(AIAgent agent)
     {
-        yield return new WaitForSecondsRealtime(5.0f);
+        yield return new WaitForSecondsRealtime(4.0f);
+        agent.navMeshAgent.enabled = false;
         agent.ragdoll.DeactivateRagdoll();
         agent.ragdoll.DisableColliders();
     }
