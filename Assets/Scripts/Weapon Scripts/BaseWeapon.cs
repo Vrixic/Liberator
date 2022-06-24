@@ -241,7 +241,6 @@ public class BaseWeapon : MonoBehaviour//, IWeapon
     {
         //m_AudioSource.PlayOneShot(attackAudioClip);
         AudioManager.Instance.PlayAudioAtLocation(transform.position, GetWeaponID().ToString() + "_Shot");
-        AudioManager.Instance.PlayAudioAtLocation(transform.position, "BulletRicochet");
     }
 
     /*
