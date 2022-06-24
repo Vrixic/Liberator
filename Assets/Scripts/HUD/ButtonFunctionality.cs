@@ -390,7 +390,7 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                         }
                     case WeaponID.Revolver:
                         {
-                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetFireRate(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetFireRate() * .8f);
+                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetFireRate(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetFireRate() * .3f);
                             break;
                         }
                     case WeaponID.Automatic_Rifle:
@@ -400,12 +400,12 @@ public class ButtonFunctionality : MonoBehaviour, IPointerEnterHandler, IPointer
                         }
                     case WeaponID.Automatic_Rifle3:
                         {
-                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 25);
+                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetDamage(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetDamage() + 10);
                             break;
                         }
                     case WeaponID.Shotgun:
                         {
-                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetFireRate(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetFireRate() * .5f);
+                            GameManager.Instance.playerScript.GetCurrentEquippedGun().SetFireRate(GameManager.Instance.playerScript.GetCurrentEquippedGun().GetFireRate() * .4f);
 
                             break;
                         }
