@@ -112,7 +112,10 @@ public class BaseGun : BaseWeapon
         if (bIsReloading) return; // dont do anything when gun is being reloaded
         if (!HasMoreAmmo())
         {
-            AudioManager.Instance.PlayAudioAtLocation(transform.position, "OutOfAmmo");
+            if (InputManager.Instance.playerInput.OnFoot.AttackPressed.triggered)
+            {
+                AudioManager.Instance.PlayAudioAtLocation(transform.position, "OutOfAmmo");
+            }
             return;
         }
         // need to reload gun, gun doesn't have enough ammo
