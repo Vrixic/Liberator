@@ -904,7 +904,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0.00009450412}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0.00003736294}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &3265516039755668717
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4155610376427227224}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99723816
+  m_Size: 0.99998206
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   totalSkillPointsText: {fileID: 3234446937972517626}
   timeText: {fileID: 7483185681062691120}
   headshotText: {fileID: 2293652976234193086}
-  leaderboardErrorGameObject: {fileID: 0}
+  leaderboardErrorGameObject: {fileID: 2505871477894692234}
   enemyUIPrefab: {fileID: 1260784532508400620, guid: def88bf78ce4c3e4a916808dee2d531e, type: 3}
   contentHolder: {fileID: 2444861689567042615}
   timeBetweenUIBlocks: 1.5
