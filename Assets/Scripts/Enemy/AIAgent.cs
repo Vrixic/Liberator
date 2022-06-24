@@ -92,7 +92,6 @@ public class AIAgent : MonoBehaviour
         {
             headShotCollider = GetComponentInChildren<SphereCollider>();
             headshot = GetComponentInChildren<Headshot_Hitbox>();
-            Debug.Log(headshot);
         }
         bodyCollider = GetComponent<CapsuleCollider>();
         boxCollider = GetComponentInChildren<BoxCollider>();

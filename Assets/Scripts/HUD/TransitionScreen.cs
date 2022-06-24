@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TransitionScreen : BaseScreen, IPointerClickHandler
@@ -71,6 +72,8 @@ public class TransitionScreen : BaseScreen, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (SceneManager.GetActiveScene().name == "TutorialScene") return;
+
         if(PlayerPrefManager.Instance.SceneOperation.progress > 0.89 && !bSceneLoading)
         {
             bSceneLoading = true;
