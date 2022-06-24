@@ -1055,13 +1055,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1691223524290305806, guid: 6153d5cf9432bc4449a45f04749d5615, type: 3}
-      propertyPath: leaderboardErrorGameObject
-      value: 
-      objectReference: {fileID: 8990237444976761210}
     - target: {fileID: 3436097391666426249, guid: 6153d5cf9432bc4449a45f04749d5615, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00035838544
+      value: 0.000002861023
       objectReference: {fileID: 0}
     - target: {fileID: 3690814153664300116, guid: 6153d5cf9432bc4449a45f04749d5615, type: 3}
       propertyPath: m_Size
@@ -1069,7 +1065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3690814153664300116, guid: 6153d5cf9432bc4449a45f04749d5615, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4155610376427227224, guid: 6153d5cf9432bc4449a45f04749d5615, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1460,16 +1456,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeaderboardCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6862123442617869222, guid: 9791d5e702645d74babf2213df4d2267, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9791d5e702645d74babf2213df4d2267, type: 3}
 --- !u!224 &8085740053229958150 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6038979680713068250, guid: 9791d5e702645d74babf2213df4d2267, type: 3}
-  m_PrefabInstance: {fileID: 2591986216217819868}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8990237444976761210 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6862123442617869222, guid: 9791d5e702645d74babf2213df4d2267, type: 3}
   m_PrefabInstance: {fileID: 2591986216217819868}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3555176384497382671
