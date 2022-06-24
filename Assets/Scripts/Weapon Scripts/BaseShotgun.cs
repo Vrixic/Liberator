@@ -20,23 +20,17 @@ public class BaseShotgun : BaseGun
         {
             coneRadius = bulletConeRadius;
         }
+
         Vector3 centerPoint = raycastOrigin.position + GameManager.Instance.mainCamera.transform.forward * GetBulletRange();
         Vector3 targetPoints;
-
-        float minX = centerPoint.x - coneRadius.x;
-        float maxX = centerPoint.x + coneRadius.x;
-
-        float minY = centerPoint.y - coneRadius.y;
-        float maxY = centerPoint.y + coneRadius.y;
 
         for (int i = 0; i < pellets; i++)
         {
             Bullet bullet = ObjectPoolManager.Instance.SpawnObject(GetBulletPool()) as Bullet;
-
             targetPoints = centerPoint;
 
-            targetPoints.x = Random.Range(minX, maxX);
-            targetPoints.y = Random.Range(minY, maxY);
+            targetPoints += GameManager.Instance.mainCamera.transform.right * Random.Range(-coneRadius.x, coneRadius.x);
+            targetPoints += GameManager.Instance.mainCamera.transform.up * Random.Range(-coneRadius.y, coneRadius.y);
 
             RaycastHit hitInfo;
             if (Physics.Linecast(raycastOrigin.position, targetPoints, out hitInfo, raycastLayers))
