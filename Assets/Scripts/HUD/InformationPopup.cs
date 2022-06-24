@@ -27,7 +27,7 @@ public class InformationPopup : MonoBehaviour
     }
     private void Update()
     {
-        if (PlayerPrefManager.Instance.voicePromptState == 0)
+        if (!textPrompt && PlayerPrefManager.Instance.voicePromptState == 0)
         {
             StopAllPrompts();
         }
@@ -49,7 +49,7 @@ public class InformationPopup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (PlayerPrefManager.Instance.voicePromptState == 0) return;
+        if (!textPrompt && PlayerPrefManager.Instance.voicePromptState == 0) return;
         if (other.CompareTag("Player"))
         {
             GetComponent<BoxCollider>().enabled = false;
